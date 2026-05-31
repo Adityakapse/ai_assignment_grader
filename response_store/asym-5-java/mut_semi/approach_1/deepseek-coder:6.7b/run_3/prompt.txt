@@ -1,0 +1,114 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ5 {
+    static class Node {
+        int v;
+        Node next;
+        Node(int v, Node next) { this.v = v; this.next = next; }
+    }
+
+    static Node h;   // head of the linked list
+
+    // Your analysis should be based on the number of nodes N in the linked list with head h.
+    public static int f() {
+        int s = 0;
+        Node p = h;
+        while (p != null) {
+            s += g(p);
+            p = p.next;
+        }
+        return s;
+    }
+
+    private static int g(Node start) {
+        int c = 0;
+        Node q = start;
+        while (q != null) {
+            c += q.v;
+            q = q.next;
+        }
+        return c;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; — constant time.
+Part B (while loop): traverses the list, calling g(p) at each node.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: in each iteration p advances by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by the call to g(p). In the worst case g scans from p to the end of the list — when p = h this is N nodes, when p is the i-th node it is N - i nodes. The per-iteration cost is therefore Theta(N) in the worst case.
+- Total cost of Part B: summing the actual per-iteration costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: int c = 0; Node q = start; — constant time.
+Part E (while loop): traverses from start until the end of the list.
+Part F: return c; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at start and advances by q.next each iteration until q becomes null. In the worst case start = h, so the loop visits all N nodes; the iteration count is Theta(N).
+- Cost per iteration: Theta(1) — one += assignment, one pointer advance, one null comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p) which traverses the rest of the list.
+
+So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g.
+
+g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h). Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N^2) and g is Theta(N).
+
+
+RUBRIC:
+Point 1 — Splitting code into parts + referencing line numbers (valid range: 0–5)
+  Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently.
+
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+  All non-loop code in f and g is Theta(1).
+
+Point 3 — f(): Loop iterations (valid range: 0–12)
+  Theta(N) iterations of the outer while loop.
+
+Point 4 — f(): Cost per iteration (valid range: 0–12)
+  Theta(N) per iteration in the worst case, dominated by the call to g(p).
+
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(N^2) for the loop overall.
+
+Point 6 — g(): Loop iterations (valid range: 0–12)
+  Theta(N) iterations in the worst case.
+
+Point 7 — g(): Cost per iteration (valid range: 0–12)
+  Theta(1) per iteration.
+
+Point 8 — g(): Total loop cost (valid range: 0–8)
+  Theta(N) = Theta(N) iterations x Theta(1) per iteration.
+
+Point 9 — Overall worst-case runtime of g (valid range: 0–12)
+  T_g(N) = Theta(N), summing constant parts and the loop.
+
+Point 10 — Overall worst-case runtime of f (valid range: 0–14)
+  T_f(N) = Theta(N^2), accounting for non-loop parts + loop.

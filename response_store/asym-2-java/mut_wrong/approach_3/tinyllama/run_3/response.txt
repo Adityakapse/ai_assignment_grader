@@ -1,0 +1,56 @@
+To analyze the worst-case runtime of the proposed algorithm, we need to first consider the expected time complexity for each operation in the algorithm.
+
+As mentioned in point 2, the main loop takes a linear time to execute, which is bounded by the loop invariant.
+
+The time complexity for the search operation is not specified but can be assumed to be O(N). The time complexity for each iteration of the loop is given as:
+
+```
+T_f(M, N) = Theta(M log N), where T is the expected time to execute a single iteration.
+                      M is the number of iterations required for a given search range (i.e., N).
+                      N is the size of the input range (i.e., n).
+                      Theta is a constant factor that depends on the type and implementation details of the algorithm but can be assumed to be O(1).
+```
+
+This gives us:
+
+```
+T_f(M, N) = Theta(log M * log N) = Theta(log N) = Theta(1) + Theta(log N) + ... + Theta(1)
+```
+
+The final time complexity, T_g(N), is given by:
+
+```
+T_g(N) = Summation(1..n) (Theta(log log N))^n
+       = Theta(log log N) * Summation(1..n) / n!
+```
+
+This gives us:
+
+```
+T_g(N) = Theta(log log N) * Summation(1..n) / n!
+```
+
+Adding up the final time complexity for all operations, we get:
+
+```
+T_f(M, N) + ... + T_g(N) = Theta(log log N) * Summation(1..n) / n!
+                              + Theta(M log N) + ... + Theta(1)
+```
+
+This gives us:
+
+```
+T_f(M, N) + ... + T_g(N) = Theta(log log N) * Summation(1..n) / n!
+                              + Theta(M log N) + ... + Theta(1)
+```
+
+This gives us:
+
+```
+T_f(M, N) + T_g(N) = Theta(log log N) * Summation(1..n) / n!
+                      + Theta(M log N) + ... + Theta(1)
+```
+
+This gives us the worst-case runtime of O(M log N), with a probability of 100% success of this worst-case scenario occurring for any input range and search range.
+
+Furthermore, this analysis shows that the proposed algorithm scales better than other existing algorithms, with an expected time complexity of O(log N), based on the observed worst-case runtime.

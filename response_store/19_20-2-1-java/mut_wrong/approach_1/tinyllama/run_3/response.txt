@@ -1,0 +1,53 @@
+Class "Queue" implements a simple stack, where each element in the array is represented as a single string. The class also contains methods for emptying the stack, retrieving the head of the queue (i.e., the most recently added element), and removing the front (i.e., the last element) of the queue.
+
+The Queue class has three internal structures that store elements: its buffer array, which is initially filled up to 100 elements, and a start and end indices into this array. The head and tail indices, respectively, represent the index of the first and last elements in the buffer. All methods work correctly, and are valid within their respective ranges of input (i.e., they do not modify any internal state).
+
+To implement an empty queue, the Queue class simply returns true if and only if it contains no elements (valid range: 0–15). The head() method returns the front element without modifying the internal state, while enqueue(x) inserts the given string into the buffer array at the appropriate position.
+
+To implement a dequeue operation, the Queue class retrieves the element at the front of the queue (valid range: 0–18), removes it from the buffer array, and updates all internal tracking state accordingly. The dequeue() method returns the last element retrieved (i.e., the head of the queue) without modifying any state.
+
+In practice, these methods would be implemented as follows:
+
+Empty Queue:
+    public bool isEmpty() {
+        return start == end; // start and end are valid indices into buffer array
+    }
+    public String head() {
+        return buffer[start];
+    }
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if (end == 100) { // ensure that the array is never full
+            end = 0;
+        }
+    }
+
+Dequeue Operation:
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if (start == 100) { // ensure that the array is never full
+            start = 0;
+        }
+        return s;
+    }
+
+To properly check and update internal state, we could use a boolean flag to track whether or not the queue contains no elements. For example:
+
+Empty Queue:
+    public bool isEmpty() {
+        return start == end;
+    }
+
+Dequeue Operation:
+    public String dequeue() {
+        String s = buffer[start];
+        while (start < end) { // ensure that the array is not full, but also not empty
+            start++;
+            if (start == 100) { // if we get here, then the array has reached its maximum size, and should be cleared to prevent any further operations.
+                start = 0;
+            }
+        }
+        return s;
+    }

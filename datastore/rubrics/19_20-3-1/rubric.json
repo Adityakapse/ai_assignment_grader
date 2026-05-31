@@ -1,0 +1,141 @@
+{
+  "task_id": "19_20-3-1",
+  "title": "List Sorting (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the student uses incorrect loop bounds, base the swap and comparison marks on whether those operations are applied correctly within whatever loop structure the student wrote.",
+    "Any correct sorting algorithm from the lecture is acceptable (e.g., Bubble Sort, Insertion Sort, Selection Sort). The rubric evaluates the use of the provided list API correctly and consistently, regardless of which algorithm is chosen.",
+    "This rubric applies to both Java and Python submissions. The Java method is Sort(ListToSort list); the Python function is listSorter(listToSort). Both are correct.",
+    "Students must use only the provided list methods: Swap(x, y), Larger(x, y), Smaller(x, y), Equal(x, y), and Length(). Direct access to list elements without using these methods is not acceptable."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Loop / iteration structure",
+      "tag": "loop structure",
+      "max_marks": 20,
+      "target": "The method implements a recognisable sorting algorithm structure: an outer loop (or flag-based loop) for repeated passes, and an inner loop or mechanism for stepping through adjacent or relevant element pairs.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No loop or recursive structure is present, or the body makes only a single unconditional pass with no mechanism for repeated comparison and swapping."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A loop is present but the structure is incomplete for a sorting algorithm: for example, only a single pass is made with no outer loop to repeat until sorted, or the loop does not step through the list in a way that enables pairwise comparison."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A recognisable sorting algorithm structure is present: an outer loop (or flag-based while loop) for repeated passes and an inner loop (or equivalent mechanism) for stepping through the list to compare and potentially swap elements."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Comparison step: use of Larger / Smaller / Equal",
+      "tag": "comparison",
+      "max_marks": 20,
+      "target": "The method calls Larger(x, y), Smaller(x, y), or Equal(x, y) with the correct index arguments to detect whether two elements are in the wrong order.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No comparison method (Larger, Smaller, or Equal) is called, or elements are compared directly without using the provided API methods."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A comparison method is called but with incorrect index arguments (e.g., wrong offsets, comparing non-adjacent elements in a context that requires adjacency, or the comparison direction is inconsistent with the intended sort order)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Larger(), Smaller(), or Equal() is called with the correct pair of indices to detect whether two elements are out of order, consistent with the chosen sorting algorithm."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Swap step: calling Swap on order violation",
+      "tag": "swap",
+      "max_marks": 20,
+      "target": "When the comparison indicates that two elements are in the wrong order, Swap(x, y) is called with the same pair of indices used in the comparison.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Swap is not called, or is called unconditionally (not based on the comparison result), or is called with completely unrelated indices."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Swap is called conditionally based on the comparison result, but the indices passed to Swap do not match those used in the comparison (e.g., swapping the wrong pair of positions)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Swap is called with the same pair of indices as the comparison, and only when the comparison indicates an order violation, consistent with the chosen sorting algorithm."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Use of Length() for loop bounds",
+      "tag": "length",
+      "max_marks": 15,
+      "target": "Length() is used to bound all relevant loops, making the algorithm work for any list size without hardcoded lengths.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Length() is not used anywhere; loop bounds are hardcoded, absent, or do not depend on the list size."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "Length() is used in some but not all loop bounds (e.g., in the inner loop but not the outer, or the outer loop uses Length() but the inner loop has a hardcoded limit)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "Length() is used to correctly bound all relevant loops, so the algorithm generalises to any list size."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 25,
+      "target": "The Sort method returns the list sorted in ascending order for all valid inputs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns null or an unsorted list for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "Sorts correctly for simple or short inputs but fails for general cases (e.g., fails for lists of length > 2, or fails when the list requires multiple passes)."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "Returns the list sorted in ascending order for all valid inputs."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 19,
+          "description": "Logic is consistent with the student's own approach throughout, but the list is not correctly sorted due to a systematic error (e.g., consistently wrong loop bounds, reversed comparison direction applied uniformly)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

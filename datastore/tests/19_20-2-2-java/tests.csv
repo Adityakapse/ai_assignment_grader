@@ -1,0 +1,61 @@
+test_number,is_example,testcode,expected
+1,True,"IntegerStack s = new IntegerStack();
+String[] input = {""2"", ""1"", ""-""};
+int result = Calculator(input, s);
+System.out.println(result);",1
+2,True,"IntegerStack s = new IntegerStack();
+String[] input = {""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};
+int result = Calculator(input, s);
+System.out.println(result);",14
+3,True,"IntegerStack s = new IntegerStack();
+String[] input = {""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""};
+int result = Calculator(input, s);
+System.out.println(result);",0
+4,True,"IntegerStack s = new IntegerStack();
+String[] input = {""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""};
+int result = Calculator(input, s);
+System.out.println(result);",3720010
+5,False,"IntegerStack s = new IntegerStack();
+String[] input = {""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};
+Calculator(input, s);
+System.out.println(s.compareHistory(new String[]{""[1]"", ""[1, 2]"", ""[1]"", ""[]"", ""[2]"", ""[2, 3]"", ""[2, 3, 4]"", ""[2, 3]"", ""[2]"", ""[2, 12]"", ""[2]"", ""[]"", ""[14]"", ""[]""}));",true
+6,False,"IntegerStack s = new IntegerStack();
+String[] input = {""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""};
+Calculator(input, s);
+System.out.println(s.compareHistory(new String[]{""[4]"", ""[4, 2]"", ""[4]"", ""[]"", ""[2]"", ""[2, 4]"", ""[2, 4, 4]"", ""[2, 4, 4, 4]"", ""[2, 4, 4]"", ""[2, 4]"", ""[2, 4, 1]"", ""[2, 4, 1, 2]"", ""[2, 4, 1]"", ""[2, 4]"", ""[2, 4, 2]"", ""[2, 4]"", ""[2]"", ""[2, 2]"", ""[2]"", ""[]"", ""[0]"", ""[]""}));",true
+7,False,"IntegerStack s = new IntegerStack();
+String[] input = {""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""};
+Calculator(input, s);
+System.out.println(s.compareHistory(new String[]{""[278241]"", ""[278241, 489]"", ""[278241]"", ""[]"", ""[569]"", ""[569, 6456]"", ""[569]"", ""[]"", ""[3673464]"", ""[3673464, 46546]"", ""[3673464]"", ""[]"", ""[3720010]"", ""[]""}));",true
+8,False,"IntegerStack s = new IntegerStack();
+String[] input = {""1231"", ""123"", ""3210"", ""35"", ""+"", ""+"", ""+""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[1231]"", ""[1231, 123]"", ""[1231, 123, 3210]"", ""[1231, 123, 3210, 35]"", ""[1231, 123, 3210]"", ""[1231, 123]"", ""[1231, 123, 3245]"", ""[1231, 123]"", ""[1231]"", ""[1231, 3368]"", ""[1231]"", ""[]"", ""[4599]"", ""[]""}));","4599
+true"
+9,False,"IntegerStack s = new IntegerStack();
+String[] input = {""2874"", ""1757"", ""+"", ""8989"", ""4768"", ""+"", ""+""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[2874]"", ""[2874, 1757]"", ""[2874]"", ""[]"", ""[4631]"", ""[4631, 8989]"", ""[4631, 8989, 4768]"", ""[4631, 8989]"", ""[4631]"", ""[4631, 13757]"", ""[4631]"", ""[]"", ""[18388]"", ""[]""}));","18388
+true"
+10,False,"IntegerStack s = new IntegerStack();
+String[] input = {""561"", ""232"", ""+"", ""11158"", ""+""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[561]"", ""[561, 232]"", ""[561]"", ""[]"", ""[793]"", ""[793, 11158]"", ""[793]"", ""[]"", ""[11951]"", ""[]""}));","11951
+true"
+11,False,"IntegerStack s = new IntegerStack();
+String[] input = {""8541"", ""5965"", ""*"", ""646"", ""+"", ""6"", ""+"", ""84585"", ""-""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[8541]"", ""[8541, 5965]"", ""[8541]"", ""[]"", ""[50947065]"", ""[50947065, 646]"", ""[50947065]"", ""[]"", ""[50947711]"", ""[50947711, 6]"", ""[50947711]"", ""[]"", ""[50947717]"", ""[50947717, 84585]"", ""[50947717]"", ""[]"", ""[50863132]"", ""[]""}));","50863132
+true"
+12,False,"IntegerStack s = new IntegerStack();
+int n1 = getRandom();
+int n2 = getRandom();
+int n3 = getRandom();
+String[] input = {"""" + n1, """" + n1, ""/"", """" + n2, """" + n2, ""/"", """" + n3, """" + n3, ""/"", ""+"", ""+""};
+System.out.println(Calculator(input, s));",3
+13,False,"IntegerStack s = new IntegerStack();
+int n1 = getRandom();
+int n2 = getRandom();
+int n3 = getRandom();
+String[] input = {"""" + n1, """" + n2, """" + n3, ""-"", ""-""};
+System.out.println(Calculator(input, s) == (n1 - (n2 - n3)));",true

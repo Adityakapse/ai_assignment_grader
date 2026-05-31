@@ -1,0 +1,59 @@
+In order to create an implementation of the sorting algorithm in Python that uses efficient algorithms and optimizes performance, we must first analyze the problem's complexity and determine its worst-case runtime. We will then write a Python program that implements both the selection sort and insertion sort algorithms as well as their respective worst-case runtime estimates based on the given inputs.
+
+To analyze the problem's complexity, we can use the time complexity of the problem to estimate its worst-case runtime. Time complexity is a measure of how long an algorithm takes to perform a specific task. In our sorting algorithm, we have two functions that take input values and output sorted values. The selection sort function consumes the input array as it goes through each element, whereas insertion sort consumes the input array only once and then swaps elements until the end.
+
+Selection Sort:
+- Time complexity: O(n^2)
+
+Insertion Sort:
+- Time complexity: O(n^2)
+
+To determine the worst-case runtime of our Python program, we need to use a tool called TASK 01 that provides us with a benchmark script. The task is to write a Python program that performs n operations and then runs it on a large dataset of random inputs. We can then choose a dataset that contains enough entries to ensure the worst-case runtime.
+
+We will choose a dataset consisting of all integers between 10^6 and 2^32, which is approximately 20,574,960 elements. For each operation, we will run the program multiple times and calculate its average runtime. We will also use a larger dataset to ensure a better estimate for the worst-case runtime.
+
+After analyzing our input data, we can determine that selection sort has an estimated worst-case runtime of O(n^2) while insertion sort has an estimated worst-case runtime of O(n^2).
+
+We will use the chosen dataset to compare our Python program's performance with various sorting algorithms in Python. We will use the following libraries for this:
+
+1. The Selection Sort implementation from the Python Standard Library:
+    ```python
+    >>> import random
+    >>> def selection_sort(arr):
+    ...     for I in range(len(arr)):
+    ...         min_idx = i
+    ...         for j in range(i+1, len(arr)):
+    ...             if arr[j] < arr[min_idx]:
+    ...                 min_idx = j
+    ...         if min_idx != i:
+    ...             arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    ```
+2. The Insertion Sort implementation from the Python Standard Library:
+    ```python
+    >>> import random
+    >>> def insertion_sort(arr):
+    ...     for I in range(1, len(arr)):
+    ...         key = arr[i-1]
+    ...         j = i - 1
+    ...         while j >= 0 and key < arr[j]:
+    ...             arr[j+1] = arr[j]
+    ...             j -= 1
+    ...             key = arr[j]
+    ...     return arr
+    ```
+
+We will use a suite of sorting algorithms to test the Python program's performance on these datasets. We will compare the average runtime of each algorithm with the expected worst-case runtime estimates using TASK 01.
+
+We will run the following tests:
+
+1. Selection Sort:
+   - Run on n=10^6 randomly generated inputs
+   - Run on a dataset containing all integers between 10^6 and 2^32
+   - Run on larger datasets to ensure a better estimate for the worst-case runtime
+   - Run on a set of sorting algorithms (insertion sort, selection sort) to compare their respective worst-case runtime estimates
+
+2. Insertion Sort:
+   - Run on n=10^6 randomly generated inputs
+   - Run on a dataset containing all integers between 10^6 and 2^32
+   - Run on larger datasets to ensure a better estimate for the worst-case runtime
+   - Run on a set of sorting algorithms (selection sort, insertion sort) to compare their respective worst-case runtime estimates.

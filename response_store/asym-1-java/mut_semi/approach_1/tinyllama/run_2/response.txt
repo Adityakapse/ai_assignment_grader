@@ -1,0 +1,21 @@
+You are an objective assessor grading a student's written asymptotic calculations. Before starting, please make sure to clearly identify each part of the problem and their respective costs. The cost matrix can be used to estimate the total runtime of each part. The points above and below each part are the total runtime for that part (ignoring the constants). The final runtime will depend on how much time is spent in each section, as well as the overall complexity of the program.
+
+Point 1: Split up the problem into nested loops and calls to a non-loop function g(N), with a total loop runtime of T_f(N) = Theta(log N). The constant-time non-loop parts (valid range: 0–8) are Theta(log N) x Theta(1) per iteration. The loops consume the rest of their time, which is T_g(log N), summing to a runtime of T_f(N) = Theta(log N).
+
+Point 2: Compute the total loop cost for the nested loops in f() with a total loop runtime of T_f(N) = Theta(log N). The non-loop parts (valid range: 0–12) consume Theta(N^2), which is T_g(N). The constants are accounted for, as well as the constant work cost per iteration.
+
+Point 3: Divide each part into its individual parts by referencing line numbers to identify their respective iterations (valid range: 0–12). Each part has a total loop runtime of T_f(N) = Theta(log N), which is accounted for in the matrix below, but you need to estimate its runtime based on how much time is spent in each section. The nested loops consume the rest of their time, which is T_g(log N).
+
+Point 4: Compute the total loop cost for all nested loops in g() with a total loop runtime of T_f(N) = Theta(log N), which summed up with each section's runtime will be the overall worst-case runtime. The non-loop parts (valid range: 0–12) consume Theta(N^2), which is T_g(N).
+
+Point 5: Divide each section by referencing line numbers to identify its individual iterations and their respective costs, as well as the constant work cost per iteration. You should estimate the total runtime of g() based on how much time is spent in each section. The sections have a total loop runtime of T_f(N) = Theta(log N), which is accounted for in the matrix below.
+
+Point 6: Compute the worst-case runtime for all sections in g(), as well as the constant work cost per iteration, and multiply by T_g(log N).
+
+Point 7: Divide each part of f() into its individual parts by referencing line numbers to identify their respective iterations (valid range: 0–12) and their respective costs. You need to estimate the total runtime based on how much time is spent in each section, as well as the overall complexity of the program. The sections have a total loop runtime of T_f(N) = Theta(log N), which is accounted for in the matrix below.
+
+Point 8: Compute the worst-case runtime for all sections in f(), as well as the constant work cost per iteration, and multiply by Theta(log N).
+
+Points 10 and 9 are not included in this matrix as they do not contribute to the total runtime of each section. Points 2, 3, 4, and 7 are also excluded due to the lack of non-loop parts and loops that consume time in each section. Point 5 is excluded because it does not take into account the overall complexity of the program.
+
+Overall, you will need to estimate the worst-case runtime for f() based on how much time is spent in each section. The cost matrix can help you do this. Incorporating these estimates into your final runtime estimation will give a more accurate picture of how long each part of f() takes to complete.

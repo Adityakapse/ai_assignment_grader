@@ -1,0 +1,52 @@
+To implement the Least Common Multiple (LCM) function as mentioned in the problem statement, we can use a recursive algorithm with a base case of 0 as the input. The gcd(n_1, n_2) function will be implemented using the GC(n1, n2) formula from the lecture.
+
+To calculate LCM for multiple inputs using recursion, we can make two steps: (i) compute GCD(n1, n2) recursively for all possible inputs with n_1 and n_2 being the largest valid inputs respectively, followed by (ii) computing LCM(m_1, m_2) recursively for each pair of adjacent LCMs of increasing order.
+
+Here's a Python implementation of the LCM function using recursion:
+```python
+def gcd(a, b):
+    """
+    :param a: First input value
+    :param b: Second input value
+    :return: GCD of a and b
+    """
+    if b == 0:
+        return a
+    
+    # Base case: If both inputs are equal, return the same GCD (a)
+    if a == b:
+        return a
+    
+    # Recursive case: Compute GCD recursively for all possible inputs with n_1 and n_2 being larger than a and smaller than b, respectively
+    c = gcd(b, a % b)
+    
+    # Return the LCM of b and c (c * b / gcd(a, b))
+    return (a * b) // gcd(a, b)
+
+def lcm(a, b):
+    """
+    :param a: First input value
+    :param b: Second input value
+    :return: LCM of a and b
+    """
+    # Base case: If both inputs are equal, return the same LCM (a)
+    if b == 0:
+        return a
+    
+    # Recursive case: Compute GCD recursively for all possible inputs with n_1 and n_2 being larger than a and smaller than b, respectively
+    c = gcd(b, a % b)
+    
+    # Return the LCM of a and c (c * a / gcd(a, b))
+    return (a * c) // gcd(a, b)
+```
+
+To test the function, we can create a sample set of values for inputs to calculate their respective LCMs. Here's an example:
+
+```python
+SAMPLE_SET = {
+    10: 365, 20: 834, 100: 7391, 200: 35529, 1000: 217778, 2000: 1166593
+}
+
+for input in SAMPLE_SET:
+    lcm(input[0], input[1])
+```

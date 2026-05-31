@@ -1,0 +1,32 @@
+test_number,is_example,testcode,expected
+1,False,"//System.out.println(STUDENT_ANSWER.find(""checkCalc""))",
+2,False,"//System.out.println(STUDENT_ANSWER.find(""checkExpo""))",
+3,False,"//System.out.println(STUDENT_ANSWER.find(""eval""))",
+4,False,"//System.out.println(STUDENT_ANSWER.find(""import""))",
+5,False,"//System.out.println(STUDENT_ANSWER.find(""**""))",
+6,True,System.out.println(calc(0));,0
+7,True,System.out.println(calc(1));,1
+8,True,System.out.println(calc(2));,3
+9,True,System.out.println(calc(10));,1023
+10,False,System.out.println(calc(100));,976371284
+11,False,System.out.println(calc(1000));,688423209
+12,False,System.out.println(calc(100000000));,494499947
+13,False,System.out.println(calc(1000000000 - 1));,570312503
+14,False,"for (int i = 0; i < 100 ; i++){
+    long n = (int)Math.floor(Math.random()*(1e9-1e5+1)+1e5);
+    long student_sol = calc(n);
+    long sol = checkCalc(n);
+    if  (student_sol != sol){
+        System.out.println(""Wrong output for n="" + n + "". Expected "" + sol + "", got ""+student_sol);
+        break;}
+}
+System.out.println(0)",0
+15,False,"for (int i = 0; i < 100 ; i++){
+    long n = (int)Math.floor(Math.random()*(1e9-1e5+1)+1e5);
+    long student_sol = calc(n);
+    long sol = checkCalc(n);
+    if  (student_sol != sol){
+        System.out.println(""Wrong output for n="" + n + "". Expected "" + sol + "", got ""+student_sol);
+        break;}
+}
+System.out.println(0)",0

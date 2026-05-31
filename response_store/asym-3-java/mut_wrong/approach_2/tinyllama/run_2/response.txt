@@ -1,0 +1,271 @@
+POINT_ID: 1
+Question: Calculate the asymptotic worst-case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N). Your answer should include a detailed analyzi s of both functions. The text field provided shall have a maximum line number and detailed analy si.
+
+Method f:
+Part A: int n = mat.length;
+Part B (nested loops over i, j): inner loop runs from j = 0 to j = N-1.
+Part C: int t = g(mat);
+Return t;
+
+Part C:
+Part D: int n = mat.length;
+int t = 0;
+for (int I = 0; I < n; i++) {
+    for (int j = 0; j < i; j++) {
+        s += mat[i][j];
+    }
+}
+return t;
+
+Part E:
+Part F: int n = mat.length;
+int t = g(mat);
+return t + s;
+
+Method g:
+Part D: int n = mat.length;
+int t = 0;
+for (int I = 0; i < n; i++) {
+    for (int j = i; j < n; j++) {
+        s += mat[i][j];
+    }
+}
+return t + s;
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+Method f:
+Part A: int n = mat.length;
+Part B (nested loops over i, j): inner loop runs from j = 0 to j = N-1.
+Part C: int t = g(mat); return s + t; Parts A and the return statement of Part C are Theta(1). Parts A and the return statement of Part C are Theta(N^2) x Theta(1) = Theta(N^2). Cost per iteration: Theta(1) — one array access, one += assignment, loop checks and increment s = 0;
+Part D: int n = mat.length; int t = 0;
+for (int I = 0; I < n; i++) {
+    for (int j = 0; j < i; j++) {
+        s += mat[i][j];
+    }
+}
+return t + s; Part E:
+Part F: int n = mat.length; int t = g(mat); return t + s;
+Cost of the call to g: Theta(1) (see analysi of g below); Cost of the call to g: Theta(N^2) x Theta(1) = Theta(N^2). Part F:
+Part G:
+Part H: int n = mat.length; int t = g(mat); return t + s;
+Total cost of Part H and all subparts (which is equivalent to Part F):
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2). Total cost of Part G: Theta(1) x Theta(N^2) = Theta(N^2). Method g:
+Part H:
+Part D: int n = mat.length; int t = g(mat); return t + s; Cost of the call to g: Theta(1) — one matrix access mat[i][j] = 0; t += mat[i][j]; Part I:
+Cost of the call to g: Theta(N^2) x Theta(1) = Theta(N^2). Cost of the call to g: Theta(N^2) x Theta(1) = Theta(N^2) = Theta(N^2). Cost of the call to g: Theta(1) — one array access mat[i][j] = 0; Parts A and the return statement of Part I are Theta(1) — one matrix access mat[i][j] = 0;
+Total cost of all subparts (which is equivalent to Part H):
+Theta(1) — one matrix access mat[i][j] = 0; Total cost: Theta(1) x Theta(N^2) = Theta(N^2).
+
+POINT_ID: 2
+QUESTION: Calculate the asymptotic worst case running time of the function below, as a function of its input `n` with valid ranges of 1–32. The output should include a detailed analysiс of each function detailing its asymptotic worst case cost per iteration and the bounds for the loop's steps.
+
+public static int f(int n) {
+    // Your analyziS should be based on n.
+    // Use Theta notation or big-O notation with tiight bounds.
+    // AnalyS should refer to line numbers.
+    
+    switch (n % 2) {
+        case 0:
+            // Case 1: Even number n, single loop over i from 0 to N-1
+            // Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+            
+            int ln = (n / 2); // Log of even n
+            int ct_step = (ln > 1 && ln < 4) ? 1 : 2; // Step size for the diagonal loop
+            return ct_step * n; // Average time to iterate diagonal + step size
+            
+        case 1:
+            // Case 2: Odd number n, single loop over i from N-1 to 0
+            // Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+            
+            int ln = (n / 2); // Log of odd n
+            int ct_step = (ln > 1 && ln < 4) ? 2 : 1; // Step size for the diagonal loop
+            return ct_step * n; // Average time to iterate diagonal + step size
+            
+        case 3:
+            // Case 3: N is odd, single loop over i from 0 to N-1 (n is even)
+            // Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+            
+            int ln = (n / 2); // Log of even n
+            int ct_step = (ln > 1 && ln < 4) ? 1 : 2; // Step size for the diagonal loop
+            return ct_step * n; // Average time to iterate diagonal + step size
+            
+        default:
+            // Default case, no odd or even cases present in input range
+            // Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+    }
+}
+
+SAMPLE SOLUTION:
+Let n be the input parameter.
+
+Method f
+Part A: int n = 5; Part B: switch (n % 2) { case 0: // Case 1: Even number n, single loop over i from 0 to N-1 Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+    
+    int ln = (n / 2); // Log of even n Ct_step = (ln > 1 && ln < 4) ? 1 : 2; // Step size for the diagonal loop return ct_step * n; Cost per iteration: Ct_step * N^2 x Theta(1) = Theta(N^2)
+    
+    Part C: switch (ln % 2) { case 0: // Case 2: Odd number n, single loop over i from N-1 to 0 Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+        return ct_step * N; // Average time to iterate diagonal + step size Cost per iteration: Ct_step * (ln > 1 && ln < 4) ? 2 : 1; // Step size for the diagonal loop return ct_step * N; Part D: default:
+        return 0; // Default case, no odd or even cases present in input range. Total cost of all loops: Theta(N^2) x Theta(1) = Theta(N^2) x Theta(1) = Theta(N^2)
+    }
+}
+
+STUDENT SOLUTION:
+Method f
+Part A: int n = 5; Part B: switch (n % 2) { case 0: // Case 1: Even number n, single loop over i from 0 to N-1 Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+    
+    int ln = (n / 2); // Log of even n Ct_step = ((ln > 1 && ln < 4) ? 2 : 1); // Step size for the diagonal loop return ct_step * N; Part D: default:
+    switch (ln % 2) { case 0: // Case 2: Odd number n, single loop over i from N-1 to 0 Cost per iteration: Theta(N^2) x Theta(1) = Theta(N^2)
+        return ct_step * N; // Average time to iterate diagonal + step size Cost per iteration: Ct_step * (ln > 1 && ln < 4) ? 2 : 1; // Step size for the diagonal loop return ct_step * N; Part B: default:
+        return 0; // Default case, no odd or even cases present in input range. Total cost of all loops: Theta(N^2) x Theta(1) = Theta(N^2)
+    }
+}
+
+POINT_ID: 3
+QUESTION: Calculate the worst-case running time of a function using Theorum notation, based on an input matrix with side length N (assuming all possible values). Your answer should include detailed analyis of both functions and specify the number of iterations and their cost per iteration. Please use appropriate Theorum symbols and provide clear explanations for any unclear parts of your analyses.
+
+POINT_ID: 4
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the input size N. You must write your answer in Theta notation or use the big-O notation with appropriate bounds. Your analyis should include detailed analytiical steps for both functions and refer to at least two specific line numbers.
+
+Public final class AsymQ3 {
+    
+    // Matrix matrix is an n x n matrix
+    
+    public static int f(int[][] matrix) {
+        int n = matrix.length;
+        
+        // Calculate O(n^2) time for matrix accesses and + constant work time
+        // Total cost of Part C: Theta(n^2) x Theta(1) = Theta(n^2)
+        int t = g(matrix);
+        
+        // Calculate O(n) time for Matrix multiplication, total cost: Theta(n) + Theta(1) = Theta(n)
+        return t;
+    }
+    
+    private static int g(int[][] matrix) {
+        // Calculate O(n^2) time for each loop along diagonal
+        for (int I = 0; I < n; i++) {
+            for (int j = I; j < n; j++) {
+                // Calculate constant work time, total cost: Theta(1) + Theta(1) = Theta(n)
+                
+                // Calculate O(n) time for sum of matrix elements along diagonal
+                return g(matrix[i][j]);
+            }
+        }
+        
+        // Check for empty matrix, no need to loop through all rows/columns
+        if (n == 0 || n == 1) {
+            return 0;
+        } else {
+            // Calculate O(n^2) time for each loop along diagonal
+            for (int I = 0; I < n; i++) {
+                for (int j = I; j < n; j++) {
+                    // Calculate constant work time, total cost: Theta(1) + Theta(1) = Theta(n)
+                    
+                    // Calculate O(n^2) time for sum of matrix elements along diagonal
+                    return g(matrix[i][j]);
+                }
+            }
+            
+            // Check for empty matrix, no need to loop through all rows/columns
+            if (n == 0 || n == 1) {
+                return 0;
+            } else {
+                // Calculate O(n^2) time for each loop along diagonal
+                for (int I = 0; I < n; i++) {
+                    for (int j = I; j < n; j++) {
+                        // Calculate constant work time, total cost: Theta(1) + Theta(1) = Theta(n)
+                        
+                        // Calculate O(n^2) time for sum of matrix elements along diagonal
+                        return g(matrix[i][j]);
+                    }
+                }
+            }
+        }
+    }
+}
+
+POINT_ID: 5
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N). - You must write your answer in the text field provided. - Your answer should include a detailed analyziS of both functions. - You can use Theta notation or big-O notation with tiGhBt bounds. - Your analyZiS should refer to line numbers. AsymQ3 (public final class AsymQ3)
+     // "mat" is an N x N matrix.
+     // Your analyZiS should be based on N.
+     public static int f(int[][] mat) {
+         int n = mat.lenGth;
+         int s = 0;
+         for (int I = 0; I < n; i++) {
+             for (int j = i; j < n; j++) {
+                 s += mat[i][j];
+             }
+         }
+         int t = g(mat);
+         return s + t;
+     }
+
+     private static int g(int[][] mat) {
+         int n = mat.lenGth;
+         int t = 0;
+         for (int I = 0; I < n; i++) {
+             t += mat[i][i];
+         }
+         return t;
+     }
+
+     SAMPLE SOLUTION:
+    Let N be the side length of the matrix "mat" (which is "N" x "N"). Method f
+    Part A: int n = mat.lenGth; int s = 0; — constant time. Part B (nested loops over I, j): inner loop runs from j = I to j = N-1. Part C: int t = g(mat); return s + t; — single call to g plus constant work. Parts A and the return statement of Part C are Theta(1). Parts B (nested loops):
+        - Combined iterations: for each I, j runs from I to N-1, giving (N - I) iterations. Total = N + (N-I) + ... + 1 = N(N+1)/2 = Theta(N^2). - Cost per iteration: TheTheta(1) — one array access, one += assignment, loop checks and increments. - Total cost of Part B: TheTheta(N^2) x TheTA(1) = Theta(N^2). Method g
+    Part D: int n = mat.lenGth; int t = 0; — constant time. Part E (for loop along the diagonal): single loop over I from 0 to N-1. Part F: return t; — constant time. Parts D and F are Theta(1). Part E:
+    - Iterations: the loop runs from I = 0 to I = N-1, giving TheTheta(N) iterations. - Cost per iteration: TheTha(1) — one matrix access mat[i][i], one += assignment, loop check and increment. - Total cost of Part E: TheTha(N) x TheTheta(1) = Thea(N). Overall running time of f:
+    TheTha(1) + Thea(N) + Theta(1) = Thea(N). Overall running time of g:
+    TheTha(1) + TheTheta(N) + Thea(1) = Thea(N). RUBRIC POINT: Point 5 — f(): Total loop cost (valid range: 0–8) From The Theta notation or big-O notation with time bounds. You can use the same format of line numbers and comments as in your text field to make it more organized and easier to read.
+
+POINT_ID: 6
+QUESTION: Calculate the asymptotic worst-case running time of the function below, as a function of the input matrix's size `n` (which is assumed to be an integer). Your output should include specific details for each loop, including the number of iterations and the cost per iteration. Use Theta notation or Big-O notation with tighter bounds whenever possible. For every loop you need to justify with a single sentence. Each step of the analyzes should refer to one or two sentences.
+
+POINT_ID: 7
+QUESTION: Calculate the asymptotic worst-case running time of both the functions `f` and `g`, defined in their respective texts, as a function of side length `N`. Rule: Both functions should be based on `N`, while each loop can refer to either one or two iterations. Each step of the analyzis should be justified with one or two sentences. Your analysi must refer to line numbers. For every loop you need to specify the number of iterations and the cost per iteration. Each part should have a constant time, so `Theta(1)` for all parts. In general, Theta(n) is a measure of time complexity, with n being the input size, for loops over I, j that traverse the matrix `mat` (mat is N x N). Part A: int n = mat.length; int s = 0; — constant time part B (nested loops): inner loop runs from j = i to j = N-1. Part C: int t = g(mat); return s + t; part D (for loop along diagonal): single loop over i from 0 to N-1, giving Theta(N) iterations part E:
+- Iterations: the loop runs from i = 0 to i = N-1, giving Theta(N) iterations. Part F: return t; - Cost per iteration: Theta(1) — one matrix access mat[i][i], one += assignment, loop check and increment. - Total cost of Part E: Theta(N) x Theta(1) = Theta(N). Parts A and the return statement of Part C are Theta(1), so overall running time is approximately linear. Rule: Both functions should be based on `N`, while each loop can refer to either one or two iterations. Each step of the analyzis should be justified with one or two sentences, while each part should have a constant time. Let's look at the specific analysi for g(): Part D (for loop along diagonal): single loop over I from 0 to N-1. Cost per iteration: Theta(1) — one matrix access mat[i][i], one += assignment, loop check and increment. Total cost of Part D: Theta(N) x Theta(1) = Theta(N). In general, Theta(n) is a measure of time complexity, with n being the input size, for loops over I, j that traverse the matrix `mat` (mat is N x N). The g function reads the diagonal which is just a few values. Total cost of Part E: Theta(N) + Theta(1) = Theta(N). Based on the text material, it can be assumed that both functions are based on the given side length `N`. The g function does not refer to any iterations, so it's only the f function's analyzis which should be assessed. In general, the time complexity of a function should depend on its input size (which is N). The g function reads only one iteration of the matrix diagonal, so it can be said that this function takes linear time in the side length `N`. For each loop, there are two iterations, which are both constant time, so it's also true for these loops. Therefore, the overall running time of g is approximately linear in N. The method f, on the other hand, involves a single iteration and is only analyzed up to the end point. However, this is not enough to determine the actual running time of f as a whole, as it may still take more than linear time with a large input size (N).
+
+POINT_ID: 8
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your analysiS should include a detailed analySiS of both functions.
+- You can use Theta notation or big-O notation with tiHt bounds.
+- Each loop you need to specify the number of iterations and the cost per iteration (valid range: 0–8).
+- Every step of the analySiS should be justified with one or two sentences.
+
+POINT_ID: 9
+Certainly! Here's a summary of the feedback sentence for each line in the SAMPLE SOLUTION:
+
+Line 4 (part B) - "Combined iterations: for each i, j runs from i to N-1, giving (N - i) iterations." This is a single iteration. Since N is an input variable, it's fine to use a constant time cost of Theta(1). Line 7 (part C) - "Total cost per iteration: Theta(1) — one array access, one += assignment, loop checks and increment[s]." This is a single iteration with the addition and return statement. Since there's only one call to the g function, it's fine to use a constant time of Theta(1). Line 10 (part D) - "Total cost of Part D: Theta(1) — constant time." This is a single time cost of Theta(1) due to the constant value. Line 13 (part F) - "Overall running time of g:" This is a total cost, which includes the constant time for the loop along the diagonal, as well as the additional costs from the loop checks and increment operations. Since there's only one iteration through the diagonal, it's safe to use Theta(1) as a constant time. Line 18 (part E) - "Total cost of Part E: Theta(N) x Theta(1) = Theta(N)." This is a total cost of Theta(N), which includes the constant value for N and the loop check and increment operations. Since the matrix size N is a variable, it's safe to use Theta(1) as a constant time. Overall running time: This totals to approximately linear time.
+
+POINT_ID: 10
+QUESTION:
+Calculate the asymptotic best-case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziS of both functions.
+- You can use Theeta notation or big-O notation with tiigh bounds.
+- Your analyZiS should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyZiS should be justified with one or two sentences.
+
+POINT_ID: 11
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the input size `n` and output size `k`. Your answer should include a detailed analyzi of both functions. You can use either Theta notation or big-O notation with a fixed value for `t`, depending on which form of analysis fits your problem better.
+
+AsymQ3
+Let `n` and `k` be the input size and output size respectively. Both functions are defined using nested loops, each of which performs some amount of work, as well as a single call to a function. The cost of these operations is evaluated in terms of constants and depends on how many iterations or array accesses take place:
+
+Part A: Nested loop (cost per iteration: `t`):
+- Combination of iterations: for each value `(i, j)` run from `(i, j)` to `(i+1, j)` giving `(k+1)` total iterations. Total: `k + 2(n+1) = k*(n+1)`
+- Cost per iteration (fixed): Theta(1)
+
+Part B (nested loops over `i` and `j`, single call to function):
+- Combination of iterations: for each value `(i, j)` run from `(i, j)` to `(i+1, j)` giving `(k+1)` total iterations. Total: `(k + 1)(n+1) = (k*(n+1))(n+1)/2`
+- Cost per iteration (fixed): Theta(1)
+
+Part C: Function call:
+- Cost of the call to `g`: Theta(1)
+
+Overall, the running time of both functions is approximately linear in `k`.

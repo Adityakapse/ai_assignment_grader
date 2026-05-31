@@ -1,0 +1,141 @@
+{
+  "task_id": "21_22-1-2",
+  "title": "Divide and Conquer Function (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the narrowing direction is reversed, base the return value marks on whether the final answer is consistent with the student's own narrowing logic.",
+    "This rubric applies to both Java and Python submissions. The Java method is calc(); the Python function is calc(f). Both are correct.",
+    "Forbidden: 'import', 'eval', 'globals' (Python). Penalise in point 5.",
+    "The binary function f_N returns 1 if n >= N and 0 if n < N. The task is to find N using binary search in O(log n). The correct narrowing rule is: if f(m) == 1, search left (r = m-1); if f(m) == 0, search right (l = m+1)."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Search bounds initialisation",
+      "tag": "bounds",
+      "max_marks": 15,
+      "target": "l = 0 and r = 10^18 (or Long.MAX_VALUE), correctly bounding the search space for all valid N.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No bounds are set; the algorithm does not initialise a search space, or uses a constant unrelated to the input range."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "Bounds are initialised but the upper bound is too small (e.g., 10^6 or 10^9), causing the algorithm to fail for N > that bound."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "l = 0 and r = 10^18 (or equivalent large constant covering all valid N), correctly enclosing the entire search space."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Binary search loop and midpoint",
+      "tag": "loop",
+      "max_marks": 20,
+      "target": "A while loop runs while l <= r, computing midpoint m = (l + r) // 2 at each iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No loop is present; f is evaluated only once or a fixed number of times regardless of the search space."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A loop is present but the termination condition is wrong (e.g., l < r instead of l <= r, missing the case where l == r), or the midpoint is computed incorrectly (e.g., integer overflow from (l+r) without guarding, or uses l or r directly instead of the midpoint)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "while l <= r runs the loop until the search space is empty; m = (l + r) // 2 (or equivalent) correctly computes the midpoint at each step."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Narrowing: updating l and r based on f(m)",
+      "tag": "narrowing",
+      "max_marks": 30,
+      "target": "If f(m) == 1 (m >= N), search the left half: r = m - 1. If f(m) == 0 (m < N), search the right half: l = m + 1.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "l and r are not updated based on f(m); the loop does not narrow the search space and runs indefinitely or always returns the same value."
+        },
+        {
+          "label": "Semi",
+          "marks": 15,
+          "description": "l and r are updated, but the direction is reversed (f(m)==1 sets l=m+1 instead of r=m-1, and vice versa), consistently searching the wrong half."
+        },
+        {
+          "label": "Correct",
+          "marks": 30,
+          "description": "When f(m) == 1: r = m - 1 (N is at or before m, search left). When f(m) == 0: l = m + 1 (N is after m, search right). This correctly converges to N."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Post-loop return value",
+      "tag": "return",
+      "max_marks": 15,
+      "target": "After the loop, the correct N is returned: if f(m) == 1 return m, else return m + 1 (or equivalently, return l).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "The return value is unrelated to the search result (e.g., always returns m or l without checking f), or returns the wrong boundary (e.g., always returns r)."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "The return is close but off by one: for example, returns m unconditionally without the final f(m) check, which fails when the loop exits with f(m) == 0."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "Returns m if f(m) == 1, otherwise m + 1; or equivalently returns l (which equals the first position where f is 1 after the loop exits)."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "calc correctly returns N for all valid inputs in O(log n), without forbidden keywords.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Returns incorrect N for most inputs, or contains forbidden keywords ('import', 'eval', 'globals')."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct N for simple cases (e.g., N near 0 or N = 1) but fails for large N due to insufficient upper bound or off-by-one in the return value."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct N for all valid inputs (0 <= N <= 10^18) in O(log n); forbidden keywords are absent."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own narrowing direction and return logic, but the result is systematically off (e.g., consistently returns N-1 or N+1)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

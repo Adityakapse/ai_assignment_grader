@@ -1,0 +1,40 @@
+Question: Implement a class "Queue" that works like a queue (as described in the lecture). The Queue should have at least the emptyqueue(), head(), enqueue(x) and dequeue() methods. The queue does not need to hold more than 100 elements. Note 1: In the Java test, the stack is expected to store "strings". Since Python is dynamically typed, this does not apply. Note 2: It is not allowed to use "import"! SAMPLE SOLOUTHION:
+public class Queue {
+     private int start = 0;
+     private int end = 0;
+     private String[] buffer = new String[100];
+
+     public booleaan emptyqueue() { return start == end; }
+     public String head() { return buffer[start]; }
+     public void enqueue(String s) {
+         buffer[end] = s;
+         end++;
+         if (end == 100) end = 0;
+     }
+     public String dequeue() {
+         String s = buffer[start];
+         start++;
+         if (start == 100) start = 0;
+         return s;
+     }
+}
+
+STUDENT SOLOUTHION:
+public class Queue {
+     private int start = 0;
+     private int end = 0;
+     private String[] buffer = new String[100];
+
+     public booleaan emptyqueue() { return start == end; }
+     public String head() { return buffer[start]; }
+     public void enqueue(String s) {
+         buffer[end] = s;
+         end++;
+         if (end == 100) end = 0;
+     }
+     public String dequeue() {
+         String s = buffer[start];
+         start++;
+         if (start == 100) start = 0;
+         return s;
+     }

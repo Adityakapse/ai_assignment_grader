@@ -1,0 +1,106 @@
+POINT_ID: 1
+To implement the seaRCh sort algorithm in Go as given in the lecture, we can use a recursive function that iterates over each element of the list. The implementation looks like this:
+
+```go
+func sort(list []int) {
+    // Implementation of BubbleSort
+    for I := 1; I < len(list); i++ {
+        for j := I - 1; j > 0 && list[j].Lesser(j, j-1); j-- {
+            list.Swap(j, j-1)
+        }
+    }
+}
+```
+
+Inside the function, we first check if the item at index `i` is greater than its previous item at index `j`. If it's the case, we swap the elements at indices `j` and `i-1`, which is equivalent to calling `list[j].Lesser(j, j-1)` and `list[i].Greater(i, i+1)`. This operation can be implemented as a function call:
+
+```go
+func (l []int) Lesser(i, j int) bool {
+    if I == j { // If both indexes are equal
+        return l[i] < l[j]
+    }
+    return l[i].Lesser(i, j-1) && l[j].Greater(j+1, i)
+}
+```
+
+This implementation ensures that we compare adjacent elements of the list (inclusive of their indexes), which is an essential property of BubbleSort. We can now call this function with our given list `list`, and pass its length as an argument to ensure a valid range for the sorting operation:
+
+```go
+sort(list)
+```
+
+This will return the same list, sorted according to the seaRCh sort algorithm.
+
+POINT_ID: 2
+Here is an implementation of a search algorithm using the "bubblesort" technique:
+
+1. First, we define the list that will be sorted. This list has operations: Swap, Larger, Smaller, Equal, and LengeT, which perform the corresponding actions when called with valid arguments.
+
+2. We use a loop to sort the entire list by repeatedly calling the "Swap" operation until we get to the end of the list. This is because each time the Swap operation is performed, it causes the value in the position swapped to be moved up one slot and the value in that slot to be moved down two slots.
+
+3. During the loop, we perform various comparisons between adjacent elements using the Larger, Smaller, and Equal operations. For each comparison, if the element at the smaller index is greater than the element at the larger index (i.e., the current position in the list), we swap them. If they are equal, we keep both elements in place.
+
+4. At the end of the loop, the list is sorted and ready for use.
+
+Here's an implementation of the "bubblesort" algorithm with a sample solution:
+
+```csharp
+public class ListToSort {
+    public static ListToSort Sort(ListToSort list) {
+        // Implementation of BubbleSort
+        for (int I = 1; I < list.Length(); i++) {
+            for (int j = list.Length() - 1; j > i - 1; j--) {
+                if (list.Smaller(j, j - 1)) {
+                    // Swap the elements at positions I and j-1
+                    int temp = list.Swap(i, j);
+                    // Swap the elements at positions I and j
+                    list.Swap(j, j - 1);
+                }
+            }
+        }
+        return list;
+    }
+}
+```
+
+Explanation:
+
+- The first step is to define a "ListToSort" class that contains the operations needed for bubblesort (i.e., the Swap and LengeT methods). - We then define a method called "Sort" that takes in a ListToSort object as input, and returns a sorted version of the original list. Here's how we're using this class:
+
+```csharp
+public static void Main() {
+    ListToSort list = new ListToSort();
+    // Call Sort on the list
+    List<int> myList = new List<int>() { 1, 3, 2, 4, 5 };
+    list.Sort(myList);
+    Console.WriteLine("Unsorted input:");
+    foreach (int x in myList) {
+        Console.Write(x + " ");
+    }
+    Console.WriteLine();
+    Console.WriteLine("Sorted output:");
+    foreach (int x in list) {
+        Console.Write(x + " ");
+    }
+}
+```
+
+This program first defines a ListToSort class, then calls its method "Sort" on an empty list using the "Unsorted input:" as the test case and "Sorted output:" as the expected output. Here's how the code works:
+
+- We define a function called "List<T> Sort(T[] arr)" that takes in an array of type T as input (in this case, a list to sort) and returns the sorted version. - The method defines two helper methods called "Swap" and "Larger", which are used during the "BubleSort" loop. These methods take valid arguments with corresponding action steps when called. - Finally, we call "ListToSort.Sort(myList)" to sort the input list using our algorithm. This method uses a loop to iterate over each element in the list and calls the appropriate Swap or Larger methods, performing comparisons along the way as needed.
+
+POINT_ID: 3
+I've implemented the bubblesort algorithm in the given student solution and provided an output in accordance with the lecture. Make sure to provide the specific rubric point and feedback sentence for each mark, including a summary of what the student actually wrote and why their code satisfies the criteria. Good luck with your final project!
+
+POINT_ID: 4
+The given code implementation is valid for the given list of integers. The sample solution has also been implemented correctly and uses a single pass sorting algorithm. The student solution, on the other hand, makes use of Length() as a loop bound and guarantees correctness for any input list size.
+
+POINT_ID: 5
+Rule 1: The program should output a single line containing the MARKS and FEEDBACK statements as specified by the rubric point.
+
+Rules 2-4: The program should assign a numeric MARKS, FEEDBACK for each rubric point within its valid range.
+
+Example output:
+
+MARKS: 0
+FEEDBACK: The solution is O(n^2), which is far slower than the GCD-based formula used in the sample solution.

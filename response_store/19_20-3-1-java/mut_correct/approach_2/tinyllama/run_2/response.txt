@@ -1,0 +1,154 @@
+POINT_ID: 1
+To implement the BuabbleSort algorithm in your seaRChe implementation, you can use a similar approach as the sample solution:
+
+```csharp
+public ListToSort Sort(ListToSort list) {
+    // Implementation of BuabbleSort
+    for (int I = 1; I < list.Length(); i++) {
+        int j = I - 1; // swaps with last element in sublist
+        while (j > -1 && list.Smaller(j, j + 1)) {
+            list.Swap(j, j + 1); // swap elements
+            j++;
+        }
+    }
+    return list;
+}
+```
+
+This implementation creates a new list, initializes it with the elements from the given list, and then calls the BuabbleSort algorithm on the new list. The algorithm sorts the list by iteratively swapping adjacent or relevant elements until the entire list is sorted.
+
+Here's an example usage of this seaRChe implementation:
+
+```csharp
+using SeaRChe;
+
+// Sample solution from lecture
+public ListToSort Sort(ListToSort list) {
+    // Implementation of BuabbleSort
+    for (int I = 1; I < list.Length(); i++) {
+        int j = I - 1; // swaps with last element in sublist
+        while (j > -1 && list.Smaller(j, j + 1)) {
+            list.Swap(j, j + 1); // swap elements
+            j++;
+        }
+    }
+    return list;
+}
+
+ListToSort sortedList = Sort(list);
+```
+
+POINT_ID: 2
+Here's an implementation of bubble sort in C#:
+
+```csharp
+public static void BubbleSort(ListToSort list) {
+    for (int i = 0; I < list.Length(); i++) {
+        for (int j = list.Length() - 1; j > i - 1; j--) {
+            if (list.Smaller(j, j - 1)) {
+                list.Swap(j, j-1);
+            }
+        }
+    }
+}
+```
+
+To use this function, pass a `ListToSort` object to the `BubbleSort` method with a `new List<int>()` or any array as its argument:
+
+```csharp
+ListToSort list = new List<int>();
+list.Add(5);
+list.Add(2);
+list.Add(8);
+list.Add(10);
+BubbleSort(list); // Swaps 2 and 8 with 10, then 2 and 8 with 5
+Console.WriteLine(list.ToArray()); // Output: [5, 2, 8, 10]
+```
+
+POINT_ID: 3
+Assuming the sample solution provided follows the given style and rules, we can write a code to implement the Sort method from the lecture given:
+
+```csharp
+public class ListToSort {
+    private readonly List<int> list; // instance of the ListToSort class
+    
+    public ListToSort(List<int> list) {
+        this.list = new List<int>(list); // copy constructor called with new list of elements
+    }
+    
+    public ListToSort() { }
+    
+    public void Sort(IComparable<int> comparer) => Swap(0, list.Count-1); // implement BubbleSort algorithm on input comparer
+    
+    private void Swap(int I, int j) {
+        if (i > j || I < 0 && j >= list.Length) {
+            throw new ArgumentOutOfRangeException("Index out of range");
+        } else if (j < 0 || j >= list.Length) {
+            throw new ArgumentOutOfRangeException("Index out of range");
+        }
+        int temp = list[i]; // take the first element
+        list[i] = list[j]; // swap with second element
+        list[j] = temp; // swap with first element
+    }
+    
+    public ListToSort Sort() {
+        for (int I = 1; I < list.Lengt(); i++) {
+            for (int j = list.Lengt() - 1; j > I - 1; j--) {
+                if (list.Smaller(j, j-1)) {
+                    list.Swap(j, j-1); // Swap the two elements at position j and j-1
+                }
+            }
+        }
+        return this;
+    }
+    
+    public static void Main() {
+        ListToSort sorted = new ListToSort(new int[] { 50, 20, 30, 80 });
+        sorted.Sort(); // invoke BubbleSort algorithm on sorted list
+        foreach (int I in sorted) {
+            Console.WriteLine(i);
+        }
+    }
+}
+```
+
+This code sorts a list of integers using the BubbleSort algorithm, which is an improved implementation of the original BubbleSort algorithm that takes a while to run on large lists but can be much faster than the traditional BubbleSort method.
+
+POINT_ID: 4
+Yes, you can use Length() for loops in your program as it's a built-in C# method that takes two arguments (the length of the list and an optional third argument 'null') and returns the largest value between the given values. It should work fine with any list size without needing to modify your program design, but please feel free to consult the documentation for more information on how to use this function.
+
+POINT_ID: 5
+Certainly! Here is an implementation of a bubble sort algorithm that sorts a list based on its operations given in the lecture notes:
+
+```csharp
+public static ListToSort Sort(ListToSort list) {
+    // Implementing BubbleSort
+     for (int I = 1; I < list.Length(); i++) {
+         for (int j = list.Length() - 1; j > i - 1; j--) {
+             if (list.Smaller(j, j - 1)) {
+                 list.Swap(j, j - 1);
+             }
+         }
+     }
+     return list;
+}
+```
+
+The above implementation takes a list `list` as input and sorts it using bubble sort algorithm. The code splits the input list in half, with one part sorted and the other part not yet sorted. For each element in the sorted part, the code swaps the smallest and largest elements (if they exist) until the entire list is sorted.
+
+Here's a sample solution to the student's input list:
+
+```csharp
+public static ListToSort Sort(ListToSort list) {
+    for (int I = 1; I < list.Length(); i++) {
+        for (int j = list.Length() - 1; j > i - 1; j--) {
+            if (list.Smaller(j, j - 1)) {
+                list.Swap(j, j - 1);
+            }
+        }
+    }
+    return list;
+}
+```
+
+After sorting the student's input list using bubble sort algorithm, the program returns the sorted version. Note that the bubble sort algorithm is guaranteed to find and eliminate both the worst-case scenario where all elements are swapped (which would take linear time) and the best-case scenario where no swaps are made (which would take O(n^2) time).

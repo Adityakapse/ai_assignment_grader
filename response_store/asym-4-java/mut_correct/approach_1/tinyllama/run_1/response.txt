@@ -1,0 +1,32 @@
+You are an objective assessor grading a code review that includes functions `f()` and `g()` in the same file. These functions have been given specific comments to explain their purpose, but you need to focus on analyzing the functions' overall time complexity, loop complexity, and worst-case runtime metrics.
+
+Point 1: F()
+   Clear separation of code into parts + referencing line numbers (valid range: 0–5)
+      - f(): Loop iterations (valid range: 0–12)
+            Theta(log N) = Theta(N) iterations x Theta(1) per iteration.
+      - Cost per iteration (valid range: 0–12)
+          Theta(1) = Theta(N)
+
+Point 2: G()
+   Clear separation of code into parts + referencing line numbers (valid range: 0–5)
+      - g(): Loop iterations (valid range: 0–12)
+            Theta(log N) = Theta(N log N), accounting for non-loop parts + loop.
+      - Total loop cost (valid range: 0–8)
+          T_g(N) = Theta(N log N)
+          T_g(N) = Theta(1) per iteration.
+
+Point 3: Overall worst-case runtime of f()
+   Theta(log N) iterations of the for loop over a, which results in constant time complexity and a sum of constant parts.
+
+Point 4: Overall worst-case runtime of g()
+   Theta(N log N) iterations of the for loop over b. Non-loop parts are in separate functions f() and g(). Loop cost is dependent on non-loop parts, but dominates loop itself.
+
+Point 5: T_f(N) = Theta(log N), accounting for non-loop parts + loop
+   Theta(log N) iterations of the function f(), which results in constant time complexity and a sum of non-constant parts. Non-loop parts are in separate functions f() and g(). Loop cost is dependent on non-loop parts, but dominates loop itself.
+
+Point 6: T_g(N) = Theta(1), accounting for loop itself, which has a total run-time of log N+1. Non-constant parts are in separate functions f() and g(). Loop cost is dependent on non-loop parts, but dominates loop itself.
+
+Point 7: Overall worst-case runtime of f() + g()
+   Theta(log N) iterations of the function f(), which results in constant time complexity and a sum of constant parts. Non-constant parts are in separate functions f() and g(). Loop cost is dependent on non-loop parts, but dominates loop itself. 
+
+Overall, these code reviews show good progress and clear understanding of the code's overall complexities, despite the fact that there may be some unresolved questions or confusion about certain details.

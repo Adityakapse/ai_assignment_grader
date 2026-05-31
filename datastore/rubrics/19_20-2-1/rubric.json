@@ -1,0 +1,165 @@
+{
+  "task_id": "19_20-2-1",
+  "title": "Queue",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 6). Do not deduct again for an error already penalised in an earlier point. For example: if enqueue() is incorrect, base dequeue() marks on whether it consistently reads from the position the student's enqueue() wrote to. HOWEVER, for the overall correctness (point 6), there is double deduction for an incorrect result even if earlier steps were internally consistent (4th bullet point in number 6).",
+    "This rubric applies to both Java and Python submissions. Any correct internal representation that implements FIFO semantics (e.g., array with index tracking, dynamic list) is acceptable.",
+    "Java uses the method name emptyqueue(); Python uses isEmpty(). Both are correct. Accept either name.",
+    "The use of 'import' is not allowed. Penalise in point 6 if 'import' appears in the submission."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Class structure and internal storage",
+      "tag": "queue storage",
+      "max_marks": 15,
+      "target": "The Queue class is defined and contains internal storage and any necessary tracking state sufficient to maintain elements in FIFO order.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No Queue class defined, or class is defined but contains no internal storage or state fields whatsoever."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A Queue class is defined and has some internal storage, but it is incomplete or insufficient to correctly support all four queue operations (e.g., storage present but no tracking state, or tracking state present but no storage)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "A Queue class is defined with complete internal storage and all tracking state needed to implement FIFO behaviour. Correctness of individual methods is evaluated in points 2 to 5."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "emptyqueue() / isEmpty(): correct emptiness check",
+      "tag": "isEmpty",
+      "max_marks": 15,
+      "target": "The method returns true if and only if the queue contains no elements, based on the internal state of the queue.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method is missing, always returns a constant value regardless of queue state, or checks a condition unrelated to whether the queue is empty."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "Method attempts to check emptiness using the internal state but the condition is incorrect, giving wrong results for some queue states."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "Returns true if and only if the queue contains no elements, using a condition that correctly reflects the current internal state."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "head(): returns front element without modifying queue",
+      "tag": "head",
+      "max_marks": 12,
+      "target": "head() returns the element at the front of the queue without removing it or modifying any internal state.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method is missing, returns an element from the wrong end of the queue, or always returns a default value regardless of queue contents."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "Returns the correct element but also modifies internal state (i.e., behaves like dequeue rather than a pure read), or reads from the correct end but uses an incorrect index or offset."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Returns the front element of the queue without advancing any pointer, removing any element, or modifying the queue in any way."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "enqueue(x): adds element to the back of the queue",
+      "tag": "enqueue",
+      "max_marks": 18,
+      "target": "enqueue(x) inserts the element at the back of the queue and correctly updates all internal tracking state so subsequent operations remain consistent.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method is missing, does not store the element in the internal structure, or inserts at the wrong position (e.g., prepends instead of appending to the back)."
+        },
+        {
+          "label": "Semi",
+          "marks": 9,
+          "description": "Stores the element at the correct end but does not fully update the internal tracking state afterwards, causing subsequent operations to fail or produce incorrect results."
+        },
+        {
+          "label": "Correct",
+          "marks": 18,
+          "description": "Correctly inserts the element at the back of the queue and updates all tracking state so that subsequent head(), dequeue(), and emptyqueue() calls continue to work correctly."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "dequeue(): removes and returns the front element",
+      "tag": "dequeue",
+      "max_marks": 18,
+      "target": "dequeue() retrieves the element at the front of the queue, removes it, updates all internal tracking state, and returns the retrieved element.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method is missing, does not retrieve the correct element, or returns the value without removing it from the internal structure."
+        },
+        {
+          "label": "Semi",
+          "marks": 9,
+          "description": "Retrieves and returns the correct element and attempts removal, but the internal tracking state is not fully or correctly updated, leaving the queue in an inconsistent state for subsequent operations."
+        },
+        {
+          "label": "Correct",
+          "marks": 18,
+          "description": "Correctly retrieves the front element, removes it from the internal structure, updates all tracking state, and returns the retrieved value so that subsequent operations on the queue remain consistent."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Overall correctness of Queue",
+      "tag": "Overall queue",
+      "max_marks": 22,
+      "target": "All four methods work correctly together: the queue preserves FIFO order across repeated enqueue and dequeue operations, and does not use 'import'.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Class fails to compile or run, or most methods produce incorrect output."
+        },
+        {
+          "label": "Semi",
+          "marks": 11,
+          "description": "Basic FIFO behaviour is correct for simple cases but fails under repeated or boundary operations (e.g., many enqueue and dequeue calls, reuse of freed storage), or 'import' is present in the submission."
+        },
+        {
+          "label": "Correct",
+          "marks": 22,
+          "description": "All methods work correctly together across all test cases. FIFO order is preserved under repeated operations and no 'import' is present."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 17,
+          "description": "Methods follow logic consistent with the student's own earlier implementation, but the final output is incorrect due to a systematic error in state management."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

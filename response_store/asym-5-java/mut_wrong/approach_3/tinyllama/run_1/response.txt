@@ -1,0 +1,15 @@
+To analyze the overall worst-case runtime of each function, we have specified point 9 of the table. Here are some potential problems with the given implementation:
+
+1. Wrong Runtime for g()
+In this implementation, T_g(N) = Theta(N), summating constant parts and the loop. This suggests that the runtime for g is Theta(N). However, there is no justification for this in the text. Internally consistent but incorrect final result (10 marks): The function calls itself with N increasing, and as a result, the overall worst-case runtime would be Theta(N^2), which contradicts the assumption that the runtime for g() is Theta(N).
+
+2. Wrong Runtime for f()
+In this implementation, T_f(N) = Theta(1) + Theta(N) + Theta(1) = Theta(N), summating constant parts and the loop. This suggests that the runtime for f is Theta(1) + Theta(N) + Theta(1), which again contradicts the initial assumption of a wrong runtime for g(). Internally consistent but incorrect final result (10 marks): The function calls itself with N increasing, and as a result, the overall worst-case runtime would be Theta(N^2), which contradicts the assumption that the runtime for f() is Theta(N).
+
+3. Wrong Runtime for both functions
+In this implementation, T_g(N) = Theta(N), summating constant parts and the loop. However, this implies that the worst-case runtime of g() is Theta(N^2), which contradicts the given assumption that f() has a wrong runtime of Theta(1) + Theta(N) + Theta(1). Internally consistent but incorrect final result (10 marks): Both functions have the same worst-case runtime, and as a result, no justification for this in the text.
+
+4. Wrong Runtime for g() but correct for f()
+In this implementation, T_f(N) = Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2), summating constant parts and the loop. This suggests that the runtime for both functions is Theta(N^2). Internally consistent but incorrect final result (10 marks): The function calls itself with N increasing, and as a result, the overall worst-case runtime would be Theta(N^2), which contradicts the given assumption that g() has a wrong runtime of Theta(N).
+
+In summary, these points indicate that while the implementation may appear to have a correct runtime for both functions (g() and f()), this is not justified in the text. Internally consistent but incorrect final result (10 marks): The given implementation has a wrong runtime, which contradicts the initial assumption of g() having a wrong runtime of Theta(N).

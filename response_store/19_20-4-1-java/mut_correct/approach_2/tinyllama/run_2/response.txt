@@ -1,0 +1,155 @@
+POINT_ID: 1
+Assignments for Objective Code Assessment:
+Objective code assessment (OCA) grading guidelines have been provided in a separate document. It covers a range of topics including object-oriented programming, algorithms, and data structures. The rubric points are as follows:
+1. Object Oriented Programming:
+a. Code review for object-oriented programming concepts
+b. Use of appropriate object-oriented programming principles to create reusable code
+c. Handling of encapsulation in various ways (private, protected, public)
+d. Implementing and testing objects with proper interfaces
+e. Use of appropriate coding standards and best practices
+2. Algorithms:
+a. Detailed explanation of algorithm's inputs, outputs, and assumptions
+b. Implementation of the algorithm using techniques such as recursion or iterative algorithms
+c. Solving complex problems using various algorithms
+d. Testing the algorithm with different input sets and output cases
+e. Implementing and testing the algorithm for edge cases and exceptions
+3. Data Structures:
+a. Basic introduction to data structures including arrays, stacks, queues, trees, and linked lists
+b. Implementation of various data structures using suitable data types such as arrays, stacks, queues, and trees
+c. Handling of edge cases and exceptions in various data structures
+d. Handling performance issues in different data structures
+e. Testing the implemented data structures with various input sets and output cases
+4. Searche Trees:
+a. Introduction to searche trees
+b. Creation and manipulation of searche trees
+c. Insertion of nodes into a searche tree using appropriate methods
+d. Implementing different algorithms for search in searche trees
+e. Testing the implemented searche trees with various input sets and output cases
+5. Reliability:
+a. Assessment of overall reliability of the developed solution
+b. Review of critical components, including data structures and algorithms, and testability
+c. Evaluation of the use of error-handling techniques in the implemented solution
+d. Testing of the implemented solution with different input sets and output cases
+
+POINT_ID: 2
+QUESTION:
+These tasks will be about seairch trees. Our seairch trees are built from "nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+     public int key;
+     public Node left;
+     public Node right;
+     public Node parent;
+}
+
+In the lecture you have already seen an algorithm for seairching in a seairch tree.
+
+You are to implement different methods for the seairch trees. For this task, implement a method "insert" that insertions of a "Node" into the seairch tree and returns the new seairch tree. The nodes can be reused as desired. The function is passed the root of the seairch tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+     Node x = root;
+     Node y = null; // saves Node.Parent
+     while (x != null) {
+         y = x;
+         if (insert.key < x.key) {
+             x = x.left;
+         } else {
+             x = x.right;
+         }
+     }
+
+     insert.parent = y;
+     if (y == null) {
+         return insert;
+     } else if (insert.key < y.key) {
+         y.left = insert;
+     } else {
+         y.right = insert;
+     }
+
+     return root;
+}
+
+STUDENT SOLUTION:
+public Node insert(Node root, Node insert) {
+     Node x = root;
+     Node y = null;
+     while (x != null) {
+         y = x;
+         if (insert.key < x.key) x = x.left;
+         else x = x.right;
+     }
+     insert.parent = y;
+     if (y == null) return insert;
+     else if (insert.key < y.key) y.left = insert;
+     else y.right = insert;
+     return root;
+}
+
+RUBRIC POINT:
+Point 3 — Merge operation (valid range: 1–20)
+  1. The first "Node" is taken as the root of the merged tree.
+  2. The remaining nodes are traversed in order and their leaves (i.e., leaves with no parent) are inserted into the merged node's left subtree.
+  3. The remaining nodes with no children are skipped and removed from the original tree.
+  4. If the original tree had a null insertion point, the first root will be returned as the merged result.
+
+Please make sure to test the method insert with different input values for each test case.
+
+POINT_ID: 3
+Here's a sample solution for the seaCash tree task in the same scenario:
+
+```java
+public class Node {
+    public int key;
+    public Node left, right, parent; // saves Node.Parent
+    
+    public Node(int key) {
+        this.key = key;
+        this.parent = null;
+    }
+}
+
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    
+    while (x != null) {
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+        
+        if (y == null && insert.key < y.key) {
+            y = insert;
+        }
+    }
+    
+    if (y == null) { // if not found in the tree, create a new node with inserted key as its parent
+        return insert;
+    } else {
+        insert.parent = y;
+        
+        if (insert.key < y.key) {
+            y.left = insert;
+        } else {
+            y.right = insert;
+        }
+        
+        return root; // if the node is now in the tree, update root with new parent and child nodes
+    }
+}
+```
+
+POINT_ID: 4
+FEEDBACK:
+- Output only the two lines above — no preamble, no summary, no extra text
+
+RULES:
+- MARKS must be a whole number within the valid range for this point (i.e., 0–15)
+- FEEDBACK must be specific to the student's submitted code, not generic
+
+POINT_ID: 5
+QUESTION:
+Write a C++ function named "search_tree" that takes as input the root node of a binary search tree (BST) and a key value to search for, then returns the BST or null if it does not exist in the tree. The function should modify the data structure in-place so as to avoid any side effects on the original BST being operated on. Use a simple search algorithm based on breadth-first traversal to find the node with the given key value.

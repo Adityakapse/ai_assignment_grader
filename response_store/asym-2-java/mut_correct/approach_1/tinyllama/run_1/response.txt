@@ -1,0 +1,18 @@
+Sure, I'd be happy to provide more details on each section of the program and their corresponding costs. Here we go:
+
+Point 1 - Splitting code (valid range: 0–5)
+The outer for loop in f() has an initialisation step that calls a helper function g(i), which in turn calls another helper function h(b, i), which both take the value of b as input. Each iteration of the outer for loop is then performed by calling h(b, i) with i being the index of the current element to process. In each iteration, both h() and g() cost Theta(1). However, we can see from Point 7 that the sum of all costs (i.e., T_g(N)) is Theta(log N), which represents an additional complexity of O(log N).
+
+Point 2 - Constant-time non-loop parts (valid range: 0–12)
+F() is a constant-time part that performs a binary search in the input array using only loop and no non-loop code. The time complexity of this operation is O(log n), which represents an additional complexity of O(log n).
+
+Point 3 - Loop (valid range: 0–12)
+Loop f() is a non-constant-time part that performs binary search in the input array using only loop and no non-loop code. The time complexity of this operation is O(n), which represents an additional complexity of O(n). However, we can see from Point 6 that the sum of all costs (i.e., T_f(M)) is Theta(log N), which represents an additional complexity of O(log N).
+
+Point 4 - Wide code parts (valid range: 0–5)
+Each non-constant-time part in f() has a separate line number and is identified by a set of line numbers referenced consistently. The time complexity of each line of code, i.e., the sum of all costs (i.e., T_f(M)) for this non-constant-time part, represents an additional complexity of O(M).
+
+Point 5 - Overall worst-case runtime (valid range: 0–12)
+Since we have three points in Points 7, 8, and 9 that add up to Theta(log N), the overall worst-case runtime of this program is O(log n + log n + log n). This represents an additional complexity of O(log n + log n + log n) for each iteration of the loop. However, we can see from Point 10 that the sum of all costs (i.e., T_g(N)) is Theta(log N), which represents an additional complexity of O(log n).
+
+Overall, the program has a total cost of Theta(log N) in the worst-case runtime. This is an additive error to an already high time complexity in the best-case (Theta(1)) and average-case (Theta(log n)). In summary, the program's worst-case runtime is O(log n + log n + log n), which represents a total cost of Theta(log N) in both the worst-case and average-case scenarios.

@@ -1,0 +1,37 @@
+POINT_ID: 1
+QUESTION:
+As per Reverse Polish Notation / Postfix Notation, what is the notation for computing O(lcm(a,b)) using GCD (lowercase "g" and "c")?
+
+A: The notation is called postfix notation or stack notation because each operand is separated from each other by a operator. For example, 1 * 2 + 3 * 4 would be written as follows: 1 g (+) 2 * 3 4 * +.
+To compute O(lcm(a,b)), we first push the lowercase "g" and "c", then take the uppermost two numbers on the stack (i.e., push the two numbers together), the GCD of the two operands, and push the result back onto the stack. After processing one iteration, the process is reversed: take the result from the top, push the GCD of the two operands from the previous iteration, push the original two numbers, then compute another iteration of O(lcm(a,b)). After processing several iterations, we have the final answer.
+
+POINT_ID: 2
+Here's how you can write the necessary code for a calculator that supports a Reverse Polish Notation / Postfix Notation notation with operators like *, /, +, -, and lcm:
+
+1. Define an interface called "IntegerStack" to represent the stack used in the calculator. This interface can have two methods: emptyStack() and push(int).
+
+2. Create a class called "Integer" that implements the "IntegerStack" interface using a stack of integer values. The constructor takes an array of strings as input, where each string represents a token in the Reverse Polish Notation / Postfix Notation notation. For example, ["1", "+", "*"] represents the formula 1 + * (which is represented as [1] on the stack).
+
+3. Create a method called "Calculator" that takes an array of input strings and returns the correct result. The method should pop tokens from the stack until it reaches the end of the input, then process each token in the notation until it reaches a valid operator (e.g., "+", "*"). For each token, convert it to its corresponding integer value using Intege r's "parseInt" method. Finally, push the result onto the output stack.
+
+4. Create a sample solution string that represents the input and the correct result for this notation with operators like *, /, +, -, and lcm: ["1", "+", "*"] corresponds to (1 * 2) + (3 * 4) = 7.
+
+5. Implement a "Student" method called "Calculator(String[] input, IntegeRStack s)" that takes an array of strings representing the input and calculates the correct result using the Calculator class's implementation. You may also need to handle any exceptions thrown by the input string conversion or operator processing methods, as described in the original code.
+
+6. Use a "String"[] as input for the sample solution string and call the "Calculator(String[], IntegeRStack)" method with it. The output should be:
+```
+3
+7
+```
+This is the correct result for the notation you've defined using Reverse Polish Notation / Postfix Notation.
+
+POINT_ID: 3
+QUESTION:
+Write a Ruby program that accepts a list of positive integers as input from the user, processes it through an integer calculator in the form of stack, and outputs the correct result rounded down to two decimal places. The output format should be suitable for printing to the console or saving to a file. Use descriptive variable names, comment your code thoroughly, and include appropriate error handling for invalid input.
+
+POINT_ID: 4
+Question: The Reverse Polish Notation / Postfix Notation is a special notation for mathematical expressions, where numbers and operators are given in reverse order. In this task, you will write a method that processes the notation using a stack to simulate the calculation of a mathematical expression. Your implementation should be able to handle both numbers and operators, including operations like plus (+), times (*), and division (/). The input is assumed to be correct formula, but the output will represent a calculated result. The output should match the notations given in the task description.
+
+POINT_ID: 5
+QUESTION:
+Develop a Java program that implements a calculator in which both arithmetic and logical operations are possible on numbers using a stack as the working memory. The program should have an empty stack at start-up, and then allow for each operation to be performed on the top two items of the stack, with the result placed back onto the stack. Ensure that the user-specified RPN expressions can be processed correctly, including those with all four operators and multiple nested operations. The output should be displayed as a numeric mark (0–15) for each correct operation performed, and specific feedback on each incorrect operation.

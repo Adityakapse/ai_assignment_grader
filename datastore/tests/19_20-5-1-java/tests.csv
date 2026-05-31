@@ -1,0 +1,103 @@
+test_number,is_example,testcode,expected
+1,True,"int[][] graph = {
+    {1,2},
+    {0,3,4},
+    {0,5},
+    {1},
+    {1,5},
+    {2,4},
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 1, 2, 3, 4, 5]"
+2,True,"int[][] graph = {
+    {1,2},
+    {},
+    {}
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 1, 2]"
+3,True,"int[][] graph = {
+    {2,1},
+    {},
+    {}
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 2, 1]"
+4,False,"int[][] graph = {{1, 2},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4}
+};
+List<Integer> result = bfs(graph, 3);
+System.out.println(result);","[3, 1, 0, 4, 2, 5]"
+5,False,"int[][] graph = {{1},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4},
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 1, 3, 4, 5, 2]"
+6,False,"int[][] graph = {{0},
+         {2},
+         {1},
+         {4},
+         {},
+         {}
+};
+System.out.println(bfs(graph, 0));
+System.out.println(bfs(graph, 1));
+System.out.println(bfs(graph, 3));
+System.out.println(bfs(graph, 4));","[0]
+[1, 2]
+[3, 4]
+[4]"
+7,False,"int[][] graph = {{1, 2},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4}
+};
+System.out.println(bfs(graph, 5));","[5, 2, 4, 0, 1, 3]"
+8,False,"Random rand = new Random();
+int[][] graph = new int[50][];
+for(int i = 0; i < 50; ++i) {
+    int n = rand.nextInt(20);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(50);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(50);
+System.out.println(isCorrect(graph, start, bfs(graph, start)));",true
+9,False,"Random rand = new Random();
+int[][] graph = new int[100][];
+for(int i = 0; i < 100; ++i) {
+    int n = rand.nextInt(40);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(100);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(100);
+System.out.println(isCorrect(graph, start, bfs(graph, start)));",true
+10,False,"Random rand = new Random();
+int[][] graph = new int[200][];
+for(int i = 0; i < 200; ++i) {
+    int n = rand.nextInt(60);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(200);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(200);
+System.out.println(isCorrect(graph, start, bfs(graph, start)));",true
+11,False,"int[][] graph = {{}};
+System.out.println(bfs(graph, 0));",[0]

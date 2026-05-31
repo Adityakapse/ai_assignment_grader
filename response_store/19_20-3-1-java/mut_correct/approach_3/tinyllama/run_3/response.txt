@@ -1,0 +1,72 @@
+The seaRCSh algorithm implemented in C# for sorting an array of integers with a given length follows the following steps:
+
+1. Preparing the list: Generate an initial list of size len(arr) using Random.Next() method, and then insert some dummy elements to simulate different types of inputs:
+
+```csharp
+int[] arr = new int[len(arr)];
+Random rand = new Random();
+for (int I = 0; I < len(arr); i++) {
+    arr[i] = rand.Next(-10, 10) + 1; // generate random integers from -10 to 10 inclusive
+}
+```
+
+2. Sorting the list: Use quicksort algorithm (with a modified version of pivot selection that selects the middle element as the new pivot instead of picking the largest/smallest element) to sort the elements in ascending order within each subarray. This can be implemented using an extension method on `IEnumerable<int>` with a custom `Compare` implementation:
+
+```csharp
+public static class Extensions {
+    public static int[] QuickSort(this IEnumerable<int> input) {
+        return QuickSort<int, int>(input.ToArray());
+    }
+    
+    public static void QuickSort<T, TP>(this T[] arr, TP pivot) where T : IComparable<TP> {
+        if (arr.Length <= 1) { // base case: empty list
+            return;
+        }
+        
+        int left = 0, right = arr.Length - 1;
+        TP pivot = arr[pivot]; // select pivot
+        
+        while (left < right) {
+            do {
+                Array.Sort(arr, left, right);
+                left++;
+            } while (arr[right] <= pivot);
+            
+            Array.Sort(arr, left, right);
+            right--; // reverse sorted part
+        }
+        
+        Array.Sort(arr, left, arr.Length);
+    }
+}
+```
+
+3. Pivot selection: Use `Pivot` parameter to select the pivot element as the middle element of two subarrays in ascending order within each subarray. This can be implemented using a custom `Compare` implementation:
+
+```csharp
+public static int Compare<TP>(this T left, T right) where T : IComparable<TP> {
+    return (int)left.CompareTo(right); // use default comparer for non-nullable comparables
+}
+```
+
+4. Combining the two sorting algorithms: Use QuickSort to sort the subarrays in ascending order, and then merge them using a custom `Merge` implementation:
+
+```csharp
+public static int[] Merge(int[] leftArr, int[] rightArr) {
+    int[] result = new int[leftArr.Length + rightArr.Length];
+    
+    for (int I = 0; I < Math.Min(leftArr.Length, rightArr.Length); i++) {
+        if (leftArr[i] != null && rightArr[i] != null) {
+            result[i] = leftArr[i].CompareTo(rightArr[i]) > 0 ? leftArr[i] : rightArr[i]; // choose first non-nullable element in sorted subarrays
+        } else if (leftArr[i] != null) {
+            result[i] = leftArr[i]; // insert non-nullable elements from leftArr into the merged result
+        } else if (rightArr[i] != null) {
+            result[i] = rightArr[i]; // insert non-nullable elements from rightArr into the merged result
+        }
+    }
+    
+    return result;
+}
+```
+
+The `Merge` implementation sorts the subarrays using QuickSort in ascending order, merges them using a custom merge algorithm based on the pivot element chosen by QuickSort, and returns the sorted output. The `Merge` method can be optimized further by using a binary search to find the indices of the leftmost and rightmost elements whose values are less than or equal to the pivot, respectively, and then merging adjacent subarrays in sorted order at those indices.

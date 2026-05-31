@@ -1,0 +1,327 @@
+POINT_ID: 1
+Here's a sample implementation of this task using a stack:
+
+```java
+public int Calculator(String[] input, IntegerStack s) {
+     for (int I = 0; I < input.length; i++) {
+         String op = ""; // set up an empty operator string
+         switch (input[i]) {
+             case "+":
+                 op = "+" + s.pop(); // check for plus and store in operator string
+                 break;
+             case "-":
+                 op = "-" + s.pop(); // check for minus and store in operator string
+                 break;
+             case "*":
+                 op = "*" + s.pop() + s.pop(); // concatenate two operators and store in operator string
+                 break;
+             case "/":
+                 op = "/" + s.pop() + s.pop(); // check for division and store in operator string
+                 break;
+             default:
+                 s.push(Integer.parseInt(input[i])); // push input token to stack
+                 break;
+         }
+     }
+     return s.pop(); // pop the last token from stack (result)
+}
+```
+
+In this implementation, we've created a method called `Calculator` that takes in two arrays of strings (`input` and `s`) as input, and returns an integer representing the result of processing the formula using the given operators.
+
+First, the method initializes an empty stack (`s`), where each token (except for parentheses, which are discarded) is pushed onto the stack, and a string representing the operator `"+"`, `"-"` or `"*"`/`"/"` (which corresponds to a plus or minus sign followed by another operator, or a multiplication followed by another operator, or division), respectively.
+
+Then, we iterate over each token in the input starting from left to right (i = 0), and for each token check if it's an operator. If it is not an operator, it's added to the operator string `op` using the `"+"`, `"-"` or `"*"/"/"` string as a placeholder, respectively.
+
+Finally, we push the last input token onto the stack (`s.push(input[i])`), and pop the last operator token from the stack (`op = s.pop()`) to form the final result using the appropriate operator (either addition, subtraction, multiplication or division).
+
+POINT_ID: 2
+To implement this method in C++, you can use a stack data structure to manage the input numbers. Here's an implementation using Python that assumes an input string with valid input for each operator:
+
+```python
+class IntgerStack(object):
+    def __init__(self):
+        self.stack = []
+    
+    def isempty(self):
+        return len(self.stack) == 0
+    
+    def emptystack(self):
+        while not self.isempty():
+            del self.stack[-1]
+            
+    def push(self, num):
+        if num < 0:
+            raise ValueError('Invalid input number')
+        elif num > 15:
+            raise ValueError('Input number too large for int (2^31)')
+        
+        self.stack.append(num)
+    
+    def pop(self):
+        if not self.isempty():
+            return self.stack.pop()
+        else:
+            raise Exception("Stack underflow")
+```
+
+This implementation uses a `IntgerStack` class with a `stack` list to manage the input numbers and a `isempty` function and a `push` method that validates and adds the current number to the stack. The `pop` method simply removes the top element from the stack if there are no more elements, otherwise it returns the popped value.
+
+POINT_ID: 3
+Assuming that the input string contains only integer expressions (e.g. "1 * 2 + 3 * 4"), you can implement the calculator in C++ using functions like `push`, `pop` and `Calculate()`. Here's an example implementation:
+
+```c++
+#include <iostream>
+#include <stack>
+using namespace std;
+
+class IntegeRStack {
+    public:
+        bool emptystack() {
+            return !stack.empty();
+        }
+        
+        int head() {
+            if (emptystack()) {
+                throw "Stack is empty";
+            } else {
+                return stack.top();
+            }
+        }
+        
+        void push(int num) {
+            stack.push(num);
+        }
+        
+        int pop() {
+            if (!stack.empty()) {
+                int top = stack.top();
+                stack.pop();
+                return top;
+            } else {
+                throw "Stack is empty";
+            }
+        }
+};
+
+int Calculate(String input) {
+    IntegeRStack s;
+    while (!input.empty()) {
+        switch (input[0]) {
+            case '+':
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n2 + n1);
+                break;
+            case '-':
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 - n1);
+                break;
+            case '*':
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 * n1);
+                break;
+            case '/':
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 / n1);
+                break;
+            default:
+                s.push(IntegeRStack::Calculate(s)); // Callback to push the result of each token into a separate stack
+        }
+    }
+    
+    return s.pop(); // Get last expression
+}
+
+int main() {
+    int input[] = {"1", "2", "*", "3", "4", "*", "+"};
+    IntegeRStack s;
+    for (int i = 0; I < sizeof(input)/2; ++i) {
+        int x = input[i];
+        string str = input[i * 2 + 1].substr(1);
+        
+        int result = Calculate(str);
+        
+        cout << "Result: " << result << endl;
+    }
+}
+```
+
+POINT_ID: 4
+To implement this calculator in a Java program, you can create an instance of the IntegeirStack class and use it as a stack to process the operators plus (+), minus (-), times (*) and division (/, rounded down).
+
+Here's a sample code for processing the given expression (1 * 2)+(3 * 4):
+
+```java
+import java.util.Arrays;
+import java.util.Stack;
+
+public class IntegeirStack {
+    
+    public boolean isEmpty() {
+        return stack == null ? false : true;
+    }
+    
+    public int pop() {
+        return stack == null ? 0 : stack.pop();
+    }
+    
+    public void push(int value) {
+        if (isEmpty()) {
+            stack = new Stack<>();
+        }
+        stack.push(value);
+    }
+    
+}
+```
+
+The method receives as input a list of strings in which the numbers and operators are already separated (e.g., "1", "+", "*", "/, rounded down").
+
+The implementation assumes that the input is a correct formula.
+
+Here's a sample solution for processing the given expression:
+
+```java
+public int calculate(String[] input) {
+    
+    IntegeirStack s = new IntegeirStack();
+    
+    for (int I = 0; I < input.length; ++i) {
+        switch (input[i]) {
+            case "+":
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n2 + n1);
+                break;
+            
+            case "-":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 - n1);
+                break;
+                
+            case "*":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 * n1);
+                break;
+            
+            case "/":
+                n1 = s.pop();
+                n2 = s.pop();
+                int m = Math.abs((int) (s.peek() / n1));
+                
+                if (m == 0) {
+                    System.out.println("Error: Division by zero");
+                } else {
+                    s.push(n2 / m);
+                    System.out.println("Result:" + s.pop());
+                }
+                
+                break;
+            
+            default:
+                s.push(Integeir.parseInt(input[i]));
+                break;
+        }
+    }
+    
+    return s.pop();
+}
+```
+
+Here's how the calculation of the given expression is performed using this implementation:
+
+1. Pop one number from the stack, process it as usual (e.g., push new value) and pop another number until we reach a zero (which corresponds to dividing by zero), then process this zero using the specified rules.
+2. If we're back at a non-zero value, process it as the right operand of the non-commutative operator (+ or *). In case of addition and multiplication, we add the result to the left operand (the first number on the stack), otherwise we multiply the left operand by the right operand.
+3. If we're back at a zero again, pop one more number until we reach an input operator (- or /), then process this value (minus or divide) as the result of the non-commutative operator and the right operand if it is not equal to 0 (i.e., we have division by zero).
+4. Finally, the last value on the stack is returned as the result (plus the left operand if it wasn't zero).
+
+POINT_ID: 5
+Certainly! Here's a complete Java implementation of the "Rewers Polish Notation" notation/postfix notations processor:
+
+```java
+public class IntegeRStack {
+    public boolean isEmpty() { return empty(); }
+    public int head() { return headE(); }
+    public void push(int I) { pushE(I); }
+    public int pop() { int I = popE(); return I; }
+
+    private boolean isEmpty() { return headA == -1; }
+    private int headE() { return headA; }
+    private int headA = 0;
+
+    private void pushE(int I) {
+        if (headA < (I + 1)) {
+            System.out.println("Invalid input for RPN expression");
+            return;
+        }
+        headA++;
+        int temp = headA * 2;
+        while (temp >= I) {
+            while (temp % I == 0) {
+                headA++; // Add the left parenthesis to the stack
+                temp /= I; // Move the right parenthesis down
+            }
+            temp++; // Pop the left parenthesis off of the stack
+        }
+    }
+
+    private int popE() { return (headA < 0) ? headE : headA; }
+}
+
+public class IntegeRCalculator {
+    public int Calculator(String[] input, IntegeRStack s) {
+        for (int I = 0; I < input.length; ++i) {
+            switch (input[i]) {
+                case "+":
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    s.push(n2 + n1);
+                    break;
+                case "-":
+                    n1 = s.pop();
+                    n2 = s.pop();
+                    s.push(n2 - n1);
+                    break;
+                case "*":
+                    n1 = s.pop();
+                    n2 = s.pop();
+                    s.push(n2 * n1);
+                    break;
+                case "/":
+                    n1 = s.pop();
+                    n2 = s.pop();
+                    s.push(n2 / n1);
+                    break;
+                default:
+                    s.push(IntegeR.parseInt(input[i]));
+                    break;
+            }
+        }
+        return s.pop();
+    }
+}
+```
+
+The method `isValid` checks that the input is a valid RPN expression, meaning that all operators are followed by numbers and/or parentheses, and all numbers have a non-zero value. Then, the method pops the right parenthesis from the stack to ensure an empty operator after each other operator. Finally, it calls the `Calculator` method with the input and the `IntegeRStack` as arguments.
+
+For example:
+
+```
+1 + 2 - 3 / 4
+    ^     ^
+          |/
+          (
+              (1  2
+               * (3  4)
+                + (5 6)
+                 * (7 8)
+                 ) / 9)
+```
+
+The input is a valid RPN expression, meaning that all operators are followed by numbers and parentheses. The `Calculator` method calculates the result as `(1 + 2) * (3 * 4)` and returns 10.

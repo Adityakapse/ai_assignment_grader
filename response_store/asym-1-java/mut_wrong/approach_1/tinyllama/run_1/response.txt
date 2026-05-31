@@ -1,0 +1,12 @@
+Feedback:
+
+Thank you for providing this feedback on the AsymQ1 method to calculate the asymptotic worst-case runtime of the functions `AsymQ1.f` and `AsymQ1.g`. Here is a brief breakdown of each block in your analyzis:
+
+- Block 2 (Part B) - In Part B, you combine the iterative calls to the function g with constant-time work. The cost of this combined iteration is Theta(log N), which we have already factored into the total runtime for Part C.
+- Block 3 (Part C): This section focuses on calculating the total cost of Part C, including both the loop iterations and constant-time work. We see that the cost per iteration is Theta(1), which we have also included in the Runtime section above.
+- Block 4 (g): This section concerns the time spent performing g calls, summing up the constant time parts and the loop. Here, we see that the overall runtime of this function is T_g(N) = Theta(log N), which is a summation of Theta(log N) constants times the total loop count. This is also included in the Runtime section above.
+- Block 5 (f): In this block, you focus on calculating the asymptotic worst-case runtime of f (i.e., the worst-case scenario where the function's execution time grows exponentially with the size of the input array), which we will refer to as T_f(N) in our analysis. Here, we see that the cost of each loop iteration is Theta(1), which we have already included in the Runtime section above. The total runtime for f is then:
+  - Sum of loop iterations (T_f(N))
+  - Total constant-time work (T_g(N))
+
+This overall runtime of f, including both loops and constant-time work, can be summed up by the Runtime section at the top of your analysis. Finally, we can see that F is Theta(1) times N^2 in T_f(N), which we have included in the Runtime section above.

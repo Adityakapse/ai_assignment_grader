@@ -1,0 +1,32 @@
+test_number,is_example,testcode,expected
+1,False,"System.out.println(studentAnswer.split(""editDistance\\("",-1).length-1);",1
+2,True,"System.out.println(editDistance("""",""""));",0
+3,True,"System.out.println(editDistance(""a"",""a""));",0
+4,True,"System.out.println(editDistance(""a"",""""));",1
+5,True,"System.out.println(editDistance("""",""a""));",1
+6,True,"System.out.println(editDistance(""ac"",""abc""));",1
+7,True,"System.out.println(editDistance(""abc"",""ac""));",1
+8,True,"System.out.println(editDistance(""a"",""b""));",1
+9,False,"System.out.println(editDistance(""abc"",""""));",3
+10,False,"System.out.println(editDistance("""",""abc""));",3
+11,False,"System.out.println(editDistance("""",""""));",0
+12,False,"System.out.println(editDistance(""cut"",""cat""));",1
+13,False,"System.out.println(editDistance(""abc"",""abc""));",0
+14,False,"System.out.println(editDistance(""geek"",""gesek""));",1
+15,False,"System.out.println(editDistance(""blablablabla"",""abs""));",10
+16,False,"System.out.println(editDistance(""abc"",""abs""));",1
+17,False,"String s2 = ""weqweqweqwesqwesqweqweqweqweqwseqwesqsssweqwse"";
+String t2 = ""qswe"";
+System.out.println(editDistance(s2,t2));",42
+18,False,"String s = getRandom(5);
+String t = getRandom(5);
+System.out.println(isCorrect(s, t, editDistance(s,t)));",true
+19,False,"String s = getRandom(5);
+String t = getRandom(10);
+System.out.println(isCorrect(s, t, editDistance(s,t)));",true
+20,False,"String s = getRandom(50);
+String t = getRandom(100);
+System.out.println(isCorrect(s, t, editDistance(s,t)));",true
+21,False,"String s = ""913363886309301040365098879106127667334142201778349516617363341246420449892869361432774106767154961"";
+String t = ""913363886309301365098879106127667334142201778349ööö516617363341246420449892869361432774106767ööö961"";
+System.out.println(editDistance(s,t));",9

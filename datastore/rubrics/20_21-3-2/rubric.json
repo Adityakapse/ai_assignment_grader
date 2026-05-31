@@ -1,0 +1,141 @@
+{
+  "task_id": "20_21-3-2",
+  "title": "Longest Path in a DAG (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the virtual source node is missing, base the recurrence marks on whether the student applies the longest-path DFS correctly on their own graph.",
+    "This rubric applies to both Java and Python submissions. The Java method is calc(int N, int[][] A); the Python function is calc(N, A). Both are correct.",
+    "The algorithm uses memoized DFS on a DAG. A virtual source node 0 is added with edges to all nodes 1 to N, so that a single DFS from node 0 finds the globally longest path. The final result is dfs(0) - 1 to account for the virtual edge.",
+    "Alternative correct approaches (e.g., topological sort + DP, DFS from every node with memoization) are also acceptable if they produce the correct result in O(N + M)."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Graph construction and virtual source",
+      "tag": "graph",
+      "max_marks": 20,
+      "target": "An adjacency list is built from A, and a virtual source node 0 is added with edges to all nodes 1 to N so that a single DFS covers all nodes.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No adjacency list is built from A; the algorithm operates directly on the edge array or returns 0 without constructing a graph."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "An adjacency list is built from A correctly, but the virtual source node 0 (connecting to all nodes 1 to N) is missing, so the algorithm can only find paths starting from a specific node rather than the globally longest path."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Adjacency list is built from A, and node 0 is added with directed edges to every node from 1 to N, enabling a single DFS from node 0 to consider all nodes as potential starting points."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Memoization: initialisation and cache check",
+      "tag": "memo check",
+      "max_marks": 20,
+      "target": "A memo array is initialised to -1 for all nodes, and if memo[node] != -1 the cached value is returned immediately without recomputation.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No memo array is used; the DFS recomputes all subproblems on every call, leading to exponential runtime on large DAGs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A memo array is present but initialised to 0 instead of -1, making it impossible to distinguish an uncached node from one whose longest path is 0; or the cache check is present but uses the wrong sentinel value."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "memo is initialised to -1 for all nodes; at the start of each DFS call, if memo[node] != -1 the cached result is returned immediately, ensuring each node is computed at most once."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "DFS base case: leaf node",
+      "tag": "base case",
+      "max_marks": 15,
+      "target": "When a node has no outgoing edges (leaf), the function returns 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No base case is present; the function crashes or loops indefinitely on nodes with no outgoing edges."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A base case is present but returns the wrong value (e.g., returns 1 instead of 0 for leaf nodes), causing an off-by-one error in all computed path lengths."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "When graph[node] is empty (no outgoing edges), the function returns 0, correctly representing a path of length 0 from a leaf."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Recurrence: longest path over children",
+      "tag": "recurrence",
+      "max_marks": 20,
+      "target": "For each child of node, sol = max(sol, dfs(child) + 1) is computed; the result is stored in memo[node] before returning.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Children are not iterated, or no max is taken; the function returns a constant or only considers one child."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Max over children is attempted but dfs(child) is not incremented by +1 (edge not counted), or the result is not stored in memo[node] before returning (breaking memoization for this node's callers)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "sol = max(sol, dfs(child) + 1) is applied for every child; memo[node] is set to sol before returning, so subsequent calls to dfs(node) use the cached result."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 25,
+      "target": "calc returns the correct length of the longest directed path in the DAG for all valid inputs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Returns 0 or an incorrect length for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "Returns correct results for simple linear graphs but fails for branching DAGs, or the -1 adjustment for the virtual source is missing (returning a result one too large), or the algorithm times out due to missing memoization."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "Returns the correct longest path length for all valid DAGs in O(N + M) time; the virtual source adjustment (dfs(0) - 1) is applied correctly."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 19,
+          "description": "Logic follows consistently from the student's own graph and DFS approach, but the result is incorrect due to a systematic error (e.g., consistently missing +1 per edge, or missing the -1 adjustment)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

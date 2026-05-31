@@ -1,0 +1,319 @@
+POINT_ID: 1
+Yes, here's the correct answer for this question:
+
+Question: Calculate the asymptotic worst-case running time of functions `f` and `g`, as a function of their input matrix `mat`. Include detailed analyses based on `n`, `sideLength` of the matrix, and use Theta notation with suitable valid ranges for each step. Ensure that you mention the exact cost per iteration of both functions, along with any other relevant information, such as the total cost of all loops and the number of iterations. Your analyses should be detailed enough to provide a clear understanding of how the function is executed (and why) while also adhering to Theta notation for consistency in identifying line numbers.
+
+POINT_ID: 2
+Here's an improved version of the AsymQ3 solver with additional comments explaining each step of the algorithm.
+
+```java
+import java.util.Random; // For randomizing the side length of the matrix
+
+// Private final class AsymQ3 implements Math {
+public final class AsymQ3 {
+    private static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for (int I = 0; I < n; i++) {
+            for (int j = i; j < n; j++) { // Inner loop over the diagonal
+                s += mat[i][j]; // Single matrix access at each iteration
+            }
+        }
+        int t = g(mat);
+        return s + t; // Call to function g
+    }
+    
+    private static int g(int[][] mat) { // Function f
+        int n = mat.length;
+        int t = 0; // Constant time for this part of the algorithm
+        
+        for (int I = 0; I < n; i++) { // Inner loop over the matrix
+            int s = 0; // Initialize accumulated results
+            for (int j = I; j < n; j++) { // Inner loop over the matrix row
+                t += mat[i][j]; // Single matrix access at each iteration
+                s += mat[j][i]; // Combine two matrices into one
+            }
+        }
+        
+        return t; // Call to function g
+    }
+    
+    // RBRIC POINT: Improved version with more comments and explanation for each step of the algorithm
+    public static void main(String[] args) {
+        Random rnd = new Random(); // Create a random number generator
+        int num_rand = rnd.nextInt(10); // Generate random side length in range [1..10]
+        
+        int[][] mat = new int[num_rand][num_rand]; // Generate random matrix of size num_rand x num_rand
+        for (int I = 0; I < num_rand; i++) {
+            for (int j = 0; j < num_rand; j++) {
+                mat[i][j] = rnd.nextInt(10); // Generate random integer between 1 and 10 using a random number generator
+            }
+        }
+        
+        System.out.println("Matrix:\n");
+        for (int I = 0; I < num_rand; i++) {
+            for (int j = 0; j < num_rand; j++) {
+                System.out.print(mat[i][j] + "\t"); // Print matrix elements to output stream
+            }
+            System.out.println(); // Print a newline after each matrix row
+        }
+        
+        Random rnd2 = new Random(); // Create another random number generator for computing random numbers within [1..10] range
+        int num_rand2 = rnd2.nextInt(10); // Generate another random side length in range [1..10]
+        
+        System.out.println("Matrix 2:\n");
+        for (int I = 0; I < num_rand2; i++) {
+            for (int j = 0; j < num_rand2; j++) {
+                int x = rnd2.nextInt(10); // Generate a random integer between 1 and 10 using another random number generator
+                int y = rnd2.nextInt(10); // Generate another random integer between 1 and 10 using another random number generator
+                
+                int sum = 0; // Initialize accumulated result to zero
+                
+                for (int k = 0; k < num_rand; k++) { // Loop over matrix elements to compute the sum of squares, starting from the diagonal
+                    sum += x * x + y * y; // Compute the sum of squares using inner loop over matrix row and matrix column
+                }
+                
+                System.out.print(sum + "\t"); // Print result (computed sum) to output stream
+            }
+            System.out.println(); // Print a newline after each matrix element computed for that row
+        }
+        
+        System.out.println("Computing running average over all side lengths:\n");
+        int running_sum = 0; // Initialize accumulated result to zero
+        for (int I = 0; I < num_rand; i++) {
+            for (int j = I; j < num_rand; j++) {
+                int x = rnd.nextInt(10); // Generate a random integer between 1 and 10 using a random number generator
+                int y = rnd.nextInt(10); // Generate another random integer between 1 and 10 using another random number generator
+                
+                int sum = x * x + y * y; // Compute the sum of squares of matrix elements using inner loop over matrix row and matrix column
+                running_sum += sum; // Accumulate result (computed sum) into accumulated running average, starting from the diagonal
+            }
+        }
+        
+        System.out.println("Running average: " + running_sum / num_rand); // Print average computed over all side lengths to output stream
+    }
+}
+```
+
+POINT_ID: 3
+Sure! Here's a brief summary with specific feedback for each line of the student's analysi, along with corresponding comments:
+
+Line 1: AsymQ3 -> f(): The text states that the function `f` is an N x N matrix and its parameters are declared as `int[][] mat`. These inputs can be assumed to be constant times Theta, since they refer to a single value of each kind (matrix and constants).
+
+Line 2: Method f: The text then discusses how the function can be written as an N x N matrix, which is stated with parentheses. This is an error in the student's analysi, because matrices don't have parentheses. The line should say that the function uses "mat" to refer to an N x N matrix.
+
+Line 3: Method f(): The text then discusses the complexity of the input matrix `mat` and provides a summary of its shape (side length N). This is not detailed in the student's analysi, so it's best to provide more information here. The line should state that the input matrix has side length N times Theta, which adds up to 12 Theaths.
+
+Line 4: Part A: The text states that the function starts with a constant time Theath for part A, "int n = mat.length;". This section is not detailed in the student's analysi, so please provide more information on this line. 
+
+Line 5: Part B (nested loops):
+   This section can be divided into three parts - Inner Loop:
+
+   Line 5.1: Int n = mat.length;
+      This defines an integer value of `n` that is equal to the side length of the input matrix `mat`. It's not stated in the student's analysi, so it should be clarified here. This line also sets up variables for inner loop iterations (t), which can be used for multiple nested loops.
+
+   Line 5.2: Cost per iteration: The text then states that this part of the code has a cost of "Theta(N^2) combined iterations of the upper-triangle nested loops" (which is also not stated in the student's analysi). This section can be divided into two parts - Additional Nested Loops and Constant Time Costs:
+
+   Line 5.3: Int n = mat.length;
+      This line defines an integer value of `n` that is equal to the side length of the input matrix `mat`. It's not stated in the student's analyzi, so it should be clarified here.
+
+   Line 5.4: Cost per iteration: The text then states that this part of the code has a cost of "Theta(N^2)" (which is also not stated in the student's analyzi). This section can be divided into three parts - Inner Loop:
+
+   Line 5.5: int t = 0;
+      This defines an integer variable `t` that can be used for inner loop iterations (in this case, no nested loops are needed as we have a constant number of outer iterations). It's not stated in the student's analyzi, so it should be clarified here.
+
+   Line 5.6: Additional Nested Loops and Constant Time Costs:
+
+   This section can be divided into two parts - Subtotal and No Nested Loops:
+
+   Line 5.7: T = n;
+      This line sets up the outer loop count variable `t` to the side length of the input matrix `mat`. It's not stated in the student's analyzi, so it should be clarified here.
+
+   Line 5.8: Cost per iteration: The text then states that this part of the code has a cost of "Theta(N^2)" (which is also not stated in the student's analyzi). This section can be divided into two parts - No Nested Loops and Subtotal:
+
+   Line 5.9: No Nested Loops and No Nested Loops:
+      This section is a no-op, since we're only nested once with an inner loop in each iteration of the outer loop. The text then states that this part of the code has a cost of "Theta(N^2)" (which is also not stated in the student's analyzi).
+
+POINT_ID: 4
+AsymQ3 is a Java-based function class used to perform the given mathematical function, which has two parts - finding the asymptotic worst-case running time and computing the corresponding asymptotic worst-case runtimes for matrices with side length N. It uses Theta notation (asymptotically in this context) to specify a runtime bound.
+
+Method f is defined as follows:
+```
+public final class AsymQ3 {
+     // `mat` is an N x N matrix.
+     // Your analysii should be based on N.
+     public static int f(int[][] mat) {
+         int n = mat.length;
+         int s = 0;
+         for (int I = 0; I < n; i++) {
+             for (int j = i; j < n; j++) {
+                 s += mat[i][j];
+             }
+         }
+         int t = g(mat);
+         return s + t;
+     }
+
+     private static int g(int[][] mat) {
+         int n = mat.length;
+         int t = 0;
+         for (int I = 0; I < n; i++) {
+             t += mat[i][i];
+         }
+         return t;
+     }
+}
+```
+
+The first method, `f()`, takes a single input parameter - an N-dimensional array of integer values (`mat`) with side length N. It then applies the given function `g()` to the array and computes its asymptotic worst-case runtimes for any size `n` up to a given threshold (in this case, 12). The second method, `AsymQ3.g()`, is defined as follows:
+```
+public static int g(int[][] mat) {
+     return ... // computation of g() ...
+}
+```
+
+The third method, `AsymQ3.f()`, takes a single input parameter - the array `mat` with side length `n`. It then applies the given function `g()` to the array and computes its asymptotic worst-case runtimes. The runtime cost of this computation is specified using the Asymptotically Highly Concurrency (AHC) notation, which is used in these kinds of computations.
+
+The fourth method, `AsymQ3.computeWorstCaseRuntimes()`, takes no input parameter and performs a computation of the asymptotic worst-case runtimes for all possible sizes up to the given threshold. The result is stored in an array `s`, which is then returned as an output parameter.
+
+The fifth method, `AsymQ3.computeAverageWorstCaseRuntimes()`, takes one input parameter - a size `n` (which can be passed through the `AsymQ3.computeWorstCaseRuntimes()` call). It returns all possible worst-case runtimes for this size as well as their averages.
+
+The sixth method, `AsymQ3.computeTotalWorstCaseRuntimes()`, takes no input parameter and computes the total number of worst-case runtimes (i.e., the sum of each individual worst-case runtime computed by any call to `AsymQ3.computeWorstCaseRuntimes()`) for all possible sizes up to the given threshold.
+
+Finally, the seventh method, `AsymQ3.calculateAsymptoticWorstCaseRuntimes()`, takes no input parameter and performs a computation of the asymptotic worst-case runtimes using all possible sizes up to the given threshold. It returns an array containing the computed averages of all such computations as well as their maxima, minimum, and mean values.
+
+The final output methods are just convenience functions that can be called directly with an input parameter - the desired function `f()` or `g()`. These methods compute a particular aspect (e.g., average runtime) of a given function using all possible sizes up to the given threshold as well as the corresponding worst-case runtimes. They then return the computed value. The final methods in this class, `AsymQ3.computeWorstCaseRuntimes()`, `AsymQ3.computeAverageWorstCaseRuntimes()`, and `AsymQ3.calculateAsymptoticWorstCaseRuntimes()` are used internally by the other methods to perform their computations.
+
+POINT_ID: 5
+Sure, here's a more detailed analysi of the functions you provided, based on the text provided:
+
+AsymQ3
+The asymptotic worst case running time of f() is given by the text as "The big-O notation with tiith bounds." Therefore, it must refer to the same line number each time. The function should be analyzed in terms of two lines: one for i and j, and one for t. For each loop over both i and j, there will be an additional cost per iteration in the cost of matrix accesses mat[i][j], which is Theta(1). This adds up to Theta(N^2) (where N is the side length of the input matrix), with each Theta(1) cost for a single matrix access. Together, these two lines refer to Theta(N^2) in total. For Part B of the function, each inner loop over j runs from i to N-1, and adds a constant value t = g(mat). So, the part A and return statement all contribute to Theta(N) (where N is the side length of the input matrix), which adds up to Theta(N^2) in total. Overall, the function runs as fast as Θ(N^2) given the text provided for Line Numbers 5-10.
+
+POINT_ID: 6
+Here is a summary of the results for all the steps in our analysis:
+
+Step 1: Reading matrix as an N x N matrix (`mat`) and converting it into an array `array`.
+
+Method f
+Part A: int n = mat.length;
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); return s + t; - single call to g plus constant work, with no preambles or summaries.
+
+Step 2: Reading matrix `mat` as an N x N array (`array`), and converting it into the form of a matrix-analyzing function (using our previous notation).
+
+Method g
+Part D: int n = mat.length;
+Part E (for loop along the diagonal): single loop over I from 0 to N-1.
+Part F: return t; - constant time, with no preambles or summaries.
+
+Step 3: Reading matrix `mat` as an N x N array (`array`), and converting it into a form of a matrix-analyzing function (using our previous notation).
+
+Method f
+Part A: Read the student's answers for the two lines of our code to be analyzed.
+
+Step 4: Reading student's answers in the form of a single matrix-analyzing function (`array`) (using our previous notation).
+
+Method g
+Part D: int n = mat.length;
+Part E (for loop along the diagonal): single loop over I from 0 to N-1.
+Part F: return t; - constant time, with no preambles or summaries.
+
+Step 5: Reading matrix `mat` as an N x N array (`array`), and converting it into a form of a matrix-analyzing function (using our previous notation).
+
+Method f
+Part A: Read the student's answers for the two lines of our code to be analyzed.
+
+Step 6: Reading student's answers in the form of a single matrix-analyzing function (`array`) (using our previous notation).
+
+Method g
+Part D: int n = mat.length;
+Part E (for loop along the diagonal): single loop over I from 0 to N-1.
+Part F: return t; - constant time, with no preambles or summaries.
+
+Step 7: Reading matrix `mat` as an N x N array (`array`), and converting it into a form of a matrix-analyzing function (using our previous notation).
+
+Method f
+Part A: Read the student's answers for the two lines of our code to be analyzed.
+
+Step 8: Reading matrix `mat` as an N x N array (`array`), and converting it into a form of a matrix-analyzing function (using our previous notation).
+
+Method g
+Part D: int n = mat.length;
+Part E (for loop along the diagonal): single loop over I from 0 to N-1.
+Part F: return t; - constant time, with no preambles or summaries.
+
+Overall, our analysis results in a final cost of constant time, with no preambles or summaries.
+
+POINT_ID: 7
+AsymQ3:
+1. Define a method f() in the class AsymQ3, with two nested loops over i and j (i = 0 to N-1, j = I to N-1), as follows:
+
+   ```java
+   private static int g(int[][] mat) {
+      int n = mat.lengt();
+      int s = 0;
+      for (int i = 0; i < n; i++) {
+         for (int j = i; j < n; j++) {
+            s += mat[i][j];
+         }
+      }
+      int t = g(mat);
+      return s + t;
+   }
+
+   private static int g(int[][] mat) {
+      int n = mat.lengt();
+      int t = 0;
+      for (int I = 0; I < n; i++) {
+         for (int j = I; j < n; j++) {
+            s += mat[i][j];
+         }
+      }
+      return t;
+   }
+   ```
+   
+2. Write a text field to indicate the correctness of this AsymQ3 analysi, as follows:
+
+   ```java
+   AsymQ3: Feedback: Correct analysis
+   
+   Point 1: g(): Loop iterations (valid range: 0–10)
+      s = 0, t = 0
+      
+    2. Use a text field to indicate the correctness of the given method. 
+      ```java
+       AsymQ3: Feedback: Correct analysis
+
+POINT_ID: 8
+AsymQ3 is an object-oriented mathematical library designed to perform quick calculations on a given matrix `mat` using two functions, namely `f()` and `g()`. The program calculates the asymptotic worst-case running time and feedback for both functions as specified in the text. You are required to write a detailed analyzi with specific examples, comments, and a suitable rubric. Your output should include a detailed analizi of both functions, explaining their steps, cost per iteration, and overall running time, as well as justifications based on the Theta notation with proper bounds. Also, be sure to mention each loop in your analyzi, including the number of iterations and the average runtime.
+
+POINT_ID: 9
+Assessment Rubric Points:
+- Rule: A score of 7 or higher is considered a high grade for this rubric point.
+
+MARKS:
+- Feedback sentence: A specific and detailed explanation of the student's actual analysi, with a single and concise sentence that meets the following criteria:
+  1. Provides an accurate overview of the student's work;
+  2. Grants the student credit for what was actually done;
+  3. Does not repeat the same information that was provided in previous feedback sentences.
+- Summary (up to 50 words): A concise and clear summary of the student's work, including a single and accurate overview of their actual analysi, with no repetition or misinformation of what has been previously provided.
+
+FEEDBACK:
+- Feature: The student's answer must provide a detailed and specific analysis of both functions, highlighting the main advantages and disadvantages of each function.
+- Clarity: The answer should be written in the text field provided and provide a single, precise description of the actual analysi, with no repetition or ambiguity.
+
+RUBRIC POINT:
+- Rule: A score of 7 or higher is considered a high grade for this rubric point.
+- Feedback sentence: A specific and detailed explanation of the student's work;
+  1. Provides an accurate overview of the student's actual analysi, with no repetition or misinformation of what has been previously provided.
+  2. Grants credit for what was actually done.
+- Summary (up to 50 words): A concise and clear summary of the student's work, including a single and accurate overview of their actual analysi, with no repetition or misinformation of what has been previously provided.
+
+POINT_ID: 10
+The text provided in the given material is meant to be a brief analysis of two functions, with specific guidelines and rules for writing an accurate feedback sentence, which can then be used for grading purposes. These include providing detailed analyis based on the side length of the input matrix `mat` and using Theta notation with tiphit bounds for each loop iteration as specified in the given text. In this instance, a specific analyis based on a sample input matrix (`mat`) is provided for illustration.
+
+POINT_ID: 11
+Assessment:
+- Write a clear, concise, and structured feedback sentence grounded in the rubric point you have assigned to each function. Your feedback should also include specific details about the function's asymptotic worst-case runtime based on the side length of the matrix `mat`. Use appropriate language and syntax for each input and output format. Provide examples or references from the given code if applicable.

@@ -1,0 +1,141 @@
+{
+  "task_id": "19_20-6-1",
+  "title": "Dynamic Programming: Edit Distance (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the base case is wrong, base the recurrence marks on whether the student applies the recurrence correctly relative to their own initialisation.",
+    "This rubric applies to both Java and Python submissions. The Java method is editDistance(String a, String b); the Python function is editDistance(a, b). Both are correct.",
+    "Recursive implementations must be penalised in point 5: the task explicitly requires an iterative (non-recursive) solution.",
+    "Edit distance is defined as the minimum number of single-character insert, delete, and replace operations to transform string a into string b."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "DP table allocation and loop structure",
+      "tag": "table",
+      "max_marks": 20,
+      "target": "A 2D table of size (m+1) x (n+1) is allocated, and nested loops iterate i from 1 to m and j from 1 to n to fill it bottom-up.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No 2D table is allocated, or only a 1D array is used; no nested loops are present to fill the table."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A 2D table and nested loops are present, but the table size is wrong (e.g., m x n instead of (m+1) x (n+1)), or the loop bounds are off (e.g., starting from 0 instead of 1, or not reaching m or n)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A 2D table of size (m+1) x (n+1) is allocated and nested loops correctly iterate i from 1 to m (inclusive) and j from 1 to n (inclusive) to fill it bottom-up."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Base case initialisation",
+      "tag": "base case",
+      "max_marks": 20,
+      "target": "edDis[i][0] = i for all i from 0 to m (cost of deleting i characters), and edDis[0][j] = j for all j from 0 to n (cost of inserting j characters).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Neither base case is initialised; the first row and column remain 0, making the DP table incorrect for any non-empty string."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Only one of the two base cases is correctly initialised (first row or first column), while the other is missing or set to a wrong value."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Both base cases are correctly initialised: edDis[i][0] = i for all i from 0 to m, and edDis[0][j] = j for all j from 0 to n."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Character match case",
+      "tag": "match",
+      "max_marks": 15,
+      "target": "When a[i-1] == b[j-1], edDis[i][j] is set to edDis[i-1][j-1] (no edit needed).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No character comparison is performed, or the match case is absent and the mismatch formula is applied unconditionally."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A character comparison is present but uses wrong indices (e.g., a[i] == b[j] instead of a[i-1] == b[j-1]), or on a match the wrong cell is copied (e.g., copies edDis[i][j-1] instead of edDis[i-1][j-1])."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "When a[i-1] == b[j-1], edDis[i][j] is correctly set to edDis[i-1][j-1]."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Mismatch recurrence: 1 + min of three neighbours",
+      "tag": "recurrence",
+      "max_marks": 25,
+      "target": "When a[i-1] != b[j-1], edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]), representing insert, delete, and replace respectively.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No recurrence is applied for the mismatch case, or a constant value is used instead of referencing the table."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "A min-based recurrence is present but incomplete or incorrect: for example, only two of the three neighbours are taken, the +1 cost is missing, or the wrong cells are referenced."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) is applied correctly when characters differ, covering all three edit operations."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns the correct edit distance for all valid string inputs without using recursion.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns 0 or an incorrect value for most inputs, or uses recursion (which is explicitly forbidden)."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct results for simple cases (e.g., empty string, identical strings, single character) but fails for longer or more complex inputs."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct edit distance for all valid string inputs using an iterative (non-recursive) implementation."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own table, base cases, and recurrence, but the final result is incorrect due to a systematic error (e.g., consistently wrong index offset or missing +1 in the recurrence)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

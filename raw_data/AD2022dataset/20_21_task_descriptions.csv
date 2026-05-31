@@ -1,0 +1,1370 @@
+"id","title_ger","title_eng","task_description_tex_ger","task_description_plain_ger","task_description_plain_eng","skeleton","tester","answer"
+"20_21-1-1-java","Schnelles Modulo (Java)","Exponentiation by squaring (Java)","Input:
+\(a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{9}\)
+.~
+
+Output:~~\(a^b \; mod \; c\)
+
+Es soll~\(a^b \; mod \; c\) in der Funktion expo(a,b,c) berechnet
+werden. Achten sie darauf, dass ihr algorithmus eine Laufzeit von~
+\(O(log \; b + log \; c)\) besitzt. Ihre Abgabe darf den String ""import""
+und ""**"" nicht als substring beinhalten. Für leichteres Debugging können
+Sie Ihr Ergebnis in \textbf{jedem} Rechenschritt durch modulo \(c\)
+teilen. Zum Beispiel (Das Beispiel finden Sie auch auskommentiert im
+Antwortfeld):
+
+def addiere(a,b,c,d,e):
+
+~ ~ res = (a+b) \% 1000000007
+
+{~ ~ res = (res+c) \% 1000000007}
+
+~ ~ res = (res+d) \% 1000000007
+
+{~ ~ res = (res+e) \% 1000000007}\\
+
+{~ ~ return (res+1000) \% 1000000007}
+
+\hfill\break
+
+Hinweis:
+
+Nutzen Sie ""//"" (ohne die Anführungszeichen) um integer Division in
+Python durchzuführen und Floats zu vermieden.
+
+{Falls~\(b\) gerade ist gilt:}
+
+\(a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}\)\\
+
+Falls \(b\) ungerade ist gilt:
+
+\(a^b = a^{b-1} \cdot a\)~~
+","Input: $a,b,c \in \mathbb{N}_0 \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{9}$.
+
+Output: $a^b \; mod \; c$
+
+Es soll $a^b \; mod \; c$ in der Funktion expo(a,b,c) berechnet werden. Achten
+sie darauf, dass ihr algorithmus eine Laufzeit von  $O(log \; b + log \; c)$
+besitzt. Ihre Abgabe darf den String ""import"" und ""**"" nicht als
+substring beinhalten. Für leichteres Debugging können Sie Ihr Ergebnis
+in jedem Rechenschritt durch modulo $c$ teilen. Zum Beispiel (Das Beispiel
+finden Sie auch auskommentiert im Antwortfeld):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hinweis:
+
+Nutzen Sie ""//"" (ohne die Anführungszeichen) um integer Division in
+Python durchzuführen und Floats zu vermieden.
+
+Falls $b$ gerade ist gilt:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+Falls $b$ ungerade ist gilt:
+
+$a^b = a^{b-1} \cdot a$","Input: $a,b,c \in \mathbb{N}_0 \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{9}$.
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string ""import"" and ""**"" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use ""//"" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$","long expo(long a,long b,long c){
+    return null;
+}",,"long expo(long a,long b,long c){
+    if (b == 0){
+        return 1 % c;
+    }
+    else if (b % 2 != 0){
+        return (a * expo(a,b-1,c)) % c;
+    }
+    else{
+        a = expo(a,b / 2,c) % c;
+        return (a*a) % c;
+    }
+}"
+"20_21-1-2-java","Sortieren (Java)","Sorting (Java)","{}
+
+Input: Ein array \(A = [a_1, a_2,...,a_n]\) mit~~\(2 \leq n \leq 10^6\)
+und~\(\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6\)
+
+Output:~ Array A aufsteigend sortiert:~\(A = [a_1, a_2,...,a_n]\),
+wobei~\(\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]\)
+
+{Implementieren Sie ein Sortierverfahren in der Funktion ""solution"", die
+als Argument ein Array ""A"" entgegen nimmt.~ Ihr Verfahren sollte
+entweder eine Worst-Case Laufzeit von~\(O(n \; log \; n)\) \textbf{oder}
+eine average-case Laufzeit von~\(O(n \; log \; n)\) haben (diese sollte
+durch eine Randomisierung gewährleistet werden). Ihre Abgabe darf den
+String ""sort"" und ""numpy"" nicht als substring beinhalten. Das Import der
+random library ist explizit gestattet!}
+
+\textbf{Hinweis:}
+
+{Achten Sie unbedingt darauf, dass Sie ihren Algorithmus mit Hilfe der
+Java Random Library zu randomisieren. Diesen Hinweis~{können Sie
+ignorieren, falls Ihre Implementation eine Worst-case Laufzeit
+von~\(O(n \; log \; n)\) besitzt.}}
+","Input: Ein array $A = [a_1, a_2,...,a_n]$ mit  $2 \leq n \leq 10^6$
+und $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A aufsteigend sortiert: $A = [a_1, a_2,...,a_n]$,
+wobei $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implementieren Sie ein Sortierverfahren in der Funktion ""solution"", die
+als Argument ein Array ""A"" entgegen nimmt.  Ihr Verfahren sollte
+entweder eine Worst-Case Laufzeit von $O(n \; log \; n)$ oder eine
+average-case Laufzeit von $O(n \; log \; n)$ haben (diese sollte durch
+eine Randomisierung gewährleistet werden). Ihre Abgabe darf den String
+""sort"" und ""numpy"" nicht als substring beinhalten. Das Import der random
+library ist explizit gestattet!
+
+Hinweis:
+
+Achten Sie unbedingt darauf, dass Sie ihren Algorithmus mit Hilfe der
+Java Random Library zu randomisieren. Diesen Hinweis können Sie
+ignorieren, falls Ihre Implementation eine Worst-case Laufzeit
+von $O(n \; log \; n)$ besitzt.
+","Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function ""solution"", which takes
+as argument an array ""A"".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+""sort"" and ""numpy"" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.","int [] solution(int arr[]) {
+    return;
+}","import java.util.Arrays; 
+import java.util.Random;
+
+
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}"
+"20_21-1-1-python","Schnelles Modulo (Python)","Exponentiation by squaring (Python)","Input:
+\(a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}\)
+.~
+
+Output:~~\(a^b \; mod \; c\)
+
+Es soll~\(a^b \; mod \; c\) in der Funktion expo(a,b,c) berechnet
+werden. Achten sie darauf, dass ihr algorithmus eine Laufzeit von~
+\(O(log \; b + log \; c)\) besitzt. Ihre Abgabe darf den String ""import""
+und ""**"" nicht als substring beinhalten. Für leichteres Debugging können
+Sie Ihr Ergebnis in \textbf{jedem} Rechenschritt durch modulo \(c\)
+teilen. Zum Beispiel (Das Beispiel finden Sie auch auskommentiert im
+Antwortfeld):
+
+def addiere(a,b,c,d,e):
+
+~ ~ res = (a+b) \% 1000000007
+
+{~ ~ res = (res+c) \% 1000000007}
+
+~ ~ res = (res+d) \% 1000000007
+
+{~ ~ res = (res+e) \% 1000000007}\\
+
+{~ ~ return (res+1000) \% 1000000007}
+
+\hfill\break
+
+Hinweis:
+
+Nutzen Sie ""//"" (ohne die Anführungszeichen) um integer Division in
+Python durchzuführen und Floats zu vermieden.
+
+{Falls~\(b\) gerade ist gilt:}
+
+\(a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}\)\\
+
+Falls \(b\) ungerade ist gilt:
+
+\(a^b = a^{b-1} \cdot a\)~~
+","Input:
+$a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output:  $a^b \; mod \; c$
+
+Es soll $a^b \; mod \; c$ in der Funktion expo(a,b,c) berechnet werden.
+Achten sie darauf, dass ihr algorithmus eine Laufzeit von 
+$O(log \; b + log \; c)$ besitzt. Ihre Abgabe darf den String ""import""
+und ""**"" nicht als substring beinhalten. Für leichteres Debugging können
+Sie Ihr Ergebnis in jedem Rechenschritt durch modulo $c$ teilen. Zum
+Beispiel (Das Beispiel finden Sie auch auskommentiert im Antwortfeld):
+
+def addiere(a,b,c,d,e):
+    res = (a+b) % 1000000007
+    res = (res+c) % 1000000007
+    res = (res+d) % 1000000007
+    res = (res+e) % 1000000007
+    return (res+1000) % 1000000007
+
+Hinweis:
+
+Nutzen Sie ""//"" (ohne die Anführungszeichen) um integer Division in
+Python durchzuführen und Floats zu vermieden.
+
+Falls $b$ gerade ist gilt:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+Falls $b$ ungerade ist gilt:
+
+$a^b = a^{b-1} \cdot a$","Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string ""import"" and ""**"" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use ""//"" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$","def expo(a,b,c):
+    pass
+
+
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''","from random import randint
+
+def checkExpo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * checkExpo(a,b-1,c)) % c
+    else:
+        a = checkExpo(a,b // 2,c) % c
+        return (a*a) % c
+
+def randomExpo(upperA,upperB,upperC):
+    #random.seed(seedIn)
+    a = randint(1,upperA)
+    b = randint(0,upperB)
+    c = randint(1,upperC)
+    return (a,b,c)
+
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c"
+"20_21-1-2-python","Sortieren (Python)","Sorting (Python)","{}
+
+Input: Ein array \(A = [a_1, a_2,...,a_n]\) mit~~\(2 \leq n \leq 10^6\)
+und~\(\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6\)
+
+Output:~ Array A aufsteigend sortiert:~\(A = [a_1, a_2,...,a_n]\),
+wobei~\(\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]\)
+
+{Implementieren Sie ein Sortierverfahren in der Funktion ""solution"", die
+als Argument ein Array ""A"" entgegen nimmt.~ Ihr Verfahren sollte
+entweder eine Worst-Case Laufzeit von~\(O(n \; log \; n)\) \textbf{oder}
+eine average-case Laufzeit von~\(O(n \; log \; n)\) haben (diese sollte
+durch eine Randomisierung gewährleistet werden). Ihre Abgabe darf den
+String ""sort"" und ""numpy"" nicht als substring beinhalten. Das Import der
+python random library ist explizit gestattet!}
+
+\textbf{Hinweis:}
+
+{Achten Sie unbedingt darauf, dass Sie ihren Algorithmus mit Hilfe der
+Python Random Library zu randomisieren. Diesen Hinweis~{können Sie
+ignorieren, falls Ihre Implementation eine Worst-case Laufzeit
+von~\(O(n \; log \; n)\) besitzt.}}
+","Input: Ein array $A = [a_1, a_2,...,a_n]$ mit  $2 \leq n \leq 10^6$
+und $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A aufsteigend sortiert: $A = [a_1, a_2,...,a_n]$,
+wobei $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implementieren Sie ein Sortierverfahren in der Funktion ""solution"", die
+als Argument ein Array ""A"" entgegen nimmt.  Ihr Verfahren sollte
+entweder eine Worst-Case Laufzeit von $O(n \; log \; n)$ oder eine
+average-case Laufzeit von $O(n \; log \; n)$ haben (diese sollte durch
+eine Randomisierung gewährleistet werden). Ihre Abgabe darf den String
+""sort"" und ""numpy"" nicht als substring beinhalten. Das Import der python
+random library ist explizit gestattet!
+
+Hinweis:
+
+Achten Sie unbedingt darauf, dass Sie ihren Algorithmus mit Hilfe der
+Python Random Library zu randomisieren. Diesen Hinweis können Sie
+ignorieren, falls Ihre Implementation eine Worst-case Laufzeit
+von $O(n \; log \; n)$ besitzt.
+","Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function ""solution"", which takes
+as argument an array ""A"".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+""sort"" and ""numpy"" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Python Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.","def solution(A):
+    pass","{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","import random as rand
+def randPartition(A,l,r):
+    i = rand.randint(l,r)
+    temp = A[i]
+    A[i] = A[r]
+    A[r] = temp
+    return partition(A,l,r)
+
+def partition(A,l,r):
+    x = A[r]
+    i = l-1
+    for j in range(l,r):
+        if A[j] <= x:
+            i = i + 1
+            temp = A[i]
+            A[i] = A[j]
+            A[j] = temp
+    temp = A[i+1]
+    A[i+1] = A[r]
+    A[r] = temp
+    return i+1
+
+def quick(A,l,r):
+    if l < r:
+        p = randPartition(A,l,r)
+        quick(A,l,p-1)
+        quick(A,p+1,r)
+
+
+def solution(A):
+    quick(A,0,len(A)-1)
+    return A"
+"20_21-2-1-java","Logistik am Nordpol (Java)","Logistics at the North Pole (Java)","Input: Zwei Arrays \(A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]\)
+mit~~\(1 \leq m, n  \leq 2,85 \cdot 10^7\)
+und~\(\forall 1\leq i  \leq n:  0 \leq a_i,b_i  \leq 2,85 \cdot 10^7\).
+Außerdem gilt:~ \(\max(A) \leq |B| - 1\)
+
+Output:~ Ein binärer String~\(s\) der Länge~\(m\) , wobei die \(i\)-te
+Stelle folgendermaßen definiert ist:
+
+\(s[i] = \begin{cases} 1, &\text{falls } |A|_i \leq B[i] \\ 0, &\text{falls } |A|_i > B[i] \end{cases}\)\\
+
+wobei~\(|A|_i\) beschreibt wie oft die Zahl~\(i\) in dem Array \(A\)
+vorkommt.
+
+Timelimit: 1 CPU-Sekunde\\
+
+Es ist Weihnachten und dem Weihnachtsmann bleibt wenig Zeit: Er muss
+sich ein System ausdenken womit er alle Geschenke rechtzeitig loswerden
+kann. Dafür nutzt er das folgende System: Zuerst werden alle
+Kuscheltiere ausgeliefert, dann alle Bücher, usw. Die Kategorie des
+\(i-\)ten Geschenkes ist~\(A[i]\). Leider hat der~Schlit­ten des
+Weihnachtsmanns keine unendliche große Kapizität: Für Objekte der
+Kategorie~\(i\) hat der Schlitten von dem Weinhnachtsmann eine maximale
+Kapazität von~\(B[ i]\). Nun möchte er wissen, ob es möglich ist alle
+Objekte Kategorie in einem Durchlauf auszuliefern. Dafür möchte er von
+Ihnen, dass Sie einen String generieren mit den folgenden Eigenschaften:
+die \(i\)-te Stelle ist eine eins, falls es möglich ist alle Objekte der
+Kategorie~\(i\) in einem Durchlauf zu liefern und~\(0\), falls dies
+nicht möglich ist. Zur Erinnerung: Der Weihnachtsmann kann alle Objekte
+der Kategorie \(i\) in einem Durchlauf liefern,
+falls~\(|A|_i \leq B[i]\) gilt. Da der Weihnachtsmann nicht mehr viel
+Zeit hat, muss Ihr Algorithmus eine Laufzeit von~\(O(n + m)\) besitzen.
+
+\textbf{Hinweis:}
+
+(1) Der Substring ""sort"", ""reflect"", ""sol\_calc"", oder ""import"" darf
+nicht in Ihrer Lösung vorkommen.~
+
+(2) Anders als im Cormen definiert beginnen Arrays und Strings der länge
+\(n\)~ bei 0 und enden bei ~\(n-1\)~
+
+(3) Nutzen Sie die ""StringBuilder"" Klasse um Ihre Lösung zu generieren.
+Nutzen Sie \textbf{nicht} die Java ""String"" Klasse, falls Sie ihre
+Lösung inkrementell aufbauen, da die Strings bei jedem Aufruf neu
+generiert werden müssen.
+
+\hfill\break
+","Input: Zwei Arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+mit  $1 \leq m, n  \leq 2,85 \cdot 10^7$
+und $\forall 1\leq i  \leq n:  0 \leq a_i,b_i  \leq 2,85 \cdot 10^7$.
+Außerdem gilt:  $\max(A) \leq |B| - 1$
+
+Output:  Ein binärer String $s$ der Länge $m$ , wobei die $i$-te Stelle
+folgendermaßen definiert ist:
+
+$s[i] = \begin{cases} 1, &\text{falls } |A|_i \leq B[i] \\ 0, &\text{falls } |A|_i > B[i] \end{cases}$
+
+wobei $|A|_i$ beschreibt wie oft die Zahl $i$ in dem Array $A$ vorkommt.
+
+Timelimit: 1 CPU-Sekunde
+
+Es ist Weihnachten und dem Weihnachtsmann bleibt wenig Zeit: Er muss
+sich ein System ausdenken womit er alle Geschenke rechtzeitig loswerden
+kann. Dafür nutzt er das folgende System: Zuerst werden alle
+Kuscheltiere ausgeliefert, dann alle Bücher, usw. Die Kategorie des
+$i-$ten Geschenkes ist $A[i]$. Leider hat der Schlit­ten des
+Weihnachtsmanns keine unendliche große Kapizität: Für Objekte der
+Kategorie $i$ hat der Schlitten von dem Weinhnachtsmann eine maximale
+Kapazität von $B[ i]$. Nun möchte er wissen, ob es möglich ist alle
+Objekte Kategorie in einem Durchlauf auszuliefern. Dafür möchte er von
+Ihnen, dass Sie einen String generieren mit den folgenden Eigenschaften:
+die $i$-te Stelle ist eine eins, falls es möglich ist alle Objekte der
+Kategorie $i$ in einem Durchlauf zu liefern und $0$, falls dies nicht
+möglich ist. Zur Erinnerung: Der Weihnachtsmann kann alle Objekte der
+Kategorie $i$ in einem Durchlauf liefern, falls $|A|_i \leq B[i]$ gilt.
+Da der Weihnachtsmann nicht mehr viel Zeit hat, muss Ihr Algorithmus
+eine Laufzeit von $O(n + m)$ besitzen.
+
+Hinweis:
+
+(1) Der Substring ""sort"", ""reflect"", ""sol_calc"", oder ""import"" darf
+nicht in Ihrer Lösung vorkommen. 
+
+(2) Anders als im Cormen definiert beginnen Arrays und Strings der länge
+$n$  bei 0 und enden bei  $n-1$ 
+
+(3) Nutzen Sie die ""StringBuilder"" Klasse um Ihre Lösung zu generieren.
+Nutzen Sie nicht die Java ""String"" Klasse, falls Sie ihre Lösung
+inkrementell aufbauen, da die Strings bei jedem Aufruf neu generiert
+werden müssen.
+","Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+with $1 \leq m, n \leq 2.85 \cdot 10^7$
+and $\forall 1\leq i \leq n: 0 \leq a_i,b_i \leq 2,85 \cdot 10^7$.
+Moreover, $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{if } |A|_i \leq B[i] \ 0, &\text{if } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how often the number $i$ occurs in the array $A$.
+
+Timelimit: 1 CPU second
+
+It is Christmas and Santa Claus has little time left: He must
+come up with a system to deliver all presents in time.
+For this he uses the following system: First, all the cuddly
+toys are delivered, then all books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately Santa's sleigh does not
+have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all objects of a
+category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one if it is possible to deliver all objects of the
+category $i$ in one pass and $0$ if this is not possible.
+As a reminder, Santa Claus can deliver all objects of the
+category $i$ in one pass if $|A|_i \leq B[i]$ holds.
+Since Santa does not have much time left, your algorithm must have
+a run time of $O(n + m)$.
+
+Hint:
+
+(1) The substring ""sort"", ""reflect"", ""sol_calc"", or ""import"" must
+not appear in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$. 
+
+(3) Use the ""StringBuilder"" class to generate your solution.
+Do not use the Java ""String"" class if you are building your solution
+incrementally, because the strings have to be regenerated with each call.","String calc(int A[], int B[]){
+    return null;
+}","import java.util.Arrays; 
+import java.util.concurrent.ThreadLocalRandom;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+    public static String sol_calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i=0;i<A.length;i++)
+        C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for(int i=0;i<B.length;i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}
+
+
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","String calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i=0;i<A.length;i++)
+        C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for(int i=0;i<B.length;i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}"
+"20_21-2-1-python","Logistik am Nordpol (Python)","Logistics at the North Pole (Python)","Input: Zwei Arrays \(A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]\)
+mit~~\(1 \leq m, n  \leq 4 \cdot 10^6\)
+und~\(\forall 1\leq i  \leq n:  0 \leq a_i,b_i  \leq 10^6\). Außerdem
+gilt:~ \(\max(A) \leq |B| - 1\)
+
+Output:~ Ein binärer String~\(s\) der Länge~\(m\) , wobei die \(i\)-te
+Stelle folgendermaßen definiert ist:
+
+\(s[i] = \begin{cases} 1, &\text{falls } |A|_i \leq B[i] \\ 0, &\text{falls } |A|_i > B[i] \end{cases}\)\\
+
+wobei~\(|A|_i\) beschreibt wie oft die Zahl~\(i\) in dem Array \(A\)
+vorkommt.
+
+Timelimit: 5 CPU-Sekunden\\
+
+Es ist Weihnachten und dem Weihnachtsmann bleibt wenig Zeit: Er muss
+sich ein System ausdenken womit er alle Geschenke rechtzeitig loswerden
+kann. Dafür nutzt er das folgende System: Zuerst werden alle
+Kuscheltiere ausgeliefert, dann alle Bücher, usw. Die Kategorie des
+\(i-\)ten Geschenkes ist~\(A[i]\). Leider hat der~Schlit­ten des
+Weihnachtsmanns keine unendliche große Kapizität: Für Objekte der
+Kategorie~\(i\) hat der Schlitten von dem Weinhnachtsmann eine maximale
+Kapazität von~\(B[ i]\). Nun möchte er wissen, ob es möglich ist alle
+Objekte Kategorie in einem Durchlauf auszuliefern. Dafür möchte er von
+Ihnen, dass Sie einen String generieren mit den folgenden Eigenschaften:
+die \(i\)-te Stelle ist eine eins, falls es möglich ist alle Objekte der
+Kategorie~\(i\) in einem Durchlauf zu liefern und~\(0\), falls dies
+nicht möglich ist. Zur Erinnerung: Der Weihnachtsmann kann alle Objekte
+der Kategorie \(i\) in einem Durchlauf liefern,
+falls~\(|A|_i \leq B[i]\) gilt. Da der Weihnachtsmann nicht mehr viel
+Zeit hat, muss Ihr Algorithmus eine Laufzeit von~\(O(n + m)\) besitzen.
+
+\textbf{Hinweis:}
+
+(1) Der Substring ""import"", ""eval"",""sort"", ""sol\_calc"", oder ""getattr""
+darf nicht in Ihrer Lösung vorkommen.~
+
+(2) Anders als im Cormen definiert beginnen Arrays und Strings der länge
+\(n\)~ bei 0 und enden bei ~\(n-1\)~.
+","Input: Zwei Arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+mit  $1 \leq m, n  \leq 4 \cdot 10^6$
+und $\forall 1\leq i  \leq n:  0 \leq a_i,b_i  \leq 10^6$. Außerdem
+gilt:  $\max(A) \leq |B| - 1$
+
+Output:  Ein binärer String $s$ der Länge $m$ , wobei die $i$-te Stelle
+folgendermaßen definiert ist:
+
+$s[i] = \begin{cases} 1, &\text{falls } |A|_i \leq B[i] \\ 0, &\text{falls } |A|_i > B[i] \end{cases}$
+
+wobei $|A|_i$ beschreibt wie oft die Zahl $i$ in dem Array $A$ vorkommt.
+
+Timelimit: 5 CPU-Sekunden
+
+Es ist Weihnachten und dem Weihnachtsmann bleibt wenig Zeit: Er muss
+sich ein System ausdenken womit er alle Geschenke rechtzeitig loswerden
+kann. Dafür nutzt er das folgende System: Zuerst werden alle
+Kuscheltiere ausgeliefert, dann alle Bücher, usw. Die Kategorie des
+$i-$ten Geschenkes ist $A[i]$. Leider hat der Schlit­ten des
+Weihnachtsmanns keine unendliche große Kapizität: Für Objekte der
+Kategorie $i$ hat der Schlitten von dem Weinhnachtsmann eine maximale
+Kapazität von $B[ i]$. Nun möchte er wissen, ob es möglich ist alle
+Objekte Kategorie in einem Durchlauf auszuliefern. Dafür möchte er von
+Ihnen, dass Sie einen String generieren mit den folgenden Eigenschaften:
+die $i$-te Stelle ist eine eins, falls es möglich ist alle Objekte der
+Kategorie $i$ in einem Durchlauf zu liefern und $0$, falls dies nicht
+möglich ist. Zur Erinnerung: Der Weihnachtsmann kann alle Objekte der
+Kategorie $i$ in einem Durchlauf liefern, falls $|A|_i \leq B[i]$ gilt.
+Da der Weihnachtsmann nicht mehr viel Zeit hat, muss Ihr Algorithmus
+eine Laufzeit von $O(n + m)$ besitzen.
+
+Hinweis:
+
+(1) Der Substring ""import"", ""eval"",""sort"", ""sol_calc"", oder ""getattr""
+darf nicht in Ihrer Lösung vorkommen. 
+
+(2) Anders als im Cormen definiert beginnen Arrays und Strings der länge
+$n$  bei 0 und enden bei  $n-1$ .
+","Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+mit  $1 \leq m, n  \leq 4 \cdot 10^6$
+and $\forall 1\leq i  \leq n:  0 \leq a_i,b_i  \leq 10^6$.
+Moreover, $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{if } |A|_i \leq B[i] \ 0, &\text{if } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how often the number $i$ occurs in the array $A$.
+
+Timelimit: 5 CPU seconds
+
+It is Christmas and Santa Claus has little time left: He must
+come up with a system to deliver all presents in time.
+For this he uses the following system: First, all the cuddly
+toys are delivered, then all books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately Santa's sleigh does not
+have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all objects of a
+category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one if it is possible to deliver all objects of the
+category $i$ in one pass and $0$ if this is not possible.
+As a reminder, Santa Claus can deliver all objects of the
+category $i$ in one pass if $|A|_i \leq B[i]$ holds.
+Since Santa does not have much time left, your algorithm must have
+a run time of $O(n + m)$.
+
+Hint:
+
+(1) The substring ""import"", ""eval"",""sort"", ""sol_calc"" or ""getattr"" must
+not appear in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$.","def calc(A,B):
+    pass","import random as rand
+
+def generate_random(iterations, upper_randb, upper_randa):
+    a = []
+    b = []
+    for i in range(iterations):
+        a.append(rand.randrange(upper_randa))
+    for i in range(10**6+1):
+        b.append(rand.randrange(upper_randb))
+    return a,b
+
+def sol_calc(A,B):
+    C = []
+    for i in range(2 * 10**6 + 2):
+        C.append(0)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = """"
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol
+
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def calc(A, B):
+    C = []
+    for i in range(10**6 + 1):
+        C.append(0)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = """"
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol"
+"20_21-3-1-java","Knapsack (Java) (Überarbeitete Version 2020/21)","Knapsack (Java) (revised version 2020/21)","{Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe~ }\emph{({[}0.5, 0.3{]}, {[}2, 5{]}, 3 )}{ gibt also
+zwei Gegenstände, den ersten mit Volumen }\emph{2}{ und Wert
+}\emph{0.5}{, den zweiten mit Volumen }\emph{5}{ und Wert }\emph{0.3}{.
+Der letzte Wert gibt das Volumen des Knapsackes an, in diesem Fall wäre
+also die richtige Ausgabe des Algorithmus }\emph{0.5}{, da nur der 1.
+Gegenstand überhaupt in den Rucksack passt. Wäre ein größeres Volumen
+von 7 gegeben, wäre die richtige Ausgabe }\emph{0.8}{ Wichtig ist
+hierbei noch anzumerken, dass die Lösung NICHT }\emph{1.5}{ ist, es ist
+also nicht möglich den gleichen Gegenstand mehrfach zu verwenden.}\\
+
+Ihr Algorithmus muss eine Laufzeit von~\(O(n^2)\) haben, wobei~\(n\)~
+die Anzahl der Gegendstände ist.
+
+Zeit: 1 CPU-Sekunde
+
+\textbf{HINWEIS:}
+
+Gegenstände können auch ein Gewicht von 0 haben!
+
+\hfill\break
+","Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe  ([0.5, 0.3], [2, 5], 3 ) gibt also zwei Gegenstände,
+den ersten mit Volumen 2 und Wert 0.5, den zweiten mit Volumen 5 und
+Wert 0.3. Der letzte Wert gibt das Volumen des Knapsackes an, in diesem
+Fall wäre also die richtige Ausgabe des Algorithmus 0.5, da nur der 1.
+Gegenstand überhaupt in den Rucksack passt. Wäre ein größeres Volumen
+von 7 gegeben, wäre die richtige Ausgabe 0.8 Wichtig ist hierbei noch
+anzumerken, dass die Lösung NICHT 1.5 ist, es ist also nicht möglich den
+gleichen Gegenstand mehrfach zu verwenden.
+
+Ihr Algorithmus muss eine Laufzeit von $O(n^2)$ haben, wobei $n$  die
+Anzahl der Gegendstände ist.
+
+Zeit: 1 CPU-Sekunde
+
+HINWEIS:
+
+Gegenstände können auch ein Gewicht von 0 haben!
+","The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    return 0.0;
+}","import java.util.Random;
+import java.util.Arrays;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    
+    private boolean isCorrect(double[] c, int[] v, int m, double solution) {
+        assert c.length == v.length;
+
+        int n = c.length;
+        double[][] Result = new double[n+1][];
+    
+        for(int i = 0; i < n+1; ++i) {
+            Result[i] = new double[m+1];
+        }
+    
+        for(int i = n-1; i > -1; --i) {
+            for(int j = 0; j < m+1; ++j) {
+                if (v[i] <= j) {
+                    Result[i][j] = Math.max(c[i] + Result[i+1][j-v[i]], Result[i+1][j]);
+                } else {
+                    Result[i][j] = Result[i+1][j];
+                }
+            }
+        }
+        return Math.abs(Result[0][m] - solution) < 2;
+    }
+    private double checker(double[] c, int[] v, int m) {
+        assert c.length == v.length;
+
+        int n = c.length;
+        double[][] Result = new double[n+1][];
+    
+        for(int i = 0; i < n+1; ++i) {
+            Result[i] = new double[m+1];
+        }
+    
+        for(int i = n-1; i > -1; --i) {
+            for(int j = 0; j < m+1; ++j) {
+                if (v[i] <= j) {
+                    Result[i][j] = Math.max(c[i] + Result[i+1][j-v[i]], Result[i+1][j]);
+                } else {
+                    Result[i][j] = Result[i+1][j];
+                }
+            }
+        }
+        return Math.abs(Result[0][m]);
+    }
+
+    {{ STUDENT_ANSWER }}
+    
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","/* This function calculates and returns the max
+ * value in knapsack with the capacity ""capacity"" wich is filled
+ * with stuff of volume ""volumes"" and the value ""values"".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}"
+"20_21-3-2-java","Längester Pfad im DAG (Java)","Longest path DAG (Java)","Input: Eine natürliche Zahl \(1 \leq N \leq 2500\), die angibt wie viele
+Ecken der Graph \(G\) hat, und ein zwei dimensionales Array~\(A\){~}~der
+Größe~\(1 \leq M \leq 10^6\){~}~{von ganzen Zahlen
+\(A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]\)}{~
+was die Eckenmenge von~\(G\) codiert.~ Falls~~\([a,b] \in A\), dann gibt
+es eine gerichtete Kante von der Ecke~\(a\) zur Ecke~\(b\). Sie dürfen
+annehmen, dass es keine gerichteten Zyklen in \(G\) gibt. Ein Beispiel:
+Sei~\(N = 3\) und~\(A = [[1,2],[2,3]]\) dann entsteht der folgende
+Graph:}
+
+\includegraphics[width=3.22917in,height=0.69792in]{@@PLUGINFILE@@/simple directed graph.png}\\
+
+Output: Die Länge des längsten gerichteten Pfades in \(G\). Hierbei muss
+Ihr Algorithmus die Lösung in~\(O(N+M)\) berechnen.\\
+
+Zeitbegrenzung: 1 CPU-Sekunde
+
+\textbf{Hinweis:}
+
+(1) Die Libraries~
+java.util.Arrays,~{java.util.ArrayList,~}{java.lang.Math werden schon
+automatisch importiert.}
+
+(2) Falls Sie Schwierigkeiten bei dieser Aufgabe haben: Ignorieren Sie
+die Laufzeiteinschränkungen und implementieren Sie zuerst eine naive
+rekursive Lösung. Verwenden Sie dann dynamische Programmierung
+(Memoisierung) um die gewünschte Laufzeit zu erreichen.\\
+\strut \\
+(3) Einige Test-Cases wurden verborgen und werden nicht angezeigt um
+Hardcoding der Lösungen zu verhindern.\\
+","Input: Eine natürliche Zahl $1 \leq N \leq 2500$, die angibt wie viele
+Ecken der Graph $G$ hat, und ein zwei dimensionales Array $A$  der
+Größe $1 \leq M \leq 10^6$  von ganzen Zahlen
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$  was
+die Eckenmenge von $G$ codiert.  Falls  $[a,b] \in A$, dann gibt es eine
+gerichtete Kante von der Ecke $a$ zur Ecke $b$. Sie dürfen annehmen,
+dass es keine gerichteten Zyklen in $G$ gibt. Ein Beispiel: Sei $N = 3$
+und $A = [[1,2],[2,3]]$ dann entsteht der folgende Graph:
+
+[]
+
+Output: Die Länge des längsten gerichteten Pfades in $G$. Hierbei muss
+Ihr Algorithmus die Lösung in $O(N+M)$ berechnen.
+
+Zeitbegrenzung: 1 CPU-Sekunde
+
+Hinweis:
+
+(1) Die Libraries  java.util.Arrays, java.util.ArrayList, java.lang.Math
+werden schon automatisch importiert.
+
+(2) Falls Sie Schwierigkeiten bei dieser Aufgabe haben: Ignorieren Sie
+die Laufzeiteinschränkungen und implementieren Sie zuerst eine naive
+rekursive Lösung. Verwenden Sie dann dynamische Programmierung
+(Memoisierung) um die gewünschte Laufzeit zu erreichen.
+(3) Einige Test-Cases wurden verborgen und werden nicht angezeigt um
+Hardcoding der Lösungen zu verhindern.
+",,"int calc(int N, int[][] A){
+    return null;
+}","import java.util.Arrays;
+import java.util.ArrayList;
+import java.lang.Math;
+import java.util.concurrent.ThreadLocalRandom;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+    public static String sol_calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i=0;i<A.length;i++)
+        C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for(int i=0;i<B.length;i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}
+
+
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}"
+"20_21-3-1-python","Knapsack (Python) (Version 2020/21)","Knapsack (Python) (revised version 2020/21)","{Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe~ }\emph{({[}0.5, 0.3{]}, {[}2, 5{]}, 3 )}{ gibt also
+zwei Gegenstände, den ersten mit Volumen }\emph{2}{ und Wert
+}\emph{0.5}{, den zweiten mit Volumen }\emph{5}{ und Wert }\emph{0.3}{.
+Der letzte Wert gibt das Volumen des Knapsackes an, in diesem Fall wäre
+also die richtige Ausgabe des Algorithmus }\emph{0.5}{, da nur der 1.
+Gegenstand überhaupt in den Rucksack passt. Wäre ein größeres Volumen
+von 7 gegeben, wäre die richtige Ausgabe }\emph{0.8}{ Wichtig ist
+hierbei noch anzumerken, dass die Lösung NICHT }\emph{1.5}{ ist, es ist
+also nicht möglich den gleiche Gegenstand mehrfach zu verwenden.}
+
+Ihr Algorithmus muss eine Laufzeit von~\(O(n^2)\) haben, wobei~\(n\)~
+die Anzahl der Gegendstände ist.
+
+Zeit: 2 CPU-Sekunden
+
+\textbf{HINWEIS:}
+
+Gegenstände können auch ein Gewicht von 0 haben!
+
+\hfill\break
+","Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe  ([0.5, 0.3], [2, 5], 3 ) gibt also zwei Gegenstände,
+den ersten mit Volumen 2 und Wert 0.5, den zweiten mit Volumen 5 und
+Wert 0.3. Der letzte Wert gibt das Volumen des Knapsackes an, in diesem
+Fall wäre also die richtige Ausgabe des Algorithmus 0.5, da nur der 1.
+Gegenstand überhaupt in den Rucksack passt. Wäre ein größeres Volumen
+von 7 gegeben, wäre die richtige Ausgabe 0.8 Wichtig ist hierbei noch
+anzumerken, dass die Lösung NICHT 1.5 ist, es ist also nicht möglich den
+gleiche Gegenstand mehrfach zu verwenden.
+
+Ihr Algorithmus muss eine Laufzeit von O(n²) haben, wobei n  die Anzahl
+der Gegendstände ist.
+
+Zeit: 2 CPU-Sekunden
+
+HINWEIS:
+
+Gegenstände können auch ein Gewicht von 0 haben!
+",,"def knapSack(value, volume, capacity):
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    # TODO
+
+    return 0","import random
+import copy
+
+def _isCorrect(c, v, m, result):
+    n = len(c)
+
+    Result = [0] * (n+1)
+    for i in range(n+1):
+        Result[i] = [0] * (m+1)
+
+    for i in range(n+1):
+        for j in range(m+1):
+            Result[i][j] = 0
+
+    for i in range(n-1,-1,-1):
+        for j in range(1,m+1):
+            if v[i] <= j:
+                Result[i][j] = max(c[i] + Result[i+1][j-v[i]],
+                                   Result[i+1][j])
+            else:
+                Result[i][j] = Result[i+1][j]
+
+    return abs(Result[0][m] - result) < 2 # Use float comparison - just in case
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def knapSack(value, volume, capacity):
+    """"""This function calculates and returns the max
+    value in knapsack with the capacity ""capacity"" wich is filled
+    with stuff of volume ""volume"" and the value ""value"".""""""
+
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    n = len(value)
+
+    Result = [0] * (n+1)
+    for i in range(n+1):
+        Result[i] = [0] * (capacity + 1)
+
+    for i in range(n+1):
+        for j in range(capacity + 1):
+            Result[i][j] = 0
+
+    for i in range(n-1,-1,-1):
+        for j in range(1, capacity + 1):
+            if volume[i] <= j:
+                Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]],
+                                   Result[i+1][j])
+            else:
+                Result[i][j] = Result[i+1][j]
+
+    return Result[0][capacity]"
+"20_21-3-2-python","Longest Path DAG (Python)","Longest path DAG (Python)","Input: Eine natürliche Zahl \(1 \leq N \leq 2500\), die angibt wie viele
+Ecken der Graph \(G\) hat, und ein zwei dimensionales Array~\(A\){~}~der
+Größe~\(1 \leq M \leq 10^6\){~}~{von ganzen Zahlen
+\(A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]\)}{~
+was die Eckenmenge von~\(G\) codiert.~ Falls~~\([a,b] \in A\), dann gibt
+es eine gerichtete Kante von der Ecke~\(a\) zur Ecke~\(b\). Sie dürfen
+annehmen, dass es keine gerichteten Zyklen in \(G\) gibt. Ein Beispiel:
+Sei~\(N = 3\) und~\(A = [[1,2],[2,3]]\) dann entsteht der folgende
+Graph:}{}
+
+\includegraphics[width=3.22917in,height=0.69792in]{@@PLUGINFILE@@/simple directed graph.png}\\
+
+Output: Die Länge des längsten gerichteten Pfades in \(G\). Hierbei muss
+Ihr Algorithmus die Lösung in~\(O(N+M)\) berechnen.\\
+
+Zeitbegrenzung: 4 CPU-Sekunden
+
+\textbf{Hinweis:}
+
+(1) Der Substring ""import"", ""eval"", ""sol\_calc"", oder ""getattr"" darf
+nicht in Ihrer Lösung vorkommen.~
+
+(2) Falls Sie Schwierigkeiten bei dieser Aufgabe haben: Ignorieren Sie
+die Laufzeiteinschränkungen und implementieren Sie zuerst eine naive
+rekursive Lösung. Verwenden Sie dann dynamische Programmierung
+(Memoisierung) um die gewünschte Laufzeit zu erreichen.
+
+(3) Einige Test-Cases wurden verborgen und werden nicht angezeigt um
+Hardcoding der Lösungen zu verhindern.\\
+","Input: Eine natürliche Zahl 1 ≤ N ≤ 2500, die angibt wie viele Ecken der
+Graph G hat, und ein zwei dimensionales Array A  der
+Größe 1 ≤ M ≤ 10⁶  von ganzen Zahlen
+A = [[a₁¹,a₁²],[a₂¹,a₂²],...,[a_(M)¹,a_(M)²]]  was die Eckenmenge von G
+codiert.  Falls  [a,b] ∈ A, dann gibt es eine gerichtete Kante von der
+Ecke a zur Ecke b. Sie dürfen annehmen, dass es keine gerichteten Zyklen
+in G gibt. Ein Beispiel: Sei N = 3 und A = [[1,2],[2,3]] dann entsteht
+der folgende Graph:
+
+[]
+
+Output: Die Länge des längsten gerichteten Pfades in G. Hierbei muss Ihr
+Algorithmus die Lösung in O(N+M) berechnen.
+
+Zeitbegrenzung: 4 CPU-Sekunden
+
+Hinweis:
+
+(1) Der Substring ""import"", ""eval"", ""sol_calc"", oder ""getattr"" darf
+nicht in Ihrer Lösung vorkommen. 
+
+(2) Falls Sie Schwierigkeiten bei dieser Aufgabe haben: Ignorieren Sie
+die Laufzeiteinschränkungen und implementieren Sie zuerst eine naive
+rekursive Lösung. Verwenden Sie dann dynamische Programmierung
+(Memoisierung) um die gewünschte Laufzeit zu erreichen.
+
+(3) Einige Test-Cases wurden verborgen und werden nicht angezeigt um
+Hardcoding der Lösungen zu verhindern.
+","Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.","def calc(N,A):
+    pass","{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1"

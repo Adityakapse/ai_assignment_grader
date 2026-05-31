@@ -1,0 +1,1997 @@
+question_id,question_title,question_desc,sample_solution,question_type
+19_20-1-1-java,LCM -- Least Common Multiple (Java),"Similar to the already known ""Greatest Common Divisor"" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applications, for example in the multiplication of heterogeneous fractions. This
+has applications ranging from the adaptation of cooking recipes to other
+portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values.
+It may be based on the GCD implementation from the lecture.
+
+Note: The use of ""import"" is not allowed.","int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+        int r = a % b;
+    if (r == 0) {
+        return b;
+    }
+    else {
+        return gcd(r, b);
+    }
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}",implementation
+19_20-1-1-python,LCM -- Least Common Multiple (Python),"Similar to the already known ""Greatest Common Divisor"" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applications, for example in the multiplication of heterogeneous fractions. This
+has applications ranging from the adaptation of cooking recipes to other
+portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values.
+It may be based on the GCD implementation from the lecture.
+
+Note: The use of ""import"" is not allowed.","def GCD(a, b):
+    if a < b:
+        a, b = b, a
+    r = a % b
+    if r is 0:
+        return b
+    else:
+        return GCD(r, b)
+        
+def LCM(a, b):
+    return a * b / GCD(a, b)",implementation
+19_20-2-1-java,Queue (Java),"Implement a class ""Queue"" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods emptyqueue(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store ""strings"".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use ""import""!","public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+    
+    public boolean emptyqueue() {
+        return start == end;
+    }
+    
+    public String head() {
+        return buffer[start];
+    }
+    
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if(end == 100) {
+            end = 0;
+        }
+    }
+    
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if(start == 100) {
+            start = 0;
+        }
+        return s;
+    }
+}",implementation
+19_20-2-2-java,Stack (Java),"The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation.
+
+A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack.
+If an operator is encountered, then the uppermost two numbers are taken from the stack,
+the operator is executed and the result is put back on the stack.
+After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method.
+It should be able to process the operators plus (+), minus (-), times (*)
+and division (/, rounded down). You will receive a stack with the following
+known methods, which you have to use in your implementation:
+
+public class IntegerStack {
+    public boolean emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+
+The method receives as input a list of strings in which the
+numbers and operators are already separated (e.g..: String[] input =
+{""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};). Strings can be converted with the help of
+""Integer.parseInt(myString);"". You will also get a stack, which you should use.
+The method should return the correct result as an integer.
+
+You can assume that the input is a correct formula.","// This implementation assumes input is a correct formula
+public int Calculator(String[] input, IntegerStack s) {
+    for(int i = 0; i < input.length; ++i) {
+        switch(input[i]) {
+            case ""+"":
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n2 + n1);
+                break;
+            case ""-"":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 - n1);
+                break;
+            case ""*"":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 * n1);
+                break;
+            case ""/"":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 / n1);
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}",implementation
+19_20-2-1-python,Queue (Python),"Implement a class ""Queue"" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store ""strings"".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use ""import""!","class Queue:
+    """"""Klasse, die eine selbstgebaute Queue darstellt.
+    """"""
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """"""Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """"""
+        return len(self.lst) == 0
+
+    def head(self):
+        """"""Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """"""
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """"""Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """"""
+        self.lst.append(x)
+
+    def dequeue(self):
+        """"""Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """"""
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError",implementation
+19_20-2-2-python,Stack (Python),"The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation.
+
+A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack.
+If an operator is encountered, then the uppermost two numbers are taken from the stack,
+the operator is executed and the result is put back on the stack.
+After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method.
+It should be able to process the operators plus (+), minus (-), times (*)
+and division (/, rounded down). You will receive a stack with the following
+known methods, which you have to use in your implementation:
+
+* emptystack()
+* head()
+* push(int i)
+* pop()
+
+The method receives as input a list of strings in which the
+numbers and operators are already separated (e.g..: input =
+[""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""]). Strings can be converted with ""int(myString)"".
+You will also get a stack, which you should use.
+The method should return the correct result as an integer.
+
+You can assume that the input is a correct formula.","# This implementation assumes input is a correct formula
+def Calculator(inputarray, stack):
+    for i in inputarray:
+        try:
+            stack.push({
+                ""+"": lambda x, y: y+x,
+                ""-"": lambda x, y: y-x,
+                ""*"": lambda x, y: y*x,
+                ""/"": lambda x, y: y/x,}[i](stack.pop(), stack.pop()))
+        except KeyError:
+            stack.push(int(i))
+    return stack.pop()",implementation
+19_20-3-1-java,List Sorting (Java),"Implement any search algorithm from the lecture
+that sorts the given list.
+
+The list has the following operations, which get as input indexes of the
+list elements:
+
+* Swap(int x, int y) <- Swaps the items at position x and y.
+
+* Larger(int x, int y) <- Returns true if the item at
+position x is greater than the item at position y
+
+* Smaller(int x, int y) <- Returns true if the item at
+position y is greater than the element at position x
+
+* Equal(int x, int y) <- Returns true if the element at
+position y is equal to the element at position x
+
+* Length() <- Returns the length of the list","public ListToSort Sort(ListToSort list) {
+    // Implementation of BubbleSort
+    for(int i=1; i < list.Length(); i++) {
+        for(int j = list.Length()-1; j > i-1; j--) {
+            if (list.Smaller(j, j-1)) {
+                list.Swap(j, j-1);
+            }
+        }
+    }
+    return list;
+}",implementation
+19_20-3-1-python,List Sorting (Python),"Implement any search algorithm from the lecture
+that sorts the given list.
+
+The list has the following operations, which get as input indexes of the
+list elements:
+
+* Swap(int x, int y) <- Swaps the items at position x and y.
+
+* Larger(int x, int y) <- Returns true if the item at
+position x is greater than the item at position y
+
+* Smaller(int x, int y) <- Returns true if the item at
+position y is greater than the element at position x
+
+* Equal(int x, int y) <- Returns true if the element at
+position y is equal to the element at position x
+
+* Length() <- Returns the length of the list","def listSorter(listToSort: ListToSort) -> ListToSort:
+    """"""
+    This is an implimentation of bubble sort
+    """"""
+    changed = True
+    while changed:
+        changed = False
+        for i in range(1, listToSort.Length()):
+            if listToSort.Larger(i-1, i):
+                listToSort.Swap(i-1, i)
+                changed = True
+    return listToSort",implementation
+19_20-4-1-java,Search trees: Insertion (Java),"These tasks will be about search trees. Our search trees are built from
+""nodes"", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method ""insert"" that inserts a
+""Node"" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.","public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}",implementation
+19_20-4-2-java,Search trees: Removal (Java),"These tasks will again be about search trees. Reminder:
+Our search trees are built from ""nodes"", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method ""delete"" which deletes a
+""Node"" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with ""TREE-MINIMUM"".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.","// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}",implementation
+19_20-4-1-python,Search trees: Insertion (Python),"These tasks will be about search trees. Our search trees are built from
+""nodes"", analogous to the lecture. A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * parent
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method ""insert"" that inserts a
+""Node"" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.","# Node in parameter represents root of tree
+def insert(root: Node, insert: Node):
+    x = root
+    y = None  # saves Node.parent
+    while x is not None:
+        y = x
+        if insert.key < x.key:
+            x = x.left
+        else:
+            x = x.right;
+
+    insert.parent = y
+    if y is None:
+        return insert
+    elif insert.key < y.key:
+        y.left = insert
+    else:
+        y.right = insert;
+
+    return root",implementation
+19_20-4-2-python,Search trees: Removal (Python),"These tasks will again be about search trees. Reminder:
+Our search trees are built from ""nodes"", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method ""delete"" which deletes a
+""Node"" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with ""TREE-MINIMUM"".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.","# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root",implementation
+19_20-5-1-java,Graphs: BFS (Java),"This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+int[][] graph = {
+    {1, 2},
+    {0},
+    {1}
+};
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.","public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<Integer>();
+    queue.add(start);
+
+    while(!queue.isEmpty()){
+        int next = queue.remove(0);
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int vertex: graph[next]) {
+                if(!visited.contains(vertex)) {
+                    queue.add(vertex);
+                }
+            }
+        }
+    }
+    return visited;
+}",implementation
+19_20-5-2-java,Graphs: DFS (Java),"As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.","public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}",implementation
+19_20-5-1-python,Graphs: BFS (Python),"This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.","def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited",implementation
+19_20-5-2-python,Graphs: DFS (Python),"As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.","def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited",implementation
+19_20-6-1-java,Dynamic Programming: Edit Distance (Java),"In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.","/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}",implementation
+19_20-6-2-java,Dynamic Programming: Knapsack (Java),"The Knapsack problem is an optimization problem. Which items
+from an existing selection should be packed into a limited
+backpack(Knapsack) in order to maximize the value to be transported?
+This problem is in generall NP-complete and therefore
+probably not efficiently solvable. Assuming that the
+volumes of the objects are integers, we can find an algorithm
+that solves this problem using dynamic programming. We are looking for
+the implementation of an algorithm, which for a given list of objects and a
+list of items and a maximum backpack volume outputs the value
+that can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values.
+values. So the input ([0.5, 0.3], [2, 5], 3 ) gives two items,
+the first with volume 2 and value 0.5, the second with volume 5 and value 0.3.
+The last value indicates the volume of the Knapsack, in this case
+the correct output of the algorithm would be 0.5 because only
+the 1st item fits into the backpack at all. With a larger volume
+of 7, the correct output would be 0.8. It is important to note that the solution
+is NOT 1.5, so it is not possible to use the same object more than once.","/* This function calculates and returns the max
+ * value in knapsack with the capacity ""capacity"" wich is filled
+ * with stuff of volume ""volumes"" and the value ""values"".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}",implementation
+19_20-6-1-python,Dynamic Programming: Edit Distance (Python),"In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.","def editDistance(a, b):
+    """"""This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly""""""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]",implementation
+19_20-6-2-python,Dynamic Programming: Knapsack (Python),"The Knapsack problem is an optimization problem. Which items
+from an existing selection should be packed into a limited
+backpack(Knapsack) in order to maximize the value to be transported?
+This problem is in generall NP-complete and therefore
+probably not efficiently solvable. Assuming that the
+volumes of the objects are integers, we can find an algorithm
+that solves this problem using dynamic programming. We are looking for
+the implementation of an algorithm, which for a given list of objects and a
+list of items and a maximum backpack volume outputs the value
+that can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values.
+values. So the input ([0.5, 0.3], [2, 5], 3 ) gives two items,
+the first with volume 2 and value 0.5, the second with volume 5 and value 0.3.
+The last value indicates the volume of the Knapsack, in this case
+the correct output of the algorithm would be 0.5 because only
+the 1st item fits into the backpack at all. With a larger volume
+of 7, the correct output would be 0.8. It is important to note that the solution
+is NOT 1.5, so it is not possible to use the same object more than once.","def knapSack(value, volume, capacity):
+    """"""This function calculates and returns the max
+    value in knapsack with the capacity ""capacity"" wich is filled
+    with stuff of volume ""volume"" and the value ""value"".""""""
+
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    n = len(value)
+
+    Result = [0] * (n+1)
+    for i in range(n+1):
+        Result[i] = [0] * (capacity + 1)
+
+    for i in range(n+1):
+        for j in range(capacity + 1):
+            Result[i][j] = 0
+
+    for i in range(n-1,-1,-1):
+        for j in range(1, capacity + 1):
+            if volume[i] <= j:
+                Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]],
+                                   Result[i+1][j])
+            else:
+                Result[i][j] = Result[i+1][j]
+
+    return Result[0][capacity]",implementation
+20_21-1-1-java,Exponentiation by squaring (Java),"Input: $a,b,c \in \mathbb{N}_0 \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{9}$.
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string ""import"" and ""**"" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use ""//"" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$","long expo(long a,long b,long c){
+    if (b == 0){
+        return 1 % c;
+    }
+    else if (b % 2 != 0){
+        return (a * expo(a,b-1,c)) % c;
+    }
+    else{
+        a = expo(a,b / 2,c) % c;
+        return (a*a) % c;
+    }
+}",implementation
+20_21-1-2-java,Sorting (Java),"Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function ""solution"", which takes
+as argument an array ""A"".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+""sort"" and ""numpy"" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.","int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}",implementation
+20_21-1-1-python,Exponentiation by squaring (Python),"Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string ""import"" and ""**"" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use ""//"" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$","def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c",implementation
+20_21-1-2-python,Sorting (Python),"Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function ""solution"", which takes
+as argument an array ""A"".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+""sort"" and ""numpy"" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Python Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.","import random as rand
+def randPartition(A,l,r):
+    i = rand.randint(l,r)
+    temp = A[i]
+    A[i] = A[r]
+    A[r] = temp
+    return partition(A,l,r)
+
+def partition(A,l,r):
+    x = A[r]
+    i = l-1
+    for j in range(l,r):
+        if A[j] <= x:
+            i = i + 1
+            temp = A[i]
+            A[i] = A[j]
+            A[j] = temp
+    temp = A[i+1]
+    A[i+1] = A[r]
+    A[r] = temp
+    return i+1
+
+def quick(A,l,r):
+    if l < r:
+        p = randPartition(A,l,r)
+        quick(A,l,p-1)
+        quick(A,p+1,r)
+
+
+def solution(A):
+    quick(A,0,len(A)-1)
+    return A",implementation
+20_21-2-1-java,Logistics at the North Pole (Java),"Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+with $1 \leq m, n \leq 2.85 \cdot 10^7$
+and $\forall 1\leq i \leq n: 0 \leq a_i,b_i \leq 2,85 \cdot 10^7$.
+Moreover, $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{if } |A|_i \leq B[i] \ 0, &\text{if } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how often the number $i$ occurs in the array $A$.
+
+Timelimit: 1 CPU second
+
+It is Christmas and Santa Claus has little time left: He must
+come up with a system to deliver all presents in time.
+For this he uses the following system: First, all the cuddly
+toys are delivered, then all books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately Santa's sleigh does not
+have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all objects of a
+category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one if it is possible to deliver all objects of the
+category $i$ in one pass and $0$ if this is not possible.
+As a reminder, Santa Claus can deliver all objects of the
+category $i$ in one pass if $|A|_i \leq B[i]$ holds.
+Since Santa does not have much time left, your algorithm must have
+a run time of $O(n + m)$.
+
+Hint:
+
+(1) The substring ""sort"", ""reflect"", ""sol_calc"", or ""import"" must
+not appear in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$. 
+
+(3) Use the ""StringBuilder"" class to generate your solution.
+Do not use the Java ""String"" class if you are building your solution
+incrementally, because the strings have to be regenerated with each call.","String calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i=0;i<A.length;i++)
+        C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for(int i=0;i<B.length;i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}",implementation
+20_21-2-1-python,Logistics at the North Pole (Python),"Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+mit  $1 \leq m, n  \leq 4 \cdot 10^6$
+and $\forall 1\leq i  \leq n:  0 \leq a_i,b_i  \leq 10^6$.
+Moreover, $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{if } |A|_i \leq B[i] \ 0, &\text{if } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how often the number $i$ occurs in the array $A$.
+
+Timelimit: 5 CPU seconds
+
+It is Christmas and Santa Claus has little time left: He must
+come up with a system to deliver all presents in time.
+For this he uses the following system: First, all the cuddly
+toys are delivered, then all books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately Santa's sleigh does not
+have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all objects of a
+category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one if it is possible to deliver all objects of the
+category $i$ in one pass and $0$ if this is not possible.
+As a reminder, Santa Claus can deliver all objects of the
+category $i$ in one pass if $|A|_i \leq B[i]$ holds.
+Since Santa does not have much time left, your algorithm must have
+a run time of $O(n + m)$.
+
+Hint:
+
+(1) The substring ""import"", ""eval"",""sort"", ""sol_calc"" or ""getattr"" must
+not appear in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$.","def calc(A, B):
+    C = []
+    for i in range(10**6 + 1):
+        C.append(0)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = """"
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol",implementation
+20_21-3-1-java,Knapsack (Java) (revised version 2020/21),"The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!","/* This function calculates and returns the max
+ * value in knapsack with the capacity ""capacity"" wich is filled
+ * with stuff of volume ""volumes"" and the value ""values"".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}",implementation
+20_21-3-2-python,Longest path DAG (Python),"Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.","def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1",implementation
+21_22-1-1-python,Divide and Conquer Recurrence [Python],"Input: $n_0 \in \mathbb{N}_0: \; 0 \leq n_0 \leq 10^{9}$ 
+
+Output: $a_{n_0} \; mod \; 10^9+7$ with
+$a_{n+1}=2 a_{n}+1 \; \; n \in \mathbb{N}_0, a_{0}=0$
+
+Calculate in $O(\: log \: n)$ the output for any input
+in the function ""def calc(n):"" that takes only an integer as a parameter.
+For the implementation you must not use the keyword
+""import"", ""**"", ""eval"" , ""checkCalc"", ""globals"", ""pow"" or ""expo"".
+
+For easier debugging, you can divide your result in each calculation step by modulo $10^9+7$. For example:
+
+def calc(a,b,c):
+
+    res = (a+b) % 10000007
+
+    res = (res+c) % 10000007
+
+    return (res+1000) % 10000007
+
+Hints:
+
+1. Find a closed form for the recurrence.
+
+2. Use ""//"" (without the quotation marks) to perform integer division in
+Python and to avoid floats.
+
+3. If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$","def calc(n):
+    a = 2; b = n; c = 1000000007
+    return expo(a,b,c) - 1
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c",implementation
+21_22-1-2-python,Divide and Conquer Function [Python],"Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+""import"" , ""globals"" or ""eval"". Calculate the output
+in $O(log \: n)$ in the function ""calc(f)"".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?","def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1",implementation
+21_22-1-1-java,Divide and Conquer Recurrence [Java],"Input: $n_0 \in \mathbb{N}_0: \; 0 \leq n_0 \leq 10^{9}$ 
+
+Output: $a_{n_0} \; mod \; 10^9+7$ with
+$a_{n+1}=2 a_{n}+1 \; \; n \in \mathbb{N}_0, a_{0}=0$
+
+Calculate in $O(\: log \: n)$ the output for any input
+in the function ""long calc(n)"" with an integer parameter/long
+parameter . For the implementation you must not use the keyword
+""import"", ""**"", ""eval"" , ""checkCalc"" or ""expo"".
+
+For easier debugging, you can divide your result in each calculation step by modulo $10^9+7$. For example:
+
+long calc(long a,long b,long c){
+
+    long res = (a+b) % 1000000007;
+
+    res = (res+c) % 1000000007;
+
+    return (res+1000) % 1000000007;
+
+}
+
+Hints:
+
+1. Find a closed form for the recurrence.
+
+2. Use integer divison and floats avoided.
+
+3. If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$","long calc(long n){
+    long  a = 2, b = n, c = 1000000007;
+    return expo(a,b,c) - 1;
+}
+
+long expo(long a,long b,long c){
+    if (b == 0)
+        return 1;
+    else if (b % 2 == 1)
+        return (a * expo(a,b-1,c)) % c;
+    else{
+        a = expo(a,b / 2,c);
+        return (a*a) % c;
+    }
+}",implementation
+21_22-1-2-java,Divide and Conquer Function [Java],"Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is $N$ 
+in $O(log \: n)$.
+
+Input: a binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+""import"" or ""eval"". Calculate the output
+in $O(log \: n)$ in the function ""calc(f)"".
+The function name in the code is ""f_N(n)"" and returns 0 or 1
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?","long calc(){
+    long l = 0;
+    long r = Long.parseUnsignedLong(""1000000000000000000"");
+    long m = ((r + l) / 2);
+    while (0 <= l && l <= r){
+        m = ((r + l) / 2);
+        
+        if (f_N(m) != 0)
+            r = m - 1;
+        else
+            l = m + 1;
+    }
+    if (f_N(m) != 0)
+        return m;
+    else
+        return m + 1;
+}",implementation
+21_22-2-1-python,Logistics at the North Pole (Python),"It's Christmas and Santa Claus has little time left: he must
+to come up with a system to deliver all the presents on time.
+To do this, he uses the following system: first, all the cuddly
+toys are delivered, then all the books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately the sleigh of
+Santa Claus does not have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all the
+objects of a category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one, if it is possible to deliver
+all objects of the category $i$ in one pass and $0$,
+if this is not possible. As a reminder, Santa Claus can
+deliver all objects of category $i$ in one pass,
+if $|A|_i \leq B[i]$ holds. Since Santa does not have much time left
+your algorithm must have a runtime of $O(n + m)$.
+
+Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+with $1 \leq m, n \leq 4 \cdot 10^6$
+and $\forall 1\leq i \leq n: 0 \leq a_i,b_i \leq 10^6$. Furthermore
+it holds: $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{when } |A|_i \leq B[i] \ 0, &\text{when } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how many times the number $i$ occurs in the array $A$.
+
+Timelimit: 5 CPU seconds
+
+Hint:
+
+(1) The substring ""import"", ""eval"", ""sort"", ""sol_calc"", or ""getattr""
+must not appear in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$ .","def calc(A, B):
+    C = []
+    for i in range(10**6 + 1):
+        C.append(0)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = """"
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol",implementation
+21_22-2-2-python,Transporting Goods (Python),"In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+The string ""check_calc"" or ""eval"" must not appear in your solution.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Here the string ""check_calc"" or ""eval"" must not appear in your solution
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$","def calc(a,b):
+    n = len(a)
+    c = [0] * n
+    d = [0] * n
+    c[0] = a[0]
+    for i in range(1,n):
+        c[i] += a[i] + c[i-1]
+    for i in range(n):
+        if b[i][0] - 1 >= 0:
+            d[i] = c[b[i][1]]- c[b[i][0] - 1]
+        else:
+            d[i] = c[b[i][1]]
+    return d",implementation
+21_22-2-1-java,Logistics at the North Pole (Java),"It's Christmas and Santa Claus has little time left: he must
+to come up with a system to deliver all the presents on time.
+To do this, he uses the following system: first, all the cuddly
+toys are delivered, then all the books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately the sleigh of
+Santa Claus does not have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all the
+objects of a category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one, if it is possible to deliver
+all objects of the category $i$ in one pass and $0$,
+if this is not possible. As a reminder, Santa Claus can
+deliver all objects of category $i$ in one pass,
+if $|A|_i \leq B[i]$ holds. Since Santa does not have much time left
+your algorithm must have a runtime of $O(n + m)$.
+
+Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+with $1 \leq m, n \leq 2.85 \cdot 10^7$
+and $\forall 1\leq i \leq n: 0 \leq a_i,b_i \leq 2,85 \cdot 10^7$.
+Moreover, $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{when } |A|_i \leq B[i] \ 0, &\text{when } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how many times the number $i$ occurs in the array $A$.
+
+Timelimit: 1 CPU seconds
+
+Hint:
+
+(1) The substring ""sort"", ""reflect"", ""sol_calc"", or ""import"" must 
+not occur in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$. 
+
+(3) Use the ""StringBuilder"" class to generate your solution.
+Do not use the Java ""String"" class if you are building your solution
+incrementally, because the strings have to be newly generated with each call.","String calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i=0;i<A.length;i++)
+        C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for(int i=0;i<B.length;i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}",implementation
+21_22-2-2-java,Transporting Goods (Java),"In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$","int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] c = new int[n];
+    int [] d = new int[n];
+    
+    c[0] = a[0];
+    for (int i = 1; i < n ; i++){
+        c[i] = a[i] + c[i-1];
+    }
+    for (int i = 0; i < n ; i++){
+        if (b[i][0]-1 >= 0){
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        }else{
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;   
+}",implementation
+21_22-3-1-python,Billboard (Python),"(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.","def opt(W):
+    n = len(W) - 1
+    memo = [-1] * (n + 1)
+    return opt_helper(n, W, memo)
+
+
+def opt_helper(n, W, memo):
+    if n == 0:
+        return W[0]
+    if n == 1:
+        return max(W[0], W[1])
+    if memo[n] != -1:
+        return memo[n]
+    else:
+        memo[n] = max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo))
+        return memo[n]",implementation
+21_22-3-2-python,Longest path DAG (Python),"The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 4 CPU seconds ($O(N+M)$ ).
+
+Hint:
+
+(1) The substring ""import"", ""eval"", ""sol_calc"", or ""getattr"" must not
+appear in your solution. 
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem ""overlapping subproblems"") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.","def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1",implementation
+21_22-3-1-java,Billboard (Java),"(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.","long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}",implementation
+21_22-3-2-java,Longest path DAG (Java),"The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem ""overlapping subproblems"") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.","int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}",implementation
+asym-1-java,Asymptotic Analysis - Triangular Sum with Halving Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ1 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                s += a[j] * a[i];
+            }
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        int k = n;
+        while (k > 0) {
+            t += a[k - 1];
+            k = k / 2;
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; — constant-time initialisation.
+Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N.
+Part C: int t = g(a); return s + t; — a single call to g plus a constant-time return.
+
+Parts A and the return statement of Part C are Theta(1).
+
+Part B (nested loops):
+- Combined iterations: when i = 0 the inner loop runs once; when i = 1 it runs twice; ...; when i = N-1 it runs N times. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) — two array reads, one multiplication, one += assignment, loop checks and increments.
+- Total cost of Part B: Theta(N^2) iterations x Theta(1) = Theta(N^2).
+
+Part C:
+- Cost of the call to g is Theta(log N) (see analysis of g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2).
+
+Method g
+Part D: int n = a.length; int t = 0; int k = n; — constant-time initialisations.
+Part E (while loop): each iteration accesses a[k-1] and halves k.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-2-java,Asymptotic Analysis - Cross-Array Binary Search (Java),"Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ2 {
+    // `a` has length M; `b` is sorted ascending and has length N.
+    // Your analysis should be based on M and N.
+    public static int f(int[] a, int[] b) {
+        int m = a.length;
+        int s = 0;
+        for (int i = 0; i < m; i++) {
+            int t = g(b, a[i]);
+            if (t >= 0) s += t;
+        }
+        return s;
+    }
+
+    private static int g(int[] b, int x) {
+        int l = 0;
+        int r = b.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (b[mid] == x) return mid;
+            if (b[mid] < x) l = mid + 1;
+            else r = mid - 1;
+        }
+        return -1;
+    }
+}","Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: int m = a.length; int s = 0; — constant time.
+Part B (for loop): runs over i = 0..M-1.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: the loop runs from i = 0 to i = M-1, so it has Theta(M) iterations.
+- Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). The other operations (comparison, +=) are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(M) x Theta(log N) = Theta(M log N).
+
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+
+Method g
+Part D: int l = 0; int r = b.length - 1; — constant time.
+Part E (while loop): standard binary search.
+Part F: return -1; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop maintains the search interval [l, r]; each iteration either returns (so loop ends) or replaces the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-3-java,Asymptotic Analysis - Matrix Upper Triangle with Diagonal Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ3 {
+    // `mat` is an N x N matrix.
+    // Your analysis should be based on N.
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                s += mat[i][j];
+            }
+        }
+        int t = g(mat);
+        return s + t;
+    }
+
+    private static int g(int[][] mat) {
+        int n = mat.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += mat[i][i];
+        }
+        return t;
+    }
+}","Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: int n = mat.length; int s = 0; — constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); return s + t; — single call to g plus constant work.
+
+Parts A and the return statement of Part C are Theta(1).
+
+Part B (nested loops):
+- Combined iterations: for each i, j runs from i to N-1, giving (N - i) iterations. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) — one array access, one += assignment, loop checks and increments.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- Cost of the call to g is Theta(N) (see analysis of g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2).
+
+Method g
+Part D: int n = mat.length; int t = 0; — constant time.
+Part E (for loop along the diagonal): single loop over i from 0 to N-1.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) — one matrix access mat[i][i], one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-4-java,Asymptotic Analysis - Doubling Outer with Linear Inner (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-5-java,Asymptotic Analysis - Linked List with Suffix-Scan Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ5 {
+    static class Node {
+        int v;
+        Node next;
+        Node(int v, Node next) { this.v = v; this.next = next; }
+    }
+
+    static Node h;   // head of the linked list
+
+    // Your analysis should be based on the number of nodes N in the linked list with head h.
+    public static int f() {
+        int s = 0;
+        Node p = h;
+        while (p != null) {
+            s += g(p);
+            p = p.next;
+        }
+        return s;
+    }
+
+    private static int g(Node start) {
+        int c = 0;
+        Node q = start;
+        while (q != null) {
+            c += q.v;
+            q = q.next;
+        }
+        return c;
+    }
+}","Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; — constant time.
+Part B (while loop): traverses the list, calling g(p) at each node.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: in each iteration p advances by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by the call to g(p). In the worst case g scans from p to the end of the list — when p = h this is N nodes, when p is the i-th node it is N - i nodes. The per-iteration cost is therefore Theta(N) in the worst case.
+- Total cost of Part B: summing the actual per-iteration costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: int c = 0; Node q = start; — constant time.
+Part E (while loop): traverses from start until the end of the list.
+Part F: return c; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at start and advances by q.next each iteration until q becomes null. In the worst case start = h, so the loop visits all N nodes; the iteration count is Theta(N).
+- Cost per iteration: Theta(1) — one += assignment, one pointer advance, one null comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis

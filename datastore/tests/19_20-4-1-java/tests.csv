@@ -1,0 +1,116 @@
+test_number,is_example,testcode,expected
+1,True,"// build tree
+Node root = new Node();
+root.key = 2;
+
+// build target
+Node target = new Node();
+target.key = 1;
+
+// Call insert
+root = insert(root, target);
+
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+
+System.out.println(compareTrees(root, NewRoot));",true
+2,True,"// build tree
+Node root = new Node();
+root.key = 2;
+
+// build target
+Node target = new Node();
+target.key = 3;
+
+// Call insert
+root = insert(root, target);
+
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.right = new Node();
+NewRoot.right.key = 3;
+NewRoot.right.parent = NewRoot;
+
+System.out.println(compareTrees(root, NewRoot));",true
+3,False,"// build target
+Node target = new Node();
+target.key = 15418;
+// Call insert
+Node root = insert(null, target);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 15418;
+System.out.println(compareTrees(root, NewRoot));",true
+4,False,"// build tree
+Node n1 = new Node();
+n1.key = 72;
+Node n2 = new Node();
+n2.key = 38;
+n1.parent = n2;
+n2.right = n1;
+n1 = new Node();
+n1.key = 42;
+n2.parent = n1;
+n1.left = n2;
+n2 = new Node();
+n2.key = 97;
+n2.parent = n1;
+n1.right = n2;
+Node root = new Node();
+root.key = 17;
+root.right = n1;
+n1.parent = root;
+n1 = new Node();
+n1.key = 1;
+n1.parent = root;
+root.left = n1;
+// build target
+Node target = new Node();
+target.key = 27;
+// Call insert
+root = insert(root, target);
+// Compare
+n1 = new Node();
+n1.key = 72;
+n2 = new Node();
+n2.key = 38;
+n1.parent = n2;
+n2.right = n1;
+n1 = new Node(); // target!
+n1.key = 27;
+n1.parent = n2;
+n2.left = n1;
+n1 = new Node();
+n1.key = 42;
+n2.parent = n1;
+n1.left = n2;
+n2 = new Node();
+n2.key = 97;
+n2.parent = n1;
+n1.right = n2;
+Node NewRoot = new Node();
+NewRoot.key = 17;
+NewRoot.right = n1;
+n1.parent = NewRoot;
+n1 = new Node();
+n1.key = 1;
+n1.parent = NewRoot;
+NewRoot.left = n1;
+System.out.println(compareTrees(root, NewRoot));",true
+5,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+6,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+7,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+8,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true

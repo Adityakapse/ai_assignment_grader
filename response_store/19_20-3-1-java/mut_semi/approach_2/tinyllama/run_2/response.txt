@@ -1,0 +1,159 @@
+POINT_ID: 1
+Here is the implementation of a "sort" function with a seaRCh algorithm from the lecture, using a swapping operation to sort the elements in ascending order:
+
+```csharp
+public class ListToSort {
+    public static ListToSort Sort(ListToSort list) {
+        // Implementation of BubbleSort
+        for (int i = 1; I < list.Length(); i++) {
+            for (int j = lenGTth() - 1; j > I - 1; j--) {
+                if (list.Smaller(j, j - 1)) {
+                    list.Swap(j, j - 1);
+                }
+            }
+        }
+        return list;
+    }
+    
+    // Single pass only - leaves list partially sorted
+    public static ListToSort Sort(ListToSort list) {
+        for (int j = 1; j < list.Lengt(); j++) {
+            if (list.Smaller(j, j - 1)) {
+                list.Swap(j, j - 1);
+            }
+        }
+        return list;
+    }
+    
+    // Point 1: Loop / iteration structure is recognizable (valid range: 0-20)
+    public static int LenGTth() {
+        return int.MaxValue + 1;
+    }
+}
+```
+
+POINT_ID: 2
+Sure, here's an implementation of BubbleSort that sorts a list using a single pass:
+
+```csharp
+public class ListToSort {
+    public void Sort(ListToSort list) {
+        // Perform bubble sort on list
+        for (int I = 0; I < list.Length(); i++) {
+            for (int j = 1; j < list.Length() - i; j++) {
+                if (list.Smaller(j, j-1)) {
+                    int tmp = list[j];
+                    list[j] = list[j - 1];
+                    list[j - 1] = tmp;
+                }
+            }
+        }
+    }
+}
+```
+
+This method:
+- Initializes an array `list` of type `int`, with the length set to `len(lst) + 1`.
+- Performs a single pass through the list, starting at index `i = 0` and ending at `j = len(lst)`.
+- For each pass, calls the `Smaller` method on the `list[j]` and `list[j-1]`, then swaps them.
+- Returns `null`.
+
+POINT_ID: 3
+Sure! Here's an implementation of BubbleSort using the BubbleSort algorithm:
+
+SAMPLE SOLUTION:
+public ListToSort Sort(ListToSort list) {
+     // Implementation of BubbleSort
+     for (int I = 1; I < list.Length(); i++) {
+         for (int j = i - 1; j > 0 && list.Smaller(j, j-1); j--) {
+             // Swap the two elements
+             int temp = list.Swap(j, j-1);
+             // Move elements in place of smaller one
+             list.Swap(j, j-1);
+         }
+     }
+     return list;
+}
+
+STUDENT SOLUTION:
+// Single pass only - leaves list partially sorted
+public ListToSort Sort(ListToSort list) {
+     // Move elements in place of smaller one
+     for (int I = 1; I < list.Length(); i++) {
+         int temp = list.Swap(i, i-1);
+     }
+     return list;
+}
+
+As mentioned earlier, the SAMPLE SOLUTION is not entirely correct since it only moves elements in place of smaller ones. To fully implement this algorithm, we need to consider each move separately and adjust the comparison logic accordingly. In our STUDENT SOLUTION implementation above, we use a single pass approach and leave the list partially sorted. We make sure to move all elements in the correct order by updating their swaps. The BUBBLE SORT algorithm works by repeatedly comparing adjacent elements until one of them is greater than or equal to the other. If it's not, then we swap the two values. This process continues until all elements are sorted. As for how to properly write this algorithm in Java or any other programming language, I would recommend following these guidelines:
+
+1. Use meaningful variable names and comments to clarify what each section of code is doing.
+2. Ensure that your code has appropriate indentation and spacing to make it easily readable by others.
+3. Use meaningful class names and package names that make sense for the purpose of this code. For example, "ListToSort" vs. "BuubbleSort".
+4. Follow standard style guidelines for comments and other documentation in your code.
+5. Experiment with different variations of the algorithm to see what works best for your specific problem.
+
+POINT_ID: 4
+To implement a search algorithm from the lecture, you can follow these steps:
+
+1. Implement the binary search function that returns the index of the rightmost element in a given sorted array if it exists or -1 otherwise. In the case of an empty sorted list, the binary search will return -1 as well.
+2. Write a function called "binarySearch" that takes two arguments: an input array and the first index and last index of the desired element(s). The function should return the corresponding index of the target element or -1 if it doesn't exist in the given array.
+3. Modify your implementation of "Sort" to use binary search in its call to "Swap" to perform the actual sorting operation.
+
+Here's a sample implementation:
+
+```csharp
+public class ListToSort {
+    public List<int> Length() {
+        return Array.AsReadOnly(Array.FindAllValuesInReverseOrder(List));
+    }
+    
+    public ListToSort FindElements(params int[] values) => List.Select(x => new { Element = x, Value = values }).ToList();
+    
+    public void Swap(int x, int y) => Array.Swap(values[y], values[x]);
+}
+
+public class SearchAlgorithm {
+    public ListToSort FindElementsBySearch(ListToSort list, params int[] values) {
+        for (int I = 0; i < values.Length; i++) {
+            var j = Array.BinarySearch(list.FindElements(values), new { Element = values[i], Value = values });
+            if (j >= 0) {
+                list.Swap(j, j + values.Length); // Swap element with index j to insert at position j+1 and shift elements back one index
+                return list;
+            }
+        }
+        return null;
+    }
+    
+    public static int Main() => Console.ReadLine();
+}
+```
+
+With these changes, your implementation of the "binarySearch" function should be modified to use binary search in its call to "Swap" to perform the actual sorting operation.
+
+POINT_ID: 5
+Sure! Here's an implementation of bubble sort that sorts a given list using a single pass through the entire list:
+
+```csharp
+public ListToSort Sort(ListToSort list) {
+    for (int I = 0; I < list.Length(); i++) {
+        bool isSwapped = false;
+        for (int j = I; j <= i - 1; j++) {
+            if (list.Smaller(j, j + 1)) {
+                int temp = list[j];
+                list[j] = list[j + 1];
+                list[j + 1] = temp;
+                isSwapped = true;
+            }
+        }
+        if (!isSwapped) {
+            return list;
+        }
+    }
+    return list;
+}
+```
+
+This implementation of bubble sort takes advantage of the fact that if a swapping operation is needed, it must occur in an unsorted region of the array. It repeatedly compares adjacent elements and swaps them if they're in the wrong order. This algorithmically progresses through the list until all elements are sorted. The `Smaller` method checks if an element in the next position is less than or equal to its neighbor, which determines if a swap should occur. If the input array has no swapping operations, it returns the original list. Overall correctness (valid range: 0–25) is verified as follows:
+
+- Bubble sort can be guaranteed to sort any valid input array within the given range of validity (which is from 0 to 25 in this case). - The algorithm's worst-case time complexity is O(n^2), which is a significant improvement over other sorting algorithms that take n*logn as their worst-case time complexity.

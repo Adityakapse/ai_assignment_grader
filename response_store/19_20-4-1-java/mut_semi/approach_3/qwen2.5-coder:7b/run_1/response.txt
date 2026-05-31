@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The loop correctly walks from the root to the null insertion point by moving left when `insert.key < x.key` and right otherwise.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: No parent pointer is tracked during traversal; after the loop, there is no reference to the node that should become the parent of `insert`.
+
+POINT_ID: 3
+BUCKET: Correct (20 marks)
+FEEDBACK: Insert is attached as `parent.left` when `insert.key < parent.key`, and as `parent.right` otherwise, correctly placing it in the BST.
+
+POINT_ID: 4
+BUCKET: Wrong (0 marks)
+FEEDBACK: `insert.parent` is not set, or is assigned a value unrelated to the traversal (e.g., always null, or set to the traversal pointer `x` which is null after the loop).
+
+POINT_ID: 5
+BUCKET: Semi (10 marks)
+FEEDBACK: Insertion works for simple cases (e.g., inserting as a direct child of root) but fails for deeper insertions, as the parent tracking and attaching are incorrect.

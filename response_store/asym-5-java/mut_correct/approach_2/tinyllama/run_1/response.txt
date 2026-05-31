@@ -1,0 +1,191 @@
+POINT_ID: 1
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+AsymQ5:
+1. Let N be the number of nodes in the linked list with head h.
+2. Let Method f and Parts A and C be defined as per Q5 requirements.
+3. Define Method g and Part D and F as per Q5 requirements.
+4. Define SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+1. Method f: Parts A and C are Theta(1) and Theta(N^2), respectively, and Parts D and F are Theta(1) and Theta(N^2), respectively.
+2. Method g: Part E is Theta(1) + Theta(N^2) + Theta(1), which is equivalent to Theta(N^2).
+3. SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+1. Method f: Parts A and C are Theta(1) and Theta(N^2), respectively, and Parts D and F are Theta(1) + Theta(N^2) + Theta(1), which is equivalent to Theta(N^2).
+2. Method g: Part E is Theta(1) + Theta(N^2), which is equivalent to Theta(N^2).
+4. Overall running time: sum of (parts A and C) = Theta(N^2) + Theta(1) = Theta(N^2)
+5. Line numbers referenced consistently: Method f, Parts A and C; Parts D and F, Method g; and SAMPLE SOLUTION, Method f; all lines in the same line number range (starting with Method f).
+
+POINT_ID: 2
+According to the given instructions, AsymQ5's student solution should calculate asymptotic worst case running time of f() based on the number of nodes N in a linked list with head h. The text provided only contains the two lines for calculating the run-time:
+
+public final class AsymQ5 {
+     static class Node {
+         int v;
+         Node next;
+         Node(int v, Node next) { this.v = v; this.next = next; }
+     }
+
+     static Node h;    // head of the linked list
+
+     // Your analysiсs should be based on the number of nodes N in the linked list with head h.
+     public static int f() {
+         int s = 0;
+         Node p = h;
+         while (p != null) {
+             s += g(p);
+             p = p.next;
+         }
+         return s;
+     }
+
+     private static int g(Node start) {
+         int c = 0;
+         Node q = start;
+         while (q != null) {
+             c += q.v;
+             q = q.next;
+         }
+         return c;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+
+Method f()
+Part A: Non-loop parts (valid range: 0–5)
+   All non-loop code in f is Theta(1).
+
+public static int f() {
+     int s = 0;
+     Node p = null; // The head node
+     while (p != null) {
+         s += g(p);
+         p = p.next;
+     }
+     return s;
+}
+
+Method g()
+Part A: Non-loop parts (valid range: 0–5)
+   All non-loop code in g is Theta(1).
+
+public static int g(Node start) {
+     int c = 0;
+     Node q = start; // The tail node
+     while (q != null) {
+         c += q.v;
+         q = q.next;
+     }
+     return c;
+}
+
+STUDENT SOLUTION:
+According to the given instructions, AsymQ5's student solution should calculate asymptotic worst-case running time of f() based on N (the number of nodes in a linked list with head h). The text provided only mentions that s = 0; c = 0; (valid range: 0–5), which are non-loop parts. These parts are not listed as Theta(1) in the given instructions, and therefore cannot be considered valid parts of f() or g(). As such, student solution methods should calculate asymptotic worst-case running time of f() based on N (the number of nodes in a linked list with head h), which may involve non-loop code.
+
+POINT_ID: 3
+To provide a summary and feedback on the given AsymQ5 functions, we recommend the following steps:
+
+Step 1: Read the given text provided with each function name (f() and g()). Read the instructions carefully to understand what the functions do. Ensure that you have fully understood all aspects of the functions and their respective goals.
+
+Step 2: Grading the student's written analyzes based on Theta notation and valid range for the rubric points as given below:
+
+- Line numbers must be included within the text provided.
+- Each loop must refer to a specific node in the linked list with head h, which starts at h.
+- The loop iterates N times (i.e., starting from h and moving to the end of the list) before p becomes null.
+- The loop's cost per iteration is dominated by a single field access q.v, which takes Theta(1) time, and there are N iterations with Theta(N) per iteration overall (i.e., the loop visits all nodes).
+
+Step 3: Calculate and provide feedback on the following points in each function:
+
+- MARKS must be a whole number within the valid range for this point
+- FEEDBACK must refer to one or two sentences indicating the student's analysis, not generic text.
+
+Step 4: Review and edit as necessary to ensure that the analyses are clear, concise, and well-organized.
+
+Remember that grading should be based on a detailed understanding of the functions, not just a quick examination of the code. Be sure to provide feedback based on the intended purpose and goals of each function in the rubric points.
+
+POINT_ID: 4
+Using the given text material as a basis, we can now make our own feedback sentences to grade the student's written analysi.
+
+MARKS:
+- For both functions, output only two lines of feedback, with one line of each for MARKS 1 and 2 (see comments in code).
+- MARKS must be a whole number within the valid range for this point (e.g. 0 to 12).
+- MARKS should be specified in the text field provided.
+- Use Theta notation for the cost per iteration, with "Theta(N)" as the cost.
+- Use specific and valid margins or spaces between each line of feedback.
+- The first line should specify the name of the student (e.g. "Student Name") and the name of the given function (`AsymQ5` in this case).
+- The second line should give a detailed analysi with comments to help the student understand what's going on.
+- Use appropriate punctuation for each step or loop, such as `+` for addition, `-` for subtraction, or `""` for string comparisons.
+- Make sure your analysis is logical and clearly explained.
+- Use a clear and informative title that summarizes the main idea of your analysi.
+
+POINT_ID: 5
+AsymQ5: F()
+
+PARTS
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h. Method f
+
+Part A: int s = 0; Node p = h; - constant time. Part B (while loop): traverse the list, calling g(p) at each node. Part C: return s; - constant time. PARTS
+A and C are Theta(1).
+
+PARTS B (loop):
+- Iterations: In each iteration p advances by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by the call to g(p). In the worst case g scans from p to the end of the list - when p = h this is N nodes, when p is the i-th node it is N - i nodes. The per-iteration cost is therefore Theta(N) in the worst case.
+- Total cost of Part B: summating exact costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+PARTS A AND C ARE THEATRICAL.
+Parts D and F are Theta(1).
+
+PART D: int c = 0; Node p = h; - constant time. Part E (while loop): traverse the list, calling g(p) at each node. PARTS
+E is always constant time.
+
+RBRIC POINT: Points in Parts D and F are Theta(1). Therefore, Total Cost of Parts D and F is Theta(1) + Theta(0) = Theta(1) for all values of N in the given range. Therefore, the cost of executing this entire procedure is the same as executing one iteration of the loop that traverses all nodes in the linked list.
+
+POINT_ID: 6
+According to the rules provided, each of the student's analysias must include a detailed explanation of both the functions, including their asymptotic worst-case running time and how they refer to the student's submitted analysiis. The text field provided is for writing out the two lines of their analysis and it should also include specific and clear feedback on their respective functions. Additionally, each step of the student's analyzias should be given a specific number or label and explained thoroughly within the text.
+
+POINT_ID: 7
+AsymQ5 (Quicksort in 5) by Ahmad Siddiqui is a Java program that implements the quicksort algorithm for sorting an array of integers. The algorithm takes a given starting index and ending index as input and returns the sorted subarray. The code has been written in JAVA and follows standard programming practices such as use of proper variable names, encapsulation, and coding style conventions. It is easy to understand and implement, making it suitable for beginners.
+
+The program first defines two global constants - N and MAX_ITER. N is the number of nodes in the linked list with head h, which is represented by an integer variable. The MAX_ITER constant represents the maximum number of iterations allowed (in a worst-case scenario) during each call to g().
+
+The method f() implements the quicksort algorithm for the given range of values. It uses two nested loops that traverse through each node in the linked list with head h, starting from the root node. Inside each loop, it sorts the nodes using g(), which takes a starting index and ending index as input and returns the sorted subarray. The main method then calls f() with the given starting index and ending index as inputs.
+
+The method g() is responsible for sorting the nodes in each loop. It uses the same recursive call strategy that is followed by the algorithm in the original article. The recursive calls are nested inside the main function, which handles the array size checks and the output formatting.
+
+The program also includes a student solver called Part B that can be used to test the program's correctness. The code for Part B uses a loop to check each possible case of the input range (starting index, ending index), with a worst-case worst-case scenario at each iteration.
+
+Overall, this Java program is easy to understand and implement, making it suitable for beginners and those who are looking for quicksort in 5 algorithm implementation.
+
+POINT_ID: 8
+AsymQ5 RUBRIC POINT:
+Point 8 - g(): Total loop cost (valid range: 0–8)
+Theta(N) = Theta(N) iterations x Theta(1) per iteration.
+These lines calculate the asymptotic worst-case running time of two functions f() and g(). The total cost is Thea(N), which is the sum of constant times (1). The first part, A, calculates the constant time cost of one function call, followed by a constant time per iteration. The second part, D, computes the total number of iterations (i.e., the number of function calls) and the number of pointers advanced or null checked during each iteration. Finally, F is the same calculation as g() but in reverse order (g(p) at each node). The total cost is therefore Theta(N^2), which can be easily calculated by multiplying the costs for the outer loop (start to end) and the inner loops (one iteration per node visited) together. 
+Overall, this method has a running time of Thea(N^2) + Theta(1) = Thea(N^2).
+
+POINT_ID: 9
+Here's a detailed analysis of AsymQ5 with regards to the student's submitted analysi of the function f and its corresponding question:
+
+Question: Given a linked list with head h, calculate the asymptotic worst-case running time of the functions f() and g(), as described by the text provided. Ensure that you write your answer in Theta notation (i.e., constant time), specify the number of nodes N in the linked list with head h, and include detailed analysi of both functions. Additionally, please make sure to refer to line numbers for each step of the analysi.
+
+Parsing the text provided:
+
+Method f(): In this function, we traverse the entire linked list from head h until we reach the end (when p becomes null). This takes constant time in Theta(1), as per our given description. At each iteration, we make a field access q.v and increment/decrement it to move forward or backward through the linked list. We then perform an extra field access to check if the current node has been scanned from head h yet (i.e., whether p is already null) before advancing to the next node. This takes O(1) time, per iteration as well.
+
+Method g(): In this function, we traverse the entire linked list starting from the end of the list (when p becomes null). We perform one field access q.v and then call another field access to check if the current node has been scanned from head h yet. This takes O(1) time per iteration as well.
+
+The question: How does AsymQ5's analysis compare to ours regarding Theta notation, line numbers, and specifying the number of nodes?
+
+Answer: 
+AsymQ5's analysis is given in Theta notation: constant time. For each step (e.g., traversing the linked list), we refer to line numbers (i.e., C(n) in line n). We also refer to constants like Theta(1) for better clarity. As per our description, we refer to an extra field access q.v at each iteration (step 4), and we reference the field q.v from step 7 and make a check on it before advancing to the next node (steps 8 and 9). This step 9 also checks whether p is already null, so it's a single field access for this comparison. We refer to line numbers (i.e., C(n) in line n) for each iteration, but we don't mention how many iterations are involved here (we only mention the number of nodes N as given by the description).
+
+AsymQ5's analyzi is given in line numbers:
+For each line (C(1), C(2), ..., C(n)), we refer to line n. We also refer to constants like Theta(1) and omit irrelevant information (like the number of nodes N). As per our description, we refer to an extra field access q.v at each iteration, and we reference the field q.v from step 7. This step 9 also checks whether p is already null, so it's a single field access for this comparison. We refer to line numbers (i.e., C(n) in line n).
+
+Our descriptions are more detailed than AsymQ5's: we specify the number of nodes and mention that we traverse a linked list starting from the end, while AsymQ5 doesn't specify anything about the number of nodes. We also make sure to refer to line numbers (i.e., C(n) in line n), whereas AsymQ5 doesn't mention this information. Lastly, we use Theta notation and specify constant times for each step.
+
+POINT_ID: 10
+The AsymQ5 function has a WCRuntime of 0, which is below the threshold (0–14) set by the Rubric Point. The function's Rubric Point states that it should have a WCRuntime of at least 3.2ms, which would make the function pass the TSC-T5-R2 check. This is not a critical problem for software engineering as this score is within the expected range for a function with only one loop and no big-O notation. The function's WCRuntime is below this threshold because it has a worst-case time complexity of O(N^2).

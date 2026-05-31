@@ -1,0 +1,169 @@
+{
+  "task_id": "19_20-1-1-java",
+  "title": "LCM -- Least Common Multiple (Java)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in points 5 and 6). Do not deduct again for an error already penalised in an earlier point. For example: if the student's gcd is incorrect, base all lcm marks on whether they use their own gcd consistently. HOWEVER, for the final correctness of gcd and lcm, there is double deduction for an incorrect result even if earlier steps were internally consistent (4th bullet points in numbers 5 and 6).",
+    "Students may use any valid iterative or recursive implementation of gcd (Euclidean algorithm or equivalent).",
+    "Both iterative and recursive gcd implementations should receive full credit if logically correct."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "gcd function present and structurally correct",
+      "tag": "gcd present",
+      "max_marks": 15,
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No gcd function defined and no gcd-like logic present anywhere in the submission."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A gcd function is defined but has a broken signature or structure (e.g., missing return statement, wrong number of parameters, or no identifiable recursive call or loop body), independent of whether the base case or reduction step is correct."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "A gcd function with the correct signature (two parameters, returns a value) and a recognisable recursive or iterative structure is present. Correctness of the base case and reduction step are evaluated separately in points 2 and 3."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "gcd base case / termination condition",
+      "tag": "gcd termination",
+      "max_marks": 15,
+      "target": "The recursion (or loop) terminates correctly. For recursive Euclidean: base case is b == 0 (or r == 0) returning the non-zero value. For iterative: loop exits when remainder is 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No termination condition or one that causes incorrect results / infinite recursion (e.g., always returns 0 or 1, never reaches base case for valid inputs)."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A termination condition exists but it is incomplete or partially incorrect (e.g., only handles one special case, or returns the wrong variable at the base case)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "Termination condition is correct and complete: the algorithm correctly stops and returns the GCD when the remainder is 0 (recursive) or equivalent (iterative)."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "gcd recursive/iterative step (reduction)",
+      "tag": "gcd step",
+      "max_marks": 15,
+      "target": "Each recursive call (or loop iteration) makes progress toward termination. For recursive: gcd(b, a%b) or equivalent. For iterative: r = a % b; a = b; b = r or equivalent.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No modulo/reduction step, or step is logically incorrect and does not reduce the problem (e.g., subtracts 1 rather than using modulo, or passes wrong arguments)."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "Modulo is computed but argument ordering in the recursive call does not guarantee reduction (e.g., gcd(a%b, b) without a prior swap to ensure a >= b, causing b to remain unchanged and the recursion to loop infinitely on most inputs)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "Reduction step is correct: uses gcd(b, a%b) (canonical form), or gcd(a%b, b) with a prior swap that guarantees a >= b before each call, reducing inputs strictly toward the base case."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "lcm function: correct formula and structure",
+      "tag": "lcm formula",
+      "max_marks": 20,
+      "target": "lcm(a, b) returns (a * b) / gcd(a, b) (or logically equivalent). Function is defined, takes two int parameters, and returns an int.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No lcm function defined, or function is present but makes no attempt to use gcd or the LCM formula."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "An lcm function is present and references gcd, but the formula structure is wrong (e.g., uses addition instead of multiplication, or multiplies without dividing by gcd). Whether the output is numerically correct is evaluated in point 6."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "lcm uses the formula structure (a * b) / gcd(a, b) or a mathematically equivalent form (e.g., a / gcd(a,b) * b). Whether the final output is numerically correct is evaluated in point 6."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness of gcd",
+      "tag": "Overall gcd",
+      "max_marks": 17,
+      "target": "gcd(a, b) returns the correct greatest common divisor for all valid non-negative integer inputs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "gcd is absent or produces wrong output for most standard inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 9,
+          "description": "gcd is mostly correct but fails for edge cases or specific inputs (e.g., gcd(0, n) or gcd(n, n))."
+        },
+        {
+          "label": "Correct",
+          "marks": 17,
+          "description": "gcd returns the correct result for all valid inputs including edge cases."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 13,
+          "description": "gcd logic follows consistently from the student's own earlier steps, but the final output is not the correct GCD."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Overall correctness of lcm",
+      "tag": "Overall lcm",
+      "max_marks": 18,
+      "target": "lcm(a, b) returns the correct least common multiple for all valid positive integer inputs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "lcm is absent or produces wrong output for most standard inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 9,
+          "description": "lcm produces correct results when gcd is correct but fails for edge cases, or uses gcd correctly but formula has a minor error causing occasional wrong output."
+        },
+        {
+          "label": "Correct",
+          "marks": 18,
+          "description": "lcm returns the correct result for all valid inputs, consistent with a correct gcd implementation."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 13,
+          "description": "lcm formula is correctly applied using the student's own gcd, but overall output is not the correct LCM due to an earlier gcd error."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

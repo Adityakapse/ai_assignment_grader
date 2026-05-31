@@ -1,0 +1,98 @@
+Here's a more detailed analyis of the functions `AsymQ2` and `f`:
+
+```java
+// `a` has length M; `b` is sorted ascending and has length N.
+// Your analysiсs should be based on M and N.
+public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analysiсs should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length;
+         int s = 0;
+         for (int I = 0; I < m; i++) {
+             int j = I + rand.nextInt(m - i); // select adjacent element in range
+             if (b[i] > b[j]) {
+                 swap(a, i, j);
+                 s++;
+             }
+         }
+         return s;
+     }
+
+     private static void swap(int[] a, int i, int j) {
+         int temp = a[i];
+         a[i] = a[j];
+         a[j] = temp;
+     }
+}
+```
+
+Here are the detailed steps involved in analyzing these functions:
+
+1. First, we split `AsymQ2` into two parts: an outer function that takes an array `a` and an inner function that takes indices `i` and `j`. We define these as follows:
+
+   ```java
+   public static void swap(int[] a, int i, int j) {
+       int temp = a[i];
+       a[i] = a[j];
+       a[j] = temp;
+   }
+   ```
+
+2. Next, we define the inner function `f` as:
+
+   ```java
+   public static int f(int[] a, int[] b) {
+       int m = a.length; // number of elements in `a`
+       int s = 0;       // accumulated number of swaps
+
+       for (int I = 0; I < m; i++) {
+           int j = i + rand.nextInt(m - i);   // select adjacent element in range
+           if (b[i] > b[j]) {
+               swap(a, i, j);                 // swap elements if they're not equal
+               s++;
+           }
+       }
+       return s;                             // return number of swaps
+   }
+   ```
+
+3. Finally, we define an outer function `AsymQ2` that takes two arrays `a` and `b`, then computes the number of swaps between them:
+
+   ```java
+   public static int f(int[] a, int[] b) {
+       int m = a.length; // number of elements in `a`
+       int n = b.length; // number of elements in `b`
+       int s = 0;
+       for (int I = 0; i < m; i++) {
+           int j = i + rand.nextInt(m - i);   // select adjacent element in range
+           if (b[i] > b[j]) {
+               swap(a, i, j);                 // swap elements if they're not equal
+               s++;
+           }
+       }
+       return s;
+   }
+   ```
+
+By splitting the functions into these three parts, we can see that each step is responsible for a certain part of the overall runtime. The outer function `AsymQ2` first computes the number of swaps between the two input arrays `a` and `b`, which is then used in the inner function `f`.
+
+Finally, we define an outer function with three parts (step 3) as:
+
+   ```java
+   public static int f(int[] a, int[] b) {
+       int m = a.length; // number of elements in `a`
+       int n = b.length; // number of elements in `b`
+       int s = 0;
+       for (int I = 0; i < m; i++) {
+           int j = i + rand.nextInt(m - i);   // select adjacent element in range
+           if (b[i] > b[j]) {
+               swap(a, i, j);                 // swap elements if they're not equal
+               s++;
+           }
+       }
+       return s;
+   }
+   ```
+
+In this case, the outer function `AsymQ2` performs two swaps (i.e., `s` = 2) because each input array has at least one element that's greater than its neighbour.

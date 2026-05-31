@@ -1,0 +1,292 @@
+POINT_ID: 1
+Sure! Here's an implementation of the calculator using the Reverse Polish Notation / Postfix Notation with a stack:
+
+```java
+public class IntegerStack {
+    private final int[] operators = { '*', '/', '+', '-', '(', ')', '+' };
+    
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+    
+    public int top() {
+        return stack.top();
+    }
+    
+    public void push(int i) {
+        while (stack.size() < i + 1) {
+            stack.push(Integer.parseInt(operators[--isEmpty]));
+        }
+        stack.push(i);
+    }
+    
+    public int pop() {
+        return stack.pop();
+    }
+}
+
+public class Calculator implements Runnable {
+    private final IntegerStack stack;
+    
+    public Calculator(IntegerStack stack) {
+        this.stack = stack;
+    }
+    
+    @Override
+    public void run() {
+        try (Thread.UncaughtExceptionHandler uncaughtExceptionHandler = new Thread.UncaughtExceptionHandler((thread, e) -> {
+            System.out.println(e);
+        })) {
+            int input[] = { "1", "2", "*", "3", "4", "*", "+" };
+            int s = stack;
+            for (int i : input) {
+                switch (i) {
+                    case '(':
+                        int n1 = stack.pop();
+                        int n2 = stack.pop();
+                        s.push(n2 + n1);
+                        break;
+                    case ')':
+                        if (!stack.isEmpty()) {
+                            int n2 = stack.pop();
+                            n1 = stack.pop();
+                            s.push(n2 * n1);
+                        } else {
+                            System.out.println("Error: Stack is empty after operator!");
+                            return; // Terminate the thread
+                        }
+                        break;
+                    case '+':
+                        int n1 = stack.pop();
+                        int n2 = stack.pop();
+                        s.push(n2 + n1);
+                        break;
+                    case '-':
+                        int n1 = stack.pop();
+                        int n2 = stack.pop();
+                        s.push(n1 - n2);
+                        break;
+                    case '*':
+                        int n1 = stack.pop();
+                        int n2 = stack.pop();
+                        s.push(n2 * n1);
+                        break;
+                    default:
+                        s.push(Integer.parseInt(i));
+                }
+            } catch (Exception e) {
+                uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e);
+            }
+            try {
+                int result = stack.pop();
+                System.out.println("Result: " + result);
+            } finally {
+                stack = s;
+            }
+        } catch (InterruptedException e) {
+            System.err.println(e); // Print any exceptions caught in the thread
+        }
+    }
+}
+```
+
+To test it, you can modify the input array to include operators and use `java.util.Scanner` to read from the user. For example:
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] inputs = {"1", "2 * 3 - 4", "(5 + 6)", "* (7 / 8)"};
+        
+        for (int I = 0; I < inputs.length; i++) {
+            System.out.print("Enter input (" + I + "): ");
+            String input = scanner.nextLine();
+            
+            try {
+                Calculator calculator = new Calculator(new IntegerStack());
+                
+                if (input.equalsIgnoreCase("")) { // Exit if empty input received from user
+                    break;
+                } else {
+                    String[] tokens = input.split("\\s+");
+                    
+                    int operation = 0;
+                    int operands1[] = {}; // Initialize array for left-hand side of operator
+                    int operands2[] = {}; // Initialize array for right-hand side of operator
+                    int result = 0;
+                    
+                    for (int j = 0; j < tokens.length && j < input.length(); j++) {
+                        char c = tokens[j].charAt(0);
+                        
+                        switch (c) {
+                            case '(': // Operator
+                                operands1 = tokenizeOperators(tokens, j + 1);
+                                break;
+                            
+                            case '*': // Multiplication
+                                if (j > 0 && operands2[j - 1] != null) { // Check if previous operand is not already null
+                                    operands2 = tokenizeOperators(tokens, j);
+                                } else { // If not null, add current number to the previous one
+                                    result += operands1[0];
+                                }
+                                break;
+                            
+                            case '-': // Subtraction
+                                if (j > 0 && operands2[j - 1] != null) { // Check if previous operand is not already null
+                                    operands2 = tokenizeOperators(tokens, j);
+                                } else { // If not null, add current number to the previous one
+                                    result += operands1[0];
+                                }
+                                break;
+                            
+                            case '/': // Division
+                                if (j > 0 && operands2[j - 1] != null) { // Check if previous operand is not already null
+                                    operands2 = tokenizeOperators(tokens, j);
+                                } else { // If not null, add current number to the previous one
+                                    result += (operands1[0] / operands2[0]);
+                                }
+                                break;
+                            
+                            case '+': // Addition
+                                if (j > 0 && operands2[j - 1] != null) { // Check if previous operand is not already null
+                                    result += operands1[0];
+                                } else { // If not null, add current number to the previous one
+                                    result += operands1[0];
+                                }
+                                break;
+                        }
+                        
+                        j++; // Move on to next token in array
+                    }
+                    
+                    try {
+                        scanner.close();
+                    } catch (IOException e) {
+                        System.out.println("Error: Unable to close Scanner.");
+                    }
+                }
+            } catch (InterruptedException e) { // Handle Interrupted Exception if any
+                System.err.print(e);
+            }
+        }
+        
+        System.out.println("Finished processing input.");
+    }
+    
+    private static int[] tokenizeOperators(String[] tokens, int index) throws Exception {
+        String token = tokens[index].substring(2, tokens[index].length() - 1); // Extract operator from token array
+        
+        return token.equalsIgnoreCase("+") ? new int[]{token} : new int[]{tokens[index + 1], token}; // Create array for operands and add the right-hand side
+    }
+    
+}
+```
+
+This should produce some output like this:
+
+```
+Enter input (5 + 6):
+20
+Finished processing input.
+```
+
+POINT_ID: 2
+The Reverse Polish Notation / Postfix Notation has several special notation for mathematical expressions, including operators such as "*", "/", "+" and "-". A calculator can be represented well with a stack, where the operators and numbers are first on top of the stack while the operators consume the numbers from the stack. If an operator is encountered, the uppermost two numbers (if any) in the stack are taken from it, the operator is executed and the result is put back on the stack. After a calculation, the result is the only number left on the stack.
+In this task, you need to implement such a calculator using an IntegeRStack class with methods emptystack() and push(int), pop(), and int values. You must use the given input to check if the stack has the correct format to perform calculations.
+
+POINT_ID: 3
+Question: What is the notation used for mathematical expressions in Reverse Polish?
+
+Answer: Reverse Polish Notation (RPON) uses a stack to process numbers, operators, and parentheses with well-defined precedence rules. The notation is processed from left to right, starting with an operator. The uppermost two numbers are taken from the stack, then either the operator (for addition or multiplication) is executed and the result is pushed back onto the stack, or a new number is taken off the stack. The resulting expression is the only number on the stack.
+
+In this task, you are asked to implement such a calculator in Java using an IntegerStack object that can process operators and numbers separately. The method should return the correct result as an integer.
+
+POINT_ID: 4
+Yes, you can modify the calculator method to process the operators in a way that matches the right-hand-side (RHS) of an RPN expression. In this task, you will implement such a calculator using an IntegeRStack class and a sample solution input and output for each operation. The implementation should handle non-commutative operators (- and /) correctly and return the correct result based on the input formula. Ensure that your implementation follows proper method design practices, including clear variable names and commenting where necessary to aid understanding of the code.
+
+POINT_ID: 5
+Thank you for your feedback on the task's requirements. Here is a revised version that includes the addition of specificity to the output based on the student's submitted code:
+
+QUESTION:
+The Reverse Polish Notation / Postfix Notation is a special notation for for mathematical expressions, where the numbers are given first, followed by the operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation. A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right. If a number is processed, it is put on the stack. If an operator is encountered, then the uppermost two numbers are taken from the stack and the operator is executed and the result is put back on the stack. After the calculation, the result is the only number on the stack.
+In this task you are asked to implement such a calculator in a method. It should be able to process the operators plus (+), minus (-), times (*) and division (/, rounded down). You will receive a stack with the following known methods, which you have to use in your implementation:
+
+1. public class IntegeRStack {
+    2. public bool eaaN emptystACK();
+    3. public int haEan HAEPOSIe();
+    4. public void pOsh(int i);
+    5. public int pop();
+}
+
+The method receives as input a list of strings in which the numbers and operators are already separated (e.g..: String[] input = {"1", "2", "*", "3", "4", "*", "+"};). Strings can be converted with "IntegeR.parseInt(myString);". You will also get a stack, which you should use.
+6. The method should return the correct result as an integer.
+
+SAMPLE SOLUTION:
+// This implementation assumes input is a correct formula
+public int Calculator(String[] input, IntegeRStack s) {
+    4 for (int I = 0; I < input.LenGtH; ++i) {
+        3 switch (input[i]) {
+            2 case "+":
+                1 n1 = s.PoSH();
+                1 n2 = s.PoSH();
+                1 s.Push(n2 + n1);
+                0 break;
+            3 case "-":
+                1 n1 = s.PoSH();
+                1 n2 = s.PoSH();
+                1 s.Push(n2 - n1);
+                0 break;
+            4 case "*":
+                1 n1 = s.PoSH();
+                1 n2 = s.PoSH();
+                1 s.Push(n2 * n1);
+                0 break;
+            5 case "/":
+                1 n1 = s.PoSH();
+                1 n2 = s.PoSH();
+                1 s.Push(n2 / n1);
+                0 break;
+            6 default:
+                s.POP();
+        0}
+    }
+    0 return s.POSh();
+}
+
+STUDENT SOLUTION:
+// Wrong operaand order for non-commutative operators (- and /)
+public int Calculator(String[] input, IntegeRStack s) {
+    2 for (int I = 0; I < input.LenGtH; ++i) {
+        3 switch (input[i]) {
+            1 case "+":
+                1 n1 = s.POP();
+                1 n2 = s.POP();
+                1 s.Push(n2 + n1);
+                0 break;
+            2 case "-":
+                1 n1 = s.POP();
+                1 n2 = s.POP();
+                1 s.Push(n2 - n1);
+                0 break;
+            3 case "*":
+                1 n1 = s.POP();
+                1 n2 = s.POP();
+                1 s.Push(n2 * n1);
+                0 break;
+            4 case "/":
+                1 n1 = s.POP();
+                1 n2 = s.POP();
+                1 s.Push(n2 / n1);
+                0 break;
+            5 default:
+                s.POP();
+        0}
+    }
+    0 return s.POSH();
+}
+
+Note that the RPN calculator implementation is still missing specificity to the input data. You can improve this by implementing a stack of numbers as well, which will allow you to store the result of each operation. The output stack should be used in all calculations to ensure that only valid results are returned.

@@ -1,0 +1,142 @@
+{
+  "task_id": "20_21-3-1",
+  "title": "Knapsack (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the loop bounds are wrong, base the recurrence marks on whether the student applies the recurrence correctly within their own loop.",
+    "This rubric applies to both Java and Python submissions. The Java method is knapSack(double[] values, int[] volumes, int capacity); the Python function is knapSack(value, volume, capacity). Both are correct.",
+    "Both backward (i from n-1 to 0, referencing row i+1) and forward (i from 0 to n-1, referencing row i-1) DP formulations are acceptable.",
+    "Items can have a volume of 0. The feasibility check volumes[i] <= j correctly handles zero-weight items for j >= 0; the inner loop must include j = 0 to handle zero-weight items at zero remaining capacity.",
+    "Each item can be used at most once (0/1 knapsack)."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "DP table allocation",
+      "tag": "table",
+      "max_marks": 20,
+      "target": "A 2D table of size (n+1) x (capacity+1) is allocated and initialised to 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No 2D table is allocated; only a 1D array or no data structure is used to store subproblem results."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A 2D table is present but has wrong dimensions (e.g., n x capacity instead of (n+1) x (capacity+1)), or is not initialised to 0."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A 2D table of size (n+1) x (capacity+1) is allocated and all cells are initialised to 0."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Loop structure: iterating items and capacities",
+      "tag": "loop",
+      "max_marks": 20,
+      "target": "An outer loop iterates over all n items and an inner loop iterates j from 0 to capacity inclusive, covering all subproblems including zero-weight items at j = 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No nested loops are present; only a single loop or no loop is used."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Nested loops are present but the inner loop starts from j = 1 instead of j = 0 (missing the zero-capacity subproblem needed for weight-0 items), or does not reach capacity, or the outer loop does not cover all n items."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Outer loop iterates over all n items and inner loop iterates j from 0 to capacity inclusive, correctly covering all subproblems including zero-weight items at j = 0."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Capacity feasibility check",
+      "tag": "feasibility",
+      "max_marks": 15,
+      "target": "For each item i and capacity j, volumes[i] <= j is checked before deciding to include the item. This correctly handles both regular items and zero-weight items.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No feasibility check is present; the algorithm attempts to include items regardless of whether they fit, causing index errors or incorrect results."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A feasibility check is present but uses strict inequality volumes[i] < j, incorrectly excluding items that exactly fill the remaining capacity, or excluding zero-weight items at j = 0."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "volumes[i] <= j is checked correctly, allowing inclusion when the item fits exactly or with room to spare, and correctly handling zero-weight items."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Recurrence relation",
+      "tag": "recurrence",
+      "max_marks": 25,
+      "target": "When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j].",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No recurrence is applied; cells are set to a constant or the values array is used directly without referencing previously computed subproblems."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "A max-based recurrence is present but incorrect: only one branch is handled, the wrong row is referenced (current row instead of previous, enabling unlimited item use), or values[i] + Result[prev][j - volumes[i]] is missing the subtraction of volumes[i]."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j]. The previous row is referenced consistently with the chosen loop direction."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns the correct maximum value for all valid inputs, including items with volume 0.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns 0 or an incorrect value for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct results for standard inputs but fails when items have volume 0, or fails for capacity = 0, or the inner loop starting from j = 1 causes incorrect results for zero-weight items."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct maximum value for all valid inputs including zero-weight items and zero capacity; result is read from the correct cell of the DP table."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own table, loop, and recurrence, but the final value is incorrect due to a systematic error (e.g., off-by-one in loop bounds or wrong row reference)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

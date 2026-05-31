@@ -1,0 +1,291 @@
+{
+  "task_id": "asym-3",
+  "title": "Asymptotic Analysis Q3 - Matrix Upper Triangle with Diagonal Helper",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in points 10 and 11).",
+    "Students can use Theta or big-O notation with tight bounds.",
+    "Combined and separated analyses of the nested loop are both acceptable.",
+    "Intended answers: T_f(N) = Theta(N^2) and T_g(N) = Theta(N)."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Splitting code into parts + referencing line numbers",
+      "tag": "structure",
+      "max_marks": 5,
+      "target": "Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous."
+        },
+        {
+          "label": "Correct",
+          "marks": 5,
+          "description": "Clear separation of f's nested loop and the call to g; line numbers referenced consistently."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Constant-time non-loop parts",
+      "tag": "const-time",
+      "max_marks": 5,
+      "target": "All non-loop code in f and g is Theta(1).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Non-loop code not analysed or incorrectly claimed to be non-constant."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Some constant-time segments identified but others missing or vaguely stated."
+        },
+        {
+          "label": "Correct",
+          "marks": 5,
+          "description": "All non-loop regions stated as Theta(1)."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "f(): Nested loop iterations",
+      "tag": "f-iters",
+      "max_marks": 12,
+      "target": "Theta(N^2) combined iterations of the upper-triangle nested loops.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Iteration count missing or not Theta(N^2) (e.g. claims Theta(N))."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(N^2) but with weak or incomplete justification (does not reference the j = i lower bound)."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Justifies Theta(N^2) by summing N + (N-1) + ... + 1 = N(N+1)/2, or by stating outer Theta(N) x average inner Theta(N)."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "f(): Cost per iteration",
+      "tag": "f-per-iter",
+      "max_marks": 12,
+      "target": "Theta(1) per inner iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Claims non-constant per-iteration cost, or does not clearly state it."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "Suggests constant time but with incomplete reasoning."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "States Theta(1), justified by one matrix access and one += assignment."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "f(): Total loop cost",
+      "tag": "f-total-loop",
+      "max_marks": 8,
+      "target": "Theta(N^2) from Theta(N^2) iterations x Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No multiplication of iteration count x per-iteration cost, or total complexity does not match own analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 4,
+          "description": "Multiplies own values but final simplification or reasoning is unclear or incorrect."
+        },
+        {
+          "label": "Correct",
+          "marks": 8,
+          "description": "Theta(N^2) x Theta(1) = Theta(N^2)."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "f(): Cost of Part C (call to g + constant work)",
+      "tag": "f-partC",
+      "max_marks": 6,
+      "target": "Theta(N), accounting for the cost of g plus the constant-time addition and return.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Cost of Part C missing or incorrect."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Notes that cost comes from g but unclear about Theta(N)."
+        },
+        {
+          "label": "Correct",
+          "marks": 6,
+          "description": "Theta(N) for the call to g plus Theta(1) for the addition / return."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "g(): Loop iterations",
+      "tag": "g-iters",
+      "max_marks": 10,
+      "target": "Theta(N) iterations of the diagonal for loop.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Iteration count missing or not Theta(N)."
+        },
+        {
+          "label": "Semi",
+          "marks": 5,
+          "description": "States Theta(N) but explanation is unclear."
+        },
+        {
+          "label": "Correct",
+          "marks": 10,
+          "description": "Justifies Theta(N) because i increments from 0 to N-1."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "g(): Cost per iteration",
+      "tag": "g-per-iter",
+      "max_marks": 8,
+      "target": "Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Claims non-constant per-iteration cost."
+        },
+        {
+          "label": "Semi",
+          "marks": 4,
+          "description": "Suggests constant time but lacks explicit justification."
+        },
+        {
+          "label": "Correct",
+          "marks": 8,
+          "description": "Each iteration Theta(1): one matrix access mat[i][i] and one += assignment."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "g(): Total loop cost",
+      "tag": "g-total-loop",
+      "max_marks": 6,
+      "target": "Theta(N) = Theta(N) iterations x Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Does not combine iteration count x per-iteration cost."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Attempts multiplication using own values but unclear or incorrect."
+        },
+        {
+          "label": "Correct",
+          "marks": 6,
+          "description": "Theta(N) x Theta(1) = Theta(N)."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Overall worst-case runtime of g",
+      "tag": "overall-g",
+      "max_marks": 12,
+      "target": "T_g(N) = Theta(N), summing constant parts and the loop.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Runtime absent or incompatible with earlier analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(N) but with missing reasoning."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 10,
+          "description": "Final not Theta(N), but correctly summed from own earlier values."
+        }
+      ],
+      "note": "Double deduction applies here."
+    },
+    {
+      "id": 11,
+      "name": "Overall worst-case runtime of f",
+      "tag": "overall-f",
+      "max_marks": 16,
+      "target": "T_f(N) = Theta(N^2), accounting for non-loop parts + nested loop + Part C.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Final complexity missing/incorrect."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "States Theta(N^2) but with missing reasoning."
+        },
+        {
+          "label": "Correct",
+          "marks": 16,
+          "description": "Theta(1) + Theta(N^2) + Theta(N) = Theta(N^2), correctly absorbing the lower-order Theta(N)."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 12,
+          "description": "Final not Theta(N^2), but correctly summed from own earlier values."
+        }
+      ],
+      "note": "Double deduction applies here."
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

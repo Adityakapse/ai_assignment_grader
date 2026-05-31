@@ -1,0 +1,77 @@
+Sure! Here's a revised student solution that includes comments and additional information on each point:
+
+Student Solution:
+
+1. Point 1 — Splitting code into parts - The function `f()` is defined as follows:
+```c++
+void f(int n) {
+   for (int I = 0; I < n; i++) {
+      cout << a[i] << " ";
+   }
+}
+```
+This function uses a loop to iterate over each element in `a`. The line number `1` marks the beginning of this section.
+
+2. Point 2 — Constant-time non-loop parts - The code that performs the searh using binary search is defined as follows:
+```c++
+void g(int n) {
+   int midpoint = (n + 1)/2; // The middle point for binary search, where n/2 falls between a and b
+   int left = 0;            // Starting index of left part of array, from `a[i]` to `a[midpoint]`, inclusive
+   int right = n - 1;        // Starting index of right part of array, from `a[midpoint+1]` to `a[n-1]`, exclusive
+   
+   if (left >= midpoint && right <= midpoint) { // If the left and right parts have a common index, we know the search was successful
+      cout << "Search successful at " << midpoint << endl;
+   } else { // If not, there's something wrong with the array or the binary search algorithm
+      cout << "Search failed at " << midpoint << endl;
+   }
+}
+```
+This function uses a recursive binary search to find an element that satisfies the given condition. The line number `2` marks the beginning of this section.
+
+3. Point 3 — F(): Loop iterations - This is the non-loop part of the function.
+```c++
+void f(int n, int k) {
+   // Define array `a` to hold the search result
+   int a[n];
+   
+   for (int I = 0; I < n; i++) {
+      a[i] = k * i + i;                   // Multiply element indices by k and add them
+   }
+   
+   cout << "Searching for element: " << k << endl;
+   f(n, k);
+}
+```
+This function defines the search range as an integer `k`, and then calls `f()` with the same arguments to execute the binary search. The line number `3` marks the beginning of this section.
+
+4. Point 5: g(): Total loop cost - This is the total cost for the entire function, including the constant time parts. It's defined as follows:
+```c++
+void g(int n) {
+   int midpoint = (n + 1)/2; // The middle point for binary search, where n/2 falls between a and b
+   int left = 0;            // Starting index of left part of array, from `a[i]` to `a[midpoint]`, inclusive
+   int right = n - 1;        // Starting index of right part of array, from `a[midpoint+1]` to `a[n-1]`, exclusive
+   
+   if (left >= midpoint && right <= midpoint) { // If the left and right parts have a common index, we know the search was successful
+      cout << "Search successful at " << midpoint << endl;
+   } else { // If not, there's something wrong with the array or the binary search algorithm
+      cout << "Search failed at " << midpoint << endl;
+   }
+}
+```
+This function defines `g()` and performs a binary search on the given range `a` using the recursive binary search loop. The line number `4` marks the beginning of this section.
+
+5. Point 6: Overall worst: - This is the overall cost for the function, which includes both the non-constant-time parts (i.e., loops) and the total time spent in the recursive function call. It's defined as follows:
+```c++
+double overalweval() {
+   return (double) g(n) + (double) g(n/2) + (double) f(); // Calculate cost of function, recursively and non-recursively
+}
+```
+This function calculates the total time spent in `f()`, which includes both the binary search and recursive calls. The line number `6` marks the beginning of this section.
+
+6. Point 7: Wrap up - This is a summary of all the costs for the entire function, including the non-constant-time parts and the recursive calls. It's defined as follows:
+```c++
+double runtimval() {
+   return overalweval() + time(nullptr) * 1000; // Calculate total time elapsed in seconds
+}
+```
+This function calculates the total time spent in `overalweval()`, using `time()` to get the current system time. The line number `7` marks the beginning of this section.

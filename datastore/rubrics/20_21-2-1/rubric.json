@@ -1,0 +1,141 @@
+{
+  "task_id": "20_21-2-1",
+  "title": "Logistics at the North Pole (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the counting array is the wrong size, base the frequency counting marks on whether the student increments the correct index consistently.",
+    "This rubric applies to both Java and Python submissions. The Java method is calc(int[] A, int[] B); the Python function is calc(A, B). Both are correct.",
+    "The substrings 'sort', 'import' (Python), and 'numpy' must not appear in the solution. Penalise in point 5.",
+    "The algorithm must run in O(n + m) time. Solutions using nested loops or sorting are not acceptable."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Counting array allocation",
+      "tag": "count array",
+      "max_marks": 20,
+      "target": "A counting array C of size at least max(A)+1 (equivalently |B| or 10^6+1) is allocated and initialised to 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No counting array is allocated; the algorithm attempts to use nested loops, sorting, or direct comparison without accumulating frequencies."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A counting array is present but has the wrong size (e.g., size n instead of |B| or 10^6+1), which would cause index-out-of-bounds for valid inputs, or the array is not initialised to 0."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A counting array C of size at least max(A)+1 is allocated and initialised to 0, allowing each category in A to be counted by direct indexing."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Frequency counting over A",
+      "tag": "frequency",
+      "max_marks": 25,
+      "target": "For each element a in A, C[a] is incremented by 1, accumulating the count of each category.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "A is not iterated; no frequencies are counted, or the loop iterates over B instead of A."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "A is iterated but the wrong index is incremented: for example, C[i]++ uses the loop index i instead of the element value C[A[i]]++, or counts are overwritten rather than accumulated (= instead of +=)."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "For each element a in A, C[a] is incremented by 1, correctly accumulating the frequency of each category across the entire array."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Output loop bounds",
+      "tag": "loop bounds",
+      "max_marks": 15,
+      "target": "The output loop iterates i from 0 to |B|-1 inclusive, producing a binary string of exactly length |B| = m.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Output loop iterates over A (length n) instead of B (length m), producing a string of the wrong length."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "Output loop iterates over B but with incorrect bounds (e.g., 1 to |B| instead of 0 to |B|-1), producing a string that is one character short or contains an off-by-one error."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "Output loop iterates i from 0 to |B|-1 inclusive, producing a binary string of exactly length m."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Comparison and output character",
+      "tag": "comparison",
+      "max_marks": 20,
+      "target": "For each position i, '1' is appended when C[i] <= B[i] (category fits in one pass), and '0' when C[i] > B[i].",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No comparison between C[i] and B[i] is made; all positions output the same character regardless of counts and capacities."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "C[i] and B[i] are compared but the direction is reversed: '1' is output when C[i] > B[i] and '0' when C[i] <= B[i], inverting the intended result."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "'1' is appended when C[i] <= B[i] and '0' when C[i] > B[i], correctly indicating whether all items of category i fit within the sleigh capacity."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns the correct binary string of length m for all valid inputs in O(n + m) time, without forbidden substrings.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Returns an incorrect string for most inputs, or contains forbidden substrings ('sort', 'import', 'numpy')."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct output for simple inputs but fails for edge cases (e.g., categories with 0 items, B[i] == 0), or the algorithm is O(n*m) due to nested loops."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct binary string for all valid inputs in O(n + m) time; forbidden substrings are absent."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own counting and comparison approach, but the output is incorrect due to a systematic error (e.g., consistently wrong index offset or reversed comparison)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

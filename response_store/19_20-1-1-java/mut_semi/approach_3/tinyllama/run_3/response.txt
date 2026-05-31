@@ -1,0 +1,26 @@
+Here is a solution using Python's built-in builtins:
+
+```python
+import math
+
+def lcm(a, b):
+    if b == 0:
+        return a
+    
+    return (math.gcd(a, b) * a) / b
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+        
+    return a
+
+try:
+    print("Error: LCM function is not implemented.")
+except NameError:
+    print("Functionality unavailable at this time. Please try another problem.")
+```
+
+In this implementation, the LCM function will attempt to compute the greatest common divisor of two given integers `a` and `b`. If either input is zero, the function will return the other input as the LCM. Otherwise, it will take a single input `a`, and divide `b` by gcd(a, b) to obtain the remainder when dividing `b` into `a` using Euclidean algorithm. Then the function returns (gcd(a, b) * a) / b.
+
+This implementation is built-in Python's builtins functions and does not require any additional libraries or modules. You can use it in your own Python scripts with ease. Feel free to modify the code as per your requirements.

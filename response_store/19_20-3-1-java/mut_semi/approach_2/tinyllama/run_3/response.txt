@@ -1,0 +1,213 @@
+POINT_ID: 1
+Rule #1: Output only the two lines above — no preamble, no summary, no extra text.
+
+Example output:
+MARKS: 0
+FEEDBACK: The solution increments a counter until a multiple of both a and b is found, which is O(lcm(a,b)) and far slower than the GCD-based formula used in the sample solution.
+
+POINT_ID: 2
+Certainly! Here's a modified code that uses the "larger" operator and checks for greater than, equal to, and less than comparisons respectively:
+
+```java
+/**
+ * Sorts a list of integers using BubbleSort algorithm.
+ * 
+ * @param <T> The type of elements in the list.
+ * @param list The list of integers.
+ */
+public class BubbleSort<T extends Comparable<T>> {
+    /**
+     * Returns an empty sorted list.
+     *
+     * @param <T> The type of elements in the list.
+     * @return An empty sorted list.
+     */
+    public static <T extends Comparable<T>> ListToSort<T> createEmpty() {
+        return new LinkedListToSort<>();
+    }
+
+    /**
+     * Sorts a list using BubbleSort algorithm.
+     * 
+     * @param <T> The type of elements in the list.
+     * @param list The list to sort.
+     */
+    public static <T extends Comparable<T>> void sort(ListToSort<T> list) {
+        // Implementation of BubbleSort
+        for (int I = 0; I < list.Lengt(); i++) {
+            for (int j = list.Lengt() - 1; j > i; j--) {
+                if (list.Smaller(j, j-1)) { // less than comparison
+                    T temp = list.Swap(i, j); // swap the elements
+                    int k = j - 1; // index of element to swap with
+                    while (k >= I && list.Smaller(k+1, k-1)) {
+                        list.Swap(k, k-1); // swap elements if they are in wrong order
+                        k--;
+                    }
+                    if (i != j) {
+                        list.Swap(j, k); // swap elements again to make sure they're in correct order
+                    }
+                }
+            }
+        }
+        return list; // returns sorted list
+    }
+
+    /**
+     * Performs a comparisons (larger than, equal to or less than) using the given operator.
+     * 
+     * @param <T> The type of elements in the list.
+     * @param index The index argument used for comparisons.
+     * @param op The comparision operator to use (either ">", "=", "<").
+     * @return True if the comparison is made correctly, false otherwise.
+     */
+    public static boolean compare(int index, int op) {
+        return index < list.Lengt() ? Smaller(index, list.Lengt()) : Larger(index, list.Lengt()); // checks greater than or less than comparison
+    }
+
+    /**
+     * Performs a comparisons (larger than, equal to or less than) using the "equals" operator.
+     * 
+     * @param <T> The type of elements in the list.
+     * @param index The index argument used for comparisons.
+     * @return True if the comparison is made correctly, false otherwise.
+     */
+    public static boolean equals(int index) {
+        return index < list.Lengt() ? Smaller(index, list.Lengt()) : Larger(index, list.Lengt()); // checks greater than or less than comparison
+    }
+
+    /**
+     * Initializes a new empty sorted list.
+     * 
+     * @return The initialized list.
+     */
+    public static ListToSort<T> createEmpty() {
+        return createEmpty(new LinkedList<>()); // creates an empty list using the linked list constructor
+    }
+
+    /**
+     * Initializes a new sorted list using the given list.
+     * 
+     * @param <T> The type of elements in the list.
+     * @param list The list to initialize.
+     * @return The initialized list.
+     */
+    public static <T extends Comparable<T>> ListToSort<T> createEmpty(ListToSort<T> list) {
+        if (list == null) {
+            throw new IllegalArgumentException("List cannot be null"); // throws exception if the list is null
+        } else {
+            return new LinkedListToSort<>(sort(list)); // creates an empty sorted list from the given one using the linked list constructor
+        }
+    }
+}
+```
+
+POINT_ID: 3
+To implement a search algorithm from the lecture, we need to sort the given list first before looking for the element to be searched for. Then, we need to perform a binary search on the sorted list using an index that matches the position of the desired element. If the element is found in the sorted list, then the search succeeds, and we return its index; otherwise, the search fails.
+
+Here's how we can implement such a search algorithm using the implementation of BubbleSort given earlier:
+
+```java
+public int BinarySearch(ListToSort list, int element) {
+    
+    // Implement binary search for sorted list
+    for (int I = 0; I < list.Length(); i++) {
+        
+        // If the current element is greater than or equal to the element to be searched for
+        if (list.Smaller(i, element) && !list.Equal(i, element)) {
+            // Check if the element was found in the sorted list after a swap step
+            int j = i + 1;
+            while (j < list.Length() && list.Smaller(j, j - 1)) {
+                j++;
+            }
+            
+            return j; // Searched element found at index j
+        }
+        
+        // If the current element is less than or equal to the element to be searched for
+        if (list.Smaller(i, element) && list.Equal(i, element)) {
+            // Check if the element was found in the sorted list after a swap step
+            int j = i + 1;
+            while (j < list.Length() && list.Smaller(j, j - 1)) {
+                j++;
+            }
+            
+            return j; // Searched element found at index j
+        }
+    }
+    
+    // No match was found in the sorted list
+    return -1; // Index out of bounds error
+}
+```
+
+To use this search algorithm, we can call it with the given list and the desired element. The `BinarySearch` method will return the index of the matched element (or `-1` if no match was found) or throw an exception in case of a match failure.
+
+POINT_ID: 4
+Answer to Question:
+
+To sort a given list using BubbleSort algorithm, the following steps can be taken:
+
+1. Implement a method called "Sort" in the class "ListToSort". It takes a reference to the list and returns it sorted by Bubblesort.
+
+```csharp
+public ListToSort Sort(ListToSort list) {
+     // Implementation of BubbleSort
+     for (int I = 1; i < list.Length(); i++) {
+         for (int j = list.Length() - 1; j > I - 1; j--) {
+             if (list.Smaller(j, j-1)) {
+                 list.Swap(j, j-1);
+             }
+         }
+     }
+     return list;
+}
+```
+
+2. The BubbleSort method can be called on a reference to the list with the following line:
+
+```csharp
+return this.Sort();
+```
+
+This will invoke the "Sort" method with the list as its parameter, and return the sorted list.
+
+The above implementation of BubbleSort uses Length() as the loop bounds (valid range: 0–15), which is set to the length of the list in the constructor.
+
+POINT_ID: 5
+To implement a binary search algorithm that sorts the given list, you can use the following code snippet:
+
+```csharp
+public static ListToSort BinarySearchSort(ListToSort list) {
+    int lowerBound = 0;
+    int upperBound = list.Length() - 1; // bounds checking from 1 to len-1 inclusive
+    
+    while (lowerBound <= upperBound) {
+        int mid = (lowerBound + upperBound) / 2; // find midpoint between lower and upper bound
+        
+        if (list.Smaller(mid, mid+1)) {
+            list.Swap(mid, mid+1); // swap elements at mid and mid+1
+            upperBound = mid - 1; // update upper bound to include mid and its left child
+        } else {
+            lowerBound = mid + 1; // update lower bound to include mid and its right child
+        }
+    }
+    
+    return list.Select((x, i) => new { x, i }).Where((x, i) => x.i == upperBound).Single().x;
+}
+```
+
+The `BinarySearchSort` method takes the given list `list`, which is guaranteed to be sorted in ascending order by default, and returns a new list sorted in descending order (by default). The method uses bounds checking on the input bounds to ensure that the list is properly sorted:
+
+- The input is checked to see if it has less than or equal to 1 element. If this condition is false, an InvalidOperationException is thrown.
+- If the input has more than one element and any of them are out of range (i.e., their index greater than or equal to its corresponding index in the list), an IndexOutOfRangeException is thrown. This ensures that the list is not corrupted by accidentally swapping elements at the wrong indices.
+- The binary search algorithm is applied on the input bounds, and if there are multiple possible values for `mid`, the smallest value is picked as the correct midpoint. This ensures that all values in the input will be sorted after the binary search has finished.
+
+You can implement this method by defining a new type called `ListToSort` to hold the sorted list, and adding an extension method to convert the given `ListToSort` object to another type. For example:
+
+```csharp
+public static class ListExtensions {
+    public static ListToSort ToListToSort(this ListToSort list) => new ListToSort(list); // define a new type with the sorted list as its only property
+}
+```
+
+This code snippet can be used to convert any `ListToSort` object (`IReadOnlyList<T>` or `IEnumerable<T>`) to another `ListToSort` object, which will be sorted in descending order.

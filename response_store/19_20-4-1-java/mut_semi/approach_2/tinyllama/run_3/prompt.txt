@@ -1,0 +1,332 @@
+QUESTION:
+These tasks will be about search trees. Our search trees are built from
+"nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method "insert" that inserts a
+"Node" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 1 — Traversal to the insertion point (valid range: 0–25)
+  A loop (or recursive call) walks from the root to a null position, moving left when insert.key < x.key and right otherwise, until the correct empty slot is reached.
+
+========================================
+
+QUESTION:
+These tasks will be about search trees. Our search trees are built from
+"nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method "insert" that inserts a
+"Node" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 2 — Parent tracking during traversal (valid range: 0–20)
+  A separate pointer (e.g., y) is maintained and updated at each step of the traversal, so that after the loop it holds the parent of the null insertion point.
+
+========================================
+
+QUESTION:
+These tasks will be about search trees. Our search trees are built from
+"nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method "insert" that inserts a
+"Node" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 3 — Attaching insert as left or right child (valid range: 0–20)
+  After traversal, insert is attached as the left child of the parent when insert.key < parent.key, and as the right child otherwise.
+
+========================================
+
+QUESTION:
+These tasks will be about search trees. Our search trees are built from
+"nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method "insert" that inserts a
+"Node" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 4 — Setting insert.parent (valid range: 0–15)
+  insert.parent is set to the parent node found during traversal (y), establishing the upward link.
+
+========================================
+
+QUESTION:
+These tasks will be about search trees. Our search trees are built from
+"nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method "insert" that inserts a
+"Node" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns a valid BST after insertion for all inputs, including inserting into an empty tree.

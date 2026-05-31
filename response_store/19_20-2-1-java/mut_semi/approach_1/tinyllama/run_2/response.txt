@@ -1,0 +1,70 @@
+I do not have access to the lecture or jupyter notebook. However, here's a general overview of how you can implement a class "Queue" in python that works like a queue (as described in the lecture):
+
+1. Define a new class called "Queue":
+
+```python
+class Queue:
+    # constructor with no arguments
+    def __init__(self):
+        self.buffer = []  # internal array of elements
+        self.end = 0  # end index (starting from 0)
+        
+    # method to check if the queue is empty (returns True if it's empty, False otherwise)
+    def empty_queue(self):
+        return len(self.buffer) == 0
+    
+    # method to get and remove the front element of the queue (first element if the queue is empty)
+    def head(self):
+        if self.empty_queue():
+            raise QueueEmptyException("Queue is empty")
+        return self.buffer[self.end]
+    
+    # method to insert an element at the back of the queue (if necessary)
+    def enqueue(self, item: object):
+        if len(self.buffer) == 0 or item < self.head():
+            self.end = max(self.end + 1, len(self.buffer))
+        self.buffer.append(item)
+    
+    # method to remove and return the front element of the queue (first element if it's empty)
+    def dequeue(self):
+        if self.empty_queue():
+            raise QueueEmptyException("Queue is empty")
+        return self.head()
+```
+
+2. Add appropriate comments and variable names for readability:
+
+- The "Queue" class should have a constructor with no arguments, initialized to an empty array.
+- The method "empty_queue()" checks if the queue is empty (returns True if it's empty and False otherwise).
+- The method "head()" returns the element at the front of the queue (first element if it's empty) or raises a QueueEmptyException, indicating that the queue is empty.
+- The method "enqueue(item)" inserts the given item at the back of the queue (if necessary), adjusting the buffer index as needed.
+- The method "dequeue()" returns the front element of the queue without modifying any internal state, using the head() method to get the next element if it exists.
+
+3. Test your implementation with a jupyter notebook:
+
+1. Create an instance of your Queue class by initializing its buffer array with the length and capacity (as specified in the lecture):
+
+```python
+queue = Queue()
+print(len(queue))  # check that it's empty initially
+print(queue.empty_queue())
+```
+
+2. In each test case, insert a new element into the queue, then remove and return the front item:
+
+```python
+for I in range(5):
+    queue.enqueue(i)
+print(queue.head())  # check that it's non-empty initially
+print(queue.dequeue())
+print(queue.head())
+```
+
+3. Verify the methods' correctness:
+
+- The empty_queue() method should return True if the queue is empty, and False otherwise.
+- The head() method returns the element at the front of the queue or raises a QueueEmptyException if it's empty.
+- The enqueue() method inserts the given item into the buffer array and updates the end index as needed, returning the new index of the element (or -1 if the buffer is full).
+- The dequeue() method removes and returns the front element from the buffer array without modifying any internal state, returning -1 in case the queue is empty.
+
+note: this implementation may not be completely accurate to the lecture's specification, as I don't have access to the actual textbook or code. However, it should get you on the right path and help you understand how to implement a basic queue in python.

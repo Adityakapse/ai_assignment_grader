@@ -1,0 +1,395 @@
+POINT_ID: 1
+To grade only the rubric point, use this rubric point description as your starting point:
+
+MARKS: <number>
+FEEDBACK: 
+   Specific to the student's submitted analysiis, not generic.
+   Graduate the rubric point, including the two lines above with the student's actual analysis in text format.
+
+Rule #1: Output only the two lines above - no preambles or summaries, just detailed analyses and feedback for each function.
+
+RUBRIC POINT: AsymQ1 (SAMPLE SOLUTION: Asymmetric Q1)
+
+Step 1: Identify the length N of the input array `a`.
+
+Step 2: Write a detailed analysiс of both functions based on N.
+
+    Part A: Int n = a.lengt; // A.LenGTH is constant-time initialisation for all i and j
+        int s = 0, t = g(a);
+        return s + t; // A.F has a single call to g plus a constant-time return
+
+    Part B (nested loops): // Combined iterations when i=0 ... n-1
+        for (int I = 0; I < N; i++) {
+            for (int j = 0; j <= I; j++) {
+                s += a[j] * a[i];
+            }
+        }
+        int t = g(a); // Part B is a single call to g plus constant-time return
+        return s + t; // A.F has two array reads, one multiplication and add, one += assignment. The total cost is Theta(N^2) * Theta(1).
+
+    Step 3: Write an executable sample solutiion based on the functions outputed by Part A of SAMPLE SOLUTION (SAMPLE SOLUTION: Asymmetric Q1).
+    
+Step 4: Comment your code with brief explanations and references to relevant parts of SAMPLE SOLUTION.
+
+    Step 5: Provide a detailed analysiс for the entire function, taking into account Part A and SAMPLE SOLUTION.
+
+POINT_ID: 2
+Question: Calculate the asymptotic worst case running time of functions `f` and `g`, as a function of length `n` of input array `a`. Include detailed analyzes for both functions, specify the cost per iteration in each loop, and justify each step with specific Theta notation. Use text fields to include both analyses and analyse the overall running time of both functions.
+
+POINT_ID: 3
+Here's the text field provided:
+
+MARKS:
+- Use a numeric mark for each rubric point with its valid range (min to max). - Write a short, specific feedback sentence grounded in what the student actually wrote. - Gradate only what this rubric point describes - Ignore everything else. MARKS must be a whole number within the valid range for this point. FEEDBACK must be specific to the student's submitted analysi-s of both functions. You can use the Theta notation or the big-O notation with ti-ght bounds. Your analysi-s should refer to line numbers. For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analysi-s should be justified with one or two sentences.
+
+Public final class AsymQ1 {
+     // `a` has length N.
+     // Your analysi-s should be based on N.
+     public static int f(int[] a) {
+         int n = a.length;
+         int s = 0;
+         for (int I = 0; I < n; i++) {
+             for (int j = 0; j <= i; j++) {
+                 s += a[j] * a[i];
+             }
+         }
+         int t = g(a);
+         return s + t;
+     }
+
+     private static int g(int[] a) {
+         int n = a.length;
+         int t = 0;
+         int k = n;
+         while (k > 0) {
+             t += a[k - 1];
+             k = k / 2;
+         }
+         return s + t;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; — constant-time initialisation.
+Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2). Cost per iteration: Theta(1) — two array reads, one multiplication, one += assignment, loop checks and increments. Total cost of Part B: Theta(N^2) iterations x Theta(1) = Theta(N^2).
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminate(s) after Theta(log N) * Theta(1) iterations (k reaches 0 when it has been halved log2(N)+1 times). Overall, g runs in Theta(log N) and f runs in Theta(N^2). STUDENT SOLUTION:
+F:
+G:
+S:
+n = a.length; s = 0;
+t = 0;
+k = n;
+while (k > 0) {
+    t += a[k - 1];
+    k = k / 2;
+}
+return s + t;
+
+POINT_ID: 4
+Here's an updated version of the feedback given earlier, based on each function's asymptotic worst-case running time and a detailed analyzi including line numbers:
+
+MARKS:
+- SAMPLE SOLUTION (1)
+
+AsymQ1/f:
+Part D:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part D: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) = Theta(log N).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+STUDENT SOLUTION (2):
+AsymQ1/g:
+Part D:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part D: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) = Theta(log N).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+RBRIC POINT:
+- SAMPLE SOLUTION (3)
+
+AsymQ1/f:
+Part D:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+STUDENT SOLUTION (4):
+AsymQ1/g:
+Part D:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part D: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+RBRIC POINT:
+- SAMPLE SOLUTION (5)
+
+AsymQ1/f:
+Part D:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+STUDENT SOLUTION (6):
+AsymQ1/g:
+Part D:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) + Theta(log N) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(log N) = Theta(log N).
+
+POINT_ID: 5
+Here's a revised version of the text with additional details regarding Theta notation, big-O notation, and generic loops:
+
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your analyziSs should be based on N.
+- You can use Theta notation or big-O notation with ti gh bounds (as per the given rubric).
+- Each step of the analyZiS should refer to a specific loop and mention the iteration count (`n`) and cost per iteration (`t` - `g(a)`).
+- Use one or two sentences for each loop analysis.
+
+public final class AsymQ1 {
+     // `a` has length N.
+     // Your analyZiS should be based on N.
+     public static int f(int[] a) {
+         int n = a.lengtH;  // Theta notation or big-O notation with ti gh bounds
+         int s = 0;
+         for (int I = 0; I < n; i++) {
+             for (int j = 0; j <= i; j++) {
+                 s += a[j] * a[i];  // Theta(1)
+             }
+         }
+         int t = g(a);
+         return s + t;
+     }
+
+     private static int g(int[] a) {
+         int n = a.lengtH;  // Theta notation or big-O notation with ti gh bounds
+         int t = 0;
+         int k = n;
+         while (k > 0) {
+             t += a[k - 1];  // Theta(1)
+             k = k / 2;      // Constant-time initialisation
+         }
+         return s + t;       // Theta(n^2)
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.lengtH;  // Theta notation or big-O notation with ti gh bounds
+Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N. Total = 1 + 2j+...+N = n - 2j + N - 2
+    for (int I = 0; I < n; i++) {
+        for (int j = 0; j <= I; j++) {
+            s += a[j] * a[i]; // Theta(1)
+        }
+    }
+    int t = g(a);
+    return s + t;       // Theta(n^2)
+
+Each step of the inner loop corresponds to an array access, a multiplication and an addition. All of these operations have O(1) complexity. So each iteration of the inner loop costs `Theta(n)` time (as per the given rubric).
+
+Overall, g runs in Theta(n^2), since it contains both constant-time initialization (`t = 0`) and a nested loop (`for (int I = 0; I < n; i++) {`); t takes O(1) time. The outer loop (`for (int j=0; j<=i; j++)`) starts at `j=0`, runs the inner loop for each element of `a`, and ends up with `s += a[j] * a[i]`. Each element of `a` occurs once in each loop iteration, and so this step takes O(n) time. Finally, g is called on the inner loop's output `(s+t)` (which we can assume has the correct value since it's from the previous iteration), which in turn takes O(1) time due to `a[i] += t` and `a[j]` being constant-time.
+
+Following these steps, we end up with a loop of n iterations (`n = 2^I`), each with a running total of n `s` and a cost per iteration of `Theta(n)`. The asymptotic worst case occurs when the number of iterations grows very quickly (e.g. If the value of n is very large, e.g. N == 10^5), so this makes the runtime worse than it would be if we had only looked at the single loop iteration that's taking `Theta(n)` time. This isn't true in general, but for practical purposes it works well enough to use the time complexity of the outer loop and the constant-time operation inside it as a baseline for future work.
+
+POINT_ID: 6
+As per your provided text, we have graded a student's written asymptotic-complexity analysi of two given functions: `f` and `g`. Based on the passage above, please provide an answer to each question or instruction, including details and specific examples as appropriate.
+
+QUESTION 1:
+MARKS:
+5 points for this rubric point within the stated valid range (0-6)
+FEEDBACK:
+As per your provided text, your analysi of `f` should include a detailed analysi of both functions. Can you please provide specific examples and details to support your answer?
+
+MARKS:
+12 points for this rubric point within the stated valid range (0-6)
+FEEDBACK:
+Yes, based on the text provided, we can see that f has two nested loops and each iteration of the inner body performs an array read, multiplication, and addition into `s`. Each step in these loops costs Theta(N^2) * Theta(1), so the total cost is Theta(N^2). However, to evaluate g as a function of `n`, we only need to consider its initialization (i.e., n = a.lengtH). Since a.lengtH starts at 0 and halves itself logarithmically each time, the loop terminates after Theta(logN) iterations, or roughly N^2 times in total. So g has a constant-time initialisation cost of Theta(logN), and for its entire runtime, g is a constant-time function that additionally costs Theta(1). Therefore, according to the text, the overall running time of f is Theta(N^2) + Theta(logN) + Theta(1) = Theta(N^2), which is within the stated valid range for this rubric point.
+
+POINT_ID: 7
+QUESTION:
+How does the student's written asymptotic-complexity analysi for the functions f and g differ from the rubric point for both functions in terms of valid range?
+
+RUBRIC POINT:
+Valid range is 0–10. The student's written analyzis is not based on this valid range, but rather a different valid range of N, which differs by one or two steps from the given valid range for both functions.
+
+METHOD FOR GRADED ANALYSISES:
+Based on the rubric point and the rubric's description that "The student's written analysi must be a single rubric point with its title, description, and valid mark range (min to max)", we can derive our own graded analyses based on these requirements. Here are two sets of graded analyses for each function:
+
+AsymQ1 (f):
+[SAMPLE SOLUTION]
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; — constant-time initialisation.
+Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2). Parts A and the return statement of Part C are Theta(1). Parts B (nested loops):
+- Combined iterations: when i = 0 the inner loop runs once; when i = 1 it runs twice; ...; when i = N-1 it runs N times. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2). - Cost per iteration: Theta(1) — two array reads, one multiplication, one += assignment, loop checks and increments. - Total cost of Part B: Theta(N^2) iterations x Theta(1) = Theta(N^2). Method g
+Part D: int n = a.length; int t = 0; int k = n; — constant-time initialisations.
+Part E (while loop): each iteration accesses a[k-1] and halves k. Part F: return t; — constant time. Parts D and F are Theta(1). Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminate(s) after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times). - Cost per iteration: Theta(log N) * Theta(1) = Theta(log N). Overall, f has one nested loop that runs log2(N) times and g has a single nested loop of length 1 with half the iterations halved from the first half. Therefore, g is not based on the same valid range as f, and can potentially have lower valid marks compared to f for the same rubric point.
+
+POINT_ID: 8
+AsymQ1's two functions f and g both have a loop that iterates over the length N of an array `a`. The setup statements for these loops are constant.
+
+Both f and g use one loop to initialize variable s, which is then used in a nested loop with an inner loop over each element of `a` at position 0 until 0, and an outer loop over all elements from 1 up to the end. The cost of these iterations is also constant, as they do simple array reads, multiplications and additions.
+
+Both functions use a single loop in g (i) with a constant-time return statement to compute the asymptotic worst case running time. For every loop, `a` has length N, so overall running time is Theta(N^2).
+
+Part A of f initializes and returns s, which then gets multiplied by another array in Part B, where it's combined with another set of inner loops over the same elements at different positions. Part C involves a simple `return` operation, again with constant-time costs.
+
+For g, each nested loop iterates roughly N^2 times (due to matrix multiplication and addition), with additional extra costs from the inner loop due to accesses to `a`. So total running time is Theta(N^2) * Theta(1).
+
+Overall, g runs in Theta(log N) and f runs in Theta(N^2).
+
+POINT_ID: 9
+To grade the student's written asymptotic-complexity analysi of functions f and g using Theta notation, we can follow these steps:
+
+1. Read the student's analysi of functions f and g from their text field provided.
+2. Read the student's analysi of functions g from the same text field.
+3. Assign a numeric mark to each line based on the length of array `a` in `g()`.
+4. Use Theta notation with tiigh bounds for the length of input array `a`.
+5. Analyze the loop cost per iteration using Theta(1) as the cost for the inner loop in Part A and Theta(log N) for each iteration of Part B.
+6. Calculate the total cost of Parts A and Part C, which is Theta(log N).
+7. Summarize the costs of both parts and the student's overall running time using Theta notation.
+
+For example, if `a` has a length of 10, the total cost for Part B would be Theta(N^2) or 42 (n=10 * log 10 + 2), and the running time in Theta(log N).
+
+We can also use the Theta notation to specify each part's runtime per loop:
+
+Part A:
+- Cost of inner loop in Part A: Theta(1)
+- Runtime cost for Part B (nested loops): Theta(N^2) * Theta(1) = Theta(N^2)
+- Total runtime for both parts: Theta(log N) + Theta(N^2) * Theta(1) = Theta(log N) + 42 (n=10 * log 10 + 2)
+
+Part C:
+- Cost of the call to g: Theta(log N)
+- Runtime cost for Part C: Theta(log N) * Theta(1) = Theta(log N)
+
+Overall, the total running time would be Theta(log N) + 42 (n=10 * log 10 + 2), which is Theta(N^2).
+
+POINT_ID: 10
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+Method f
+Part A: int n = a.length; int s = 0; — constant-time initialisation.
+Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N.
+Part C: int t = g(a); return s + t; Parts A and the return statement of Part C are Theta(1).
+Part B (nested loops):
+- Combined iterations: when i = 0 the inner loop runs once; when i = 1 it runs twice; ...; when i = N-1 it runs N times. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) — two array reads, one multiplication, one += assignment, loop checks and increments.
+- Total cost of Part B: Theta(N^2) iterations x Theta(1) = Theta(N^2).
+Part C:
+- Cost of the call to g is Theta(log N) (see analyzi of g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+Overall running time of f:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2).
+Method g
+Part D: int n = a.length; int t = 0; int k = n; — constant-time initialisations.
+Part E (while loop): each iteration accesses a[k-1] and halves k. Part F: return t; — constant time.
+Parts D and F are Theta(1).
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminate( k reaches 0 when it has been halved log2(N)+1 times).
+- Cost per iteration: Theta(1) — one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+STUDENT SOLUTION:
+f has two nested loops and then calls g. The setup statements are constant.
+The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N. Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations. So the nested loops cost Theta(log N) * Theta(1) = Theta(log N).
+Then f calls g, which adds some extra cost from g.
+g has a while loop that runs Theta(log N) times. Each iteration of g does an array access, an addition and a division, all of which are O(1). Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N).
+Overall, g runs in Theta(log N) and f runs in Theta(N^2).
+
+POINT_ID: 11
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+public final class AsymQ1 {
+    
+    // `a` has length N.
+    
+    public static int f(int[] a) {
+        
+        int n = a.length;
+        int s = 0;
+        int t = g(a);
+        return s + t;
+    
+    }
+    
+    private static int g(int[] a) {
+        
+        int n = a.length;
+        int t = 0;
+        for (int I = 0; I < n; i++) {
+            
+            for (int j = 0; j <= i; j++) {
+                
+                s += a[j] * a[i];
+                
+            }
+        
+        }
+        
+        int t = g(a);
+        
+        return s + t;
+    
+    }
+}

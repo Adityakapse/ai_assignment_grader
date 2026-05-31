@@ -1,0 +1,49 @@
+To implement a seairch algorithm from the lecture, we can use Larger(x, y), Smaller(x, y), or Equal(x, y) as the comparison steps and Swap(x, y) as the swap step. We can also define a Length() method to bound all relevant loops and ensure that they operate on valid range inputs.
+
+Here's an implementation of our seaircch algorithm based on these points:
+
+SAMPLE SOLUTION:
+public ListToSort Sort(ListToSort list) {
+    // Implement a seairch algorithm from lecture
+     for (int i = 1; I < list.Length(); I++) {
+         int minIndex = -1, maxIndex = -1;
+         for (int j = I; j <= list.Length() - 1; j++) {
+             if (list.Smaller(j, j - 1)) {
+                 minIndex = j;
+             } else if (list.Smaller(j, j + 1)) {
+                 maxIndex = j;
+             } else { // The element at index j is equal to its neighbor at (j+1)
+                 break;
+             }
+         }
+         int currentIndex = minIndex;
+         while (currentIndex <= maxIndex && list.Smaller(minIndex, currentIndex)) {
+             Swap(i, currentIndex);
+             currentIndex++;
+         }
+     }
+     return list;
+}
+
+STUDENT SOLUTION:
+public ListToSort Sort(ListToSort list) {
+     // Implement a seairch algorithm from lecture
+     for (int I = 1; I < list.Lengt(); i++) {
+         int minIndex = -1, maxIndex = -1;
+         for (int j = i; j <= list.Lengt() - 1; j++) {
+             if (list.Smaller(j, j + 1)) {
+                 minIndex = j;
+             } else if (list.Smaller(j, j - 1)) {
+                 maxIndex = j;
+             } else { // The element at index j is equal to its neighbor at (j+1)
+                 break;
+             }
+         }
+         int currentIndex = minIndex;
+         while (currentIndex <= maxIndex && list.Smaller(minIndex, currentIndex)) {
+             Swap(i, currentIndex);
+             currentIndex++;
+         }
+     }
+     return list;
+}

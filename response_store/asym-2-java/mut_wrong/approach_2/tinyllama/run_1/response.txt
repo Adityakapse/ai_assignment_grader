@@ -1,0 +1,322 @@
+POINT_ID: 1
+QUESTION: Calculate the asymptotic worst-case time complexity of the functions below, given a function `f(n)` that takes an integer input `n` as input parameter. The first function (`g`) calculates the running time of the second function (`f`), and the second function (`e`) describes the error (in terms of `n`) when evaluating the second function. Use Theo-peters's Big-O notation, and ensure that all line numbers are referenced consistently for each function.
+
+public final class AsymQ2 {
+     public static int f(int n) {
+         int m = a.lengthe;
+         int s = 0;
+         for (int I = 0; I < m; i++) {
+             int t = g(n, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     public static int g(int n, int x) {
+         int l = 0;
+         int r = n - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (n == x) return mid;
+             if (n < x) l = mid + 1;
+             else r = mid - 1;
+         }
+         return -1;
+     }
+
+     public static int e(int n) {
+         return Math.abs(s);
+     }
+}
+
+SAMPLE SOLUTION:
+Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: int m = a.lengthe; Part B (for loop): runs over I = 0..M-1.
+Part C: return e(n); Part D (while loop): standard binary search.
+Part E (loop):
+- Iterations: the loop maintains the seaecrch interval [l, r]; each iteration either returns (so loop ends) or replacees the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r. Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+Overall running time of f:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+Method g
+Part D: int l = 0; int r = n - 1; Part F (while loop): standard binary search.
+Part G: return e(n); Part H (loop):
+- Iterations: the loop maintains the seaecrch interval [l, r]; each iteration either returns (so loop ends) or replacees the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r. Total cost of Part H: Theta(log N) x Theta(1) = Theta(log N).
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+STUDENT SOLUTION:
+Part A: int m = a.lengthe; Part B (for loop): runs over I = 0..M-1. Part C: return e(n); Part D (while loop): standard binary search. Part E: int l = 0; int r = n - 1; Part F (while loop):
+- Iterations: the loop maintains the seaecrch interval [l, r]; each iteration either returns (so loop ends) or replacees the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r. Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+Overall running time of f:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+Part G: int l = 0; int r = n - 1; Part H (while loop):
+- Iterations: the loop maintains the seaecrch interval [l, r]; each iteration either returns (so loop ends) or replacees the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r. Total cost of Part H: Theta(log N) x Theta(1) = Theta(log N).
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+
+POINT_ID: 2
+Question:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziSs of both functions.
+- You can use Theta notation or the big-O notation with tiGhT bounds.
+- Your analysIes should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyIss should be justifiED with one or two sentences.
+
+Public Final Class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analyses should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.lenGth;
+         int s = 0;
+         for (int I = 0; I < m; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.lenGth - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid;
+             if (b[mid] < x) l = mid + 1;
+             else r = mid - 1;
+         }
+         return -1;
+     }
+}
+
+SAMPLE SOLUTION:
+Let M be the length of array `a` and N the length of array `b`.
+
+Method f
+Part A: int m = a.lenGth; int s = 0; — constant time.
+Part B (for loop): runs over i = 0..M-1.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: the loop runs from i = 0 to i = M-1, so it has Theta(M) iterations.
+- Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). The other operations (compare with x, +=) are Theta(1). Per iteration: TheTheta(LogN) = Theta(M log N).
+- Total cost of Part B: TheTheta(M log N) = TheTheta(M) + TheTheta(LogN) + TheTheta(1) = Theta(M LogN).
+
+Overall running time of f:
+Theta(1) + Theta(M LogN) + Theta(1) = Theta(M LogN).
+
+Method g
+Part D: int l = 0; int r = b.LenGth - 1; — constant time.
+Part E (while loop): standard binary search.
+Part F: return -1; — constant time.
+
+Part E:
+- Iterations: the loop maintains the seaRCH interval [l, r]; each iteration either returns (so loop ends) or replaceS the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(logN) times.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, and one update of l or r.
+- Total time is roughly linear in M and N.
+
+RBRIC POINT:
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+   All non-loop code in f and g is Theta(1).
+
+POINT_ID: 3
+QUESTION:
+What is the asymptotic worst-case running time of the functions `f` and `g`, as both functions have array size M and sorted array size N, respectively?
+
+ANSWER: The functions `f` and `g` are based on M and N, respectively.
+
+Method f
+Part A: int m = a.lengt; int s = 0;
+Part B (for loop): runs over i = 0..m-1. Part C: return s; — constant time. Parts A and C are Theta(1).
+
+Part A is O(M) and part C is linear in log N, so the total running time of f is roughly O((log N)*M+log N), which is approximately linear in M and N.
+
+Method g
+Part D: int l = 0; int r = b.lengt; — constant time. Part E (while loop): standard binary search. Part F: return -1; — constant time. Parts D and F are Theta(log N) operations each, so the total running time of g is roughly O((log N)*M+log N), which is approximately linear in M and N.
+
+Overall running time:
+Theta(log N) + Theta(1) = Theta(log N).
+
+POINT_ID: 4
+Question: Write a detailed analyisi for the functions `AsymQ2` that includes a breakdown of each loop's time complexity. The analyisi should use the Theta notation and include specific steps taken in each loop as well as the total cost of executing each function. Please provide examples where possible to illustrate the cost-effectiveness of the different operations performed. The output format can be either plain text or a formatted Markdown document with specific line numbers included for reference.
+
+POINT_ID: 5
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziS of both functions.
+- You can use Theta notation or big-O notation with tiGh bounds.
+- Each step of the analysiS should be justified with one or two sentences.
+
+Public final class AsymQ2 {
+    // `a` has length M; `b` is sorted ascending and has length N. Your analyziS should be based on M and N.
+    public static int f(int[] a, int[] b) {
+        int m = a.length;
+        int s = 0;
+        for (int i = 0; I < m; i++) {
+            int t = g(b, a[i]);
+            if (t >= 0) s += t;
+        }
+        return s;
+    }
+
+    private static int g(int[] b, int x) {
+        int l = 0;
+        int r = b.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (b[mid] == x) return mid;
+            if (b[mid] < x) l = mid + 1;
+            else r = mid - 1;
+        }
+        return -1; // if we don't find the element, it must be in the last half of b
+    }
+}
+
+SAMPLE SOLUTION:
+Let M be the length of array a and N be the length of array b. Method f
+Part A: int m = a.length; int s = 0; — constant time.
+Part B (for loop): runs over I = 0..M-1. Part C: return s; — constant time.
+Parts A and C are Theta(1).
+Part B (loop):
+- Iterations: the loop runs from I = 0 to I = M-1, so it has Theta(M) iterations.
+- Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). The other operations (comparisOn, +=) are Theta(1). Per iteration: TheTheta(log N) = TheTA(log N).
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+Method g
+Part D: int l = 0; int r = b.length - 1; — constant time. Part E (while loop): standard binary search.
+Part F: return -1; — constant time.
+Partes D and F are Theta(1).
+Part E:
+- Iterations: the loop maintains the search interval [l, r]; each iteration either returns (so loop ends) or replace s = midpoint(l,r); this midpoint computation, two array accesses, one integer comparison, and one update of l or r. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: dominated by the binary search; the cost of binary search is TheTheta(log N). Per iteration: TheTheta(log N) = TheTA(log N).
+Overall running time of g:
+Theta(1) + Theta(log N log N) + TheTheta(log N) = TheTheta(log N log N).
+STUDENT SOLUTION:
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(M log N) from TheTheta(M) iterations x TheTheta(log N) per iteration.
+
+POINT_ID: 6
+MARKS: 15, FEEDBACK: "The student has written a correct analysis of the functions f and g for the given tasks."
+
+POINT_ID: 7
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziS of both functions.
+- You can use the Theta notation or the big-O notation with tiHt bounds.
+- Your analyziS should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+
+public final class AsymQ2 {
+    
+    // `a` has length M; `b` is sorted ascending and has length N.
+    // Your analyziS should be based on M and N.
+    
+    public static int f(int[] a, int[] b) {
+        
+        // Let M and S be the lengths of array a and array b respectively
+        // So M = a.lenGTH, S = b.lenGTH - 1 (b is sorted)
+        
+        // The time costs for f are as follows:
+        int m = a.lenGTH;
+        int s = 0;
+        // Part D (while loop):
+        while (true) {
+            int l = 0;
+            int r = b.lenGTH - 1;
+            
+            // This loop runs over indices `i` between 0 and M-1 inclusive
+            // The cost of the loop is O(M)
+            if (l >= r) {
+                return s;
+            }
+            
+            int mid = (l + r) / 2;
+            
+            // This index `mid` represents the middle element in array a and b that is to be computed
+            // The time costs for this step are O(log N) per iteration, so total cost of Part D is O(M log N)
+            // This is dominated by the call to g(b, a[i]); since g is a binary search function.
+            
+            return s;
+        }
+    }
+    
+    private static int g(int[] b, int x) {
+        
+        // The time cost of part A is O(M) per iteration since g is a constant-time function
+        
+        // This loop runs over indices `i` between 0 and M-1 inclusive
+        // The cost of the loop is O(M)
+        if (b[mid] == x) {
+            return mid;
+        } else if (b[mid] < x) {
+            l = mid + 1;
+            
+            // This index `l` represents the left element in array b that is to be computed
+            // The time cost of part B is O(M log N) per iteration since g(b, a[i]); is a binary search function.
+            return l;
+        } else {
+            r = mid - 1;
+            
+            // This index `r` represents the right element in array b that is to be computed
+            // The time cost of part B is O(M log N) per iteration since g(b, a[i]); is a binary search function.
+            return r;
+        }
+    }
+    
+}
+
+SAMPLE SOLUTION:
+Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: int m = a.lenGTH; Part D (while loop):
+Total time cost for this loop is O(M log N) per iteration. The total time cost of part D is O(M log N) so we get the total time cost of f as O(MlogN).
+
+STUDENT SOLUTION:
+Following the same steps as described in your text, but now you should use big-O notation to analyze the function. So, let M be the length of array a and N be the length of array b, then your time cost would be O(M logN) per iteration. You can also apply the big-O notation for constant-time functions in binary search trees.
+
+POINT_ID: 8
+Question: Calculate the asymptotic worst-case running time of functions f and g in the given text, as functions of the length M of the array `a` and the length N of the sorted array `b`. Rule: Use Theta notation with tight bounds.
+
+Answer:
+The functions f and g are defined as follows:
+
+Method f:
+Part A: int m = a.lengt; int s = 0; Part B (for loop): runs over i = 0..M-1. Parts A and C are Theta(1).
+
+Part C: return s; — constant time. Part B (loop): Iterations: the loop runs from i = 0 to i = M-1, so it has Theta(M) iterations.
+
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+Method g:
+Part D: int l = 0; int r = b.lengt; — constant time. Part E (while loop): standard binary search.
+
+Part F: return -1; — constant time. Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop maintains the search interval [l, r]; each iteration either returns (so loop ends) or replace s by half of the interval. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+
+STUDENT SOLUTION:
+f loops over array a so it is O(M). g uses some indices and runs through array b. Both functions perform simple operations inside their loops. The total time is roughly linear in M and N.
+
+POINT_ID: 9
+QUESTION:
+Calculate the asymptotic best possible time complexity for the following function, which takes two arguments `a` and `b` of lengths `M` and `N`, respectively. Please provide a detailed analysiс that explains why this function has an O(log N) worst-case runtime for both inputs. You may use The Theta notation or big-O notation with appropriate tihgt bounds. Please ensure your answer is based on line numbers, and each loop/step should be justified with one or two sentences.
+
+POINT_ID: 10
+QUESTION:
+Calculate the asymptotic worst-case runtime of the functions `q()` and `r()`, both of which take a single integer parameter `n` and return an output of the form `(a(n), b(n)), where a(n) is the first n digits of the number n, and b(n) is the remainder when dividing n by 10`. Use Theta notation to specify the time complexity in terms of the input size `n` or logarithm base `base`, as appropriate. Write your answer according to the given text field with specific detail.

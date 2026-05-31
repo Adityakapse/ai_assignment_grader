@@ -1,0 +1,143 @@
+POINT_ID: 1
+Feedback based on the rubric point for the given task description:
+
+MARKS: 0
+FEEDBACK: The solution incrementing a counter until a multiple of both a and b is O(lcm(a,b)) and far slower than the GCD-based formula used in the sample solution.
+
+POINT_ID: 2
+Here's a Python implementation of the Least Common Multiple (LCM) function based on the GCDOptionals lecture material:
+
+```python
+def lcm(a, b):
+    """
+    Returns the LCM of two given values. It uses the GCDOptions provided in the lecture.
+    
+    SAMPLE SOLUTION:
+    int gcd(int a, int b) {
+        if (a < b) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+        int r = a % b;
+        return r == 0 ? b : gcd(r, b);
+    }
+    
+    int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+    
+    STUDENT SOLUTION:
+    // Trivial stubs
+    int gcd(int a, int b) {
+        return 1;
+    }
+
+    int lcm(int a, int b) {
+        return a;
+    }
+```
+
+The function first calls the `gcd` function to find the largest common divisor (LCM) of two numbers. This is then used in the recursive implementation of the LCM function, returning the result as before.
+
+This implementation handles both iterative and recursive solutions using the `gcd` function provided by the lecture material. The first call to this function uses a base case for the recursion, which returns an initial value (i.e., 0 or 1) when there's only one number being considered. For iterative cases, it simply returns the input values as before.
+
+You can test the implementation using a sample solution provided in the lecture material, or implement your own as per your specific needs:
+
+```python
+# Sample Solution
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+    
+# Calculate LCM of two numbers
+def lcm(a, b):
+    return (a * b) / gcd(a, b)
+```
+
+POINT_ID: 3
+FEEDBACK:
+MARKS: 1
+FEEDBACK: The LCM of the two given values is 20, calculated by the recursive or iterative method as follows:
+
+a = 39; b = 20;
+r = (a % b) / gcd(a, b); // a % b == 0 implies a == b
+a = r * b; // r multiplies a and divides by the LCM of a and b (b)
+b = r; // r is now the quotient of a and b, and b remains unchanged
+
+In this case, the LCM is calculated as 20 / gcd(39, 20) = 10.
+
+POINT_ID: 4
+To implement the LCM function in Python, you can follow these steps:
+1. Import the required library for GCD implementation, e.g., "gcmodule" or "gcdoctest". If using doctests, ensure that you have already installed them. 2. First, create a function to compute the GCD of two numbers based on the given implementation. In this sample code, we've used an imported `gcmodule` module for GCD calculation. ```python
+import gcmodule
+```
+3. Now define a function called `lcm`, which takes two integer parameters as input and returns the LCM (least common multiple) of those two numbers. Here's the code:
+4. First, check whether the input arguments are integers, and return a `ValueError` if they aren't. ```python
+def lcm(a, b):
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise ValueError("Input arguments must be integers")
+    
+    # GCD implementation based on the given implementation
+    gcd_impl = gcmodule.gcd()
+```
+5. Next, implement the `gcmodule` module's `gcd()` function as per the specified formula in Python. If you don't have the module already, install it using pip:
+```python
+!pip install gcdoctest
+```
+6. Finally, define a user-defined test case that compares the computed LCM with the correct value based on the given formula. Here's an example:
+```python
+def test_lcm():
+    # Test case
+    lcm = lambda a, b: gcmodule.gcd(a, b) / gcmodule.gcd(a, b)
+    
+    # Define expected LCM
+    expected_lcm = 2 * (a * b) / gcmodule.gcd(a, b)
+    
+    with gcdoctest.use_config(gcdoctest.Config()):
+        actual_lcm = lcm(a, b)
+        
+        # Check if output matches expected value
+        assert actual_lcm == expected_lcm
+```
+
+This should pass the test case defined above, validating that the LCM function correctly calculates and returns the product of two given integers.
+
+POINT_ID: 5
+QUESTION:
+Design a C++ function that calculates the Least Common Multiple (LCM) of two given values using the GCDBased formula. The function should be based on the implementation from the lecture and allow the user to input both values as arguments. Make sure the function is well-documented, with appropriate comments and follows C++ best practices.
+
+POINT_ID: 6
+Here's a possible implementation of the Least Common Multiple (LCM) function based on the GCD implementation from the lecture:
+
+```python
+import math
+from typing import Union, Tuple
+
+def lcm(a: int, b: int):
+    """Calculates the LCM (Least Common Multiple) of two given values.
+    
+    Args:
+        a (int): First input value to calculate LCM for.
+        b (int): Second input value to calculate LCM for.
+        
+    Returns:
+        int: The calculated LCM.
+        
+    Raises:
+        TypeError: If either input is not a positive integer.
+    
+    """
+    if type(a) != int or type(b) != int:
+        raise TypeError("Inputs must be integers.")
+    
+    return (a * b) / math.gcd(a, b)
+```
+
+This implementation has the following features:
+1. Uses the GCD implementation for computing LCM from the lecture.
+2. Imports the `math` module to help with mathematical calculations.
+3. Uses a `try-except` block to handle unexpected input types (e.g., non-integer values).
+4. Returns the calculated LCM as an integer, which can be used as expected in a formula or function's output.

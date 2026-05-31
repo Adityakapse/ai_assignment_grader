@@ -1,0 +1,165 @@
+test_number,is_example,testcode,expected
+1,True,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 3;
+root.right.parent = root;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+System.out.println(compareTrees(root, NewRoot));",true
+2,True,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 3;
+root.right.parent = root;
+root.right.right = new Node();
+root.right.right.key = 99;
+root.right.right.parent = root.right;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+NewRoot.right = new Node();
+NewRoot.right.key = 99;
+NewRoot.right.parent = NewRoot;
+System.out.println(compareTrees(root, NewRoot));",true
+3,True,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 50;
+root.right.parent = root;
+root.right.right = new Node();
+root.right.right.key = 99;
+root.right.right.parent = root.right;
+root.right.left = new Node();
+root.right.left.key = 25;
+root.right.left.parent = root.right;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node newRoot = new Node();
+newRoot.key = 2;
+newRoot.left = new Node();
+newRoot.left.key = 1;
+newRoot.left.parent = newRoot;
+newRoot.right = new Node();
+newRoot.right.key = 99;
+newRoot.right.parent = newRoot;
+newRoot.right.left = new Node();
+newRoot.right.left.key = 25;
+newRoot.right.left.parent = newRoot.right;
+System.out.println(compareTrees(root, newRoot));",true
+4,False,"// build tree
+Node n1 = new Node();
+n1.key = 37;
+n1.left = new Node();
+n1.left.key = 32;
+n1.left.parent = n1;
+n1.right = new Node();
+n1.right.key = 78;
+n1.right.parent = n1;
+Node target = new Node();
+target.key = 21;
+target.right = n1;
+n1.parent = target;
+target.left = new Node();
+target.left.key = 13;
+target.left.parent = target;
+Node root = new Node();
+root.key = 85;
+root.left = target;
+target.parent = root;
+root.right = new Node();
+root.right.key = 942;
+root.right.parent = root;
+root.right.left = new Node();
+root.right.left.key = 136;
+root.right.left.parent = root.right;
+// Call delete
+root = delete(root, target);
+// Compare
+Node n2 = new Node();
+n2.key = 37;
+n2.right = new Node();
+n2.right.key = 78;
+n2.right.parent = n2;
+Node replaced = new Node();
+replaced.key = 32;
+replaced.right = n2;
+n2.parent = replaced;
+replaced.left = new Node();
+replaced.left.key = 13;
+replaced.left.parent = replaced;
+Node newRoot = new Node();
+newRoot.key = 85;
+newRoot.left = replaced;
+replaced.parent = newRoot;
+newRoot.right = new Node();
+newRoot.right.key = 942;
+newRoot.right.parent = newRoot;
+newRoot.right.left = new Node();
+newRoot.right.left.key = 136;
+newRoot.right.left.parent = newRoot.right;
+System.out.println(compareTrees(root, newRoot));",true
+5,False,"Node root = new Node();
+root.key = 55;
+root = delete(root, root);
+System.out.println(compareTrees(root, null));",true
+6,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+7,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+8,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+9,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+10,False,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 4;
+root.right.parent = root;
+root.right.left = new Node();
+root.right.left.key = 3;
+root.right.left.parent = root.right;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+NewRoot.right = new Node();
+NewRoot.right.key = 3;
+NewRoot.right.parent = NewRoot;
+System.out.println(compareTrees(root, NewRoot));",true

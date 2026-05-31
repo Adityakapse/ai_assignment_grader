@@ -1,0 +1,65 @@
+test_number,is_example,testcode,expected
+1,True,"input = [""2"", ""1"", ""-""]
+s = CustomStack()
+result = Calculator(input, s);
+print(int(result));",1
+2,True,"input = [""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))",14
+3,True,"input = [""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))",0
+4,True,"input = [""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))",3720010
+5,False,"input = [""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(s._compareHistory([""[1]"", ""[1, 2]"", ""[1]"", ""[]"", ""[2]"", ""[2, 3]"", ""[2, 3, 4]"", ""[2, 3]"", ""[2]"", ""[2, 12]"", ""[2]"", ""[]"", ""[14]"", ""[]""]))",True
+6,False,"input = [""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""]
+s = CustomStack()
+result = Calculator(input, s)
+print(s._compareHistory([""[4]"", ""[4, 2]"", ""[4]"", ""[]"", ""[2]"", ""[2, 4]"", ""[2, 4, 4]"", ""[2, 4, 4, 4]"", ""[2, 4, 4]"", ""[2, 4]"", ""[2, 4, 1]"", ""[2, 4, 1, 2]"", ""[2, 4, 1]"", ""[2, 4]"", ""[2, 4, 2]"", ""[2, 4]"", ""[2]"", ""[2, 2]"", ""[2]"", ""[]"", ""[0]"", ""[]""]))",True
+7,False,"input = [""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(s._compareHistory([""[278241]"", ""[278241, 489]"", ""[278241]"", ""[]"", ""[569]"", ""[569, 6456]"", ""[569]"", ""[]"", ""[3673464]"", ""[3673464, 46546]"", ""[3673464]"", ""[]"", ""[3720010]"", ""[]""]))",True
+8,False,"input = [""1231"", ""123"", ""3210"", ""35"", ""+"", ""+"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[1231]"", ""[1231, 123]"", ""[1231, 123, 3210]"", ""[1231, 123, 3210, 35]"", ""[1231, 123, 3210]"", ""[1231, 123]"", ""[1231, 123, 3245]"", ""[1231, 123]"", ""[1231]"", ""[1231, 3368]"", ""[1231]"", ""[]"", ""[4599]"", ""[]""]))","4599
+True"
+9,False,"input = [""2874"", ""1757"", ""+"", ""8989"", ""4768"", ""+"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[2874]"", ""[2874, 1757]"", ""[2874]"", ""[]"", ""[4631]"", ""[4631, 8989]"", ""[4631, 8989, 4768]"", ""[4631, 8989]"", ""[4631]"", ""[4631, 13757]"", ""[4631]"", ""[]"", ""[18388]"", ""[]""]))","18388
+True"
+10,False,"input = [""561"", ""232"", ""+"", ""11158"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[561]"", ""[561, 232]"", ""[561]"", ""[]"", ""[793]"", ""[793, 11158]"", ""[793]"", ""[]"", ""[11951]"", ""[]""]))","11951
+True"
+11,False,"input = [""8541"", ""5965"", ""*"", ""646"", ""+"", ""6"", ""+"", ""84585"", ""-""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[8541]"", ""[8541, 5965]"", ""[8541]"", ""[]"", ""[50947065]"", ""[50947065, 646]"", ""[50947065]"", ""[]"", ""[50947711]"", ""[50947711, 6]"", ""[50947711]"", ""[]"", ""[50947717]"", ""[50947717, 84585]"", ""[50947717]"", ""[]"", ""[50863132]"", ""[]""]))","50863132
+True"
+12,False,"n1 = getRandom()
+n2 = getRandom()
+n3 = getRandom()
+s = CustomStack()
+input = [str(n1), str(n1), ""/"", str(n2), str(n2), ""/"", str(n3), str(n3), ""/"", ""+"", ""+""]
+print(int(Calculator(input, s)))",3
+13,False,"n1 = getRandom()
+n2 = getRandom()
+n3 = getRandom()
+s = CustomStack()
+input = [str(n1), str(n2), str(n3), ""-"", ""-""]
+print(int(Calculator(input, s)) == int(n1 - (n2 - n3)))",True

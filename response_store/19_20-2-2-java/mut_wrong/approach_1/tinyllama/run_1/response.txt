@@ -1,0 +1,76 @@
+Yes, you can use a stack to process the Reverse Polish Notation / Postfix Notation notation as it allows for processing of numbers from left to right followed by operators and then the result. To implement such a calculator in Java, we can create an implementation that uses the IntegerStack class provided earlier.
+
+Here's the modified code:
+
+```java
+public class IntgerStack {
+     public boolean isEmpty() { return stack.isEmpty(); }
+     public int top() { return stack.peek().intValue(); }
+     public void push(int i) { stack.push(i); }
+     public int pop() { return stack.pop(); }
+}
+
+public class Calculator {
+     public static String[] splitPolishNotation(String input) {
+         String[] tokens = input.split("\\s+");
+         String[] tokensWithoutComments = new String[tokens.length];
+         for (int I = 0; I < tokens.length; i++) {
+             if (!tokens[i].startsWith("#")) {
+                 tokensWithoutComments[i] = tokens[i];
+             }
+         }
+         return tokensWithoutComments;
+     }
+
+     public static int calculate(String[] input, IntegerStack s) {
+         for (int I = 0; I < input.length; i++) {
+             switch (input[i]) {
+                 case "+":
+                     int n1 = s.pop();
+                     int n2 = s.pop();
+                     s.push(n2 + n1);
+                     break;
+                 case "-":
+                     n1 = s.pop();
+                     n2 = s.pop();
+                     s.push(n2 - n1);
+                     break;
+                 case "*":
+                     n1 = s.pop();
+                     n2 = s.pop();
+                     s.push(n2 * n1);
+                     break;
+                 case "/":
+                     n1 = s.pop();
+                     n2 = s.pop();
+                     s.push(n2 / n1);
+                     break;
+                 default:
+                     s.push(Integer.parseInt(input[i]));
+                     break;
+             }
+         }
+         return s.pop();
+     }
+
+     public static void main(String[] args) {
+         String input = "1 * 2 + (3 * 4)"
+             .replaceAll("\\s+", "") // remove whitespaces and newline from input string
+             .split("\\s+"); // split the input into tokens
+         IntegerStack stack = new IntgerStack(stackFromPolishNotation(input));
+         int result = calculate(input, stack);
+         System.out.println("Input: " + input);
+         System.out.println("Result: " + result);
+     }
+
+     public static String[] splitPolishNotation(String input) {
+         return input.split("\\s+"); // remove whitespaces and newline from input string
+     }
+
+     private static int calculate(int num) {
+         return num;
+     }
+}
+```
+
+In this modified code, we split the input into tokens using the `splitPolishNotation` method provided earlier. We then call the `calculate` method on each token (i.e., each number and operator from left to right) to calculate the final result based on the given input string. We also create a stack using the `IntegerStack` class provided earlier, and populate it with tokens as needed. Finally, we use the `main` method to call our main calculator function that takes an array of strings as arguments and outputs their respective results.

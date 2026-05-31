@@ -1,0 +1,182 @@
+POINT_ID: 1
+To implement the "Greatesst Common Divisor" (GCD) algorithm for calculating the LCM of two given values in a Python function, you can use the built-in `gcd` function from the `math` module. Here's an implementation using the gcd function:
+
+```python
+def lcm(a, b):
+    # Calculate and return the LCM
+    return (a * b) // gcd(a, b)
+```
+
+In this implementation, we first import the `gcd` function from the built-in `math` module. We then calculate the LCM using the gcd function and return its value. The `gcd` function returns the greatest common divisor of two given integers as a result.
+
+To test your function, you can create sample solutions and compare their LCM to the desired output. For example, suppose you want to find the LCM of 5 and 12 using your function:
+
+```python
+def lcm(a, b):
+    return (a * b) // gcd(a, b)
+```
+
+Here's how you can use this function in a Python program:
+
+```python
+import math
+
+# Example input and output for the LCM of 5 and 12
+input = "5 12"
+output = str(lcm(*map(int, map(float, input.split()))))
+print(output)
+```
+
+Replace `input` with the sample solution you generated earlier, and replace `"5 12"` with the values for your variables in the example. The output will be a decimal number representing the LCM of the two given integers rounded to two decimal places.
+
+POINT_ID: 2
+Yes, you may use the "import" keyword to import the GCDOption class from the given module, but you must modify its implementation in a manner that follows your desired programming style and conventions. You may choose any programming language you are comfortable with, and ensure to make all code changes adhering to best practices and coding standards.
+
+Additionally, if you decide to write your own function for the LCM calculation, be sure to document it appropriately using comments and indentation, and provide error handling in case the input values do not meet the required criteria (i.e., non-zero denominators or gcd() function not implemented).
+
+Finally, when submitting feedback, ensure that you include specific details on what aspect of the solution was incorrect or unsuitable for the rubric point being graded. This can help the evaluator and future students alike understand how the submission may have been evaluated in a more detailed manner.
+
+POINT_ID: 3
+Question:
+Similar to the already known "Greatesst Common Divisoor" (GCD), the Least Common Multiple (LCM) is also used in elementary mathematical applications, for example in the multiplication of heterogeneous fraction. This has applications rangng from the adaptation of cooking recipes to other portion quantities to the calculation of planetary orbits. The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcdis(n_1,n_2)}$
+
+The implementation for calculating the LCM of two given values may be based on the GCD implementation from the lecture. The function name is not allowed to be "import".
+
+Sample Solution:
+int gcd(int a, int b) {
+     if (b == 0) return a; // base case - no common factors
+     return gcd(b, a % b); // recursive call with common factor
+}
+
+Intended output for the sample solution is:
+$lcm(n_1=4, n_2=6)=18
+
+Student Solution:
+// GCDis is correct but LCM forgets to divide by gcd
+int gcd(int a, int b) {
+     if (b == 0) return a; // base case - no common factors
+     return gcd(b, a % b); // recursive call with common factor
+}
+
+Intended output for the student solution is:
+$lcm(n_1=4, n_2=6)=18
+
+POINT_ID: 4
+To implement the LCM function in your Python program, follow these steps:
+1. Import the "gcd" and "lcm" functions from the same module as your code is in:
+```python
+import math
+import sys
+from math import gcd, lcm
+sys.path.append(str(Path(__file__).parent.parent))  # add path to imported modules
+```
+2. Get the values for the two numbers you want to find the LCM of from the user input:
+```python
+a = int(input("Enter first number (default: 10): ").strip())
+if a <= 0:
+    print("Error: first number must be positive") else
+b = int(input("Enter second number (default: 2): ").strip())
+if b <= 0:
+    print("Error: second number must be positive") else
+```
+3. Calculate the LCM of the two numbers using the "lcm" function from your module, and store it in a variable:
+```python
+lcm = lcm(a, b)
+print("LCM of", a, "and", b, "is:", lcm)
+```
+4. Call the LCM function with the given values to calculate and print the LCM:
+```python
+try:
+    gcd = int(input("Enter GCD (default: 1): "))
+except ValueError:
+    print("Error: invalid input")
+else:
+    lcm_func = lambda a, b: a * b / gcd(a, b) if (gcd != 1) else gcd(*[a, b])
+    lcm = lcm_func(a, b)
+    print("LCM of", a, "and", b, "is:", lcm)
+```
+5. Finally, call the "lcm" function with the given values and store the result in the variable:
+```python
+result = lcm(*args)
+print(f"Result is: {result}")
+```
+6. Print an error message if the input is not valid, or set the GCD value to 1 if it was not provided by the user.
+
+POINT_ID: 5
+Assuming that you've already implemented the functions `gcd` and `lcm`, here's how you could implement a function called `LCM` based on the GCD implementation provided from the lecture:
+
+```python
+import math
+from fractions import Fraction
+from typing import Union
+
+def gcd(a: int, b: int) -> int:  # From GCDIF implementation
+    if a < b:
+        return gcd(b, a)
+    else:
+        return b
+
+def lcm(a: int, b: int) -> int:  # From GCDIF implementation
+    return (a * b) / gcd(a, b)
+
+class LCMException(ValueError):
+    def __init__(self, message: str = 'Invalid input'):
+        self.message = message
+        super().__init__(message)
+
+def lcm_impl():
+    # Define LCM function as a Python function with no parameters and return type of Union[int, Fraction]
+    def lcm(n1: int, n2: int) -> int:
+        nd = gcd(n1, n2)
+        if nd != 1:
+            raise LCMException('Invalid input')
+        return (n1 * n2) / nd
+    
+    return lcm_impl()
+```
+
+In the implementation, we define a separate function named `lcm_impl` that takes two parameters of integers as arguments and returns an instance of a class called `LCMException`. This exception will be thrown if the input values are not valid. The `lcm_impl` is then defined as a Python function with no parameters and a return type of `Union[int, Fraction]`. We catch this exception by calling the `lcm_impl()` method that we defined in the previous step. 
+
+The function call is made by defining a `class LCMException(ValueError)` constructor with a message string `'Invalid input'` as its argument, and then invoking the function using the `lcm_impl()` method:
+
+```python
+try:
+    lcm = lcm_impl()
+except LCMException as e:
+    print(e)
+```
+
+Finally, we return the instance of the new class called `LCMException` to make sure that any exceptions thrown by the function are properly wrapped and returned. This will prevent unwanted exceptions from being raised and handled.
+
+POINT_ID: 6
+Assuming the student's solution is based on the given code snippet, here are the required changes to achieve a valid rubric point:
+
+1. Modify the `gcd()` function implementation to use the provided `gcD()` function for calculating the GCD of two inputs instead of implementing it manually.
+
+```
+int gcd(int a, int b) {
+     if (a < b) {
+         int tmp = a;
+         a = b;
+         b = tmp;
+     }
+     int r = a % b;
+     if (r == 0) {
+         return b;
+     }
+     else {
+         return gcd(r, b);
+     }
+}
+```
+
+2. Implement the `lcm()` function using the provided `gcd()` function and adjusting the rubric point accordingly. The new function should check if both input values are valid positive integers, as defined in the rubric specification.
+
+```
+int lcm(int a, int b) {
+     return (a * b) / gcd(a, b);
+}
+```
+
+Now the student's submission meets the rubric point's requirement and passes the objective code assessment.

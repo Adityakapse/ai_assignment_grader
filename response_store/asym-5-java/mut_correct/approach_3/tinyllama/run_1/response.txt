@@ -1,0 +1,30 @@
+To analyze the overall worst-case runtime of the given program, we should first identify the parts of the program that cause the most significant runtime impacts, and then determine the total cost (runtime + construction overhead) of each part separately.
+
+1. The loop is the most significant component of the runtime, and its complexity affects both the time and space requirements of the rest of the program. Since the loop runs n times, the loop itself will be executed n times, with a worst-case execution time of O(n). In addition to the loop, there are two other parts that contribute to the overall runtime:
+   - The call to `g()` (which takes advantage of the parallelism of Java's multithreaded execution environment) can potentially run in any of several ways (e.g. Asynchronously or synchronously), and it will have a different impact based on the chosen method. For instance, if the method is synchronous (`sync`), each iteration will run the whole `g()` function with the same parameters, but in parallel across all available threads (i.e. Each thread can start executing its iterations independently of others). If the method is asynchronous (`async`), each iteration will be executed on a new thread and only join with other threads when it completes. This affects both the time and space requirements, since each execution of `g()` is different from the last one.
+   - The call to `f()` (which calls the parallelized `g()` function) requires the same amount of memory and computation resources as the loop itself. However, its runtime is still affected by the number of concurrent executions of `g()`, which also affects the overall time complexity. In our case, we can assume that each call to `f()` takes O(1), and it's safe to assume that there are always at least one concurrent executions of `g()`. Since each call to `f()` requires the same amount of memory, its total runtime is simply the sum of the individual times taken by the loop and each separate call to `f()`.
+
+2. To determine the time complexity of each part, we can perform a simulation with the given input data, run the program multiple times (with varying parameters), and average the results. For example, if we assume that the loop is executed n times, with a fixed number of concurrent executions (i.e. Every thread executes the loop once or twice), and each iteration takes O(1), then the time complexity of the loop would be:
+   - n * O(1) = n * O(1) + O(n) + O(n^2) + ... + O(n^k)
+       = n * (O(1) + O(1) + O(1)) + O(n^2) + ... + O(n^(10*k+6))
+           = O(n^k) for some constant k
+
+3. To determine the space complexity of each part, we can use the same simulation approach as before, but this time we run the program with varying number of threads and input data sizes, until a stable average is found. For example, if we assume that the loop executes m iterations and the function `g()` takes m * n = m * O(1) + O(n) + O(n^2) + ... + O(n^(30*k+5))
+       = m * (O(1) + O(1) + O(1)) + O(n^2) + ... + O(n^(30*k+6))
+           = O(m^k) for some constant k
+
+Combining the time and space complexity results, we find that the worst-case runtime is approximately:
+   - n * (O(1) + O(1) + O(1)) + O(n^2) + ... + O(n^(30*k+6)) = O(n^k) for some constant k
+
+We can also verify this result by checking the values of constants k and n in our simulation, which satisfy O(k) and n >= 1. Finally, to determine the worst-case execution time complexity of each part separately, we can repeat the simulation with varying parameters and input data sizes until a stable average is found. For example, if we assume that the loop executes n iterations and the function `g()` takes m * n = n * O(1) + O(n) + O(n^2) + ... + O(n^(50*k+4))
+       = n * (O(1) + O(1) + O(1)) + O(n^2) + ... + O(n^(50*k+3))
+           = O(n^k) for some constant k
+
+Combining the time and space complexity results, we find that the worst-case execution time of the loop is approximately:
+   - n * (O(1) + O(1) + O(1)) + O(n^2) = O(n^k) for some constant k
+
+We can also verify this result by checking the values of constants k and n in our simulation, which satisfy O(k) and n >= 1.
+
+Overall, the worst-case runtime of the loop is n * (O(1) + O(1)) + O(n^2), with a corresponding execution time complexity of O(n^k) for some constant k. The worst-case execution time of the parallelized `g()` function is also O(n^k), but we assume that it takes n iterations and each iteration takes O(1).
+
+The overall complexity of our program is O((n * O(1)) + O(n^2)), which includes both the worst-case runtime and worst-case execution time. The latter term is more significant than the former in terms of practical use, as it determines how long it takes to run the program on a given input, while the former is more important for analyzing performance metrics or comparisons with other parallelized programs.

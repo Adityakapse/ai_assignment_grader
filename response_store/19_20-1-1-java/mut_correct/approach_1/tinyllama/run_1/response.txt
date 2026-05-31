@@ -1,0 +1,63 @@
+Here's an updated implementation with comments and documentation:
+
+```python
+# Define gcd function based on GCDOpenCV implementation from lecture
+def gcd(*args):
+    if len(args) == 1:
+        # Base case when all arguments are integers
+        return args[0] if args[0] < 0 else -abs(args[0])
+    
+    # Recursive function with base case for zero or one argument
+    elif not (args[0] % args[1] == 0):
+        return gcd(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (gcd(*args[:-1]))) + args[-1],)
+    
+    # Recursive function for two arguments with gcd(a, b) in loop and termination condition
+    else:
+        return gcd(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (gcd(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+    
+# Define lcm function based on GCDOpenCV implementation from lecture
+def lcm(*args):
+    if len(args) == 1:
+        # Base case when all arguments are integers
+        return args[0] if args[0] < 0 else -abs(args[0])
+    
+    # Recursive function with base case for zero or one argument
+    elif not (args[0] % args[1] == 0):
+        return lcm(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (lcm(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+    
+    # Recursive function for two arguments with gcd(a, b) in loop and termination condition
+    else:
+        return lcm(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (gcd(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+```
+
+Here's an updated implementation with comments and documentation for the LCM function:
+
+```python
+# Define gcd function based on GCDOpenCV implementation from lecture
+def gcd(*args):
+    # Base case when all arguments are integers
+    if len(args) == 1:
+        return args[0]
+    
+    # Recursive function with base case for zero or one argument
+    elif not (args[0] % args[1] == 0):
+        return gcd(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (gcd(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+    
+    # Recursive function for two arguments with gcd(a, b) in loop and termination condition
+    else:
+        return gcd(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (gcd(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+    
+# Define lcm function based on LCMOpenCV implementation from lecture
+def lcm(*args):
+    # Base case when all arguments are integers
+    if len(args) == 1:
+        return args[0]
+    
+    # Recursive function with base case for zero or one argument
+    elif not (args[0] % args[1] == 0):
+        return lcm(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (lcm(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+    
+    # Recursive function for two arguments with gcd(a, b) in loop and termination condition
+    else:
+        return lcm(*((-args[0])) + ((abs(args[0]) / abs(args[1])) * (gcd(*args[:-2]))) + (-abs(args[1])) + args[-2],)
+```

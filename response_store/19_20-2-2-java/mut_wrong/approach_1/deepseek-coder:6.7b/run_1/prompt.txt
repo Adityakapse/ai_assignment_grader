@@ -1,0 +1,91 @@
+QUESTION:
+The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation.
+
+A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack.
+If an operator is encountered, then the uppermost two numbers are taken from the stack,
+the operator is executed and the result is put back on the stack.
+After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method.
+It should be able to process the operators plus (+), minus (-), times (*)
+and division (/, rounded down). You will receive a stack with the following
+known methods, which you have to use in your implementation:
+
+public class IntegerStack {
+    public boolean emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+
+The method receives as input a list of strings in which the
+numbers and operators are already separated (e.g..: String[] input =
+{"1", "2", "*", "3", "4", "*", "+"};). Strings can be converted with the help of
+"Integer.parseInt(myString);". You will also get a stack, which you should use.
+The method should return the correct result as an integer.
+
+You can assume that the input is a correct formula.
+
+SAMPLE SOLUTION:
+// This implementation assumes input is a correct formula
+public int Calculator(String[] input, IntegerStack s) {
+    for(int i = 0; i < input.length; ++i) {
+        switch(input[i]) {
+            case "+":
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n2 + n1);
+                break;
+            case "-":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 - n1);
+                break;
+            case "*":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 * n1);
+                break;
+            case "/":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 / n1);
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}
+
+STUDENT SOLUTION:
+// Ignores operators, just sums all numbers
+public int Calculator(String[] input, IntegerStack s) {
+    int sum = 0;
+    for (int i = 0; i < input.length; ++i) {
+        try { sum += Integer.parseInt(input[i]); } catch (NumberFormatException e) {}
+    }
+    return sum;
+}
+
+
+RUBRIC:
+Point 1 — Iteration and token classification (valid range: 0–20)
+  The method iterates through all tokens in the input from left to right, and distinguishes numeric tokens from operator tokens.
+
+Point 2 — Number handling: push to stack (valid range: 0–15)
+  When a numeric token is encountered, it is converted to an integer and pushed onto the stack.
+
+Point 3 — Operator handling: pop, compute, push (valid range: 0–25)
+  When an operator token is encountered, exactly two values are popped from the stack, the operation is applied, and the result is pushed back. This is evaluated independently of operand order.
+
+Point 4 — Correct operand order for non-commutative operators (- and /) (valid range: 0–25)
+  For subtraction and division, the first value popped from the stack is the right operand and the second popped is the left operand (i.e., result = second_popped op first_popped). This matches RPN semantics.
+
+Point 5 — Overall correctness (valid range: 0–15)
+  The method returns the correct integer result for all valid RPN expressions, including expressions with all four operators and multiple nested operations.

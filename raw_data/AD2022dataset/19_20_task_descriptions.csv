@@ -1,0 +1,3052 @@
+"id","title_ger","title_eng","task_description_tex_ger","task_description_plain_ger","task_description_plain_eng","skeleton","tester","answer"
+"19_20-1-1-java","LCM -- Das größte gemeinsame Vielfache (Java)","LCM -- Least Common Multiple (Java)","Ähnlich wie der bereits bekannte ""Größte Gemeinsame Teiler""
+(\emph{Greatest Common Divisor, GCD}) findet auch das \textbf{Kleinste
+Gemeinsame Vielfache} (\emph{Least Common Multiple, LCM}) Anwendung in
+elementaren mathematischen Anwendungen, etwa bei der Multiplikation von
+heterogenen Brüchen. Dies hat Anwendungen von der Anpassung von
+Kochrezepten an andere Portionsmengen bis hin zur Berechnung von
+Planetenbahnen.
+
+Der \emph{LCM} ist wie folgt definiert:
+\(lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}\).
+
+Implementieren Sie eine Funktion, die den \emph{LCM} von zwei gegebenen
+Werten berechnet. Es darf dabei auf die \emph{GCD}-Implementation aus
+der Vorlesung zurück gegriffen werden.
+
+\textbf{Hinweis:} Das Verwenden von ""import"" ist nicht gestattet.\\
+","Ähnlich wie der bereits bekannte ""Größte Gemeinsame Teiler"" (Greatest
+Common Divisor, GCD) findet auch das Kleinste Gemeinsame Vielfache
+(Least Common Multiple, LCM) Anwendung in elementaren mathematischen
+Anwendungen, etwa bei der Multiplikation von heterogenen Brüchen. Dies
+hat Anwendungen von der Anpassung von Kochrezepten an andere
+Portionsmengen bis hin zur Berechnung von Planetenbahnen.
+
+Der LCM ist wie folgt definiert:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implementieren Sie eine Funktion, die den LCM von zwei gegebenen Werten
+berechnet. Es darf dabei auf die GCD-Implementation aus der Vorlesung
+zurück gegriffen werden.
+
+Hinweis: Das Verwenden von ""import"" ist nicht gestattet.
+","Similar to the already known ""Greatest Common Divisor"" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applications, for example in the multiplication of heterogeneous fractions. This
+has applications ranging from the adaptation of cooking recipes to other
+portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values.
+It may be based on the GCD implementation from the lecture.
+
+Note: The use of ""import"" is not allowed.","int lcm(int a, int b) {
+    return null;
+}","public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+    
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+        int r = a % b;
+    if (r == 0) {
+        return b;
+    }
+    else {
+        return gcd(r, b);
+    }
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}"
+"19_20-1-1-python","LCM -- Das größte gemeinsame Vielfache (Python)","LCM -- Least Common Multiple (Python)","Ähnlich wie der bereits bekannte ""Größte Gemeinsame Teiler""
+(\emph{Greatest Common Divisor, GCD}) findet auch das \textbf{Kleinste
+Gemeinsame Vielfache} (\emph{Least Common Multiple, LCM}) Anwendung in
+elementaren mathematischen Anwendungen, etwa bei der Multiplikation von
+heterogenen Brüchen. Dies hat Anwendungen von der Anpassung von
+Kochrezepten an andere Portionsmengen bis hin zur Berechnung von
+Planetenbahnen.
+
+Der \emph{LCM} ist wie folgt definiert:
+\(lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}\).
+
+Implementieren Sie eine Funktion, die den \emph{LCM} von zwei gegebenen
+Werten berechnet. Es darf dabei auf die \emph{GCD}-Implementation aus
+der Vorlesung zurück gegriffen werden.
+
+\textbf{Hinweis:} Das Verwenden von ""import"" ist nicht gestattet.\\
+","Ähnlich wie der bereits bekannte ""Größte Gemeinsame Teiler"" (Greatest
+Common Divisor, GCD) findet auch das Kleinste Gemeinsame Vielfache
+(Least Common Multiple, LCM) Anwendung in elementaren mathematischen
+Anwendungen, etwa bei der Multiplikation von heterogenen Brüchen. Dies
+hat Anwendungen von der Anpassung von Kochrezepten an andere
+Portionsmengen bis hin zur Berechnung von Planetenbahnen.
+
+Der LCM ist wie folgt definiert:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implementieren Sie eine Funktion, die den LCM von zwei gegebenen Werten
+berechnet. Es darf dabei auf die GCD-Implementation aus der Vorlesung
+zurück gegriffen werden.
+
+Hinweis: Das Verwenden von ""import"" ist nicht gestattet.
+","Similar to the already known ""Greatest Common Divisor"" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applications, for example in the multiplication of heterogeneous fractions. This
+has applications ranging from the adaptation of cooking recipes to other
+portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values.
+It may be based on the GCD implementation from the lecture.
+
+Note: The use of ""import"" is not allowed.","def LCM(a, b):
+    pass",,"def GCD(a, b):
+    if a < b:
+        a, b = b, a
+    r = a % b
+    if r is 0:
+        return b
+    else:
+        return GCD(r, b)
+        
+def LCM(a, b):
+    return a * b / GCD(a, b)"
+"19_20-2-1-java","Schlange (Queue) (Java)","Queue (Java)","Implementieren Sie eine Klasse ""Queue"", die wie eine Schlange (wie in
+der Vorlesung beschrieben) funktioniert. Die Klasse soll mindestens die
+Methoden emptyqueue(), head(), enqueue(x) und dequeue() besitzen. Die
+Schlange muss nie mehr als 100 Elemente beinhalten können.
+
+\textbf{Hinweis 1:} Im Java-Test wird erwartet, dass der Stack ""Strings""
+speichert. Da Python dynamisch getypt ist, ist dies hier nicht der Fall.
+
+\textbf{Hinweis 2:} Es ist nicht erlaubt, ""import"" zu verwenden!\\
+\strut \\
+
+\hfill\break
+","Implementieren Sie eine Klasse ""Queue"", die wie eine Schlange (wie in
+der Vorlesung beschrieben) funktioniert. Die Klasse soll mindestens die
+Methoden emptyqueue(), head(), enqueue(x) und dequeue() besitzen. Die
+Schlange muss nie mehr als 100 Elemente beinhalten können.
+
+Hinweis 1: Im Java-Test wird erwartet, dass der Stack ""Strings""
+speichert. Da Python dynamisch getypt ist, ist dies hier nicht der Fall.
+
+Hinweis 2: Es ist nicht erlaubt, ""import"" zu verwenden!
+","Implement a class ""Queue"" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods emptyqueue(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store ""strings"".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use ""import""!","public class Queue {
+    
+    public boolean emptyqueue() {
+        return false;
+    }
+    
+    public String head() {
+        return """";
+    }
+    
+    public void enqueue(String s) {
+    }
+    
+    public String dequeue() {
+        return """";
+    }
+}","{{STUDENT_ANSWER | replace({'public class': 'class'})}}
+
+public class __tester__ {
+    
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+
+    public static void main(String[] args) {
+        __tester__ main =  new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+        {{ TEST.testcode }};
+    }
+}","public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+    
+    public boolean emptyqueue() {
+        return start == end;
+    }
+    
+    public String head() {
+        return buffer[start];
+    }
+    
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if(end == 100) {
+            end = 0;
+        }
+    }
+    
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if(start == 100) {
+            start = 0;
+        }
+        return s;
+    }
+}"
+"19_20-2-2-java","Stapel: Anwendung (Java)","Stack (Java)","Die
+\href{https://de.wikipedia.org/wiki/Umgekehrte_polnische_Notation}{Umgekehrte
+Polnische Notation / Postfix-Notation} ist eine spezielle Schreibweise
+für Mathematische Ausdrücke, bei der zuerst die Zahlen und danach die
+Operatoren angegeben werden. Der Ausdruck \emph{(1 * 2)+(3 * 4)} wäre
+dementsprechend in dieser Notation \textbf{1 2 * 3 4 * +}.
+
+Ein Rechner für diese Notation lässt sich gut mit Hilfe eines Stacks
+abbilden. Dabei wird die Notation von links nach rechts durchgegangen.
+Falls eine Zahl bearbeitet wird, so wird diese auf den Stack gelegt.
+Wenn ein Operator kommt, dann werden die obersten beiden Zahlen vom
+Stack genommen, der Operator ausgeführt und das Ergebnis wieder auf den
+Stack gelegt. Nach der Rechnung ist das Ergebnis als einzige Zahl auf
+dem Stack.
+
+In dieser Aufgabe sollen sie einen solchen Rechner in einer Methode
+implementieren. Dieser soll die Operatoren plus (+), minus (-), mal (*)
+und geteilt (/, abgerundet) verarbeiten können. \textbf{Sie erhalten
+dafür einen Stack mit folgenden bekannten Methoden, den Sie bei Ihrer
+Implementation verwenden sollen}:
+
+public class IntegerStack \{\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} public boolean
+emptystack();\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} public int head();\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} public void push(int
+i);\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} public int pop();\\
+\}
+
+Die Methode erhält als Eingabe eine Liste mit Strings, bei der die
+Zahlen und Operatoren bereits getrennt sind (z.B.: String{[}{]} input =
+\{""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""\};). Strings können Sie mit Hilfe
+von
+\href{https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html\#parseInt-java.lang.String-}{""Integer.parseInt(myString);""}
+umwandeln. \textbf{Zudem erhalten Sie einen Stack, den Sie verwenden
+sollen.} Zurückgeben soll die Methode das richtige Ergebnis als Integer.
+
+Sie können davon ausgehen, dass die Eingabe eine korrekte Formel ist.\\
+","Die Umgekehrte Polnische Notation / Postfix-Notation ist eine spezielle
+Schreibweise für Mathematische Ausdrücke, bei der zuerst die Zahlen und
+danach die Operatoren angegeben werden. Der Ausdruck (1 * 2)+(3 * 4)
+wäre dementsprechend in dieser Notation 1 2 * 3 4 * +.
+
+Ein Rechner für diese Notation lässt sich gut mit Hilfe eines Stacks
+abbilden. Dabei wird die Notation von links nach rechts durchgegangen.
+Falls eine Zahl bearbeitet wird, so wird diese auf den Stack gelegt.
+Wenn ein Operator kommt, dann werden die obersten beiden Zahlen vom
+Stack genommen, der Operator ausgeführt und das Ergebnis wieder auf den
+Stack gelegt. Nach der Rechnung ist das Ergebnis als einzige Zahl auf
+dem Stack.
+
+In dieser Aufgabe sollen sie einen solchen Rechner in einer Methode
+implementieren. Dieser soll die Operatoren plus (+), minus (-), mal (*)
+und geteilt (/, abgerundet) verarbeiten können. Sie erhalten dafür einen
+Stack mit folgenden bekannten Methoden, den Sie bei Ihrer Implementation
+verwenden sollen:
+
+public class IntegerStack {
+    public boolean emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+
+Die Methode erhält als Eingabe eine Liste mit Strings, bei der die
+Zahlen und Operatoren bereits getrennt sind (z.B.: String[] input =
+{""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};). Strings können Sie mit Hilfe von
+""Integer.parseInt(myString);"" umwandeln. Zudem erhalten Sie einen Stack,
+den Sie verwenden sollen. Zurückgeben soll die Methode das richtige
+Ergebnis als Integer.
+
+Sie können davon ausgehen, dass die Eingabe eine korrekte Formel ist.
+","The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation.
+
+A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack.
+If an operator is encountered, then the uppermost two numbers are taken from the stack,
+the operator is executed and the result is put back on the stack.
+After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method.
+It should be able to process the operators plus (+), minus (-), times (*)
+and division (/, rounded down). You will receive a stack with the following
+known methods, which you have to use in your implementation:
+
+public class IntegerStack {
+    public boolean emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+
+The method receives as input a list of strings in which the
+numbers and operators are already separated (e.g..: String[] input =
+{""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};). Strings can be converted with the help of
+""Integer.parseInt(myString);"". You will also get a stack, which you should use.
+The method should return the correct result as an integer.
+
+You can assume that the input is a correct formula.
+","public int Calculator(String[] input, IntegerStack s) {
+    return 0;
+}","import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class __tester__ {
+    private int getRandom() {
+        // -1000000 bis 1000000
+        return (int)(Math.random() * 2000001 - 1000000);
+    }
+    
+    public class IntegerStack {
+        private ArrayList<String> history;
+        private Stack<Integer> stack;
+        
+        public IntegerStack() {
+            history = new ArrayList<String>();
+            stack = new Stack<Integer>();
+        }
+        
+        private void takeSnapshot() {
+            history.add(stack.toString());
+        }
+        
+        public boolean emptystack() {return stack.empty();}
+        public int head() {return stack.peek();}
+        public void push(int i) {
+            stack.push(i);
+            takeSnapshot();
+        }
+        public int pop() {
+            int element = stack.pop();
+            takeSnapshot();
+            return element;
+        }
+        public boolean compareHistory(String[] h) {
+            //System.out.println(history);
+            List<String> target = Arrays.asList(h);
+            // Ignore last in target because last might be pop or head
+            if(target.size() != history.size() && target.size()-1 != history.size()) {
+                System.out.println(""wrong history length: target "" + target.size() + "" - is "" + history.size());
+                return false;
+            }
+            for(int i = 0; i < history.size(); ++i) {
+                if(!target.get(i).equals(history.get(i))) {
+                    System.out.println(""Mismatch at "" + i + "": target ;"" + target.get(i) + ""; - is ;"" + history.get(i) + "";"");
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","// This implementation assumes input is a correct formula
+public int Calculator(String[] input, IntegerStack s) {
+    for(int i = 0; i < input.length; ++i) {
+        switch(input[i]) {
+            case ""+"":
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n2 + n1);
+                break;
+            case ""-"":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 - n1);
+                break;
+            case ""*"":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 * n1);
+                break;
+            case ""/"":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 / n1);
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}"
+"19_20-2-1-python","Schlange (Queue) (Python)","Queue (Python)","Implementieren Sie eine Klasse ""Queue"", die wie eine Schlange (wie in
+der Vorlesung beschrieben) funktioniert. Die Klasse soll mindestens die
+Methoden isEmpty(), head(), enqueue(x) und dequeue() besitzen. Die
+Schlange muss nie mehr als 100 Elemente beinhalten können.
+
+\textbf{Hinweis 1:} Im Java-Test wird erwartet, dass der Stack ""Strings""
+speichert. Da Python dynamisch getypt ist, ist dies hier nicht der Fall.
+
+\textbf{Hinweis 2:} Es ist nicht erlaubt, ""import"" zu verwenden!\\
+\strut \\
+
+\hfill\break
+","Implementieren Sie eine Klasse ""Queue"", die wie eine Schlange (wie in
+der Vorlesung beschrieben) funktioniert. Die Klasse soll mindestens die
+Methoden isEmpty(), head(), enqueue(x) und dequeue() besitzen. Die
+Schlange muss nie mehr als 100 Elemente beinhalten können.
+
+Hinweis 1: Im Java-Test wird erwartet, dass der Stack ""Strings""
+speichert. Da Python dynamisch getypt ist, ist dies hier nicht der Fall.
+
+Hinweis 2: Es ist nicht erlaubt, ""import"" zu verwenden!
+","Implement a class ""Queue"" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store ""strings"".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use ""import""!","class Queue:
+    """"""Klasse, die eine selbstgebaute Queue darstellt.
+    """"""
+
+    def isEmpty(self):
+        """"""Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """"""
+        pass
+
+    def head(self):
+        """"""Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """"""
+        pass
+
+    def enqueue(self, x):
+        """"""Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """"""
+        pass
+
+    def dequeue(self):
+        """"""Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """"""
+        pass","{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","class Queue:
+    """"""Klasse, die eine selbstgebaute Queue darstellt.
+    """"""
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """"""Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """"""
+        return len(self.lst) == 0
+
+    def head(self):
+        """"""Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """"""
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """"""Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """"""
+        self.lst.append(x)
+
+    def dequeue(self):
+        """"""Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """"""
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError"
+"19_20-2-2-python","Stapel: Anwendung (Python)","Stack (Python)","Die
+\href{https://de.wikipedia.org/wiki/Umgekehrte_polnische_Notation}{Umgekehrte
+Polnische Notation / Postfix-Notation} ist eine spezielle Schreibweise
+für Mathematische Ausdrücke, bei der zuerst die Zahlen und danach die
+Operatoren angegeben werden. Der Ausdruck \emph{(1 * 2)+(3 * 4)} wäre
+dementsprechend in dieser Notation \textbf{1 2 * 3 4 * +}.
+
+Ein Rechner für diese Notation lässt sich gut mit Hilfe eines Stacks
+abbilden. Dabei wird die Notation von links nach rechts durchgegangen.
+Falls eine Zahl bearbeitet wird, so wird diese auf den Stack gelegt.
+Wenn ein Operator kommt, dann werden die obersten beiden Zahlen vom
+Stack genommen, der Operator ausgeführt und das Ergebnis wieder auf den
+Stack gelegt. Nach der Rechnung ist das Ergebnis als einzige Zahl auf
+dem Stack.
+
+In dieser Aufgabe sollen sie einen solchen Rechner in einer Methode
+implementieren. Dieser soll die Operatoren plus (+), minus (-), mal (*)
+und geteilt (/, abgerundet) verarbeiten können. \textbf{Sie erhalten
+dafür einen Stack mit folgenden bekannten Methoden, den Sie bei Ihrer
+Implementation verwenden sollen}:
+
+* emptystack()\\
+* head()\\
+* push(int i)\\
+* pop()
+
+Die Methode erhält als Eingabe eine Liste mit Strings, bei der die
+Zahlen und Operatoren bereits getrennt sind (z.B.: input = {[}""1"", ""2"",
+""*"", ""3"", ""4"", ""*"", ""+""{]}). Strings können Sie mit Hilfe von
+""int(myString)"" umwandeln. \textbf{Zudem erhalten Sie einen Stack, den
+Sie verwenden sollen.} Zurückgeben soll die Methode das richtige
+Ergebnis als Integer.
+
+Sie können davon ausgehen, dass die Eingabe eine korrekte Formel ist.\\
+","Die Umgekehrte Polnische Notation / Postfix-Notation ist eine spezielle
+Schreibweise für Mathematische Ausdrücke, bei der zuerst die Zahlen und
+danach die Operatoren angegeben werden. Der Ausdruck (1 * 2)+(3 * 4)
+wäre dementsprechend in dieser Notation 1 2 * 3 4 * +.
+
+Ein Rechner für diese Notation lässt sich gut mit Hilfe eines Stacks
+abbilden. Dabei wird die Notation von links nach rechts durchgegangen.
+Falls eine Zahl bearbeitet wird, so wird diese auf den Stack gelegt.
+Wenn ein Operator kommt, dann werden die obersten beiden Zahlen vom
+Stack genommen, der Operator ausgeführt und das Ergebnis wieder auf den
+Stack gelegt. Nach der Rechnung ist das Ergebnis als einzige Zahl auf
+dem Stack.
+
+In dieser Aufgabe sollen sie einen solchen Rechner in einer Methode
+implementieren. Dieser soll die Operatoren plus (+), minus (-), mal (*)
+und geteilt (/, abgerundet) verarbeiten können. Sie erhalten dafür einen
+Stack mit folgenden bekannten Methoden, den Sie bei Ihrer Implementation
+verwenden sollen:
+
+* emptystack()
+* head()
+* push(int i)
+* pop()
+
+Die Methode erhält als Eingabe eine Liste mit Strings, bei der die
+Zahlen und Operatoren bereits getrennt sind (z.B.: input = [""1"", ""2"",
+""*"", ""3"", ""4"", ""*"", ""+""]). Strings können Sie mit Hilfe von
+""int(myString)"" umwandeln. Zudem erhalten Sie einen Stack, den Sie
+verwenden sollen. Zurückgeben soll die Methode das richtige Ergebnis als
+Integer.
+
+Sie können davon ausgehen, dass die Eingabe eine korrekte Formel ist.
+","The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation.
+
+A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack.
+If an operator is encountered, then the uppermost two numbers are taken from the stack,
+the operator is executed and the result is put back on the stack.
+After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method.
+It should be able to process the operators plus (+), minus (-), times (*)
+and division (/, rounded down). You will receive a stack with the following
+known methods, which you have to use in your implementation:
+
+* emptystack()
+* head()
+* push(int i)
+* pop()
+
+The method receives as input a list of strings in which the
+numbers and operators are already separated (e.g..: input =
+[""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""]). Strings can be converted with ""int(myString)"".
+You will also get a stack, which you should use.
+The method should return the correct result as an integer.
+
+You can assume that the input is a correct formula.
+","def Calculator(inputarray, stack):
+    return 0","import random
+
+class CustomStack:
+    def __init__(self):
+        self._s = list()
+        self._h = list()
+    
+    def _takeSnapshot(self):
+        self._h.append(str(self._s))
+
+    def _compareHistory(self, t):
+        if len(t) != len(self._h) and len(t)-1 != len(self._h):
+                print(""wrong history length: target {} - is {}"".format(len(t), len(self._h)))
+                return False
+
+        for i in range(len(self._h)):
+            if t[i] != self._h[i]:
+                print(""Mismatch at {}: target ;{}; - is ;{};"".format(i, t[i], self._h[i]))
+                return False
+
+        return True
+
+    def emptystack(self):
+        return len(self._s) == 0
+
+    def head(self):
+        return self._s[-1]
+
+    def push(self, i):
+        self._s.append(int(i))
+        self._takeSnapshot()
+
+    def pop(self):
+        i = self._s.pop()
+        self._takeSnapshot()
+        return i
+
+def getRandom():
+    # -1000000 bis 1000000
+    return int(random.random() * 2000001 - 1000000)
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","# This implementation assumes input is a correct formula
+def Calculator(inputarray, stack):
+    for i in inputarray:
+        try:
+            stack.push({
+                ""+"": lambda x, y: y+x,
+                ""-"": lambda x, y: y-x,
+                ""*"": lambda x, y: y*x,
+                ""/"": lambda x, y: y/x,}[i](stack.pop(), stack.pop()))
+        except KeyError:
+            stack.push(int(i))
+    return stack.pop()"
+"19_20-3-1-java","List Sorting (Java)","List Sorting (Java)","Implementieren sie einen beliebigen Suchalgorithmus aus der Vorlesung,
+welcher die übergebene Liste sortiert.
+
+\hfill\break
+
+Die Liste hat folgende Operationen, welche als Eingabe Indexe der
+Listenelemente bekommt:
+
+* Swap(int x, int y) \textless- Tauscht die Items an der Position x und
+y
+
+* Larger(int x, int y) \textless- Liefert true zurück, falls das Element
+an Position x echt größer als das Element an Position y ist
+
+* Smaller(int x, int y) \textless- Liefert true zurück, falls das
+Element an Position y echt größer als~das Element an Position x ist
+
+* Equal(int x, int y) \textless- Liefert true zurück, falls das Element
+an Position y gleich groß wie~das Element an Position x ist
+
+* Length() \textless- Liefert die Länge der Liste zurück\\
+
+\hfill\break
+","Implementieren sie einen beliebigen Suchalgorithmus aus der Vorlesung,
+welcher die übergebene Liste sortiert.
+
+Die Liste hat folgende Operationen, welche als Eingabe Indexe der
+Listenelemente bekommt:
+
+* Swap(int x, int y) <- Tauscht die Items an der Position x und y
+
+* Larger(int x, int y) <- Liefert true zurück, falls das Element an
+Position x echt größer als das Element an Position y ist
+
+* Smaller(int x, int y) <- Liefert true zurück, falls das Element an
+Position y echt größer als das Element an Position x ist
+
+* Equal(int x, int y) <- Liefert true zurück, falls das Element an
+Position y gleich groß wie das Element an Position x ist
+
+* Length() <- Liefert die Länge der Liste zurück
+","Implement any search algorithm from the lecture
+that sorts the given list.
+
+The list has the following operations, which get as input indexes of the
+list elements:
+
+* Swap(int x, int y) <- Swaps the items at position x and y.
+
+* Larger(int x, int y) <- Returns true if the item at
+position x is greater than the item at position y
+
+* Smaller(int x, int y) <- Returns true if the item at
+position y is greater than the element at position x
+
+* Equal(int x, int y) <- Returns true if the element at
+position y is equal to the element at position x
+
+* Length() <- Returns the length of the list
+","public ListToSort Sort(ListToSort list) {
+    return null;
+}","import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.lang.IndexOutOfBoundsException;
+
+public class __tester__ {
+    public class ListToSort {
+        private List<Integer> l;
+        private int c = 0;
+        
+        ListToSort(List<Integer> list) {
+            l = list;
+            c = 0;
+        }
+        
+        public void Swap(int x, int y) {
+            c++;
+            if(x >= l.size() || y >= l.size() || x < 0 || y < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            int temp = l.get(x);
+            l.set(x, l.get(y));
+            l.set(y, temp);
+        }
+        
+        public boolean Larger(int x, int y) {
+            c++;
+            if(x >= l.size() || y >= l.size() || x < 0 || y < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            return l.get(x) > l.get(y);
+        }
+        
+        public boolean Smaller(int x, int y) {
+            c++;
+            if(x >= l.size() || y >= l.size() || x < 0 || y < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            return l.get(x) < l.get(y);
+        }
+        
+        public boolean Equal(int x, int y) {
+            c++;
+            if(x >= l.size() || y >= l.size() || x < 0 || y < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            return l.get(x) == l.get(y);
+        }
+        
+        public int Length() {
+            return l.size();
+        }
+        
+        public int count() {
+            return c;
+        }
+        
+        public boolean isSorted() {
+            for(int i = 1; i < l.size(); i++) {
+                if(Larger(i-1, i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        public boolean isSame(List<Integer> list) {
+            if(list.size() != l.size()) {
+                return false;
+            }
+            for(int i = 0; i < l.size(); i++) {
+                if(list.get(i) != l.get(i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+    private static int randrange(int min, int max) {
+        return (int)(Math.random() * ((max - min) + 1)) + min;
+    }
+    
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","public ListToSort Sort(ListToSort list) {
+    // Implementation of BubbleSort
+    for(int i=1; i < list.Length(); i++) {
+        for(int j = list.Length()-1; j > i-1; j--) {
+            if (list.Smaller(j, j-1)) {
+                list.Swap(j, j-1);
+            }
+        }
+    }
+    return list;
+}"
+"19_20-3-1-python","List Sorting (Python)","List Sorting (Python)","Implementieren sie einen beliebigen Suchalgorithmus aus der Vorlesung,
+welcher die übergebene Liste sortiert.
+
+\hfill\break
+
+Die Liste hat folgende Operationen, welche als Eingabe Indizes der
+Listenelemente bekommt:
+
+* Swap(int x, int y) \textless- Tauscht die Items an der Position x und
+y
+
+* Larger(int x, int y) \textless- Liefert true zurück, falls~das Element
+an Position x echt größer als~das Element an Position y ist
+
+* Smaller(int x, int y) \textless- Liefert true zurück, falls~das
+Element an Position y echt größer als~das Element an Position x ist
+
+* Equal(int x, int y) \textless- Liefert true zurück, falls~das Element
+an Position y gleich groß wie~das Element an Position x ist
+
+* Length() \textless- Liefert die Länge der Liste zurück\\
+
+\hfill\break
+","Implementieren sie einen beliebigen Suchalgorithmus aus der Vorlesung,
+welcher die übergebene Liste sortiert.
+
+Die Liste hat folgende Operationen, welche als Eingabe Indizes der
+Listenelemente bekommt:
+
+* Swap(int x, int y) <- Tauscht die Items an der Position x und y
+
+* Larger(int x, int y) <- Liefert true zurück, falls das Element an
+Position x echt größer als das Element an Position y ist
+
+* Smaller(int x, int y) <- Liefert true zurück, falls das Element an
+Position y echt größer als das Element an Position x ist
+
+* Equal(int x, int y) <- Liefert true zurück, falls das Element an
+Position y gleich groß wie das Element an Position x ist
+
+* Length() <- Liefert die Länge der Liste zurück
+","Implement any search algorithm from the lecture
+that sorts the given list.
+
+The list has the following operations, which get as input indexes of the
+list elements:
+
+* Swap(int x, int y) <- Swaps the items at position x and y.
+
+* Larger(int x, int y) <- Returns true if the item at
+position x is greater than the item at position y
+
+* Smaller(int x, int y) <- Returns true if the item at
+position y is greater than the element at position x
+
+* Equal(int x, int y) <- Returns true if the element at
+position y is equal to the element at position x
+
+* Length() <- Returns the length of the list
+","def listSorter(listToSort: ListToSort) -> ListToSort:
+    pass","from random import randrange
+
+class ListToSort:
+
+    def __init__(self, listInput):
+        self._lst = listInput
+        self._count = 0
+
+    def Swap(self, x, y):
+        self._count += 1
+        if x >= len(self._lst) or y >= len(self._lst) or x < 0 or y < 0:
+            raise IndexError
+        tmp = self._lst[x]
+        self._lst[x] = self._lst[y]
+        self._lst[y] = tmp
+
+    def Larger(self, x, y):
+        self._count += 1
+        if x >= len(self._lst) or y >= len(self._lst) or x < 0 or y < 0:
+            raise IndexError
+        return self._lst[x] > self._lst[y]
+
+    def Smaller(self, x, y):
+        self._count += 1
+        if x >= len(self._lst) or y >= len(self._lst) or x < 0 or y < 0:
+            raise IndexError
+        return self._lst[x] < self._lst[y]
+
+    def Equal(self, x, y):
+        self._count += 1
+        if x >= len(self._lst) or y >= len(self._lst) or x < 0 or y < 0:
+            raise IndexError
+        return self._lst[x] is self._lst[y]
+
+    def Length(self):
+        return len(self._lst)
+
+    def count(self):
+        return self._count
+
+    def isSorted(self):
+        for i in range(1, len(self._lst)):
+            if self.Larger(i-1, i):
+                return False
+        return True
+
+    def isSame(self, otherLst):
+        if len(self._lst) != len(otherLst):
+            return False
+        for i in range(len(self._lst)):
+            if self._lst[i] != otherLst[i]:
+                return False
+        return True
+
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def listSorter(listToSort: ListToSort) -> ListToSort:
+    """"""
+    This is an implimentation of bubble sort
+    """"""
+    changed = True
+    while changed:
+        changed = False
+        for i in range(1, listToSort.Length()):
+            if listToSort.Larger(i-1, i):
+                listToSort.Swap(i-1, i)
+                changed = True
+    return listToSort"
+"19_20-4-1-java","Suchbäume: Einfügen (Java)","Search trees: Insertion (Java)","In diesen Aufgaben wird es um Suchbäume gehen. Unsere Suchbäume sind aus
+""Nodes"" aufgebaut, analog zur Vorlesung. Ein Node sieht wie folgt aus:\\
+
+public class Node \{\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public int key;\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public Node left;\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public Node right;\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public Node parent;\\
+\}
+
+In der Vorlesung haben Sie bereits einen Algorithmus für das Suchen in
+einem Suchbaum gesehen.\\
+
+Sie sollen für die Suchbäume verschiedene Methoden implementieren.
+Implementieren Sie für diese Aufgabe eine Methode ""insert"", die eine
+""Node"" im Suchbaum einfügt und den neuen Suchbaum zurück gibt. Dabei
+können die Knoten nach belieben wieder verwendet werden. Die Funktion
+bekommt dabei die Wurzel des Suchbaums übergeben sowie den neuen
+Knoten.\\
+","In diesen Aufgaben wird es um Suchbäume gehen. Unsere Suchbäume sind aus
+""Nodes"" aufgebaut, analog zur Vorlesung. Ein Node sieht wie folgt aus:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In der Vorlesung haben Sie bereits einen Algorithmus für das Suchen in
+einem Suchbaum gesehen.
+
+Sie sollen für die Suchbäume verschiedene Methoden implementieren.
+Implementieren Sie für diese Aufgabe eine Methode ""insert"", die eine
+""Node"" im Suchbaum einfügt und den neuen Suchbaum zurück gibt. Dabei
+können die Knoten nach belieben wieder verwendet werden. Die Funktion
+bekommt dabei die Wurzel des Suchbaums übergeben sowie den neuen Knoten.
+","These tasks will be about search trees. Our search trees are built from
+""nodes"", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method ""insert"" that inserts a
+""Node"" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.","// Node in parameter represents root of tree
+public Node insert(Node root, Node insert) {
+    return null;
+}","public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    
+        private boolean compareTrees(Node m, Node n) {
+        // null check
+        if (n == null && m == null) {
+            return true;
+        }
+        if (n != null && m == null) {
+            return false;
+        }
+        if (n == null && m != null) {
+            return false;
+        }
+
+        // Root
+        if (n.parent == null && m.parent != null) {
+            return false;
+        }
+        if (n.parent != null && m.parent == null) {
+            return false;
+        }
+        if (n.parent != null && m.parent != null) {
+            if (n.parent.key != m.parent.key) {
+                return false;
+            }
+        }
+
+        // Key
+        if (m.key != n.key) {
+            return false;
+        }
+
+        // Left side
+        if (n.left == null && m.left != null) {
+            return false;
+        }
+        if (n.left != null && m.left == null) {
+            return false;
+        }
+        if (n.left != null && m.left != null) {
+            if (!compareTrees(n.left, m.left)) {
+                return false;
+            }
+        }
+
+        // Right side
+        if (n.right == null && m.right != null) {
+            return false;
+        }
+        if (n.right != null && m.right == null) {
+            return false;
+        }
+        if (n.right != null && m.right != null) {
+            if (!compareTrees(n.right, m.right)) {
+                return false;
+            }
+        }
+
+        // Correct parents
+        if (n.right != null) {
+            if (n.right.parent != n) {
+                return false;
+            }
+        }
+        if (n.left != null) {
+            if (n.left.parent != n) {
+                return false;
+            }
+        }
+        if (m.right != null) {
+            if (m.right.parent != m) {
+                return false;
+            }
+        }
+        if (m.left != null) {
+            if (m.left.parent != m) {
+                return false;
+            }
+        }
+
+        // All passed
+        return true;
+    }
+
+    private int getRandomKey() {
+        // -1000000 bis 1000000
+        return (int) (Math.random() * 2000001 - 1000000);
+    }
+
+    private int getRandomNumberNodes() {
+        // 0 bis 20
+        return (int) (Math.random() * 21);
+    }
+
+    // Return: [Root1, insert, Root2]
+    private Node[] getRandom() {
+        Node root1 = null;
+        Node root2 = null;
+
+        int numberOfNodes = getRandomNumberNodes();
+
+        for (int i = 0; i < numberOfNodes; ++i) {
+            int randomKey = getRandomKey();
+
+            // Root 1
+            Node n = new Node();
+            n.key = randomKey;
+
+            Node x = root1;
+            Node y = null;
+            while (x != null) {
+                y = x;
+                if (n.key < x.key) {
+                    x = x.left;
+                } else {
+                    x = x.right;
+                }
+            }
+
+            n.parent = y;
+            if (y == null) {
+                root1 = n;
+            } else if (n.key < y.key) {
+                y.left = n;
+            } else {
+                y.right = n;
+            }
+
+            // Root 2
+            n = new Node();
+            n.key = randomKey;
+
+            x = root2;
+            y = null;
+            while (x != null) {
+                y = x;
+                if (n.key < x.key) {
+                    x = x.left;
+                } else {
+                    x = x.right;
+                }
+            }
+
+            n.parent = y;
+            if (y == null) {
+                root2 = n;
+            } else if (n.key < y.key) {
+                y.left = n;
+            } else {
+                y.right = n;
+            }
+        }
+
+        // Node to insert - root 2
+        int key = getRandomKey();
+
+        Node n = new Node();
+        n.key = key;
+
+        Node x = root2;
+        Node y = null;
+        while (x != null) {
+            y = x;
+            if (n.key < x.key) {
+                x = x.left;
+            } else {
+                x = x.right;
+            }
+        }
+
+        n.parent = y;
+        if (y == null) {
+            root2 = n;
+        } else if (n.key < y.key) {
+            y.left = n;
+        } else {
+            y.right = n;
+        }
+
+        Node[] result = new Node[3];
+        result[0] = root1;
+        result[1] = new Node();
+        result[1].key = key;
+        result[2] = root2;
+        return result;
+    }
+    
+    class Node {
+        public int key;
+        public Node left;
+        public Node right;
+        public Node parent;
+    }
+    
+    {{ STUDENT_ANSWER }}
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}"
+"19_20-4-2-java","Suchbäume: Löschen (Java)","Search trees: Removal (Java)","In diesen Aufgaben wird es wieder um Suchbäume gehen. Zur Erinnerung:
+Unsere Suchbäume sind aus ""Nodes"" aufgebaut, analog zur Vorlesung. Ein
+Node sieht wie folgt aus:\\
+
+public class Node \{\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public int key;\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public Node left;\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public Node right;\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
+public Node parent;\\
+\}
+
+Implementieren Sie für diese Aufgabe eine Methode ""delete"", die eine
+""Node"" im Suchbaum löscht und den neuen Suchbaum zurück gibt. Nutzen Sie
+dabei die Methode aus den Vorlesungsfolien, also die mit ""TREE-MINIMUM"".
+Dabei können die Knoten nach belieben wieder verwendet werden. Die
+Funktion bekommt dabei die Wurzel des Suchbaums übergeben sowie den zu
+löschenden Knoten.\\
+","In diesen Aufgaben wird es wieder um Suchbäume gehen. Zur Erinnerung:
+Unsere Suchbäume sind aus ""Nodes"" aufgebaut, analog zur Vorlesung. Ein
+Node sieht wie folgt aus:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+Implementieren Sie für diese Aufgabe eine Methode ""delete"", die eine
+""Node"" im Suchbaum löscht und den neuen Suchbaum zurück gibt. Nutzen Sie
+dabei die Methode aus den Vorlesungsfolien, also die mit ""TREE-MINIMUM"".
+Dabei können die Knoten nach belieben wieder verwendet werden. Die
+Funktion bekommt dabei die Wurzel des Suchbaums übergeben sowie den zu
+löschenden Knoten.
+","These tasks will again be about search trees. Reminder:
+Our search trees are built from ""nodes"", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method ""delete"" which deletes a
+""Node"" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with ""TREE-MINIMUM"".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+","// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    return null;
+}","public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    
+    class Node {
+        public int key;
+        public Node left;
+        public Node right;
+        public Node parent;
+    }
+    
+    private Node[] getRandom() {
+        Node root1 = null;
+        Node root2 = null;
+
+        int number = getRandomNumberNodes();
+
+        Node toDelete = null;
+        Node delete = null;
+
+        for (int i = 0; i < number + 1; ++i) {
+            int key = getRandomKey();
+            boolean deleted = false;
+
+            // Root 1
+            Node n = new Node();
+            n.key = key;
+
+            Node x = root1;
+            Node y = null;
+            while (x != null) {
+                y = x;
+                if (n.key < x.key) {
+                    x = x.left;
+                } else {
+                    x = x.right;
+                }
+            }
+
+            n.parent = y;
+            if (y == null) {
+                root1 = n;
+            } else if (n.key < y.key) {
+                y.left = n;
+            } else {
+                y.right = n;
+            }
+
+            // Maybe this will be deleted?
+            if (getRandomNumberNodes() < 4) {
+                deleted = true;
+                toDelete = n;
+            }
+
+            // Root 2
+            n = new Node();
+            n.key = key;
+
+            x = root2;
+            y = null;
+            while (x != null) {
+                y = x;
+                if (n.key < x.key) {
+                    x = x.left;
+                } else {
+                    x = x.right;
+                }
+            }
+
+            n.parent = y;
+            if (y == null) {
+                root2 = n;
+            } else if (n.key < y.key) {
+                y.left = n;
+            } else {
+                y.right = n;
+            }
+
+            if (deleted) {
+                delete = n;
+            }
+        }
+
+        if (toDelete == null) {
+            toDelete = root1;
+            delete = root2;
+        }
+
+        // Node to delete - root 2
+
+        Node y = null; //y: node to delete (after swap)
+
+        if (delete.left == null || delete.right == null) {
+            y = delete;
+        } else {
+            y = delete.right;
+            while (y.left != null) {
+                y = y.left;
+            }
+        }
+
+        Node x = null; // non-null child of y
+        if (y.left != null) {
+            x = y.left;
+        } else {
+            x = y.right;
+        }
+
+        // now delete y
+        if (x != null) {
+            x.parent = y.parent;
+        }
+        if (y.parent == null) {
+            root2 = x;
+        } else {
+            if (y == y.parent.left) {
+                y.parent.left = x;
+            } else {
+                y.parent.right = x;
+            }
+        }
+
+        // Copy data
+        if (y != delete) {
+            delete.key = y.key;
+        }
+
+        Node[] result = new Node[3];
+        result[0] = root1;
+        result[1] = toDelete;
+        result[2] = root2;
+        return result;
+    }
+    
+    private boolean compareTrees(Node m, Node n) {
+        // null check
+        if (n == null && m == null) {
+            return true;
+        }
+        if (n != null && m == null) {
+            return false;
+        }
+        if (n == null && m != null) {
+            return false;
+        }
+
+        // Root
+        if (n.parent == null && m.parent != null) {
+            return false;
+        }
+        if (n.parent != null && m.parent == null) {
+            return false;
+        }
+        if (n.parent != null && m.parent != null) {
+            if (n.parent.key != m.parent.key) {
+                return false;
+            }
+        }
+
+        // Key
+        if (m.key != n.key) {
+            return false;
+        }
+
+        // Left side
+        if (n.left == null && m.left != null) {
+            return false;
+        }
+        if (n.left != null && m.left == null) {
+            return false;
+        }
+        if (n.left != null && m.left != null) {
+            if (!compareTrees(n.left, m.left)) {
+                return false;
+            }
+        }
+
+        // Right side
+        if (n.right == null && m.right != null) {
+            return false;
+        }
+        if (n.right != null && m.right == null) {
+            return false;
+        }
+        if (n.right != null && m.right != null) {
+            if (!compareTrees(n.right, m.right)) {
+                return false;
+            }
+        }
+
+        // Correct parents
+        if (n.right != null) {
+            if (n.right.parent != n) {
+                return false;
+            }
+        }
+        if (n.left != null) {
+            if (n.left.parent != n) {
+                return false;
+            }
+        }
+        if (m.right != null) {
+            if (m.right.parent != m) {
+                return false;
+            }
+        }
+        if (m.left != null) {
+            if (m.left.parent != m) {
+                return false;
+            }
+        }
+
+        // All passed
+        return true;
+    }
+
+    private int getRandomKey() {
+        // -1000000 bis 1000000
+        return (int) (Math.random() * 2000001 - 1000000);
+    }
+
+    private int getRandomNumberNodes() {
+        // 0 bis 20
+        return (int) (Math.random() * 21);
+    }
+    
+    {{ STUDENT_ANSWER }}
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}"
+"19_20-4-1-python","Suchbäume: Einfügen (Python)","Search trees: Insertion (Python)","In diesen Aufgaben wird es um Suchbäume gehen. Unsere Suchbäume sind aus
+""Nodes"" aufgebaut, analog zur Vorlesung. Ein Node sieht wie folgt aus:\\
+
+class Node:\\
+\hspace*{0.333em}* key\\
+\hspace*{0.333em}* left\\
+\hspace*{0.333em}* right\\
+\hspace*{0.333em}* parent
+
+In der Vorlesung haben Sie bereits einen Algorithmus für das Suchen in
+einem Suchbaum gesehen.\\
+
+Sie sollen für die Suchbäume verschiedene Methoden implementieren.
+Implementieren Sie für diese Aufgabe eine Methode ""insert"", die eine
+""Node"" im Suchbaum einfügt und den neuen Suchbaum zurück gibt. Dabei
+können die Knoten nach belieben wieder verwendet werden. Die Funktion
+bekommt dabei die Wurzel des Suchbaums übergeben sowie den neuen
+Knoten.\\
+
+\hfill\break
+","In diesen Aufgaben wird es um Suchbäume gehen. Unsere Suchbäume sind aus
+""Nodes"" aufgebaut, analog zur Vorlesung. Ein Node sieht wie folgt aus:
+
+class Node:
+ * key
+ * left
+ * right
+ * parent
+
+In der Vorlesung haben Sie bereits einen Algorithmus für das Suchen in
+einem Suchbaum gesehen.
+
+Sie sollen für die Suchbäume verschiedene Methoden implementieren.
+Implementieren Sie für diese Aufgabe eine Methode ""insert"", die eine
+""Node"" im Suchbaum einfügt und den neuen Suchbaum zurück gibt. Dabei
+können die Knoten nach belieben wieder verwendet werden. Die Funktion
+bekommt dabei die Wurzel des Suchbaums übergeben sowie den neuen Knoten.
+","These tasks will be about search trees. Our search trees are built from
+""nodes"", analogous to the lecture. A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * parent
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method ""insert"" that inserts a
+""Node"" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.","# Node in parameter represents root of tree
+def insert(root, insert):
+    return None","import random
+
+
+class Node:
+    def __init__(self):
+        self.key = None
+        self.parent = None
+        self.left = None
+        self.right = None
+
+
+def get_random_key():
+    return random.randrange(-1000000, 1000001, 1)
+
+
+def get_random_number_nodes():
+    return random.randrange(0, 21, 1)
+
+
+def compare_trees(m, n):
+    # None check
+    if n is None and m is None:
+        return True
+    if n is not None and m is None:
+        return False
+    if n is None and m is not None:
+        return False
+
+    # Root
+    if n.parent is None and m.parent is not None:
+        return False
+    if n.parent is not None and m.parent is None:
+        return False
+    if n.parent is not None and m.parent is not None:
+        if n.parent.key != m.parent.key:
+            return False
+
+    # Key
+    if m.key != n.key:
+        return False
+
+    # Left side
+    if n.left is None and m.left is not None:
+        return False
+    if n.left is not None and m.left is None:
+        return False
+    if n.left is not None and m.left is not None:
+        if not compare_trees(n.left, m.left):
+            return False
+
+    # Right side
+    if n.right is None and m.right is not None:
+        return False
+    if n.right is not None and m.right is None:
+        return False
+    if n.right is not None and m.right is not None:
+        if not compare_trees(n.right, m.right):
+            return False
+
+    # Correct parents
+    if n.right is not None:
+        if n.right.parent is not n:
+            return False
+
+    if n.left is not None:
+        if n.left.parent is not n:
+            return False
+
+    if m.right is not None:
+        if m.right.parent is not m:
+            return False
+
+    if m.left is not None:
+        if m.left.parent is not m:
+            return False
+
+    # All passed
+    return True
+
+
+# Return: (Root1, insert, Root2)
+def get_random():
+    root1 = None
+    root2 = None
+
+    number = get_random_number_nodes()
+
+    for i in range(number):
+        key = get_random_key();
+
+        # Root 1
+        n = Node()
+        n.key = key
+
+        x = root1
+        y = None
+        while x is not None:
+            y = x
+            if n.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+
+        n.parent = y
+        if y is None:
+            root1 = n
+        elif n.key < y.key:
+            y.left = n
+        else:
+            y.right = n
+
+        # Root 2
+        n = Node()
+        n.key = key
+
+        x = root2
+        y = None
+        while x is not None:
+            y = x
+            if n.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+
+        n.parent = y
+        if y is None:
+            root2 = n
+        elif n.key < y.key:
+            y.left = n
+        else:
+            y.right = n
+
+    # Node to insert - root 2
+    key = get_random_key();
+
+    n = Node()
+    n.key = key
+
+    x = root2
+    y = None
+    while x is not None:
+        y = x
+        if n.key < x.key:
+            x = x.left
+        else:
+            x = x.right
+
+    n.parent = y
+    if y is None:
+        root2 = n
+    elif n.key < y.key:
+        y.left = n
+    else:
+        y.right = n
+
+    toInsert = Node()
+    toInsert.key = key
+    return root1, toInsert, root2
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","# Node in parameter represents root of tree
+def insert(root: Node, insert: Node):
+    x = root
+    y = None  # saves Node.parent
+    while x is not None:
+        y = x
+        if insert.key < x.key:
+            x = x.left
+        else:
+            x = x.right;
+
+    insert.parent = y
+    if y is None:
+        return insert
+    elif insert.key < y.key:
+        y.left = insert
+    else:
+        y.right = insert;
+
+    return root"
+"19_20-4-2-python","Suchbäume: Löschen (Python)","Search trees: Removal (Python)","In diesen Aufgaben wird es wieder um Bäume gehen. Zur Erinnerung: Unsere
+Bäume sind aus ""Nodes"" aufgebaut, analog zur Vorlesung. Ein Node sieht
+wie folgt aus:\\
+
+class Node:\\
+\hspace*{0.333em}* key\\
+\hspace*{0.333em}* left\\
+\hspace*{0.333em}* right\\
+\hspace*{0.333em}* Parent\\
+
+Implementieren Sie für diese Aufgabe eine Methode ""delete"", die eine
+""Node"" im Baum löscht und den neuen Baum zurück gibt. Nutzen Sie dabei
+die Methode aus den Vorlesungsfolien, also die mit ""TREE-MINIMUM"". Dabei
+können die Knoten nach belieben wieder verwendet werden. Die Funktion
+bekommt dabei die Wurzel des Baums übergeben sowie den zu löschenden
+Knoten.\\
+","In diesen Aufgaben wird es wieder um Bäume gehen. Zur Erinnerung: Unsere
+Bäume sind aus ""Nodes"" aufgebaut, analog zur Vorlesung. Ein Node sieht
+wie folgt aus:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+Implementieren Sie für diese Aufgabe eine Methode ""delete"", die eine
+""Node"" im Baum löscht und den neuen Baum zurück gibt. Nutzen Sie dabei
+die Methode aus den Vorlesungsfolien, also die mit ""TREE-MINIMUM"". Dabei
+können die Knoten nach belieben wieder verwendet werden. Die Funktion
+bekommt dabei die Wurzel des Baums übergeben sowie den zu löschenden
+Knoten.
+","These tasks will again be about search trees. Reminder:
+Our search trees are built from ""nodes"", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method ""delete"" which deletes a
+""Node"" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with ""TREE-MINIMUM"".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+","# Node in parameter represents root of tree
+def delete(root, delete):
+    return None","import random
+
+
+class Node:
+    def __init__(self):
+        self.key = None
+        self.parent = None
+        self.left = None
+        self.right = None
+
+
+def get_random_key():
+    return random.randrange(-1000000, 1000001, 1)
+
+
+def get_random_number_nodes():
+    return random.randrange(0, 21, 1)
+
+
+def compare_trees(m, n):
+    # None check
+    if n is None and m is None:
+        return True
+    if n is not None and m is None:
+        return False
+    if n is None and m is not None:
+        return False
+
+    # Root
+    if n.parent is None and m.parent is not None:
+        return False
+    if n.parent is not None and m.parent is None:
+        return False
+    if n.parent is not None and m.parent is not None:
+        if n.parent.key != m.parent.key:
+            return False
+
+    # Key
+    if m.key != n.key:
+        return False
+
+    # Left side
+    if n.left is None and m.left is not None:
+        return False
+    if n.left is not None and m.left is None:
+        return False
+    if n.left is not None and m.left is not None:
+        if not compare_trees(n.left, m.left):
+            return False
+
+    # Right side
+    if n.right is None and m.right is not None:
+        return False
+    if n.right is not None and m.right is None:
+        return False
+    if n.right is not None and m.right is not None:
+        if not compare_trees(n.right, m.right):
+            return False
+
+    # Correct parents
+    if n.right is not None:
+        if n.right.parent is not n:
+            return False
+
+    if n.left is not None:
+        if n.left.parent is not n:
+            return False
+
+    if m.right is not None:
+        if m.right.parent is not m:
+            return False
+
+    if m.left is not None:
+        if m.left.parent is not m:
+            return False
+
+    # All passed
+    return True
+
+
+# Return: (Root1, insert, Root2)
+def get_random():
+    root1 = None
+    root2 = None
+
+    number = get_random_number_nodes()
+
+    toDelete = None
+    delete = None
+
+    for i in range(number + 1):
+        key = get_random_key()
+        deleted = False
+
+        # Root 1
+        n = Node()
+        n.key = key
+
+        x = root1
+        y = None
+        while x is not None:
+            y = x
+            if n.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+
+        n.parent = y
+        if y is None:
+            root1 = n
+        elif n.key < y.key:
+            y.left = n
+        else:
+            y.right = n
+
+        # Maybe this will be deleted?
+        if (get_random_number_nodes() < 4):
+            deleted = True
+            toDelete = n
+
+        # Root 2
+        n = Node()
+        n.key = key
+
+        x = root2
+        y = None
+        while x is not None:
+            y = x
+            if n.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+
+        n.parent = y
+        if y is None:
+            root2 = n
+        elif n.key < y.key:
+            y.left = n
+        else:
+            y.right = n
+
+        if deleted:
+            delete = n
+
+    if toDelete is None:
+        toDelete = root1
+        delete = root2
+
+    # Node to delete - root 2
+
+    y = None  # y: node to delete (after swap)
+
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = delete.right
+        while y.left != None:
+            y = y.left
+
+    x = None  # non-None child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root2 = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+
+    return root1, toDelete, root2
+
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root"
+"19_20-5-1-java","Graphen: Breitensuche (Java)","Graphs: BFS (Java)","In dieser Aufgabe geht es um die Implementierung von Graphen und sehr
+einfache Graphen-Algorithmen. In Java implementieren wir Graphen mit der
+Hilfe von Arrays. Wir schauen uns dabei Graphen mit ungewichteten Kanten
+an. Zur Abbildung eines Graphens in Java geben wir allen Knoten eine
+Nummer (startend mit 0), die dem Index der Kantenliste in der Liste
+entspricht.
+Beispiel:\includegraphics[width=2.80208in,height=2.42708in]{@@PLUGINFILE@@/Block 5 Graph.svg?time=1574086290425}
+
+int{[}{]}{[}{]} graph = \{\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} \{1, 2\},\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} \{0\},\\
+
+~~~ \{1\}\\
+\};\\
+
+Jede dieser Kanten kann nun als gerichtet aufgefasst werden, ausgehen
+von dem Knoten mit der Indexnummer zu dem Knoten mit der entsprechenden
+Nummer (siehe Bild als graphische Visualisierung).
+
+\hfill\break
+
+Nun wollen wir für die Graphen einige einfachen Algorithmen
+implementieren, dabei beginnen wir mit \textbf{Breitensuche}. Wie dieser
+Algorithmus abläuft ist in der Vorlesung zu finden, siehe auch Cormen et
+al, Kap. 22. Es sollen hier als Eingaben ungewichtete, gerichtete
+Graphen angenommen werden, es ist also nicht immer gegeben, dass es zu
+jeder Kante auch eine entgegengesetzt verlaufende Rückkante gibt.
+
+Die Ausgaben soll dabei die Knoten des Graphen in der Reihenfolge
+enthalten, wie diese von der entsprechenden Suche abgearbeitet werden.
+Die Knoten sollen dabei in der Reihenfolge durchlaufen werden, in der
+sie in der Kantenliste angeordnet sind.
+
+Sie können eine java.util.ArrayList oder einen java.util.Stack
+verwenden, falls Ihnen dies sinnvoll erscheint.\\
+","In dieser Aufgabe geht es um die Implementierung von Graphen und sehr
+einfache Graphen-Algorithmen. In Java implementieren wir Graphen mit der
+Hilfe von Arrays. Wir schauen uns dabei Graphen mit ungewichteten Kanten
+an. Zur Abbildung eines Graphens in Java geben wir allen Knoten eine
+Nummer (startend mit 0), die dem Index der Kantenliste in der Liste
+entspricht. Beispiel:
+
+int[][] graph = {
+    {1, 2},
+    {0},
+    {1}
+};
+
+Jede dieser Kanten kann nun als gerichtet aufgefasst werden, ausgehen
+von dem Knoten mit der Indexnummer zu dem Knoten mit der entsprechenden
+Nummer (siehe Bild als graphische Visualisierung).
+
+Nun wollen wir für die Graphen einige einfachen Algorithmen
+implementieren, dabei beginnen wir mit Breitensuche. Wie dieser
+Algorithmus abläuft ist in der Vorlesung zu finden, siehe auch Cormen et
+al, Kap. 22. Es sollen hier als Eingaben ungewichtete, gerichtete
+Graphen angenommen werden, es ist also nicht immer gegeben, dass es zu
+jeder Kante auch eine entgegengesetzt verlaufende Rückkante gibt.
+
+Die Ausgaben soll dabei die Knoten des Graphen in der Reihenfolge
+enthalten, wie diese von der entsprechenden Suche abgearbeitet werden.
+Die Knoten sollen dabei in der Reihenfolge durchlaufen werden, in der
+sie in der Kantenliste angeordnet sind.
+
+Sie können eine java.util.ArrayList oder einen java.util.Stack
+verwenden, falls Ihnen dies sinnvoll erscheint.
+","This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+int[][] graph = {
+    {1, 2},
+    {0},
+    {1}
+};
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.","public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> result = new ArrayList<Integer>();
+    return result;
+}","import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+import java.util.Random;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+    
+    private boolean isCorrect(int[][] graph, int start, List<Integer> solution) {
+        List<Integer> visited = new ArrayList<Integer>();
+        List<Integer> queue = new ArrayList<Integer>();
+        queue.add(start);
+
+        while(!queue.isEmpty()){
+            int next = queue.remove(0);
+            if(!visited.contains(next)) {
+                visited.add(next);
+                for(int vertex: graph[next]) {
+                    if(!visited.contains(vertex)) {
+                        queue.add(vertex);
+                    }
+                }
+            }
+        }
+        return visited.equals(solution);
+    }
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<Integer>();
+    queue.add(start);
+
+    while(!queue.isEmpty()){
+        int next = queue.remove(0);
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int vertex: graph[next]) {
+                if(!visited.contains(vertex)) {
+                    queue.add(vertex);
+                }
+            }
+        }
+    }
+    return visited;
+}"
+"19_20-5-2-java","Graphen: Tiefensuche (Java)","Graphs: DFS (Java)","Als zweiter Algorithmus soll nun - analog zur ersten Aufgabe - eine
+\textbf{Tiefensuche} implementiert werden.
+
+Auch hier sollen die Knoten in der Reihenfolge besucht werden, in der
+sie in der Kantenliste auftauchen.
+
+Sie können eine java.util.ArrayList oder einen java.util.Stack
+verwenden, falls Ihnen dies sinnvoll erscheint.\\
+","Als zweiter Algorithmus soll nun - analog zur ersten Aufgabe - eine
+Tiefensuche implementiert werden.
+
+Auch hier sollen die Knoten in der Reihenfolge besucht werden, in der
+sie in der Kantenliste auftauchen.
+
+Sie können eine java.util.ArrayList oder einen java.util.Stack
+verwenden, falls Ihnen dies sinnvoll erscheint.
+","As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.","public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> result = new ArrayList<Integer>();
+    return result;
+}","import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+import java.util.Random;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    {{ STUDENT_ANSWER }}
+    
+    private boolean isCorrect(int[][] graph, int start, List<Integer> solution) {
+        List<Integer> visited = new ArrayList<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(start);
+
+        while(!stack.isEmpty()){
+            int next = stack.pop();
+            if(!visited.contains(next)) {
+                visited.add(next);
+                for(int i = graph[next].length-1; i >= 0; --i) {
+                    if(!visited.contains(graph[next][i])) {
+                        stack.push(graph[next][i]);
+                    }
+                }
+            }
+        }
+        return visited.equals(solution);
+    }
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}"
+"19_20-5-1-python","Graphen: Breitensuche (Python)","Graphs: BFS (Python)","In dieser Aufgabe geht es um die Implementierung von Graphen und sehr
+einfache Graphen-Algorithmen. In Python implementieren wir Graphen mit
+der Hilfe von Listen. Wir schauen uns dabei Graphen mit ungewichteten
+Kanten an. Zur Abbildung eines Graphens in Python geben wir allen Knoten
+eine Nummer (startend mit 0), die dem Index der Kantenliste in der Liste
+entspricht.~
+Beispiel:\includegraphics[width=2.80208in,height=2.42708in]{@@PLUGINFILE@@/Block 5 Graph.svg?time=1574087763822}
+
+graph = {[}\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}{[}1,
+2{]},\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em} {[}0{]},\\
+
+~~~ {[}1{]}\\
+{]}
+
+Jede dieser Kanten kann nun als gerichtet aufgefasst werden, ausgehen
+von dem Knoten mit der Indexnummer zu dem Knoten mit der entsprechenden
+Nummer (siehe Bild als graphische Visualisierung).
+
+\hfill\break
+
+Nun wollen wir für die Graphen einige einfachen Algorithmen
+implementieren, dabei beginnen wir mit \textbf{Breitensuche}. Wie dieser
+Algorithmus abläuft ist in der Vorlesung zu finden, siehe auch Cormen et
+al, Kap. 22. Es sollen hier als Eingaben ungewichtete, gerichtete
+Graphen angenommen werden, es ist also nicht immer gegeben, dass es zu
+jeder Kante auch eine entgegengesetzt verlaufende Rückkante gibt.
+
+Die Ausgaben soll dabei die Knoten des Graphen in der Reihenfolge
+enthalten, wie diese von der entsprechenden Suche abgearbeitet werden.
+Die Knoten sollen dabei in der Reihenfolge durchlaufen werden, in der
+sie in der Kantenliste angeordnet sind.\\
+","In dieser Aufgabe geht es um die Implementierung von Graphen und sehr
+einfache Graphen-Algorithmen. In Python implementieren wir Graphen mit
+der Hilfe von Listen. Wir schauen uns dabei Graphen mit ungewichteten
+Kanten an. Zur Abbildung eines Graphens in Python geben wir allen Knoten
+eine Nummer (startend mit 0), die dem Index der Kantenliste in der Liste
+entspricht.  Beispiel:[Beispielskizze Graph]
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Jede dieser Kanten kann nun als gerichtet aufgefasst werden, ausgehen
+von dem Knoten mit der Indexnummer zu dem Knoten mit der entsprechenden
+Nummer (siehe Bild als graphische Visualisierung).
+
+Nun wollen wir für die Graphen einige einfachen Algorithmen
+implementieren, dabei beginnen wir mit Breitensuche. Wie dieser
+Algorithmus abläuft ist in der Vorlesung zu finden, siehe auch Cormen et
+al, Kap. 22. Es sollen hier als Eingaben ungewichtete, gerichtete
+Graphen angenommen werden, es ist also nicht immer gegeben, dass es zu
+jeder Kante auch eine entgegengesetzt verlaufende Rückkante gibt.
+
+Die Ausgaben soll dabei die Knoten des Graphen in der Reihenfolge
+enthalten, wie diese von der entsprechenden Suche abgearbeitet werden.
+Die Knoten sollen dabei in der Reihenfolge durchlaufen werden, in der
+sie in der Kantenliste angeordnet sind.
+","This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.","def bfs(graph, start):
+    return []","import random
+import copy
+
+def _isCorrect(graph, start, toCompare):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited == toCompare
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited"
+"19_20-5-2-python","Graphen: Tiefensuche (Python)","Graphs: DFS (Python)","Als zweiter Algorithmus soll nun - analog zur ersten Aufgabe - eine
+\textbf{Tiefensuche} implementiert werden.
+
+Auch hier sollen die Knoten in der Reihenfolge besucht werden, in der
+sie in der Kantenliste auftauchen.\\
+","Als zweiter Algorithmus soll nun - analog zur ersten Aufgabe - eine
+Tiefensuche implementiert werden.
+
+Auch hier sollen die Knoten in der Reihenfolge besucht werden, in der
+sie in der Kantenliste auftauchen.
+","As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.","def dfs(graph, start):
+    return []","import random
+import copy
+
+def _isCorrect(graph, start, toCompare):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]):
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited == toCompare
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited"
+"19_20-6-1-java","Dynamische Programmierung: Edit Distance (Java)","Dynamic Programming: Edit Distance (Java)","\textbf{HINWEIS: Von den beiden Teilaufgaben in diesem Block muss nur
+eine gelöst werden!} Wer beide löst, bekommt
+Bonuspunkte.\textbf{\hfill\break
+}
+
+In dieser Aufgabe soll die Edit Distance von zwei gegebenen Strings
+implementiert werden. Diese ist definiert als die minimale Anzahl von
+Einfüge-, Lösch- und Ersetzungsoperation von einzelnen Zeichen um den
+einen String in den anderen Umzuwandeln. Wichtig: es ist hier nach einer
+Implementation OHNE rekursive Aufrufe gefragt.
+
+\hfill\break
+","In dieser Aufgabe soll die Edit Distance von zwei gegebenen Strings
+implementiert werden. Diese ist definiert als die minimale Anzahl von
+Einfüge-, Lösch- und Ersetzungsoperation von einzelnen Zeichen um den
+einen String in den anderen Umzuwandeln. Wichtig: es ist hier nach einer
+Implementation OHNE rekursive Aufrufe gefragt.
+","In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.","public int editDistance(String a, String b) {
+    return 0;
+}","import java.util.Random;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    
+    private String getRandom(int length) {
+        Random rand = new Random();
+        String chars = ""01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX+-;,:._#*/"";
+        char[] result = new char[length];
+        for(int i = 0; i < length; ++i) {
+            result[i] = chars.charAt(rand.nextInt(chars.length()));
+        }
+        return new String(result);
+    }
+    
+    private boolean isCorrect(String a, String b, int solution) {
+        int m = a.length();
+        int n = b.length();
+        int[][] edDis = new int[m+1][];
+        for(int i = 0; i <= m; ++i) {
+            edDis[i] = new int[n+1];
+            edDis[i][0] = i;
+        }
+        for(int i = 0; i <= n; ++i) {
+            edDis[0][i] = i;
+        }
+    
+        for(int i = 1; i <= m; ++i) {
+            for(int j = 1; j <= n; ++j) {
+                if(a.charAt(i-1) == b.charAt(j-1)) {
+                    edDis[i][j] = edDis[i-1][j-1];
+                } else {
+                    edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+                }
+            }
+        }
+        return edDis[a.length()][b.length()] == solution;
+    }
+    
+    {{ STUDENT_ANSWER }}
+
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+    
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}"
+"19_20-6-2-java","Dynamische Programmierung: Knapsack (Java)","Dynamic Programming: Knapsack (Java)","\textbf{HINWEIS: Von den beiden Teilaufgaben in diesem Block muss nur
+eine gelöst werden!} Wer beide löst, bekommt Bonuspunkte.
+
+Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe~ \emph{({[}0.5, 0.3{]}, {[}2, 5{]}, 3 )} gibt also
+zwei Gegenstände, den ersten mit Volumen \emph{2} und Wert \emph{0.5},
+den zweiten mit Volumen \emph{5} und Wert \emph{0.3}. Der letzte Wert
+gibt das Volumen des Knapsackes an, in diesem Fall wäre also die
+richtige Ausgabe des Algorithmus \emph{0.5}, da nur der 1. Gegenstand
+überhaupt in den Rucksack passt. Wäre ein größeres Volumen von 7
+gegeben, wäre die richtige Ausgabe \emph{0.8} Wichtig ist hierbei noch
+anzumerken, dass die Lösung NICHT \emph{1.5} ist, es ist also nicht
+möglich den gleiche Gegenstand mehrfach zu verwenden.
+
+\hfill\break
+","Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe  ([0.5, 0.3], [2, 5], 3 ) gibt also zwei Gegenstände,
+den ersten mit Volumen 2 und Wert 0.5, den zweiten mit Volumen 5 und
+Wert 0.3. Der letzte Wert gibt das Volumen des Knapsackes an, in diesem
+Fall wäre also die richtige Ausgabe des Algorithmus 0.5, da nur der 1.
+Gegenstand überhaupt in den Rucksack passt. Wäre ein größeres Volumen
+von 7 gegeben, wäre die richtige Ausgabe 0.8 Wichtig ist hierbei noch
+anzumerken, dass die Lösung NICHT 1.5 ist, es ist also nicht möglich den
+gleiche Gegenstand mehrfach zu verwenden.
+","The Knapsack problem is an optimization problem. Which items
+from an existing selection should be packed into a limited
+backpack(Knapsack) in order to maximize the value to be transported?
+This problem is in generall NP-complete and therefore
+probably not efficiently solvable. Assuming that the
+volumes of the objects are integers, we can find an algorithm
+that solves this problem using dynamic programming. We are looking for
+the implementation of an algorithm, which for a given list of objects and a
+list of items and a maximum backpack volume outputs the value
+that can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values.
+values. So the input ([0.5, 0.3], [2, 5], 3 ) gives two items,
+the first with volume 2 and value 0.5, the second with volume 5 and value 0.3.
+The last value indicates the volume of the Knapsack, in this case
+the correct output of the algorithm would be 0.5 because only
+the 1st item fits into the backpack at all. With a larger volume
+of 7, the correct output would be 0.8. It is important to note that the solution
+is NOT 1.5, so it is not possible to use the same object more than once.","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    return 0.0;
+}","import java.util.Random;
+
+public class __tester__ {
+    static String SEPARATOR = ""#<ab@17943918#@>#"";
+    
+    private boolean isCorrect(double[] c, int[] v, int m, double solution) {
+        assert c.length == v.length;
+
+        int n = c.length;
+        double[][] Result = new double[n+1][];
+    
+        for(int i = 0; i < n+1; ++i) {
+            Result[i] = new double[m+1];
+        }
+    
+        for(int i = n-1; i > -1; --i) {
+            for(int j = 0; j < m+1; ++j) {
+                if (v[i] <= j) {
+                    Result[i][j] = Math.max(c[i] + Result[i+1][j-v[i]], Result[i+1][j]);
+                } else {
+                    Result[i][j] = Result[i+1][j];
+                }
+            }
+        }
+        return Math.abs(Result[0][m] - solution) < 0.01;
+    }
+
+    {{ STUDENT_ANSWER }}
+    
+    public String studentAnswer = ""{{ STUDENT_ANSWER | replace({'\r': '', '\n': ''}) | e('java') }}"";
+
+    public static void main(String[] args) {
+        __tester__ main = new __tester__();
+        main.runTests();
+    }
+
+    public void runTests() {
+{% for testCase in TESTCASES %}
+    {
+    {{ testCase.testcode }};
+    {% if not loop.last %}
+    System.out.println(SEPARATOR);
+    {% endif %}
+    }
+{% endfor %}
+    }
+}","/* This function calculates and returns the max
+ * value in knapsack with the capacity ""capacity"" wich is filled
+ * with stuff of volume ""volumes"" and the value ""values"".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}"
+"19_20-6-1-python","Dynamische Programmierung: Edit Distance (Python)","Dynamic Programming: Edit Distance (Python)","\textbf{HINWEIS: Von den beiden Teilaufgaben in diesem Block muss nur
+eine gelöst werden!} Wer beide löst, bekommt
+Bonuspunkte.\textbf{\hfill\break
+}
+
+In dieser Aufgabe soll die Edit Distance von zwei gegebenen Strings
+implementiert werden. Diese ist definiert als die minimale Anzahl von
+Einfüge-, Lösch- und Ersetzungsoperation von einzelnen Zeichen um den
+einen String in den anderen Umzuwandeln. Wichtig: es ist hier nach einer
+Implementation OHNE rekursive Aufrufe gefragt.\\
+","In dieser Aufgabe soll die Edit Distance von zwei gegebenen Strings
+implementiert werden. Diese ist definiert als die minimale Anzahl von
+Einfüge-, Lösch- und Ersetzungsoperation von einzelnen Zeichen um den
+einen String in den anderen Umzuwandeln. Wichtig: es ist hier nach einer
+Implementation OHNE rekursive Aufrufe gefragt.
+","In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.","def editDistance(a, b):
+    return 0","import random
+
+def getRandom(length):
+    chars = '01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX+-;,:._#*/'
+    return ''.join(random.choice(chars) for i in range(length))
+
+def _isCorrect(a, b, result):
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)] == result
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def editDistance(a, b):
+    """"""This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly""""""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]"
+"19_20-6-2-python","Dynamische Programmierung: Knapsack (Python)","Dynamic Programming: Knapsack (Python)","\textbf{HINWEIS: Von den beiden Teilaufgaben in diesem Block muss nur
+eine gelöst werden!} Wer beide löst, bekommt
+Bonuspunkte.\textbf{\hfill\break
+}
+
+Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe~ \emph{({[}0.5, 0.3{]}, {[}2, 5{]}, 3 )} gibt also
+zwei Gegenstände, den ersten mit Volumen \emph{2} und Wert \emph{0.5},
+den zweiten mit Volumen \emph{5} und Wert \emph{0.3}. Der letzte Wert
+gibt das Volumen des Knapsackes an, in diesem Fall wäre also die
+richtige Ausgabe des Algorithmus \emph{0.5}, da nur der 1. Gegenstand
+überhaupt in den Rucksack passt. Wäre ein größeres Volumen von 7
+gegeben, wäre die richtige Ausgabe \emph{0.8} Wichtig ist hierbei noch
+anzumerken, dass die Lösung NICHT \emph{1.5} ist, es ist also nicht
+möglich den gleiche Gegenstand mehrfach zu verwenden.\\
+","Das Knapsack-Problem ist ein Optimierungsproblem. Welche Gegenstände
+sollen aus einer vorhandenen Auswahl in einen begrenzten
+Rucksack(Knapsack) gepackt werden, um den zu transportierenden Wert zu
+maximieren? Diese Problem ist im allgemeinen NP-vollständig und daher
+wahrscheinlich nicht effizient lösbar. Unter der Annahme, dass die
+Volumina der Gegenstände ganzzahlig sind, finde sich ein Algorithmus,
+der diese Problem mittels dynamischer Programmierung löst. Gesucht ist
+nun die Implementierung eines Algorithmus, der für eine gegebenen Liste
+von Gegenständen und einem maximalen Rucksackvolumen den Wert ausgibt,
+der maximal transportiert werden kann. Die Liste aus Gegenständen
+besteht hierbei aus zwei Listen, eine enthält die Volumina und eine die
+Werte. Die Eingabe  ([0.5, 0.3], [2, 5], 3 ) gibt also zwei Gegenstände,
+den ersten mit Volumen 2 und Wert 0.5, den zweiten mit Volumen 5 und
+Wert 0.3. Der letzte Wert gibt das Volumen des Knapsackes an, in diesem
+Fall wäre also die richtige Ausgabe des Algorithmus 0.5, da nur der 1.
+Gegenstand überhaupt in den Rucksack passt. Wäre ein größeres Volumen
+von 7 gegeben, wäre die richtige Ausgabe 0.8 Wichtig ist hierbei noch
+anzumerken, dass die Lösung NICHT 1.5 ist, es ist also nicht möglich den
+gleiche Gegenstand mehrfach zu verwenden.
+","The Knapsack problem is an optimization problem. Which items
+from an existing selection should be packed into a limited
+backpack(Knapsack) in order to maximize the value to be transported?
+This problem is in generall NP-complete and therefore
+probably not efficiently solvable. Assuming that the
+volumes of the objects are integers, we can find an algorithm
+that solves this problem using dynamic programming. We are looking for
+the implementation of an algorithm, which for a given list of objects and a
+list of items and a maximum backpack volume outputs the value
+that can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values.
+values. So the input ([0.5, 0.3], [2, 5], 3 ) gives two items,
+the first with volume 2 and value 0.5, the second with volume 5 and value 0.3.
+The last value indicates the volume of the Knapsack, in this case
+the correct output of the algorithm would be 0.5 because only
+the 1st item fits into the backpack at all. With a larger volume
+of 7, the correct output would be 0.8. It is important to note that the solution
+is NOT 1.5, so it is not possible to use the same object more than once.","def knapSack(value, volume, capacity):
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    # TODO
+
+    return 0","import random
+import copy
+
+def _isCorrect(c, v, m, result):
+    n = len(c)
+
+    Result = [0] * (n+1)
+    for i in range(n+1):
+        Result[i] = [0] * (m+1)
+
+    for i in range(n+1):
+        for j in range(m+1):
+            Result[i][j] = 0
+
+    for i in range(n-1,-1,-1):
+        for j in range(1,m+1):
+            if v[i] <= j:
+                Result[i][j] = max(c[i] + Result[i+1][j-v[i]],
+                                   Result[i+1][j])
+            else:
+                Result[i][j] = Result[i+1][j]
+
+    return abs(Result[0][m] - result) < 0.01 # Use float comparison - just in case
+
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """"""{{ STUDENT_ANSWER | e('py') }}""""""
+
+SEPARATOR = ""#<ab@17943918#@>#""
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}","def knapSack(value, volume, capacity):
+    """"""This function calculates and returns the max
+    value in knapsack with the capacity ""capacity"" wich is filled
+    with stuff of volume ""volume"" and the value ""value"".""""""
+
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    n = len(value)
+
+    Result = [0] * (n+1)
+    for i in range(n+1):
+        Result[i] = [0] * (capacity + 1)
+
+    for i in range(n+1):
+        for j in range(capacity + 1):
+            Result[i][j] = 0
+
+    for i in range(n-1,-1,-1):
+        for j in range(1, capacity + 1):
+            if volume[i] <= j:
+                Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]],
+                                   Result[i+1][j])
+            else:
+                Result[i][j] = Result[i+1][j]
+
+    return Result[0][capacity]"

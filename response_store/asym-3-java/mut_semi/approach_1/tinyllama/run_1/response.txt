@@ -1,0 +1,7 @@
+AsymQ3 has implemented an asymptotic worst case running time of O(N^2) for both functions based on the side length N of their matrix `mat`. The method used to compute this value is as follows:
+
+1. Part A: `int n = mat.length` (NxN matrix) - constant time, as the side length of the input matrix is known at compile-time.
+2. Part B (for loop along the diagonal): `return t;` (O(N^2)) - constant time for each iteration through the diagonal of the matrix.
+3. Part C: `return f();` (O(N^2 * Theta(1))) - non-loop parts in the matrix (`mat[i][j]`), as well as nested loop parts along the diagonal (`for (int I = 0; I < N; i++) { for (int j = I + 1; j < N; j++) { f(mat[i][j]); } }`). The Theta(1) overhead is accounted for in `f();` as it just reads one matrix entry and adds.
+
+Overall, the worst-case runtime of both functions is O(N^2), which is also the asymptotic worst-case value given in the input specification.

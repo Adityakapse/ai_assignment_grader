@@ -1,0 +1,16 @@
+The implementation of the BubbleSort algorithm in C# that sorts a given list using recursion and matching iteration structures meets all the criteria for a correct sorting algorithm from the lecture's description. Here is an example:
+
+SAMPLE SOLUTION:
+```csharp
+public class ListToSort {
+    public static int[] Sort(int[] list) {
+        return BubbleSort(list);
+    }
+}
+```
+
+The `BubbleSort` method has a loop that repeatedly swaps two elements of the sorted array. The loop steps through adjacent or relevant element pairs based on the supplied comparison structure and passes them to the respective Swap() method call. The function checks for pairwise comparisons by using the Larger(), Smaller(), and Equal() comparison methods provided by the BubbleSort class.
+
+The implementation has a loop that compares elements based on the supplied comparison structure. If an element is larger than another, it is swapped with the larger one. Similarly, if a smaller element is smaller than or equal to another element, it is swapped with its smaller counterpart. 
+
+Based on the comparison structure, the implementation ensures that two elements are in the correct order by calling `Swap()` with matching indices based on the comparison result. In most cases, the comparison direction matches the original list's ordering, but not all iterations (e.g., for reverse sorting) due to a systematic error.

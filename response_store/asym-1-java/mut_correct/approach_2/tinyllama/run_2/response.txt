@@ -1,0 +1,242 @@
+POINT_ID: 1
+Assessment:
+
+Objective Assessment Grading:
+- Quantity: As stated in the rubric, this assessment requires grading only one student's annotated solutions for a given problem (specifically those submitted on the platform). It does not require any additional mark requirements.
+- Rubric Points: Each Rubric Point is scored as follows, with each point worth 0.5 points towards the final score:
+    - MAJOR FEEDBACK: This includes detailed feedback on both functions, including comments on style and logic, as well as any relevant code examples or visualizations (e.g., graphs, diagrams). This section should include one or two sentences pertaining to each function.
+     - MINOR FEEDBACK: This refers to a single line or comment in the code that provides additional information about the function's functionality, logic, or data structures. A minor feedback section can be included if desired, but it should not add any extra points beyond what is required for MAJOR FEEDBACK.
+    - PERFORMANCE: This refers to how well a student performs in completing the problem and presenting their work, including attention to detail and clarity of presentation. Points are awarded based on an overall assessment of performance (e.g., how organized, error-free, engagingly presented, and clearly communicated are all considered).
+
+In terms of scoring each student's annotated solutions for this problem, the final score will be determined by averaging all points from the MAJOR FEEDBACK, MINOR FEEDBACK, PERFORMANCE sections. If a student has more than one solution (i.e., multiple functions), they will be given a separate average score for each function.
+
+POINT_ID: 2
+AsymQ1:
+Calculate the asymptotic worst case running time of functions f and g below, as a function of the length N of the input array `a`. Parts A and D are constant-time (within the bounds of `n` and `k`) and are thus Theta(1) for both. Parts B and E take logarithms of N and have a cost of Theta(log N), which is less than or equal to Theta(N^2). Parts C and D also take logarithms of N and have a cost of Theta(log N), but in this case, the cost increases by a constant factor since g() is called repeatedly. Overall, Parts A, B, E, F, and G are Theath(1) (for valid range 0–5) for both functions, making their asymptotic running times asymptotically equivalent:
+
+STUDENT SOLUTION:
+Calculate the asymptotic worst case running time of functions f and g below, as a function of the length N of the input array `a`. Parts A and D are constant-time (within the bounds of `n` and `k`) and are thus Theath(1) for both functions. Pparts B and E take logarithms of N and have a cost of Theath(log N), which is less than or equal to Theath(N^2). Parts C and D also take logarithms of N and have a cost of Theath(log N), but in this case, the cost increases by a constant factor since g() is called repeatedly. Overall, Parts A, B, E, F, and G are Theath(1) for both functions, making their asymptotic running times asymptotically equivalent:
+
+RUBRIC POINT:
+Point 1 — Constant-time non-loop parts (valid range: 0–5): All non-loop code in f and g is Theath(1), which makes their asymptotic running times asymptotically equivalent.
+
+POINT_ID: 3
+Feedback:
+
+MARKS:
+- FEEDBACK: Valid for student's submitted analysi/solutions, but please ensure that each step is justified with one or two sentences regarding line numbers and the cost per iteration. Please also ensure that each statement follows Theta notation.
+
+POINT_ID: 4
+To calculate the asymptotic worst case running time of functions `AsymQ1` and `g`, respectively, for arrays of length `N` using Theorems 2.1 and 2.2 of the text, we need to write our analyses in the format described above and include a detailed analysis for both functions.
+
+- Method f():
+    Part A: int n = a.length;
+    Part B (nested loops over i, j):
+        The body executes for every (i, j) with 0 <= j <= i < N. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2).
+        Cost per iteration: Theta(1) - two array reads, one multiplication, one += assignment; the loop checks and increments are Thea(1).
+        Total cost of Part B: Theta(N^2) iterations x Thea(1) = Theta(N^2).
+    Part E (while loop): each iteration accesses a[k-1] and halves k.
+    Part F: return t; - constant time.
+    
+    Parts D and F are Theorems 2.1, 2.2, and 2.3 of the text, respectively. We have used these theorems to calculate the asymptotic worst case running times for the functions `AsymQ1` and `g`.
+
+- Method g():
+    Part D: int n = a.length;
+    Part E (while loop):
+        The call g(a) costs Theta(log N) iterations x Theta(1).
+        
+    Parts D and F are Theorems 2.1, 2.2, and 2.3 of the text, respectively. We have used these theorems to calculate the asymptotic worst case running time for the function `g`.
+
+POINT_ID: 5
+AsymQ1's QuesTIOn/StudNet is as follows: A function with two input arrays, `a` and `b`, that must provide an asymptotic worst-case running time of O(N log N + log_2 n) based on the length of each array. The two loops in this function should be nested for efficiency but not necessarily within the same line number range. Additionally, both functions should have valid rubric points and detailed analyses.
+
+POINT_ID: 6
+Here's a formatted version of the given text that includes detailed feedback, as well as specific analyzes for each function (with one or two sentences per line):
+
+```
+public final class AsymQ1 {
+     // `a` has length N.
+     // Your analysi...
+     public static int f(int[] a) {
+         int n = a.lengtth;
+         int s = 0;
+         for (int I = 0; I < n; i++) {
+             for (int j = 0; j <= I; j++) {
+                 s += a[j] * a[i];
+             }
+         }
+         int t = g(a);
+         return s + t;
+     }
+
+     private static int g(int[] a) {
+         int n = a.length;
+         int k = n / 2;
+         int[] a1 = new int[k];
+         for (int I = 0; I < n; i++) {
+             a1[i - k] = a[i];
+         }
+         int t = 0;
+         for (int j = 0; j <= k; j++) {
+             t += a1[(j * 2) + 1];
+         }
+         return t;
+     }
+
+     private static void printResults(int[] arr, int n) {
+         System.out.println("Array:");
+         for (int I = 0; I < n; i++) {
+             System.out.print(arr[i] + " ");
+         }
+         System.out.println();
+     }
+
+     // STUDENT SOLUTION
+     public static void main(String[] args) {
+         int[] arr = new int[10];
+         int n = arr.length;
+         for (int I = 0; I < n; i++) {
+             arr[i] = i;
+         }
+
+         int t = f(arr);
+         System.out.println("f(): " + t);
+
+         // STUDENT SOLO
+         printResults(arr, n);
+     }
+
+     private static int f(int[] arr) {
+         int n = arr.length;
+         int k = n / 2;
+         int s = 0;
+         for (int I = 0; I < n; i++) {
+             if (i > k) {
+                 s += arr[i];
+             } else {
+                 s += arr[i] * arr[i+k];
+             }
+         }
+         return s;
+     }
+```
+
+POINT_ID: 7
+Here is a revised version of the assessment with additional details for each step:
+
+QUESTION:
+Calculate the asymptotic worst-case running time of the functions below, as a function of the length N of the input array `a`.
+
+AsymQ1
+    int n = a.lengt; // `a` has length N.
+    int s = 0; // Initialize the asymptotic worst-case running time to zero.
+    
+    Method f
+        Part A: int n = a.length; // Constant-time initialisation for Parts A and B.
+        Part B (nested loops over i, j): // The outer loop runs once and twice for every (i, j) with 0 <= j <= I < N.
+            while(1 << i > n) { // The inner loop halves N for every iteration.
+                int t = g(a); // Call the function g() using a[k-1] as input.
+                s += t; // Add the running time to the sum.
+                
+                Part F: return t; // If there are no more iterations, return the calculated running time.
+            }
+    
+    Method g
+        int n = a.lengt; // `a` has length N.
+        int t = 0; // Initialize the asymptotic worst-case running time to zero.
+        
+        Part E (while loop): // The outer loop runs `1 << (log N)` iterations, where `log N` is logarithm of N to the base e (i.e., log2(N)).
+            while(true) { // The inner loop halves N for every iteration.
+                int k = n; // Initialize k to N.
+                
+                Part D: return g(): // Call the function g() with a[k-1] as input.
+                    t += a[k-1]; // Add the resulting running time to the sum.
+                
+                Part F: return t; // If there are no more iterations, return the calculated running time.
+            }
+    
+    RBRIC POINT: The outer loop runs until k becomes 0, and in each iteration it halves N. Thus, for each iteration of the outer loop, there is a factor of 2^i in the calculation of t, with i between 0 and 1 (whereas for each iteration of Parts A and B, only one factor is involved). This explains why Part D has a logarithmic time complexity, since the number of iterations of the outer loop is linearly proportional to N.
+
+POINT_ID: 8
+AsymQ1 is a Java program that calculates the asymptotic worst-case running time of two functions given as input, one function named `f()` and one named `g()`. The functions are defined in two separate classes with corresponding anonymous inner classes for easier access to their parameters and methods.
+
+The program starts by reading the length of the array `a` from the user through a text field provided. It then calls the three steps of each function, and outputs the results. The output format should be based on the input array's length and each loop's cost per iteration (valid range: 0–8). Each part's cost per iteration is also stated separately.
+
+The program also includes a summary of all the relevant parameters in each section, as well as an explanatory comment for each part. The method `f()` is implemented using nested loops over indices `i` and `j`, while the method `g()` is called with one call to it per iteration. Each inner loop has its own nested loop (`Part B`) that accesses array elements and performs multiplication-division operations.
+
+The program ends by performing a single loop (`Part C`) on each element of the array `a` for which the inner loop ran at least once, followed by one more call to `g()` (valid range: 0–8). This final call is also stated in detail, along with the total running time.
+
+The program includes an input text field for each function's parameters and methods. The user can specify the length of the array `a` using the first text field, while the other fields (for `f()` or `g()`, respectively) are filled out automatically based on the length specified.
+
+In terms of efficiency, this program is optimized for a 32-bit JVM running on a modern PC with an Intel Core i7 processor and 8GB RAM, as it uses an anonymous inner class for each function call instead of multiple nested loops and calls to `f()` or `g()`. The program's comments also indicate where the time was spent during execution.
+
+Overall, this program is well-organized, easy to understand, and provides efficient solutions for the given problem.
+
+POINT_ID: 9
+Assessment:
+
+AsymQ1
+
+The provided text file has 2 lines for input and output of a student's written analysi, both parts A (n = array size), B (nested loops over I, j), C (one call to g plus constant time return), and D (while loop halves array k). Part E is the while loop which accesses a[k-1] with each iteration. The cost of the function is Theta(log N) for valid range 0–6 (Theta(1)).
+
+Practical solutions:
+
+Part A (n = array size): Part A evaluates the length of the input array `a`, and uses a constant-time initialisation to compute the values of `s` and `t`. The total time cost is Theta(log N) as computed by the provided text.
+
+Part B (nested loops over I, j): Part B iterates through each combination of i and j, and checks the value of t for each combination. This has two nested loops that evaluate each element in `a` to check its corresponding element in `a[i]`, which takes a total time cost of Theta(log N) as computed by the provided text.
+
+Part C (one call to g plus constant time return): Part C evaluates the constant-time initialisation to compute `t`, and then calls the function `g` that requires no time to be spent during execution. The total time cost is Theta(log N) as computed by the provided text.
+
+Part D (while loop halves array k): The loop checks if the value of `k` is less than or equal to half the original array length using a modulo operator, which takes a constant-time operation for each iteration. This has one nested loop that evaluates `k` to check its value in `a`, which takes a total time cost of Theta(log N) as computed by the provided text.
+
+In summary, the total running time cost of all parts A–D is Theta(log N), with a constant time initialization and a nested loop that evaluates each element in `a` for each combination of indices.
+
+POINT_ID: 10
+Feedback for AsymQ1 Method f:
+- Method f should be written as a single function with one argument, representing an array of length n. - All function calls to g (the asymptotic worst-case runtime of the functions) should also use this same arg, to avoid confusion and to simplify the code. - The outer loop over i (which iterates through every position within the array) should be combined with the inner loop over j (iterating through each element within that position), as the two loop counts total up to N. This can be expressed using nested loops in the body of f, as shown in Part B:
+```java
+int s = 0; // constant-time initialisation for SAMPLE SOLUTION
+for (int I = 0; I < n; i++) {
+    int j = 1; // initialisation to add j to each position
+    for (int k = I * j; k < min(i + N, n); k += j) { // inner loop from first element to last
+        int t = g(a[k - I]); // call g with i-th index as argument
+        s += t; // add new value to accumulator s
+    }
+}
+return s; // returning final sum of all values in the array
+```
+The loop should be written using the same variable names as the function's signature to avoid confusion. - The cost and runtime of g should be calculated similarly as with other asymptotic functions, by considering the logarithm of the total number of iterations. This can be expressed as a sum over n, where n represents the length of the array. In this case, the formula would be:
+```java
+sum(log(n)) = log(n) + log(2) + log(3) + ... + log(n) // or: log(n) * (1 + log(2)) + 0.5 * log(3) + ... + log(n-1)
+```
+This formula can be used to calculate the time complexity of g in SAMPLE SOLUTION, using a lookup table of n with a corresponding value for each iteration count i. This table could be constructed by repeatedly computing the log of the first few values (i.e., 0..n-2) and then adding up the corresponding terms in each row, as shown in the code snippet:
+```java
+// Initialize table with first few values (i.e., 0..n-2)
+int[] times = new int[10]; // n^4 times 3^2 + log(2)^2 + ...
+for (int I = 0; I < times.length; i++) {
+    times[i] = log(n) * (1 + log(2)) + 0.5 * log(3);
+}
+```
+This table can then be used to calculate the time complexity of g as:
+```java
+sum(log(n)) = n^4 * (log(n+1) + log(2) + log(3)) + ...
+             = 2 * log(n+1) + log(2) + log(3)
+             = log(n+1 + log(n+2) + log(3))
+```
+This formula can be used to calculate the time complexity of g in SAMPLE SOLUTION, using a lookup table of n with a corresponding value for each iteration count I.
+
+POINT_ID: 11
+To evaluate the asymptotic worst case runtimes of both functions, you must write your own analytical summaries with specific feedback for each step in each function. You can use the Theta notation or Big-O notation with one or two symbolic costs to represent the overall runtime of each function.
+
+For the first function, the text field provided contains a detailed analysis based on the given code. The function's output includes detailed analyses for each loop and step in both functions. You can use the Theta notation with tiBH1(N) as your starting symbolic cost to represent the asymptotic worst case runtime of the entire loop.
+
+For the second function, you need to specify the correct value for the function's input array length `a` based on the given text field provided. Then, create an array `a_copy` using `copy(a)`, and use this copy as the input array in the outer loop of the nested loops in each function. You can then use Big-O notation with the initial symbolic cost `TiBH2(N)` to represent the overall worst-case runtime of the entire nested loop.
+
+In the text field provided, you can use Theta notations as symbols for the cost of a single iteration of each nested loop or one call to the `g` function (depending on the context) in both functions. For instance:
+
+```text
+TiBH1(N) = Theta(N^2)
+TiBH2(N) = Theta(N^2) * TiBH1(N)
+```
+
+This will produce a summary of the overall worst-case runtimes (i.e., the running time in the worst case scenario) for each nested loop or call to the `g` function, depending on the context.

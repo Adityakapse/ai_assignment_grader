@@ -1,0 +1,91 @@
+QUESTION:
+Similar to the already known "Greatest Common Divisor" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applications, for example in the multiplication of heterogeneous fractions. This
+has applications ranging from the adaptation of cooking recipes to other
+portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values.
+It may be based on the GCD implementation from the lecture.
+
+Note: The use of "import" is not allowed.
+
+SAMPLE SOLUTION:
+int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+        int r = a % b;
+    if (r == 0) {
+        return b;
+    }
+    else {
+        return gcd(r, b);
+    }
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+STUDENT SOLUTION:
+// GCD is correct but LCM forgets to divide by gcd
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+int lcm(int a, int b) {
+    return a * b;
+}
+
+
+RUBRIC:
+Point 1 — gcd function present and structurally correct
+  
+  Buckets:
+    - Wrong (0 marks): No gcd function defined and no gcd-like logic present anywhere in the submission.
+    - Semi (8 marks): A gcd function is defined but has a broken signature or structure (e.g., missing return statement, wrong number of parameters, or no identifiable recursive call or loop body), independent of whether the base case or reduction step is correct.
+    - Correct (15 marks): A gcd function with the correct signature (two parameters, returns a value) and a recognisable recursive or iterative structure is present. Correctness of the base case and reduction step are evaluated separately in points 2 and 3.
+
+Point 2 — gcd base case / termination condition
+  The recursion (or loop) terminates correctly. For recursive Euclidean: base case is b == 0 (or r == 0) returning the non-zero value. For iterative: loop exits when remainder is 0.
+  Buckets:
+    - Wrong (0 marks): No termination condition or one that causes incorrect results / infinite recursion (e.g., always returns 0 or 1, never reaches base case for valid inputs).
+    - Semi (8 marks): A termination condition exists but it is incomplete or partially incorrect (e.g., only handles one special case, or returns the wrong variable at the base case).
+    - Correct (15 marks): Termination condition is correct and complete: the algorithm correctly stops and returns the GCD when the remainder is 0 (recursive) or equivalent (iterative).
+
+Point 3 — gcd recursive/iterative step (reduction)
+  Each recursive call (or loop iteration) makes progress toward termination. For recursive: gcd(b, a%b) or equivalent. For iterative: r = a % b; a = b; b = r or equivalent.
+  Buckets:
+    - Wrong (0 marks): No modulo/reduction step, or step is logically incorrect and does not reduce the problem (e.g., subtracts 1 rather than using modulo, or passes wrong arguments).
+    - Semi (8 marks): Modulo is computed but argument ordering in the recursive call does not guarantee reduction (e.g., gcd(a%b, b) without a prior swap to ensure a >= b, causing b to remain unchanged and the recursion to loop infinitely on most inputs).
+    - Correct (15 marks): Reduction step is correct: uses gcd(b, a%b) (canonical form), or gcd(a%b, b) with a prior swap that guarantees a >= b before each call, reducing inputs strictly toward the base case.
+
+Point 4 — lcm function: correct formula and structure
+  lcm(a, b) returns (a * b) / gcd(a, b) (or logically equivalent). Function is defined, takes two int parameters, and returns an int.
+  Buckets:
+    - Wrong (0 marks): No lcm function defined, or function is present but makes no attempt to use gcd or the LCM formula.
+    - Semi (10 marks): An lcm function is present and references gcd, but the formula structure is wrong (e.g., uses addition instead of multiplication, or multiplies without dividing by gcd). Whether the output is numerically correct is evaluated in point 6.
+    - Correct (20 marks): lcm uses the formula structure (a * b) / gcd(a, b) or a mathematically equivalent form (e.g., a / gcd(a,b) * b). Whether the final output is numerically correct is evaluated in point 6.
+
+Point 5 — Overall correctness of gcd
+  gcd(a, b) returns the correct greatest common divisor for all valid non-negative integer inputs.
+  Buckets:
+    - Wrong (0 marks): gcd is absent or produces wrong output for most standard inputs.
+    - Semi (9 marks): gcd is mostly correct but fails for edge cases or specific inputs (e.g., gcd(0, n) or gcd(n, n)).
+    - Correct (17 marks): gcd returns the correct result for all valid inputs including edge cases.
+    - Internally consistent but incorrect final result (13 marks): gcd logic follows consistently from the student's own earlier steps, but the final output is not the correct GCD.
+
+Point 6 — Overall correctness of lcm
+  lcm(a, b) returns the correct least common multiple for all valid positive integer inputs.
+  Buckets:
+    - Wrong (0 marks): lcm is absent or produces wrong output for most standard inputs.
+    - Semi (9 marks): lcm produces correct results when gcd is correct but fails for edge cases, or uses gcd correctly but formula has a minor error causing occasional wrong output.
+    - Correct (18 marks): lcm returns the correct result for all valid inputs, consistent with a correct gcd implementation.
+    - Internally consistent but incorrect final result (13 marks): lcm formula is correctly applied using the student's own gcd, but overall output is not the correct LCM due to an earlier gcd error.

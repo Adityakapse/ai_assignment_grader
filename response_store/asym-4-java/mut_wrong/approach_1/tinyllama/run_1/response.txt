@@ -1,0 +1,72 @@
+Here is an updated version of the text with more detailed analyis for both functions based on the given information and additional lines:
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysi of both functions.
+- You can use Theta notation or the big-O notation with tiith bounds.
+- Your analyses should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyzi should be justified with one or two sentences.
+
+public final class AsymQ4 {
+     // `a` has length N.
+     // Your analysi s should be based on N.
+     public static int f(int[] a) {
+         int n = a.length;
+         int s = 0;
+         int k = 1;
+         while (k <= n) {
+             s += g(a, k);
+             k = k * 2; // constant time
+         }
+         return s;
+     }
+
+     private static int g(int[] a, int x) {
+         int t = 0;
+         for (int i = 0; i < a.length; i++) {
+             if (a[i] < x) t += a[i]; // constant time
+         }
+         return t;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (for loop):
+- Iterate through a with a.lengt() steps, incrementing s and updating k by 2 each iteration.
+- Total number of iterations in each loop is N times n.
+- Total cost of each loop is N * Theta(1) = Theta(N) + constant time = Theta(N) log N.
+- N is the length of array a. Therefore, total cost is N * Theta(log N) = Theta(N log N).
+
+Part B (for loop):
+Total number of iterations in each loop is n times a.lengt() + constant time = n * lengt() + constant time = n * log n + constant time = log N. Therefore, total cost of each loop is log N.
+
+Point 1: Calculate the asymptotic worst-case runtime (valid range: 0–12) of both functions based on the given information and line numbers.
+
+Asymptotically, both f() and g() take O(log n), where n is the length of the input array a. Therefore, f() has an asymptotic worst-case runtime of log n + constant time, which equals log N in our problem with a length of 12 elements.
+
+Point 2: Calculate the total number of iterations for both functions based on the given information and line numbers.
+
+Total number of iterations for both f() and g() is equal to lengt() times a.lengt(), which equals n * lengt() + constant time, and therefore log N. Therefore, for both f() and g(), the total number of iterations is log N in our problem with a length of 12 elements.
+
+Point 3: Determine the cost per iteration of each function based on the given information and line numbers.
+
+Cost per iteration for both f() and g() is Theta(n) + constant time, which equals Theta(log N) + constant time = log N. Therefore, for both functions, the total cost per iteration of their worst-case runtime is log N.
+
+Point 4: Determine the asymptotic worst-case runtime (valid range: 0–12) of both functions based on the given information and line numbers.
+
+Asymptotically, both f() and g() take O(log n), where n is the length of the input array a. Therefore, f() has an asymptotic worst-case runtime of log N + constant time, which equals log N in our problem with a length of 12 elements.
+
+Point 5: Calculate the total number of iterations for both functions based on the given information and line numbers.
+
+Total number of iterations for both f() and g() is equal to lengt() times a.lengt(), which equals n * lengt() + constant time, and therefore log N + constant time = log N in our problem with a length of 12 elements. Therefore, for both functions, the total number of iterations is log N + constant time = log N + constant time = log N = log N in our problem with a length of 12 elements.
+
+Point 6: Determine the cost per iteration of each function based on the given information and line numbers.
+
+Cost per iteration for both f() and g() is Theta(n) + constant time, which equals Theta(log N) + constant time = log N. Therefore, for both functions, the total cost per iteration of their worst-case runtime is log N.

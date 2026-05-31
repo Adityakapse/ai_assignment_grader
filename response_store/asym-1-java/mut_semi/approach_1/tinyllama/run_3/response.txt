@@ -1,0 +1,17 @@
+You are an objective assessor grading a student's written asymptotic calculations on the time complexity of some functions and their worst-case runtime. Here is what you will be looking for:
+
+Point 1: Split into parts (valid range: 0-12)
+  Each part should consist of nested loops over arrays with only constant time operations, such as multiplication or addition. The total number of iterations in each part should be roughly the same as the total number of iterations between parts (in other words, a fixed array should have an average of roughly N^2 iterations). This shows that there are no non-constant-time parts in the calculation.
+
+Point 2: Cost per iteration (valid range: 0-8)
+  The cost per iteration should be less than or equal to Theta(log N), where "Theta" represents the constant-time part of the problem. In this case, we can assume that the logarithm is well-defined and that the logarithm of a number smaller than 1 is equal to 0 (which means that it's less than log(1) in absolute value). Therefore, for each array size N <= log(N+1), the cost per iteration should be less than Theta(log N).
+
+Point 3: Cost of Part C (valid range: 0-6)
+  The total loop cost should be proportional to the square of the loop iterations. This is because the inner loop's number of iterations are constant and we have a sum of constant-time operations, which are roughly N^2 in total cost. This shows that there is no significant work done by Part C, so we can assume that it takes just as much time as the other parts.
+
+Point 4: Overall worst-case runtime (valid range: 0-16)
+  The total loop runtime should be less than or equal to Theta(log N) * T_g(N), where "Theta" represents the constant-time part of the problem, and again we can assume that logarithm is well-defined and T_g is proportional to log(N+1). Therefore, for any array size N <= log(N+1), the worst-case runtime should be less than Theta(log N) * T_g(N), which is what we have.
+
+Overall worst-case runtime of g (valid range: 0-16): In this case, we can assume that the logarithm is well-defined and that log(N+1) is greater than log(1). Therefore, for any array size N <= log(N+1), the worst-case runtime should be less than Theta(log N) * T_g(N), which is what we have.
+
+Therefore, this problem has a worst-case runtime of less than or equal to Theta(log N) * T_g(N), which shows that there are no significant work done by any non-constant-time part in the calculation.

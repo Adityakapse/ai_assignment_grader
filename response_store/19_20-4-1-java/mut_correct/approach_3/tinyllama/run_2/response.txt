@@ -1,0 +1,26 @@
+Certainly! Here's a sample solution to the seaRcch trees task based on the given rubric points:
+
+SAMPLE SOLUTION:
+
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+    if (y == null) { // insertion is at root level
+        root.left = insert;
+        return root;
+    } else if (insert.key > y.key) { // insertion in a non-empty tree, so need to update root.right pointer to the new root
+        y.right = insert;
+        return y;
+    } else { // insertion in a non-empty tree, so update root.left pointer to insert
+        root.left = insert;
+        return root;
+    }
+}

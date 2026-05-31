@@ -1,0 +1,40 @@
+Revised Code:
+
+Point 1 — Splitting code into f and g (valid range: 0–5)
+   f(): Nested loop iterations (valid range: 0–12)
+      Theta(N^2) combined iterations of the upper-triangle nested loops.
+      Cost per iteration (valid range: 0–8)
+         Theta(1) per inner iteration.
+
+Point 2 — f(): Cost per iteration (valid range: 0–8)
+   F_i(N, n) = Theta(N), i-th iteration of nested loop with n matrices.
+      Theta(N) = Theta(N) * N iterations x Theta(1) per iteration
+
+Point 3 — g(): Loop iterations (valid range: 0–12)
+   g(): Nested loop iterations of the upper-triangle nested loops
+      G_i(N, n) = Theta(N), i-th iteration of nested loop with n matrices.
+         Theta(N) = Theta(N) * N iterations x Theta(1) per iteration
+
+Point 4 — g(): Total loop cost (valid range: 0–8)
+   G_i(N, n): Cost of Part C in inner loop with n matrices.
+      Theta(N) = Theta(N) * N iterations x Theta(1) per iteration
+      T_n = Theta(N), number of nested loops to run for i-th inner loop with n matrices.
+         Theta(N) = Theta(N) * (T_n + 1) = Theta(N) * (N + 1) / 2
+      Cost per iteration (valid range: 0–8)
+         T_n * Theta(1) = Theta(N) * (N+1)/2 * Theta(1) per iteration.
+
+Point 5 — g(): Wet runway inlet taxi (valid range: 0–6)
+   ILS-ITS2: T_n = 1, i-th iteration of nested loop with n matrices.
+      Theta(N) = Theta(N) * N iterations x Theta(1) per iteration
+      T_n = Theta(N), number of nested loops to run for i-th inner loop with n matrices.
+         Theta(N) = Theta(N) * (T_n + 1) = Theta(N) * (N + 1) / 2
+      Cost per iteration (valid range: 0–8)
+         T_n * Theta(1) = Theta(N) * (N+1)/2 * Theta(1) per iteration.
+
+Point 6 — g(): Wet runway taxi: Final ILS approach (valid range: 0–6)
+   ILS-ITS4: T_n = 3, i-th iteration of nested loop with n matrices.
+      Theta(N) = Theta(N) * N iterations x Theta(1) per iteration
+      T_n = Theta(N), number of nested loops to run for i-th inner loop with n matrices.
+         Theta(N) = Theta(N) * (T_n + 1) = Theta(N) * (N + 1) / 2
+      Cost per iteration (valid range: 0–8)
+         T_n * Theta(1) = Theta(N) * (N+1)/2 * Theta(1) per iteration.

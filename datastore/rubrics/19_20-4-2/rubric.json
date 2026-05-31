@@ -1,0 +1,165 @@
+{
+  "task_id": "19_20-4-2",
+  "title": "Search Trees: Removal (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 6). Do not deduct again for an error already penalised in an earlier point. For example: if the student selects y incorrectly, base the splicing marks on whether they splice out their own y consistently.",
+    "This rubric applies to both Java and Python submissions. The Java method is delete(Node root, Node delete); the Python function is delete(root, delete). Both are correct.",
+    "The algorithm must follow the lecture method using TREE-MINIMUM: if the node to delete has two children, find its in-order successor using treeMinimum(delete.right), copy the successor's key, and remove the successor instead.",
+    "The node class has fields: key (int), left (Node), right (Node), and parent (Node)."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Selecting y: which node to physically remove",
+      "tag": "select y",
+      "max_marks": 20,
+      "target": "y is set to delete when delete has at most one child; y is set to treeMinimum(delete.right) when delete has two children.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "y is always set to delete regardless of how many children it has, or no selection logic is present."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "The case split is present but partially incorrect: for example, the condition for detecting two children is wrong, or the successor is found using the wrong subtree (e.g., treeMinimum of the left subtree instead of the right)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "y is correctly set to delete when delete has zero or one child, and to treeMinimum(delete.right) when delete has two children."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "treeMinimum helper",
+      "tag": "tree minimum",
+      "max_marks": 15,
+      "target": "treeMinimum walks left from its input node until reaching a node with no left child, and returns that node.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "treeMinimum is absent, or always returns the input node without any traversal."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "treeMinimum traverses the tree but in the wrong direction (e.g., goes right instead of left), or terminates under an incorrect condition."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "treeMinimum walks left (n = n.left) until n.left is null and returns n, correctly finding the in-order minimum."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Finding x: the child of y to promote",
+      "tag": "find x",
+      "max_marks": 15,
+      "target": "x is identified as y's non-null child (y.left if non-null, otherwise y.right), which may be null if y is a leaf.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "x is not identified; the algorithm proceeds without determining which child of y (if any) should take y's place."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "x is assigned but the logic is incorrect: for example, always takes y.left even when it is null, or does not handle the case where y is a leaf (x should be null)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "x is set to y.left when y.left is non-null, and to y.right otherwise (which may be null if y is a leaf), correctly identifying the child to promote."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Splicing y out of the tree",
+      "tag": "splice",
+      "max_marks": 20,
+      "target": "y is removed by updating x.parent to y.parent (when x is non-null), and updating y.parent's child pointer (or root) to x.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "y.parent's child pointers are not updated; y remains linked in the tree after deletion."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "y.parent's left or right pointer is redirected to x, but x.parent is not updated (or vice versa), or the root replacement case (y.parent == null) is missing."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "x.parent is set to y.parent (when x is non-null); y.parent's left or right pointer is redirected to x based on which child y was; and the root replacement case (y.parent == null \u2192 root = x) is handled."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Copying the key when y is the successor",
+      "tag": "key copy",
+      "max_marks": 10,
+      "target": "When y is the in-order successor (y != delete), delete.key is updated to y.key so that the logical node is removed while the physical successor node is spliced out.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "The key is never copied, leaving delete.key unchanged when the successor was used; the node with delete.key remains in the tree."
+        },
+        {
+          "label": "Semi",
+          "marks": 5,
+          "description": "A key copy is attempted but without checking y != delete, potentially overwriting the key even in the direct deletion case (when y == delete)."
+        },
+        {
+          "label": "Correct",
+          "marks": 10,
+          "description": "delete.key = y.key is executed only when y != delete, correctly replacing the logical node's key with the successor's key."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns a valid BST after deletion for all cases: leaf, one child, two children, and root deletion.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns null or produces an invalid BST for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Deletion works for simple cases (leaf or single-child node) but fails for two-children deletion, or fails when the node to delete is the root."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "BST property is preserved after deletion for all cases including two-children deletion, root deletion, and leaf deletion. Correct root is returned in all cases."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own selection and splicing approach, but the resulting tree is incorrect due to a systematic error (e.g., consistently wrong successor selection or missing pointer update)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

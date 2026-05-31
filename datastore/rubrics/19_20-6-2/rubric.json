@@ -1,0 +1,141 @@
+{
+  "task_id": "19_20-6-2",
+  "title": "Dynamic Programming: Knapsack (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the student iterates items in the wrong direction, base the recurrence marks on whether they reference the correct neighbouring row consistently with their own loop direction.",
+    "This rubric applies to both Java and Python submissions. The Java method is knapSack(double[] values, int[] volumes, int capacity); the Python function is knapSack(value, volume, capacity). Both are correct.",
+    "Both backward (i from n-1 to 0, referencing row i+1) and forward (i from 0 to n-1, referencing row i-1) DP formulations are acceptable. Mark the recurrence and return value relative to the student's chosen direction.",
+    "Each item can be used at most once (0/1 knapsack). Solutions that allow repeated use of items are incorrect."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "DP table allocation",
+      "tag": "table",
+      "max_marks": 20,
+      "target": "A 2D table of size (n+1) x (capacity+1) is allocated and initialised to 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No 2D table is allocated; only a 1D array or no data structure is used to store subproblem results."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A 2D table is present but has wrong dimensions (e.g., n x capacity instead of (n+1) x (capacity+1)), or the table is not initialised to 0 when required."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A 2D table of size (n+1) x (capacity+1) is allocated and all cells are initialised to 0."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Loop structure: iterating items and capacities",
+      "tag": "loop",
+      "max_marks": 20,
+      "target": "An outer loop iterates over all n items and an inner loop iterates j from 0 to capacity inclusive, covering all subproblems.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No nested loops are present; only a single loop or no loop is used."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Nested loops are present but the inner loop does not cover all capacities from 0 to capacity (e.g., starts from 1 skipping j=0, or stops before capacity), or the outer loop does not process all n items."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Outer loop iterates over all n items (forward or backward) and inner loop iterates j from 0 (or 1) to capacity inclusive, covering all required subproblems."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Capacity feasibility check",
+      "tag": "feasibility",
+      "max_marks": 15,
+      "target": "For each item i and capacity j, the algorithm checks whether volumes[i] <= j before deciding to include the item.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No feasibility check is present; the algorithm attempts to include items regardless of whether they fit, potentially causing index errors or always taking items."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A feasibility check is present but uses the wrong comparison (e.g., volumes[i] < j instead of volumes[i] <= j, incorrectly excluding items that exactly fill the remaining capacity)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "volumes[i] <= j is checked before attempting to include item i, correctly allowing inclusion when the item exactly fits or fits with room to spare."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Recurrence relation",
+      "tag": "recurrence",
+      "max_marks": 25,
+      "target": "When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j]. Here prev is i+1 (backward) or i-1 (forward).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No recurrence is applied; cells are set to a constant or the values array is returned directly without referencing previously computed subproblems."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "A max-based recurrence is present but incorrect: for example, only one branch (fit or no-fit) is handled, the wrong row is referenced (same row instead of previous, enabling unlimited use of items), or values[i] + Result[prev][j-volumes[i]] is missing the subtraction of volumes[i]."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j]. The previous row (i+1 for backward, i-1 for forward) is referenced consistently."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns the correct maximum value that fits within the given capacity for all valid inputs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns 0 or an incorrect value for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct results for simple cases (e.g., single item, zero capacity) but fails for multi-item inputs or when items must be excluded due to capacity constraints."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct maximum value for all valid inputs; result is read from the correct cell of the DP table (Result[0][capacity] for backward, Result[n][capacity] for forward)."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own table, loop, and recurrence, but the final value is incorrect due to a systematic error (e.g., consistently wrong row reference or off-by-one in capacity)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

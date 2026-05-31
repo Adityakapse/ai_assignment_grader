@@ -1,0 +1,32 @@
+test_number,is_example,testcode,expected
+1,True,"print(__student_answer__.find(""pow""))",-1
+2,True,"print(__student_answer__.find(""globals""))",-1
+3,True,"print(__student_answer__.find(""checkCalc""))",-1
+4,True,"print(__student_answer__.find(""checkExpo""))",-1
+5,True,"print(__student_answer__.find(""eval""))",-1
+6,True,"print(__student_answer__.find(""import""))",-1
+7,True,"print(__student_answer__.find(""**""))",-1
+8,True,print(calc(0)),0
+9,True,print(calc(1)),1
+10,True,print(calc(2)),3
+11,True,print(calc(10)),1023
+12,False,print(calc(100)),976371284
+13,False,print(calc(1000)),688423209
+14,False,print(calc(1e8)),494499947
+15,False,print(calc(1e9 - 1)),570312503
+16,False,"for i in range(0,100):
+    n = randint(1e5,1e9)
+    student_sol = calc(n)
+    sol = checkCalc(n)
+    if  student_sol != sol:
+        print(""Wrong output for n={}. Expected {}, got {}"".format(n,sol,student_sol))
+        break
+print(0)",0
+17,False,"for i in range(0,100):
+    n = randint(1e5,1e9)
+    student_sol = calc(n)
+    sol = checkCalc(n)
+    if  student_sol != sol:
+        print(""Wrong output for n={}. Expected {}, got {}"".format(n,sol,student_sol))
+        break
+print(0)",0

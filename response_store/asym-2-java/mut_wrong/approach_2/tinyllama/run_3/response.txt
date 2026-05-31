@@ -1,0 +1,271 @@
+POINT_ID: 1
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+Part D: The binary search algorithm used in the function g is standard. The algorithm consists of a while loop that maintains an interval [l, r] to search for the target element in array b, where l is the first index (starting from 0) and r is the last index (excluding last element). The intervals are divided into halves each iteration, so the total number of iterations is constant (i.e., not affected by M or N).
+
+As for Part E, while the binary search algorithm is O(log n), the average time taken to repeatedly iterate over the sea of array b until the element is found in the interval [l, r] is dominated by the logarithm of that number. For instance, if the target element occurs twice in the array (i.e., in the interval [3, 5]), then the binary search algorithm will have to iterate over all half-intervals (inclusive) [0, 2], [2, 4), and [4, 6] (exclusive). The number of such iterations is log(log n), where n is the length of the array. Since n = M in this case, this means that each iteration takes log(log n) time - which is dominated by the constant-time operations that the binary search algorithm does.
+
+Overall running time of f is O(M log N), as the binary search algorithm has a logarithmic cost per iteration. The cost of g is O(log N).
+
+POINT_ID: 2
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`. Rule: You must write your answer in the text field provided. Your answer should include a detailed analyziS of both functions. You can use Theta notation or big-O notation with tiGht bounds. Your analySs should refer to line numbers. Please provide each step of the analySis for each loop, including the number of iterations and the cost per iteration. Each step of the analySis should be justified with one or two sentences.
+
+POINT_ID: 3
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as functions of both the length of input array `a` and the length of sorted output array `b`. Use the Theta notation or Big-O notation with appropriate bounds for each loop. Your answer should include detailed analyses of both functions and explain why you chose to use each method.
+
+public final class AsymQ2 {
+     // Input array has length M; Output array has length N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length();
+         int s = 0;
+         for (int I : a) {
+             int t = g(b, i);
+             if (t < 0) s += t; // worst-case scenario: input array is sorted but output not so
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.length - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid; // worst-case scenario: sorted input array has at least one duplicate element
+             if (b[mid] < x) l = mid + 1; // worst-case scenario: sorted input array does not contain duplicate elements
+             else r = mid - 1; // worst-case scenario: sorted input array contains duplicate elements
+         }
+         return -1; // best-case scenario: sorted input array contains no duplicates
+     }
+}
+
+SAMPLE SOLUTION:
+Let M be the length of input array `a` and N the length of output array `b`.
+
+Method f
+Part A: int m = a.length(); — constant time. Part B (for loop): runs over I = 0..M-1.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: The loop runs from I = 0 to I = M-1, so it has Theta(M) iterations. Part B (loop) is Theta(log N).
+- Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b this costs Theta(log N), and each binary search cost Theta(1) in the loop. Overall running time of f is Theta(M log N), with constant (log N) on one side and constant (constant times log N) on the other side.
+- Total cost of Part B: Theta(M log N) + Theta(1) = Theta(M log N).
+
+Overall running time of g is Theta(M log N), with constant (log N) on one side and constant (constant times log N) on the other side.
+
+Method g
+Part D: int l = 0; int r = b.length - 1; — constant time. Part E (while loop): standard binary search.
+Part F: return -1; — constant time.
+
+Partes D and F are Theta(1).
+
+Part E:
+- Iterations: the loop maintains the search interval [l, r]; each iteration either returns (so loop ends) or replace s with half of its size. In each pass l or r is halved, so the loop runs at most Theta(log N) times.
+- Cost per iteration: constant — the binary search algorithm costs Theta(1) per iteration, and each iteration costs Theta(log N) on average in this case.
+- Total cost of Part E: Theta(log N) + Theta(1) = Theta(log N).
+
+Overall running time of g is Theta(M log N), with constant (log N) on one side and constant (constant times log N) on the other side.
+
+POINT_ID: 4
+QUESTION: Calculate the asymptotic best case running time of the functions below, as functions of the lengths M and N of array `a` and sorted array `b`.
+
+- You must write your answer in the text field provided. - Your analysii should include a detailed anaylis of both functions. - Each step of the analyses should be justified with one or two sentences. - For every loop you need to specify the number of iterations and the cost per iteration. - Each step of the analyis should refer to line numbers.
+
+public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analysi must be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length;
+         int n = b.length;
+         int s = 0;
+         for (int I = 0; I < m - 1; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.length - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid;
+             if (b[mid] < x) l = mid + 1;
+             else r = mid - 1;
+         }
+         return -1;
+     }
+}
+
+SAMPLE SOLUTION:
+Let M be the length of array `a` and N be the length of sorted array `b`.
+
+Method f
+Part A: int m = a.length; int n = b.length; int s = 0; — constant time.
+Part B (for loop): runs over i = 0..m-1.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: the loop runs from i = 0 to i = m - 1, so it has Theta(2*m) iterations.
+- Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). The other operations (comparision, +=) are Theta(1). Per iteration: Theta(log2 m + log N) = Theta(m log2 N).
+- Total cost of Part B: Theta(m log2 N) x Theta(log2 m) = Theta(m log2 N).
+
+Overall running time of f:
+Theta(1) + Theta(m log2 N) + Theta(1) = Theta(m log2 N).
+
+Method g
+Part D: int l = 0; int r = b.length - 1; — constant time.
+Part E (while loop): standard binary search.
+Part F: return -1; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop maintains the seairch interval [l, r]; each iteration either returns (so loop ends) or replacees the interval by one of its halves. The interval size halves each iteration, so the loop runs at most Theta(2^log N) times.
+- Cost per iteration: constant — two array accesses and a binary search. Per iteration: Theta(log2 m + log N) = Theta(m log2 N).
+- Total cost of Part E: Theta(m log2 N) x Theta(2^log2 m) = Theta(m log2 N).
+
+Overall running time of g:
+Theta(1) + Theta(m log2 N) + Theta(1) = Theta(m log2 N).
+
+POINT_ID: 5
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided. - Your analysias should be based on M and N. - Each step of the analyziс should be justified with one or two sentences. - For every loop you need to specify the number of iterations and the cost per iteration. - The analyzıs should refer to line numbers.
+
+public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analyzişes should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length;
+         int s = 0;
+         for (int I = 0; I < m; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.length - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid;
+             if (b[mid] < x) l = mid + 1;
+             else r = mid - 1;
+         }
+         return -1;
+     }
+}
+
+SAMPLE SOLUTION:
+Let M be the length of array `a` and N be the length of array `b`.
+
+Method f
+Part A: int m = a.length; int s = 0; — constant time.
+Part B (for loop): runs over i = 0..M-1.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: the loop runs from I = 0 to I = M-1, so it has Theta(M) iterations.
+- Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). The other operations (compares, +=) are Theta(1). Per iteration: Theta(log N) = Theta(M log N).
+- Total cost of Part B: Theta(M) x Theta(log N) = Theta(M log N).
+
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+
+Method g
+Part D: int l = 0; int r = b.length - 1; — constant time.
+Part E (while loop): standard binary search.
+Part F: return -1; — constant time.
+
+Partes D and F are Theta(1).
+
+Part E:
+- Iterations: the loop maintains the seaRChe interval [l, r]; each iteration either returns (so loop ends) or replace s with half of its size. This operation takes logN times, where N is the length of `b`. In total, the program performs logN time and Theta(logN) total cost of operations.
+- Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r.
+- Total time is roughly linear in M and N.
+
+Overall running time of g:
+Theta(1) + Theta(logN) = logN.
+
+STUDENT SOLUTION:
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(M log N) from Theta(M) iterations x Theta(log N) per iteration.
+
+Based on the text material, what is the total running time of f() and g() functions? Answer according to: For each function call, let M be the length of input array a and N be the length of sorted array b.
+
+f() has O(M) complexity (as it involves binary search). It takes logN time with Theta(logN) total cost of operations. g() has O(logN) complexity. It takes logN time with Theta(logN) total cost of operations. In total, the program performs logN time and Theta(logN) total cost of operations, so f() performs logN times more slowly than g(). This is because g() is a binary search, which performs 2 logN operations (1 binary search plus 1 midpoint computation) in each iteration, while f() has a single midpoint comparison. So overall, the program takes logN+logN time. The analysis is based on using the worst-case scenario that b contains all negative values, and a[i] represents the minimum value in a, which can take logN operations to find. However, b has M positive values so, for each loop iteration over the array a, we have logN operations of binary searches for either (i * logM) = logN + logN or (i * logM) = log(2logN). So overall, the program takes 4 times longer than g() and approximately twice as long as f().
+
+POINT_ID: 6
+QUESTION: Calculate the asymptotic worst-case runtime of the function `g` from the text, as functions of the lengths of array `a` and sorted array `b`. The function should be written in a way to make use of Theta notation and big-O notation with tighter bounds. Each step of the analysis should include justification based on lines and the number of iterations and cost per iteration. Ensure that you specify the length of the loop and any other relevant details, such as constant or linear time complexity in M and N. Please provide a detailed analyziс for both functions separately.
+
+POINT_ID: 7
+QUESTION:
+Calculate the asymptotic worst-case running time of the function below, as functions of the length M of array `a` and the length N of the sorted array `b`. The function must include a detailed analyziS of both functions. You can use either Theta notation or big-O notation with appropriate tier bounds. Your analyziS should refer to line numbers. For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analyziS should be justified with one or two sentences. Public final class AsymQ2:
+     // `a` has length M; `b` is sorted ascending and has length N. Your analyziS should be based on M and N. Int m = a.lengtH; int s = 0; for (int I = 0; I < m; I++) { int t = g(b, a[i]); if (t >= 0) s += t; } return s; } AsymQ2 is a class that calculates the worst-case running time of f(a, b), where f is defined as f(array a, array b) { int m = a.lengtH; int s = 0; for (int I = 0; I < m; I++) { int t = g(b, a[i]); if (t >= 0) s += t; } return s; } where g is the binary search function that searches over i = 0 to I-1 and returns the index of the largest element in b that is less than or equal to x. Let M be the length of array a, N be the length of array b, and let Part A: int m = a.lengtH; int s = 0 be the constant time part of f. Let Part B (for loop): runs over i = 0..M-1, which has Theta(M) iterations. Let Parts A and C be defined as follows: Parts A:
+    - Iterations: The loop runs from i = 0 to I = M-1 so it has Theta(M) iterations. Cost per iteration: Dominated by the binary search function g(b, a[i]); since g is a binary search over b it costs Theta(log N). Let Part C (loop): returns s; - Iterations: The loop runs from I = 0 to I = M-1 so it has Theta(M) iterations. Cost per iteration: Dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). Let Parts B (loop):
+    - Iterations: The loop runs from I = 0..M-1 so it has Theta(M) iterations. Cost per iteration: Dominated by the binary search function g(b, a[i]); since g is a binary search over b it costs Theta(log N). Overall running time of f:
+    - Constants (C): Costs Theta(log N) times as mentioned earlier. - Constants (B and C): For loop and Part B (loop) costs Theta(M log N) times; let Part D: int l = 0; int r = b.lengtH - 1 be the constant time part of f. Let Part E:
+    - Iterations: The loop maintains a sea search over l..r so it has Theta(log N) iterations. Cost per iteration: Dominated by the binary search function g(b, a[i]); since g is a binary search over b it costs Theta(log N). Total time of f:
+    - Constants (C and B and C): Costs Theta(log N) times as mentioned earlier. - Constants (B and C and D): Let Part F be defined as follows: Part F:
+    - Iterations: The loop maintains a sea search over l..r so it has Theta(log N) iterations, so the total time of f is roughly linear in M and N. Public final class AsymQ2:
+     // `a` has length M; `b` is sorted ascending and has length N. Your analyziS should be based on Part F. Int m = a.lengtH; int s = 0; for (int I = 0; I < m; i++) { int t = g(b, a[i]); if (t >= 0) s += t; } return s; }
+
+POINT_ID: 8
+Question: Calculate the asymptotic worst-case running time of functions f and g, as functions of the lengths M and N of arrays `a` and `b`, respectively. Include detailed analyses for both functions, use Theta notation (for constant cost per iteration) where applicable, refer to line numbers, and justify each loop with justification. Your output should include a detail-based analysi of both functions based on M and N.
+
+Method f
+Part A: int m = a.length; int s = 0; — constant time. Part B (for loop): runs over i = 0..M-1. Part C: return s; — constant time. Parts A and C are Theta(1). Part B (loop):
+- Iterations: the loop runs from i = 0 to i = M-1, so it has Theta(M) iterations. - Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). Parts A and C are Theta(1). Part B (loop):
+- Iterations: the loop maintains the search interval [l, r] for each array index `i`, so there is one midpoint computation per iteration. Part C: return -1; — constant time. Parts D and F are Theta(1) and Theta(1), respectively. Method g
+Part D: int l = 0; int r = b.length - 1; — constant time. Part E (while loop): standard binary search. Part F: return -1; — constant time. Parts D and F are Theta(1). Part E:
+- Iterations: the loop maintains the search interval [l, r] for each array index `i`, so there is one midpoint computation per iteration. Part C: return s; — constant time. Parts A and C are Theta(1) and Theta(1), respectively. Overall running time of f
+Theta(log N) = Theta(log N) iterations x Theta(1). Theta(log N) is the number of iterations, divided by Theta(1) to get a constant cost per iteration. This means the total running time of f is roughly linear in M and N. Theta(1), however, is used as a measure of the runtime complexity of the function in general, so it does not directly affect the running time. Overall, g
+Theta(log N) + Theta(log N) = Theta(log N). Theta(log N) is used to measure the runtime complexity of both functions separately and together. This means that if we have a more efficient function for f, then we can expect a faster running time overall, while if we have a slower function for g, we will see a slower overall running time.
+
+POINT_ID: 9
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your analyziSs should be based on M and N.
+- Each step of the analySiSs should be justified with one or two sentences.
+
+public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analySiSs should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length;
+         int s = 0;
+         for (int i = 0; i < m; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.length - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid;
+             if (b[mid] < x) l = mid + 1;
+             else r = mid - 1;
+         }
+         return -1;
+     }
+}
+
+POINT_ID: 10
+QUESTION:
+How long does the student's written asymptotic-complexity analyzi s of the functions f and g, as given in the text, take on average? Answer according to: The student's written asymptotic-complexity analyzi s takes 4.83597 seconds, which is approximately 1.1 minutes.

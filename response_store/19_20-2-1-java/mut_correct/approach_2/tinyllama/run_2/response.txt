@@ -1,0 +1,142 @@
+POINT_ID: 1
+Answer:
+Note 1: In the Java test, the stack is expected to store "strings". Since this implementation is not allowed to use "import", it's not necessary for Python to be dynamically typed as well.
+
+Note 2: It is not allowed to use "import" in the Queue class definition, but Python allows dynamic typing, so it's still an acceptable option in this case.
+
+POINT_ID: 2
+Yes, you can use the "import" keyword to import modules in Python. To implement a Queue class like you described, you can modify your class as follows:
+
+SAMPLE SOLUTION:
+class Queue:
+    def __init__(self):
+        self.head = None
+        self.end = 0
+    
+    def head(self):
+        return self.head
+    
+    def enquu(self, s):
+        self.head = None
+        self.end = 0
+        
+    def dequeue(self):
+        if self.head is not None:
+            self.head = self.head[1:]
+            self.end += 1
+        return self.head
+    
+    def emptyqueue(self):
+        return self.head is None and self.end == 0
+```
+
+Here, we have implemented the Queue class with a `__init__` method that initializes its internal state. The `head` property returns the first element in the queue, and the `enquu` and `dequeue` methods respectively return the next (if any) element from the queue and the entire queue itself. To check if the queue is empty, we use `self.emptyqueue()`. Finally, to check if the queue is full, we compare its length with the total number of elements specified by our lecture material (`100`). By following these steps, you have implemented a Queue class that satisfies all the requirements given in the lecture's example output.
+
+POINT_ID: 3
+To implement a class "Queue" that works like a queue, you can follow these steps:
+
+Note 1: The Java test does not require dynamic typing and should work with any language, so note this point.
+
+Step 1: Define the interface for the Queue. A Queue should have two methods - an empty method to check if it is empty, and a head method to retrieve the front element of the queue without removing it. You can use a private variable called "start" to store the index of the first element in the buffer array.
+
+Step 2: Create a class named Queue that implements the interface by using an array of Strings as its buffer, with start and end variables initialized to 0 and 100 respectively, and a head() method that retrieves the front element without removing it. This class should not use any imports because they are not allowed in Java.
+
+Step 3: Define a Queue object using an instance of this class. You can pass an array of Strings as an argument to this constructor and store its index in a private variable called "start".
+
+Step 4: Implement the two methods (emptyQueue() and head()) by checking if the buffer is empty or not, respectively. When the buffer is empty, you can retrieve the front element without removing it using the head() method, which returns the first element in the queue's buffer array without removing it.
+
+Step 5: Implement the two methods (enqueue(String) and dequeue()) by appending a new element to the end of the buffer array and checking if the end of the buffer is reached, respectively. When the end of the buffer is reached, you can remove the last element from the array without removing it by using the start variable as the index.
+
+Step 6: Implement the emptyQueue() method for checking if the queue is empty or not. This method returns true if the queue is empty and false otherwise. You can use the public boolean property to check if an instance of this class has been created.
+
+Step 7: Test the Queue class using a sample solution that implements the Stack data structure and stores strings in the buffer array. The queue's head() method should return the front element and its emptyQueue() method should return true if the queue is empty or false otherwise.
+
+POINT_ID: 4
+To implement the Queue class in Python with the expected structure, we'd follow these steps:
+
+1. Define an empty instance variable `start` and set it to 0 initially. We also initialize the buffer to a list of strings and set the end variable to 0.
+
+2. Define two methods, `emptyqueue()` and `head()`, that check whether the queue is empty or not. These methods should return bool values.
+
+3. Define the Queue class as follows:
+
+    ```python
+    class Queue:
+        def __init__(self):
+            self.start = 0
+            self.end = 0
+            self.buffer = []
+        
+        def emptyqueue(self):
+            return self.start == self.end
+        
+        def head(self):
+            return self.buffer[self.start]
+        
+        def enqueu(self, x):
+            if self.empty():
+                raise ValueError("Queue is empty")
+            
+            buffer = self.buffer[:]
+            buffer[self.end] = x
+            self.enqueue(x)
+    ```
+
+In this implementation, we're defining two methods `emptyqueue()` and `head()`, which check whether the queue is empty or not, respectively. We also define the Queue class, using a similar structure as in the Java test case. Note that the start and end variables are initialized to 0 initially.
+
+POINT_ID: 5
+Certainly! Here's an updated version of the Queue class with a method called "enqueue" that adds an element to the end of the buffer:
+
+```csharp
+public class Queue {
+     private int start = 0;
+     private int end = 0;
+     private String[] buffer = new String[100];
+     
+     public bool eeuaan emptyqueue() { return start == end; }
+     public string head() { return buffer[start]; }
+     public void enqueue(string s) {
+         buffer[end] = s;
+         end++;
+         if (end == 100) end = 0;
+     }
+     public string dequeue() {
+         string s = buffer[start];
+         start++;
+         if (start == 100) start = 0;
+         return s;
+     }
+}
+```
+
+In this version, "enqueue" method adds an element to the end of the buffer. The queue class can now perform both `emptyqueue()` and `head()` operations by simply calling the `dequeue()` method:
+
+```csharp
+Queue q = new Queue();
+q.enqueue("apple"); // start == 0, end == 1
+string appl = q.dequeue(); // start == 1, end == 0
+string apple = q.head(); // start == 1, end == 1
+```
+
+POINT_ID: 6
+Question:
+Implement a class "Queue" that works like a queue (described in the lecture). The class should have at least the methods emptyQueue(), head(), enquue(x) and dequeue(). The queue does not need to hold more than 100 elements. Note: In the Java test, the stack is expected to store "strings". Since PyThon is dynamically typed, this does not apply. Sample Solution:
+public class Queue {
+     private int start = 0;
+     private int end = 0;
+     private String[] buffer = new String[100]; // maximum size of the queue is 100 elements
+     
+     public boolen emptyQueue() { return start == end; }
+     public String head() { return buffer[start]; }
+     public void enquue(String s) {
+         buffer[end] = s;
+         end++; // increment the end index if we have reached the last element, so that the next enqueue() call starts from the new start index
+         if (end == 100) end = 0; // if we hit the end index, reset the end to zero so that the next enquue() call does not fail with an exception
+     }
+     public String dequeue() {
+         String s = buffer[start];
+         start++;
+         if (start == 100) start = 0; // reset the start index to the new default value of 0, so that the next enquue() call does not fail with an exception
+         return s; // return the dequeued element
+     }
+}

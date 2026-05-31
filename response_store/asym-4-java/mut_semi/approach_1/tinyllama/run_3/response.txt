@@ -1,0 +1,59 @@
+Certainly, here's a revised version of the text with detailed analyses and a final total for both functions based on the given input array length:
+
+[SAMPLE SOLUTION:]
+Let N be the length of the input array `a`.
+
+Method f
+Part A: int n = a.length;
+Part B (while loop): Condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+Part D: Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues until k exceeds N, which takes constant time. Part E: Cost per iteration: dominated by the call to g(a, k), which is constant time. The doubling and += are Theta(1). Per iteration: Theta(N) (a linear scan of a, see analysiS of g).
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+Method g
+Part D: int t = 0;
+Part E (for loop): Scans the entire array a.
+Part F: Return t; — constant time.
+Part G: Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+STUDENT SOLUTION:
+Point 1 — Splitting code into parts + referencing line numbers (valid range: 0–5)
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+  All non-loop code in f and g is Theta(1).
+Point 3 — f(): Loop iterations (valid range: 0–12)
+  Theta(log N) iterations because k doubles each iteration.
+Point 4 — f(): Cost per iteration (valid range: 0–12)
+  Theta(N) per iteration of the for loop over a.
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(N log N) from Theta(log N) iterations x Thea
+   Beta = Thea/(Thea+1), where beta is the natural logarithm base e.
+   T_g(N) = Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 4.
+Overall worst-case runtime of g (valid range: 0–8):
+Theta(N log N) = Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 8.
+Method f(): Total worst-case runtime of f (valid range: 0–14):
+Theta(N log N) = Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 8 = Theta(log N) * Theta(1) * Thea^2 / 8.
+Method g(): Total worst-case runtime of g (valid range: 0–14):
+Theta(N log N) = Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 8.
+Overall worst-case runtime of g (valid range: 0–14):
+Theta(N log N) + Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 8 + Theta(log N) * Theta(1) = Theta(N log N) * Theta(1) * Thea^2 / 8 + Theta(log N) * Theta(1) + Theta(log N) * Theta(1) = Theta(N log N) * Theta(1) * Thea^2 / 8 + Theta(log N) * Theta(1) = Theta(N log N) * Theta(1) * Thea^2 / 8 + Theta(log N) * Theta(1) = Theta(N log N) * Theta(1) * Thea^2 / 8.
+Total worst-case runtime of g:
+Theta(N log N) + Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 8 + Theta(log N) * Theta(1) = Theta(N log N) * Theta(1) * Thea^2 / 8.
+STUDENT SOLUTION:
+Point 1 — Splitting code into parts + referencing line numbers (valid range: 0–5)
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+  All non-loop code in f and g is Theta(1).
+Point 3 — f(): Loop iterations (valid range: 0–12)
+  Theta(log N) iterations because k doubles each iteration.
+Point 4 — f(): Cost per iteration (valid range: 0–12)
+  Theta(N) per iteration of the for loop over a.
+Point 5 — f(): Total loop cost (valid range: 0–8):
+  Theta(log N) * Thea^2 / 4 = Theta(log N) * Theta(1) * (1 + beta * Thea)^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 4 = Theta(log N) * Thea^2 / 8.
+Point 6 — g(): Total loop cost (valid range: 0–8):
+  Theta(N log N) * Thea^2 / 8 = Theta(N log N) * Thea^2 / 8 = Theta(log N) * Theta(1) * Thea^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 4.
+Overall worst-case runtime of g (valid range: 0–8):
+Theta(N log N) + Theta(log N) * Theta(1) * Thea^2 / 4 = Theta(log N) * Theta(1) * Theta(1) * Thea^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 8 + Theta(log N) * Theta(1) = Theta(N log N) * Theta(1) * Thea^2 / 8.
+Total worst-case runtime of g:
+Theta(log N) + Theta(log N) * Thea^2 / 8 = Theta(log N) * Theta(1) * Theta(1) * Thea^2 / 4 = Theta(log N) * Theta(1) * Thea^2 / 8 + Theta(log N) * Theta(1) = Theta(log N) * Theta(1) * Thea^2 / 8.

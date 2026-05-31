@@ -1,0 +1,46 @@
+Method 1: Java Code Assessment - Queue
+
+Objective: Implement a class "Queue" that works like a queue (described in the lecture). The class should have at least the methods emptyQueue(), head(), enque(), and dequeue(). The queue does not need to hold more than 100 elements. Note: In the Java test, the stack is expected to store "strings". So, since Python is dynamically typed, this doesn't apply.
+
+Note 1: In the Java test, the stack is expected to store "strings", so it doesn't matter if we use "import" or not.
+
+Sample Solution:
+public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100]; // Array of strings to store elements in FIFO order
+
+    public boolean isEmpty() { return start == end; } // Returns true if queue is empty, false otherwise
+    public String head() { return buffer[start]; } // Returns first element in FIFO order
+    public void enqueue(String s) { buffer[end] = s; end++; if (end == 100) { end = 0; } } // Inserts new element at front of queue, removes last one from queue
+    public String dequeue() { String s = buffer[start]; start++; if (start == 100) { start = 0; } return s; } // Removes and returns front element of queue, removes oldest element from queue
+}
+
+Students' Solution:
+public class Queue {
+    private java.util.ArrayList<String> list = new java.util.ArrayList<>(); // ArrayList to hold elements in FIFO order
+
+    public boolean isEmpty() { return list.isEmpty(); } // Returns true if queue is empty, false otherwise
+    public String head() { return list.get(0); } // Returns first element in FIFO order
+    public void enqueue(String s) { list.add(s); } // Inserts new element at front of queue, removes last one from queue
+    public String dequeue() { return list.get(0); } // Removes and returns front element of queue, removes oldest element from queue
+}
+
+RBR:
+Point 1 — Class structure and internal storage (valid range: 0–22)
+   The Queue class is defined with an internal array 'buffer' to store elements in FIFO order. Note that the array is limited to 100 elements, as stated in the lecture.
+
+Point 2 — emptyQueue() / isEmpty(): correct emptiess check (valid range: 0–22)
+   The method returns true if and only if the queue contains no elements, based on the internal state of the queue.
+
+Point 3 — head(): returns front element without modifying queue (valid range: 0–18)
+   The method returns the element at the front of the queue without removing it or modifying any internal state.
+
+Point 4 — enque() / dequeue(): adds element to the back of the queue (valid range: 0–18)
+   These methods insert elements into the internal array 'buffer' in FIFO order, and correctly update all internal tracking state so subsequent operations remain consistent.
+
+Point 5 — dequeue() removes and returns front element of queue (valid range: 0–18)
+   The method removes the front element from the queue and updates all internal tracking state to reflect this change.
+
+Overall correctness of Queue (valid range: 0–22)
+   All four methods work correctly together, keeping FIFO order across repeated enqueues and dequeues, and not using 'import'.

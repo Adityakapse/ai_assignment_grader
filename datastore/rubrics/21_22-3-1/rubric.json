@@ -1,0 +1,141 @@
+{
+  "task_id": "21_22-3-1",
+  "title": "Billboard (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the base cases are wrong, base the recurrence marks on whether the student applies max(W[n] + opt(n-2), opt(n-1)) correctly using their own base cases.",
+    "This rubric applies to both Java and Python submissions. The Java method is opt(long[] W) with helper opt_helper(int n, long[] W, long[] memo); the Python function is opt(W) with helper opt_helper(n, W, memo). Both are correct.",
+    "The recurrence is: opt(n) = max(W[n] + opt(n-2), opt(n-1)), with base cases opt(0) = W[0] and opt(1) = max(W[0], W[1]). Memoization must be used to achieve O(n).",
+    "Alternative correct approaches (e.g., bottom-up iterative DP) are also acceptable if they produce the correct result."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Memo array allocation and initialisation",
+      "tag": "memo alloc",
+      "max_marks": 20,
+      "target": "A memo array of size n+1 is allocated and initialised to -1 as the sentinel for uncached entries.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No memo array is allocated; the recursion recomputes all subproblems on every call, resulting in exponential runtime."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A memo array is present but initialised to 0 instead of -1, making it impossible to distinguish an uncached entry from a subproblem with zero profit; or the array is the wrong size (e.g., n instead of n+1)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A memo array of size n+1 is allocated and all entries are initialised to -1, correctly serving as the 'not yet computed' sentinel."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Base cases",
+      "tag": "base cases",
+      "max_marks": 20,
+      "target": "opt(0) returns W[0]; opt(1) returns max(W[0], W[1]).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No base cases are present; the recursion accesses negative indices or runs indefinitely."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Only one base case is present (e.g., n == 0 returns W[0]) but n == 1 is missing, causing an off-by-one access or incorrect result when W has length 2."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Both base cases are correct: n == 0 returns W[0], and n == 1 returns max(W[0], W[1])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cache check",
+      "tag": "cache check",
+      "max_marks": 15,
+      "target": "At the start of each helper call, if memo[n] != -1, return memo[n] immediately without recomputation.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No cache check is present; memo is written but never read, so all subproblems are recomputed on every call."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A cache check is present but uses the wrong sentinel (e.g., checks != 0 instead of != -1), causing subproblems with zero profit to be incorrectly recomputed or skipped."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "if memo[n] != -1: return memo[n] at the start of each helper call, ensuring each subproblem is computed at most once."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Recurrence and memo store",
+      "tag": "recurrence",
+      "max_marks": 25,
+      "target": "memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)); the result is stored in memo[n] before returning.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No recurrence is applied; the helper returns a constant or does not recurse into smaller subproblems."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "A max-based recurrence is present but incorrect: only one branch is computed (always includes or always skips W[n]), or the result is not stored in memo[n] before returning (breaking memoization for callers)."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)) is applied correctly; memo[n] is set before returning so subsequent calls to opt_helper(n) use the cached result."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "opt returns the maximum billboard profit for all valid inputs in O(n) time.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Returns 0 or an incorrect value for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct results for small inputs (n <= 2) but fails for larger inputs due to missing memoization (stack overflow or TLE), or always includes W[n] without considering the skip option."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct maximum profit for all valid inputs (1 <= n <= 1000) in O(n) time."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own recurrence and base cases, but the result is systematically off (e.g., off-by-one in array indexing or W[n-1] used instead of W[n] in the include branch)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

@@ -1,0 +1,127 @@
+Here's an implementation of the tasks in Java, including sample solutions for each task:
+
+1) "Search Trees":
+public Node insert(Node root, Node insert) {
+    Node x = root;
+     Node y = null; // saves Node.Parent
+     while (x != null) {
+         y = x;
+         if (insert.key < x.key) {
+             x = x.left;
+         } else {
+             break; // exit loop and insert at leaf
+         }
+     }
+     return y;
+}
+
+Sample Solution:
+// Input: root = null, key = 10, parent = null
+Node ret = insert(root, new Node(10));
+System.out.print(ret == null ? "Error" : "Success\n"); // Output: Success
+
+2) "Tree Properties":
+public boolean isBST(Node root) {
+    return isBSTRecursive(root, root);
+}
+
+private boolean isBSTRecursive(Node root, Node prev) {
+    if (prev == null || root.val < prev.val) { // Base case: root is root
+        return true;
+    } else if (isBSTRecursive(root.left, root)) { // Left child BST
+        return true;
+    } else if (isBSTRecursive(root.right, root)) { // Right child BST
+        return true;
+    } else { // Root is not a BST
+        return false;
+    }
+}
+
+Sample Solution:
+// Input: root = null, key = 10, parent = null
+Node ret = root == null ? null : isBST(root);
+System.out.print(ret == null ? "Error" : "Success\n"); // Output: Success
+
+3) "Search Tree":
+public boolean search(Node root, int key) {
+    if (root == null || root.val != key) { // Base case: root is null or not found
+        return false;
+    } else if (key < root.val) { // Recursive search left subtree
+        return searchLeft(root);
+    } else if (key > root.val) { // Recursive search right subtree
+        return searchRight(root);
+    } else { // Root is in tree
+        return true;
+    }
+}
+
+private boolean searchLeft(Node root) {
+    if (root == null || root.left == null) {
+        return false;
+    } else {
+        return searchLeft(root.left);
+    }
+}
+
+Sample Solution:
+// Input: root = null, key = 10, parent = null
+Node ret = search(root, 10);
+System.out.print(ret == null ? "Error" : "Success\n"); // Output: Success
+
+4) "Search BST":
+public boolean search(Node root, int key) {
+    if (root == null || root.val != key) { // Base case: root is null or not found
+        return false;
+    } else if (key < root.val) { // Recursive search left subtree
+        return searchLeft(root);
+    } else if (key > root.val) { // Recursive search right subtree
+        return searchRight(root);
+    } else { // Root is in tree
+        return true;
+    }
+}
+
+private boolean searchLeft(Node root) {
+    Node curr = root; // Current node to search
+    while (curr.left != null) {
+        curr = curr.left;
+    }
+    return curr == null || curr.val < root.val;
+}
+
+Sample Solution:
+// Input: root = null, key = 10, parent = null
+Node ret = search(root, 10);
+System.out.print(ret == null ? "Error" : "Success\n"); // Output: Success
+
+5) "Search TRE":
+public boolean search(Node root, int key) {
+    if (root == null || root.val != key) { // Base case: root is null or not found
+        return false;
+    } else if (key < root.val) { // Recursive search left subtree
+        return searchLeft(root);
+    } else if (key > root.val) { // Recursive search right subtree
+        return searchRight(root);
+    } else { // Root is in tree
+        return true;
+    }
+}
+
+private boolean searchLeft(Node root) {
+    Node curr = root, prev = null;
+    while (curr != null && curr.left != root) {
+        prev = curr;
+        curr = curr.left;
+    }
+    if (curr == null || curr.val < root.val) { // Not found in left subtree
+        return false;
+    } else {
+        prev.right = curr.right;
+        return true;
+    }
+}
+
+Sample Solution:
+// Input: root = null, key = 10, parent = null
+Node ret = search(root, 10);
+System.out.print(ret == null ? "Error" : "Success\n"); // Output: Success

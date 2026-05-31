@@ -1,0 +1,43 @@
+POINT_1: Wrong (0 marks)
+BUCKET: Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+FEEDBACK: The student did not explicitly split the code into parts for f and g, nor did they reference specific line numbers.
+
+POINT_2: Wrong (0 marks)
+BUCKET: Non-loop code not analysed or incorrectly claimed to be non-constant.
+FEEDBACK: The student's analysis does not account for the constant-time initializations in both functions. For example, `int n = a.length; int s = 0;` and `int t = 0; int k = n;` are both constant-time operations.
+
+POINT_3: Wrong (0 marks)
+BUCKET: Iteration count missing or not Theta(N^2) (e.g. claims Theta(N) or Theta(N log N)).
+FEEDBACK: The student incorrectly claimed that the nested loop runs in O(N) time instead of Theta(N^2).
+
+POINT_4: Wrong (0 marks)
+BUCKET: Claims non-constant per-iteration cost, or does not clearly state cost per iteration.
+FEEDBACK: The student did not justify why the inner loop is constant-time. They only stated that it performs "some small operations" without providing specific details.
+
+POINT_5: Wrong (0 marks)
+BUCKET: No multiplication of iteration count x per-iteration cost, or total complexity that does not match own previous analysis.
+FEEDBACK: The student did not calculate the total cost of the nested loop correctly. They only claimed Theta(N) time complexity for the inner loop.
+
+POINT_6: Wrong (0 marks)
+BUCKET: Cost of Part C missing or incorrect (e.g. claims Theta(1) or Theta(N)).
+FEEDBACK: The student did not account for the call to `g(a)` inside `f` and incorrectly claimed that the total cost is O(N).
+
+POINT_7: Correct (10 marks)
+BUCKET: Justifies Theta(log N) by explaining that k starts at N and is divided by 2 each iteration until it reaches 0.
+FEEDBACK: The student correctly explains why the loop in `g` runs in Theta(log N) time.
+
+POINT_8: Wrong (0 marks)
+BUCKET: Suggests operations are small/constant but lacks explicit Theta(1) justification.
+FEEDBACK: The student did not justify why each iteration of the while loop in `g` is constant-time. They only mentioned that it performs "some halving thing."
+
+POINT_9: Wrong (0 marks)
+BUCKET: Attempts multiplication using own values but expression or simplification is unclear or incorrect.
+FEEDBACK: The student incorrectly simplified Theta(log N) x Theta(1) to O(N).
+
+POINT_10: Correct (12 marks)
+BUCKET: Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+FEEDBACK: The student correctly calculates the total cost of `g` as Theta(log N).
+
+POINT_11: Wrong (0 marks)
+BUCKET: Final complexity missing/incorrect and not derived from loop analysis.
+FEEDBACK: The student incorrectly claims that the overall time complexity of `f` is O(N) instead of Theta(N^2).

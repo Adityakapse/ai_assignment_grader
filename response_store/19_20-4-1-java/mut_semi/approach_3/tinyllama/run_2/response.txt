@@ -1,0 +1,15 @@
+Here are more detailed rules for different methods used in the seaRcch trees task:
+
+Method 1: Insert method:
+1. The SeaRcch trees require that a node is inserted into a seaRcch tree by connecting it to the existing root or parent, and then returning the new node as the inserted one.
+2. The insertion point should be traveled in the correct direction (ascending or descending) until the correct empty slot is reached.
+3. A loop (or recursion) should be used to traverse through the tree from the root, and update the parent pointer if appropriate at each step during traversal.
+4. After traversing, the inserted node should be attached as the left child of its parent for ascending insertions, or as the right child for descending insertions.
+
+Method 2: Attach method:
+1. The SeaRcch trees need to establish an upward link in a tree (i.e., insertion into an empty tree is invalid).
+2. A valid attaching approach involves tracking parent pointers during traversal, and setting inserted nodes as the left or right child of their corresponding parent if appropriate.
+3. The method should ensure that the inserted node's parent pointer is correctly assigned for ascending/descending insertions.
+4. After traversing a tree, the newly created node should be attached to its corresponding parent by updating the parent pointers appropriately for both ascending and descending insertions.
+
+Methods 1 and 2 are correct but not internally consistent due to a systematic error in assigning the inserted node's parent pointer. To ensure that the method is internally consistent, all inserted nodes should have an upward link, i.e., they should be attached as children of their corresponding parent.

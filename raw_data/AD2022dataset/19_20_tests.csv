@@ -1,0 +1,1565 @@
+question_id,test_number,is_example,testcode,expected
+19_20-1-1-java,1,True,"System.out.println(lcm(140,72));",2520
+19_20-1-1-java,2,False,"System.out.println(studentAnswer.indexOf(""import""));",-1
+19_20-1-1-java,3,False,"System.out.println(lcm(37, 973));",36001
+19_20-1-1-java,4,False,"System.out.println(lcm(2335,258));",602430
+19_20-1-1-java,5,False,"System.out.println(lcm(13663, 15449));",211079687
+19_20-1-1-python,1,True,"print(int(LCM(140,72)))",2520
+19_20-1-1-python,2,False,"print(__student_answer__.find(""import""))",-1
+19_20-1-1-python,3,False,"print(int(LCM(37, 973)))",36001
+19_20-1-1-python,4,False,"print(int(LCM(2335,258)))",602430
+19_20-1-1-python,5,False,"print(int(LCM(13663, 15449)))",211079687
+19_20-2-1-java,1,False,"System.out.println(studentAnswer.indexOf(""import""));",-1
+19_20-2-1-java,2,True,"Queue q = new Queue();
+System.out.println(q.emptyqueue());",true
+19_20-2-1-java,3,True,"Queue q = new Queue();
+q.enqueue(""Kekse"");
+q.enqueue(""Kuchen"");
+System.out.println(q.head());",Kekse
+19_20-2-1-java,4,False,"Queue q = new Queue();
+q.enqueue(""Kekse"");
+q.enqueue(""Kuchen"");
+q.dequeue();
+System.out.println(q.head());",Kuchen
+19_20-2-1-java,5,False,"Queue q = new Queue();
+for(int i = 1; i <= 100; ++i) {
+    q.enqueue("""" + i);
+}
+for(int i = 1; i <= 40; ++i) {
+    q.dequeue();
+}
+System.out.println(q.head());",41
+19_20-2-1-java,6,False,"Queue q = new Queue();
+q.enqueue(""Kakao"");
+System.out.println(q.emptyqueue());",false
+19_20-2-1-java,7,False,"Queue q = new Queue();
+q.enqueue(""Torte"");
+q.dequeue();
+System.out.println(q.emptyqueue());",true
+19_20-2-1-java,8,False,"Queue q = new Queue();
+q.enqueue(""Torten"");
+System.out.println(q.dequeue());
+System.out.println(q.emptyqueue());","Torten
+true"
+19_20-2-1-java,9,False,"Queue q = new Queue();
+Queue r = new Queue();
+q.enqueue(""Früchtetee"");
+System.out.println(r.emptyqueue());
+r.enqueue(q.dequeue());
+System.out.println(r.emptyqueue());","true
+false"
+19_20-2-1-java,10,False,"Queue q = new Queue();
+q.enqueue(""6QLGYHCXUVDK56PCKH81KW54MRBFZNLAMTMNKF58"");
+System.out.println(q.head());
+q.enqueue(q.dequeue()+""OTP564GCIB3IZS3N26E5"");
+System.out.println(q.head());","6QLGYHCXUVDK56PCKH81KW54MRBFZNLAMTMNKF58
+6QLGYHCXUVDK56PCKH81KW54MRBFZNLAMTMNKF58OTP564GCIB3IZS3N26E5"
+19_20-2-1-java,11,False,"Queue q = new Queue();
+for(int i = 1; i <= 50; ++i) {
+    q.enqueue("""" + i);
+}
+for(int i = 1; i <= 25; ++i) {
+    q.dequeue();
+}
+for(int i = 1; i <= 75; ++i) {
+    q.enqueue("""" + i);
+}
+System.out.println(q.head());",26
+19_20-2-2-java,1,True,"IntegerStack s = new IntegerStack();
+String[] input = {""2"", ""1"", ""-""};
+int result = Calculator(input, s);
+System.out.println(result);",1
+19_20-2-2-java,2,True,"IntegerStack s = new IntegerStack();
+String[] input = {""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};
+int result = Calculator(input, s);
+System.out.println(result);",14
+19_20-2-2-java,3,True,"IntegerStack s = new IntegerStack();
+String[] input = {""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""};
+int result = Calculator(input, s);
+System.out.println(result);",0
+19_20-2-2-java,4,True,"IntegerStack s = new IntegerStack();
+String[] input = {""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""};
+int result = Calculator(input, s);
+System.out.println(result);",3720010
+19_20-2-2-java,5,False,"IntegerStack s = new IntegerStack();
+String[] input = {""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""};
+Calculator(input, s);
+System.out.println(s.compareHistory(new String[]{""[1]"", ""[1, 2]"", ""[1]"", ""[]"", ""[2]"", ""[2, 3]"", ""[2, 3, 4]"", ""[2, 3]"", ""[2]"", ""[2, 12]"", ""[2]"", ""[]"", ""[14]"", ""[]""}));",true
+19_20-2-2-java,6,False,"IntegerStack s = new IntegerStack();
+String[] input = {""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""};
+Calculator(input, s);
+System.out.println(s.compareHistory(new String[]{""[4]"", ""[4, 2]"", ""[4]"", ""[]"", ""[2]"", ""[2, 4]"", ""[2, 4, 4]"", ""[2, 4, 4, 4]"", ""[2, 4, 4]"", ""[2, 4]"", ""[2, 4, 1]"", ""[2, 4, 1, 2]"", ""[2, 4, 1]"", ""[2, 4]"", ""[2, 4, 2]"", ""[2, 4]"", ""[2]"", ""[2, 2]"", ""[2]"", ""[]"", ""[0]"", ""[]""}));",true
+19_20-2-2-java,7,False,"IntegerStack s = new IntegerStack();
+String[] input = {""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""};
+Calculator(input, s);
+System.out.println(s.compareHistory(new String[]{""[278241]"", ""[278241, 489]"", ""[278241]"", ""[]"", ""[569]"", ""[569, 6456]"", ""[569]"", ""[]"", ""[3673464]"", ""[3673464, 46546]"", ""[3673464]"", ""[]"", ""[3720010]"", ""[]""}));",true
+19_20-2-2-java,8,False,"IntegerStack s = new IntegerStack();
+String[] input = {""1231"", ""123"", ""3210"", ""35"", ""+"", ""+"", ""+""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[1231]"", ""[1231, 123]"", ""[1231, 123, 3210]"", ""[1231, 123, 3210, 35]"", ""[1231, 123, 3210]"", ""[1231, 123]"", ""[1231, 123, 3245]"", ""[1231, 123]"", ""[1231]"", ""[1231, 3368]"", ""[1231]"", ""[]"", ""[4599]"", ""[]""}));","4599
+true"
+19_20-2-2-java,9,False,"IntegerStack s = new IntegerStack();
+String[] input = {""2874"", ""1757"", ""+"", ""8989"", ""4768"", ""+"", ""+""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[2874]"", ""[2874, 1757]"", ""[2874]"", ""[]"", ""[4631]"", ""[4631, 8989]"", ""[4631, 8989, 4768]"", ""[4631, 8989]"", ""[4631]"", ""[4631, 13757]"", ""[4631]"", ""[]"", ""[18388]"", ""[]""}));","18388
+true"
+19_20-2-2-java,10,False,"IntegerStack s = new IntegerStack();
+String[] input = {""561"", ""232"", ""+"", ""11158"", ""+""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[561]"", ""[561, 232]"", ""[561]"", ""[]"", ""[793]"", ""[793, 11158]"", ""[793]"", ""[]"", ""[11951]"", ""[]""}));","11951
+true"
+19_20-2-2-java,11,False,"IntegerStack s = new IntegerStack();
+String[] input = {""8541"", ""5965"", ""*"", ""646"", ""+"", ""6"", ""+"", ""84585"", ""-""};
+System.out.println(Calculator(input, s));
+System.out.println(s.compareHistory(new String[]{""[8541]"", ""[8541, 5965]"", ""[8541]"", ""[]"", ""[50947065]"", ""[50947065, 646]"", ""[50947065]"", ""[]"", ""[50947711]"", ""[50947711, 6]"", ""[50947711]"", ""[]"", ""[50947717]"", ""[50947717, 84585]"", ""[50947717]"", ""[]"", ""[50863132]"", ""[]""}));","50863132
+true"
+19_20-2-2-java,12,False,"IntegerStack s = new IntegerStack();
+int n1 = getRandom();
+int n2 = getRandom();
+int n3 = getRandom();
+String[] input = {"""" + n1, """" + n1, ""/"", """" + n2, """" + n2, ""/"", """" + n3, """" + n3, ""/"", ""+"", ""+""};
+System.out.println(Calculator(input, s));",3
+19_20-2-2-java,13,False,"IntegerStack s = new IntegerStack();
+int n1 = getRandom();
+int n2 = getRandom();
+int n3 = getRandom();
+String[] input = {"""" + n1, """" + n2, """" + n3, ""-"", ""-""};
+System.out.println(Calculator(input, s) == (n1 - (n2 - n3)));",true
+19_20-2-1-python,1,False,"print(__student_answer__.find(""import""))",-1
+19_20-2-1-python,2,True,"q = Queue()
+print(q.isEmpty())",True
+19_20-2-1-python,3,True,"q = Queue()
+q.enqueue(""Kekse"")
+q.enqueue(""Kuchen"")
+print(q.head())",Kekse
+19_20-2-1-python,4,False,"q = Queue()
+for i in range(1,101):
+    q.enqueue(i)
+for i in range(40):
+    q.dequeue()
+print(q.head())",41
+19_20-2-1-python,5,False,"q = Queue()
+q.enqueue(""Kakao"")
+print(q.isEmpty())",False
+19_20-2-1-python,6,False,"q = Queue()
+q.enqueue(""Kekse"")
+q.enqueue(""Kuchen"")
+q.dequeue()
+print(q.head())",Kuchen
+19_20-2-1-python,7,False,"q = Queue()
+q.enqueue(""Torten"")
+print(q.dequeue())
+print(q.isEmpty())","Torten
+True"
+19_20-2-1-python,8,False,"q = Queue()
+r = Queue()
+q.enqueue(""Kamillentee"")
+print(r.isEmpty())
+r.enqueue(q.dequeue())
+print(r.isEmpty())","True
+False"
+19_20-2-1-python,9,False,"q = Queue()
+q.enqueue(""6QLGYHCXUVDK56PCKH81KW54MRBFZNLAMTMNKF58"")
+print(q.head())
+q.enqueue(""{}OTP564GCIB3IZS3N26E5"".format(q.dequeue()))
+print(q.head())","6QLGYHCXUVDK56PCKH81KW54MRBFZNLAMTMNKF58
+6QLGYHCXUVDK56PCKH81KW54MRBFZNLAMTMNKF58OTP564GCIB3IZS3N26E5"
+19_20-2-1-python,10,False,"q = Queue()
+for i in range(1,51):
+    q.enqueue(i)
+for i in range(25):
+    q.dequeue()
+for i in range(1,76):
+    q.enqueue(i)
+print(q.head())",26
+19_20-2-2-python,1,True,"input = [""2"", ""1"", ""-""]
+s = CustomStack()
+result = Calculator(input, s);
+print(int(result));",1
+19_20-2-2-python,2,True,"input = [""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))",14
+19_20-2-2-python,3,True,"input = [""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))",0
+19_20-2-2-python,4,True,"input = [""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))",3720010
+19_20-2-2-python,5,False,"input = [""1"", ""2"", ""*"", ""3"", ""4"", ""*"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(s._compareHistory([""[1]"", ""[1, 2]"", ""[1]"", ""[]"", ""[2]"", ""[2, 3]"", ""[2, 3, 4]"", ""[2, 3]"", ""[2]"", ""[2, 12]"", ""[2]"", ""[]"", ""[14]"", ""[]""]))",True
+19_20-2-2-python,6,False,"input = [""4"", ""2"", ""/"", ""4"", ""4"", ""4"", ""/"", ""2"", ""*"", ""/"", ""-""]
+s = CustomStack()
+result = Calculator(input, s)
+print(s._compareHistory([""[4]"", ""[4, 2]"", ""[4]"", ""[]"", ""[2]"", ""[2, 4]"", ""[2, 4, 4]"", ""[2, 4, 4, 4]"", ""[2, 4, 4]"", ""[2, 4]"", ""[2, 4, 1]"", ""[2, 4, 1, 2]"", ""[2, 4, 1]"", ""[2, 4]"", ""[2, 4, 2]"", ""[2, 4]"", ""[2]"", ""[2, 2]"", ""[2]"", ""[]"", ""[0]"", ""[]""]))",True
+19_20-2-2-python,7,False,"input = [""278241"", ""489"", ""/"", ""6456"", ""*"", ""46546"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(s._compareHistory([""[278241]"", ""[278241, 489]"", ""[278241]"", ""[]"", ""[569]"", ""[569, 6456]"", ""[569]"", ""[]"", ""[3673464]"", ""[3673464, 46546]"", ""[3673464]"", ""[]"", ""[3720010]"", ""[]""]))",True
+19_20-2-2-python,8,False,"input = [""1231"", ""123"", ""3210"", ""35"", ""+"", ""+"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[1231]"", ""[1231, 123]"", ""[1231, 123, 3210]"", ""[1231, 123, 3210, 35]"", ""[1231, 123, 3210]"", ""[1231, 123]"", ""[1231, 123, 3245]"", ""[1231, 123]"", ""[1231]"", ""[1231, 3368]"", ""[1231]"", ""[]"", ""[4599]"", ""[]""]))","4599
+True"
+19_20-2-2-python,9,False,"input = [""2874"", ""1757"", ""+"", ""8989"", ""4768"", ""+"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[2874]"", ""[2874, 1757]"", ""[2874]"", ""[]"", ""[4631]"", ""[4631, 8989]"", ""[4631, 8989, 4768]"", ""[4631, 8989]"", ""[4631]"", ""[4631, 13757]"", ""[4631]"", ""[]"", ""[18388]"", ""[]""]))","18388
+True"
+19_20-2-2-python,10,False,"input = [""561"", ""232"", ""+"", ""11158"", ""+""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[561]"", ""[561, 232]"", ""[561]"", ""[]"", ""[793]"", ""[793, 11158]"", ""[793]"", ""[]"", ""[11951]"", ""[]""]))","11951
+True"
+19_20-2-2-python,11,False,"input = [""8541"", ""5965"", ""*"", ""646"", ""+"", ""6"", ""+"", ""84585"", ""-""]
+s = CustomStack()
+result = Calculator(input, s)
+print(int(result))
+print(s._compareHistory([""[8541]"", ""[8541, 5965]"", ""[8541]"", ""[]"", ""[50947065]"", ""[50947065, 646]"", ""[50947065]"", ""[]"", ""[50947711]"", ""[50947711, 6]"", ""[50947711]"", ""[]"", ""[50947717]"", ""[50947717, 84585]"", ""[50947717]"", ""[]"", ""[50863132]"", ""[]""]))","50863132
+True"
+19_20-2-2-python,12,False,"n1 = getRandom()
+n2 = getRandom()
+n3 = getRandom()
+s = CustomStack()
+input = [str(n1), str(n1), ""/"", str(n2), str(n2), ""/"", str(n3), str(n3), ""/"", ""+"", ""+""]
+print(int(Calculator(input, s)))",3
+19_20-2-2-python,13,False,"n1 = getRandom()
+n2 = getRandom()
+n3 = getRandom()
+s = CustomStack()
+input = [str(n1), str(n2), str(n3), ""-"", ""-""]
+print(int(Calculator(input, s)) == int(n1 - (n2 - n3)))",True
+19_20-3-1-java,1,True,"ListToSort lts = new ListToSort(Arrays.asList(2, 3, 1, 5, 99, 33));
+lts = Sort(lts);
+System.out.println(lts.isSorted());
+System.out.println(lts.isSame(Arrays.asList(1, 2, 3, 5, 33, 99)));","true
+true"
+19_20-3-1-java,2,False,"ListToSort lts = new ListToSort((Arrays.asList()));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,3,False,"ArrayList<Integer> dummy = new ArrayList<>(256);
+for (int i = 0; i < 256; i++) {
+    dummy.add(randrange(0, Integer.MAX_VALUE));
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,4,False,"ArrayList<Integer> dummy = new ArrayList<>(256);
+for (int i = 0; i < 256; i++) {
+    dummy.add(randrange(Integer.MIN_VALUE, Integer.MAX_VALUE));
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,5,False,"ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(i);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,6,False,"ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(127-i);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,7,False,"ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(9999);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,8,False,"int rand = -randrange(1, 128);
+ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(rand);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,9,False,"ListToSort lts = new ListToSort((Arrays.asList(42)));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,10,False,"ListToSort lts = new ListToSort((Arrays.asList(randrange(0, 9999999))));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-java,11,True,"ListToSort lts = new ListToSort(Arrays.asList(7, 7, 7, 7, 7, 7, 7));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+19_20-3-1-python,1,True,"lts = ListToSort([2, 3, 1, 5, 99, 33])
+lts = listSorter(lts)
+print(lts.isSorted())
+print(lts.isSame([1, 2, 3, 5, 33, 99]))","True
+True"
+19_20-3-1-python,2,False,"lts = ListToSort([])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,3,False,"lst = []
+for i in range(256):
+    lst.append(randrange(0, 2**31, 1))
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,4,False,"lst = []
+for i in range(256):
+    lst.append(randrange(-2**31, 2**31, 1))
+lst.append(-1)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,5,False,"lst = []
+for i in range(128):
+    lst.append(i)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,6,False,"lst = []
+for i in range(128, 0):
+    lst.append(i)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,7,False,"lst = []
+for i in range(128):
+    lst.append(1)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,8,False,"lst = []
+inval = randrange(-128, -1, 1)
+for i in range(128):
+    lst.append(inval)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,9,False,"lts = ListToSort([42])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,10,True,"lts = ListToSort([randrange(0, 9999999, 1)])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-3-1-python,11,True,"lts = ListToSort([7, 7, 7, 7, 7, 7, 7])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+19_20-4-1-java,1,True,"// build tree
+Node root = new Node();
+root.key = 2;
+
+// build target
+Node target = new Node();
+target.key = 1;
+
+// Call insert
+root = insert(root, target);
+
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-1-java,2,True,"// build tree
+Node root = new Node();
+root.key = 2;
+
+// build target
+Node target = new Node();
+target.key = 3;
+
+// Call insert
+root = insert(root, target);
+
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.right = new Node();
+NewRoot.right.key = 3;
+NewRoot.right.parent = NewRoot;
+
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-1-java,3,False,"// build target
+Node target = new Node();
+target.key = 15418;
+// Call insert
+Node root = insert(null, target);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 15418;
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-1-java,4,False,"// build tree
+Node n1 = new Node();
+n1.key = 72;
+Node n2 = new Node();
+n2.key = 38;
+n1.parent = n2;
+n2.right = n1;
+n1 = new Node();
+n1.key = 42;
+n2.parent = n1;
+n1.left = n2;
+n2 = new Node();
+n2.key = 97;
+n2.parent = n1;
+n1.right = n2;
+Node root = new Node();
+root.key = 17;
+root.right = n1;
+n1.parent = root;
+n1 = new Node();
+n1.key = 1;
+n1.parent = root;
+root.left = n1;
+// build target
+Node target = new Node();
+target.key = 27;
+// Call insert
+root = insert(root, target);
+// Compare
+n1 = new Node();
+n1.key = 72;
+n2 = new Node();
+n2.key = 38;
+n1.parent = n2;
+n2.right = n1;
+n1 = new Node(); // target!
+n1.key = 27;
+n1.parent = n2;
+n2.left = n1;
+n1 = new Node();
+n1.key = 42;
+n2.parent = n1;
+n1.left = n2;
+n2 = new Node();
+n2.key = 97;
+n2.parent = n1;
+n1.right = n2;
+Node NewRoot = new Node();
+NewRoot.key = 17;
+NewRoot.right = n1;
+n1.parent = NewRoot;
+n1 = new Node();
+n1.key = 1;
+n1.parent = NewRoot;
+NewRoot.left = n1;
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-1-java,5,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-1-java,6,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-1-java,7,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-1-java,8,False,"Node[] test = getRandom();
+Node root = insert(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-2-java,1,True,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 3;
+root.right.parent = root;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-2-java,2,True,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 3;
+root.right.parent = root;
+root.right.right = new Node();
+root.right.right.key = 99;
+root.right.right.parent = root.right;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+NewRoot.right = new Node();
+NewRoot.right.key = 99;
+NewRoot.right.parent = NewRoot;
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-2-java,3,True,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 50;
+root.right.parent = root;
+root.right.right = new Node();
+root.right.right.key = 99;
+root.right.right.parent = root.right;
+root.right.left = new Node();
+root.right.left.key = 25;
+root.right.left.parent = root.right;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node newRoot = new Node();
+newRoot.key = 2;
+newRoot.left = new Node();
+newRoot.left.key = 1;
+newRoot.left.parent = newRoot;
+newRoot.right = new Node();
+newRoot.right.key = 99;
+newRoot.right.parent = newRoot;
+newRoot.right.left = new Node();
+newRoot.right.left.key = 25;
+newRoot.right.left.parent = newRoot.right;
+System.out.println(compareTrees(root, newRoot));",true
+19_20-4-2-java,4,False,"// build tree
+Node n1 = new Node();
+n1.key = 37;
+n1.left = new Node();
+n1.left.key = 32;
+n1.left.parent = n1;
+n1.right = new Node();
+n1.right.key = 78;
+n1.right.parent = n1;
+Node target = new Node();
+target.key = 21;
+target.right = n1;
+n1.parent = target;
+target.left = new Node();
+target.left.key = 13;
+target.left.parent = target;
+Node root = new Node();
+root.key = 85;
+root.left = target;
+target.parent = root;
+root.right = new Node();
+root.right.key = 942;
+root.right.parent = root;
+root.right.left = new Node();
+root.right.left.key = 136;
+root.right.left.parent = root.right;
+// Call delete
+root = delete(root, target);
+// Compare
+Node n2 = new Node();
+n2.key = 37;
+n2.right = new Node();
+n2.right.key = 78;
+n2.right.parent = n2;
+Node replaced = new Node();
+replaced.key = 32;
+replaced.right = n2;
+n2.parent = replaced;
+replaced.left = new Node();
+replaced.left.key = 13;
+replaced.left.parent = replaced;
+Node newRoot = new Node();
+newRoot.key = 85;
+newRoot.left = replaced;
+replaced.parent = newRoot;
+newRoot.right = new Node();
+newRoot.right.key = 942;
+newRoot.right.parent = newRoot;
+newRoot.right.left = new Node();
+newRoot.right.left.key = 136;
+newRoot.right.left.parent = newRoot.right;
+System.out.println(compareTrees(root, newRoot));",true
+19_20-4-2-java,5,False,"Node root = new Node();
+root.key = 55;
+root = delete(root, root);
+System.out.println(compareTrees(root, null));",true
+19_20-4-2-java,6,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-2-java,7,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-2-java,8,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-2-java,9,False,"Node[] test = getRandom();
+Node root = delete(test[0], test[1]);
+System.out.println(compareTrees(root, test[2]));",true
+19_20-4-2-java,10,False,"// build tree
+Node root = new Node();
+root.key = 2;
+root.left = new Node();
+root.left.key = 1;
+root.left.parent = root;
+root.right = new Node();
+root.right.key = 4;
+root.right.parent = root;
+root.right.left = new Node();
+root.right.left.key = 3;
+root.right.left.parent = root.right;
+// Call delete
+root = delete(root, root.right);
+// Compare
+Node NewRoot = new Node();
+NewRoot.key = 2;
+NewRoot.left = new Node();
+NewRoot.left.key = 1;
+NewRoot.left.parent = NewRoot;
+NewRoot.right = new Node();
+NewRoot.right.key = 3;
+NewRoot.right.parent = NewRoot;
+System.out.println(compareTrees(root, NewRoot));",true
+19_20-4-1-python,1,True,"# build tree
+root = Node()
+root.key = 2
+
+# build target
+target = Node()
+target.key = 1
+
+# Call insert
+root = insert(root, target)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+19_20-4-1-python,2,True,"# build tree
+root = Node()
+root.key = 2
+
+# build target
+target = Node()
+target.key = 3
+
+# Call insert
+root = insert(root, target)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.right = Node()
+NewRoot.right.key = 3
+NewRoot.right.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+19_20-4-1-python,3,False,"# build target
+target = Node()
+target.key = 15418
+
+# Call insert
+root = insert(None, target)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 15418
+print(compare_trees(root, NewRoot))",True
+19_20-4-1-python,4,False,"# build tree
+n1 = Node()
+n1.key = 72
+
+n2 = Node()
+n2.key = 38
+n1.parent = n2
+n2.right = n1
+
+n1 = Node()
+n1.key = 42
+n2.parent = n1
+n1.left = n2
+
+n2 = Node()
+n2.key = 97
+n2.parent = n1
+n1.right = n2
+
+root = Node()
+root.key = 17
+root.right = n1
+n1.parent = root
+
+n1 = Node()
+n1.key = 1
+n1.parent = root
+root.left = n1
+
+# build target
+target = Node()
+target.key = 27
+
+# Call insert
+root = insert(root, target)
+
+# Compare
+n1 = Node()
+n1.key = 72
+
+n2 = Node()
+n2.key = 38
+n1.parent = n2
+n2.right = n1
+
+n1 = Node()  # target!
+n1.key = 27
+n1.parent = n2
+n2.left = n1
+
+n1 = Node()
+n1.key = 42
+n2.parent = n1
+n1.left = n2
+
+n2 = Node()
+n2.key = 97
+n2.parent = n1
+n1.right = n2
+
+NewRoot = Node()
+NewRoot.key = 17
+NewRoot.right = n1
+n1.parent = NewRoot
+
+n1 = Node()
+n1.key = 1
+n1.parent = NewRoot
+NewRoot.left = n1
+
+print(compare_trees(root, NewRoot))",True
+19_20-4-1-python,5,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-1-python,6,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-1-python,7,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-1-python,8,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-2-python,1,True,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 3
+root.right.parent = root
+# Call delete
+root = delete(root, root.right)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+19_20-4-2-python,2,True,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 3
+root.right.parent = root
+root.right.right = Node()
+root.right.right.key = 99
+root.right.right.parent = root.right
+
+# Call delete
+root = delete(root, root.right)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+NewRoot.right = Node()
+NewRoot.right.key = 99
+NewRoot.right.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+19_20-4-2-python,3,True,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 50
+root.right.parent = root
+root.right.right = Node()
+root.right.right.key = 99
+root.right.right.parent = root.right
+root.right.left = Node()
+root.right.left.key = 25
+root.right.left.parent = root.right
+
+# Call delete
+root = delete(root, root.right)
+
+# Compare
+newRoot = Node()
+newRoot.key = 2
+newRoot.left = Node()
+newRoot.left.key = 1
+newRoot.left.parent = newRoot
+newRoot.right = Node()
+newRoot.right.key = 99
+newRoot.right.parent = newRoot
+newRoot.right.left = Node()
+newRoot.right.left.key = 25
+newRoot.right.left.parent = newRoot.right
+
+print(compare_trees(root, newRoot))",True
+19_20-4-2-python,4,False,"# build tree
+n1 = Node()
+n1.key = 37
+n1.left = Node()
+n1.left.key = 32
+n1.left.parent = n1
+n1.right = Node()
+n1.right.key = 78
+n1.right.parent = n1
+
+target = Node()
+target.key = 21
+target.right = n1
+n1.parent = target
+target.left = Node()
+target.left.key = 13
+target.left.parent = target
+
+root = Node()
+root.key = 85
+root.left = target
+target.parent = root
+root.right = Node()
+root.right.key = 942
+root.right.parent = root
+root.right.left = Node()
+root.right.left.key = 136
+root.right.left.parent = root.right
+
+# Call delete
+root = delete(root, target)
+
+# Compare
+n2 = Node()
+n2.key = 37
+n2.right = Node()
+n2.right.key = 78
+n2.right.parent = n2
+
+replaced = Node()
+replaced.key = 32
+replaced.right = n2
+n2.parent = replaced
+replaced.left = Node()
+replaced.left.key = 13
+replaced.left.parent = replaced
+
+newRoot = Node()
+newRoot.key = 85
+newRoot.left = replaced
+replaced.parent = newRoot
+newRoot.right = Node()
+newRoot.right.key = 942
+newRoot.right.parent = newRoot
+newRoot.right.left = Node()
+newRoot.right.left.key = 136
+newRoot.right.left.parent = newRoot.right
+
+print(compare_trees(root, newRoot))",True
+19_20-4-2-python,5,False,"root = Node()
+root.key = 55
+
+root = delete(root, root)
+
+print(compare_trees(root, None))",True
+19_20-4-2-python,6,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-2-python,7,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-2-python,8,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-2-python,9,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+19_20-4-2-python,10,False,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 4
+root.right.parent = root
+root.right.left = Node()
+root.right.left.key = 3
+root.right.left.parent = root.right
+
+# Call delete
+root = delete(root, root.right);
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+NewRoot.right = Node()
+NewRoot.right.key = 3
+NewRoot.right.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+19_20-5-1-java,1,True,"int[][] graph = {
+    {1,2},
+    {0,3,4},
+    {0,5},
+    {1},
+    {1,5},
+    {2,4},
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 1, 2, 3, 4, 5]"
+19_20-5-1-java,2,True,"int[][] graph = {
+    {1,2},
+    {},
+    {}
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 1, 2]"
+19_20-5-1-java,3,True,"int[][] graph = {
+    {2,1},
+    {},
+    {}
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 2, 1]"
+19_20-5-1-java,4,False,"int[][] graph = {{1, 2},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4}
+};
+List<Integer> result = bfs(graph, 3);
+System.out.println(result);","[3, 1, 0, 4, 2, 5]"
+19_20-5-1-java,5,False,"int[][] graph = {{1},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4},
+};
+List<Integer> result = bfs(graph, 0);
+System.out.println(result);","[0, 1, 3, 4, 5, 2]"
+19_20-5-1-java,6,False,"int[][] graph = {{0},
+         {2},
+         {1},
+         {4},
+         {},
+         {}
+};
+System.out.println(bfs(graph, 0));
+System.out.println(bfs(graph, 1));
+System.out.println(bfs(graph, 3));
+System.out.println(bfs(graph, 4));","[0]
+[1, 2]
+[3, 4]
+[4]"
+19_20-5-1-java,7,False,"int[][] graph = {{1, 2},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4}
+};
+System.out.println(bfs(graph, 5));","[5, 2, 4, 0, 1, 3]"
+19_20-5-1-java,8,False,"Random rand = new Random();
+int[][] graph = new int[50][];
+for(int i = 0; i < 50; ++i) {
+    int n = rand.nextInt(20);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(50);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(50);
+System.out.println(isCorrect(graph, start, bfs(graph, start)));",true
+19_20-5-1-java,9,False,"Random rand = new Random();
+int[][] graph = new int[100][];
+for(int i = 0; i < 100; ++i) {
+    int n = rand.nextInt(40);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(100);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(100);
+System.out.println(isCorrect(graph, start, bfs(graph, start)));",true
+19_20-5-1-java,10,False,"Random rand = new Random();
+int[][] graph = new int[200][];
+for(int i = 0; i < 200; ++i) {
+    int n = rand.nextInt(60);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(200);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(200);
+System.out.println(isCorrect(graph, start, bfs(graph, start)));",true
+19_20-5-1-java,11,False,"int[][] graph = {{}};
+System.out.println(bfs(graph, 0));",[0]
+19_20-5-2-java,1,True,"int[][] graph = {
+    {1,2},
+    {0,3,4},
+    {0,5},
+    {1},
+    {1,5},
+    {2,4},
+};
+List<Integer> result = dfs(graph, 0);
+System.out.println(result);","[0, 1, 3, 4, 5, 2]"
+19_20-5-2-java,2,True,"int[][] graph = {
+    {1,2},
+    {},
+    {}
+};
+List<Integer> result = dfs(graph, 0);
+System.out.println(result);","[0, 1, 2]"
+19_20-5-2-java,3,True,"int[][] graph = {
+    {2,1},
+    {},
+    {}
+};
+List<Integer> result = dfs(graph, 0);
+System.out.println(result);","[0, 2, 1]"
+19_20-5-2-java,4,False,"int[][] graph = {{1, 2},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4}
+};
+List<Integer> result = dfs(graph, 3);
+System.out.println(result);","[3, 1, 0, 2, 5, 4]"
+19_20-5-2-java,5,False,"int[][] graph = {{1},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4},
+};
+List<Integer> result = dfs(graph, 0);
+System.out.println(result);","[0, 1, 3, 4, 5, 2]"
+19_20-5-2-java,6,False,"int[][] graph = {{0},
+         {2},
+         {1},
+         {4},
+         {},
+         {}
+};
+System.out.println(dfs(graph, 0));
+System.out.println(dfs(graph, 1));
+System.out.println(dfs(graph, 3));
+System.out.println(dfs(graph, 4));","[0]
+[1, 2]
+[3, 4]
+[4]"
+19_20-5-2-java,7,False,"int[][] graph = {{1, 2},
+         {0, 3, 4},
+         {0, 5},
+         {1},
+         {1, 5},
+         {2, 4}
+};
+System.out.println(dfs(graph, 5));","[5, 2, 0, 1, 3, 4]"
+19_20-5-2-java,8,False,"Random rand = new Random();
+int[][] graph = new int[50][];
+for(int i = 0; i < 50; ++i) {
+    int n = rand.nextInt(20);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(50);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(50);
+System.out.println(isCorrect(graph, start, dfs(graph, start)));",true
+19_20-5-2-java,9,False,"Random rand = new Random();
+int[][] graph = new int[100][];
+for(int i = 0; i < 100; ++i) {
+    int n = rand.nextInt(40);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(100);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(100);
+System.out.println(isCorrect(graph, start, dfs(graph, start)));",true
+19_20-5-2-java,10,False,"Random rand = new Random();
+int[][] graph = new int[200][];
+for(int i = 0; i < 200; ++i) {
+    int n = rand.nextInt(60);
+    int[] nodeList = new int[n];
+    for(int j = 0; j < n; ++j) {
+        nodeList[j] = rand.nextInt(200);;
+    }
+    graph[i] = nodeList;
+}
+int start = rand.nextInt(200);
+System.out.println(isCorrect(graph, start, dfs(graph, start)));",true
+19_20-5-2-java,11,False,"int[][] graph = {{}};
+System.out.println(dfs(graph, 0));",[0]
+19_20-5-1-python,1,True,"graph = [
+    [1,2],
+    [0,3,4],
+    [0,5],
+    [1],
+    [1,5],
+    [2,4],
+]
+result = bfs(graph, 0)
+print(result)","[0, 1, 2, 3, 4, 5]"
+19_20-5-1-python,2,True,"graph = [
+    [1,2],
+    [],
+    [],
+]
+result = bfs(graph, 0)
+print(result)","[0, 1, 2]"
+19_20-5-1-python,3,True,"graph = [
+    [2,1],
+    [],
+    [],
+]
+result = bfs(graph, 0)
+print(result)","[0, 2, 1]"
+19_20-5-1-python,4,False,"graph = [[1, 2],
+         [0, 3, 4],
+         [0, 5],
+         [1],
+         [1, 5],
+         [2, 4],
+]
+result = bfs(graph, 3)
+print(result)","[3, 1, 0, 4, 2, 5]"
+19_20-5-1-python,5,False,"graph = [[1],
+         [0, 3, 4],
+         [0, 5],
+         [1],
+         [1, 5],
+         [2, 4],
+]
+result = bfs(graph, 0)
+print(result)","[0, 1, 3, 4, 5, 2]"
+19_20-5-1-python,6,False,"graph = [[0],
+         [2],
+         [1],
+         [4],
+         [],
+         [],
+]
+print(bfs(graph, 0))
+print(bfs(graph, 1))
+print(bfs(graph, 3))
+print(bfs(graph, 4))","[0]
+[1, 2]
+[3, 4]
+[4]"
+19_20-5-1-python,7,False,"graph = [[1, 2],
+         [0, 3, 4],
+         [0, 5],
+         [1],
+         [1, 5],
+         [2, 4]
+]
+print(bfs(graph, 5))","[5, 2, 4, 0, 1, 3]"
+19_20-5-1-python,8,False,"graph = []
+for i in range(50):
+    nodeList = []
+    for i in range(random.randrange(0, 20, 1)):
+        nodeList.append(random.randrange(0, 50, 1))
+    graph.append(nodeList)
+start = random.randrange(0, 50, 1)
+print(_isCorrect(graph, start, bfs(copy.deepcopy(graph), start)))",True
+19_20-5-1-python,9,False,"graph = []
+for i in range(100):
+    nodeList = []
+    for i in range(random.randrange(0, 40, 1)):
+        nodeList.append(random.randrange(0, 100, 1))
+    graph.append(nodeList)
+start = random.randrange(0, 100, 1)
+print(_isCorrect(graph, start, bfs(copy.deepcopy(graph), start)))",True
+19_20-5-1-python,10,False,"graph = []
+for i in range(200):
+    nodeList = []
+    for i in range(random.randrange(0, 60, 1)):
+        nodeList.append(random.randrange(0, 200, 1))
+    graph.append(nodeList)
+start = random.randrange(0, 200, 1)
+print(_isCorrect(graph, start, bfs(copy.deepcopy(graph), start)))",True
+19_20-5-1-python,11,False,"print(bfs([[]], 0))",[0]
+19_20-5-2-python,1,True,"graph = [
+    [1,2],
+    [0,3,4],
+    [0,5],
+    [1],
+    [1,5],
+    [2,4],
+]
+result = dfs(graph, 0)
+print(result)","[0, 1, 3, 4, 5, 2]"
+19_20-5-2-python,2,True,"graph = [
+    [1,2],
+    [],
+    [],
+]
+result = dfs(graph, 0)
+print(result)","[0, 1, 2]"
+19_20-5-2-python,3,True,"graph = [
+    [2,1],
+    [],
+    [],
+]
+result = dfs(graph, 0)
+print(result)","[0, 2, 1]"
+19_20-5-2-python,4,False,"graph = [[1, 2],
+         [0, 3, 4],
+         [0, 5],
+         [1],
+         [1, 5],
+         [2, 4],
+]
+result = dfs(graph, 3)
+print(result)","[3, 1, 0, 2, 5, 4]"
+19_20-5-2-python,5,False,"graph = [[1],
+         [0, 3, 4],
+         [0, 5],
+         [1],
+         [1, 5],
+         [2, 4],
+]
+result = dfs(graph, 0)
+print(result)","[0, 1, 3, 4, 5, 2]"
+19_20-5-2-python,6,False,"graph = [[0],
+         [2],
+         [1],
+         [4],
+         [],
+         [],
+]
+print(dfs(graph, 0))
+print(dfs(graph, 1))
+print(dfs(graph, 3))
+print(dfs(graph, 4))","[0]
+[1, 2]
+[3, 4]
+[4]"
+19_20-5-2-python,7,False,"graph = [[1, 2],
+         [0, 3, 4],
+         [0, 5],
+         [1],
+         [1, 5],
+         [2, 4]
+]
+print(dfs(graph, 5))","[5, 2, 0, 1, 3, 4]"
+19_20-5-2-python,8,False,"graph = []
+for i in range(50):
+    nodeList = []
+    for i in range(random.randrange(0, 20, 1)):
+        nodeList.append(random.randrange(0, 50, 1))
+    graph.append(nodeList)
+start = random.randrange(0, 50, 1)
+print(_isCorrect(graph, start, dfs(copy.deepcopy(graph), start)))",True
+19_20-5-2-python,9,False,"graph = []
+for i in range(100):
+    nodeList = []
+    for i in range(random.randrange(0, 40, 1)):
+        nodeList.append(random.randrange(0, 100, 1))
+    graph.append(nodeList)
+start = random.randrange(0, 100, 1)
+print(_isCorrect(graph, start, dfs(copy.deepcopy(graph), start)))",True
+19_20-5-2-python,10,False,"graph = []
+for i in range(200):
+    nodeList = []
+    for i in range(random.randrange(0, 60, 1)):
+        nodeList.append(random.randrange(0, 200, 1))
+    graph.append(nodeList)
+start = random.randrange(0, 200, 1)
+print(_isCorrect(graph, start, dfs(copy.deepcopy(graph), start)))",True
+19_20-5-2-python,11,False,"print(dfs([[]], 0))",[0]
+19_20-6-1-java,1,False,"System.out.println(studentAnswer.split(""editDistance\\("",-1).length-1);",1
+19_20-6-1-java,2,True,"System.out.println(editDistance("""",""""));",0
+19_20-6-1-java,3,True,"System.out.println(editDistance(""a"",""a""));",0
+19_20-6-1-java,4,True,"System.out.println(editDistance(""a"",""""));",1
+19_20-6-1-java,5,True,"System.out.println(editDistance("""",""a""));",1
+19_20-6-1-java,6,True,"System.out.println(editDistance(""ac"",""abc""));",1
+19_20-6-1-java,7,True,"System.out.println(editDistance(""abc"",""ac""));",1
+19_20-6-1-java,8,True,"System.out.println(editDistance(""a"",""b""));",1
+19_20-6-1-java,9,False,"System.out.println(editDistance(""abc"",""""));",3
+19_20-6-1-java,10,False,"System.out.println(editDistance("""",""abc""));",3
+19_20-6-1-java,11,False,"System.out.println(editDistance("""",""""));",0
+19_20-6-1-java,12,False,"System.out.println(editDistance(""cut"",""cat""));",1
+19_20-6-1-java,13,False,"System.out.println(editDistance(""abc"",""abc""));",0
+19_20-6-1-java,14,False,"System.out.println(editDistance(""geek"",""gesek""));",1
+19_20-6-1-java,15,False,"System.out.println(editDistance(""blablablabla"",""abs""));",10
+19_20-6-1-java,16,False,"System.out.println(editDistance(""abc"",""abs""));",1
+19_20-6-1-java,17,False,"String s2 = ""weqweqweqwesqwesqweqweqweqweqwseqwesqsssweqwse"";
+String t2 = ""qswe"";
+System.out.println(editDistance(s2,t2));",42
+19_20-6-1-java,18,False,"String s = getRandom(5);
+String t = getRandom(5);
+System.out.println(isCorrect(s, t, editDistance(s,t)));",true
+19_20-6-1-java,19,False,"String s = getRandom(5);
+String t = getRandom(10);
+System.out.println(isCorrect(s, t, editDistance(s,t)));",true
+19_20-6-1-java,20,False,"String s = getRandom(50);
+String t = getRandom(100);
+System.out.println(isCorrect(s, t, editDistance(s,t)));",true
+19_20-6-1-java,21,False,"String s = ""913363886309301040365098879106127667334142201778349516617363341246420449892869361432774106767154961"";
+String t = ""913363886309301365098879106127667334142201778349ööö516617363341246420449892869361432774106767ööö961"";
+System.out.println(editDistance(s,t));",9
+19_20-6-2-java,1,False,"System.out.println(studentAnswer.split(""knapSack\\("",-1).length-1);",1
+19_20-6-2-java,2,True,"double[] c = {0.5, 1.3};
+int[] v = {2, 5};
+int m = 3;
+System.out.println(knapSack(c,v,m));",0.5
+19_20-6-2-java,3,False,"double[] c = {};
+int[] v = {};
+int m = 10;
+System.out.println(knapSack(c,v,m));",0.0
+19_20-6-2-java,4,True,"double[] c = {6, 8};
+int[] v = {6, 8};
+int m = 0;
+System.out.println(knapSack(c,v,m));",0.0
+19_20-6-2-java,5,True,"double[] c = {6, 8};
+int[] v = {6, 8};
+int m = 10;
+System.out.println(knapSack(c,v,m));",8.0
+19_20-6-2-java,6,True,"double[] c = {1, 1, 99};
+int[] v = {6, 4, 11};
+int m = 10;
+System.out.println(knapSack(c,v,m));",2.0
+19_20-6-2-java,7,True,"double[] c = {6, 8};
+int[] v = {6, 8};
+int m = 17;
+System.out.println(knapSack(c,v,m));",14.0
+19_20-6-2-java,8,False,"double[] c = {2, 6, 11};
+int[] v = {2, 6, 11};
+int m = 18;
+System.out.println(knapSack(c,v,m));",17.0
+19_20-6-2-java,9,False,"double[] c = {2, 6, 100};
+int[] v = {2, 6, 17};
+int m = 18;
+System.out.println(knapSack(c,v,m));",100.0
+19_20-6-2-java,10,False,"double[] c = {2, 2, 2, 2, 2, 2};
+int[] v = {1, 2, 3, 4, 5, 6};
+int m = 9;
+System.out.println(knapSack(c,v,m));",6.0
+19_20-6-2-java,11,False,"double[] c = {10, 2, 10, 2, 2, 2};
+int[] v = {1, 2, 3, 4, 5, 6};
+int m = 9;
+System.out.println(knapSack(c,v,m));",22.0
+19_20-6-2-java,12,False,"double[] c = {10, 2, 10, 2, 2, 2};
+int[] v = {1, 2, 3, 4, 5, 6};
+int m = 100;
+System.out.println(knapSack(c,v,m));",28.0
+19_20-6-2-java,13,False,"double[] c = new double[100];
+int[] v = new int[100];
+for(int i = 0; i < 100; ++i){
+    c[i] = i;
+    v[i] = i;
+}
+int m = 100;
+System.out.println(knapSack(c,v,m));",100.0
+19_20-6-2-java,14,False,"double[] c = new double[100];
+int[] v = new int[100];
+for(int i = 0; i < 100; ++i){
+    c[i] = 99-i;
+    v[i] = 99-i;
+}
+int m = 100;
+System.out.println(knapSack(c,v,m));",100.0
+19_20-6-2-java,15,False,"double[] c = new double[100];
+int[] v = new int[100];
+for(int i = 0; i < 100; ++i){
+    c[i] = i*2;
+    v[i] = i;
+}
+int m = 100;
+System.out.println(knapSack(c,v,m));",200.0
+19_20-6-2-java,16,False,"Random rand = new Random();
+double[] c = new double[100];
+int[] v = new int[100];
+double sum = 0;
+for(int i = 0; i < 100; ++i){
+    int n = rand.nextInt(100);
+    c[i] = n;
+    v[i] = i;
+    sum += n;
+}
+int m = 4951;
+System.out.println(knapSack(c,v,m) == sum);",true
+19_20-6-2-java,17,False,"Random rand = new Random();
+double[] c = new double[100];
+int[] v = new int[100];
+double sum = 0;
+for(int i = 0; i < 100; ++i){
+    int n = rand.nextInt(100);
+    c[i] = n;
+    v[i] = i;
+    sum += n;
+}
+int m = 4951;
+System.out.println(knapSack(c,v,m) == sum);",true
+19_20-6-2-java,18,False,"Random rand = new Random();
+double[] c = new double[100];
+int[] v = new int[100];
+for(int i = 0; i < 100; ++i){
+    int n = rand.nextInt(100);
+    c[i] = n;
+    v[i] = i;
+}
+int m = 4951/4;
+System.out.println(isCorrect(c, v, m, knapSack(c,v,m)));",true
+19_20-6-2-java,19,False,"Random rand = new Random();
+double[] c = new double[100];
+int[] v = new int[100];
+for(int i = 0; i < 100; ++i){
+    int n = rand.nextInt(100);
+    c[i] = n;
+    v[i] = i;
+}
+int m = 4951/4;
+System.out.println(isCorrect(c, v, m, knapSack(c,v,m)));",true
+19_20-6-2-java,20,False,"Random rand = new Random();
+double[] c = new double[100];
+int[] v = new int[100];
+for(int i = 0; i < 100; ++i){
+    int n = rand.nextInt(100);
+    c[i] = n;
+    v[i] = i;
+}
+int m = 4951/4;
+System.out.println(isCorrect(c, v, m, knapSack(c,v,m)));",true
+19_20-6-1-python,1,False,"print(__student_answer__.count(""editDistance("", 0, len(__student_answer__)))",1
+19_20-6-1-python,2,True,"print(editDistance("""",""""))",0
+19_20-6-1-python,3,True,"print(editDistance(""a"",""a""))",0
+19_20-6-1-python,4,True,"print(editDistance(""a"",""""))",1
+19_20-6-1-python,5,True,"print(editDistance("""",""a""))",1
+19_20-6-1-python,6,True,"print(editDistance(""ac"",""abc""))",1
+19_20-6-1-python,7,True,"print(editDistance(""abc"",""ac""))",1
+19_20-6-1-python,8,True,"print(editDistance(""a"",""b""))",1
+19_20-6-1-python,9,False,"print(editDistance(""abc"",""""))",3
+19_20-6-1-python,10,False,"print(editDistance("""",""abc""))",3
+19_20-6-1-python,11,False,"print(editDistance("""",""""))",0
+19_20-6-1-python,12,False,"print(editDistance(""cut"",""cat""))",1
+19_20-6-1-python,13,False,"print(editDistance(""abc"",""abc""))",0
+19_20-6-1-python,14,False,"print(editDistance(""geek"",""gesek""))",1
+19_20-6-1-python,15,False,"print(editDistance(""blablablabla"",""abs""))",10
+19_20-6-1-python,16,False,"print(editDistance(""abc"",""abs""))",1
+19_20-6-1-python,17,False,"s2 = """"""weqweqweqwesqwesqweqweqweqweqwseqwesqsssweqwse""""""
+t2 = """"""qswe""""""    
+print(editDistance(s2,t2))",42
+19_20-6-1-python,18,False,"s = getRandom(5)
+t = getRandom(5)
+print(_isCorrect(s, t, editDistance(s,t)))",True
+19_20-6-1-python,19,False,"s = getRandom(5)
+t = getRandom(10)
+print(_isCorrect(s, t, editDistance(s,t)))",True
+19_20-6-1-python,20,False,"s = getRandom(50)
+t = getRandom(100)
+print(_isCorrect(s, t, editDistance(s,t)))",True
+19_20-6-1-python,21,False,"s = ""913363886309301040365098879106127667334142201778349516617363341246420449892869361432774106767154961""
+t = ""913363886309301365098879106127667334142201778349ööö516617363341246420449892869361432774106767ööö961""
+print(editDistance(s,t))",9
+19_20-6-2-python,1,False,"print(__student_answer__.count(""knapSack("", 0, len(__student_answer__)))",1
+19_20-6-2-python,2,True,"print(knapSack([0.5, 1.3],[2, 5],3))",0.5
+19_20-6-2-python,3,False,"print(knapSack([],[],10))",0
+19_20-6-2-python,4,True,"print(knapSack([6, 8],[6, 8],0))",0
+19_20-6-2-python,5,True,"print(knapSack([6, 8],[6, 8],10))",8
+19_20-6-2-python,6,True,"print(knapSack([1, 1, 99],[6, 4, 11],10))",2
+19_20-6-2-python,7,True,"print(knapSack([6, 8],[6, 8],17))",14
+19_20-6-2-python,8,False,"print(knapSack([2, 6, 11],[2, 6, 11],18))",17
+19_20-6-2-python,9,False,"print(knapSack([2, 6, 100],[2, 6, 17],18))",100
+19_20-6-2-python,10,False,"print(knapSack([2, 2, 2, 2, 2, 2],[1, 2, 3, 4, 5, 6],9))",6
+19_20-6-2-python,11,False,"print(knapSack([10, 2, 10, 2, 2, 2],[1, 2, 3, 4, 5, 6],9))",22
+19_20-6-2-python,12,False,"print(knapSack([10, 2, 10, 2, 2, 2],[1, 2, 3, 4, 5, 6],100))",28
+19_20-6-2-python,13,False,"print(knapSack(list(range(100)),list(range(100)),100))",100
+19_20-6-2-python,14,False,"print(knapSack(list(reversed(range(100))),list(reversed(range(100))),100))",100
+19_20-6-2-python,15,False,"print(knapSack(list(range(0,200,2)),list(range(100)),100))",200
+19_20-6-2-python,16,False,"ks = sum(list(range(100)))+1
+c = list(range(100))
+for x in c:
+    x = random.uniform(0, 100)
+v = list(range(100))
+ev = sum(c)
+print(knapSack(v,c,ks) == ev)",True
+19_20-6-2-python,17,False,"ks = sum(list(range(100)))+1
+c = list(range(100))
+for x in c:
+    x = random.uniform(0, 100)
+v = list(range(100))
+ev = sum(c)
+print(knapSack(v,c,ks) == ev)",True
+19_20-6-2-python,18,False,"ks = sum(list(range(100)))+1
+ks = ks//4
+c = list(range(100))
+for x in c:
+    x = random.uniform(0, 100)
+v = list(range(100))
+print(_isCorrect(v,c,ks,knapSack(copy.deepcopy(v),copy.deepcopy(c),copy.deepcopy(ks))))",True
+19_20-6-2-python,19,False,"ks = sum(list(range(100)))+1
+ks = ks//4
+c = list(range(100))
+for x in c:
+    x = random.uniform(0, 100)
+v = list(range(100))
+print(_isCorrect(v,c,ks,knapSack(copy.deepcopy(v),copy.deepcopy(c),copy.deepcopy(ks))))",True
+19_20-6-2-python,20,False,"ks = sum(list(range(100)))+1
+ks = ks//4
+c = list(range(100))
+for x in c:
+    x = random.uniform(0, 100)
+v = list(range(100))
+print(_isCorrect(v,c,ks,knapSack(copy.deepcopy(v),copy.deepcopy(c),copy.deepcopy(ks))))",True

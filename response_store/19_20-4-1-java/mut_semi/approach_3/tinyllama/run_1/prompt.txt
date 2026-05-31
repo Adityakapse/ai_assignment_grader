@@ -1,0 +1,97 @@
+QUESTION:
+These tasks will be about search trees. Our search trees are built from
+"nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+In the lecture you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for the search trees.
+For this task, implement a method "insert" that inserts a
+"Node" into the search tree and returns the new search tree.
+The nodes can be reused as desired. The function
+is passed the root of the search tree and the new node.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+
+    insert.parent = y;
+    if (y == null) {
+        return insert;
+    } else if (insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+
+    return root;
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+
+
+RUBRIC:
+Point 1 — Traversal to the insertion point
+  A loop (or recursive call) walks from the root to a null position, moving left when insert.key < x.key and right otherwise, until the correct empty slot is reached.
+  Buckets:
+    - Wrong (0 marks): No traversal is attempted; the node is attached directly to the root or the method returns without navigating the tree.
+    - Semi (12 marks): A loop or recursive call is present but the direction logic is absent or incorrect (e.g., always moves left, or uses a condition unrelated to key comparison), so the correct null insertion point is not reliably reached.
+    - Correct (25 marks): A loop (or recursion) correctly walks from the root to a null child position, moving left when insert.key < x.key and right otherwise, stopping when the null slot is found.
+
+Point 2 — Parent tracking during traversal
+  A separate pointer (e.g., y) is maintained and updated at each step of the traversal, so that after the loop it holds the parent of the null insertion point.
+  Buckets:
+    - Wrong (0 marks): No parent pointer is tracked during traversal; after the loop there is no reference to the node that should become the parent of insert.
+    - Semi (10 marks): A parent variable is declared but is not correctly updated at every step of the traversal (e.g., updated only for one branch, or assigned after the loop rather than inside it), so it does not reliably hold the correct parent after traversal.
+    - Correct (20 marks): A parent pointer is initialised before the loop and updated to the current node at every step, so after the loop it correctly holds the last non-null node visited (the parent of the insertion point).
+
+Point 3 — Attaching insert as left or right child
+  After traversal, insert is attached as the left child of the parent when insert.key < parent.key, and as the right child otherwise.
+  Buckets:
+    - Wrong (0 marks): insert is not attached to the parent node at all, or is attached without comparing insert.key with the parent's key (e.g., always set as left child).
+    - Semi (10 marks): insert is attached to the parent node, but the left/right direction is incorrect (e.g., comparison direction is reversed, or the same condition from traversal is reused without adapting to the parent).
+    - Correct (20 marks): insert is attached as parent.left when insert.key < parent.key, and as parent.right otherwise, correctly placing it in the BST.
+
+Point 4 — Setting insert.parent
+  insert.parent is set to the parent node found during traversal (y), establishing the upward link.
+  Buckets:
+    - Wrong (0 marks): insert.parent is not set, or is assigned a value unrelated to the traversal (e.g., always null, or set to the traversal pointer x which is null after the loop).
+    - Semi (8 marks): insert.parent is set but using the wrong variable (e.g., the live traversal pointer instead of the tracked parent pointer), giving an incorrect or null parent reference.
+    - Correct (15 marks): insert.parent is correctly assigned to the parent pointer (y) tracked during traversal, giving insert the correct upward link in the tree.
+
+Point 5 — Overall correctness
+  The method returns a valid BST after insertion for all inputs, including inserting into an empty tree.
+  Buckets:
+    - Wrong (0 marks): Method returns null or leaves the tree unmodified for most inputs.
+    - Semi (10 marks): Insertion works for simple cases (e.g., inserting as a direct child of root) but fails for deeper insertions, or the empty tree case (y == null) is not handled, or the return value is wrong (e.g., always returns insert instead of root for non-empty trees).
+    - Correct (20 marks): The BST property is preserved after insertion for all valid inputs. The empty tree case is handled by returning insert as the new root, and the original root is returned for non-empty trees.
+    - Internally consistent but incorrect final result (15 marks): Logic follows consistently from the student's own traversal and attachment approach, but the resulting tree is incorrect due to a systematic error (e.g., consistently wrong direction or parent pointer).

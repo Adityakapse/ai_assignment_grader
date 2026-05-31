@@ -1,0 +1,168 @@
+POINT_ID: 1
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+AsymQ5
+1. Asymmetric linked-list linked list headed by node h with N = [N] nodes
+2. A linked list with N = 500 nodes, where each node has values {v[0] = 1, v[1] = 2, ..., v[n] = n} for a number of nodes n
+
+The function f() traverses the linked-list N times and computes asymptotic worst case running time. Part A is constant-time as no traversal costs are involved. The rest of the function contains two parts: a while loop that goes through the linked list with head h, and a function g(start) for which the time to traverse the list is O(N).
+
+Given: n = [N] nodes, where each node has values v[0], ..., v[n] = n
+Part A costs per iteration in the worst case O(1), while part C has cost per iteration of N times Theta(1) and total cost of the function as O(N^2).
+
+Asymmetric linked-list linked list headed by node h with N = [N] nodes: The function g() traverses the whole list, while g(p) is constant time. Part B has total running time O(N^2), while cost per iteration in the worst case is O(1).
+
+Asymmetric linked-list linked list headed by node h with N = 500 nodes: The function f() traverses N times and g(p) is constant time. Part B has total running time O(N^2), while cost per iteration in the worst case is O(1).
+
+POINT_ID: 2
+Question: Calculate the asymptotic worst-case running time of two functions, including a detailed analyziation for each function. Ensure to include a specific analyziation per line number, with each step in each step described in detail and with the correct bounds. Please use big-O notation or Theta notation with tie bounds to make your results accurate.
+
+POINT_ID: 3
+Yes, you can use either the big-O notation or Theta notation with a specificity level of the student's written analysi for this rubric point. Here are the steps to do so:
+
+1. Determine the specificity level for the given rubric point (e.g. Big-O notation, Theta notation) and its range.
+2. Choose one or two sentences to explain each step of your analysi in detail, using a logical and coherent sequence. These sentences should include the cost per iteration, the total cost of the process, and any necessary justification.
+3. Write a detailed analysi for the specificity level you have chosen. Make sure to provide enough information so that someone with no prior knowledge of this rubric point can understand the process. Use examples where appropriate to illustrate your points.
+4. Review and adjust as needed based on feedback received from your teacher or other reviewers.
+5. Submit your final analyzis with a clear title and mark range.
+
+POINT_ID: 4
+MARKS:
+[number]
+FEEDBACK:
+AsymQ5.f()
+- Part A: int s = 0, Node p = h;
+- - Constant time
+- Part B (while loop): traverse the list, calling g(p) at each node. - Part C: return s; - - Constant time
+- Parts A and C are Theta(1). - - Total cost of Part C: Theta(N^2) x Theta(1) = Theta(N^2)
+- Method f: Part D: int c = 0, Node q = start; - Part E (while loop): traverse the list until q becomes null. - - Iterations: q starts at start and advances by q.next each iteration. - - Cost per iteration: Theta(1) - one += assignment, one pointer advance, one null comparison. - Total cost of Part E: Theta(N) x Theta(1) = Theta(N)
+- Method g: Parts A and C are Theta(1). - Method f: Parts D and F are Theta(1). - Method g: In the worst case, start = h, so the loop visits all N nodes; the iteration count is Theta(N). - Method f: So the cost per iteration of f is some traversal cost. Multiplexing gives roughly N times the cost of g. - Method g is a while loop that goes through the linked list. - Method f is valid.
+
+POINT_ID: 5
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziS of both functions. - You can use Theta notation or the big-O notation with tiGh bounds. - Your analySis should refer to line numbers. - For every loop you need to specify the number of iterations and the cost per iteration. - Each step of the analySiS should be justified with one or two sentences.
+
+public final class AsymQ5 {
+     static class Node {
+         int v;
+         Node next;
+         Node(int v, Node next) { this.v = v; this.next = next; }
+     }
+
+     static Node h;    // head of the linked list
+
+     // Your analySiS should be based on the number of nodes N in the linked list with head h.
+     public static int f() {
+         int s = 0;
+         Node p = h;
+         while (p != null) {
+             s += g(p);
+             p = p.next;
+         }
+         return s;
+     }
+
+     private static int g(Node start) {
+         int c = 0;
+         Node q = start;
+         while (q != null) {
+             c += q.v;
+             q = q.next;
+         }
+         return c;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; — constant time.
+Part B (while loop): traverse the linked list, calling g(p) at each node.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop): In each iteration p advances by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Iterations: in each iteration p advancess by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations. - Total cost of Part B: summings the actual per-iteration costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p), which traverses the rest of the list. So the cost per iteration of f is some traversal cost. Multiples of that gives roughly N iterations (within the big-O notation) and thus the asymptotic worst-case running time of the function.
+
+POINT_ID: 6
+Based on the text provided, this rubric point is to assess the student's written asymptotic-complexity analysi of two given functions, f and g. The rubric is divided into two sections: SAMPLE SOLUTION (Part A) and STUDENT SOLUTION (Part B).
+
+Section A includes the first part of each function, f, which walks through the linked list in a loop with head h, while the second part of each function, g, traverses each node and adds the cost per iteration to the total running time. This information is then included in Part C: Method g.
+
+Part A: The first part of f (which walks through the linked list using p = p.next) is given as part A, while part B of g is given as part B, which traverses each node and adds the constant cost per iteration to the total running time. Therefore, the actual work done by each part in terms of iterations and time spent is included.
+
+Section B includes both Parts A and B, the actual work done by these parts. The student's work is presented as a text field for each part that includes this information.
+
+Overall, this rubric point includes both the student's actual work (in terms of iterations and time spent) and the correct results from f and g. It assesses the quality of the student's writing by comparing their analysi to the given functions and ensuring that they accurately reflect how each part of the function works.
+
+POINT_ID: 7
+QUESTION: Calculate the asymptotic worst-case running time of two functions f and g, each with a fixed number N of nodes in a linked list, as a function of their argument values, and use Theta notation or big-O notation based on tiht bounds. Your analyis should include a detailed analysi of both functions, use line numbers, and provide an explanation of every loop to justify the use of Theta notation.
+
+POINT_ID: 8
+QUESTION: Calculate the asymptotic worst-case running time of two functions defined below, as a function of their input parameters 'n' and 'r'. Use Theta notation with no explicit bounds. Make sure to include detailed analyses for both functions with each step of each loop. Also, provide output in the form of line numbers to ensure easy referencing.
+
+Function 1: n -> r
+Function 2: n -> r
+
+RUBRIC POINT:
+Point 8 - Function 1:
+   Theasat(n): Total loop cost (valid range: 0–4)
+      Theta(n) iterations x Theta(1) per iteration.
+   Line #3:
+       n -> r: Input parameters, 'n' and 'r', have a valid input range of [0, ∞).
+    Line #9:
+       While loop (i = 0 to ∞): Step #1:
+           n <= r: The first step in the loop has no bounds. As each step is a constant amount of work, it's Theta(1) and line #9 gives:
+              Total step cost: Theta(1) * (n - i) = Theta(0) * I = Theta(0) * ∞ = Theta(∞).
+       Line #12: Step #2:
+           n <= r: Again, the loop has no bounds. As each step is a constant amount of work, it's Theta(1) and line #12 gives:
+              Total step cost: Theta(1) * (n - I) = Theta(0) * (∞ - i) = Theta(0) * ∞ = Theta(∞).
+       Line #15: Step #3:
+           n <= r: This is the final step of the loop. As each iteration visits at most 'r' nodes, it's Theta(n) and line #15 gives:
+              Total step cost: Theta(n) * (r - I) = Theta(0) * (r - i) = Theta(0) * ∞ = Theta(∞).
+       Line #20:
+           While loop (i = 0 to n-1): Step #4:
+           n <= r: As each iteration visits at most 'n' nodes. It takes Theta(1) steps in this iteration and line #20 gives:
+              Total step cost: Theta(1) * I = Theta(n) * ∞ = Theta(∞). So total loop cost (valid range: 0–4) is Theta(n) * (n - I) = Theta(0) * (∞ - I) = Theta(∞).
+   Output: Line #3: Theasat(n): Total loop cost (valid range: 0–4) as stated above.
+
+POINT_ID: 9
+Question: How to write a detailed analyziс of a linked list function with Thea notation and generic input?
+
+Answer:
+In this case, we're analyzing f(), which is a linked list function with the Theta notation and a generic input. We start by writing our analyziс for line numbers (for example, "1" for the first line of code). We then provide detailed analysiс of both functions, including a full explanation of their logic and the steps they take to perform each step of their analysiс. In this case, we'll be focusing on the AsymQ5 class, which calculates the asymptotic worst-case running time of the functions f() and g().
+
+MARKS: Number of nodes in linked list with head h. RUBRIC POINT: Overall worst-case runtime of g(N) = Theta(N), summing constant parts and loop.
+
+1. AsymQ5 - Calculate the asymptotic worst-case running time for f() using Thea notation and generic input (head h).
+
+Parts A and C are Thea notation. Part B is a generic input.
+
+As for Parts A and C, we'll start by explaining what they do: in each iteration of Part B, we traverse the linked list, calling g(p) at each node. This means we visit all N nodes in the worst case (when called with start = h), and the loop runs exactly N times before p becomes null. So for this part, we'll have 1 <= N <= Infinity, which is valid for this function.
+
+We then return the sum of Thea notation costs of each per-iteration step (Parts B (loop) x Thea(N)).
+
+As for Parts B and D, we'll be traversing from start to end, so in each iteration, we'll visit all N nodes. We'll also visit all 0 nodes if start = h (since the linked list has 0 nodes). So for this part, we'll have 1 <= N <= Infinity (valid since start = h), which is also valid for Parts B and D.
+
+We then return the sum of Thea notation costs of each per-iteration step (Parts B (loop) x Thea(N)).
+
+The overall running time of f() is thus Thea(1) + Thea(N^2) + Thea(1) = Thea(N).
+
+Overall, we've covered Parts A and C as well as the whole cost of each iteration in PARTS B and D. These parts will be used to compute the asymptotic worst-case running time of f().
+
+Part F is not relevant to this function's analysis because it doesn't involve any per-iteration steps (Parts B and D). Therefore, we won't be analyzing its cost in terms of Parts A and C.
+
+In conclusion, AsymQ5 calculates the asymptotic worst-case running time for f() using Thea notation and generic input. The overall running time is calculated by the sum of costs of each per-iteration step in PARTS B and D (1 <= N <= Infinity), which are then used to compute the asymptotic worst-case running time of f().
+
+POINT_ID: 10
+QUESTION: Calculate the asymptotic worst-case running time of a function that takes as input the sum of a given series of numbers and outputs their respective frequencies (counts of occurrences in the sequence). Your answer should include a detailed analyzi, including both functions, and include a specific analysi for each function. Use Theta notation with corresponding bounds. Please include your output format, which includes both T_f(N) and FEEDBACK.

@@ -1,0 +1,141 @@
+{
+  "task_id": "21_22-2-2",
+  "title": "Transporting Goods (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the prefix sum is built incorrectly, base the range sum computation marks on whether the student uses their own prefix array consistently.",
+    "This rubric applies to both Java and Python submissions. The Java method is calc(int[] a, int[][] b); the Python function is calc(a, b). Both are correct.",
+    "Forbidden: 'check_calc', 'eval'. Penalise in point 5.",
+    "The algorithm must run in O(n) time. Solutions that recompute each range sum from scratch (O(n*q)) are not acceptable."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Prefix sum array allocation",
+      "tag": "allocation",
+      "max_marks": 20,
+      "target": "An array C of size n is allocated and C[0] is initialised to A[0].",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No prefix sum array is allocated; the algorithm sums each query range from scratch using a nested loop, or returns a constant."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A prefix sum array is present but allocated with wrong size (e.g., n+1 allocated but C[0] not set to A[0], or size mismatch), or C[0] is not initialised separately from the loop."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "An array C of size n is allocated and C[0] = A[0] is set correctly before the cumulative loop begins."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Prefix sum construction",
+      "tag": "prefix sum",
+      "max_marks": 25,
+      "target": "C[i] = A[i] + C[i-1] for i from 1 to n-1, building the cumulative sum array.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No prefix sum loop; C is either left as zeros or just copies A without accumulation."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "A loop is present but the accumulation is wrong: e.g., C[i] = A[i] (copies without summing previous), or C[i] = C[i-1] (ignores current element), or iterates over the wrong range."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "C[i] = A[i] + C[i-1] for i from 1 to n-1, correctly building the cumulative sum so that C[j] = sum of A[0..j]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Output array allocation and query loop",
+      "tag": "query loop",
+      "max_marks": 15,
+      "target": "An output array D of size n is allocated and a loop iterates over all n queries in B.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No query loop; only a single query is answered, or no output array is constructed."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A query loop is present but iterates over the wrong range (e.g., stops before the last query), or the output array has the wrong size."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "An output array D of size n is allocated and a loop iterates i from 0 to n-1, computing each query result."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Range sum computation with l=0 edge case",
+      "tag": "range sum",
+      "max_marks": 20,
+      "target": "For each query (l, r): D[i] = C[r] - C[l-1] when l > 0; D[i] = C[r] when l == 0.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "D[i] does not use the prefix array; range is summed from scratch, or D[i] = C[r] - C[l] (off-by-one, using l instead of l-1)."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "D[i] = C[r] - C[l-1] is used correctly when l > 0, but the l == 0 edge case is not handled: accessing C[-1] causes an index error or the formula is applied unconditionally."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "When l > 0: D[i] = C[r] - C[l-1]; when l == 0: D[i] = C[r]. Both cases correctly compute the closed-interval sum A[l..r]."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "calc returns the correct list of range sums for all queries in O(n) time, without forbidden keywords.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Returns incorrect sums for most queries, or contains forbidden keywords ('check_calc', 'eval')."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct sums when l > 0 but crashes or gives wrong results when l == 0, or the algorithm is O(n*q) due to per-query iteration over A."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns the correct range sum list for all queries including l == 0 in O(n) time; forbidden keywords are absent."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own prefix sum construction, but the result is systematically off (e.g., always off by one at query boundaries or consistently missing one element)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

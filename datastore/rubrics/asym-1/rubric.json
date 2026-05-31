@@ -1,0 +1,291 @@
+{
+  "task_id": "asym-1",
+  "title": "Asymptotic Analysis Q1 - Triangular Sum with Halving Helper",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in points 10 and 11). Do not deduct again for an error already penalised in an earlier point.",
+    "Students can use Theta or big-O notation with tight bounds.",
+    "Both combined-analysis and separate-analysis approaches for nested loops are acceptable.",
+    "The intended answers are T_f(N) = Theta(N^2) and T_g(N) = Theta(log N)."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Splitting code into parts + referencing line numbers",
+      "tag": "structure",
+      "max_marks": 5,
+      "target": "Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous."
+        },
+        {
+          "label": "Correct",
+          "marks": 5,
+          "description": "Clear separation of f and g; loop and non-loop regions and the call to g identified; line numbers referenced consistently."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Constant-time non-loop parts",
+      "tag": "const-time",
+      "max_marks": 5,
+      "target": "All non-loop code in f and g is Theta(1); may be grouped.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Non-loop code not analysed or incorrectly claimed to be non-constant."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Some constant-time segments identified but others missing or vaguely stated."
+        },
+        {
+          "label": "Correct",
+          "marks": 5,
+          "description": "All non-loop regions (initialisations and returns in f and g) stated as Theta(1)."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "f(): Nested loop iterations",
+      "tag": "f-iters",
+      "max_marks": 12,
+      "target": "Theta(N^2) combined iterations of the nested for loops.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Iteration count missing or not Theta(N^2) (e.g. claims Theta(N) or Theta(N log N))."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(N^2) but with weak or incomplete justification (e.g. 'double loop \u21d2 N^2' without referencing the j <= i bound)."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Clearly argues Theta(N^2), either by summing 1 + 2 + ... + N = N(N+1)/2 (combined) or by stating outer Theta(N) and inner average Theta(N) (separate)."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "f(): Cost per iteration",
+      "tag": "f-per-iter",
+      "max_marks": 12,
+      "target": "Theta(1) per inner iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Claims non-constant per-iteration cost, or does not clearly state cost per iteration."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "Suggests constant time but with incomplete reasoning (missing explanation of array accesses and arithmetic)."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "States Theta(1), justified by the constant number of array reads, arithmetic operations, and the += assignment; loop checks and increments are Theta(1)."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "f(): Total loop cost = iterations x per-iteration",
+      "tag": "f-total-loop",
+      "max_marks": 8,
+      "target": "Theta(N^2) from Theta(N^2) iterations x Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No multiplication of iteration count x per-iteration cost, or total complexity that does not match own previous analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 4,
+          "description": "Multiplies own values but final simplification or reasoning is unclear or incorrect."
+        },
+        {
+          "label": "Correct",
+          "marks": 8,
+          "description": "Theta(N^2) x Theta(1) = Theta(N^2), with clear justification."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "f(): Cost of Part C (call to g + constant work)",
+      "tag": "f-partC",
+      "max_marks": 6,
+      "target": "Theta(log N), accounting for both the cost of the g call and the constant-time return.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Cost of Part C missing or incorrect (e.g. claims Theta(1) or Theta(N))."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Notes that cost comes from g but unclear about Theta(log N)."
+        },
+        {
+          "label": "Correct",
+          "marks": 6,
+          "description": "Accounts for the cost of the g call as Theta(log N) and the addition / return as Theta(1)."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "g(): Loop iterations",
+      "tag": "g-iters",
+      "max_marks": 10,
+      "target": "Theta(log N) iterations because k is halved each iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Iteration count missing or not Theta(log N) (e.g. claims Theta(N))."
+        },
+        {
+          "label": "Semi",
+          "marks": 5,
+          "description": "States Theta(log N) but does not explain the halving (k = k / 2 each iteration)."
+        },
+        {
+          "label": "Correct",
+          "marks": 10,
+          "description": "Justifies Theta(log N) by explaining that k starts at N and is divided by 2 each iteration until it reaches 0."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "g(): Cost per iteration",
+      "tag": "g-per-iter",
+      "max_marks": 8,
+      "target": "Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Claims non-constant per-iteration cost, or does not clearly state cost per iteration."
+        },
+        {
+          "label": "Semi",
+          "marks": 4,
+          "description": "Suggests operations are small/constant but lacks explicit Theta(1) justification."
+        },
+        {
+          "label": "Correct",
+          "marks": 8,
+          "description": "Each iteration Theta(1): one array read, one += assignment, one division, loop check."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "g(): Total loop cost",
+      "tag": "g-total-loop",
+      "max_marks": 6,
+      "target": "Theta(log N) = Theta(log N) iterations x Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Does not combine iteration count x per-iteration cost, or resulting complexity is incompatible with own values."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Attempts multiplication using own values but expression or simplification is unclear or incorrect."
+        },
+        {
+          "label": "Correct",
+          "marks": 6,
+          "description": "Theta(log N) x Theta(1) = Theta(log N), with justification."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Overall worst-case runtime of g",
+      "tag": "overall-g",
+      "max_marks": 12,
+      "target": "T_g(N) = Theta(log N), summing the constant-time parts and the loop.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Runtime absent or incompatible with earlier analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(log N) but with missing reasoning (not clearly summing the constant-time parts and the loop)."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 10,
+          "description": "Final not Theta(log N), but correctly calculated as a sum based on own earlier (possibly wrong) values."
+        }
+      ],
+      "note": "Double deduction applies here."
+    },
+    {
+      "id": 11,
+      "name": "Overall worst-case runtime of f",
+      "tag": "overall-f",
+      "max_marks": 16,
+      "target": "T_f(N) = Theta(N^2), accounting for non-loop parts + nested loop + Part C.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Final complexity missing/incorrect and not derived from loop analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "States Theta(N^2) but with missing reasoning (e.g. not clearly adding all parts of f)."
+        },
+        {
+          "label": "Correct",
+          "marks": 16,
+          "description": "Theta(1) + Theta(N^2) + Theta(log N) = Theta(N^2), correctly absorbing the lower-order log N term."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 12,
+          "description": "Final not Theta(N^2), but correctly calculated as a sum of the cost of each part of f using own earlier values."
+        }
+      ],
+      "note": "Double deduction applies here."
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

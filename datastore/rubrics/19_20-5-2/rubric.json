@@ -1,0 +1,142 @@
+{
+  "task_id": "19_20-5-2",
+  "title": "Graphs: DFS (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if a student pushes neighbours in forward order (giving reversed visit order), base overall correctness on whether the rest of their logic is consistent with that choice.",
+    "This rubric applies to both Java and Python submissions. The Java method is dfs(int[][] graph, int start); the Python function is dfs(graph, start). Both are correct.",
+    "Both iterative (explicit stack) and recursive implementations are acceptable. For recursive implementations, the reverse-order requirement in point 4 does not apply, as recursion naturally processes neighbours in adjacency list order.",
+    "The graph is represented as an adjacency list (array of arrays). Nodes are numbered from 0. The graph is directed and unweighted.",
+    "The output must list nodes in the order they are first visited by DFS. For iterative implementations, neighbours must be pushed in reverse adjacency list order so they are popped and visited in forward order."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "DFS loop structure and initialisation",
+      "tag": "loop",
+      "max_marks": 20,
+      "target": "The start node is pushed onto the stack before the loop, and a while loop processes nodes until the stack is empty.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No loop is present, or only the start node is processed without iterating further; the method returns without traversing the graph."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A loop is present but either the start node is not added to the stack before the loop begins, or the loop termination condition is incorrect (e.g., runs a fixed number of times rather than until the stack is empty)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "The start node is pushed onto the stack before the loop, and a while loop continues processing until the stack is empty."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "LIFO pop: removing from the top",
+      "tag": "lifo",
+      "max_marks": 20,
+      "target": "The current node is always removed from the top (back) of the stack, ensuring depth-first traversal.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No pop operation is present, or nodes are removed from the front of the stack (FIFO), which produces breadth-first rather than depth-first traversal."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A remove operation is present but inconsistently applied (e.g., sometimes from front, sometimes from back), producing a traversal order that is neither pure DFS nor pure BFS."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "The current node is always removed from the top/back of the stack (stack.pop() in Java Stack; list.pop() in Python), ensuring last-in-first-out (depth-first) traversal."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Visited tracking: check and mark",
+      "tag": "visited",
+      "max_marks": 20,
+      "target": "Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No visited tracking is present; nodes can be added to the result multiple times or the algorithm loops infinitely on graphs with cycles."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A visited structure exists but is used incorrectly: for example, nodes are marked visited before being popped rather than when processed, or the visited check is present but the update is missing, allowing revisits."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Each popped node is checked against visited before processing; if not already visited it is added to visited and its neighbours are explored. Already-visited nodes are skipped."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Neighbour push",
+      "tag": "push",
+      "max_marks": 20,
+      "target": "All unvisited neighbours from graph[current] are pushed onto the stack. For iterative implementations, neighbours are pushed in reverse adjacency list order so that they are popped and visited in forward order.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Neighbours are not pushed; graph[current] is not iterated, so no nodes beyond the start are ever discovered."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "graph[current] is iterated and unvisited neighbours are pushed, but in forward order (for iterative approach), causing neighbours to be visited in reversed adjacency list order. Recursive implementations that iterate neighbours in forward order receive full credit."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "All unvisited neighbours in graph[current] are pushed onto the stack in reverse order (for iterative approach), so they are visited in the correct adjacency list order. Recursive implementations iterating in forward order are equally correct."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns all reachable nodes from start in correct DFS order for all valid directed graphs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns an empty list or produces an incorrect traversal for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct nodes but in wrong order (e.g., BFS order or reversed DFS order), or fails on graphs with cycles or multiple branches."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns all reachable nodes from start in correct DFS order (neighbours visited in adjacency list order) for all valid directed graphs including those with cycles."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic is consistent with the student's own approach throughout, but the output order is incorrect due to a systematic error (e.g., consistently uses FIFO producing BFS order, or consistently pushes in forward order reversing the visit sequence)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

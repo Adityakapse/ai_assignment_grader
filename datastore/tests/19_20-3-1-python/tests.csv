@@ -1,0 +1,56 @@
+test_number,is_example,testcode,expected
+1,True,"lts = ListToSort([2, 3, 1, 5, 99, 33])
+lts = listSorter(lts)
+print(lts.isSorted())
+print(lts.isSame([1, 2, 3, 5, 33, 99]))","True
+True"
+2,False,"lts = ListToSort([])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+3,False,"lst = []
+for i in range(256):
+    lst.append(randrange(0, 2**31, 1))
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+4,False,"lst = []
+for i in range(256):
+    lst.append(randrange(-2**31, 2**31, 1))
+lst.append(-1)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+5,False,"lst = []
+for i in range(128):
+    lst.append(i)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+6,False,"lst = []
+for i in range(128, 0):
+    lst.append(i)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+7,False,"lst = []
+for i in range(128):
+    lst.append(1)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+8,False,"lst = []
+inval = randrange(-128, -1, 1)
+for i in range(128):
+    lst.append(inval)
+lts = ListToSort(lst)
+lts = listSorter(lts)
+print(lts.isSorted())",True
+9,False,"lts = ListToSort([42])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+10,True,"lts = ListToSort([randrange(0, 9999999, 1)])
+lts = listSorter(lts)
+print(lts.isSorted())",True
+11,True,"lts = ListToSort([7, 7, 7, 7, 7, 7, 7])
+lts = listSorter(lts)
+print(lts.isSorted())",True

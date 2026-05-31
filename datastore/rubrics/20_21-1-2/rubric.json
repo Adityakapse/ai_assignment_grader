@@ -1,0 +1,141 @@
+{
+  "task_id": "20_21-1-2",
+  "title": "Sorting (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the partition step is wrong, base overall correctness on whether the rest of the algorithm is consistent with that partition.",
+    "This rubric applies to both Java and Python submissions. Any correct O(n log n) sorting algorithm is acceptable: merge sort, heap sort, or randomised quicksort.",
+    "The use of 'sort' and 'numpy' as substrings is not allowed. This includes Arrays.sort, list.sort(), sorted(), and any library that contains these substrings. Penalise in point 5.",
+    "Importing the random library is explicitly allowed and required for randomised quicksort. Algorithms with a worst-case O(n log n) guarantee (merge sort, heap sort) do not need randomisation."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Algorithm structure",
+      "tag": "structure",
+      "max_marks": 20,
+      "target": "A recognisable O(n log n) sorting algorithm is implemented with the correct recursive or iterative structure: divide-and-conquer (merge sort, quicksort) or heap-based.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No recognisable sorting algorithm structure is present; the method returns the input unchanged or implements an O(n^2) algorithm (e.g., bubble sort, insertion sort) without any divide-and-conquer structure."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A divide-and-conquer structure is recognisable but incomplete: for example, recursive calls are present but do not cover the full array, or the algorithm only has one level of recursion."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "A complete recursive or iterative O(n log n) structure is present: for quicksort/merge sort, recursive calls are made on both subproblems; for heap sort, the correct heapify and extraction loop is present."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Base / termination case",
+      "tag": "base case",
+      "max_marks": 15,
+      "target": "The algorithm correctly stops when the subarray has length 0 or 1 (already sorted), preventing infinite recursion.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No termination condition; the algorithm recurses or loops indefinitely regardless of array size."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A termination condition is present but uses an incorrect bound (e.g., l < r is written as l <= r, causing an extra level of recursion on single-element subarrays)."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "The algorithm stops when the subarray has 0 or 1 elements (e.g., l < r for quicksort/merge sort, or length <= 1 for recursive merge sort), preventing unnecessary or infinite recursion."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Core sorting operation",
+      "tag": "core op",
+      "max_marks": 25,
+      "target": "The central operation that establishes order is correctly implemented: partition for quicksort (pivot placed correctly, smaller elements left, larger right), or merge for merge sort (two sorted halves merged in order).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "The core operation is absent or does not rearrange elements: for quicksort, no partition is performed; for merge sort, no merge step combines the sorted halves."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "The core operation is present but partially incorrect: for quicksort, the pivot is placed but not all elements are correctly partitioned around it; for merge sort, the merge runs but produces an incorrect order or misses some elements."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "The core operation correctly establishes order: quicksort partition places the pivot at its final position with all smaller elements to the left and all larger to the right; merge sort merge correctly interleaves two sorted subarrays into one sorted array."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Randomisation or worst-case O(n log n) guarantee",
+      "tag": "randomisation",
+      "max_marks": 15,
+      "target": "If using quicksort, a random pivot is selected using the random library before each partition. Not required for merge sort or heap sort.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Student uses quicksort (average-case O(n log n)) but selects a fixed pivot (e.g., always last element) without any randomisation, giving no guarantee against worst-case O(n^2) inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "The random library is imported but pivot selection is not randomised (e.g., random is imported but unused), or randomisation is applied after partitioning rather than before."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "A random index within the subarray is selected using the random library and swapped to the pivot position before partitioning; or the algorithm is merge sort or heap sort with guaranteed O(n log n) worst-case (randomisation not required)."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 25,
+      "target": "The method returns the array sorted in ascending order for all valid inputs, without using 'sort' or 'numpy' as substrings.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Array is not sorted for most inputs, or the submission contains 'sort' or 'numpy' as substrings."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "Array is sorted correctly for small or already-partially-ordered inputs but fails on larger random inputs, or sorts in descending instead of ascending order."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "Array is returned sorted in ascending order for all valid inputs; 'sort' and 'numpy' do not appear as substrings."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 19,
+          "description": "Logic follows consistently from the student's own structure and core operation, but the output is not fully sorted due to a systematic error (e.g., off-by-one in partition bounds, or incorrect merge condition)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

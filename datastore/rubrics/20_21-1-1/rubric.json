@@ -1,0 +1,141 @@
+{
+  "task_id": "20_21-1-1",
+  "title": "Exponentiation by Squaring (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if the base case is wrong, base the overall correctness marks on whether the recursive steps are otherwise consistent.",
+    "This rubric applies to both Java and Python submissions. The Java method is expo(long a, long b, long c); the Python function is expo(a, b, c). Both are correct.",
+    "The use of 'import' and '**' (Python power operator) is not allowed. Penalise in point 5 if either appears in the submission.",
+    "The algorithm must run in O(log b) recursive depth. Iterative implementations using the same even/odd case split are also acceptable."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Base case: b == 0",
+      "tag": "base case",
+      "max_marks": 20,
+      "target": "When b == 0, the function returns 1 % c (handles termination and the edge case c == 1).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No base case is present; the recursion never terminates or returns an incorrect constant (e.g., always returns 0 or 1 regardless of c)."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A base case is present but incorrect: for example, returns 1 without applying % c (fails when c == 1), or the base condition is b == 1 instead of b == 0, causing incorrect results for b == 0."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns 1 % c when b == 0, correctly terminating the recursion and handling the edge case where c == 1."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Parity detection: odd vs even b",
+      "tag": "parity",
+      "max_marks": 15,
+      "target": "The algorithm correctly distinguishes odd b from even b using b % 2 (or equivalent).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No parity check is present; odd and even b are treated identically, so only one recursive case is ever applied."
+        },
+        {
+          "label": "Semi",
+          "marks": 8,
+          "description": "A parity check is present but the odd and even cases are swapped (e.g., b % 2 == 0 is treated as the odd case), producing incorrect results for all non-trivial inputs."
+        },
+        {
+          "label": "Correct",
+          "marks": 15,
+          "description": "b % 2 != 0 (or b % 2 == 1) correctly identifies odd b; b % 2 == 0 correctly identifies even b. The two cases lead to different recursive branches."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Odd case: reduce by 1 and multiply",
+      "tag": "odd case",
+      "max_marks": 20,
+      "target": "When b is odd, the function returns (a * expo(a, b-1, c)) % c.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "The odd case is absent, or reduces b by a value other than 1, or does not multiply by a."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Reduces b by 1 and recurses correctly, but does not multiply by a (e.g., returns expo(a, b-1, c) directly), or does not apply % c to the result."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns (a * expo(a, b-1, c)) % c, correctly factoring out one a and reducing the exponent by 1."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Even case: halve and square",
+      "tag": "even case",
+      "max_marks": 25,
+      "target": "When b is even, the function computes tmp = expo(a, b/2, c) and returns (tmp * tmp) % c.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "The even case is absent, or does not halve b, or does not square the recursive result (e.g., just returns expo(a, b/2, c) without squaring)."
+        },
+        {
+          "label": "Semi",
+          "marks": 12,
+          "description": "Halves b and recurses, but squares incorrectly (e.g., multiplies by a instead of by itself, or calls expo twice with b/2 which is correct but doubles the recursive work to O(b)), or does not apply % c to the squared result."
+        },
+        {
+          "label": "Correct",
+          "marks": 25,
+          "description": "Computes tmp = expo(a, b//2, c) once (using integer division), then returns (tmp * tmp) % c, achieving O(log b) depth and correctly squaring the half-power result."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "expo(a, b, c) returns the correct value of a^b mod c for all valid inputs, without using 'import' or '**'.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Returns incorrect results for most inputs, or contains 'import' or '**' in the submission."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct results for small or simple inputs (e.g., b=0, b=1, small a and b) but fails for large b due to integer overflow, missing modulo steps, or incorrect recursion depth."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns a^b mod c correctly for all valid inputs; 'import' and '**' are absent; modulo is applied at each recursive step to keep intermediate values bounded."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic follows consistently from the student's own base case and recursive steps, but produces incorrect output due to a systematic error (e.g., missing modulo at one step, or b/2 using float division)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

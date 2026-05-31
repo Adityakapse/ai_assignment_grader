@@ -1,0 +1,133 @@
+test_number,is_example,testcode,expected
+1,True,"# build tree
+root = Node()
+root.key = 2
+
+# build target
+target = Node()
+target.key = 1
+
+# Call insert
+root = insert(root, target)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+2,True,"# build tree
+root = Node()
+root.key = 2
+
+# build target
+target = Node()
+target.key = 3
+
+# Call insert
+root = insert(root, target)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.right = Node()
+NewRoot.right.key = 3
+NewRoot.right.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+3,False,"# build target
+target = Node()
+target.key = 15418
+
+# Call insert
+root = insert(None, target)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 15418
+print(compare_trees(root, NewRoot))",True
+4,False,"# build tree
+n1 = Node()
+n1.key = 72
+
+n2 = Node()
+n2.key = 38
+n1.parent = n2
+n2.right = n1
+
+n1 = Node()
+n1.key = 42
+n2.parent = n1
+n1.left = n2
+
+n2 = Node()
+n2.key = 97
+n2.parent = n1
+n1.right = n2
+
+root = Node()
+root.key = 17
+root.right = n1
+n1.parent = root
+
+n1 = Node()
+n1.key = 1
+n1.parent = root
+root.left = n1
+
+# build target
+target = Node()
+target.key = 27
+
+# Call insert
+root = insert(root, target)
+
+# Compare
+n1 = Node()
+n1.key = 72
+
+n2 = Node()
+n2.key = 38
+n1.parent = n2
+n2.right = n1
+
+n1 = Node()  # target!
+n1.key = 27
+n1.parent = n2
+n2.left = n1
+
+n1 = Node()
+n1.key = 42
+n2.parent = n1
+n1.left = n2
+
+n2 = Node()
+n2.key = 97
+n2.parent = n1
+n1.right = n2
+
+NewRoot = Node()
+NewRoot.key = 17
+NewRoot.right = n1
+n1.parent = NewRoot
+
+n1 = Node()
+n1.key = 1
+n1.parent = NewRoot
+NewRoot.left = n1
+
+print(compare_trees(root, NewRoot))",True
+5,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+6,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+7,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+8,False,"test = get_random()
+root = insert(test[0], test[1])
+print(compare_trees(root, test[2]))",True

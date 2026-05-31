@@ -1,0 +1,78 @@
+To calculate the asymptotic worst-case running time of both functions, we need to write a detailed analyziс of each function based on our given sample input array `a`. We also need to explain all loop and cost per iteration for each step. Here's what we need to include in our final output:
+
+1) Calculate the asymptotic worst-case running time of both functions, as a function of their length, N (the length of the input array).
+2) Write a detailed analyziс for both functions that includes all loop and cost per iteration. We'll also include an explanation of each step in each function.
+3) Output justified analyses with one or two sentences for each loop/cost per iteration.
+4) Assemble the final output as:
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scan the entire array a to compute sum of digits. Cost per iteration: Theta(N) x Theta(1) = Theta(N log N).
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall worst-case runtime of f (valid range: 0–14): T_f(N) = Theta(N log N), accounting for non-loop parts + loop.
+
+STUDENT SOLUTION:
+F: Loop iterations (valid range: 0–12)
+   T_f(N) = Theta(N log N), accounting for non-loop parts + loop. (The value of "Theta(log N)" is derived from the fact that k doubles, and k has constant time.)
+
+F(): Loop iterations (valid range: 0–12)
+   T_f(N) = Theta(N log N), accounting for non-loop parts + loop. (The value of "Theta(log N)" is derived from the fact that k doubles, and k has constant time.)
+
+Parts A and C are Theta(1).
+
+Parts B and E are Theta(1) for each loop iteration.
+
+Parts D and F are not specified. We assume these parts don't affect runtime as our given input array size `n` is specified.
+
+Point 1) Calculate the asymptotic worst-case running time of both functions, as a function of their length, N (the length of the input array `a`).
+   T_f(N) = Theta(N log N), accounting for non-loop parts + loop. (The value of "Theta(log N)" is derived from the fact that k doubles, and k has constant time.)
+   T_g(N) = Theta(N log N), accounting for non-loop parts + loop. (The value of "Theta(log N)" is derived from the fact that k doubles, and k has constant time.)
+
+Point 2) Return an overall worst-case runtime estimate for both functions using this estimated time.
+   Return T_f(N) + T_g(N);
+
+Overall worst-case runtime of f (valid range: 0–14): T_f(N) = Theta(N log N), accounting for non-loop parts + loop. Sum of T_f and T_g(N) = T_f(N) + T_g(N);
+
+F(): Return an overall worst-case runtime estimate for both functions using this estimated time.
+   Sum of T_f and T_g(N) = Theta(N log N), accounting for non-loop parts + loop. (The value of "Theta(log N)" is derived from the fact that k doubles, and k has constant time.)
+
+Parts A and C are not specified. However, as our given input array size `n` is specified, we assume these parts don't affect runtime as they won't be executed during this analysis.
+
+F: Calculate a worst-case scenario for each loop iteration (valid range: 0–12)
+   For each loop iteration i, calculate the worst-case scenario based on our estimated time and known loop details.
+     For non-loop parts: W_f(i) = T_f(N) + T_g(N);
+     For loop: W_f(i) = (T_f(N) + T_g(N)) + W_g(i);
+
+Parts A and C are not specified. However, as our given input array size `n` is specified, we assume these parts don't affect runtime as they won't be executed during this analysis.
+
+F(): Calculate a worst-case scenario for each loop iteration (valid range: 0–12)
+   For each loop iteration i, calculate the worst-case scenario based on our estimated time and known loop details.
+     For non-loop parts: W_f(i) = T_f(N) + T_g(N);
+     For loop: W_f(i) = (T_f(N) + T_g(N)) + W_g(i) + W_f(i);
+
+Point 1) Calculate the worst-case scenario for f by adding up both total time estimates.
+   W_f(N) = W_f(N) + W_g(N) + T_f(N) + T_g(N);
+
+Point 2) Return a worst-case scenario for both functions using this estimated time and known loop details.
+   W_f() = W_f(N) + W_g(N) + T_f(N) + T_g(N);
+
+Combining Points 1-2:
+Return an overall worst-case scenario for both functions using this estimated time, known loop details. (The value of "Theta(log N)" is derived from the fact that k doubles, and k has constant time.)

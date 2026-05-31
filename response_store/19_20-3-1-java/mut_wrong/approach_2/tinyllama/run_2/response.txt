@@ -1,0 +1,225 @@
+POINT_ID: 1
+Based on the given list, here's an implementation of a search algorithm from the lecture that sorts it in ascending order:
+
+```csharp
+public static ListToSort Sort(ListToSort list) {
+    // Implementation of BubbleSearch
+     for (int I = 1; I < list.Length(); i++) {
+         int j = I - 1; // Loop index for current element and previous elements
+         while (j >= 0 && list.Smaller(j, j-1)) {
+             list.Swap(j, j-1);
+             j--;
+         }
+     }
+     return list;
+}
+```
+
+As mentioned in the given text, this implementation returns a `ListToSort` object with the sorted elements, which can be assigned to the rubric point or graded by the objective code assessor.
+
+POINT_ID: 2
+Here's a possible implementation using the binary heap data structure:
+
+1. Define a binary heap class that maintains a list of integers in ascending or descending order as it is traversed, with comparisons based on the provided compare function `less_than` (defaulting to `cmp_int`).
+2. Implement the `Swap` method to swap two adjacent elements if they're in the wrong order:
+```csharp
+public int Swap(int x, int y) {
+    int temp = list[x];
+    list[x] = list[y];
+    list[y] = temp;
+    return list[y]; // return value will be same as `list[x]`
+}
+```
+3. Implement the `Larger` method to check if an element at index `i` is greater than or equal to its neighbors:
+```csharp
+public bool Larger(int x, int y) {
+    // left neighbor
+    if (y > 0 && list[x] < list[y-1]) return true;
+    
+    // right neighbor
+    if ((y+1 <= list.Len() - 1) && list[x] < list[y+1]) return true;
+    
+    // up neighbor
+    if (i > 0 && list[list[i-1]] < list[i-2]) return true;
+    
+    // down neighbor
+    if ((i+1 <= list.Len() - 1) && list[list[i+1]] < list[i+2]) return true;
+    
+    return false; // no neighbors in valid range (x, y)
+}
+```
+4. Implement the `Smaller` method to check if an element at index `i` is less than or equal to its neighbors:
+```csharp
+public bool Smaller(int x, int y) {
+    // left neighbor
+    if (y > 0 && list[x] < list[y-1]) return false;
+    
+    // right neighbor
+    if ((y+1 <= list.Len() - 1) && list[x] < list[y+1]) return false;
+    
+    // up neighbor
+    if (i > 0 && list[list[i-1]] < list[i-2]) return false;
+    
+    // down neighbor
+    if ((i+1 <= list.Len() - 1) && list[list[i+1]] < list[i+2]) return false;
+    
+    // check if x is less than any of the neighbors (i.e., y is in valid range [x, y])
+    if (y > i && list[x] < list[y-1]) return true;
+    
+    // no neighbors in valid range (x, y)
+    return false;
+}
+```
+5. Implement the `Equal` method to check if two elements are equal or not:
+```csharp
+public bool Equal(int x, int y) {
+    return x == y && Larger(y-1, y);
+}
+```
+6. Implement the `LargeOrSmall` method to determine if an element is greater than or less than its neighbor:
+```csharp
+public bool LargeOrSmall(int x) {
+    return Larger(x, list[x]) || Smaller(list[x], x);
+}
+```
+7. Implement the `BubbleSort` method to sort the given list in descending order using the binary heap data structure:
+```csharp
+public ListToSort BubbleSort(ListToSort list) {
+    while (true) {
+        for (int I = list.Length()-1; I > 0; i--) {
+            if (LargeOrSmall(i)) {
+                Swap(i, i-1); // swap largest element and its neighbor (if exists)
+                break;
+            }
+        }
+    }
+    return list;
+}
+```
+Here's a sample implementation using the binary heap data structure:
+
+SAMPLE SOLUTION:
+public ListToSort Sort(ListToSort list) {
+    
+    // Define a heap class to hold elements in descending order
+    BinaryHeap<int> heap = new BinaryHeap<int>();
+    
+    // Initialize the heap with the given list of integers
+    for (int I = 0; I < list.Lengt(); i++) {
+        heap.Add(list[i]);
+    }
+    
+    // Find the maximum value in the heap, which is the largest element so far
+    int max = heap.Max();
+    
+    // Sort the heap using a binary search for each larger element
+    while (true) {
+        while (heap.Size() > 1 && heap.Peek() < heap.Min()) {
+            heap.Pop();
+        }
+        
+        if (heap.IsEmpty()) {
+            break; // no more elements left to sort, return the sorted list
+        }
+        
+        int largest = heap.Peek();
+        heap.Pop(); // remove the larger element from the heap
+        
+        Swap(list.Lengt()-1, largest); // swap the element at the last index with its larger neighbor (if exists)
+        heap.Add(largest);
+    }
+    
+    return list;
+}
+
+Here's a sample implementation that checks if each element in the list is greater than or equal to its neighbors (in ascending order) before sorting:
+
+SAMPLE SOLUTION:
+public ListToSort Sort(ListToSort list) {
+    
+    // Define a heap class to hold elements in descending order
+    BinaryHeap<int> heap = new BinaryHeap<int>();
+    
+    // Initialize the heap with the given list of integers
+    for (int I = 0; I < list.Lengt(); i++) {
+        int largest = list[i];
+        
+        // check if the element is greater than any of its neighboring elements
+        while (true) {
+            int minNeighbor = heap.Min();
+            
+            if (largest >= minNeighbor && heap.Peek() < heap.Min()) {
+                Swap(i, heap.Size()); // swap largest and smallest element in list before sorting it
+                heap.Pop();
+                break; // stop searching for larger elements when smaller elements are already sorted
+            }
+            
+            heap.Add(largest);
+        }
+        
+        // sort the heap using a binary search to find the element with the highest value
+        heap.Sort();
+    }
+    
+    return list;
+}
+
+POINT_ID: 3
+As per the given instructions, your objective code assessment grading task involves assigning numeric marks for the rubric points listed in the student solution provided. However, you will only be grading a single rubric point within its valid range:
+
+MARKS: 0
+FEEDBACK: The solution increments a counter until a multiple of both a and b is found, which is O(lcm(a,b)) and far slower than the GCD-based formula used in the sample solution.
+
+You can use any search algorithm from the lecture to sort the given list, but note that BubbleSort is not explicitly implemented in your SAMPLE SOLUTION. Instead, you will need to implement it by calling Swap(x, y) for all comparisons within a swap step. 
+
+Furthermore, you should only assign numeric marks for the swaps themselves and leave comments explaining their purpose or operation in context.
+
+POINT_ID: 4
+According to your provided example, here's how you could handle the "length()" function in your code:
+
+1. Start by checking if length() is a valid range using the provided Rubric Points (RP):
+```csharp
+public ListToSort Sort(ListToSort list) {
+    int i, j; // Assign variables for loop bounds
+    // ... Check if function uses valid range
+    if (rubs.Contains("Length()")) {
+        RubricPoint rub = rubs.Find(rp => rp.Name == "length()");
+        if (rub.ValidRange) {
+            for (i = rub.Min; i <= rub.Max; i++) {
+                // ... Code for length() bound
+            }
+        } else {
+            // ... Handling invalid range in case the Rubric Point is not valid
+        }
+    }
+}
+```
+2. If length() is within the valid range, use it as an input to the "Swap()" function and return the modified list:
+```csharp
+public ListToSort Sort(ListToSort list) {
+    int i, j; // Assign variables for loop bounds
+    // ... Code for length() bound
+    if (length() < rub.Min || length() > rub.Max) {
+        return list; // Return original list unchanged
+    }
+    for (i = 1; i < length(); i++) {
+        for (j = length() - 1; j > i - 1; j--) {
+            if (list.Smaller(j, j-1)) {
+                list.Swap(j, j-1);
+            }
+        }
+    }
+    return list; // Return modified list
+}
+```
+3. Finally, you should ensure that the Rubric Point "length()" is included in your Code of Review:
+```csharp
+public void CodeOfReview(ListToSort original) {
+    ListToSort sorted = Sort(original);
+    // ... Code for checking if solution is correct and meets Rubric Points
+}
+```
+4. Once you have implemented the algorithm, make sure to test it with a sample list before submitting it to the teacher for grading.
+
+POINT_ID: 5
+Congratulations on completing the exercise! Your solution meets the requirements outlined in the instructions: it sorts a given list based on one or more criteria, and outputs the specified rubric points for each criterion. To make this part of your output more specific, you can provide the two lines that describe the specificity of the student's submitted code. Additionally, your solution must only output rubric points for the valid criteria, not generic ones like "generic."

@@ -1,0 +1,152 @@
+POINT_ID: 1
+Here is an implementation of the "bubblesort" algorithm in C# using a sorted list as input:
+
+```csharp
+public static class Builder {
+    public static ListToSort Buubblesort(ListToSort list) {
+        for (int I = 1; I < list.Length(); i++) {
+            for (int j = list.Length() - 1; j > i - 1; j--) {
+                if (list.Smaller(j, j - 1)) {
+                    list.Swap(j, j - 1);
+                }
+            }
+        }
+        return list;
+    }
+}
+```
+
+Here's a sample output:
+
+```csharp
+public static ListToSort Sort(ListToSort list) {
+     // Implementation of Buubblesort
+     for (int I = 1; I < list.Length(); i++) {
+         for (int j = list.Length() - 1; j > i - 1; j--) {
+             if (list.Smaller(j, j - 1)) {
+                 list.Swap(j, j - 1);
+             }
+         }
+     }
+     return list;
+}
+```
+
+The `Buubblesort` method generates a loop that repeatedly compares two adjacent elements in the input list. The method then swaps them if they're smaller or larger than each other. Finally, it repeats the process until all elements have been sorted in ascending order.
+
+POINT_ID: 2
+Assign a numeric mark for this rubric point within the stated valid range of 0–20:
+MARKS: Smaller(int x, int y) <- Returns true if the element at position y is greater than the element at position x
+
+FEEDBACK: The method uses the valid range 0–20 to determine whether two elements are in the wrong order.
+
+POINT_ID: 3
+The seaRCH algorithm from the lecture can be implemented by sorting a given list using the BuBBbleSort function defined in the sample solution provided earlier. Here's how:
+
+1. Define the list to sort, which contains elements with indexes ranging from 0 to len(list)-1 (excluding last index).
+
+2. Initialize a variable "start" to the first element of the list (index 0) and an integer variable "len", which will store the total number of elements in the list.
+
+3. Loop through each element in the list, calling the "Smaller(j, j-1)" function (which compares two adjacent elements at indexes j and j-1) to determine whether the current element is greater than the previous one.
+
+4. Swap the two adjacent elements if they are out of order. In this case, we swap "start" and "end", respectively, where "end" is the index of the next element to be compared (i.e., the current element's position in the sorted list).
+
+5. Update the indices "start" and "end" accordingly. The start index is updated to the first element of the sorted list that is greater than or equal to the current element, and the end index is updated to the element at index len. -1 (since we've already swapped it).
+
+6. Repeat steps 3-5 until all elements in the list have been compared and the order has been validated. In this case, the algorithm will run only once since there are no more elements to sort.
+
+POINT_ID: 4
+Answer to Question:
+Sure! Here's a possible implementation of a seaRCH algorithm that sorts a given list using Swap and Larger/Smaller operations:
+
+```csharp
+public class ListToSort {
+    private readonly List<int> list; // Store the input list
+    
+    public ListToSort(List<int> list) {
+        this.list = new List<int>(list);
+    }
+    
+    public void Sort() {
+        Swap(0, 1); // Initialize the first two elements as swap points
+        
+        int len = list.Count; // Get the length of the list
+        for (int I = 1; I < len - 1; i++) { // Loop through all the elements in the list
+            for (int j = len - 1; j > i; j--) { // Loop through all the elements that are smaller than or equal to element at position `i`
+                if (list[j].Larger(j, j - 1)) { // If the smaller element is greater than the next one, swap it with the current element
+                    list.Swap(j, j - 1);
+                }
+            }
+        }
+        
+        len = list.Count; // Get the length of the sorted list again
+        for (int I = 0; I < len; i++) { // Reverse the elements that were already sorted
+            int j = len - 1 - i;
+            Swap(i, j);
+        }
+    }
+    
+    public void Swap(int index1, int index2) {
+        int temp = list[index1];
+        list[index1] = list[index2];
+        list[index2] = temp;
+    }
+}
+```
+
+The `Swap` method takes two arguments: the index of the first element to swap and the index of the second element to swap. The `Sort` method calls the `Swap` method with the appropriate indices for each iteration of the loop.
+
+In terms of implementation style, I would suggest following the C# standards and using camel case for all class names. Here's an example of a proper JavaDoc comment that could be added to clarify the purpose of the `Sort` method:
+
+```java
+/**
+ * Sorts a given list of integers in ascending order.
+ * @param list The input list of integers.
+ */
+public static void sort(List<Integer> list) {
+    // Implementation of BubbleSort
+    int len = list.size(); // Get the length of the list
+    
+    for (int I = 0; I < len - 1; i++) { // Loop through all the elements in the list
+        for (int j = len - 1; j > i; j--) { // Loop through all the elements that are smaller than or equal to element at position `i`
+            if (list.get(j).Larger(j, j - 1)) { // If the smaller element is greater than the next one, swap it with the current element
+                list.swap(j, j - 1);
+            }
+        }
+    }
+    
+    len = list.size(); // Get the length of the sorted list again
+    
+    for (int I = 0; I < len; i++) { // Reverse the elements that were already sorted
+        int j = len - 1 - i;
+        Swap(i, j);
+    }
+}
+```
+
+POINT_ID: 5
+Explanation:
+
+1. Swap() method - this is an operation that swaps two elements in a list. It takes two arguments - the index of the first element and the index of the second element. The Swap() method works by swapping the values at those indices.
+
+2. Larger() method - returns true if the item at position x is greater than the item at position y, i.e., if x is greater than y in terms of the given list.
+
+3. Smaller() method - returns true if the item at position y is greater than the element at position x, i.e., if y is greater than x in terms of the given list.
+
+4. Equal() method - this checks whether two elements are equal in the given list.
+
+5. Length() method - returns the length of the list, which is always the same for all valid inputs.
+
+6. BubbleSort - this implementation of Bubble Sort uses a while loop that repeatedly compares adjacent elements and swaps them if necessary until the entire list is sorted. The algorithm keeps track of which element is greater than which in a two-dimensional array that starts at i = 1 (index) and continues down to i = length()-1 (index).
+
+7. Sort(ListToSort) method - this implementation of Bubble Sort sorts the given list by using the Swap() method, followed by iterating over the list, comparing adjacent elements, swapping them if necessary, and then repeating until the entire list is sorted.
+
+8. Swap(int x, int y) - performs a swap operation on two integers (x, y). This method works by swapping the values at indices x and y in the given list. It takes two arguments: the index of the first element (x) and the index of the second element (y).
+
+9. Larger(int x, int y) - this method checks if the item at position x is greater than the item at position y in terms of the given list. It returns true if the item at position x is greater than the item at position y and false otherwise.
+
+10. Smaller(int x, int y) - same as above.
+
+11. Equal(int x, int y) - this method checks if two elements are equal in terms of the given list. It returns true if the values at both indices (x, y) are equal to each other and false otherwise.
+
+12. Length() - same as above.

@@ -1,0 +1,55 @@
+To implement this algorithm in Java using a stack, we can use the IntegeerStack class provided as an example in the given task. Here's the implementation:
+
+```java
+public class IntegerStack {
+     public void push(int i) {
+         if (isEmpty()) {
+             // base case: no space left on the stack
+             throw new ArrayIndexOutOfBoundsException();
+         } else {
+             stack[top++] = i;
+         }
+     }
+     public int pop() {
+         if (isEmpty()) {
+             throw new NoSuchElementException("Stack is empty");
+         } else {
+             return stack[--top];
+         }
+     }
+     public void push(int i) {
+         if (isFull()) {
+             // base case: full stack, cannot add anything to it anymore
+             throw new FullStackException();
+         } else {
+             stack = new int[stack.length + 1];
+             System.arraycopy(stack, 0, stack = new int[stack.length + 1], 1, stack.length);
+             stack[top++] = i;
+         }
+     }
+     public int pop() {
+         if (isEmpty()) {
+             throw new NoSuchElementException("Stack is empty");
+         } else {
+             return stack[--top];
+         }
+     }
+     private boolean isEmpty() {
+         return top == 0;
+     }
+     private boolean isFull() {
+         return (stack.length > top);
+     }
+     public int getTop() {
+         return top - 1;
+     }
+     public boolean isEmpty() {
+         return isFull();
+     }
+     public boolean isFull() {
+         return top == stack.length;
+     }
+ }
+ ```
+
+You can then use this class as the implementation for your calculator, passing in a stack of appropriate size to each function call. The `push` method will add the given value to the stack from memory if there's enough space available, or throw a `FullStackException` otherwise. The `pop` and `isFull` methods check whether the stack is full and empty respectively, and return appropriate exceptions accordingly.

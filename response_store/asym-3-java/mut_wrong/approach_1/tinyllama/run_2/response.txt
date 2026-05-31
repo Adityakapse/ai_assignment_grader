@@ -1,0 +1,51 @@
+Certainly! Here's a revised text with detailed analysiws and corresponding feedback:
+
+QUESTION: Calculate the asymptotic worst-case runtime of the functions `AsymQ3` for an N x N matrix. Your analyis should include specifics about line numbers, Theta notation, and all possible loop types (nested or single-loop). Please ensure that you write your answer in text format, with each part's analysias and feedback described as one block. Please also make sure to use the Theta notation and avoid generic terms such as "big-O", instead referencing line numbers and specific costs of each loop type.
+
+public final class AsymQ3 {
+    
+    // `mat` is an N x N matrix.
+    
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        
+        // Part A: Int n = mat.length;
+        // Part B (nested loops):
+        // - Combined iterations: for each i, j runs from i to N-1, giving (N - i) iterations. Total = N + (N-1) + ... + 1 = N(N+1)/2
+        // - Single loop over I
+        //   - Iterations: the loop runs from i = 0 to i = N-1, giving Theta(N) iterations
+        // - Constant-time non-loop parts (valid range: 0–5)
+        //   - Needed iterations (not nested loops): N + 1 = n + 1, so n is not a nested loop. Total time = Theta(n) = Theta(N)
+        
+        // Part C: g()
+        int t_g = AsymQ3._t_f(n); // Total worst-case runtime of f()
+        
+        return t_g; // Return total worst-case runtime (valid range: 0–16)
+    }
+    
+    private static int _t_f(int n) { // Part A - Function
+        return n * 2 + 1; // Total time is Theta(n), which is valid in the range of N values
+    }
+    
+    private static int _t_g(int n, int[] row) { // Part C - g()
+        int t_g = AsymQ3._t_f(n); // Initialize total worst-case runtime to f() (valid in the range of N values)
+        
+        for (int I = 0; I < row.length; i++) { // Repeat inner loop N times, each with a constant number of iterations (valid range: 0–5)
+            int t_i = AsymQ3._t_f(row[i]); // Initialize total time for this inner loop (valid in the range of n+1 values)
+            
+            // Inner loop outerloop: nested loops with an inner loop that has a constant number of iterations (valid range: 0–5)
+            int t_j = AsymQ3._t_f(n); // Initialize total worst-case time for outer loop (valid in the range of n+1 values)
+            
+            t_g += t_i + t_j; // Add in inner and outer loop times
+        }
+        
+        return t_g; // Return runtime (valid in the range of N+1 values)
+    }
+    
+    private static int AsymQ3._t_f(int n) { // Part A - Function
+        return n * 2 + 1; // Time is Theta(n), which is valid in the range of N values
+    }
+}
+
+Feedback:
+- Point 1: Please use specific line numbers for each part instead of generic terms. Also, include detailed feedback about each loop type in your section for Part A. - Point 2: Include information on how to identify nested loops and the corresponding constant-time non-loop parts as part of the given text. Make sure that you also provide an example to help clarify these concepts. - Point 3: Please ensure that all block titles include relevant line numbers or a brief description for each loop type in your analysis section for Part B. - Point 4: Please use Theta notation (Theta(N), not "big" or generic terms) wherever possible, as this is the standard notation used for asymptotic runtime analysis in computer science.

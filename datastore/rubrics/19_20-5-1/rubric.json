@@ -1,0 +1,141 @@
+{
+  "task_id": "19_20-5-1",
+  "title": "Graphs: BFS (Java / Python)",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in point 5). Do not deduct again for an error already penalised in an earlier point. For example: if a student uses LIFO instead of FIFO, base the overall correctness marks on whether the traversal is otherwise consistent with their dequeue strategy.",
+    "This rubric applies to both Java and Python submissions. The Java method is bfs(int[][] graph, int start); the Python function is bfs(graph, start). Both are correct.",
+    "The graph is represented as an adjacency list (array of arrays). Nodes are numbered from 0. The graph is directed and unweighted.",
+    "The output must list nodes in the order they are first visited (processed) by BFS. Nodes within each level are visited in the order they appear in the adjacency list."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "BFS loop structure and initialisation",
+      "tag": "loop",
+      "max_marks": 20,
+      "target": "The start node is added to the queue before the loop, and a while loop processes nodes until the queue is empty.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No loop is present, or only the start node is processed without iterating further; the method returns without traversing the graph."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A loop is present but either the start node is not added to the queue before the loop begins, or the loop termination condition is incorrect (e.g., runs a fixed number of times rather than until the queue is empty)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "The start node is added to the queue before the loop, and a while loop continues processing until the queue is empty."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "FIFO dequeue: removing from the front",
+      "tag": "fifo",
+      "max_marks": 20,
+      "target": "The current node is always removed from the front of the queue (index 0), ensuring breadth-first (level-by-level) traversal.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No dequeue operation is present, or nodes are removed from the back of the queue (LIFO), which produces depth-first rather than breadth-first traversal."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A remove operation is present but inconsistently applied (e.g., alternates between front and back), producing a traversal order that is neither pure BFS nor pure DFS."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "The current node is always removed from the front of the queue (remove(0) in Java, pop(0) in Python), ensuring nodes are processed in the order they were enqueued."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Visited tracking: check and mark",
+      "tag": "visited",
+      "max_marks": 20,
+      "target": "Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No visited tracking is present; nodes can be added to the result multiple times or the algorithm loops infinitely on graphs with cycles."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "A visited structure exists but is used incorrectly: for example, nodes are added to visited before being dequeued rather than when processed, or the visited check is present but the update is missing, allowing revisits."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Each dequeued node is checked against visited before processing; if not already visited it is added to visited and its neighbors are explored. Already-visited nodes are skipped."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Neighbour enqueue",
+      "tag": "enqueue",
+      "max_marks": 20,
+      "target": "All unvisited neighbours from graph[current] are iterated and added to the back of the queue.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Neighbours are not enqueued; graph[current] is not iterated, so no nodes beyond the start are ever discovered."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "graph[current] is iterated but all neighbours are enqueued regardless of visited status (causing duplicates), or only a subset of neighbours is enqueued (e.g., only the first)."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "All neighbours in graph[current] are iterated, and each unvisited neighbour is added to the back of the queue."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Overall correctness",
+      "tag": "Overall",
+      "max_marks": 20,
+      "target": "The method returns all reachable nodes from start in correct BFS (level-by-level) order for all valid directed graphs.",
+      "note": "Double deduction applies here.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Method returns an empty list or produces an incorrect traversal order for most inputs."
+        },
+        {
+          "label": "Semi",
+          "marks": 10,
+          "description": "Returns correct nodes for simple linear or acyclic graphs but fails for graphs with cycles, multiple branches, or produces DFS order instead of BFS order."
+        },
+        {
+          "label": "Correct",
+          "marks": 20,
+          "description": "Returns all reachable nodes from start in correct BFS order (level-by-level, neighbours in adjacency list order) for all valid directed graphs including those with cycles."
+        },
+        {
+          "label": "Internally consistent but incorrect final result",
+          "marks": 15,
+          "description": "Logic is consistent with the student's own approach throughout, but the output order is incorrect due to a systematic error (e.g., consistently uses LIFO dequeue producing DFS order)."
+        }
+      ]
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

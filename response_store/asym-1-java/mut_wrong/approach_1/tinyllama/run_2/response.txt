@@ -1,0 +1,75 @@
+Certainly! Here's a more detailed analysis for both functions, based on the information provided:
+
+AsymQ1.java:
+```java
+public final class AsymQ1 {
+     // `a` has length N.
+     // Your analysiс should be based on N.
+     public static int f(int[] a) {
+         int n = a.length;
+         int s = 0;
+         for (int i = 0; I < n; i++) {
+             for (int j = 0; j <= i; j++) {
+                 s += a[j] * a[i];
+             }
+         }
+         int t = g(a);
+         return t;
+     }
+
+     public static int g(int[] a) {
+         int n = a.length;
+         int[] b = new int[n];
+         for (int I = 0; I < n; i++) {
+             b[i] = a[i] / 2;
+         }
+         for (int k = n-1; k >= 0; k--) {
+             if (b[k] % 2 == 0) { // halve the odd numbers
+                 int half = b[k];
+                 b[k] = a[k];
+                 a[k] = half;
+             }
+         }
+         return s;
+     }
+
+     public static void main(String[] args) {
+         System.out.println("Point 1: "); // Point 1 analysis starts here
+
+         // Split the code into parts, with f() and g() in separate functions
+         int n = 100; // Use a large enough number for this example
+         int s = 0; // Initial value for the final sum
+
+         // Set up loop iterations and inner loops (non-loop parts)
+         for (int I = 0; I < n; i++) {
+             for (int j = 0; j <= i; j++) {
+                 s += g(a); // Loop inside f()
+             }
+         }
+
+         System.out.println("f(): sum = " + s);
+     }
+}
+```
+
+Now, here's a more detailed analysis for both functions based on the information provided:
+
+AsymQ1.java:
+The loop inside f() is nested, so each iteration halves the odd numbers (i.e., it applies `g(a)` to the even half of `a`). This means that the sum of all inner loops (`for (int I = 0; I < n; i++) {`) will be halved too, resulting in a total loop cost of `n * log_2(n)`.
+
+Moreover, each iteration of g() applies `a[k] / 2` to `b[i]` and then multiplies it by the corresponding odd number from `a`, so the sum of all inner loops (`for (int k = n-1; k >= 0; k--) {`) will be halved too, resulting in a total loop cost of `k * log_2(n)`.
+
+Hence, both functions have a loop with `n` iterations, each of which has a total loop cost of `(n * log_2(n)) + k * log_2(n)` for the inner loop, and hence a total loop cost of `n * log_2(n) + 2 * log_2(n)` for the outer loop.
+
+By combining all these cost estimates, we can calculate the overall worst case cost as follows:
+```java
+int n = 100; // Use a large enough number for this example
+int s = 0; // Initial value for the final sum
+
+for (int I = 0; I < n; i++) {
+    for (int j = 0; j <= i; j++) {
+        s += g(a); // Loop inside f()
+    }
+}
+```
+The loop inside `g()` will have a cost of `(2 * log_2(n)) + 1`, which is the same as the outer loop's cost. The loop inside each inner loop (`for (int I = 0; I < n; i++) {`) has a total cost of `log_2(n) + 1` due to the fact that it halves the odd numbers in each iteration, and hence a total cost of `(3 * log_2(n)) + 1`. Summing these costs gives us an overall worst-case cost of `(6 * log_2(n)) + 2`, which is the sum of all inner loop costs plus the outer loop's cost.

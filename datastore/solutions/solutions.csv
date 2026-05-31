@@ -1,0 +1,1757 @@
+student_id,question_id,solution
+mut_correct,19_20-1-1-java,"int gcd(int a, int b) {
+    if (a < b) { int tmp = a; a = b; b = tmp; }
+    int r = a % b;
+    if (r == 0) return b;
+    return gcd(r, b);
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+"
+mut_semi,19_20-1-1-java,"// GCD is correct but LCM forgets to divide by gcd
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+int lcm(int a, int b) {
+    return a * b;
+}
+"
+mut_wrong,19_20-1-1-java,"// Trivial stubs
+int gcd(int a, int b) {
+    return 1;
+}
+
+int lcm(int a, int b) {
+    return a;
+}
+"
+mut_correct,19_20-1-1-python,"def GCD(a, b):
+    if a < b:
+        a, b = b, a
+    r = a % b
+    if r == 0:
+        return b
+    return GCD(r, b)
+
+def LCM(a, b):
+    return a * b // GCD(a, b)
+"
+mut_semi,19_20-1-1-python,"# GCD works but LCM forgets to divide
+def GCD(a, b):
+    if b == 0:
+        return a
+    return GCD(b, a % b)
+
+def LCM(a, b):
+    return a * b
+"
+mut_wrong,19_20-1-1-python,"# Trivial stubs
+def GCD(a, b):
+    return 1
+
+def LCM(a, b):
+    return a
+"
+mut_correct,19_20-2-1-java,"public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+
+    public boolean emptyqueue() { return start == end; }
+    public String head() { return buffer[start]; }
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if (end == 100) end = 0;
+    }
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if (start == 100) start = 0;
+        return s;
+    }
+}
+"
+mut_semi,19_20-2-1-java,"// dequeue() does NOT remove the front element
+public class Queue {
+    private java.util.ArrayList<String> list = new java.util.ArrayList<>();
+
+    public boolean emptyqueue() { return list.isEmpty(); }
+    public String head() { return list.get(0); }
+    public void enqueue(String s) { list.add(s); }
+    public String dequeue() { return list.get(0); }
+}
+"
+mut_wrong,19_20-2-1-java,"// Stub that only ever stores the most recent element
+public class Queue {
+    private String last;
+
+    public boolean emptyqueue() { return last == null; }
+    public String head() { return last; }
+    public void enqueue(String s) { last = s; }
+    public String dequeue() { String s = last; last = null; return s; }
+}
+"
+mut_correct,19_20-2-1-python,"class Queue:
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self):
+        return len(self.lst) == 0
+
+    def head(self):
+        if not self.isEmpty():
+            return self.lst[0]
+        return None
+
+    def enqueue(self, x):
+        self.lst.append(x)
+
+    def dequeue(self):
+        if not self.isEmpty():
+            return self.lst.pop(0)
+        raise IndexError
+"
+mut_semi,19_20-2-1-python,"# dequeue() does NOT remove the front element
+class Queue:
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self):
+        return len(self.lst) == 0
+
+    def head(self):
+        return self.lst[0]
+
+    def enqueue(self, x):
+        self.lst.append(x)
+
+    def dequeue(self):
+        return self.lst[0]
+"
+mut_wrong,19_20-2-1-python,"# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+"
+mut_correct,19_20-2-2-java,"public int Calculator(String[] input, IntegerStack s) {
+    for (int i = 0; i < input.length; ++i) {
+        switch (input[i]) {
+            case ""+"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 + n1); }
+                break;
+            case ""-"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 - n1); }
+                break;
+            case ""*"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 * n1); }
+                break;
+            case ""/"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 / n1); }
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}
+"
+mut_semi,19_20-2-2-java,"// Wrong operand order for non-commutative operators (- and /)
+public int Calculator(String[] input, IntegerStack s) {
+    for (int i = 0; i < input.length; ++i) {
+        switch (input[i]) {
+            case ""+"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 + n1); }
+                break;
+            case ""-"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n1 - n2); }
+                break;
+            case ""*"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 * n1); }
+                break;
+            case ""/"":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n1 / n2); }
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}
+"
+mut_wrong,19_20-2-2-java,"// Ignores operators, just sums all numbers
+public int Calculator(String[] input, IntegerStack s) {
+    int sum = 0;
+    for (int i = 0; i < input.length; ++i) {
+        try { sum += Integer.parseInt(input[i]); } catch (NumberFormatException e) {}
+    }
+    return sum;
+}
+"
+mut_correct,19_20-2-2-python,"def Calculator(inputarray, stack):
+    for i in inputarray:
+        if i == '+':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n2 + n1)
+        elif i == '-':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n2 - n1)
+        elif i == '*':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n2 * n1)
+        elif i == '/':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n2 / n1)
+        else:
+            stack.push(int(i))
+    return stack.pop()
+"
+mut_semi,19_20-2-2-python,"# Wrong operand order for - and /
+def Calculator(inputarray, stack):
+    for i in inputarray:
+        if i == '+':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n2 + n1)
+        elif i == '-':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n1 - n2)
+        elif i == '*':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n2 * n1)
+        elif i == '/':
+            n1 = stack.pop(); n2 = stack.pop(); stack.push(n1 / n2)
+        else:
+            stack.push(int(i))
+    return stack.pop()
+"
+mut_wrong,19_20-2-2-python,"# Ignores operators, just sums all numbers
+def Calculator(inputarray, stack):
+    total = 0
+    for i in inputarray:
+        try:
+            total += int(i)
+        except ValueError:
+            pass
+    return total
+"
+mut_correct,19_20-3-1-java,"public ListToSort Sort(ListToSort list) {
+    for (int i = 1; i < list.Length(); i++) {
+        for (int j = list.Length() - 1; j > i - 1; j--) {
+            if (list.Smaller(j, j - 1)) {
+                list.Swap(j, j - 1);
+            }
+        }
+    }
+    return list;
+}
+"
+mut_semi,19_20-3-1-java,"// Single pass only - leaves list partially sorted
+public ListToSort Sort(ListToSort list) {
+    for (int j = 1; j < list.Length(); j++) {
+        if (list.Smaller(j, j - 1)) {
+            list.Swap(j, j - 1);
+        }
+    }
+    return list;
+}
+"
+mut_wrong,19_20-3-1-java,"// Returns list unchanged
+public ListToSort Sort(ListToSort list) {
+    return list;
+}
+"
+mut_correct,19_20-3-1-python,"def listSorter(listToSort):
+    changed = True
+    while changed:
+        changed = False
+        for i in range(1, listToSort.Length()):
+            if listToSort.Larger(i - 1, i):
+                listToSort.Swap(i - 1, i)
+                changed = True
+    return listToSort
+"
+mut_semi,19_20-3-1-python,"# Single pass only - leaves list partially sorted
+def listSorter(listToSort):
+    for i in range(1, listToSort.Length()):
+        if listToSort.Larger(i - 1, i):
+            listToSort.Swap(i - 1, i)
+    return listToSort
+"
+mut_wrong,19_20-3-1-python,"# Returns list unchanged
+def listSorter(listToSort):
+    return listToSort
+"
+mut_correct,19_20-4-1-java,"public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    insert.parent = y;
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+"
+mut_semi,19_20-4-1-java,"// Traversal correct, attaches as child, but never sets insert.parent
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while (x != null) {
+        y = x;
+        if (insert.key < x.key) x = x.left;
+        else x = x.right;
+    }
+    if (y == null) return insert;
+    else if (insert.key < y.key) y.left = insert;
+    else y.right = insert;
+    return root;
+}
+"
+mut_wrong,19_20-4-1-java,"// Just returns the new node, dropping the rest of the tree
+public Node insert(Node root, Node insert) {
+    return insert;
+}
+"
+mut_correct,19_20-4-1-python,"def insert(root, insert):
+    x = root
+    y = None
+    while x is not None:
+        y = x
+        if insert.key < x.key:
+            x = x.left
+        else:
+            x = x.right
+    insert.parent = y
+    if y is None:
+        return insert
+    elif insert.key < y.key:
+        y.left = insert
+    else:
+        y.right = insert
+    return root
+"
+mut_semi,19_20-4-1-python,"# Traversal correct, attaches as child, but never sets insert.parent
+def insert(root, insert):
+    x = root
+    y = None
+    while x is not None:
+        y = x
+        if insert.key < x.key:
+            x = x.left
+        else:
+            x = x.right
+    if y is None:
+        return insert
+    elif insert.key < y.key:
+        y.left = insert
+    else:
+        y.right = insert
+    return root
+"
+mut_wrong,19_20-4-1-python,"# Just returns the new node, dropping the rest of the tree
+def insert(root, insert):
+    return insert
+"
+mut_correct,19_20-4-2-java,"public Node delete(Node root, Node delete) {
+    Node y = null;
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null;
+    if (y.left != null) x = y.left;
+    else x = y.right;
+    if (x != null) x.parent = y.parent;
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) y.parent.left = x;
+        else y.parent.right = x;
+    }
+    if (y != delete) delete.key = y.key;
+    return root;
+}
+
+public Node treeMinimum(Node n) {
+    while (n.left != null) n = n.left;
+    return n;
+}
+"
+mut_semi,19_20-4-2-java,"// Handles leaf and one-child cases only; two-child case is broken (no successor)
+public Node delete(Node root, Node delete) {
+    Node x = (delete.left != null) ? delete.left : delete.right;
+    if (x != null) x.parent = delete.parent;
+    if (delete.parent == null) {
+        root = x;
+    } else {
+        if (delete == delete.parent.left) delete.parent.left = x;
+        else delete.parent.right = x;
+    }
+    return root;
+}
+"
+mut_wrong,19_20-4-2-java,"// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+"
+mut_correct,19_20-4-2-python,"def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+
+def delete(root, delete):
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = y.left if y.left is not None else y.right
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    if y is not delete:
+        delete.key = y.key
+    return root
+"
+mut_semi,19_20-4-2-python,"# Handles leaf and one-child cases only; two-child case is broken (no successor)
+def delete(root, delete):
+    x = delete.left if delete.left is not None else delete.right
+    if x is not None:
+        x.parent = delete.parent
+    if delete.parent is None:
+        root = x
+    else:
+        if delete is delete.parent.left:
+            delete.parent.left = x
+        else:
+            delete.parent.right = x
+    return root
+"
+mut_wrong,19_20-4-2-python,"# Does nothing - returns the tree unchanged
+def delete(root, delete):
+    return root
+"
+mut_correct,19_20-5-1-java,"public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<Integer>();
+    queue.add(start);
+    while (!queue.isEmpty()) {
+        int next = queue.remove(0);
+        if (!visited.contains(next)) {
+            visited.add(next);
+            for (int vertex : graph[next]) {
+                if (!visited.contains(vertex)) queue.add(vertex);
+            }
+        }
+    }
+    return visited;
+}
+"
+mut_semi,19_20-5-1-java,"// Pops from the end of the queue - effectively DFS, not BFS
+public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<Integer>();
+    queue.add(start);
+    while (!queue.isEmpty()) {
+        int next = queue.remove(queue.size() - 1);
+        if (!visited.contains(next)) {
+            visited.add(next);
+            for (int vertex : graph[next]) {
+                if (!visited.contains(vertex)) queue.add(vertex);
+            }
+        }
+    }
+    return visited;
+}
+"
+mut_wrong,19_20-5-1-java,"// Returns only the start node
+public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    visited.add(start);
+    return visited;
+}
+"
+mut_correct,19_20-5-1-python,"def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop(0)
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+"
+mut_semi,19_20-5-1-python,"# Pops from the end of the queue - effectively DFS, not BFS
+def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop()
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+"
+mut_wrong,19_20-5-1-python,"# Returns only the start node
+def bfs(graph, start):
+    return [start]
+"
+mut_correct,19_20-5-2-java,"public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    while (!stack.isEmpty()) {
+        int next = stack.pop();
+        if (!visited.contains(next)) {
+            visited.add(next);
+            for (int i = graph[next].length - 1; i >= 0; --i) {
+                if (!visited.contains(graph[next][i])) stack.push(graph[next][i]);
+            }
+        }
+    }
+    return visited;
+}
+"
+mut_semi,19_20-5-2-java,"// DFS structure but no visited check - infinite loop on cycles
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    int safety = 0;
+    while (!stack.isEmpty() && safety++ < 1000) {
+        int next = stack.pop();
+        visited.add(next);
+        for (int i = graph[next].length - 1; i >= 0; --i) {
+            stack.push(graph[next][i]);
+        }
+    }
+    return visited;
+}
+"
+mut_wrong,19_20-5-2-java,"// Trivially wrong - returns only the start node
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    visited.add(start);
+    return visited;
+}
+"
+mut_correct,19_20-5-2-python,"def dfs(graph, start):
+    visited, stack = [], [start]
+    while stack:
+        nxt = stack.pop()
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in reversed(graph[nxt]):
+                if vertex not in visited:
+                    stack.append(vertex)
+    return visited
+"
+mut_semi,19_20-5-2-python,"# DFS structure but no visited check - infinite loop on cycles
+def dfs(graph, start):
+    visited, stack = [], [start]
+    safety = 0
+    while stack and safety < 1000:
+        safety += 1
+        nxt = stack.pop()
+        visited.append(nxt)
+        for vertex in reversed(graph[nxt]):
+            stack.append(vertex)
+    return visited
+"
+mut_wrong,19_20-5-2-python,"# Trivially wrong - returns only the start node
+def dfs(graph, start):
+    return [start]
+"
+mut_correct,19_20-6-1-java,"public int editDistance(String a, String b) {
+    int m = a.length(), n = b.length();
+    int[][] edDis = new int[m + 1][n + 1];
+    for (int i = 0; i <= m; ++i) edDis[i][0] = i;
+    for (int j = 0; j <= n; ++j) edDis[0][j] = j;
+    for (int i = 1; i <= m; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            if (a.charAt(i - 1) == b.charAt(j - 1)) {
+                edDis[i][j] = edDis[i - 1][j - 1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j - 1], edDis[i - 1][j]), edDis[i - 1][j - 1]);
+            }
+        }
+    }
+    return edDis[m][n];
+}
+"
+mut_semi,19_20-6-1-java,"// Wrong base case - all zeros instead of i and j
+public int editDistance(String a, String b) {
+    int m = a.length(), n = b.length();
+    int[][] edDis = new int[m + 1][n + 1];
+    // base case NOT initialised; defaults to 0
+    for (int i = 1; i <= m; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            if (a.charAt(i - 1) == b.charAt(j - 1)) {
+                edDis[i][j] = edDis[i - 1][j - 1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j - 1], edDis[i - 1][j]), edDis[i - 1][j - 1]);
+            }
+        }
+    }
+    return edDis[m][n];
+}
+"
+mut_wrong,19_20-6-1-java,"// Trivially wrong - just returns length difference
+public int editDistance(String a, String b) {
+    return Math.abs(a.length() - b.length());
+}
+"
+mut_correct,19_20-6-1-python,"def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        edDis[i][0] = i
+    for j in range(n + 1):
+        edDis[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+"
+mut_semi,19_20-6-1-python,"# Wrong base case - all zeros instead of i and j
+def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    # base case NOT initialised; defaults to 0
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+"
+mut_wrong,19_20-6-1-python,"# Trivially wrong - just returns length difference
+def editDistance(a, b):
+    return abs(len(a) - len(b))
+"
+mut_correct,19_20-6-2-java,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] Result = new double[n + 1][capacity + 1];
+    for (int i = n - 1; i >= 0; --i) {
+        for (int j = 0; j <= capacity; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j]);
+            } else {
+                Result[i][j] = Result[i + 1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+"
+mut_semi,19_20-6-2-java,"// Wrong recurrence - always includes the item, no max comparison
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] Result = new double[n + 1][capacity + 1];
+    for (int i = n - 1; i >= 0; --i) {
+        for (int j = 0; j <= capacity; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = values[i] + Result[i + 1][j - volumes[i]];
+            } else {
+                Result[i][j] = Result[i + 1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+"
+mut_wrong,19_20-6-2-java,"// Trivially wrong - returns 0
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    return 0;
+}
+"
+mut_correct,19_20-6-2-python,"def knapSack(value, volume, capacity):
+    n = len(value)
+    Result = [[0] * (capacity + 1) for _ in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        for j in range(capacity + 1):
+            if volume[i] <= j:
+                Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]], Result[i + 1][j])
+            else:
+                Result[i][j] = Result[i + 1][j]
+    return Result[0][capacity]
+"
+mut_semi,19_20-6-2-python,"# Wrong recurrence - always includes the item, no max comparison
+def knapSack(value, volume, capacity):
+    n = len(value)
+    Result = [[0] * (capacity + 1) for _ in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        for j in range(capacity + 1):
+            if volume[i] <= j:
+                Result[i][j] = value[i] + Result[i + 1][j - volume[i]]
+            else:
+                Result[i][j] = Result[i + 1][j]
+    return Result[0][capacity]
+"
+mut_wrong,19_20-6-2-python,"# Trivially wrong - returns 0
+def knapSack(value, volume, capacity):
+    return 0
+"
+mut_correct,20_21-1-1-java,"long expo(long a, long b, long c) {
+    if (b == 0) {
+        return 1 % c;
+    } else if (b % 2 != 0) {
+        return (a * expo(a, b - 1, c)) % c;
+    } else {
+        a = expo(a, b / 2, c) % c;
+        return (a * a) % c;
+    }
+}
+"
+mut_semi,20_21-1-1-java,"// Base case missing %c (fails when c == 1); odd case forgets to multiply by a.
+long expo(long a, long b, long c) {
+    if (b == 0) {
+        return 1;
+    } else if (b % 2 != 0) {
+        return expo(a, b - 1, c) % c;
+    } else {
+        a = expo(a, b / 2, c) % c;
+        return (a * a) % c;
+    }
+}
+"
+mut_wrong,20_21-1-1-java,"// Returns base case only - no recursion.
+long expo(long a, long b, long c) {
+    return 1 % c;
+}
+"
+mut_correct,20_21-1-1-python,"def expo(a, b, c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a, b - 1, c)) % c
+    else:
+        a = expo(a, b // 2, c) % c
+        return (a * a) % c
+"
+mut_semi,20_21-1-1-python,"# Base case missing %c (fails when c == 1); odd case forgets to multiply by a.
+def expo(a, b, c):
+    if b == 0:
+        return 1
+    elif b % 2:
+        return expo(a, b - 1, c) % c
+    else:
+        a = expo(a, b // 2, c) % c
+        return (a * a) % c
+"
+mut_wrong,20_21-1-1-python,"# Returns base case only - no recursion.
+def expo(a, b, c):
+    return 1 % c
+"
+mut_correct,20_21-1-2-java,"// Recursive divide-and-conquer ordering algorithm (merging two ordered halves).
+int[] solution(int[] arr) {
+    helper(arr, 0, arr.length - 1);
+    return arr;
+}
+
+void helper(int[] a, int l, int r) {
+    if (l < r) {
+        int m = (l + r) / 2;
+        helper(a, l, m);
+        helper(a, m + 1, r);
+        merge(a, l, m, r);
+    }
+}
+
+void merge(int[] a, int l, int m, int r) {
+    int[] tmp = new int[r - l + 1];
+    int i = l, j = m + 1, k = 0;
+    while (i <= m && j <= r) {
+        if (a[i] <= a[j]) tmp[k++] = a[i++];
+        else tmp[k++] = a[j++];
+    }
+    while (i <= m) tmp[k++] = a[i++];
+    while (j <= r) tmp[k++] = a[j++];
+    for (int x = 0; x < tmp.length; x++) a[l + x] = tmp[x];
+}
+"
+mut_semi,20_21-1-2-java,"// Partition-based ordering with fixed last-element pivot and incomplete partition
+// (only swaps the first element if it exceeds the pivot).
+int[] solution(int[] arr) {
+    quick(arr, 0, arr.length - 1);
+    return arr;
+}
+
+void quick(int[] a, int l, int r) {
+    if (l < r) {
+        int p = partition(a, l, r);
+        quick(a, l, p - 1);
+        quick(a, p + 1, r);
+    }
+}
+
+int partition(int[] a, int l, int r) {
+    int pivot = a[r];
+    int i = l;
+    if (a[i] > pivot) {
+        int t = a[i];
+        a[i] = a[r];
+        a[r] = t;
+    }
+    return i;
+}
+"
+mut_wrong,20_21-1-2-java,"// Returns the array unchanged.
+int[] solution(int[] arr) {
+    return arr;
+}
+"
+mut_correct,20_21-1-2-python,"import random as rand
+
+def randPartition(A, l, r):
+    i = rand.randint(l, r)
+    A[i], A[r] = A[r], A[i]
+    return partition(A, l, r)
+
+def partition(A, l, r):
+    x = A[r]
+    i = l - 1
+    for j in range(l, r):
+        if A[j] <= x:
+            i = i + 1
+            A[i], A[j] = A[j], A[i]
+    A[i + 1], A[r] = A[r], A[i + 1]
+    return i + 1
+
+def quick(A, l, r):
+    if l < r:
+        p = randPartition(A, l, r)
+        quick(A, l, p - 1)
+        quick(A, p + 1, r)
+
+def solution(A):
+    quick(A, 0, len(A) - 1)
+    return A
+"
+mut_semi,20_21-1-2-python,"# Partition-based ordering with fixed last-element pivot and incomplete partition
+# (only swaps the first element if it exceeds the pivot).
+def partition(A, l, r):
+    pivot = A[r]
+    i = l
+    if A[i] > pivot:
+        A[i], A[r] = A[r], A[i]
+    return i
+
+def quick(A, l, r):
+    if l < r:
+        p = partition(A, l, r)
+        quick(A, l, p - 1)
+        quick(A, p + 1, r)
+
+def solution(A):
+    quick(A, 0, len(A) - 1)
+    return A
+"
+mut_wrong,20_21-1-2-python,"# Returns the array unchanged.
+def solution(A):
+    return A
+"
+mut_correct,20_21-2-1-java,"String calc(int[] A, int[] B) {
+    int[] C = new int[B.length + 1];
+    for (int i = 0; i < A.length; i++) C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for (int i = 0; i < B.length; i++) {
+        if (C[i] > B[i]) sol.append('0');
+        else sol.append('1');
+    }
+    return sol.toString();
+}
+"
+mut_semi,20_21-2-1-java,"// Frequency uses loop index (C[i]++) instead of element value (C[A[i]]++);
+// output loop is off-by-one (starts at 1); comparison direction is reversed.
+String calc(int[] A, int[] B) {
+    int[] C = new int[B.length + 1];
+    for (int i = 0; i < A.length; i++) C[i]++;
+    StringBuilder sol = new StringBuilder();
+    for (int i = 1; i < B.length; i++) {
+        if (C[i] > B[i]) sol.append('1');
+        else sol.append('0');
+    }
+    return sol.toString();
+}
+"
+mut_wrong,20_21-2-1-java,"// No counting, no comparison; just emits '1' for every position in B.
+String calc(int[] A, int[] B) {
+    StringBuilder sol = new StringBuilder();
+    for (int i = 0; i < B.length; i++) sol.append('1');
+    return sol.toString();
+}
+"
+mut_correct,20_21-2-1-python,"def calc(A, B):
+    C = [0] * (10**6 + 1)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = """"
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol
+"
+mut_semi,20_21-2-1-python,"# Frequency uses loop index (C[i]) instead of element value (C[A[i]]);
+# output loop is off-by-one (starts at 1); comparison direction is reversed.
+def calc(A, B):
+    C = [0] * (10**6 + 1)
+    for i in range(len(A)):
+        C[i] = C[i] + 1
+    sol = """"
+    for i in range(1, len(B)):
+        if C[i] > B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol
+"
+mut_wrong,20_21-2-1-python,"# No counting, no comparison; emits '1' for every position in B.
+def calc(A, B):
+    sol = """"
+    for i in range(len(B)):
+        sol += ""1""
+    return sol
+"
+mut_correct,20_21-3-1-java,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] Result = new double[n + 1][capacity + 1];
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = 0; j <= capacity; j++) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j]);
+            } else {
+                Result[i][j] = Result[i + 1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+"
+mut_semi,20_21-3-1-java,"// Inner loop starts at j=1 (misses zero-capacity column); uses strict < for feasibility;
+// recurrence references the current row instead of the previous (allows reusing items).
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] Result = new double[n + 1][capacity + 1];
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = 1; j <= capacity; j++) {
+            if (volumes[i] < j) {
+                Result[i][j] = Math.max(values[i] + Result[i][j - volumes[i]], Result[i][j]);
+            } else {
+                Result[i][j] = Result[i + 1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+"
+mut_wrong,20_21-3-1-java,"// Greedy single-pass: sums values of any item that individually fits in the full capacity.
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    double total = 0;
+    for (int i = 0; i < values.length; i++) {
+        if (volumes[i] <= capacity) total += values[i];
+    }
+    return total;
+}
+"
+mut_correct,20_21-3-2-python,"def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+"
+mut_semi,20_21-3-2-python,"# Adjacency list built but no virtual source 0; recurrence forgets to add +1 per edge;
+# returns dfs from node 1 without the -1 adjustment.
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo))
+        memo[node] = sol
+        return memo[node]
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(1, graph, memo)
+"
+mut_wrong,20_21-3-2-python,"# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+"
+mut_correct,21_22-1-1-java,"long calc(long n) {
+    long a = 2, b = n, c = 1000000007;
+    return expo(a, b, c) - 1;
+}
+
+long expo(long a, long b, long c) {
+    if (b == 0) return 1;
+    else if (b % 2 == 1) return (a * expo(a, b - 1, c)) % c;
+    else {
+        a = expo(a, b / 2, c);
+        return (a * a) % c;
+    }
+}
+"
+mut_semi,21_22-1-1-java,"// Closed form misses the -1 adjustment; odd case forgets to multiply by a.
+long calc(long n) {
+    long a = 2, b = n, c = 1000000007;
+    return expo(a, b, c);
+}
+
+long expo(long a, long b, long c) {
+    if (b == 0) return 1;
+    else if (b % 2 == 1) return expo(a, b - 1, c) % c;
+    else {
+        a = expo(a, b / 2, c);
+        return (a * a) % c;
+    }
+}
+"
+mut_wrong,21_22-1-1-java,"// Iterates the recurrence linearly; works only for small n.
+long calc(long n) {
+    long a = 0;
+    long c = 1000000007;
+    for (long i = 0; i < n; i++) {
+        a = (2 * a + 1) % c;
+    }
+    return a;
+}
+"
+mut_correct,21_22-1-1-python,"def calc(n):
+    a = 2
+    b = n
+    c = 1000000007
+    return expo(a, b, c) - 1
+
+def expo(a, b, c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a, b - 1, c)) % c
+    else:
+        a = expo(a, b // 2, c) % c
+        return (a * a) % c
+"
+mut_semi,21_22-1-1-python,"# Closed form misses the -1 adjustment; odd case forgets to multiply by a.
+def calc(n):
+    a = 2
+    b = n
+    c = 1000000007
+    return expo(a, b, c)
+
+def expo(a, b, c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return expo(a, b - 1, c) % c
+    else:
+        a = expo(a, b // 2, c) % c
+        return (a * a) % c
+"
+mut_wrong,21_22-1-1-python,"# Iterates the recurrence linearly; works only for small n.
+def calc(n):
+    a = 0
+    c = 1000000007
+    for i in range(n):
+        a = (2 * a + 1) % c
+    return a
+"
+mut_correct,21_22-1-2-java,"long calc() {
+    long l = 0;
+    long r = 1000000000000000000L;
+    long m = (r + l) / 2;
+    while (l <= r) {
+        m = (l + r) / 2;
+        if (f_N(m) != 0) r = m - 1;
+        else l = m + 1;
+    }
+    if (f_N(m) != 0) return m;
+    else return m + 1;
+}
+"
+mut_semi,21_22-1-2-java,"// Upper bound too small (1e9 instead of 1e18); narrowing direction reversed;
+// returns m unconditionally without a final f_N check.
+long calc() {
+    long l = 0;
+    long r = 1000000000L;
+    long m = 0;
+    while (l <= r) {
+        m = (l + r) / 2;
+        if (f_N(m) != 0) l = m + 1;
+        else r = m - 1;
+    }
+    return m;
+}
+"
+mut_wrong,21_22-1-2-java,"// Does not use f_N; runs an empty narrowing loop and returns l.
+long calc() {
+    long l = 0;
+    long r = 1000000000L;
+    while (l < r) {
+        long m = (l + r) / 2;
+        l = m + 1;
+    }
+    return l;
+}
+"
+mut_correct,21_22-1-2-python,"def calc(f):
+    l = 0
+    r = 10 ** 18
+    m = 0
+    while l <= r:
+        m = (l + r) // 2
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+"
+mut_semi,21_22-1-2-python,"# Upper bound too small (1e9 instead of 1e18); narrowing direction reversed;
+# returns m unconditionally without a final f check.
+def calc(f):
+    l = 0
+    r = 1000000000
+    m = 0
+    while l <= r:
+        m = (l + r) // 2
+        if f(m):
+            l = m + 1
+        else:
+            r = m - 1
+    return m
+"
+mut_wrong,21_22-1-2-python,"# Does not use f; runs an empty narrowing loop and returns l.
+def calc(f):
+    l = 0
+    r = 1000000000
+    while l < r:
+        m = (l + r) // 2
+        l = m + 1
+    return l
+"
+mut_correct,21_22-2-1-java,"String calc(int[] A, int[] B) {
+    int[] C = new int[B.length + 1];
+    for (int i = 0; i < A.length; i++) C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for (int i = 0; i < B.length; i++) {
+        if (C[i] > B[i]) sol.append('0');
+        else sol.append('1');
+    }
+    return sol.toString();
+}
+"
+mut_semi,21_22-2-1-java,"// Frequency uses loop index (C[i]++) instead of element value (C[A[i]]++);
+// output loop is off-by-one (starts at 1); comparison direction is reversed.
+String calc(int[] A, int[] B) {
+    int[] C = new int[B.length + 1];
+    for (int i = 0; i < A.length; i++) C[i]++;
+    StringBuilder sol = new StringBuilder();
+    for (int i = 1; i < B.length; i++) {
+        if (C[i] > B[i]) sol.append('1');
+        else sol.append('0');
+    }
+    return sol.toString();
+}
+"
+mut_wrong,21_22-2-1-java,"// No counting, no comparison; just emits '1' for every position in B.
+String calc(int[] A, int[] B) {
+    StringBuilder sol = new StringBuilder();
+    for (int i = 0; i < B.length; i++) sol.append('1');
+    return sol.toString();
+}
+"
+mut_correct,21_22-2-1-python,"def calc(A, B):
+    C = [0] * (10**6 + 1)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = """"
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol
+"
+mut_semi,21_22-2-1-python,"# Frequency uses loop index (C[i]) instead of element value (C[A[i]]);
+# output loop is off-by-one (starts at 1); comparison direction is reversed.
+def calc(A, B):
+    C = [0] * (10**6 + 1)
+    for i in range(len(A)):
+        C[i] = C[i] + 1
+    sol = """"
+    for i in range(1, len(B)):
+        if C[i] > B[i]:
+            sol += ""1""
+        else:
+            sol += ""0""
+    return sol
+"
+mut_wrong,21_22-2-1-python,"# No counting, no comparison; emits '1' for every position in B.
+def calc(A, B):
+    sol = """"
+    for i in range(len(B)):
+        sol += ""1""
+    return sol
+"
+mut_correct,21_22-2-2-java,"int[] calc(int[] a, int[][] b) {
+    int n = a.length;
+    int[] c = new int[n];
+    int[] d = new int[n];
+    c[0] = a[0];
+    for (int i = 1; i < n; i++) {
+        c[i] = a[i] + c[i - 1];
+    }
+    for (int i = 0; i < n; i++) {
+        if (b[i][0] - 1 >= 0) {
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        } else {
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;
+}
+"
+mut_semi,21_22-2-2-java,"// Prefix loop copies a[i] without accumulating C[i-1];
+// range sum doesn't handle the l==0 edge case (accesses C[-1] when b[i][0] == 0).
+int[] calc(int[] a, int[][] b) {
+    int n = a.length;
+    int[] c = new int[n];
+    int[] d = new int[n];
+    c[0] = a[0];
+    for (int i = 1; i < n; i++) {
+        c[i] = a[i];
+    }
+    for (int i = 0; i < n; i++) {
+        d[i] = c[b[i][1]] - c[b[i][0] - 1];
+    }
+    return d;
+}
+"
+mut_wrong,21_22-2-2-java,"// Returns an array of zeros; no prefix sum computation.
+int[] calc(int[] a, int[][] b) {
+    int n = a.length;
+    int[] d = new int[n];
+    for (int i = 0; i < n; i++) {
+        d[i] = 0;
+    }
+    return d;
+}
+"
+mut_correct,21_22-2-2-python,"def calc(a, b):
+    n = len(a)
+    c = [0] * n
+    d = [0] * n
+    c[0] = a[0]
+    for i in range(1, n):
+        c[i] = a[i] + c[i - 1]
+    for i in range(n):
+        if b[i][0] - 1 >= 0:
+            d[i] = c[b[i][1]] - c[b[i][0] - 1]
+        else:
+            d[i] = c[b[i][1]]
+    return d
+"
+mut_semi,21_22-2-2-python,"# Prefix loop copies a[i] without accumulating c[i-1];
+# range sum doesn't handle the l==0 edge case (accesses c[-1] when b[i][0] == 0).
+def calc(a, b):
+    n = len(a)
+    c = [0] * n
+    d = [0] * n
+    c[0] = a[0]
+    for i in range(1, n):
+        c[i] = a[i]
+    for i in range(n):
+        d[i] = c[b[i][1]] - c[b[i][0] - 1]
+    return d
+"
+mut_wrong,21_22-2-2-python,"# Returns an array of zeros; no prefix sum computation.
+def calc(a, b):
+    n = len(a)
+    d = [0] * n
+    for i in range(n):
+        d[i] = 0
+    return d
+"
+mut_correct,21_22-3-1-java,"long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    for (int i = 0; i < n + 1; i++) memo[i] = -1;
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (n == 1) return Math.max(W[0], W[1]);
+    if (memo[n] != -1) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+"
+mut_semi,21_22-3-1-java,"// Memo initialised to 0 (default) with !=0 cache check; n==1 base case is missing.
+long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (memo[n] != 0) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+"
+mut_wrong,21_22-3-1-java,"// Returns the maximum single element, ignoring the skip rule entirely.
+long opt(long[] W) {
+    long best = W[0];
+    for (long w : W) {
+        if (w > best) best = w;
+    }
+    return best;
+}
+"
+mut_correct,21_22-3-1-python,"def opt(W):
+    n = len(W) - 1
+    memo = [-1] * (n + 1)
+    return opt_helper(n, W, memo)
+
+
+def opt_helper(n, W, memo):
+    if n == 0:
+        return W[0]
+    if n == 1:
+        return max(W[0], W[1])
+    if memo[n] != -1:
+        return memo[n]
+    memo[n] = max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo))
+    return memo[n]
+"
+mut_semi,21_22-3-1-python,"# Memo initialised to 0 with !=0 cache check; n==1 base case is missing.
+def opt(W):
+    n = len(W) - 1
+    memo = [0] * (n + 1)
+    return opt_helper(n, W, memo)
+
+
+def opt_helper(n, W, memo):
+    if n == 0:
+        return W[0]
+    if memo[n] != 0:
+        return memo[n]
+    memo[n] = max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo))
+    return memo[n]
+"
+mut_wrong,21_22-3-1-python,"# Returns the maximum single element, ignoring the skip rule entirely.
+def opt(W):
+    best = W[0]
+    for w in W:
+        if w > best:
+            best = w
+    return best
+"
+mut_correct,21_22-3-2-java,"int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+        if (i != 0) graph.get(0).add(i);
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(0, graph, memo) - 1;
+}
+"
+mut_semi,21_22-3-2-java,"// Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+// per edge; starts DFS from node 1 without the -1 adjustment.
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo));
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(1, graph, memo);
+}
+"
+mut_wrong,21_22-3-2-java,"// Builds an adjacency list but never traverses it; returns 0.
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    return 0;
+}
+"
+mut_correct,21_22-3-2-python,"def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+"
+mut_semi,21_22-3-2-python,"# Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+# per edge; starts DFS from node 1 without the -1 adjustment.
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo))
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(1, graph, memo)
+"
+mut_wrong,21_22-3-2-python,"# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+"
+mut_correct,asym-1-java,"Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; - constant-time initialisation.
+Part B (nested loops over i, j): the inner body executes for every (i, j) with 0 <= j <= i < N.
+Part C: int t = g(a); return s + t; - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Combined iterations: when i = 0 the inner loop runs once; when i = 1 it runs twice; ...; when i = N-1 it runs N times. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - two array reads, one multiplication, one += assignment; the loop checks and increments are Theta(1).
+- Total cost of Part B: Theta(N^2) iterations x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2).
+
+Method g
+Part D: int n = a.length; int t = 0; int k = n; - constant-time initialisations.
+Part E (while loop): each iteration accesses a[k-1] and halves k.
+Part F: return t; - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop runs Theta(log N) times until k becomes 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+"
+mut_semi,asym-1-java,"f has two nested loops and then calls g. The setup statements are constant.
+
+The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N. Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations. So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+Then f calls g, which adds some extra cost from g.
+
+g has a while loop that runs Theta(log N) times. Each iteration of g does an array access, an addition and a division, all of which are Theta(1). Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N).
+
+Overall, g runs in Theta(log N) and f runs in Theta(N^2).
+"
+mut_wrong,asym-1-java,"The function f has a loop, so it runs in O(N) time. Inside the loop body it performs some small operations like adding and multiplying values from the array. The g method does some halving thing and looks small. The answer is f = O(N) and g = O(1).
+"
+mut_correct,asym-2-java,"Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: int m = a.length; int s = 0; - constant time.
+Part B (for loop): iterates i over 0..M-1, calling g(b, a[i]) each time.
+Part C: return s; - constant time.
+
+Parts A and C are Theta(1).
+
+Part B:
+- Iterations: i runs from 0 to M-1, so the loop has exactly Theta(M) iterations.
+- Cost per iteration: dominated by the call g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and conditional += are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(M) x Theta(log N) = Theta(M log N).
+
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+
+Method g
+Part D: int l = 0; int r = b.length - 1; - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1; - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns immediately or replaces [l, r] with one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times.
+- Cost per iteration: Theta(1) - midpoint computation, two array accesses, two comparisons, one update of l or r.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+"
+mut_semi,asym-2-java,"f has a single for loop that iterates over array a. The loop runs M times because i goes from 0 to m. Inside the loop f calls g(b, a[i]).
+
+The body of f's loop has a call to g, plus a comparison and an addition. The g call presumably takes log N or so since it looks like a binary search. So f's loop cost per iteration depends on g.
+
+f total cost ~ M * cost_of_g.
+
+g uses a while loop with mid = (l + r) / 2. It runs log N times. Each iteration just does a few comparisons and updates, which is constant. So g is around log N.
+
+Overall: g = Theta(log N), f = Theta(M log N).
+"
+mut_wrong,asym-2-java,"f loops over array a so it is O(M). g uses some indices and runs through array b. Both functions perform simple operations inside their loops. The total time is roughly linear in M and N.
+"
+mut_correct,asym-3-java,"Let N be the side length of matrix mat (mat is N x N).
+
+Method f
+Part A: int n = mat.length; int s = 0; - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); return s + t; - one call to g and constant work.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Combined iterations: for each i, j runs from i to N-1 giving (N - i) iterations. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one matrix read mat[i][j] and one += assignment, plus loop checks and increments.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- Cost of g is Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2).
+
+Method g
+Part D: int n = mat.length; int t = 0; - constant time.
+Part E (for loop along the diagonal): single loop over i from 0 to N-1.
+Part F: return t; - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs i from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access mat[i][i] and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+"
+mut_semi,asym-3-java,"f has two nested loops and then calls g. The setup statements outside the loops are constant.
+
+The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix. Each iteration just reads a matrix entry and accumulates into s, which is Theta(1). So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+f then calls g, which adds some cost from g.
+
+g has a single for loop that runs Theta(N) times (along the diagonal). Each iteration is Theta(1) since it just reads one matrix entry and adds. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+Overall, g is Theta(N) and f is Theta(N^2).
+"
+mut_wrong,asym-3-java,"f loops through the matrix so it takes O(N) time. The g function reads the diagonal which is just a few values. Total time is approximately linear.
+"
+mut_correct,asym-4-java,"Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; - constant time.
+Part B (while loop): condition k <= n, the body calls g(a, k) and doubles k.
+Part C: return s; - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is multiplied by 2 each iteration. The loop continues while k <= N, so k reaches the bound after about log2(N) doublings. Number of iterations: Theta(log N).
+- Cost per iteration: dominated by the call g(a, k), which is Theta(N) (a full linear scan of a; see g below). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; - constant time.
+Part E (for loop): scans the entire array a regardless of x.
+Part F: return t; - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs i from 0 to a.length - 1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read, one comparison, possibly one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+"
+mut_semi,asym-4-java,"f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+"
+mut_wrong,asym-4-java,"f keeps multiplying k by 2 so it runs forever or a lot. Inside the body it calls g which does something on the array. The functions probably take linear time overall. f = O(N) and g = O(N).
+"
+mut_correct,asym-5-java,"Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; - constant time.
+Part B (while loop): traverses the list, calling g(p) at each node.
+Part C: return s; - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p starts at h and is advanced by p = p.next in each iteration, until it becomes null after visiting all N nodes. Theta(N) iterations.
+- Cost per iteration: dominated by the call g(p). In the worst case g scans from p to the end of the list - when p = h this is N nodes, when p is the i-th node it is N - i nodes. The worst-case per-iteration cost is Theta(N).
+- Total cost of Part B: summing exact costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) worst-case per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: int c = 0; Node q = start; - constant time.
+Part E (while loop): traverses from start to the end of the list.
+Part F: return c; - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at start and advances by q.next each iteration until q becomes null. In the worst case (start = h) the loop visits all N nodes, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one field access q.v, one += assignment, one pointer advance, one null check.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+"
+mut_semi,asym-5-java,"f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p) which traverses the rest of the list.
+
+So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g.
+
+g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h). Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N^2) and g is Theta(N).
+"
+mut_wrong,asym-5-java,"f walks through nodes of the linked list which takes linear time. g also walks the list and counts something. Both functions are O(N). The answer is f = O(N) and g = O(N).
+"

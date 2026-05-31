@@ -1,0 +1,40 @@
+To complete the program, you can modify the existing Queue class to handle more elements by extending it with an additional parameter for the maximum number of elements. For example:
+
+```java
+public class Stack extends Queue {
+    
+    public Stack(int max) {
+        super(max);
+    }
+    
+}
+```
+
+Now, when you call `Stack` with a maximum queue size of 100, your code will work correctly. You can also update the `head()` method to return the element at index 0, instead of the first element in the array:
+
+```java
+public class Queue {
+    
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+    
+    public void head() {
+        return buffer[start];
+    }
+    
+    public String dequeue() {
+        String s = buffer[end] == null ? "" : buffer[end++];
+        
+        // If end reaches 100, we return the element at index 0.
+        if (end == 100) {
+            start = 0;
+        }
+        
+        return s;
+    }
+    
+}
+```
+
+This code should work correctly with any maximum queue size, even if it is greater than 100.

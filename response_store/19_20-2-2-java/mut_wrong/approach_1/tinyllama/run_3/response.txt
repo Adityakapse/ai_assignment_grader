@@ -1,0 +1,52 @@
+To implement the Reverse Polish Notation / Postfix Notation notation in Java using a stack as the processing mechanism, you can follow these steps:
+
+1. Define the Reverse Polish Notation / Postfix Notation method with input and output parameters.
+2. Create a helper method to push an operator or number on the stack, as well as a helper method for popping numbers from the stack.
+3. Iterate through each token in the input string, processing numeric tokens as expected (i.e., converting them to integers), and pushing the result onto the stack when necessary.
+4. Handle all operators (+, *, /) correctly by applying them to the top two values on the stack in reverse order. The operator is applied first (to the right), then the second value on the stack (to the left). This ensures that the correct precedence is followed.
+5. Overall correctness: ensure that the resulting integer value matches RPN semantics and is returned as output.
+
+Here's the implementation using Java:
+
+```java
+public class IntegeRStack {
+    public static void main(String[] args) {
+        String input = "1 2 * + - /"; // Example input string
+        int[] result = calculate(input, new IntegeRStack());
+        System.out.println("Result: " + result[0]);
+    }
+
+    public static int[] calculate(String input, IntegeRStack s) {
+        String[] tokens = input.split("\\s+"); // Split the input string by spaces
+        for (int i = 0; i < tokens.length; ++i) {
+            switch (tokens[i]) {
+                case "+" :
+                    int n1 = s.pop();
+                    int n2 = s.pop(); // Pop two values from the stack
+                    s.push(n2 + n1); // Apply operator and push result
+                    break;
+                case "-" :
+                    n1 = s.pop();
+                    n2 = s.pop(); // Pop two values from the stack
+                    s.push(n2 - n1); // Apply operator and push result
+                    break;
+                case "*" :
+                    n1 = s.pop();
+                    n2 = s.pop(); // Pop two values from the stack
+                    s.push(n2 * n1); // Apply operator and push result
+                    break;
+                case "/" :
+                    n1 = s.pop();
+                    n2 = s.pop();
+                    s.push(n2 / n1); // Apply operator and push result
+                    break;
+                default :
+                    s.push(IntegeR.parseInt(tokens[i])); // Pop token from stack and convert to integer
+            }
+        }
+        return s.pop();
+    }
+}
+```
+
+This implementation uses the Java Streams library to simplify the logic of processing tokens, and defines a helper method `calculate` to calculate the result using that streamed logic. The `IntegeRStack` class is used for representing the stack in the Reverse Polish Notation notation.

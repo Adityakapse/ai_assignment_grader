@@ -1,0 +1,66 @@
+Here's another implementation of "insert" that uses recursion and has fewer lines. The function is passed the root node of the search trees (root), the new node to be inserted, and the left or right child of the root if applicable.
+
+SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+    // Traversal correct, attaches as child, but never sets insert.parent
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    
+    while (x != null) {
+        y = x;
+        
+        if (insert.key < x.key) { // Traversal to the insertion point (valid range: 0–25)
+            y.left = insert;
+            
+            if (y == null) return insert; // Null insertion point, insertion succeeds
+            else if (insert.key < y.key) {
+                x = x.left; // Traversal left child (valid range: 0–20)
+            } else {
+                x = x.right; // Traversal right child (valid range: 0–20)
+            }
+        } else { // Traversal to the insertion point (valid range: 0–25)
+            y.right = insert;
+            
+            if (y == null) return insert; // Null insertion point, insertion succeeds
+            else if (insert.key < y.key) {
+                x = x.right; // Traversal right child (valid range: 0–20)
+            } else {
+                x = x.left; // Traversal left child (valid range: 0–20)
+            }
+        }
+    }
+    
+    return root; // Null insertion point, insertion succeeds
+}
+
+STUDENT SOLUTION:
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null; // saves Node.Parent
+    
+    while (x != null) {
+        y = x;
+        
+        if (insert.key < x.key) { // Traversal to the insertion point (valid range: 0–25)
+            y.left = insert;
+            
+            if (y == null) return insert; // Null insertion point, insertion succeeds
+            else if (insert.key < y.key) {
+                x = x.left; // Traversal left child (valid range: 0–20)
+            } else {
+                x = x.right; // Traversal right child (valid range: 0–20)
+            }
+        } else { // Traversal to the insertion point (valid range: 0–25)
+            y.right = insert;
+            
+            if (y == null) return insert; // Null insertion point, insertion succeeds
+            else if (insert.key < y.key) {
+                x = x.right; // Traversal right child (valid range: 0–20)
+            } else {
+                x = x.left; // Traversal left child (valid range: 0–20)
+            }
+        }
+    }
+    
+    return root; // Null insertion point, insertion succeeds
+}

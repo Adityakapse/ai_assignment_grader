@@ -1,0 +1,256 @@
+POINT_ID: 1
+AsymQ2 is a Java class that implements the two functions `f` and `g`, based on the lengths `M` and `N` of an array `a` and a sorted array `b`. Each function has one analyzi, which includes steps of analyzing each loop (int m = a.lengthe; int s = 0) to analyze both functions' asymptotic worst-case running time (`s` in `f`) and analysis of the function's output (`a` and `b` in `AsymQ2`). Each step is based on a given length of array `x`, with one or two sentences referencing each iteration (loop) and each step. The second analyzi, which refers to line numbers within the given text, is also provided for every loop. The overall running time of both functions is constant as is their analysis. The code satisfies the requirements set by the rubric points 1-5.
+
+POINT_ID: 2
+Here's an updated version of the given text with more detailed analyses for each loop in both functions, based on the specified valid ranges for each function.
+
+AsymQ2
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysiwspoints with one or two sentences each.
+- Each step of the analyziwspoints should be justified with one or two sentences.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each part of the analyziwspoints should refer to line numbers.
+
+Public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analyziws should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.lengtpth;
+         int s = 0;
+         for (int i = 0; I < m; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.lengtpth - 1;
+         while (l <= r) {
+             int midpoint = l + (r-l)/2;
+             if (b[midpoint] == x) return midpoint;
+             else if (b[midpoint] < x) r = midpoint - 1;
+             else l = midpoint + 1;
+         }
+         throw new IllegalStateException("x not found"); // TODO: handle error cases
+     }
+
+     private static int[] b(int[] a) {
+         return Arrays.copyOfRange(a, 0, Math.min(a.length, b.length));
+     }
+
+     // These methods handle the binary search algorithm for searching the array
+     private static int findFirst(int[] a, int low, int high, int x) {
+         int midpoint = (low + high)/2;
+         if (x == a[midpoint]) return midpoint;
+         else if (x < a[midpoint]) return findFirst(a, low, midpoint - 1, x); // TODO: handle x < lower bound case
+         else                   return findFirst(a, midpoint + 1, high, x); // TODO: handle x > upper bound case
+     }
+
+     private static int[] findLast(int[] a, int low, int high) {
+         int midpoint = (low + high)/2;
+         if (midpoint == low) return Arrays.copyOfRange(a, 0, Math.min(Math.max(a.length - midpoint, 1), a.length)); // TODO: handle empty array case
+         else                 return findLast(a, low, midpoint); // TODO: handle lower bound case
+     }
+
+     private static void printTimeTaken() {
+         int n = b(b(a())).length;
+         System.out.println("Time taken: " + (long) Math.round((double) ((System.currenttimemillis() - TimeTaken) / 1000)) + " seconds"); // TODO: format output properly
+     }
+}
+
+Students will be able to understand the code in terms of how the binary search algorithm is implemented for searching the array, as well as how the time taken and output formatting are presented.
+
+POINT_ID: 3
+According to the rules given, as the functions f and g are not generic, both their outputs should include detailed analyzes based on M and N. The analyzes should refer to line numbers. The method f has two parts: (i) a constant-time step `s` and a constant-time step `g(b, x)` for the outer for loop; and (ii) an inner for loop with a runtime-constant number of iterations (`Part B`) and a constant-time search interval computation (`Part D`). The cost of Part D is Theta(log N), while Parts A and C are Theta(1). The total running time is Theta(M log N). Therefore, the method g has a total running time of Theta(M log N) (the sum of two constant times). Overall, the method g has two parts: the outer for loop (`Part B`) with 2 iterations and a constant-time search interval computation, followed by a constant-time inner for loop (`Part D`), with Theta(log N) iterations. In summary, the method f and g are written based on M and N, with analysis outputs including detailed analyzes based on these values.
+
+POINT_ID: 4
+Please provide an objective assessment grading a student's written asymptotic-complexity analysi of two given functions f and g. Your feedback should be specific to each function and include both Theta notation with valid range (min to max) and generic summary sentences grounded in what the student actually wrote. Please ensure that your output format is suitable for uploading on a course platform or website, and that all necessary details are included, such as the length of arrays a and b, the target function f, and the desired output values.
+
+POINT_ID: 5
+To calculate the asymptotic worst-case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziс of both functions.
+- You can use Theta notation or the big-O notation with tiigh bounds.
+- Your analysiс should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyziс should be justified with one or two sentences.
+
+Public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analysiс should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length;
+         int s = 0;
+         for (int i = 0; i < m; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.length - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid;
+             else if (x < b[mid]) l = mid + 1;
+             else r = mid - 1;
+         }
+         throw new RuntimeException("Undefined outcome for " + x);
+     }
+}
+
+The runtime analysis of the functions above can be performed by using Theta notation and checking the total number of iterations (M log N), the cost per iteration, and a minimum value of the interval (e.g., 0). The total runtime will then be expressed in terms of this set of values.
+
+For example: Assume that we want to calculate the asymptotic running time of f() for all possible values of M and N (as defined by the text), based on a minimum value of the interval (i.e., the time required to perform at least as many iterations as are needed). We can do this using big-O notation, which states that:
+
+- If n = O(m) where m is an upper bound on the number of iterations performed, then f() has a running time of O((m log N)).
+
+This can be used to calculate the total runtime of both the unsorted and sorted versions of the function. To get the asymptotic worst-case running time for the function with minimum value of interval (assuming that n = O(m)), we would have:
+
+Total number of iterations required (M log N) + Cost per iteration <= Total number of iterations performed (O((m log N)))
+
+This means that for any M and N, the total runtime is O((m log N)). If you perform this analysis for all possible values of M and N, then you can get a list of these values, which correspond to the minimum value of interval used.
+
+POINT_ID: 6
+To calculate the asymptotic worst-case running time of the functions provided in the given text, you must write an analyziSs that takes into account the length of the input arrays (M and N), as well as the number of iterations and the cost per iteration. Your output should include a detailed analysis based on M, N, and their respective lengths, as well as Theta notation with T bounds for each loop. Each step of the analyziS should be justified with one or two sentences. Additionally, you must specify which functions you will use to calculate these asymptotic worst-case runs, along with their respective arguments (i.e., `a`, `b`), and include a clear summary at the end of your output.
+
+POINT_ID: 7
+Sure! Here's a summary of the rules for each step in the AsymQ2 analysi:
+
+- Method f:
+- Part A (for loop):
+   - Constant time
+   - Part B (for loop):
+      - Iterations: m (length of array a) = a.length; s = 0;
+         - Cost per iteration: dominated by the call g(b, a[i]); since g is a binary searcch over b it costs Theta(log N). The comparison and conditional += are Theta(1). Per iteration: Theta(log N). Parts A and C (loop):
+        - Iterations: i runs from 0 to M-1, so the loop has exactly Theta(M) iterations. - Cost per iteration: dominated by the call g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and conditional += are Theta(1). Parts A and C (while loop):
+        - Iterations: each iteration either returns immediately or replace[l, r] with one of its halves. The interval size halves each iteration, so the loop runs at most Theta(log N) times. Part B (loop):
+        - Iterations:
+          - Iterations:
+            - Iterations:
+              - Parts D and F:
+                   - Midpoint computation, two array accesses, two comparison, one update of l or r: Theta(1). Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N). Overall running time of g():
+      - Cost per iteration (valid range: 0–12): dominated by the call g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and conditional += are Theta(1). Note that the AsymQ2 analyzi only focuses on the algorithmic parts of the program, including all operations that can be executed in constant time (i.e., without any external dependencies) or with at most a logarithmic worst-case dependency.
+
+POINT_ID: 8
+To summarize the feedback given for AsymQ2's `f` function, it is graded based on M and N (the length of array `a` and the length of sorted array `b`) with a valid rubric point (i.e., Theta(log N) = Theta(log N) iterations x Theta(1) per iteration). The overall running time given was stated to be constant (i.e., Theta(M log N)), but the loop itself was graded based on Theta(1). Part A was graded as constant time, while Part B was graded as a function with Theta(log N) iterations. Overall, the rubric point of Theta(log N) is the main focus, and part B's total cost (Theta(log N)) was graded accordingly. It should be noted that AsymQ2's solution also includes standard binary sea-search, which involves constant time operations.
+
+POINT_ID: 9
+Here's a revised version of the AsymQ2 grading rubric with more detailed feedback on the student's written analysis, based on the given input:
+
+MARKS:
+- Calculate the asymptotic worst-case running time of functions f and g defined in the text. - Use Theta notation for constant-time and big-O notation for logarithmically growing operations. - Analyze both functions with a focus on line numbers and make sure to assign specific analyzis sentences to each function. - Use clear and concise language throughout your analysis, including supporting arguments where applicable. - Write detailed and thorough feedback for each part of the student's analysi, including specific details about their reasoning and implementation choices. For example:
+
+- Part A (for loop): Consider the array a and its length M. The g(b) function is called with array b and its length N. The output should be either -1 or an integer representing the index of the element to delete, depending on whether or not it exists in the sorted array b. - The student's analysi should explain why they chose this approach, as well as any assumptions they made about the input values a and b. - Point 2 (for loop) shows the implementation choices for the student's analysis:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 3 (for loop): Consider the array a and its length M. The g(b) function is called with array b and its length N. For each element in sorted array b, the output should be either -1 or an integer representing the index of that element, depending on whether or not it exists in the array a. - In the student's analysis, they explain why they chose this approach to evaluate the output values based on the input values. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 5 (for loop): Consider the array a and its length M. The g(b) function is called with array b and its length N. For each element in sorted array b, the output should be either -1 or an integer representing the index of that element, depending on whether or not it exists in the array a. - In the student's analysis, they explain why they chose this approach to evaluate the output values based on the input values. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 6 (for loop): Consider the array a and its length M. The g(b) function is called with array b and its length N. If the output value returned by the student's code is -1, then the worst-case scenario occurs when there are no elements in sorted array b, indicating that the input values are all non-empty. In this case, the output value should be 0 (or an integer representing the index of the first element). - The student's analysis explains why they chose to return the number of elements in sorted array b instead of just 0 or any other output value if there is no element(s) present. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 7 (for loop): Consider the array a and its length M. If the output value returned by the student's code is -1, then the worst-case scenario occurs when there are no elements in sorted array b, indicating that the input values are all non-empty. In this case, the output value should be 0 (or an integer representing the index of the first element). - The student's analysis explains why they chose to return the number of elements in sorted array b instead of just 0 or any other output value if there is no element(s) present. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 8 (for loop): Consider the array a and its length M. The g(b) function is called with array b and its length N. If the output value returned by the student's code is -1, then the worst-case scenario occurs when there are no elements in sorted array b, indicating that the input values are all non-empty. In this case, the output value should be 0 (or an integer representing the index of the first element). - The student's analysis explains why they chose to return the number of elements in sorted array b instead of just 0 or any other output value if there is no element(s) present. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 9 (for loop): Consider the array a and its length M. If the output value returned by the student's code is -1, then the worst-case scenario occurs when there are no elements in sorted array b, indicating that the input values are all non-empty. In this case, the output value should be 0 (or an integer representing the index of the first element). - The student's analysis explains why they chose to return the number of elements in sorted array b instead of just 0 or any other output value if there is no element(s) present. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+- Point 10 (for loop): Consider the array a and its length M. If the output value returned by the student's code is -1, then the worst-case scenario occurs when there are no elements in sorted array b, indicating that the input values are all non-empty. In this case, the output value should be 0 (or an integer representing the index of the first element). - The student's analysis explains why they chose to return the number of elements in sorted array b instead of just 0 or any other output value if there is no element(s) present. For example:
+```
+for (int I = 0; I < M; i++) { // for loop in students' code
+    int t = g(b, a[i]); // call g(b, a[i]) with array b and index I
+    if (t >= 0) { // check whether element to delete exists in sorted b
+        return -1; // return -1 if element to delete is non-existent
+    } else { // otherwise:
+        return i; // return index of deleted element
+    }
+}
+```
+
+
+POINT_ID: 10
+AsymQ2 is a program that calculates the asymptotic worst case running time of functions `f` and `g` in terms of their lengths (`m` and `n`) and lengths of sorted array `b`. The program's purpose is to guide users through writing an analyis based on M and N.
+
+Based on M and N, the program prompts the user for a numeric mark representing each line, which then refers to one or two sentences that describe the functions and their corresponding analysi. Each part of the analysi is thoroughly explained, including Theta notation and relevant math symbols, to provide a clear understanding of what's happening in each step of the calculation.
+
+For every loop, the program calculates the cost of each iteration using Theta(1) as its base case, and ensures that each time it executes the loop, the cost is either constant (constant time), or one half of the total time spent in the loop (Theta(log N) x Theta(1)).
+
+To calculate the total running time (Theta(M log N)) for a given range of M and N, the program uses an efficient binary search algorithm to efficiently iterate over I from 0 to M-1. This ensures that each iteration costs only half as much as the previous one, which reduces the overall cost of the loop significantly.
+
+The final output provides feedback on how to write a clear analysi based on the given functions, and also includes sample solutions for each part. By following this guide and using the correct Theta notation, users can ensure that their calculations are accurate and reliable, and accurately reflect the complexity of the problem at hand.

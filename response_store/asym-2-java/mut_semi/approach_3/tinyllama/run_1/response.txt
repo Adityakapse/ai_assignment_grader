@@ -1,0 +1,11 @@
+To improve the overall worst-case runtime analysis for the given function, we need to consider both the constant-time and loop parts of the runtime. In terms of the constant-time part, we can add it up with the loop part (The theorem statement only applies to the loop part), which will result in a total runtime of Theta(log N) + Theta(M log N).
+
+As for the loop part, we have two different scenarios that could affect its runtime: the number of iterations n and the size of the array A. When n is small, the average time to complete each iteration will be proportional to log(n), as we do not use the array A for anything other than indexing into it. In this case, our analysis will show that Theta(log N) = Theta(log N) + Theta(M log N) + Theta(1).
+
+However, if n is large enough to require a lot of time to traverse the array efficiently, we would expect Theta(M log N) to dominate. In this case, our analysis will show that Theta(M log N) = Theta(log N) + Theta(M log N) + Theta(1).
+
+Therefore, our total runtime analysis of the function will be:
+
+T_f(N) = Theta(log N) + Theta(M log N) + Theta(1) = Theta(log N) + (Theta(M log N) + Theta(1)) = Theta(log N) + Theta(M log N) + Theta(1)
+
+In summary, our analysis will show that the loop part has a worst-case runtime of Theta(log N), and that it is dominated by Theta(M log N) for large enough n.

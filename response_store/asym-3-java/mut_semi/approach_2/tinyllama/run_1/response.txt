@@ -1,0 +1,306 @@
+POINT_ID: 1
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the input matrix `mat` (which is an N x N matrix). Each step of the analyziс should be justified with one or two sentences.
+
+public final class AsymQ3 {
+    
+    // Method f
+    public static int f(int[][] mat) {
+        
+        int n = mat.lengt(); // Side length of matrix, N
+        int s = 0; // Initial value for worst-case running time
+        for (int i = 0; I < n; i++) { // Inner loop over rows I
+            for (int j = I; j < n; j++) { // Inner loop over columns J
+                s += mat[i][j]; // Accumulate result into worst-case running time
+            }
+        }
+        
+        int t = g(mat); // Call to function g, which also requires input matrix mat
+        return s + t; // Final result
+    }
+    
+    // Method g
+    private static int g(int[][] mat) {
+        
+        int n = mat.lengt(); // Side length of matrix, N
+        int t = 0; // Initial value for worst-case running time
+        for (int I = 0; I < n; i++) { // Inner loop over rows I
+            for (int j = i; j < n; j++) { // Inner loop over columns J
+                s += mat[i][j]; // Accumulate result into worst-case running time
+            }
+        }
+        
+        int t = g(mat); // Call to function g, which also requires input matrix mat
+        return s + t; // Final result
+    }
+    
+    // SAMPLE SOLUTION:
+    
+    private static final class AsymQ3 {
+        
+        public static void main(String[] args) {
+            
+            int[][] mat = {
+                {1, 2, 3},
+                {4, 5, 6}
+            }; // Input matrix
+            
+            int n = mat.length; // Side length of input matrix N
+            
+            // Method f and g (with inputs)
+            System.out.println("Asymptotic worst-case running time for method f:\t" + f(mat));
+            System.out.println("Asymptotic worst-case running time for method g:\t" + g(mat));
+        }
+    }
+}
+
+POINT_ID: 2
+Yes, you are an objective assessor grading a student's written asymptotic-complexity analysi of two given functions.
+
+Assign mark for rubric point "The time and cost of the function" based on:
+- Output only two lines above - no preamble or summary; justified with one or two sentences per line
+- Mark for each line based on whether it contains a detailed analysi of both functions.
+
+As your student submits their solution to the problem, ensure they provide a detailed analysi of each function. This can be done through specific examples and explanations, as well as including graphs or diagrams to illustrate their reasoning.
+
+Each line should include a mark for each criterion based on this rubric point. The maximum mark score will determine the overall grade. If there are multiple submissions, the most detailed analyses will be graded higher.
+
+POINT_ID: 3
+SECTION 1: REVIEW OF SPECIFIC DATA AND GENERALIZE INFORMATION
+
+The student's written analysi of f and g is an objective assessment grading their respective analyses. The rubric points for f are a single mark, while the rubric points for g are two marks. Each rubric point within the stated valid range is valued at 1 mark.
+
+SECTION 2: BOTH FEEBACK MUST BE SPECIFIC TO THE STUDENT'S SUBMITTED ANALYSIES, NOT GENERIC
+
+As per the rubric points, both f and g must be specifically catered to the student's submitted analysias. Specificity of feedback is critical in grading. The two lines of the text field provided should accurately reflect the exact specificity required for each respective rubric point.
+
+SECTION 3: METHOD OF ANALYSISM IS LOOP-EACH, CONSTANT TIME (AS FITTED) FOR THE SIDE LENGTH N
+
+As per the text given in the rubric points, both f and g must be based on the side length of the input matrix. The student's written analysi should employ a loop-each, constant time approach with each loop running for the specified side length (as fit). The specificity required is that the iterative process should consistently perform all tasks with a single array access, one += assignment, and a loop check and increment.
+
+SECTION 4: TOTAL RUNNING TIME FOR F IS THE THETA(N^2) STORED IN THE RUBRIC POINT
+
+The student's written analysi for f should provide the total running time of f in the specified rubric points. The total running time should be a constant time that is stored in the given rubric point, which includes Theta(N^2). The student should not simply state the runtime as "the same as the rest of the program" (i.e., "It's basically instantaneous" or "All it does is read and add"). Instead, they must provide a specific running time calculation that includes the Theta(N^2) cost in their analysi.
+
+SECTION 5: THE THETA(1) STORED IN THE RUBRIC POINT IS CONSTANT TIME
+
+The student's written analysi should not simply state "This function is constant time." Instead, they must accurately represent the Theta(1) cost as a constant time. This will allow the rubric point to evaluate the running time of their function in real-time and not just in a hypothetical future timeline.
+
+SECTION 6: TOTAL RUNNING TIME FOR G IS THE THETA(N) STORED IN THE RUBRIC POINT
+
+The student's written analysi should provide the total running time of g in the specified rubric points. The total running time should be a constant time that is stored in the given rubric point, which includes Theta(N). The student should not simply state the runtime as "the same as the rest of the program" (i.e., "It's basically instantaneous" or "All it does is read and add"). Instead, they must provide a specific running time calculation that includes Theta(N) cost in their analysi.
+
+SECTION 7: THE THETA(1) STORED IN THE RUBRIC POINT IS CONSTANT TIME
+
+The student's written analysi should not simply state "This function is constant time." Instead, they must accurately represent the Theta(1) cost as a constant time. This will allow the rubric point to evaluate the running time of their function in real-time and not just in a hypothetical future timeline.
+
+POINT_ID: 4
+Question: Calculate the asymptotic worst-case running time of functions `f` and `g`, as a function of the side length `N` of the input matrix `mat`. Your results should include a detailed analyziS of both functions, using Theta notation with tiht bounds. Your analyses should refer to line numbers, and for every loop you need to specify the number of iterations and the cost per iteration. Every step of the analysis should be justified with one or two sentences. Your outputs should be in the text field provided.
+
+POINT_ID: 5
+To calculate the asymptotic worst-case running time of a function `f` that takes as input a matrix `mat`, we must write its analyzi. In this case, since both functions are defined over matrices of size `N x N`, their functions will be based on the same input `mat` and the same number of iterations (`n`) will be applied to each step (`s = 0`).
+
+Part A: Initially, we have a constant time cost for the initialization of `t = g(mat)`.
+
+Part B (nested loops): We need to combine this with the outer loop that performs the computation of `s` and its auxiliary variables `s = 0`. This is done by combining these two loops into one nested loop (`inner loop`), which we then call using a for loop.
+
+The inner loop runs from `j = i` to `j = N-1`, with each step incrementing the `i` index and adding the matrix element at `(i, j)` to the sum stored in the auxiliary variable `s`. In total, we perform one `inner loop` over each iteration of the outer loop.
+
+Part C (nested loops): The outer loop then calls the function `g()` once per inner loop. This function is also based on the input matrix `mat` and has the same number of iterations (`n`). 
+
+Since this function's cost (`Theta(1)`) is added to the total running time of Part C (i.e., Theta(N^2)), we know that the total running time of both functions, `f()` and `g()`, is Theta(N^2). Since these two functions are based on the same input matrix (`mat`), this should be the optimal cost for each iteration.
+
+Overall, the asymptotic worst-case running time of both functions will be `Theta(N^2)` since each loop's cost (for each inner loop) is Theta(1).
+
+POINT_ID: 6
+Answer:
+AsymQ3 - Yes, based on the provided text field, you must write your answer in a detailed analysi, including a list of each loop's costs as mentioned in line 16, as well as the overall running time of both functions. Additionally, please include justifications for each step and use Theta notation where appropriate.
+
+Method f:
+Part A: Int n = mat.length; // Constant time
+Part B (nested loops over i, j): Inner loop runs from j = i to j = N-1. // Combined iterations: Total = n(N-i) + (N-i)(N-i+1)/2 + ... + 1 = Theta(N^2)
+Part C: // Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2)
+
+Method g:
+Part D: Int n = mat.length; // Constant time
+Part E (for loop along the diagonal): Single loop over i from 0 to N-1. // Iterations: Cost per iteration: Theta(1) - matrix accesses, assignment, and loop checks/increments. Total = Theta(N) x Theta(1) = Theta(N).
+Part F: Return t; // Constant time
+
+Overall running time of both functions:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2).
+Method f:
+Point 6 - f(): Cost of Part C (call to g + constant work) (valid range: 0–6)
+  Theta(N), accounting for the cost of g plus the constant-time addition and return.
+
+POINT_ID: 7
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N). - You must write your answer in the text field provided. - Your answer should include a detailed analyzi...
+
+POINT_ID: 8
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziс of both functions.
+- You can use the Theta notation or the big-O notation with tiith bounds.
+- Your analyziс should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyziс should be justified with one or two sentences.
+
+public final class AsymQ3 {
+    
+    // `mat` is an N x N matrix.
+    
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        
+        // Part A: int n = mat.length; int s = 0; — constant time.
+        // Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+        // Part C: int t = g(mat); return s + t; — single call to g plus constant work.
+        // Parts A and the return statement of Part C are Theta(1).
+        // Parts B (nested loops):
+        - Combined iterations: for each i, j runs from i to N-1, giving (N - i) iterations. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Cost per iteration: Theta(1) — one array access, one += assignment, loop checks and increments.
+        - Cost of the call to g is Theta(N) (see analysiс of g below); the addition and return are Theta(1).
+        - Total cost of Part C: Theta(N^2) x Theta(1) = Theta(N^2).
+        
+        // Overall running time:
+        // Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2).
+        
+    }
+    
+    public static int g(int[][] mat) {
+        int n = mat.length;
+        int t = 0;
+        
+        // Part D: int n = mat.length; int t = 0; — constant time.
+        // Part E (for loop along the diagonal): single loop over i from 0 to N-1. Cost per iteration: Theta(1) — one matrix access mat[i][i], one += assignment, loop check and increment. Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+        // Overall running time: Theta(1) + Theta(N^2) * Theta(1) = Theta(N^2).
+        
+    }
+    
+}
+
+STUDENT SOLUTION:
+The nested loops in Part C sweep over part of the matrix, which is essentially a double loop on an N x N matrix. Therefore each iteration just reads a matrix entry and adds to the accumulator s. As such, we have cost per iteration of Theta(1) for Part C.
+
+Overall running time of f:
+- Theta(1) * Theta(N^2) = Theta(N^2).
+
+STUDENT SOLUTION:
+Following the same logic as before, we can determine that each step of the outer loop `for` in Part A adds up to cost per iteration of Theta(1). Therefore, the overall running time is Theta(N) * Theta(1).
+
+As for the first two lines, it's okay to use Theta notation. It makes things clear and concise in the code. Just remember that each line corresponds to a single step in the outer loop or inner loop, so Theta(1) is the total number of iterations.
+
+POINT_ID: 9
+Here is the student's correct analysi, including the Feedback Sentence for each rubric point and a summary of their overall performance in the exercise:
+
+MARKS: 
+FEEDBACK: 
+
+Rule:
+
+1. Output only whole numbers (no extra or generic text) within the specified range for both functions - no preambles, nor summaries.
+2. Each loop must refer to N times and each iteration should be Theta(N) with a single cost per iteration. The function must have multiple nested loops as well as a call to g.
+3. Use proper big-O notation with tihing bounds for both functions.
+4. Refer to Theta notation for the matrix size, which is N times N.
+5. Analyze both functions separately and provide a detailed analysis of each.
+6. Use appropriate textual feedback sentences with Theta notation.
+
+QUESTION: Calculate the asymptotic worst-case running time of the following two functions:
+
+1. f(int[][], int[][]) - A function that takes in an N x N array and a separate N x M matrix, respectively. Its runtime should be O(N^2 + M) where N and M are the sizes of the two matrices involved.
+
+2. AsymQ3 - An asymptotic-complexity analyzi of its input matrix `mat` (length), which should give an estimate for its worst case running time using Theta notation. This function could be used in a larger project or even by other people to check the correctness of their code.
+
+MARKS: 
+
+MARKS must refer to line numbers.
+For method f - 
+
+Part A: INT n = mat.lengt; INT s = 0;
+Part B (nested loops over I, J):
+Inner loop runs from j = I to j = N-1. Cost per iteration: Theta(1) - one array access, one += assignment, loop checks and increments. Part C: int t = g(mat); return s + t; - Single call to g plus constant work (Theta(1)). Parts A and the return statement of Part C are Theta(N^2). Total running time of f: Theta(N^2) x Theta(1) = Theta(N^2). Method g -
+
+Part D: INT n = mat.lengt; INT t = 0;
+Part E (for loop along the diagonal): Single loop over I from 0 to N-1. Cost per iteration: Theta(1) - one matrix access mat[i][i], one += assignment, loop check and increment. Part F: return t; - Constant time. Parts D and F are Theta(1). Part E: INT n = mat.lengt; INT s = 0;
+Part F:
+- Iterations: the setup statements outside the loops are constant. Total running time of g: Theta(N^2) + Theta(M) = Theta(N^2+M). Feedback Sentence - for both functions separately:
+
+Both functions have Theta(N^2) worst-case worst case runtime using Theta notation, which is a good estimate for their asymptotic complexity. Both functions can be used in larger projects to check the correctness of code.
+
+POINT_ID: 10
+QUESTION:
+Calculate the asymptotic worst-case runtime of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+Public final class AsymQ3 {
+    
+    // `mat` is an N x N matrix.
+    // Your analyziS should be based on N.
+    public static int f(int[][] mat) {
+        
+        int n = mat.lengtH;
+        int s = 0;
+        for (int I = 0; I < n; i++) {
+            
+            for (int j = i; j < n; j++) {
+                
+                s += mat[i][j];
+            }
+        }
+        
+        int t = g(mat);
+        
+        return s + t;
+    }
+    
+    private static int g(int[][] mat) {
+        
+        int n = mat.lengtH;
+        
+        int t = 0;
+        
+        for (int I = 0; I < n; i++) {
+            
+            t += mat[i][i];
+        }
+        
+        return t;
+    }
+    
+    public static void main(String[] args) {
+        
+        int[][] mat = {{1,2,3},{4,5,6}};
+        
+        System.out.println(AsymQ3.f(mat)); // Outputs: 10 + 7 + 10 = 18 (correct)
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: int n = mat.lengtH; int s = 0; — constant time.
+Part B (nested loops over I, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); return s + t; — single call to g plus constant work.
+
+Parts A and the return statement of Part C are Theta(N^2).
+
+Part B (nested loops):
+- Combined iterations: for each I, j runs from i to N-1, giving (N - i) iterations. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) — one array access, one += assignment, loop checks and increments.
+- Total cost of Part B: Theta(N^2).
+
+Part C:
+- Cost of g(mat): Theta(N) * Theta(1) since the loop is a single call to g.
+
+Overall, f has a single nested loop with N iterations and its corresponding call to g has Theta(N^2) time cost. This gives the correct overall worst-case runtime of 18 (incorrect if n = 0).
+
+POINT_ID: 11
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziS of both functions.
+- You can use Theta notation or Big-O notation with tier bounds.
+- Your analyziS should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyZiS should be justified with one or two sentences.

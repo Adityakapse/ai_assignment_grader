@@ -1,0 +1,30 @@
+test_number,is_example,testcode,expected
+1,True,"System.out.println(opt(new long[]{4, 9, 4}));",9
+2,True,"System.out.println(opt(new long[]{4, 7, 4}));",8
+3,True,"System.out.println(opt(new long[]{3, 2, 1}));",4
+4,True,"System.out.println(opt(new long[]{1, 2, 1, 4, 5}));",7
+5,True,"System.out.println(opt(new  long[]{10, 2, 3, 4, 5}));",18
+6,False,"for (int i = 0; i < 1000; i++){
+    long [] arr = new long[1000];
+    for (int j= 0; j < 1000; j++){
+        long x = (long)Math.floor(Math.random()*(1e9-1)+1);
+        arr[j] = x;
+    }
+    long opti_num = opti(arr);
+    if (opti_num != opt(arr)){
+        System.out.println(""Wrong Answer"");
+        break;
+}
+}
+System.out.println(""0"")",0
+7,True,"for (int i = 0; i < 5; i++){
+    long [] arr = new long[1000];
+    for (int j= 0; j < 1000; j++){
+        arr[j] = j+i+1;
+}
+    System.out.println(opt(arr));
+}","250500
+251000
+251500
+252000
+252500"

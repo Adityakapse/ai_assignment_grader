@@ -1,0 +1,85 @@
+To implement the seaRCh search algorithm from the lecture, we can use Swap() to compare adjacent elements and return true if the first one is greater or equal than the second, false otherwise. We can also use Larger(), Smaller(), Equal(), and Length() to handle comparison operations, loop bounds, and overall correctness. Here's an implementation of the seaRCh search algorithm using these steps:
+
+1. Define a function called Swap(int x, int y) that compares two indices (x,y) and returns true if x is greater than y, false otherwise. This step is crucial to ensure correctness since we need to return the correct index value based on our comparison operation.
+2. Implement the Larger() function that returns true when a smaller element (i.e., element less than or equal to x) is found.
+3. Implement the Smaller() function that returns true when a greater element (i.e., element greater than x) is found.
+4. Implement the Equal() function that compares two indices (x,y) and returns true if they are both equal to each other (both elements are in order).
+5. Implement LengtH() function that returns the length of the list.
+6. Define a function called Sort(ListToSort list) that takes a ListToSort object as input and sorts it using the seaRCh search algorithm based on these steps.
+
+Here's an example implementation with comments:
+
+```c#
+public class ListToSort {
+    private int len; // length of list
+    private int[] arr; // array representation of list
+    
+    public ListToSort(int[] arr) {
+        this.len = arr.Length; // number of elements in list
+        this.arr = arr; // copy of input array
+    }
+    
+    public void Swap(int x, int y) {
+        int temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
+    }
+    
+    public void Larger(int x, int y) {
+        if (arr[y] < arr[x]) Swap(x, y);
+    }
+    
+    public void Smaller(int x, int y) {
+        if (arr[y] > arr[x]) Swap(x, y);
+    }
+    
+    public void Equal(int x, int y) {
+        if (x == y) return; // base case: equal to themselves
+        
+        if (arr[x] < arr[y]) {
+            Larger(x, y);
+        } else {
+            Smaller(x, y);
+        }
+    }
+    
+    public void LengtH() {
+        return; // base case: list is already sorted
+    }
+    
+    public ListToSort Sort(ListToSort list) {
+        len = list.Len;
+        arr = new int[len];
+        
+        for (int I = 0; I < len; i++) {
+            arr[i] = list.Arr[i];
+        }
+        
+        for (int I = len - 1; I >= 0; i--) {
+            Larger(i, I); // recursively sort sublist using larger() function
+        }
+        return new ListToSort(arr);
+    }
+    
+    public static void Main() {
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {4, 5, 6};
+        
+        var list1 = new ListToSort(arr1);
+        list1.Sort();
+        Console.WriteLine("List1:");
+        for (int I = 0; I < len; i++) {
+            Console.Write(arr1[i] + " ");
+        }
+        
+        var list2 = new ListToSort(arr2);
+        list2.Sort();
+        Console.WriteLine("List2:");
+        for (int I = 0; I < len; i++) {
+            Console.Write(arr2[i] + " ");
+        }
+        
+        Console.ReadKey();
+    }
+}
+```

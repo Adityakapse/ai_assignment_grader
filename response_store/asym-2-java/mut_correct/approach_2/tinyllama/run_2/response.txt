@@ -1,0 +1,276 @@
+POINT_ID: 1
+Sure, here's a modified version of the text with additional details for each step of your analyses:
+
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`. Part A:
+- Part B (for loop): runs over i = 0..M-1. - Iterations: The loop runs from i = 0 to I = M-1, so it has Theta(M) iterations. - Cost per iteration: dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). Parts A and C are Theta(1):
+- Part C (loop): iterates I = 0..M-1, calling g(b, a[i]) each time. - Iterations: The loop has exactly Theta(M) iterations. - Cost per iteration: The Theta(log N). - Total cost of Part B: Theta(M) x Theta(log N) = Theta(M log N). SAMPLE SOLUTION:
+Let M be the length of array a and N be the length of array b. Method f
+- Method g
+   - AsymQ2.f(a, b):
+     Part A:
+       int m = a.lengthe;
+       int s = 0;
+       for (int I = 0; I < M; i++) {
+         int j = i;
+         while (j <= min(M-1, M*Lg[i])) {
+           j++;
+           if (j > M) break; // out of bounds
+           a[j] += b[I];
+         }
+         s += I * Lg[i]; // increment for current iteration
+       }
+     Parts A and C:
+       - AsymQ2.pA(a, b):
+         int l = 0;
+         int r = M-1;
+         while (l <= r) {
+           int midpoint = ((l + r) >> 1);
+           if (l == r) return s; // empty search or one element
+           Part B:
+             int I = l;
+             while (i < midpoint) {
+               a[i] += b[midpoint];
+               i++;
+             }
+             s += M * Lg[midpoint]; // update for next iteration
+             l = midpoint + 1;
+         }
+       Part C:
+         return s; // full search
+     Parts A and C are Theta(1):
+     - AsymQ2.pA(a, b):
+       int l = 0;
+       int r = M-1;
+       while (l <= r) {
+         int midpoint = ((l + r) >> 1);
+         if (l == r) return s; // empty search or one element
+         Part B:
+           int I = l;
+           while (i < midpoint) {
+             a[i] += b[midpoint];
+             i++;
+           }
+           s += M * Lg[midpoint]; // update for next iteration
+           l = midpoint + 1;
+         r = midpoint - 1;
+       }
+       return s;
+   - AsymQ2.pC(a, b):
+     Part A:
+       int I = 0;
+       while (i < M) {
+         a[i] += b[i];
+         i++;
+       }
+     Part B:
+       return s; // full search
+   - AsymQ2.pC(a, b):
+     int I = 0;
+     while (i < M) {
+       a[i] += b[i];
+       I++;
+     }
+     Part C:
+       return s; // full search
+
+RBRIC POINT:
+- Point 1: Calculate the asymptotic worst case running time of the functions above, as functions of the lengths M and N. - Part A:
+   Clear separation of f and g; loop vs non-loop code identified as AsymQ2.f(a, b), AsymQ2.pA(a, b), or AsymQ2.pC(a, b);
+     int m = a.lengthe; // initialize M to the length of the array
+     int s = 0; // initialize accumulator to zero
+     while (true) { // loop until full search or empty search (i.e., m == n)
+       int I = l; // initialize current iteration to the lower bound
+       while (i < m) { // loop over M-1, with each step incrementing i by M*lg[i] to ensure we don't step out of bounds
+         a[i] += b[i]; // update values in array a
+         s += I * Lg[i]; // update accumulator
+         if (i == m) return s; // search finished, return value
+         i++;
+       }
+       l = midpoint + 1; // advance to next element or to midpoint+1 for next iteration (if no search is needed)
+     }
+   - AsymQ2.pA(a, b):
+     Part A:
+       int midpoint = ((l + r) >> 1); // lower bound of half-open interval [l, r] or midpoint
+       while (midpoint > l) { // full search in half-open interval (l, midpoint), with a.lengthe <= midpoint and l == midpoint;
+         int I = midpoint - 1; // adjust lower bound to be the next element after the current midpoint
+         while (i < r && i > midpoint) { // loop over remaining elements or to right of midpoint, with each step incrementing I by M*lg[i] to ensure we don't step out of bounds
+           a[i] += b[midpoint]; // update values in array a
+           s += I * Lg[i]; // update accumulator
+           i++;
+         }
+         midpoint--; // shift lower bound back one (or up) to start next iteration;
+       }
+     Part B:
+       return s; // full search or empty search at end, since we've already used all elements in the half-open interval [l, midpoint]
+   - AsymQ2.pC(a, b):
+     Part C:
+       int midpoint = ((l + r) >> 1); // lower bound of half-open interval [l, midpoint], or midpoint if no search needed;
+       while (true) { // loop until full search in half-open interval (l, midpoint), with a.lengthe <= midpoint and l == midpoint;
+         int I = m - 1; // adjust upper bound to be the first element after the current midpoint
+         while (i > midpoint && i >= r) { // loop over remaining elements or to left of midpoint, with each step decrementing I by M*lg[i] to ensure we don't step out of bounds;
+           a[i] += b[midpoint]; // update values in array a
+           s += I * Lg[i]; // update accumulator
+           i--; // shift upper bound back one (or down) to start next iteration;
+         }
+         midpoint++; // shift lower bound forward one to start next iteration if more elements are needed (i.e., if the current search didn't use all elements in half-open interval [l, midpoint] and there's still more to come from the other half)
+
+POINT_ID: 2
+In the given text, we are grading two rubric points with the following rules:
+- RUBRIC POINT 1 - Only 2 lines of code (maximum) for function `f` and only one line of code (minimum) for function `g`.
+- RUBRIC POINT 2 - A detailed analyis of both functions.
+
+To satisfy the rules, we recommend the following steps:
+1. Determine the maximum number of lines for `f` and `g`, and use this as a reference to write our code.
+2. Write a short, specific feedback sentence for each line (based on the given text provided) that states the rubric point score within the range 0–5, using Thea(1).
+3. Use a preamble that introduces the function and explains why the rubric points are relevant to it.
+4. Write our analysis in plain English that clearly explains what the function does, how it performs its operation, and any limitations or assumptions made by the code.
+5. Ensure that all functions have a single line of code per maximum number of lines given.
+6. Adhere to Thea(1) for each line's description, with regards to how many iterations are done in the loop (minimum 0–5), what is done during each iteration (e.g. Checking for an array access or comparison, and updating a variable/array) etc.
+7. Use clear variable names and no unnecessary comments to enhance readability of our code.
+
+POINT_ID: 3
+AsymQ2's student solution only goes up to `M = 12`, so the overall running time would be as follows:
+
+Part A (constant time): The function takes time constant to compute and check whether the input is in sorted order. Part B (loop) takes linear time. Cost per iteration is constant. Total cost is also constant.
+
+Part C (constant time): Computing the minimum value of a sorted array.
+
+Part D (constant time): Binary search algorithm for finding the index of minimum element in an unsorted array or in an array already sorted to its maximum extent. The binary search algorithm takes linear time to find the index of the minimum value. Part E (loop) takes constant iterations, and cost per iteration is constant. Total cost is also constant.
+
+Part F (constant time): Standard binary search algorithm for finding the index of a maximum element in an unsorted array or in an array already sorted to its minimum extent. Part G (for loop): Binary search algorithm is a binary sea-search algorithm, which can find the midpoint between two elements recursively and it takes linear time to compare the middle value with the target value. In this case, for each iteration, the comparison takes constant time and the midpoint computation also takes constant time. Total cost of Part F: Theta(log N) x Theta(1), where log N is the number of iterations. Overall running time is Theta(M log N).
+
+Overall, AsymQ2's student solution achieves a time complexity of O(M * log N), where M and log N are the lengths of the array and the input data respectively.
+
+POINT_ID: 4
+Here is an updated version of the text with detailed analyses for each loop. Feedback should include precise analysis and specific details about the algorithmic structure and implementation. Please use the Theta notation when referring to running time and specific costs.
+
+AsymQ2
+Calculate the asymptotic worst-case run-time of the functions below, as functions of length M of array `a` and length N of sorted array `b`. Part A: We have an input array that is sorted ascending and of length `M`, whereas we need to output the running time of a function that performs a binary search on this array. Therefore, Part B involves a binary search for `i` = 0-`M-1` over the array `b`. The loop runs at most Theta(log N) times and uses constants Theta(1). The cost per iteration is dominated by the call to g(b, a[i]), since g is a binary search over b. This means that Part B has Theta(log N) as its total cost. We proceed by breaking down the logic of each part:
+
+Part A (binary search): In this step, we iterate over `i` from 0 to `M-1`, using constant `Theta(1)` to avoid any integer division or modulo operations. Since the binary search is a binary search over the array, we run at most Theta(log N) iterations.
+
+Part B (binary search): This step involves the binary search algorithm of finding an index `j` within the sorted range `[l, r]`, such that `g(b, a[i])` is equal to `g(b, a[j])`. The interval size `r - l` halves each iteration, so the loop runs at most logarithmic times. We proceed by finding an appropriate starting index `j` and then iterating over `i=l+1` to `r-1`, using constant `Theta(log N)`. This means that Part B has Theta(log N) as its total cost.
+
+Part C (for loop): In this step, we iterate over the `0`-`M-1` indices `[l, r]`, calling the binary search function `g(b, a[i])`. Since we are performing a binary search on an array of size `N`, we can use constant `Theta(log N)` for each iteration and total cost of Part C is Theta(log N).
+
+Part D (standard binary search): In this step, we iterate over the remaining indices `[l, r]` with no new comparisons being made. This means that each comparison `a[i] < b[j]` needs to be performed once per iteration, but we have `r-l = n`, where `n` is the size of the array. This leads to a total cost of logarithmic operations and Theta(1).
+
+Part F (standard binary search): This step involves finding an appropriate starting index `j` using constant `Theta(log N)`. The interval size `r-l` halves each iteration, so this step is run at most Theta(log N) times. We proceed by iterating over `i=l+1` to `r-1`, using constant `Theta(log N)`. This means that Part F has Theta(log N) as its total cost and we proceed by breaking down the logic of each step, Parts A–D:
+
+Part B (standard binary search): Since we are performing a standard binary search on an array of size `N`, this step has Theta(1) as its total cost.
+
+Part C (standard binary search): This step involves finding an appropriate starting index `j` using constant `Theta(log N)`. The interval size `r-l = n`, where `n` is the size of the array. Since `n` is smaller than or equal to 1, there are at most logarithmic operations and total cost of Theta(log N).
+
+Part D (standard binary search): Since we are performing a standard binary search on an array of size `N`, this step has Theta(1) as its total cost.
+
+Part E: This part involves calculating the running time using constants `Theta(log N)` and `Theta(1)`. We proceed by breaking down the logic for each loop, Parts B, C, and D:
+
+Part A (binary search): Since we are performing a binary search on an array of size `N`, this step has Theta(log N) as its total cost. Part D (standard binary search): In this step, we iterate over the remaining indices `[l, r]` with no new comparisons being made. This means that each comparison `a[i] < b[j]` needs to be performed once per iteration, but we have `r-l = n`, where `n` is the size of the array. Since `n` is smaller than or equal to 1, there are at most logarithmic operations and total cost of Theta(log N).
+
+Part B (binary search): This step involves finding an appropriate starting index `j` using constant `Theta(log N)`. The interval size `r-l = n`, where `n` is the size of the array. Since `n` is smaller than or equal to 1, there are at most logarithmic operations and total cost of Theta(log N).
+
+Part C (standard binary search): In this step, we iterate over the remaining indices `[l, r]` with no new comparisons being made. This means that each comparison `a[i] < b[j]` needs to be performed once per iteration, but we have `r-l = n`, where `n` is the size of the array. Since `n` is smaller than or equal to 1, there are at most logarithmic operations and total cost of Theta(log N).
+
+Part D (standard binary search): This step involves finding an appropriate starting index `j` using constant `Theta(log N)`. The interval size `r-l = n`, where `n` is the size of the array. Since `n` is smaller than or equal to 1, there are at most logarithmic operations and total cost of Theta(log N).
+
+POINT_ID: 5
+To grade the student's written asymptotic-complexity analysi, here are some steps to follow:
+
+1. Read the student's analyzis carefully and ensure that each line is complete, grammatically correct, and follows proper style guidelines.
+2. Assign a numeric mark for each function according to the rubric point within the valid range for the given functions (min to max). For example, in QuesTIOn 1 (f(a, b)), the student's mark may be assigned based on their function f with an upper bound of 2, and a minimum value of 4.
+3. Use Theta notation or Big-O notation with appropriate tiht bounds, as per the given text field provided.
+4. For every loop in each function, specify the number of iterations and the cost per iteration using one or two sentences.
+5. For the loop part A (binary search), analyze the time required to iterate over the length of array a for each iteration and call the binary search function with a particular value of midpoint at that point.
+6. Analyze the total time required by the loop, including any extra time spent for comparisons and updates to the variable l or r.
+7. Calculate the asymptotic worst-case running time based on the given text field provided.
+8. Use the Theta notation or Big-O notation with appropriate tiht bounds, as per the given text field provided, to calculate the overall running time for each function.
+9. Assign a final mark of 1 if the overall running time is below the specified value (e.g., if the time taken is less than 2 minutes), or any higher mark based on the specifications within the rubric.
+
+POINT_ID: 6
+AsymQ2 is a Java program that calculates the asymptotic worst-case running time of the functions f and g defined in the text provided. The program implements two loops, one for array a (i.e., the function f) and one for sorted array b (i.e., the function g). The program also uses big-O notation to analyze both functions.
+
+The text mentions that f has a running time of Theta(1) + Theta(M log N) + Theta(1), while g takes up Theta(log N) x Theta(1) = Theta(log N) iterations. This analysis is done in Parts A and C, respectively.
+
+In Part B of the program, the loop for array a iterates over M (array length) times. Each iteration calls the binary search function g() with parameters [l, r] to find the index I where x = b[i] is within the sorted range [a[l], a[r]). The program then returns the index.
+
+The loop for sorted array b starts from 0 (array length) and iterates over N (sorted range size) times. Each iteration compares midpoints m = l + ((n-1)/2) to m + ((n-1)/2), where n is the current position in the sorted range, to find the index I that satisfies g(b, a[i]) >= 0 (which indicates x <= b[i]). The program then updates i to be the new midpoint.
+
+Part D and E of the program analyze both functions f and g, respectively, by computing their running times as follows:
+
+- F: Running time Theta(log N) x Theta(1) = Theta(log N).
+- G: Running time Theta(log N) + Theta(Theta(log N))/2 (which is constant) + Theta(Theta(log N)) = Theta(Theta(log N)) = Theta(log N) = Theta(log N).
+
+Thus, the overall running time of the program for both functions is Theta(log N), which is also the largest value among all possible values.
+
+POINT_ID: 7
+Assessment Rubric
+As discussed, the following rubric points are valid for assessing student's written asymptotic-complexity analysi.
+
+MARKS: 4
+FEEDBACK:
+As you can see from our provided text section, these rubrics cover the topic of assessing the student's written asymptotic-complexity analysi. The rubric points below are based on a sample solution, with detailed analyses for each step (as functions).
+
+1. Assign MARKS to each point (4) and FEEDBACK to each feedback sentence (specific to the student's submitted analysi).
+2. Write the output according to our provided text section.
+3. Use Theta notation or the big-O notation with tiith bounds for every loop you need to specify the number of iterations and the cost per iteration.
+4. Each step of the analysi should be justified with one or two sentences.
+5. Write a detailed analysi based on M and N (as defined in our provided text section).
+6. Your answer should include a dedicated line number, as well as a sentence that explains the cost per iteration for each part of your analysi (part A, B, E, F).
+7. Each part should have its own MARKS (cost per iteration).
+8. Parts D and F should have their respective MARKS in addition to parts A and B.
+9. The overall running time of the function should be calculated and included as FEEDBACK for both your student's analysis and our provided text section.
+10. For each loop (i), the output should be based on g() function, which should have its MARKS assigned accordingly.
+
+POINT_ID: 8
+Certainly! Based on the requirements outlined above, we can write an objective assessment grading system for the two functions defined in the given code snippets. To help you write a feedback statement with specificity and accuracy, here are some tips:
+
+1. Rule-specific AnalyziSs: Rather than generic and vague language, use specific rules that apply to each function. For example, instead of stating "f(int[], int[])" as a rule, state the specific line numbers in the function with which this rule applies.
+
+2. AsymQ2 Feedback Statements: In terms of feedback statements, make sure your descriptions are concise and focused on the rubric point and its corresponding valid range. For example, instead of saying "g(int[], int[])" as a description, state that this rubric point corresponds to a loop over an array (the line number 16 in the given code snippets), which has length M and N.
+
+3. FeeDBack AnalyziSs: For each line of code within the function, provide specific and accurate feedback statements for each step of the analyziS (i.e., any loop, any iteration, etc.). This will help you ensure that you covered all aspects of the function. Here's an example feedback statement for a single loop in f() - the one with a length M:
+
+- Feedback Statement: "FeeDBack: Part D (while loop): standard binary seaRChe"
+
+Here are some additional tips on how to write clear and concise feedback statements, based on the information provided above:
+
+1. Rule-specific AnalyziSs: When providing feedback for a specific rule, try to provide as much specificity as possible. For example, instead of stating "g(int[], int[])" as a rule, describe the specific function in terms of its name and parameters, e.g., "AsymQ2: Rule 4 (loop): g(int[], int[])"
+
+2. AsymQ2 Feedback AnalyziSs: When providing feedback for each step of an asYM(Q2) function, try to be specific about the line number(s) where the analyzIzed code occurs, e.g., "FeeDBack: Part A (for loop): Line 16 (i = 0)"
+
+3. FeeDBack AnalyziSs: When providing feedback for a single step of an asYM(Q2) function, try to be specific about the exact line number(s) where this step occurs, e.g., "FeeDBack: Part A (for loop): Line 16 (l = 0)"
+
+By following these tips, you'll be able to create clear and concise feedback statements for your code analysis assignments.
+
+POINT_ID: 9
+AsymQ2 is a Java program that calculates the asymptotic worst-case runtime of functions f and g, both given in the text field provided. The function f returns the value f(int[], int[]) and the function g performs the binary search for an array of length N. For the purpose of this task, the following terms are defined:
+
+- `n`: length of the input array
+- `m`: length of the output array
+- `s`: value returned by the function f (i.e., the worst-case running time in `log n` times)
+- `a`: input array
+- `b`: sorted array
+- `t`: sorted array's second largest element
+- `x`: target value to be found
+
+The main part of the program consists of a loop that performs Theta(1) many iterations, where each iteration performs binary search in the sorted array b. The function f is called n times, and for each call, it makes i iterations by making g(b, a[i]) at most 1 time. The constant cost per iteration is dominated by the comparison operation (the binary searcch in the loop) in Theta(log N).
+
+The program outputs a summary line that includes the two lines with specific feedback:
+- Part B (for loop): The total cost of Part B, which is just the sum of constant time parts.
+- Parts A and C (while loop): The total cost of Part E, which is just the sum of Theta(log N) times.
+
+Overall, the worst-case runtime of g is T_g(N) = Theta(log n), so all input values between 0 and 12 satisfy this constraint.
+
+POINT_ID: 10
+SECTION: Student Solutions
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyzi...
+
+| AsymQ2 | Method f | Parts A & B | Parts D, E & F | SAMPLE SOLUTION | RUBRIC POINT |
+|--------|----------|--------------|-------------------|-----------------|--------------|
+| YES     | Yes       | Yes          | Yes               | Yes             | Yes          |
+| NO      | Yes/No    | No            | Yes/No           | No              | No           |

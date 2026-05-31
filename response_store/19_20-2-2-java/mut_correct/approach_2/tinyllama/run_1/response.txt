@@ -1,0 +1,135 @@
+POINT_ID: 1
+Answer:
+MARKS: 1
+FEEDBACK: The solution has a total value of 369 and is O(lcm(a,b)) time complex.
+
+
+POINT_ID: 2
+QUESTION:
+What are some special notation for mathematical expressions that can be represented well with a stack in a calculator?
+
+A: Reverse Polish Notation/Postfix Notation (RPNN) is a special notation for representing mathematical expressions. It is processed from left to right, meaning the numbers and operators are first processed by the calculator. If an operator is encountered, it is executed and the resulting number is pushed onto the stack. After processing, the result is the only number on the stack.
+Here's a sample method implementation:
+public class IntegeRPNN {
+     public boolean emptyStack() {
+         return stack.isEmpty();
+     }
+     public int head() {
+         return stack.peek().val;
+     }
+     public void push(int num) {
+         if (stack.empty()) {
+             stack.push(num);
+         } else {
+             int curr = stack.pop();
+             stack.push(curr + num);
+         }
+     }
+     public int pop() {
+         return stack.pop().val;
+     }
+}
+
+This implementation assumes that the input is a correct formula and uses Reverse Polish Notation as the notation for mathematical expressions. It can be modified to use other postfix notation formats or different special notation formats as needed.
+
+POINT_ID: 3
+Certainly! Here's a slightly more detailed implementation with comments explaining each step:
+
+1. Parse the input formula string using Integer.parseInt() to get the numbers and operators. For example, "1 * 2 + 3 * 4" becomes ["1", "*", "2", "+", "3", "*", "4"] which is the list of numbers, operators, and values to be processed.
+
+2. Create a stack (IntegerStack) to hold the numbers and operators on the right-hand side. We'll use this for push() and pop() operations throughout the program.
+
+3. For each number in the input string, call the push(int) method with the corresponding value. For example, "1" becomes 1 pushed onto the stack; "2" becomes 2 * (IntegerStack) => [1, "*", 2] pushed onto the stack; "+5" becomes 3 * (IntegerStack) => [1, "*", 3, "+", "*", 5] pushed onto the stack.
+
+4. For each operator in the input string, call the push(int) method with the corresponding value. For example, "*" becomes (IntegerStack) => [1, "*", *] pushed onto the stack.
+
+5. Loop through each value on the right-hand side of the formula and process it using push() if a valid operator is encountered. If an error occurs while processing a token (e.g., "*" becomes 0 pushed onto the stack, where `Intege` has no such method), then pop() and throw an IllegalStateException:
+   ```java
+   public int Calculator(String[] input, Intege rStack) {
+       for(int I = 0; I < input.length; ++i) {
+           switch(input[i]) {
+               case "+":
+                   { // If `rStack` is non-empty and `push()`able, then
+                        int n1 = rStack.pop();
+                        int n2 = rStack.pop(); // Execute the operation (i.e., push(n1 * n2))
+                        rStack.push(n2 + n1);
+                   } break;
+               case "-":
+                   { // If `rStack` is non-empty and `push()`able, then
+                        int n1 = rStack.pop();
+                        int n2 = rStack.pop(); // Execute the operation (i.e., push(n1 - n2))
+                        rStack.push(n2 * n1);
+                   } break;
+               case "*":
+                   { // If `rStack` is non-empty and `push()`able, then
+                        int n1 = rStack.pop();
+                        int n2 = rStack.pop(); // Execute the operation (i.e., push(n1 * n2))
+                        rStack.push(n1 + n2);
+                   } break;
+               case "/":
+                   { // If `rStack` is non-empty and `push()`able, then
+                        int n1 = rStack.pop();
+                        int n2 = rStack.pop();
+                        int n3 = rStack.pop(); // Execute the operation (i.e., push(n1 / n2))
+                        rStack.push(n2 * n3);
+                   } break;
+               default:
+                   // If there's no stack, then error message:
+                   System.out.println("Invalid operator encountered."); throw new IllegalStateException(); } // Throw an exception if the operation is invalid
+     ```
+
+6. Finally, call pop() to remove any remaining operators and values from the right-hand side of the formula. If all operations have been processed (i.e., there's no more room on the stack), return the resulting number:
+   ```java
+   public int Calculator(String[] input) {
+       String result = ""; // Initialize result to empty string
+       for(int I = 0; I < input.length; ++i) {
+           char op = input[i].charAt(0); // Get operator character (e.g., "+")
+           String operand = input[i].substring(1, i+1); // Take the rest of the string (e.g., "2" becomes "2 ")
+           int resultVal; // Initialize result value to 0
+           switch(op) {
+               case '*': // Check if operator is "*", then multiply values
+                   { // If the operator is "*", then:
+                       String rightOperand = operand.substring(1); // Take the rest of the string (e.g., "3" becomes "3")
+                       int n2 = Intege.parseInt(rightOperand, 0, rightOperand.length()); // Convert rightOperand to an integer using Intege.parseInt()
+                       resultVal = (int)operand + n2; // Multiply operands by the converted integer and store the result in the variable "resultVal"
+                   } break;
+               case '/': // Check if operator is "/", then divide values
+                   { // If the operator is "/", then:
+                       String rightOperand = operand.substring(1); // Take the rest of the string (e.g., "3/2" becomes "1")
+                       int n1 = Intege.parseInt(rightOperand, 0, rightOperand.length()); // Convert rightOperand to an integer using Intege.parseInt()
+                       resultVal = (int)operand / n1; // Divide operands by the converted integer and store the result in the variable "resultVal"
+                   } break;
+               case '+': // Check if operator is "+", then add values
+                   { // If the operator is "+", then:
+                       String rightOperand = operand.substring(1); // Take the rest of the string (e.g., "2" becomes "2")
+                       int n1 = Intege.parseInt(rightOperand, 0, rightOperand.length()); // Convert rightOperand to an integer using Intege.parseInt()
+                       resultVal = n1 + operand; // Add values by multiplying the converted integer with the left operand and store the result in the variable "resultVal"
+                   } break;
+               default: // Invalid operator encountered, throw exception with message
+                   System.out.println("Invalid operator encountered."); throw new IllegalStateException(); }
+       return result;
+   } ```
+
+POINT_ID: 4
+Response:
+
+Sure, here's a more detailed explanation of the Reverse Polish Notation / Postfix Notation method in action for processing math expressions using an interpreter that implements the stack:
+
+1. First step is to convert the input string into a list of strings representing mathematical expressions and operators separated by space characters (i.e., "+", "*", "/", "+" for addition, "-" for subtraction, "/" for division). This can be achieved using a method such as Integer.parse(String[] input) that takes an array of string inputs as its argument and returns a List<Intege> object containing the parsed expressions and operators.
+
+2. The stack is initially empty and contains only two numbers (the number of non-operand operands and the second operand, which is always 0 in this context).
+
+3. Each element of the input array (an expression or operator followed by its operands) is pushed onto the stack (i.e., stored as the last element), using a method such as Intege.push(int i) that takes an int (the number of operands) as its argument and pushes it onto the stack.
+
+4. For each element in the input array, the method is called with the previous two elements on the stack as arguments, using the method's signatures and parameters:
+
+   - If the element is an operator (e.g., "+"), pops off the second operand from the stack, which becomes the left operand of the operator (i.e., the second number on the stack).
+   - If the element is a non-operand (e.g., "*") or both operands are 0, simply pops off and returns the result as an integer.
+
+5. Finally, when it reaches the top of the stack, the method is called with just the top two numbers (i.e., the right operand and the left operand) on the stack, using the same signatures and parameters as above. This returns the correct result according to the given input, which can be either the result of adding a number and its operand or multiplying the right operand by the left operand (i.e., the first two numbers on the stack).
+
+This method is called repeatedly until the end of the input array has been processed or until an empty stack is reached.
+
+POINT_ID: 5
+QUESTION:
+Develop a Pascal program that prompts the user to input an expression in reverse Polish notation (RPN), calculates its value, and outputs the result. The program should be able to handle arithmetic operations (+, -, *), multiplication (*), division (/), and parentheses () being used as the operators. Implement the stack data structure using an array for storing the operator and two integer variables for representing the top two operands. Ensure that the output is displayed in a clear and concise manner.

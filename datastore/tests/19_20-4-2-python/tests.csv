@@ -1,0 +1,185 @@
+test_number,is_example,testcode,expected
+1,True,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 3
+root.right.parent = root
+# Call delete
+root = delete(root, root.right)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+2,True,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 3
+root.right.parent = root
+root.right.right = Node()
+root.right.right.key = 99
+root.right.right.parent = root.right
+
+# Call delete
+root = delete(root, root.right)
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+NewRoot.right = Node()
+NewRoot.right.key = 99
+NewRoot.right.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True
+3,True,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 50
+root.right.parent = root
+root.right.right = Node()
+root.right.right.key = 99
+root.right.right.parent = root.right
+root.right.left = Node()
+root.right.left.key = 25
+root.right.left.parent = root.right
+
+# Call delete
+root = delete(root, root.right)
+
+# Compare
+newRoot = Node()
+newRoot.key = 2
+newRoot.left = Node()
+newRoot.left.key = 1
+newRoot.left.parent = newRoot
+newRoot.right = Node()
+newRoot.right.key = 99
+newRoot.right.parent = newRoot
+newRoot.right.left = Node()
+newRoot.right.left.key = 25
+newRoot.right.left.parent = newRoot.right
+
+print(compare_trees(root, newRoot))",True
+4,False,"# build tree
+n1 = Node()
+n1.key = 37
+n1.left = Node()
+n1.left.key = 32
+n1.left.parent = n1
+n1.right = Node()
+n1.right.key = 78
+n1.right.parent = n1
+
+target = Node()
+target.key = 21
+target.right = n1
+n1.parent = target
+target.left = Node()
+target.left.key = 13
+target.left.parent = target
+
+root = Node()
+root.key = 85
+root.left = target
+target.parent = root
+root.right = Node()
+root.right.key = 942
+root.right.parent = root
+root.right.left = Node()
+root.right.left.key = 136
+root.right.left.parent = root.right
+
+# Call delete
+root = delete(root, target)
+
+# Compare
+n2 = Node()
+n2.key = 37
+n2.right = Node()
+n2.right.key = 78
+n2.right.parent = n2
+
+replaced = Node()
+replaced.key = 32
+replaced.right = n2
+n2.parent = replaced
+replaced.left = Node()
+replaced.left.key = 13
+replaced.left.parent = replaced
+
+newRoot = Node()
+newRoot.key = 85
+newRoot.left = replaced
+replaced.parent = newRoot
+newRoot.right = Node()
+newRoot.right.key = 942
+newRoot.right.parent = newRoot
+newRoot.right.left = Node()
+newRoot.right.left.key = 136
+newRoot.right.left.parent = newRoot.right
+
+print(compare_trees(root, newRoot))",True
+5,False,"root = Node()
+root.key = 55
+
+root = delete(root, root)
+
+print(compare_trees(root, None))",True
+6,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+7,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+8,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+9,False,"test = get_random()
+root = delete(test[0], test[1])
+print(compare_trees(root, test[2]))",True
+10,False,"# build tree
+root = Node()
+root.key = 2
+root.left = Node()
+root.left.key = 1
+root.left.parent = root
+root.right = Node()
+root.right.key = 4
+root.right.parent = root
+root.right.left = Node()
+root.right.left.key = 3
+root.right.left.parent = root.right
+
+# Call delete
+root = delete(root, root.right);
+
+# Compare
+NewRoot = Node()
+NewRoot.key = 2
+NewRoot.left = Node()
+NewRoot.left.key = 1
+NewRoot.left.parent = NewRoot
+NewRoot.right = Node()
+NewRoot.right.key = 3
+NewRoot.right.parent = NewRoot
+
+print(compare_trees(root, NewRoot))",True

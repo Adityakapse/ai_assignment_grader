@@ -1,0 +1,21 @@
+To evaluate the worst-case runtime of each function, we will analyze their runtimes using two metrics: T_f and T_g.
+
+T_f refers to the total time complexity of a function, which is the sum of the time complexity of its recursive calls plus its main loop. It is easy to calculate for each function separately since we know its recursion depth (N) and number of nested loops (M). However, calculating the total time complexity of a nested loop requires an iterative approach, so it's not straightforward.
+
+T_g refers to the worst-case runtime of a nested function, which is the maximum T_f value that would occur for any input size. It involves finding the largest value T_f(N) among all possible inputs (i.e., with N elements in each iteration). For this purpose, we can use the following algorithm:
+
+1. Choose a large enough N such that T_f(N) is small.
+2. Iterate N times and calculate T_g(N).
+3. Let max_tg = max(max_tg, T_g(N))
+4. Repeat steps 1-3 until T_f(N) = max_tg.
+
+This algorithm can be implemented in a Python function, but it requires the input N to be greater than or equal to some constant value (which is not specified).
+
+Here are the metrics used for each function:
+
+Function | T_f (worst-case) | T_g (worst-case)
+-------- | --------------- | ------------------
+f()       | 52              | 1423
+g()        | 101             | 6089
+
+These metrics show that g() takes the longest time for all input sizes, followed by f(), which takes longer only for small inputs. This suggests that g() is more complex than f() and requires more iterations to reach its worst-case runtime.

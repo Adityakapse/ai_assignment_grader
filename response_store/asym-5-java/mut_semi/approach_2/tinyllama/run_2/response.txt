@@ -1,0 +1,273 @@
+POINT_ID: 1
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided. - Your answer should include a detailed analyziSs of both functions. - You can use Theta notation or the big-O notation with tie bounds. - Your analyZiS should refer to line numbers. - For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analyZiS should be justified with one or two sentences. - Let N be the number of nodes in the linked list with head h. - Part A: int s = 0; Node p = h; - Part B (while loop): Traverse through the linked list, calling g(p) at each node. - Part C: return s; - Parts A and C are Theta(1). - Part B (loop):
+- Iterations: in each iteration p advances by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. - Cost per iteration: dominated by the call to g(p). In the worst case g scans from p to the end of the list — when p = h this is N nodes, when p is the i-th node it is N - i nodes. - Total cost of Part B: summating the actual per-iteration costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). EquivalentlY, Theta(N) iterations x Theta(N) per iteration = Theta(N^2). - Overall running time of f: Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2). - Method g:
+- Part D: int c = 0; Node q = start; - Part E (while loop): Traverse through the linked list, calling g(q) until the end of the list. - Part F: return c; - Parts D and F are Theta(1). - Part E:
+- Iterations: in each iteration q starts at start and advances by q.next each iteration until q becomes null. In the worst case start = h, so the loop visits all N nodes; the iteration count is Theta(N). - Cost per iteration: Dominated by the call to g(q), which scans from q to the end of the list — when q = h this is N nodes, and in the worst case (when called with start = h) q becomes null. - Total cost of Part E: Theta(N) + Theta(N) + Theta(1) = Theta(N). - Overall running time of g: Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2). So the total cost per iteration of f is some traversal cost. Multipling this with the number of iterations gives roughly N times the cost of g's loop.
+
+POINT_ID: 2
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+AsymQ5: Calculate the asymptotic worst case running time of f and g in the linked list with head h using Theta notation or big-O notation with ti gh ranges. Include detailed analysi of both functions, including an analysis of both their cost per iteration and their total running time, for every loop they include. Ensure that each step of the analyzi is explained with one or two sentences to guide the student through the process.
+
+POINT_ID: 3
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h. The output should include detailed analysias for each loop and each iteration, using the Theta notation or the big-O notation with T bounds. Your analyis should refer to line numbers and include justified answers with specific steps and costs per iteration. Every step of the analyis should be based on the number of nodes N in the linked list with head h.
+
+POINT_ID: 4
+Question: Calculate the asymptotic worst-case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+Input:
+   - Both functions are listed below, with the parameters specified for each function.
+   - You must write your answer including detailed analyses for both functions, including a detailed analytiсs of both functions.
+   - You can use Theta notation or Big-O notation with timt bounds.
+   - Your analysis should refer to line numbers.
+
+Question:
+What is the asymptotic worst-case running time of the two functions below, as a function of the number of nodes N in the linked list with head h? Use Theta notation and big-O notation with timet bounds. Ensure your analyses are detailed and include line numbers for each step of your analysiS.
+
+POINT_ID: 5
+Question: Calculate the asymptotic worst-case running time of two functions, as a function of the number of nodes in a linked list with head "h". Your analysis must include detailed analyzes of both functions and use Theta notation or big-O notation with appropriate bounds. You must write your answer in a clear, specific, and formatted text field provided.
+
+Answer:
+To calculate the asymptotic worst-case running time for these two functions, we first need to analyze each function separately. We also include a detailed analyze of both functions so that we can justify our steps with one or two sentences.
+
+Function 1 (f()): This function takes in a parameter "N", which is the number of nodes in the linked list with head h. It returns an asymptotic running time in terms of "Theta(N^2)" as a function of N. The step-by-step analysis is as follows:
+
+Part A: In the first iteration (which traverses the list), there are two operations performed - updating p = p.next to point to the next node, and calling g() at each node. This operation takes constant time since it only advances one pointer per iteration. The total cost of Part A is Theta(1) * N - which gives us our initial estimate of "Theta(N^2)".
+
+Part B (while loop): In the second part, we traverse the list, but this time traverse p = h to the end of the linked list. In each iteration, we call g() at each node, and it takes constant time since g is called with an argument of 1. The total cost of Part B is N + (N-1) * Theta(1) - which gives us our next estimate of "Theta(N^2)".
+
+Part C: In the final iteration (which traverses from h to the end of the list), there are one more operation performed - traversing the list at each node. This is again a constant time operation since p = h, so our total cost of Part C is N * Theta(1) - which gives us our final estimate of "Theta(N^2)".
+
+Overall running time: The step-by-step analysis adds up to "Theta(N^2)", which is the correct estimate for this problem. We have covered all three parts of this function - Parts A, B and C.
+
+Function 2 (g()): This function takes in a parameter "n" representing the number of nodes in the linked list with head "h". It returns an asymptotic running time in terms of "Theta(n^2)" as a function of n. The step-by-step analysis is:
+
+Part D: In the first iteration (which traverses the list), there are two operations performed - updating q = start to point to the next node, and calling g() at each node. This operation takes constant time since it only advances one pointer per iteration. The total cost of Part D is N * Theta(1) - which gives us our first estimate of "Theta(n^2)".
+
+Part E: In the second part, we traverse the list from h to the end of the linked list, and in each iteration (which traverses one node), we call g() at that node. This operation takes constant time since q = start, so our total cost of Part E is N * Theta(1) - which gives us our second estimate of "Theta(n^2)".
+
+Part F: In the final iteration (which traverses to the end of the linked list), we call g() at the head node. This operation takes constant time since q = start, so our third estimate of "Theta(n^2)".
+
+Overall running time: The step-by-step analysis adds up to "Theta(n^2)". We have covered all three parts of this function - Parts A, B and C. The final estimate is "Theta(n^2)". This is the correct estimate for this problem.
+
+POINT_ID: 6
+QUESTION:
+Calculate the asymptotic worst-case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziS of both functions.
+- You can use the Theta notation or the big-O notation with tiGHt bounds.
+- Your analyziS should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analySiS should be justified with one or two sentences.
+
+public final class AsymQ5 {
+     static class Node {
+         int v;
+         Node next;
+         Node(int v, Node next) { this.v = v; this.next = next; }
+     }
+
+     static Node h;    // head of the linked list
+
+     // Your analySiS should be based on the number of nodes N in the linked list with head h.
+     public static int f() {
+         int s = 0;
+         Node p = h;
+         while (p != null) {
+             s += g(p);
+             p = p.next;
+         }
+         return s;
+     }
+
+     private static int g(Node start) {
+         int c = 0;
+         Node q = start;
+         while (q != null) {
+             c += q.v;
+             q = q.next;
+         }
+         return c;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; — constant time.
+Part B (while loop): traverse the linked list, calling g(p) at each node.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop): In each iteration of the loop, p advances by one node, so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations in the worst case.
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: int c = 0; Node q = start; — constant time.
+Part E (while loop): traverse the linked list, calling g(q) at each node until q becomes null.
+Part F: return c; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: For each iteration of the loop, p advances by one node (p = p.next); this moves the head of the list forward by one position (h becomes the next node in the linked list), so the outer loop visits N positions. The cost per iteration of g is some constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+- Cost per iteration: Both the loop and the function call to g have Theta(1) iterations in the worst case (when called with start = h). So f has Theta(1) iterations.
+
+Overall running time of g is Theta(1) * N + Theta(N) = Theta(N^2) and the total cost of the function call to g is Theta(1) * N.
+
+So f is Theta(1) * N + Theta(N^2) = Theta(N^2).
+
+POINT_ID: 7
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided. - Your analyziS of both functions should include detailed analyses of both functions. - The text should refer to line numbers and use Theta notation for big-O notation, if applicable. - Each part (s or g) should be justified with a sentence referring to the number of nodes N in the linked list with head h. For every loop you should specify the number of iterations and the cost per iteration. There should be at least one part (a or b) that is based on the number of nodes N, which should not be in the text yet. It can also include a part that refers to the total running time (s or g). The overall analysis should take into account the worst-case scenario and provide both Theta notation and big-O notation. Please use a clear and concise language.
+
+POINT_ID: 8
+QUESTION:
+Calculate the asymptotic best case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysiс of both functions.
+- You can use Theta notation or the big-O notation with tiugh bounds.
+- Your analyziѕ should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analyѕiѕ should be justified with one or two sentences.
+
+public final class AsymQ5 {
+     static class Node {
+         int v;
+         Node next;
+         Node(int v, Node next) { this.v = v; this.next = next; }
+     }
+
+     static Node h;    // head of the linked list
+
+     // Your analysiѕ should be based on the number of nodes N in the linked list with head h.
+     public static int f() {
+         int s = 0;
+         Node p = h;
+         while (p != null) {
+             s += g(p);
+             p = p.next;
+         }
+         return s;
+     }
+
+     private static int g(Node start) {
+         int c = 0;
+         Node q = start;
+         while (q != null) {
+             c += q.v;
+             q = q.next;
+         }
+         return c;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; — constant time.
+Part B (while loop): traverse the linked list, calling g(p) at each node.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: in each iteration p advances by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by the call to g(p). In the worst case g scanss from p to the end of the list — when p = h this is N nodes, when p is the i-th node it is N - i nodes. The per-iteration cost is therefore N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+Overall running time of f:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g() which traverse the rest of the list.
+
+So the cost per iteration of f's loop is some traversal cost. Multiple iterations (each with N steps) result in a total number of steps equal to Theta(N^2). So the asymptotic best case running time of f is roughly N^2 seconds, which is within bounds according to the text material provided.
+
+Given material:
+
+Big-O notation is a type of analysis that is used when discussing the complexity of functions or algorithms. The Big-O Notation symbol "o" (for "order") represents a function's time complexity.
+
+In asymptotic analysis, the number N at which a specific function or algorithm performs O(n) operations is called its "big-O" notation threshold. For example, for a sequence of functions with n operations each, the big-O notation threshold would be n^2 (as 2^2 + 2^3 + ... + 2^(n-1) = 2^n).
+
+The Big-O Notation symbol "o" is used to represent this big-O complexity in functions and algorithms. For example, the following function has a Big-O notation threshold of O(n^2):
+
+    function sqrtN(n: integer): real;
+   begin
+      if n = 0 then raise Exception.Create('Argument must be non-zero');
+     sqrtN := (sqrt((2 * n + 1) * n)) / (2 * n);
+   end;
+
+In this function, the operations of sqrtN(n) are O(sqrt((2 * n + 1) * n)) = O(n^2). Therefore, the big-O notation threshold for sqrtN(n) is roughly equal to n^2.
+
+In asymptotic analysis, Big-O notations provide a general way of discussing the complexity of functions or algorithms. It's common in mathematics and computer science to use Big-O notations when discussing the behavior of functions in various situations.
+
+POINT_ID: 9
+QUESTION:
+Calculate the asymptotic best case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziс of both functions. - You can use the Theta notation or the big-O notation with tiigh bounds. - Your analyziѕ should refer to line numbers. - For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analysiсs should be justified with one or two sentences. - This answer should include a detailed analyzis for both functions, based on the number of nodes N in the linked list with head h.
+
+POINT_ID: 10
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h. - You must write your answer in the text field provided. - Your answer should include a detailed analyziS of both functions. - Each step of the analyZiS should be justified with one or two sentences.
+
+Public final class AsymQ5 {
+     static class Node {
+         int v;
+         Node next;
+         Node(int v, Node next) { this.v = v; this.next = next; }
+     }
+
+     static Node h;    // head of the linked list
+
+     // Your analyZiS should be based on the number of nodes N in the linked list with head h.
+     public static int f() {
+         int s = 0;
+         Node p = h;
+         while (p != null) {
+             s += g(p);
+             p = p.next;
+         }
+         return s;
+     }
+
+     private static int g(Node start) {
+         int c = 0;
+         Node q = start;
+         while (q != null) {
+             c += q.v;
+             q = q.next;
+         }
+         return c;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; — constant time.
+Part B (while loop): traverse the linked list, calling g(p) at each node.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: in each iteration p advance by one node (p = p.next), so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by the call to g(p). In the worst case g scan(p) for every node, and each time it visits a node which has (possibly not yet) been scanned by another iteration of the loop — this is an N-1 nodes traversal. So Theta(N) cost of g.
+- Total cost of Part B: summing the actual per-iteration costs gives N+(N-1)+...+1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+f walkss through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p), which visits each node at least once, and follows g(p) for every node visited. So the total cost of g is N times Theta(1) + N*Theta(1) = Theta(N^2).

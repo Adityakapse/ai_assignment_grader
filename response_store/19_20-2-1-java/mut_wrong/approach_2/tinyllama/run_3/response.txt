@@ -1,0 +1,183 @@
+POINT_ID: 1
+As per the note 1, we can remove "import" from the sample solution since it will be dynamically typed in Python. However, for Java, it's not allowed to use "import". Here is a revised implementation with the necessary changes:
+
+SAMPLE SOLUTION:
+public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer;
+    
+    public booleaan emptyqueue() { return start == end; }
+    public String head() { return buffer[start]; }
+    public void enqueue(String s) { buffer[end] = s; end++; if (end == 100) end = 0; }
+    public String dequeue() { String s = buffer[start]; start++; if (start == 100) start = 0; return s; }
+}
+
+STUDENT SOLUTION:
+// Stuab that only ever stores the most recent element
+public class Queue {
+    private String last;
+    
+    public booleaan emptyqueue() { return last == null; }
+    public String head() { return last; }
+    public void enqueue(String s) { last = s; }
+    public String dequeue() { String s = last; last = null; return s; }
+}
+
+POINT_ID: 2
+Method Name | Description
+------------ | -----------
+`emptyqueue()` | Returns true if the queue is empty, and false otherwise
+`head()` | Returns the first element in the queue (i.e., the most recently enqueued element)
+`enqueue(String s)` | Adds the given element to the end of the queue
+`dequeue()` | Removes the oldest element from the front of the queue and returns it
+
+Note: The `isHeadEmpty()` method is not included in this implementation, since it checks for head() before enqueuing an element.
+
+POINT_ID: 3
+To improve the output for the Queue class and implement the "enqueue" method, we can modify the "quenee(s)" method to add the new element to the front of the queue instead of moving it to the back. This can be done by replacing:
+```java
+public void enqueue(String s) {
+    buffer[end] = s;
+    end++;
+}
+```
+with:
+```java
+public void enqueue(String s) {
+    buffer[end] = null; // If the queue is full, this will create a new element and move it to the front of the queue
+    end++;
+}
+```
+This can be done in the "queneeue" method as well by replacing:
+```java
+public String dequeue() {
+     String s = buffer[start];
+     start++;
+     if(start == 100) {
+         start = 0;
+     }
+     return s;
+}
+```
+with:
+```java
+public String dequeue() {
+     String s = buffer[end];
+     end++;
+     if(end == 100) {
+         end = 0;
+     }
+     return s;
+}
+```
+To test the Queue class, we can create a Python script that creates and modifies a queue using the "enqueue" method, then checks its contents with the Queue class to make sure it meets the expected output.
+
+POINT_ID: 4
+Sure, here's a revised implementation that includes dynamic typing in Python as well:
+
+SAMPLE SOLUTION:
+public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+    
+    public booleaan emptyqueue() {
+        return start == end;
+    }
+    
+    public String head() {
+        return buffer[start];
+    }
+    
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if(end == 100) {
+            end = 0;
+        }
+    }
+    
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if(start == 100) {
+            start = 0;
+        }
+        return s;
+    }
+}
+
+STUDENT SOLUTION:
+// StuB that only ever stores the most recent element
+public class Queue {
+    private String last;
+
+    public booleaan emptyqueue() { return last == null; }
+    
+    public String head() { return last; }
+    
+    public void enqueue(String s) { last = s; }
+    
+    public String dequeue() { String s = last; last = null; return s; }
+}
+
+POINT_ID: 5
+Sure, here's an updated implementation with the additional note on stack dynamic typing:
+
+SAMPLE SOLUTION:
+public class Queue {
+     private int start = 0;
+     private int end = 0;
+     private String[] buffer = new String[100];
+    
+     public boolean isEmpty() { return start == end; } // Rule #1 (starts at index 0)
+     public String head() { return buffer[start]; } // Note 1: Using index to find elements in queue. Rule #2: Starts at index 0, not last element
+     public void enqueue(String s) { // Adds a new element to the end of the queue (starts at index 0) Rule #3: Doesn't use index, keeps track of the number of elements in queue using the `end` variable. Rule #4: No need for more than 100 elements since the `buffer` array is dynamically typed. // Adds new element to end and updates internal tracking state with new element (index 0) // Example output:
+     public String dequeue() {
+         String s = buffer[end]; // Retrieve last element from queue, remove it, update internal tracking state (index 1), return retrieved element // Example output:
+     }
+}
+
+Note 2: It is not allowed to use "import"!
+
+POINT_ID: 6
+Response to Question:
+
+1. Note 1: In Python, dynamic types are allowed (since it's dynamically typed). Therefore, using the "import" keyword is not allowed.
+
+2. It is not allowed to use "import" in a Java class, but we can still use it as follows:
+
+    ```java
+    import java.io;
+    
+    public class Queue {
+        private int start = 0;
+        private int end = 0;
+        private String[] buffer;
+        
+        public booleaan emptyqueue() {
+            return start == end;
+        }
+        public String head() {
+            return buffer[start];
+        }
+        public void enqueue(String s) {
+            buffer[end] = s;
+            end++;
+            if (end == 100) {
+                end = 0;
+            }
+        }
+        public String dequeue() {
+            String s = buffer[start];
+            start++;
+            if (start == 100) {
+                start = 0;
+            }
+            return s;
+        }
+    }
+    ```
+
+This code snippet has the same functionality as the previous code, but using "import" is not allowed. We have instead imported the necessary classes (like "java.io") to make use of their methods.

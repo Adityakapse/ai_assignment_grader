@@ -1,0 +1,61 @@
+test_number,is_example,testcode,expected
+1,True,"ListToSort lts = new ListToSort(Arrays.asList(2, 3, 1, 5, 99, 33));
+lts = Sort(lts);
+System.out.println(lts.isSorted());
+System.out.println(lts.isSame(Arrays.asList(1, 2, 3, 5, 33, 99)));","true
+true"
+2,False,"ListToSort lts = new ListToSort((Arrays.asList()));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+3,False,"ArrayList<Integer> dummy = new ArrayList<>(256);
+for (int i = 0; i < 256; i++) {
+    dummy.add(randrange(0, Integer.MAX_VALUE));
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+4,False,"ArrayList<Integer> dummy = new ArrayList<>(256);
+for (int i = 0; i < 256; i++) {
+    dummy.add(randrange(Integer.MIN_VALUE, Integer.MAX_VALUE));
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+5,False,"ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(i);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+6,False,"ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(127-i);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+7,False,"ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(9999);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+8,False,"int rand = -randrange(1, 128);
+ArrayList<Integer> dummy = new ArrayList<>(128);
+for (int i = 0; i < 128; i++) {
+    dummy.add(rand);
+}
+ListToSort lts = new ListToSort(dummy);
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+9,False,"ListToSort lts = new ListToSort((Arrays.asList(42)));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+10,False,"ListToSort lts = new ListToSort((Arrays.asList(randrange(0, 9999999))));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true
+11,True,"ListToSort lts = new ListToSort(Arrays.asList(7, 7, 7, 7, 7, 7, 7));
+lts = Sort(lts);
+System.out.println(lts.isSorted());",true

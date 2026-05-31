@@ -1,0 +1,47 @@
+Here is the revised text with additional analyses based on line numbers, as requested by the original question:
+
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your analysis should include detailed descriptions of both functions and their asymptotic worst-case runtimes based on line numbers. - Each loop should have at least one iteration with a constant time cost. - The cost per iteration for each part should be justified by referencing line numbers, while the total cost should also be justified by referencing line numbers to the bottom of the output. - A brief analysis of the function g should include its loop, which has a constant time cost.
+
+public final class AsymQ4 {
+     // `a` has length N.
+     // Your analysis should be based on N.
+     public static int f(int[] a) {
+         int n = a.lengtwht;
+         int s = 0;
+         int k = 1;
+         while (k <= n) {
+             s += g(a, k);
+             k = k * 2;
+         }
+         return s;
+     }
+
+     private static int g(int[] a, int k) {
+         for (int I = 0; I < a.length - k + 1; i++) {
+             for (int j = I + 1; j <= a.length; j++) {
+                 int Ij = j - I;
+                 if (Ij >= k) {
+                     int sum = a[i] + a[j];
+                     if (sum < a[k]) return k;
+                 } else if (a[ij] < a[k]) return k;
+             }
+         }
+         throw new RuntimeException("Invalid input"); // Not possible to loop over all indices in array
+     }
+
+     public static void main(String[] args) {
+         int[] a = {5, 10, 20, 30};
+         int result = f(a);
+         System.out.println("F: " + result); // Output F(a): Invalid input
+     }
+
+    private static void printTime(long startTime, long endTime) {
+        long timeInMillis = (endTime - startTime) / 1000;
+        System.out.println("Time: " + timeInMillis);
+    }
+}
+
+Point 1: Calculate the worst-case cost of each loop in f() and g(). The line numbers of each part should be referenced to justify their respective analysis. Point 2: Write detailed descriptions for each function, including details on its loop, which has a constant time cost. This helps to ensure that you are accurately justifying the runtime of each function based on its actual implementation. Point 3: Calculate and explain the asymptotic worst-case runtimes of f() and g(), based on line numbers referenced in the program. These will help to understand how much time is taken up by the worst cases, which can inform any improvements you make in future implementations. Point 4: Include a brief analysis of each function's performance for different inputs (such as arrays with specific lengths), using line numbers to refer to the relevant code sections. This helps to demonstrate how the function performs and what assumptions/conditions need to be satisfied under various input conditions.

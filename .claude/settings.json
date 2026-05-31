@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(python3 src/preprocessing.py --raw_data_dir raw_data/AD2022dataset --datastore_dir datastore)",
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\" && cat {}')",
+      "Bash(python src/validation.py --datastore_dir datastore)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(python3 src/validation.py --datastore_dir datastore)",
+      "Bash(python3 -m py_compile /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/grade.py)",
+      "Bash(python3 -m py_compile src/grade.py)",
+      "Bash(python3 -m py_compile src/process.py)",
+      "Bash(python3 -m py_compile /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/process.py)",
+      "Bash(python3 -m py_compile src/metrics.py)",
+      "Bash(python3 -c \"import sys; sys.path.insert\\(0, 'src'\\); import process; print\\(process.RESULT_COLUMNS\\)\")",
+      "Bash(python3 -m py_compile /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/metrics.py)",
+      "Bash(python3 -c \"from sklearn.metrics import cohen_kappa_score; print\\('ok'\\)\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('src/generate_graph.py'\\).read\\(\\)\\); print\\('AST parse OK'\\)\")",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('/Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/generate_graph.py'\\).read\\(\\)\\); print\\('AST parse OK'\\)\")",
+      "Bash(python3 -c \"import sys; sys.argv=['x','--result_store_dir','result_store','--datastore_dir','datastore']; import importlib.util; spec=importlib.util.spec_from_file_location\\('g','src/generate_graph.py'\\); m=importlib.util.module_from_spec\\(spec\\); spec.loader.exec_module\\(m\\); print\\('Import OK'\\)\")",
+      "Bash(python3 -m py_compile /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/generate_graph.py)",
+      "Bash(python3 -)",
+      "Bash(python3)",
+      "Bash(python3 /tmp/add_mutations.py)",
+      "Bash(awk -F',' 'NR==1 || $2 ~ /^20_21-/' datastore/questions/question.csv)",
+      "Bash(python3 /tmp/add_20_21_mutations.py)",
+      "Bash(python3 /tmp/verify_20_21.py)",
+      "Bash(python3 /tmp/fix_sort_comments.py)",
+      "Bash(python3 /tmp/add_21_22_mutations.py)",
+      "Bash(python3 /tmp/verify_21_22.py)",
+      "Bash(awk '/^def /{if \\(name\\) print name, \"lines:\", NR-start; name=$0; start=NR} END{if \\(name\\) print name, \"lines:\", NR-start}' /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/grade.py)",
+      "Bash(awk '/^def /{if \\(name\\) print name, \"lines:\", NR-start; name=$0; start=NR} END{if \\(name\\) print name, \"lines:\", NR-start}' /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/process.py)",
+      "Bash(awk '$NF > 30 {print}')",
+      "Bash(awk '/^def /{if \\(name\\) print name, \"lines:\", NR-start; name=$0; start=NR} END{if \\(name\\) print name, \"lines:\", NR-start}' /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/metrics.py)",
+      "Bash(awk '/^def /{if \\(name\\) print name, \"lines:\", NR-start; name=$0; start=NR} END{if \\(name\\) print name, \"lines:\", NR-start}' /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/preprocessing.py)",
+      "Bash(awk '/^def /{if \\(name\\) print name, \"lines:\", NR-start; name=$0; start=NR} END{if \\(name\\) print name, \"lines:\", NR-start}' /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/generate_graph.py)",
+      "Bash(awk '/^def /{start=NR; name=$2} /^def / && NR>start && start>0 {print name, \"starts line\", start, \"ends line\", NR-1, \"= \" \\(NR-start-1\\) \" lines\"} END{if \\(start>0\\) print name, \"starts line\", start, \"ends line\", NR, \"= \" \\(NR-start+1\\) \" lines\"}' /Users/aditya/Downloads/MSc_Computer_Science_Intelligent_Systems/Dissertation/Project/src/preprocessing.py)",
+      "Bash(python3 /tmp/build_analysis_questions.py)",
+      "Bash(python3 /tmp/verify_analysis_questions.py)",
+      "Bash(python3 /tmp/add_analysis_mutations.py)",
+      "Bash(python3 /tmp/verify_analysis_mutations.py)",
+      "Bash(python3 -m py_compile src/preprocessing.py src/validation.py src/grade.py src/process.py src/metrics.py src/generate_graph.py main.py)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/private/tmp"
+    ]
+  }
+}

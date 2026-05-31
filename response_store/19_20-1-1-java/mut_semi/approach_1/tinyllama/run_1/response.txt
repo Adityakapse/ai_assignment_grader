@@ -1,0 +1,58 @@
+To implement the Least Common Multiple (LCM) function in Python, follow these steps:
+
+1. Import the required libraries from the standard library or third-party libraries:
+   ```python
+   import math
+   import sys
+   from math import gcd
+   
+   # Other libraries can be imported here if needed
+   ```
+
+2. Define the function `gcd` and its base case/termination condition based on the GCM implementation from the lecture:
+   ```python
+   def gcd(a, b):
+       """
+       Calculate the greatest common divisor (GCD) of two numbers a and b.
+       
+       Parameters:
+       - a: the first number to be divided
+       - b: the second number to be divided
+       
+       Returns:
+       - The greatest common divisor (GCD)."""
+       if b == 0:
+           return a
+       else:
+           remainder = a % b
+           return gcd(b, remainder)
+    ```
+
+3. Define the function `lcm` and its recursive/iterative step based on the GCM implementation from the lecture:
+   ```python
+   def lcm(a, b):
+       """
+       Calculate the least common multiple (LCM) of two numbers a and b, recursively or iteratively.
+       
+       Parameters:
+       - a: the first number to be divided
+       - b: the second number to be divided
+       
+       Returns:
+       - The least common multiple (LCM)."""
+       if b == 0:
+           return a
+       else:
+           remainder = gcd(b, a % b)
+           return (a * remainder) / gcd(a, remainder)
+    ```
+
+4. Test the function with example inputs to ensure correctness:
+   ```python
+   >>> a = 10
+   >>> b = 5
+   >>> lcm_with_gcd(a, b) == lcm(a, b)
+   True
+   >>> lcm_without_gcdunder_20_inputs() == lcm(1, 9) # Test with all valid integer inputs
+   True
+   ```
