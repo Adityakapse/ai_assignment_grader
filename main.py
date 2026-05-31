@@ -12,6 +12,8 @@ import validation
 
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 MODELS = ["tinyllama", "qwen2.5-coder:7b", "deepseek-coder:6.7b"]
+# MODELS = [ "qwen2.5-coder:14b","deepseek-coder:16b","gemma4:31b-it-q4_K_M"]
+
 
 
 def parse_args():
@@ -64,7 +66,7 @@ def step_grading(args):
         for model in MODELS:
             n += 1
             cmd = [
-                sys.executable, "src/grade.py",
+                sys.executable, os.path.join("src", "grade.py"),
                 "--datastore_dir",       args.datastore_dir,
                 "--response_store_dir",  args.response_store_dir,
                 "--approach",            approach,
@@ -79,7 +81,7 @@ def step_grading(args):
 def step_processing(args):
     # Step 4: runs process.py via subprocess to parse all LLM responses into result.csv.
     cmd = [
-        sys.executable, "src/process.py",
+        sys.executable, os.path.join("src", "process.py"),
         "--response_store_dir", args.response_store_dir,
         "--result_store_dir",   args.result_store_dir,
         "--datastore_dir",      args.datastore_dir,

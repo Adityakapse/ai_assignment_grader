@@ -19,6 +19,10 @@ APPROACH_CONFIG = {
 VALID_APPROACHES = list(APPROACH_CONFIG.keys())
 
 
+def _to_fs_name(model):
+    return model.replace(":", "__")
+
+
 def parse_args():
     # Parses and validates CLI args; exits if datastore_dir does not exist.
     parser = argparse.ArgumentParser()
@@ -179,7 +183,7 @@ def assemble_per_point_response(point_results):
 def response_exists(response_store_dir, question_id, student_id, approach, model, run_n, response_file):
     # Checks if a response file already exists so completed runs are not re-graded.
     path = os.path.join(
-        response_store_dir, question_id, student_id, approach, model, run_n, response_file
+        response_store_dir, question_id, student_id, approach, _to_fs_name(model), run_n, response_file
     )
     return os.path.isfile(path)
 
@@ -188,7 +192,7 @@ def save_run(response_store_dir, question_id, student_id, approach, model, run_n
              response, prompt_text, elapsed_seconds, response_file, prompt_file):
     # Writes response.txt, prompt.txt, and time.txt to the response_store path for this run.
     directory = os.path.join(
-        response_store_dir, question_id, student_id, approach, model, run_n
+        response_store_dir, question_id, student_id, approach, _to_fs_name(model), run_n
     )
     os.makedirs(directory, exist_ok=True)
     with open(os.path.join(directory, response_file), "w", encoding="utf-8") as f:

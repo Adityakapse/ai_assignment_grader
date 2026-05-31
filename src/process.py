@@ -14,6 +14,15 @@ APPROACH_CONFIG = {
 
 VALID_APPROACHES = list(APPROACH_CONFIG.keys())
 
+
+def _to_fs_name(model):
+    return model.replace(":", "__")
+
+
+def _from_fs_name(folder):
+    return folder.replace("__", ":")
+
+
 RESULT_COLUMNS = [
     "question_id", "student_id", "model", "approach", "run",
     "total", "scores_per_point", "buckets_per_point", "format_ok", "feedback_per_point",
@@ -173,7 +182,7 @@ def parse_response(text, approach, expected_point_ids, task_rubric):
 
 def discover_runs(response_store_dir, question_id, student_id, approach, model, response_file):
     # Returns a sorted list of (run_folder, response_path) pairs for a given student/approach/model.
-    base = os.path.join(response_store_dir, question_id, student_id, approach, model)
+    base = os.path.join(response_store_dir, question_id, student_id, approach, _to_fs_name(model))
     if not os.path.isdir(base):
         return []
     runs = []
@@ -305,10 +314,11 @@ def _discover_combos_for_student(s_path, question_id, student_id, filter_approac
         a_path = os.path.join(s_path, approach)
         if not os.path.isdir(a_path):
             continue
-        for model in os.listdir(a_path):
+        for folder in os.listdir(a_path):
+            model = _from_fs_name(folder)
             if filter_model and model != filter_model:
                 continue
-            m_path = os.path.join(a_path, model)
+            m_path = os.path.join(a_path, folder)
             if os.path.isdir(m_path):
                 combos.append((question_id, student_id, approach, model))
     return combos
