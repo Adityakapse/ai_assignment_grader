@@ -12,7 +12,7 @@ import validation
 
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 MODELS = ["tinyllama", "qwen2.5-coder:7b", "deepseek-coder:6.7b"]
-# MODELS = [ "qwen2.5-coder:14b","deepseek-coder:16b","gemma4:31b-it-q4_K_M"]
+# MODELS = ["qwen2.5-coder:14b", "deepseek-coder:16b", "gemma4:31b-it-q4_K_M"]
 
 
 
@@ -31,6 +31,7 @@ def parse_args():
                         help="Restrict grading and processing to one question_id")
     parser.add_argument("--skip_preprocessing",   action="store_true")
     parser.add_argument("--skip_grading",         action="store_true")
+    parser.add_argument("--skip_processing",      action="store_true")
     parser.add_argument("--skip_graphs",          action="store_true")
     return parser.parse_args()
 
@@ -120,8 +121,9 @@ def main():
     if not args.skip_grading:
         step_grading(args)
 
-    step_processing(args)
-    step_metrics(args)
+    if not args.skip_processing:
+        step_processing(args)
+        step_metrics(args)
 
     if not args.skip_graphs:
         step_graphs(args)
