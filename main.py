@@ -11,8 +11,10 @@ import preprocessing
 import validation
 
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
-MODELS = ["tinyllama", "qwen2.5-coder:7b", "deepseek-coder:6.7b"]
+# MODELS = ["tinyllama", "qwen2.5-coder:7b", "deepseek-coder:6.7b"]
 # MODELS = ["qwen2.5-coder:14b", "deepseek-coder:16b", "gemma4:31b-it-q4_K_M"]
+MODELS = ["qwen2.5-coder:14b","gemma4:26b"]
+
 
 
 
