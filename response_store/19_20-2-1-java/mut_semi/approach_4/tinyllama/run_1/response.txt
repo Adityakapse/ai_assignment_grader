@@ -1,0 +1,303 @@
+POINT_ID: 1
+Sure, here's a modified version of the Queue class that works for 100 elements:
+
+```java
+public class Queue {
+    private String[] buffer; // internal storage
+    
+    public booleaan emptyqueue() {
+        return buffer.length == 0;
+    }
+    
+    public String head() {
+        if (buffer.length > 0) {
+            return buffer[0];
+        } else {
+            throw new ArrayIndexOutOfBoundsException(); // handle out-of-bound exception
+        }
+    }
+    
+    public void enqueue(String s) {
+        int index = -1; // initialize to negative so as to catch out-of-bounds index error
+        
+        while (++index < buffer.length && buffer[index] != null) {}
+        
+        if (buffer[index] == null) {
+            throw new ArrayIndexOutOfBoundsException(); // handle NullPointerException
+        } else {
+            buffer[index] = null;
+        }
+    }
+    
+    public String dequeue() {
+        if (head() != null) {
+            return head();
+        } else {
+            throw new ArrayIndexOutOfBoundsException(); // handle out-of-bound exception
+        }
+    }
+}
+```
+
+In this modified version, we create an `Array` of strings as the internal storage for the queue. We initialise a `negative` variable to `-1` at the beginning of each method, so that we can catch and handle out-of-bounds index errors during iteration and checking for NullPointerExceptions.
+
+We also add a check to see if the first element is `null`, which should only happen when there are no elements in the queue. If this condition is true, we handle the `NullPointerException` as described above.
+
+POINT_ID: 2
+Sure, here's a modified version of your class "Queue" that works like a queue with at least 100 elements:
+
+```java
+public class Queue {
+    private int start = 0; // index of first element to be considered when inserting or dequeuing
+     private int end = 0; // index of last element to be considered when inserting or dequeuing
+     private String[] buffer; // internal array holding elements as they are inserted or dequeued
+    
+     public boolean isEmpty() { return (start == end); } // internal method that checks whether the queue is empty
+
+     public String head() { // internal method to retrieve the front element of the queue, i.e., the first element in the buffer array
+         if (isEmpty()) {
+             throw new NoSuchElementException("Queue is empty");
+         }
+         return buffer[start];
+     }
+
+     public void enqueue(String item) { // internal method to add a new element to the queue, i.e., move the front of the buffer array one position
+         if (isEmpty()) { // if the queue is empty, enqueue and check whether it is now full
+             throw new NoSuchElementException("Queue is full");
+         } else {
+             buffer[end] = item;
+             end++;
+             start++;
+         }
+     }
+
+     public String dequeue() { // internal method to remove and return the front element of the queue, i.e., the last element in the buffer array
+         if (isEmpty()) {
+             throw new NoSuchElementException("Queue is empty");
+         } else {
+             String s = buffer[start]; // move the front element to the beginning of the buffer array
+             start++;
+             end--;
+             return s;
+         }
+     }
+}
+```
+
+Here's an updated student solution that implements the correct emptiess check for emptyqueue():
+
+```java
+public class Queue {
+    private int start = 0; // index of first element to be considered when inserting or dequeuing
+    private int end = 0; // index of last element to be considered when inserting or dequeuing
+    private String[] buffer; // internal array holding elements as they are inserted or dequeued
+    
+    public booleaan emptyqueue() { return (start == end); } // internal method that checks whether the queue is empty
+
+    public String head() { // internal method to retrieve the front element of the queue, i.e., the first element in the buffer array
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+        return buffer[start];
+    }
+
+    public void enqueue(String s) { // internal method to remove and return the front element of the queue, i.e., the last element in the buffer array
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        } else {
+            buffer[end] = s;
+            end++;
+            start--; // move to the next position (start)
+        }
+    }
+
+    public String dequeue() { // internal method to remove and return the front element of the queue, i.e., the last element in the buffer array
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        } else {
+            String s = buffer[start]; // move the front element to the beginning of the buffer array
+            start++;
+            end--;
+            return s;
+        }
+    }
+}
+```
+
+POINT_ID: 3
+Additionally, here's a modified version of the student solution that includes comments to explain each step:
+
+SAMPLE SOLUTION:
+public class Queue {
+     private int start = 0; // initialize starting index to 0
+     private int end = 0; // initialize ending index to 0
+     private String[] buffer = new String[100]; // allocate array of size 100
+     
+     public booleaan emptyqueue() { // function to check if queue is empty
+         return start == end;
+     }
+     
+     public String head() { // function to get front element without removing it
+         if (start < end) {
+             return buffer[start]; // returns front element from internal array
+         } else {
+             return null; // if end is reached, returns null
+         }
+     }
+     
+     public void enqueue(String s) { // function to remove and put back in queue
+         buffer[end] = s;
+         end++; // increment ending index after element is removed
+         if (end == 100) {
+             start = 0; // reset starting index to 0 to avoid unnecessary checks for emptyqueue()
+         }
+     }
+     
+     public String dequeue() { // function to remove front element and put back in queue
+         String s = buffer[start];
+         start++; // increment starting index after removing element
+         if (start == 100) {
+             start = 0; // reset ending index to 0 to avoid unnecessary checks for emptyqueue()
+         }
+         return s; // returns front element and removes it from internal array
+     }
+}
+
+STUDENT SOLUTION:
+// dequeue() does NOT remove the front element
+public class Queue {
+     private java.util.ArrayList<String> list = new java.util.ArrayList<>();
+     
+     public booleaan emptyqueue() { return list.isEmpty(); }
+     
+     public String head() { return list.get(0); }
+     
+     public void enqueue(String s) { list.add(s); }
+     
+     public String dequeue() { return list.get(0); }
+
+POINT_ID: 4
+Question: Implement a class "Queue" in Python with an at least 100 elements and a push/pop method. Make sure the class has at least the methods "emptyqueue", "head", and "enqueue(x)" that do not modify or hold more than 100 elements, according to the lecture. The queue does not need to store strings but dynamic typing should not apply. Please use string indexing in the given sample solution.
+
+POINT_ID: 5
+To answer this question, we can implement a class "Queue" in Python, which works like a stack (described in the lecture) and follows the Queue interface defined by the standard library.
+
+Here's an example implementation of the Queue class:
+
+```python
+class Queue:
+    def __init__(self):
+        self._buffer = [] # list of elements that can be added or removed from the queue, 100 in this case (default)
+        self.head = None # pointer to the front element of the queue, set to None at initialization
+        self.end = None # pointer to the end of the queue, set to None at initialization
+
+    def emptyqueue(self):
+        return self.head is None or self.end is None
+
+    def head(self):
+        if self.emptyqueue():
+            return None
+        else:
+            return self._buffer[self.head]
+
+    def enqueu(self, s):
+        # The enquu() method removes the element at index 0 (the front of the queue) and returns it.
+        if self.end is not None:
+            self.end = self._buffer.popleft()
+            if len(self._buffer) == 100:
+                self._buffer = [] # reinitialize buffer to ensure consistent state after every operation
+            else:
+                self.head = self._buffer[self.start] # update start pointer, set front element as new head
+        return s
+```
+
+Now, let's define the Queue class with our Python code and test it with a sample solution:
+
+```python
+import queue
+
+class Queue:
+    def __init__(self):
+        self._buffer = [] # list of elements that can be added or removed from the queue, 100 in this case (default)
+        self.head = None # pointer to the front element of the queue, set to None at initialization
+        self.end = None # pointer to the end of the queue, set to None at initialization
+
+    def emptyqueue(self):
+        return self.head is None or self.end is None
+
+    def head(self):
+        if self.emptyqueue():
+            return None
+        else:
+            return self._buffer[self.head]
+
+    def enqueu(self, s):
+        # The enquu() method removes the element at index 0 (the front of the queue) and returns it.
+        if self.end is not None:
+            self.end = self._buffer.popleft()
+            if len(self._buffer) == 100:
+                self._buffer = [] # reinitialize buffer to ensure consistent state after every operation
+            else:
+                self.head = self._buffer[self.start] # update start pointer, set front element as new head
+        return s
+```
+
+To test the Queue class using the sample solution, we can simply import it into a Python file and use the `Queue` instance to add some elements to the queue and perform various operations on it:
+
+```python
+from Queue import Queue
+
+def test_queue():
+    q = Queue()
+    
+    # add some elements to the queue
+    for I in range(10):
+        q.enqueue('Element ' + str(i))
+    
+    # remove and return the front element
+    front_element = q.head()
+    print("Front element:", front_element)
+    
+    # remove all elements
+    while not q.empty():
+        # get and remove next element from queue
+        next_element = q.queneue()
+        
+        # update front pointer, set first element as new head
+        if len(q._buffer) == 100:
+            q._buffer = []
+        else:
+            q._buffer[0] = next_element
+    
+    # get last element and verify it's None
+    if q.head() is not None:
+        print("Last element:", q.head())
+        
+    # check all elements are None (not present in the queue)
+    for I in range(10):
+        assert q.head() is None, "Removed element from queue is still present after enqueue"
+```
+
+This code will print the values of each element and verify they're in order or None if none are present. Also, it checks that all elements have been removed correctly.
+
+POINT_ID: 6
+To make the output more specific and provide context for each rubric point, here's an updated version of the feedback:
+
+BUCKET: <exact bucket label>
+FEEDBACK: <one or two sentences referencing the student's actual code>
+
+Rule:
+- Output only the two lines above — no preamble, no summary, no extra text.
+- BUCKET must be the exact label string from the rubric — do not paraphrase or invent labels.
+
+---
+Example output (using the Queue class):
+
+BUCKET: Wrong
+FEEDBACK: The Queue class does not preserve FIFO order across repeated enqueues and dequeue operations, leading to incorrect final results. The Queue class's methods follow logic consistent with the student's earlier implementation, but the final output is incorrect due to a systematic error in state management.
+
+---
+Example output (using an unspecified queue):
+
+BUCKET: Semi
+FEEDBACK: FIFO order is preserved across repeated and boundary operations for Queue class with basic logic consistent with the submission's student implementation, but due to a systematic error in state management, the final output is incorrect.

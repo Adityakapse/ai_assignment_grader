@@ -1,0 +1,442 @@
+POINT_ID: 1
+To implement a search algorithm from the lecture, we can use any available search algorithm in C#. Here's a possible implementation:
+
+1. Define a class that represents a search node:
+
+```csharp
+public class Node {
+    private int value; // the value of the current node
+    private Node left; // pointer to the left child node (if any)
+    private Node right; // pointer to the right child node (if any)
+    
+    public Node(int value) {
+        this.value = value;
+    }
+}
+```
+
+2. Define a class that represents a binary search tree:
+
+```csharp
+public class BinaryTree<T> {
+    private Node root; // pointer to the root node (if any)
+    
+    public BinaryTree() {}
+    
+    public void Insert(int value) {
+        root = InsertNode(root, value);
+    }
+    
+    public void Delete(int value) {
+        root = DeleteNode(root, value);
+    }
+    
+    private Node InsertNode(Node node, int value) {
+        if (node == null) { // base case: the tree is empty
+            return new Node(value);
+        } else if (value < node.value) {
+            node.left = InsertNode(node.left, value);
+        } else {
+            node.right = InsertNode(node.right, value);
+        }
+        
+        return node;
+    }
+    
+    private Node DeleteNode(Node node, int value) {
+        if (value < node.value) { // base case: the value is less than or equal to the root's value
+            if (node.left == null) {
+                return node;
+            } else {
+                node = DeleteNode(node.left, value);
+                return leftChild();
+            }
+        } else if (value > node.value) { // base case: the value is greater than or equal to the root's value
+            if (node.right == null) {
+                return node;
+            } else {
+                node = DeleteNode(node.right, value);
+                return rightChild();
+            }
+        } else { // we have found a leaf node with value v
+            if (node.left == null && node.right == null) {
+                return node;
+            } else {
+                Node current = node.value < node.value ? node.left : node.right;
+                
+                if (current == null) { // the tree has no more children, so delete it too
+                    return null;
+                }
+                
+                // rebalance the tree to minimize height
+                while (true) {
+                    Node temp = current;
+                    
+                    if (current.left == node) { // find an ancestor with a smaller value
+                        current.value = node.value;
+                        
+                        if (node.right == null && current.left != null) {
+                            current = node.right;
+                            continue;
+                        } else if (node.left == null && current.right != null) {
+                            current = node.left;
+                            continue;
+                        } else { // we have to find an ancestor with a greater value
+                            current.value = node.value;
+                            
+                            while (true) {
+                                current = current.parent;
+                                
+                                if (current == null) { // there are no more ancestors
+                                    return null;
+                                }
+                                
+                                if (node.value < current.value) {
+                                    node = current;
+                                    
+                                    current = current.parent;
+                                    
+                                    continue;
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (temp != null) { // update the parent node
+                        temp.parent = current;
+                    }
+                }
+                
+                return current;
+            }
+        }
+    }
+}
+```
+
+3. Define a method to search for an element in the binary search tree:
+
+```csharp
+public T Search(T value) {
+    if (root == null) { // base case: the tree is empty, there are no nodes
+        return default;
+    } else {
+        Node current = root;
+        
+        while (current != null) {
+            if (value < current.value) {
+                current = current.left;
+            } else if (value > current.value) {
+                current = current.right;
+            } else { // the value is found in this node
+                return current.value;
+            }
+        }
+        
+        return default;
+    }
+}
+```
+
+POINT_ID: 2
+Sure, here's an implementation that sorts a list using Swap method only:
+
+```csharp
+using System;
+
+public class ListToSort {
+    public static void Sort(ListToSort list) {
+        // Implement the Buubble sort algorithm with swap method
+        int n = list.Length();
+        for (int I = 1; I < n - 1; i++) {
+            for (int j = n - 1; j > i - 1; j--) {
+                if (list.Smaller(j, j-1)) {
+                    list.Swap(j, j-1);
+                }
+            }
+        }
+    }
+}
+```
+
+The above code first defines a public method called "Sort" that takes in a list of type `ListToSort`. It then calls the private method called `BuubbleSort` with a dummy argument `list` to prevent the compiler from complaining about the lack of argument. The `Sort()` method has two overloaded versions, one that takes in only an integer as the size argument (`Length()`) and another that also takes in a custom object implementing the `IComparable<T>` interface, so that the comparison steps can be based on the appropriate criteria (e.g., greater, lesser or equal).
+
+The algorithm starts by checking if the input list contains all its elements. If it does not have any values (`n == 0`), then the algorithm is finished and there's nothing to sort.
+
+Otherwise, the algorithm iterates over each element in the list, starting from index `i` (inclusive) to `n - 1` (exclusive). It then compares the elements at indexes `j = i - 1` and `j = i-1` (both inclusive), with the provided swap method (`Swap`), if both are greater or lesser than each other.
+
+The comparison direction is decided based on the given criteria: if it's a sorting criterion that requires adjacent elements to be in the same order, then a comparison of `j = i - 1` and `j = i-1` will have to happen first (in order to find out if there's an ascending or descending element at index `i`, which determines the swap direction). Otherwise, a comparison of two consecutive elements with opposite swaps is required (`j--`) to make sure that we compare adjacent elements correctly.
+
+Finally, the algorithm calls the public method called "Sort" for each pair of indices `(j, j-1)` and compares them based on the appropriate criteria (either `Smaller(j, j-1)`, `Equal(j, j-1)`, or `Larger(x, y)`, depending on the given algorithm).
+
+So, when sorting a list with elements that are in ascending order, it sorts the list using the Swap method and then compares adjacent elements based on the criteria. When sorting a list with elements in descending order, it swaps the last element and its index before comparing them again, since the first comparation step will have already determined that the next element is less than or equal to the current one.
+
+POINT_ID: 3
+Implementing a search algorithm from the lecture using the heap sorting algorithm:
+
+1. Define the function `search(heap, key)` which takes as input the heap `heap` and a key `key`, returns `true` if the element `key` exists in the heap, `false` otherwise. The function should call the `heap` methods for each node of the heap to find the matching key.
+
+```csharp
+public bool Search(Heap heap, int key) {
+    // If heap is empty or too small to contain key
+    if (heap.Length() < 2 || heap.Smaller(key, heap.GetMax())) {
+        return false;
+    }
+    
+    // Swap the key with the middle element in the heap
+    int middle = heap.Length() / 2;
+    heap.Swap(middle, heap.IndexOf(key));
+    
+    if (heap.Smaller(key, heap.GetMin())) {
+        // Heap[min] is less than or equal to key, so heap contains a smaller element and its key matches key
+        return true;
+    } else {
+        // Heap[max] is greater than or equal to key, so heap contains an element greater than key and its key matches key
+        return false;
+    }
+}
+```
+
+2. Define the function `Heapify(heap)` which recursively calls itself on each node of a heap. The function checks if the current node is greater than or equal to its parent, and grows the subtree if necessary. It also swaps adjacent nodes if they are in an incorrect order.
+
+```csharp
+public static void Heapify(Heap heap) {
+    for (int I = Math.Max(0, heap.Length() - 2); I >= 0; i--) {
+        // Check if each node is greater than its parent
+        int j = heap.IndexOf(heap.Smaller(heap.GetMin(), heap[I].Right), heap);
+        if (j == -1 || heap.Smaller(heap[j].Left, heap.GetMax())) { // If parent is greater than or equal to node, swap them and recurse on children
+            heap.Swap(i, j);
+            Heapify(heap); // Recursively call the function on the child nodes
+        }
+    }
+}
+```
+
+3. Define the function `HeapBuild(heap)` which builds a heap using the heap building algorithm. It starts by initializing all elements of the heap as -1, and grows the heap from root to leaf nodes in ascending order until the heap is full or the heap size reaches the specified limit.
+
+```csharp
+public static void HeapBuild(Heap heap, int limit) {
+    // If heap is already built or less than 1 element, return
+    if (heap.Length() < 2 || heap.Smaller(limit, heap.GetMax())) {
+        return;
+    }
+    
+    for (int I = Math.Max(0, heap.Length() - 2); I >= 0; i--) {
+        // Choose the smallest node and set its parent to the node with smaller key
+        int j = heap.IndexOf(heap.Smaller(heap.GetMin(), heap[i].Right), heap);
+        
+        if (j == -1 || heap.Smaller(heap[j].Left, heap.GetMax())) { // If parent is greater than or equal to node, swap them and recurse on children
+            heap.Swap(i, j);
+            HeapBuild(heap, limit); // Recursively call the function on the child nodes
+        }
+    }
+}
+```
+
+4. Define the function `SearchAndHeapify(heap, key)` which recursively calls `Search` and `Heapify` on each node of the heap, with key as input parameter. It returns the index of the root element where the key was found or -1 if it could not find it.
+
+```csharp
+public static int SearchAndHeapify(Heap heap, int key) {
+    return heap.SearchAndHeapify(heap, key);
+}
+```
+
+In this implementation, all search operations are implemented with recursive calls to the `Search` and `Heapify` functions. The `Search` function simply returns the index of the root element where the key was found (or -1 if it could not be found).
+
+POINT_ID: 4
+Based on the provided example, here's an implementation of BubbleSort in C#:
+
+```csharp
+public class Program {
+    public static void Main(string[] args) {
+        ListToSort list = new ListToSort();
+        List<int> sortedList = Bubblesort(list);
+        Console.WriteLine("Sorted list:");
+        foreach (int num in sortedList) {
+            Console.Write(num + " ");
+        }
+    }
+    
+    public static ListToSort Bubblesort(ListToSort list) {
+        for (int I = 1; I < list.Length(); i++) {
+            for (int j = list.Length() - 1; j > I - 1; j--) {
+                if (list.Smaller(j, j - 1)) {
+                    list.Swap(j, j - 1);
+                }
+            }
+        }
+        return list;
+    }
+    
+    public static void Swap(int x, int y) {
+        int temp = list[x];
+        list[x] = list[y];
+        list[y] = temp;
+    }
+    
+    public static int Length() => System.Math.Min(list.Count + 1, list.Max() - list.Min()) + 1;
+}
+```
+
+This implementation uses the `Length()` method to bound all relevant loops, including the inner loop and the outer loop. The algorithm uses the `Smaller()` method to ensure that elements are swapped in ascending order.
+
+POINT_ID: 5
+To implement an efficient search algorithm for a given list using the Largest or Smallest/Last element (LIS/SLL) technique, you can use a binary search algorithm like a quicksort. In the following code snippet, we'll have a sample solution that implements BubbleSort to sort the list and then apply the LIS/SLL technique using a binary search on the sorted list.
+
+```csharp
+using System;
+
+public class ListToSort {
+    public static void Sort(ListToSort list) {
+        // Implementation of BuubbleSort
+        for (int I = 1; I < list.Length(); i++) {
+            int j = list.Length() - 1;
+            while (j > i-1 && list.Smaller(j, j-1)) {
+                // Find index of smallest item in current sublist and swap with previous element
+                int minIndex = j;
+                for (int k = j + 1; k < list.Length(); k++) {
+                    if (list.Smaller(k, k-1)) {
+                        minIndex = k;
+                    }
+                }
+                if (minIndex != j) {
+                    // Swap elements in current sublist
+                    list.Swap(j, minIndex);
+                }
+                j--; // Decrease index of smaller element
+            }
+        }
+        
+        // Apply binary search on sorted list to find LIS/SLL elements
+        List<int> bucketList = new List<int>(list.Length());
+        int left, right, midIndex;
+        for (left = 0; left < bucketList.Count; left++) {
+            int bucketCount = 1;
+            while (bucketCount <= bucketList[left]) {
+                right = bucketCount * 2 + 1;
+                if (right > bucketList.Count) { // Last bucket or not found in list
+                    bucketCount++; // Increment until we find the correct index
+                }
+                for (int I = left; I < right; i++) {
+                    if (!bucketList[i].Equals(list[i])) {
+                        midIndex = i; // Found correct index, return it and exit loop
+                        break;
+                    }
+                }
+            }
+            
+            // If the correct bucket is not found in list, use binary search on remaining sublist to find LIS/SLL elements
+            if (midIndex == left) {
+                for (int I = left + 1; I < bucketList.Count; i++) {
+                    int minIndex = bucketList[i];
+                    if (!bucketList[i].Equals(list[i])) {
+                        midIndex = i; // Found correct index, return it and exit loop
+                        break;
+                    }
+                }
+            }
+            
+            // If no LIS/SLL elements were found in the remaining sublist, use a simple linear search on the sorted list
+            if (midIndex == left) {
+                for (int I = left + 1; I < bucketList.Count; i++) {
+                    int minIndex = bucketList[i];
+                    if (!bucketList[i].Equals(list[i])) {
+                        return; // List sorted, no need to apply binary search
+                    }
+                }
+            }
+        }
+        
+        // If no LIS/SLL elements were found in the remaining sublist, sort the remaining buckets and re-apply the same binary search algorithm
+        for (int I = left + 1; I < bucketList.Count; i++) {
+            int minIndex = bucketList[i];
+            while (minIndex > bucketList[bucketList.Count - 1]) {
+                // Find index of smallest item in remaining sublist and swap with previous element
+                int maxIndex = bucketList[0];
+                for (int j = 0; j < bucketList.Count; j++) {
+                    if (!bucketList[j].Equals(minIndex)) {
+                        maxIndex = j; // Swap elements in remaining sublist
+                        break;
+                    }
+                }
+                
+                // If no LIS/SLL elements were found in the remaining sublist, use a simple linear search on the sorted list
+                if (maxIndex == bucketList.Count) {
+                    for (int j = bucketList.Count - 1; j >= minIndex; j--) {
+                        int minIndex = bucketList[j];
+                        if (!bucketList[j].Equals(list[j])) {
+                            return; // List sorted, no need to apply binary search
+                        }
+                    }
+                }
+                
+                // If no LIS/SLL elements were found in the remaining sublist, sort the remaining buckets and re-apply the same binary search algorithm
+                bucketList[i] = minIndex;
+            }
+            
+            // Sort remaining buckets using the same binary search algorithm as before
+            for (int j = left + 1; j < bucketList.Count; j++) {
+                int minIndex = bucketList[j];
+                while (minIndex > bucketList[bucketList.Count - 1]) {
+                    // Find index of smallest item in remaining sublist and swap with previous element
+                    int maxIndex = bucketList[0];
+                    for (int k = 0; k < bucketList.Count; k++) {
+                        if (!bucketList[k].Equals(minIndex)) {
+                            maxIndex = k; // Swap elements in remaining sublist
+                            break;
+                        }
+                    }
+                    
+                    // If no LIS/SLL elements were found in the remaining sublist, use a simple linear search on the sorted list
+                    if (maxIndex == bucketList.Count) {
+                        for (int k = bucketList.Count - 1; k >= minIndex; k--) {
+                            int minIndex = bucketList[k];
+                            if (!bucketList[k].Equals(list[k])) {
+                                return; // List sorted, no need to apply binary search
+                            }
+                        }
+                    }
+                    
+                    // Swap elements in remaining sublist
+                    int temp = bucketList[j];
+                    bucketList[j] = minIndex;
+                    bucketList[minIndex] = temp;
+                }
+            }
+            
+            // If we didn't find any LIS/SLL elements, do another binary search on the remaining sublist and return
+            if (midIndex == left) {
+                for (int I = left + 1; I < bucketList.Count; i++) {
+                    int minIndex = bucketList[i];
+                    while (minIndex > bucketList[bucketList.Count - 1]) {
+                        // Find index of smallest item in remaining sublist and swap with previous element
+                        int maxIndex = bucketList[0];
+                        for (int k = 0; k < bucketList.Count; k++) {
+                            if (!bucketList[k].Equals(minIndex)) {
+                                maxIndex = k; // Swap elements in remaining sublist
+                                break;
+                            }
+                        }
+                        
+                        // If no LIS/SLL elements were found in the remaining sublist, use a simple linear search on the sorted list
+                        if (maxIndex == bucketList.Count) {
+                            for (int k = bucketList.Count - 1; k >= minIndex; k--) {
+                                int minIndex = bucketList[k];
+                                if (!bucketList[k].Equals(list[k])) {
+                                    return; // List sorted, no need to apply binary search
+                                }
+                            }
+                        }
+                        
+                        // Swap elements in remaining sublist
+                        int temp = bucketList[j];
+                        bucketList[j] = minIndex;
+                        bucketList[minIndex] = temp;
+                    }
+                }
+            }
+        }
+    }
+}

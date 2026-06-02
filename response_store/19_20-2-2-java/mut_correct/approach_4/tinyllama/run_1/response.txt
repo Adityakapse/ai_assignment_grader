@@ -1,0 +1,152 @@
+POINT_ID: 1
+To implement such a calculator in Java, you will need to create a method that receives a list of strings, converts them into integers using the IntegeR.parseInt() method, and then pushes the corresponding numbers onto the stack as needed. The method should also be able to process operators (+), (-), *, and / separately, and correctly distinguish numeric tokens from operator tokens by distinguishing between numbers and operators with no iteration over the input.
+
+To complete this task, you can use a class called IntegeRStack that contains methods for pop(), push(), and get():
+
+public class IntegeRStack {
+     public booleanEmptyStack();
+     public intHead();
+     public voidPush(int n);
+     public intPop();
+}
+
+The method receives a list of strings in which the numbers and operators are already separated, and will return the correct result as an integer. The implementation assumes that the input is a correct formula, so any invalid inputs will be detected by the methods.
+
+Here's how to complete the task:
+
+1. Create a class called Calculator for the method implementation.
+
+2. Define three methods in this class:
+
+   ```java
+   public int calculate(String[] input) {
+      // This implementation assumes input is a correct formula, so any invalid inputs will be detected by the getInput() method below.
+      IntegeRStack s = new IntegeRStack();
+      String[] input = getInput(input);
+      return Calculator(input, s).calculate();
+   }
+   
+   private String[] getInput(String[] input) {
+      // This method assumes the user has provided a list of strings to convert into integers and perform arithmetic operations on them.
+      for (int I = 0; I < input.length; ++i) {
+         switch (input[i]) {
+            case "+":
+               int n1 = s.pop();
+               int n2 = s.pop();
+               s.push(n2 + n1);
+               break;
+            case "-":
+               n1 = s.pop();
+               n2 = s.pop();
+               s.push(n2 - n1);
+               break;
+            case "*":
+               n1 = s.pop();
+               n2 = s.pop();
+               s.push(n2 * n1);
+               break;
+            case "/":
+               n1 = s.pop();
+               n2 = s.pop();
+               s.push(n2 / n1);
+               break;
+            default:
+               // Assume that any invalid input (e.g., empty string or non-numeric char) will be detected by this method as an error.
+         }
+      }
+      return input;
+   }
+   
+   ```
+
+3. Create a main method for running the calculate() method in the class, accepting one argument from the user:
+
+   ```java
+   public static void main(String[] args) {
+      System.out.println("Please provide a list of strings to convert into integers and perform arithmetic operations on them.");
+      String[] input = readLine().split(", ");
+      int result = calculate(input);
+      if (result == 0) {
+         System.out.println("Invalid input! Please provide a non-empty string array.");
+      } else {
+         System.out.printf("The resulting sum is: %.2f%n", result);
+      }
+   }
+   
+   private static String readLine() {
+      return System.console().readLine();
+   }
+   
+   ```
+
+By completing the task in this manner, you have demonstrated how to create a calculator class and methods for input and output manipulation using Java's built-in classes.
+
+POINT_ID: 2
+Question: Write a C++ program that prompts the user to input a list of mathematical expressions, processes these expressions using an implementation of a calculator for this notation, and displays the results on the console. The program should be able to handle different operators (+, -, *, /), numbers, and operator precedence, with correct output for all valid expressions. Ensure that the implementation follows proper formatting conventions and includes error handling for invalid inputs or out-of-range values.
+
+POINT_ID: 3
+In this task, you will be given a calculator with the specified notation for mathematical expressions using stacks. The notation is represented by stack with each number or operator encapsulated into it and then processed sequentially. The process involves processing two numbers first, followed by an operator, and finally, the result is put back onto the stack.
+
+To implement such a calculator in Java, you will need to implement a method that takes a string of operators and numbers separated by commas or spaces, processes them, and returns the correct result as an integer. You should also use an IntegerStack to store the numbers and operators on the stack. You can assume that the input is a valid formula according to the rules you provided earlier.
+
+Here's how you can implement this task using Java:
+
+1. First, create a class called "IntegeRStack" which extends the abstract Java class "java.util.Stack" and provides methods for manipulating the stack. This class should be able to hold at most two numbers on the stack, with each number having its own private variable or instance of the IntegeR class.
+
+2. Next, create a method named "calculate" that takes a string of operators and numbers separated by commas or spaces as input and returns the correct result as an integer. The method should first check if the input is valid according to the rules you provided earlier. If it's not, print an error message and return 0 as the result.
+
+3. Implement a stack class called "IntegeR" with two private variables (i and j), representing the top and bottom of the stack respectively. You can create a constructor that initializes the private variables to null.
+
+4. Create methods named "push" and "pop" to manipulate the contents of the stack. The push method should add a value to the end of the stack, while the pop method should remove the top value from the stack. If the stack is empty or there's an error during the operation, print an error message and return 0 as the result.
+
+5. Test your implementation with sample input. If everything is correct, run the program to check that it can correctly process all valid formulae and return the correct result as an integer.
+
+6. Finally, implement any necessary comments or documentation for the method, class, and test cases.
+
+POINT_ID: 4
+To process the notation Reverse Polish Notation / Postfix Notation using a stack, you will need to implement the following methods:
+
+1. EmptyStack: This method will return true if the stack is empty or false otherwise.
+
+2. Push: This method takes an integer and puts it on the top of the stack. If the size of the stack exceeds its capacity, the push operation does not modify the stack.
+
+3. Pop: This method returns the number on the top of the stack or throws a "StackUnderflow" exception if the stack is empty. The pop operation removes and returns the topmost integer from the stack.
+
+4. IsEmpty: This method checks if the stack is empty. It returns true if the stack is empty, false otherwise.
+
+5. Peek: This method returns the number at the top of the stack without removing it. The peek operation does not modify the stack.
+
+6. Size: This method returns the size (i.e., count) of the stack. It always returns 1 as the stack is only one element long.
+
+7. ClearStack: This method removes all elements from the stack and sets its capacity to zero.
+
+8. Empty(): This method ensures that the stack does not have any elements.
+
+9. IsFull(): This method checks if the stack is full. It returns true if the stack is full, false otherwise.
+
+10. PushStack(int...numbers): This method adds a new element (i.e., integer) to the end of the stack. If the size of the stack exceeds its capacity, it creates a new larger stack with an extra capacity.
+
+11. PopStack(): This method removes and returns the topmost element from the stack.
+
+12. SizeStack(): This method returns the number of elements in the stack (i.e., count).
+
+13. ClearStack(): This method removes all elements from the stack and sets its capacity to zero.
+
+14. EmptyStack(): This method ensures that the stack is empty before processing it.
+
+15. IsEmptyStack(): This method checks if the stack is empty before processing it.
+
+In summary, you should implement methods EmptyStack(), Push(), Pop(), IsEmpty(), Peek(), Size(), ClearStack(), Empty() and IsFull() using a stack and ensure that the input is a correct formula in Reverse Polish Notation / Postfix Notation by checking for appropriate RBRPCs.
+
+POINT_ID: 5
+In this task, you are asked to implement a calculator in Java that can process operators (+, -, *, and /), and can handle multiple nested operations with multiple operators. The notation for these operations is represented by the Reverse Polish Notation (RPN) which uses a stack to store values before each operation.
+
+To implement this task, you will need to create a class called "IntegeerStack" that contains two methods: "emptystack()" and "push(int i)" that check if the stack is empty or not, and "pop()" and "peek()" to retrieve the top element on the stack. You will also need a method to receive an array of Strings as input from a user. This method can be used to obtain all possible inputs for the calculator.
+
+You can use a stack to store the values that are being processed, so that when we process the next operator or number on the stack, we put it back at the top. If there is no remaining value in the stack after processing an operator, then we return the correct result, which will be either the last value on the stack or the final result of the current RPN expression.
+
+In this task, you will use a method called "Calculator" that takes an IntegeerStack as input and returns the correct result for valid inputs. This method will use a loop to process all possible values that are being processed in each iteration. It will start with an empty stack, then process each operator (+), multiply by operator (-), divide by operator (/) or add operator (+), and push the final result onto the stack as output.
+
+The main() method can be used to test this method on a few input examples. The user's input should contain at least one number and one operator, and will be processed by the method using "emptystack()" and "push(int i)" methods before being processed by the loop in the Calculator method. After processing all operators and values, the method returns the final result.
+
+You can then run this test to check if the method you have implemented is correct for this problem statement. This will help ensure that your code follows the given requirements and can correctly handle multiple nested operations with multiple operators.

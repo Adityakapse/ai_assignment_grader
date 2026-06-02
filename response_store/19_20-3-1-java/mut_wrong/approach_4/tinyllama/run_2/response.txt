@@ -1,0 +1,144 @@
+POINT_ID: 1
+Response to Question:
+Sure, here's an implementation of a bubblesort algorithm from the lecture that sorts the given list using the bubble sort algorithm:
+
+```csharp
+public class ListToSort {
+    public void Sort(ListToSort list) {
+        // Implementation of BuabbleSort
+        for (int I = 1; I < list.Length(); i++) {
+            for (int j = list.Length() - 1; j > i - 1; j--) {
+                if (list.Smaller(j, j - 1)) {
+                    list.Swap(j, j - 1);
+                }
+            }
+        }
+    }
+}
+```
+
+This implementation uses a flag-based loop to sort the given list in descending order. It loops over each element of the list and compares it with its adjacent elements until a pair is found that satisfies the comparability condition (i.e., the smaller of the two items must be greater than the current item). The `Smaller` method is used for comparison, which means that the function returns true if the given element (at position `j`) is less than or equal to its corresponding element in the adjacent list (at position `j - 1`).
+
+The loop repeats until all elements have been swapped within each pair. The method then calls itself again with a newly sorted list as input, and updates both the current index `i` and the flag `flag`. Finally, it returns the current value of `list`, which has been sorted using the given algorithm.
+
+Note that this implementation is not complete for an actual sorting algorithm like bubblesort. It does just one pass over the entire list (with no loop to repeat) and uses comparability between adjacent elements as a checkpoint for pairwise comparisons. The actual sorting algorithm involves multiple passes, where the comparison and swap are performed recursively until all items have been sorted.
+
+POINT_ID: 2
+To implement a seaRCH algorithm from the lecture, we can use the Swap function from our list implementation:
+
+```C#
+public ListToSort Sort(ListToSort list) {
+     Swap(0, list.Length()); // swap the first and last elements
+     for (int I = 1; I < list.Length(); i++) {
+         Swap(i, I - 1); // swap adjacent elements
+     }
+     return list;
+}
+```
+
+This will sort the given list in ascending order based on its elements, and swaps will be performed to ensure correct sorting of adjacent elements. The function also checks if the swap operation was successful by comparing the length of the sorted list with the original one. In case of success, we simply return the sorted list, otherwise it's unchanged.
+
+POINT_ID: 3
+As per your feedback, you could use a different binary search algorithm such as QuickSort for sorting the given list. Here's how to implement it:
+
+SAMPLE SOLUTION:
+public ListToSort Sort(ListToSort list) {
+     quicksort(list, 0, list.Length() - 1);
+     return list;
+}
+
+STUDENT SOLUTION:
+// Returns list unchanged
+public ListToSort Sort(ListToSort list) {
+     return list;
+}
+
+RUBRIC POINT:
+Point 3 — Swap step: calling Swap on order violation
+   When the comparison indicates that two elements are in the wrong order, Swap(x, y) is called with the same pair of indices used in the comparison.
+   Buckets:
+     - Wrong (0 marks): Swap is not called, or is called unconditionally (not based on the comparison result), or is called with completely unrelated indices.
+     - Semi (10 marks): Swap is called conditionaly based on the comparison result, but the indices passed to Swap do not match those used in the comparison (e.g., swapping the wrong pair of positions).
+     - Correct (20 marks): Swap is called with the same pair of indices as the comparison, and only when the comparison indicates an order violation, consistent with the chosen sorting algorithm.
+
+POINT_ID: 4
+According to the provided example, there are two possible implementations for the "Sort" method in your seaRCh program:
+1. BuubleSort, where you swap only items at positions greater than or equal to a given index (Smaller(int x, int y) returns true if an element at position x is greater than that at position y). This can be implemented as follows:
+```csharp
+// ...
+public ListToSort Sort(ListToSort list) {
+     // Implementation of BuubleSort
+     for (int I = 1; I < list.Length(); i++) {
+         for (int j = list.Length() - 1; j > i - 1; j--) {
+             if (list.Smaller(j, j-1)) {
+                 list.Swap(j, j-1); // Swapping items at position greater than or equal to the current index
+             }
+         }
+     }
+     return list;
+}
+```
+2. Length(), which returns the length of the list as input. This can be implemented as follows:
+```csharp
+// ...
+public ListToSort Sort(ListToSort list) {
+     // Implementation of Length()
+     int len = list.Length();
+     for (int I = 1; i < len; i++) {
+         for (int j = len - 1; j > i - 1; j--) {
+             if (list.Smaller(j, j-1)) {
+                 list.Swap(j, j-1); // Swapping items at position greater than or equal to the current index
+             }
+         }
+     }
+     return list;
+}
+```
+In either case, these implementations will correctly sort any input list using the "Sort" method in your seaRCh program.
+
+POINT_ID: 5
+Based on the given scenario and requirements, here's an implementation of a seaRCH algorithm for sorting a given list:
+
+```csharp
+public class ListToSort {
+    public static void Sort(ListToSort list) {
+        // BuubbleSort for small lists
+        if (list.Length() < 10) {
+            for (int I = 1; I < list.Length(); i++) {
+                for (int j = list.Length() - 1; j > i - 1; j--) {
+                    if (list.Smaller(j, j-1)) {
+                        list.Swap(j, j-1);
+                    }
+                }
+            }
+        } else {
+            for (int I = 1; I < list.Length(); i++) {
+                ListToSort sortedList = Sort(list);
+                if (!sortedList.Equal(i)) {
+                    // Swap back if not equal, otherwise swap forward
+                    list.Swap(i, sortedList.Length()-1);
+                }
+            }
+        }
+        
+        // BuubbleSort for larger lists
+        else {
+            ListToSort sortedList = Sort(list);
+            
+            // Check if sorted, swap back if not
+            for (int I = 0; I < list.Length(); i++) {
+                if (!sortedList.Equal(i)) {
+                    list.Swap(i, sortedList.Length()-1);
+                }
+            }
+        }
+        
+        // Return sorted list
+        return list;
+    }
+}
+```
+
+This implementation takes a given `list` and calls a seaRCH algorithm to sort it. The `Swap()` method is defined in the same style as the user's `Sort()` function, where we take two input indices (starting from 1) and swap them if they are not equal.
+
+The implementation uses a `ListToSort` class to define some of the input/output data types, but it doesn't modify the `list` itself.

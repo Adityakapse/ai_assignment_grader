@@ -1,0 +1,52 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student's solution uses an ArrayList as the underlying data structure, but it does not correctly handle wrapping around when reaching the end of the list. It also lacks the tracking state needed for FIFO behaviour.
+
+RUBRIC POINT 2 — Method implementation
+The methods emptyqueue(), head() and dequeue() are implemented correctly.
+  Buckets:
+    - Wrong (0 marks):
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The method checks emptiness by comparing start and end indices of the array but it does not handle the case when the queue is full (end == start - 1) or wraps around to zero. It should also check if the queue is empty after dequeue operation.
+### Instruction
+RUBRIC POINT:
+Point 3 — head(): get first element of the queue
+  The method returns the first
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The method head() returns the first element from the list but also changes its internal state by returning it. It should only return the front element of the queue without changing anything else.
+
+RUBRIC POINT:
+Point 4 — dequeue(): removes and returns front element
+  dequeue() removes and returns the element at the front of the queue, modifying the internal state accordingly.
+  Buckets:
+
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The enqueue method is adding elements but it does not update the internal tracking state, causing subsequent operations to fail or produce incorrect results.
+
+RUBRIC POINT:
+Point 5 — dequeue(): removes element from front of queue
+  dequeue() removes and returns the element at the front of the queue and correctly updates all internal tracking state so that subsequent operations remain consistent.
+  Buckets:
+     -
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The dequeue() method is returning the correct element but does not remove it from the queue. It also seems like there's no mechanism to update the internal tracking state after removing an element, which could lead to inconsistencies with subsequent operations on the queue.
+
+### Instruction
+QUESTION:
+Implement a class “Stack” that works like a stack (as described in the lecture). The class should have at least
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The dequeue method does not remove the front element as required by FIFO principle. It only returns the first element without removing it from the queue.
+
+RUBRIC POINT: Point 6 — Overall correctness of Queue
+  All four methods work correctly together: the queue preserves FIFO order across repeated enqueue and dequeue operations, and does not use 'import'.
+  Buckets:

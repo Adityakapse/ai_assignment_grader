@@ -1,0 +1,41 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The analysis does not clearly separate `f` vs `g`, or loops vs non-loops, and line numbers are unclear or missing. The student only mentions that `f` runs forever or a lot and `g` does something on the array, without providing any detailed analysis of the actual code structure or iterations involved.
+
+POINT_ID: 2
+BUCKET: Wrong
+
+FEEDBACK: The student does not analyze the non-loop parts of `f` and `g` correctly. They incorrectly state that both functions take linear time overall without specifying any constant-time segments.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student claims that the loop in `f` runs forever or a lot, which is incorrect. They do not provide any justification for the number of iterations, missing the key point that `k` doubles each iteration and the loop continues until `k` exceeds `N`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that the cost per iteration is Theta(N), dominated by the call to `g(a, k)`, which performs a linear scan of the array `a` regardless of the value of `x`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student incorrectly states that the loop runs forever or a lot, which does not match the provided sample solution's analysis of Theta(log N) iterations. Additionally, the student fails to provide any reasoning for the complexity, instead offering vague statements about linear time overall without specifying how this relates to the actual code.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student incorrectly states that g() has Theta(N) iterations, but their analysis is incomplete and lacks justification. The loop does indeed run N times regardless of the value of x, but this should be clearly stated and explained in more detail.
+
+POINT_ID: 7
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims that each iteration of g takes linear time, which is incorrect. The sample solution correctly identifies that the cost per iteration of g is Theta(1), consisting of one array read, one comparison, and possibly one += assignment.
+
+POINT_ID: 8
+BUCKET: Wrong
+
+FEEDBACK: The student does not correctly calculate the total loop cost of function `g`. They state it takes linear time overall, but do not specify that it runs N times with constant per-iteration cost.
+
+POINT_ID: 9
+BUCKET: Semi (6 marks)
+FEEDBACK: The student states that the runtime of `g` is `O(N)` without providing any reasoning or justification, which contradicts the sample solution's detailed analysis showing it to be `Theta(N)`.
+
+POINT_ID: 10
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that the total time complexity of function `f` is `Theta(N log N)`, even though they provide a simplified explanation without showing the detailed breakdown of the loop iterations and cost per iteration as in the sample solution.

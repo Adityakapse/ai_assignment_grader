@@ -1,0 +1,94 @@
+POINT_ID: 1
+Question:
+How to implement a class "Queue" that works like a queue (as described in the lecture) but does not require dynamic typing, and allows for storing strings as elements?
+
+POINT_ID: 2
+Rule:
+In the given Java test, the stack is not dynamic typed in Python. Therefore, we cannot use the `import` keyword to import modules into Python, as it would be undefined behavior. This means we cannot use `list` or any other built-in Python data structure, such as `int`, `float`, or `str`. We must instead define our own custom data structures and handle input and output accordingly.
+
+To make the implementation work, the class Queue needs to store an array of strings. The `head()` method checks if the queue is empty and returns the last element in the array, whereas `enqueue()` inserts a new element at the end, while `dequeue()` removes the last element.
+
+The `emptyqueue()` and `isEmpty()` methods check the internal state of the queue and return true when it's empty or no elements are present. The `head()` method checks if there's an element in the array but not the head element, and returns the next one if there is; otherwise, it returns null.
+
+POINT_ID: 3
+Certainly! Here's a modified implementation that handles emptyqueue() and dequeue():
+
+```c++
+class Queue {
+public:
+    bool isEmpty() const; // returns true if there are no elements, else returns false
+    String head() const; // returns front element without modifying queue
+    void enqueue(String s); // adds a new element to the end of the queue
+    String dequeue(); // removes and returns the front element from the queue
+private:
+    int start;         // starting index of buffer array (0 for first element, 100 for last)
+    int end;           // ending index of buffer array (0 for first element, 100 for last)
+    String[] buffer;   // storage array for queue elements
+};
+
+// Returns true if there are no elements in the queue, else returns false
+bool Queue::isEmpty() const { return start == end; }
+
+String Queue::head() const { return buffer[start]; }
+
+void Queue::enqueue(String s) { buffer[++start] = s; }
+
+String Queue::dequeue() { String s = buffer[--end]; return s; }
+```
+
+Here, we've added an additional constant `100` to our start and end variables. This ensures that the queue is only filled up to that point. We also use a separate buffer array for storing elements instead of modifying the original one (which would modify our head() method). We modify the Queue class with these additional methods, which we've marked as "correct" according to the given rubric points.
+
+POINT_ID: 4
+QUESTION:
+Using the Queue class implemented in your student solution, write a method named "enqueue" that adds an element to the end of the queue. The method should take one argument, which is the string to be added. Ensure that the new element is appended to the front of the queue, and that the method returns true (true means success) if the operation was successful or false (false means failure) otherwise. Please also ensure that you update all internal tracking state in the Queue class after enqueue completes successfully. Use appropriate variable names and comment your code appropriately.
+
+POINT_ID: 5
+Additional notes:
+
+1. The Queue class should have at least the methods emptyqueue(), head(), enqueue(x) and dequeue() as described in the lecture. These methods work like a typical queue, storing "strings" and retrieving and removing the front element only. However, note that Python's strings are not dynamically typed, so the stack will contain strings instead of integers when running the test script.
+
+2. The "head()" method retrieves and returns the most recent element from the Queue, while "enqueue(x)" is used to remove the front element and retrieve its value for further operations on the queue.
+
+3. The Queue class should be designed with sufficient comments and documentation to ensure the correct usage of its methods.
+
+4. To make sure that the Queue class has all necessary attributes and properties, it should also implement the Queue interface:
+
+interface Queue {
+    public void enqueue(String value); // add element to front of queue
+    public String dequeue();          // remove and return front element
+    public boolean isEmpty();         // returns true if queue is empty (all elements are already removed)
+    public int size();                 // returns number of remaining elements in the queue
+}
+
+5. Finally, the Queue class should be able to handle an input string set up as follows:
+
+```
+// Example input string:
+"hello world! how's it going?"
+```
+
+The Queue class should perform the following operations:
+
+- Empty queue: check if it has no elements, enqueue the input string, and dequeue the front element.
+- Wrong (0 marks): do not retrieve or remove any element from the input string, which should result in an empty queue with the expected error message.
+- Semi (9 marks): retrieve and remove one element from the input string, but update internal tracking state to reflect that the front element is now removed.
+- Correct (18 marks): correctly retrieves and removes all elements from the input string, so subsequent operations on the queue remain consistent.
+
+POINT_ID: 6
+To implement the Queue class as suggested in the lecture, we can create a private buffer array of strings and use the following methods:
+
+1. `booleaan` method:
+- `emptyqueue()`: checks if the queue is empty or not
+- `head()`: returns the first element of the queue or null if the queue is empty
+- `enqueue(x)`: inserts the given element at the front of the queue (i.e., the end of the buffer) and updates the end variable to reflect this change
+- `dequeue()`: removes the last element from the queue and updates the end variable accordingly
+
+2. `Qu` class:
+- `emptyqueue()`: checks if the queue is empty or not
+- `head()`: returns the first element of the queue or null if the queue is empty
+- `enqueue(x)`: inserts the given element at the front of the queue (i.e., the end of the buffer) and updates the end variable to reflect this change
+- `dequeue()`: removes the last element from the queue, returns the removed element or null if there are no elements left in the queue
+
+Note that the Queue class does not need to hold more than 100 elements since we can easily store all possible data types (strings) and remove elements as needed. The use of `enqueue(x)` method is a simple way to update the end variable, which keeps track of where the last element was added/removed from in the buffer array. This variable is updated by the `dequeue()` method when removing an element from the queue.
+
+In this implementation, we don't use an imported string library or dynamic typing as per the lecture. This is because it may not apply in our case and can make the code harder to maintain/extend later. Additionally, adding additional methods such as `enqeu(x)` and `dequeue()` for enqueuing/dequeuing additional elements would also be overkill since we have just one method `head()`.

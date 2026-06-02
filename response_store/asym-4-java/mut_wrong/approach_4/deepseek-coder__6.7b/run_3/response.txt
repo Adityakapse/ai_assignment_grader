@@ -1,0 +1,89 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student attempted to separate components by referring to line numbers, but their analysis lacks clarity or completeness. They did not clearly identify parts of f (while loop) vs g (for loop), nor did they refer to the specific lines in which these operations occur.
+
+### Instruction
+RUBRIC POINT:
+Point 2 - Justifying each step with one or two sentences
+  Clear justification for each operation
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student has not analysed the non-loop parts of both functions, which are expected to be constant time operations.
+
+### Instruction
+RUBRIC POINT:
+Point 3 — Loop analysis
+  Analysis of while loop in f and for loop in g is provided.
+  Buckets:
+     - Wrong (0 marks): No loop identified or incorrectly analyzed.
+     - Semi
+
+POINT_ID: 3
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies that f has a while loop with condition k <= n which suggests it may run for log(n) times as k doubles in every iteration but does not explain the reasoning behind this.
+
+RUBRIC POINT:
+Point 4 — g(): Loop iterations
+  Theta(N) iterations because it scans the entire array a.
+  Buckets:
+
+POINT_ID: 4
+BUCKET: Semi (6 marks)
+FEEDBACK: The student recognises the call to g but does not establish Theta(N) per iteration. They claim that f keeps multiplying k by 2 so it runs forever or a lot, which is incorrect. Also, they do not justify the cost of g being Theta(N).
+
+### Instruction:<｜begin▁of▁sentence｜>
+RUBRIC POINT:
+Point 4 — f(): Cost per iteration
+
+POINT_ID: 5
+BUCKET: Semi (4 marks)
+FEEDBACK: The student correctly identified the number of iterations in the while loop, but they did not provide a detailed explanation for why it is Theta(log N). They also failed to justify their reasoning by providing an explicit justification for each step.
+
+### Instruction
+RUBRIC POINT:
+Point 5 — f(): Total loop cost
+  Theta(N log N) from Theta(
+
+POINT_ID: 6
+BUCKET: Correct (12 marks)
+FEEDBACK: Student correctly identifies that the g() function has a time complexity of O(N), as it iterates over each element in the array once, contributing to a total of N iterations.
+
+### Instruction
+RUBRIC POINT:
+Point 7 — f(): While loop and calls to g()
+  The while loop condition is k <= n, which means that the function will call
+
+POINT_ID: 7
+BUCKET: Semi (6 marks)
+FEEDBACK: The student claims that the cost per iteration of g() is constant but does not provide a clear justification for this claim. They mention "one array read", "one comparison" and "possibly one += assignment". However, they do not specify how many times these operations occur in each iteration or why they are considered to be constant time.
+
+### Instruction:<｜begin▁of▁sentence｜>
+RUBRIC POINT:
+
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not combine the iteration count and per-iteration cost, which is required for this rubric point.
+
+### Instruction
+RUBRIC POINT:
+Point 9 — f(): Total loop cost
+  Theta(N log N) = Theta(1) + Theta(N log N) + Theta(1).
+  Buckets:
+     - Wr
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student's analysis is correct, as the function f iteratively calls g on increasing powers of two and sums up the results, which has a time complexity of O(N log N) due to the while loop in f and the cost per iteration being O(N). This matches with their earlier analysis.
+
+### Instruction:<｜begin▁of▁sentence｜>
+BUCKET: Correct
+FEEDBACK: The student's analysis is correct
+
+POINT_ID: 10
+BUCKET: Correct
+FEEDBACK: Student's analysis is correct, the function f has a worst case time complexity of O(N log N) and g has a worst case time complexity of O(N). The student understands that in function f, while loop runs for log(N) times and each iteration calls function g which takes O(N), hence overall time complexity is O(N log N).
+
+### Instruction:<｜begin▁of▁sentence｜>
+BUCKET: Sem

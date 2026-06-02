@@ -1,0 +1,322 @@
+POINT_ID: 1
+CLASS: Stack
+
+IMPLEMENTATION:
+
+public class Stack {
+     private int size; // Size of stack (maximum capacity)
+     private Node head; // Head pointer to first element in the stack
+     private Node tail; // Tail pointer to last element in the stack
+     
+     // Constructor
+     public Stack() {
+         head = null;
+         tail = null;
+         size = 0;
+     }
+     
+     public int sizeOfStack() {
+         return size;
+     }
+     
+     // Push element onto the stack
+     public void push(int x) {
+         Node newNode = new Node(x); // Create a new node to hold the element
+         
+         if (isEmpty()) { // If the stack is empty, insert the new element at the end
+             head = newNode;
+             tail = newNode;
+             size++;
+         } else { // Otherwise, insert the new element before the last element
+             newNode.next = head;
+             head = newNode;
+             size++;
+         }
+     }
+     
+     public int pop() {
+         if (isEmpty()) return -1; // If the stack is empty, throw an error and return a negative value
+         
+         Node temp = head;
+         int x = temp.value;
+         
+         if (!isFull()) { // If the stack is not full, remove the element from the head
+             head = head.next;
+             size--;
+         }
+         
+         // Return popped element
+         return x;
+     }
+     
+     public boolean isEmpty() {
+         return head == null;
+     }
+     
+     public int top() {
+         if (isEmpty()) return -1; // If the stack is empty, throw an error and return a negative value
+         
+         Node temp = head;
+         return temp.value;
+     }
+     
+     public void clearStack() {
+         head = tail = null;
+         size = 0;
+     }
+}
+
+STUDENT SOLO:
+
+Point 1: The Stack class is defined correctly and has all necessary fields to support FIFO behaviour.
+
+The following code implements the `push` method in the `Stack` class, which inserts an element into the tail of the stack while checking if it's full or not. If the stack is empty or full, it returns a negative value. The `pop` method removes and returns the top element from the stack and checks for its validity while removing it.
+
+POINT_ID: 2
+Response:
+To add more clarification to the rules of "Queue" as mentioned in the lecture, we can define them as follows:
+
+1. Empty Queue: The class should not have any elements stored within its buffer array. It should always return true when empty, indicating that there are no elements to be retrieved.
+
+2. Head: The class should have a method named "head()" which returns the first element of the queue. This method should not modify or mutate the internal buffer, but instead simply returns the next available element from the front of the queue (where available).
+
+3. Enqueue: The class should have a method named "enqueue(String)" that inserts a new element into the end position of the buffer array. If the element to be inserted is already in the buffer, it should not modify or mutate the internal state of the queue (e.g., it should simply add the next available slot), but rather return the previous element if any.
+
+4. Dequeue: The class should have a method named "dequeue()" that removes and returns the first element in the buffer array. This method should not mutate or modify the internal state of the queue (e.g., it should simply remove the next available slot).
+
+To ensure that these methods operate correctly, we can define them as follows:
+
+1. Empty Queue: The class should not return any elements from its buffer array. It should always return null when calling "head()" or "enqueue(String)" since their return values reflect the fact that there are no elements to be retrieved. When calling "dequeue()" or "dequeue()" with an empty buffer, they should also return null.
+
+2. Head: The class should not modify or mutate the internal buffer of its head() method, as it does not need to store any more than 100 elements. This is ensured by the fact that the start and end indices are only used to provide a constant for comparing with the end position.
+
+3. Enqueue: The class should only enqueue one element into the buffer array when "enqueue(String)" is called, since there can be no more than 100 elements in the queue. If an attempt is made to enqueue another element into the same slot at the end of the buffer, it should simply return null (since this would be a new element being inserted) and do not mutate or modify the internal state of the queue.
+
+4. Dequeue: The class should not mutate or modify the internal state of its head() method by returning any elements from the buffer array (or any other method). When calling "dequeue()" with an empty buffer, it should also return null.
+
+By following these guidelines, we can ensure that our implementation meets the requirements specified in the given lecture's "Queue" assignment.
+
+POINT_ID: 3
+Solution:
+
+1. Rule 1: The Queue class should have at least the methods emptyQueue() and dequeue().
+
+The Queue class should only accept two methods, emptyQueue() and dequeue(), as mentioned in the lecture. Both of these methods return a boolean value indicating whether or not the queue is empty (as opposed to non-empty).
+
+2. Rule 2: The Queue class should have a private field named "start" and a public field named "end".
+
+The start and end fields should be private because they are used internally by the Queue class, but not shown to the user of the Queue. This helps maintain encapsulation as the values of these fields don't need to be exposed in the interface that users of the queue can interact with.
+
+3. Rule 3: The Queue class should have a constructor accepting an int as parameter to store the size of the queue.
+
+The Queue class should have a private constructor with an argument named "size" which represents the size of the queue (the number of elements stored). This constructor is used by the emptyQueue() method to create an empty queue, but can be ignored or overloaded in subclasses that require a specific size.
+
+4. Rule 4: The Queue class should have a private method named "head()" which returns the front element of the queue without modifying any internal state.
+
+The head() method should return the first element stored in the Queue, without removing it or modifying any internal state.
+
+5. Rule 5: The Queue class should have a public method named "enqueue(String)" that adds an element to the end of the queue (i.e., the tail).
+
+The enqueue() method adds the specified string to the end of the queue without removing any elements or modifying any internal state, and returns the front element (i.e., the last element added) without removing it or modifying any internal state.
+
+6. Rule 6: The Queue class should have a public method named "dequeue()" that removes and returns the first element in the queue (i.e., the head).
+
+The dequeue() method removes and returns the front element of the queue without removing it or modifying any internal state.
+
+7. Rule 8: The Queue class should have a public method named "isEmpty()" that checks if the queue is empty or not.
+
+The isEmpty() method returns true if the queue is empty, false otherwise. This method can be used by other methods such as head(), dequeue(), and enqueue().
+
+Rule 9: The Queue class should have a public method named "size()" that returns the number of elements stored in the queue (i.e., the size).
+
+The size() method returns the size of the queue, which is used by other methods such as head(), dequeue(), and enqueue().
+
+Rule 10: The Queue class should have a public field named "buffer" that stores the elements in the form of a string array.
+
+The buffer field stores the elements in the form of an array, where each element is stored at index 0, 1, 2 ... N-1, with N being the number of elements stored. This allows for easy addition and removal of elements from the queue as the elements are added or removed one by one without changing the internal structure of the queue.
+
+Rule 11: The Queue class should have a public method named "size()" that returns the number of elements in the buffer array, which is used by the head(), dequeue(), and enqueue() methods to modify the internal state of the queue.
+
+8. Rule 12: The Queue class should have a public constructor accepting a single argument named "buffer" which represents the size of the internal buffer array.
+
+The buffer parameter stores the elements in the form of an array, and allows for easy manipulation of the internal structure without changing its size.
+
+In summary, the Queue class should:
+- Have at least two methods: emptyQueue() and dequeue().
+- Store and manipulate the queue as a string array (buffer).
+- Have private fields named "start" and "end".
+- Have public methods: head(), enqueue(String), dequeue(), isEmpty(), size(), and buffer.
+- Use encapsulation by hiding internal state from the user of the queue.
+
+POINT_ID: 4
+I am not allowed to use import statements in java programming. However, I can provide an implementation of a queue based on the concepts discussed in the lecture:
+
+1. Implementing the "emptyqueue()" method checks if the queue is empty, and if it is, returns null. If it's not, the method returns the current last element.
+
+2. The "head()" method retrieves the first element of the queue, which could be null if the queue is empty or if an element has been enqueued before.
+
+3. The "enqueue(x)" method inserts the given element at the end of the queue. It returns a boolean value indicating whether the operation was successful (i.e., the new element was successfully added to the queue). If the operation failed, it will return false.
+
+4. To enqueue an element correctly into the back of the queue, the "enqueue(x)" method updates the internal structure by inserting the element at the correct position in the buffer. This updating process is called "enqueuing" or "enqueueing". If the operation failed due to a missing or non-existent element being enqueued before, it will return an appropriate error message indicating the cause of failure.
+
+5. The "emptyqueue()" method checks if the queue is empty and returns true if it is, false otherwise.
+
+6. The "head()" method checks if the queue is not empty and returns null if it's empty or if an element has been enqueued before.
+
+7. The "enqueue(x)" method calls the "enqueue(x)" method of each subsequent call to enqueue() that occurs after dequeue(), so all elements are enqueued in the correct order, from the back.
+
+8. To remove an element from the front of the queue, the "dequeue()" method removes the first element from the buffer, checks if the buffer is empty or if there was no enqueue operation since the start (start), and returns the removed element. If it found one, it also returns the last element in the queue, which is guaranteed to be present since all subsequent operations rely on correct enqueuing and dequeuing of elements, so these operations are consistent with each other.
+
+9. To remove an element from the back of the queue, the "dequeue()" method removes the first element from the buffer (i.e., the last one), checks if the buffer is empty or if there was no enqueue operation since the start and the end positions, and returns the removed element. If it found one, it also updates the internal structure by removing the element at the correct position in the buffer, which ensures that subsequent operations continue to work correctly.
+
+10. The "emptyqueue()" method checks if the queue is empty and returns true if it's not, false otherwise.
+
+11. The "head()" method calls the "head()" method of each subsequent call to enqueue() that occurs after dequeue(), so all elements are enqueued in the correct order from the back.
+
+POINT_ID: 5
+To ensure that our Queue class is properly implemented, we will follow the guidelines outlined in the Lecture and implement the methods `emptyqueue()`, `head()`, `enqueeu(String)`, and `dequeue()`. We can use the provided sample code as a reference for Python's dynamic typing.
+
+To check if our Queue class is empty, we can call its `emptyqueue()` method, and the expected return value will be a boolean indicating whether the queue is empty or not. 
+
+For retrieving the front element (the last element), we can call the `head()` method and the expected return value should be a String representing the current front element. We can update our buffer array to hold the new value of the head element using the `enqueeu(String)` method, and then call the `head()` method again to retrieve the next element in the queue.
+
+We can also test if our Queue class correctly handles dequeue(), which removes and returns the front element from the queue. We can call the `dequeue()` method with no arguments and the expected return value will be a String representing the current front element. We can then update our buffer array to hold the new value of the head element using the `enqueeu(String)` method, and call the `head()` method again to retrieve the next element in the queue.
+
+Finally, we can check if our Queue class is properly updated with tracking state after each operation by checking the last element of the buffer array, which will be the value retrieved from the `enqueue(String)` or `dequeue()` methods. If these checks are successful, we can call the `head()` method again to retrieve the front element and check if it matches the expected result.
+
+POINT_ID: 6
+To achieve internically consistent and correct final results, we can use a "finalizer" technique similar to Python's garbage collector. The "finalizer" method is called automatically by the JVM when a non-final object is about to be garbage-collected, ensuring that any remaining references to the object are cleaned up properly before the memory is freed.
+
+Here's an updated implementation of our Queue class with a finalizer:
+
+```java
+public class Queue {
+     private String[] buffer; // internal array storing elements
+     private int start, end; // indices of start and end of internal buffer
+     private int size;
+     private Object finalizer; // reference to a thread-safe finalizer method
+
+     public final Queue() {}
+     
+     public static void main(String[] args) throws Exception {
+         new Queue().enqueue("a");
+         new Queue().enqueue("b");
+         new Queue().dequeue(); // remove last element from queue
+         new Queue().head(); // return first element in queue (should be "a")
+     }
+     
+     public void enqueue(String s) {
+         if(buffer.length == 100) {
+             buffer = Arrays.copyOf(buffer, buffer.length * 2);
+         }
+         buffer[end++] = s; // insert new element at end of buffer
+     }
+     
+     public String head() {
+         return buffer[start];
+     }
+     
+     public void enqueue(String s) {
+         buffer[end] = s; // insert new element at end of buffer
+         end++;
+     }
+     
+     public void dequeue() {
+         String s = buffer[start];
+         buffer[start] = null; // remove old element from buffer
+         start++;
+         if(start == 100) {
+             start = 0;
+         }
+     }
+     
+     @Override public String toString() {
+         return "Queue{" +
+             "buffer=" + Arrays.toString(buffer) +
+             ", start=" + start +
+             ", end=" + end +
+             '}';
+     }
+ 
+     public static void main(String[] args) throws Exception {
+         new Queue().enqueue("a");
+         new Queue().enqueue("b");
+         new Queue().dequeue(); // remove last element from queue (should be "a")
+         new Queue().head(); // return first element in queue (should be "a")
+     }
+ 
+     @Override final void run() {
+         while(true) {
+             try {
+                 Thread.sleep(50);
+             } catch(InterruptedException e) {
+                 System.out.println("Thread died unexpectedly");
+                 return; // allow daemon threads to proceed
+             }
+         
+             // finalize the buffer and start a new iteration
+             for(int I = 0; I < buffer.length; i++) {
+                 if(buffer[i] == null) {
+                     buffer[i] = "null";
+                 } else if(buffer[i].equals("")) {
+                     buffer[i] = "false";
+                 } else {
+                     buffer[i] = "true";
+                 }
+             }
+         }
+     }
+ 
+     @Override final public String toString() {
+         return "Queue{" +
+             ", buffer=" + Arrays.toString(buffer) +
+             '}';
+     }
+ 
+     static void main(String[] args) throws Exception {
+         new Queue().enqueue("a"); // add element to queue
+         new Queue().enqueue("b"); // add element to queue
+         new Queue().dequeue(); // remove last element from queue (should be "a")
+         new Queue().head(); // return first element in queue (should be "a")
+     }
+ 
+     @Override final void run() {
+         while(true) {
+             try {
+                 Thread.sleep(50);
+             } catch(InterruptedException e) {
+                 System.out.println("Thread died unexpectedly");
+                 return; // allow daemon threads to proceed
+             }
+ 
+             // finalize the buffer and start a new iteration
+             for(int I = 0; I < buffer.length; i++) {
+                 if(buffer[i] == null) {
+                     buffer[i] = "null";
+                 } else if(buffer[i].equals("")) {
+                     buffer[i] = "false";
+                 } else {
+                     buffer[i] = "true";
+                 }
+             }
+         }
+     }
+ 
+     @Override final public String toString() {
+         return "Queue{" +
+             ", buffer=" + Arrays.toString(buffer) +
+             '}';
+     }
+ }
+ ```
+
+ Here's how we can use this finalized Queue class:
+
+```java
+public static void main(String[] args) throws Exception {
+    new Queue().enqueue("a");
+    new Queue().enqueue("b");
+    new Queue().dequeue(); // remove last element from queue (should be "a")
+    new Queue().head(); // return first element in queue (should be "a")
+}
+```

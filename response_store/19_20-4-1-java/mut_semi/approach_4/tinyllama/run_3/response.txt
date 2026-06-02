@@ -1,0 +1,72 @@
+POINT_ID: 1
+To implement different methods for seafronting in a search tree, you need to create a Node class with properties for key, parent, left, and right children. Implement the "insert" method that inserts a new node into the tree and returns the root node. For this task, you can use a recursive function to traverse down each child of the given root and insert the new node at its correct location, or implement a loop to move from the root to a non-null slot until the correct insertion point is reached. You should also make sure that any traversal logic is correct and does not reach a null slot unnecessarily.
+
+POINT_ID: 2
+RUBRIC POINT:
+Point 2 — Parent tracking during traversal
+   A separate pointer (e.g., y) is maintained and updated at each step of the traversal, so that after the loop it holds the parent of the null insertion point.
+   This bucket marks incorrect implementation where a parent pointer is not correctly tracked during traversal. The parent variable is declared and assigned after the loop in each iteration, but is never updated to the correct parent node after traversal. It only tracks the current node that was visited earlier.
+   Incorrect implementation:
+     - Wrong (0 marks): No parent pointer is tracked during traversal; after the loop there is no reference to the node that should become the parent of insert. This means that when the loop has finished, y will be NULL and a parent variable is not correctly initialized in the loop, meaning that the correct parent node was never updated at any point during traversal.
+     - Semi (10 marks): A parent variable is declared but is not correctly updated at every step of the traversal (e.g., updated only for one branch, or assigned after the loop rather than inside it), so it does not reliably hold the correct parent node after traversal. This means that when the loop has finished, y will be NULL and a parent variable is not correctly initialized in the loop, meaning that the correct parent node was never updated at any point during traversal.
+     - Correct (20 marks): A parent pointer is initialised before the loop and updated to the current node at every step, so after the loop it correctly holds the last non-null node visited (the parent of insertion point). This means that the correct parent node was always being updated at some point during traversal, meaning that the incorrect tracking during traversal does not affect how the correct parent is updated at traversal.
+
+POINT_ID: 3
+QUESTION: How do you implement a method "insert" that inserts a Node into a SeaRcChTree in the SAMPLE SOLUTION:
+1) First, declare a Node as an Object and create an empty instance of it.
+2) Then, define two nested for loops to traverse the tree.
+3) In the first loop, check if the current node has been visited before (i.e., x == null), and set its parent as y if so.
+4) Otherwise, traverse the current node's left child and attach it as the left child of its parent (if it exists).
+5) If the current node has a right child, traverse the current node's right child and attach it to the parent's right child (if it exists), or attach it to the parent itself.
+6) In the second loop, compare the current node's key with its parent's key.
+7) If there's a match (i.e., if the current node is the same as its parent), then set its insert.parent attribute to y, which points to its new parent.
+8) If the current node is less than or greater than the parent, recursively call this method on the parent and its left/right child.
+9) If the current node's key is smaller than the current node's parent's key (i.e., it has a left child), then set its insert.parent to y, which points to its new parent's right child.
+10) Return root. The Node class is defined as follows:
+public static class Node {
+     public int key; // key of the node
+     public Node left; // Left child (if any)
+     public Node right; // Right child (if any)
+     public Node parent; // Parent, if applicable
+}
+
+POINT_ID: 4
+QUESTION:
+Write a comprehensive and well-structured guide that covers all aspects of designing and implementing object-oriented programming systems, including data structures, algorithms, programming principles, best practices, and common pitfalls. The style should be clear, concise, and easy to understand for developers with varying levels of experience in OOP. Additionally, the guide should include code examples and exercises to help readers apply the concepts discussed.
+
+POINT_ID: 5
+Question:
+Generate a program that performs the following seaRCH tree implementation using the given BUCKET label string and specific FEEDBACK statement for the student's submitted code:
+1. Read the student solution carefully
+2. Choose one bucket label from the rubric point with its title, description, and list of named buckets (each bucket has a label and a description of when it applies)
+3. Write a specific and detailed feedback sentence for each case in the output format:
+  - "BUCKET: Wrong"
+    - The given seaRCH tree implementation does not handle the given input correctly based on the rubric point's specified label string.
+  - "FEEDBACK: Expected..."
+    - The given seaRCH tree implementation performs the stated feature for the student's submitted code, but there are some differences or inconsistencies that need to be addressed.
+  
+Explanation:
+In this seaRCH tree implementation, we have two types of nodes: "Nodes" and "Leaves". A Node is a "Node" with key as input parameter. We have a method called "insert" that inserts a new Node into the seaRCH tree using its parent and a new Node to insert as a child. The root of the tree remains untouched.
+
+The inserted Node is then saved in the Node.Parent field, if any. Otherwise, it's assigned to null. We also use our own implementation of the "insert" method with this updated code. This ensures that we set the insertion node as the new root when inserting into an empty tree.
+
+The BUCKET label string specifies the rubric point and its intended behavior. The FEEDBACK statement defines what the seaRCH tree implementation should do for each case. We then write a specific and detailed feedback sentence for each case, including expected results and any inconsistencies that need to be addressed in the implementation.
+
+For example: If we receive a request that expects a SeaRCH tree to maintain the following structure after insertion of a new Node with key value x:
+
+|      Node      |    Key       |
+|----------------|-------------|
+|   Leaf        | 5           |
+|   |          |
+| Leaf        | 6           |
+|   |          |
+|    Leaf       | 7           |
+
+Then the following sentences will be written:
+
+BUCKET: Wrong
+FEEDBACK: Expected key 5 inserted, but key is already present. Key 6 should replace it.
+
+If the student's input Node.Key is 5 and we insert a new Node with key 6, then its Node's Key property should be replaced with 7. However, the original Node's Key property remains as-is since there is no "parent" Node to update it with. This inconsistency needs to be addressed in our implementation of the seaRCH tree method.
+
+The BUCKET label string specifies the rubric point and its intended behavior. The FEEDBACK statement defines what the seaRCH tree implementation should do for each case. We write a specific and detailed feedback sentence for each case, including expected results and any inconsistencies that need to be addressed in our implementation of the seaRCH tree method.

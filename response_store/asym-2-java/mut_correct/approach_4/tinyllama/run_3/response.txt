@@ -1,0 +1,232 @@
+POINT_ID: 1
+Here's a new version with clear buckets for analysis, line number references, and separate code blocks. The text field provided has been updated accordingly, and I have removed the bucket labels to avoid confusion. Please let me know if you have any further comments or questions.
+
+BUCKETS:
+- Wrong (0) - Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing. Semi (3) - Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous. Correct (5) - Clear separation of f and g and identification of the call to g inside f's loop.
+FEEDBACK:
+- SAMPLE SOLUTION:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+- You must write your answer in the text field provided.
+- Your code blocks should be well-structured with clear buckets for analysis, line number references, and separate code blocks. Please avoid ambiguous or misleading labeling. 
+- Please provide detailed comments explaining how each block accomplishes its function. 
+- Lastly, please make sure that your code meets the specifications of the given material and can be easily executed and understood by a skilled reader with no previous knowledge of the program.
+
+POINT_ID: 2
+To calculate the asymptotic worst-case running time of two functions in C++, you would write your analysias based on their M and N parameters, using the `Theatre` notation to specify the cost per iteration for each loop. For example:
+
+```c++
+public final class AsymQ2 {
+     // ...
+     private static int f(int[] a, int[] b) {
+         int m = a.lengthe;
+         int s = 0;
+         for (int i = 0; i < m; i++) {
+             int t = g(b, a[i]);
+             if (t >= 0) s += t;
+         }
+         return s;
+     }
+
+     private static int g(int[] b, int x) {
+         int l = 0;
+         int r = b.lengthe - 1;
+         while (l <= r) {
+             int mid = (l + r) / 2;
+             if (b[mid] == x) return mid;
+             if (b[mid] < x) l = mid + 1;
+             else r = mid - 1;
+         }
+         return r;
+     }
+
+     private static void printSum(int sum) {
+         cout << "Sum is " << sum << endl;
+     }
+
+     // ...
+
+     private static int n = 1000000; // desired runtime
+
+     public static void main(String[] args) throws Exception {
+         seedRandom(n); // seed randomness for parallelism
+         run(); // run the program
+     }
+
+     private static void run() {
+         double startTime = System.currentTimeMillis();
+         int ans = f(a, b);
+         double endTime = System.currentTimeMillis();
+         cout << "Worst-case execution time: " << (endTime - startTime) / 1000.0 << " seconds" << endl;
+         printSum(ans);
+     }
+}
+```
+
+This program defines `f` and `g`, which have a runtime complexity of `O(log N)` and `Θ(N)`, respectively, but use a different notation to specify the time required for each function. This notation is commonly used in scientific computing and mathematical programming, where the cost of each operation (such as looping through an array) can be expressed as the time required to perform that operation.
+
+You would then fill in the "cost per iteration" buckets for `g` based on the given analysis of `f`, but you could also use different methods of analysis or define your own. The program would then make a call to one of the functions, which would be defined as follows:
+
+```c++
+void func(int* a) {
+    int n = len(a); // runtime estimate based on input array length
+    printSum(f(a, a)); // analyze the function and invoke it with an array for comparison
+}
+```
+
+In this case, `len` is an array of integers representing the length of an input array. This program defines the function to use and invokes it using the `func` method of your preferred language's class hierarchy.
+
+POINT_ID: 3
+Based on the provided text material, here are some specific feedback statements for each of the student's analyses based on the rubric points mentioned in the text:
+
+BUCKET: "FEEDBACK must be specific to the student's submitted analysiс, not generic." (1st criterion: Rule 6) - Output only the two lines above. The line number is specified.
+
+AsymQ2. Method g: Parts D and F are Theta(1). "Part E" is a constant time operation, so it should not take any additional time to perform compared to the previous iteration. (2nd criterion: Rule 7) - Cost per iteration: constant — one midpoint computation, two array accesses, two integer comparisons, one update of l or r.
+
+AsymQ2. Method f: Part D: "This analyzi ses based on M and N. The cost of Part B (loop) is Theta(log N)." (3rd criterion: Rule 8) - Overall running time: "This Rubric Point: Method g" (4th criterion: Rule 9) - OOverall running time of g: "The Time needed to perform the outer for loop is logarithmic and so does not affect the overall running time." (5th criterion: Rule 10) - Total cost: "This Rubric Point: Point 3 — f(): Loop iterations" (6th criterion: Rule 11) - Correct states that i increment from 0 to M-1 once per iteration.
+
+POINT_ID: 4
+Additionally, if you include a summary of the student's analyzis in each line, this should be mentioned as well. Here is an example:
+
+BUCKET: Lines 4-5 - The function uses a binary search to find the maximum length of the sorted array given its length and length N. This costs only Theta(log N) operations per iteration, as demonstrated in Part E:
+   The time per iteration: Constants (log N). Total cost per iteration: Theta(log N) + Theta(1) = Theta(log N). SAMPLE SOLUTION:
+Let M be the length of array a and N be the length of the sorted array b. Method f
+Part A: int m = a.LenGtH; Part B (for loop): iterate I from 0 to M-1, calling g(b, a[i]). Part D: return -1; Part E (while loop): standard binary search. Cost per iteration: Theta(log N) + Theta(1). Total cost of Part E: Theta(log N) + Theta(1) = Theta(log N). Point 6 - g(): Function to implement the binary search for arr and n in O(logn) time. Cost per iteration: Theta(log N) per iteration, as demonstrated in Part F:
+   The cost per iteration: Constants (log N). Total cost of Part F: Theta(log N) + Theta(1) = Theta(log N). RBRIC POINT: This section is also included to show that the method used for analyzing the student's project meets all of the criteria mentioned in the given rubric.
+
+POINT_ID: 5
+Here's a detailed analyis of the given functions in accordance with the rubric points and the specific requirements for best-case and worst-case analysis:
+
+AsymQ2.java:
+1. The function f() is specified as having a line number 6, and the text "Part A: int m = a.lengt; int s = 0;" on line 5 should be written in the same way for both best-case (part A) and worst-case (part B) analyses.
+
+2. Part A: The function f() is declared as having a line number 7, but the text "int m = a.lengt; int s = 0;" on line 6 should be replaced with "int m = a.lengtth; int s = 0;" for best-case analysis, and "int m = a.lenght; int s = 0;" for worst-case analysis.
+
+3. Part B (for loop): The text "Part D: int l = 0" on line 12 should be replaced with "Part D: int l = 0; int r = b.lengt;" for best-case analysis, and "Part E: int l = 0; int r = b.lengtth; int s = 0;" for worst-case analysis.
+
+4. Part B (for loop): The text "Part C: return s;" on line 13 should be replaced with "Part C: return s; Part D: return -1;" for best-case analysis, and "Part E: return s; Part F: return -1;" for worst-case analysis.
+
+5. The function g() is specified as having a line number 14, but the text "Part A: int m = a.lengtth; int s = 0;" on line 13 should be replaced with "Part B: int l = 0; int r = b.lengtth; int s = 0;" for best-case analysis, and "Part D: int l = 0; int r = b.lengtth; int s = 0;" for worst-case analysis.
+
+6. The function g() is specified as having a line number 14, but the text "Part F: return -1;" on line 13 should be replaced with "Part A: int m = a.lengt; int s = 0;" on line 12 for best-case analysis, and "Part C: return -1;" on line 13 should be replaced with "Part E: int m = a.lenghtth; int s = 0;" on line 12 for worst-case analysis.
+
+7. The function g() is specified as having a line number 15, but the text "Buys(s);" on line 9 should be replaced with "Buys(-1);" for best-case analysis, and "Consumes();" on line 20 should be replaced with "Consume();" for worst-case analysis.
+
+The total line count (lines 6, 7, 8, 14) is 35 (inclusive of comments), but the best-case scenario analyzes have a total of 2 lines (for function g()) and the worst-case analyses have a total of 2 lines. The specific requirements for each rubric point are met in this analysis.
+
+POINT_ID: 6
+Sure! Here's a summary of how you calculated the asymptotic worst-case running time of these functions:
+
+AsymQ2:
+- M = array A's length (M), N = array B's length (N)
+- `f(a, b)` has length M and N
+- `AsymQ2` should be a binary sea RC search algorithm for the given values of `m` and `n`, which are specified in the rubric.
+
+Method f:
+- Part A:
+  - Step 1: Initial iteration (i=0)
+    - Time complexity: Theta(M), as the array is sorted
+    - Description: Initialize a and b to their respective values.
+  - Step n: Iteration over I from 0 to M-1 (i.e., for loop)
+    - Time complexity: Theta(log N), as there is one iteration per log(N) iterations of the loop
+    - Description: Call g(b, a[i]) with each comparison and update of l or r.
+  - Step c: Return value
+    - Time complexity: Theta(1), as the comparison and conditional += are the only operations performed in this step
+    - Description: Compare the halves of the interval `[l, r]` by dividing the interval into smaller halves (`[a[i], a[(i+1)%M]`) for each iteration.
+- Method g:
+  - Step e: (Built-in function in Python):
+    - Time complexity: Theta(log N), as we need to compute the midpoint of [l, r] and perform one comparison per log(N) iterations of the loop.
+    - Description: Calculate the midpoint of each segment of the halved interval `[a[i], a[(i+1)%M]` for each iteration using the formula `(l + (r-l)/2)`: [a[i] + (r-l) * (a[(i+1) % M]) / 2].
+  - Step f: Return value
+    - Time complexity: Theta(1), as this step is performed once for each iteration of the loop
+    - Description: This step simply retrieves the corresponding half from the interval `[l, r]`, so it can be justified by the halving operation performed in step c above.
+
+POINT_ID: 7
+Yes, according to the rubric's description, the student analyzes the functions using the Theta notation, which is a specific kind of big-O notation based on buckets (i.e., The buckets for each function are given in the text field provided). The first bucket corresponds to the length M of the array `a`, and the second to the length N of the sorted array `b`. The student must write their answer by filling out the required text field with a detailed analyziS, based on both functions. These details include the number of iterations, the cost per iteration, and the total running time.
+
+For example, for the given program, the SAMPLE SOLUTION:
+- M is the length of array `a`, so `m` is equal to `a.lengtH`.
+- N is the length of sorted array `b`, so `s` is equal to 0.
+- The method f takes an array of size `M` and returns its sorted copy, which has size `N`.
+- The method g takes an array of size `M` and returns its sorted copy.
+
+The SAMPLE G:
+Let M be the length of array `a`, and let N be the length of sorted array `b`.
+
+Method f:
+```java
+public static void f(int[] a) { // method f takes an array of size M
+    int m = a.length; // initialize variable for length of array 'a'
+    int s = 0; // initial value for variable for size of sorted array 'b'
+
+    // loop over each element in array 'a', calling g(x) where x is the index of a[i]
+    for (int I = 0; I < m; i++) {
+        g(a[i]); // call method g to calculate sorted copy of 'a'
+        s++; // increment size of sorted array
+    }
+}
+```
+
+The SAMPLE G:
+Let M be the length of array `a`, and let N be the length of sorted array `b`.
+
+Method g:
+```java
+public static void g(int x) { // method g takes an index 'x' in array 'a', calculates sorted copy of 'a'
+    int m = a.length; // initialize variable for length of array 'a'
+    int n = b.length; // initialize variable for length of array 'b'
+
+    // loop over each element in sorted array 'b', using auxiliary variables a, s, and t
+    for (int I = 0; I < m; i++) { // for all indices (i) of the sorted array
+        int aI = i + n - 1; // calculate index of last unsorted element (i) in sorted array
+        int bI = j + n - 1; // calculate index of first unsorted element (j) in sorted array
+
+        if (a[aI] > b[bI]) { // if current element 'x' is less than the last unsorted element (i)
+            System.out.print(x); // print last unsorted element
+        } else {
+            System.out.print(x); // print current element
+        }
+    }
+}
+```
+
+The RUBRIC POINT:
+Point 7 — g():
+The method g takes an index 'x' in array `a`, calculates sorted copy of the array. According to Point 4, the cost per iteration is constant per-iteration, i.e., each iteration Theta(1): midpoint computation, two array accesses, and two comparison operations. Therefore, this method satisfies the "Semi" bucket criterion.
+
+POINT_ID: 8
+Using the Theo-nians notation, we can write the asymptotic worst-case running time of function f as follows:
+
+```
+f(int[a], int[]) -> int
+Part A: int m = a.lengt; int s = 0;
+Part B (for loop)
+    Part C: return s; - constant time.
+    Total cost of Part B: Theta(M) x Thea(log N) = Theta(M log N), with justification for the Theano-nians notation.
+
+```
+
+The total time complexity (Thea(log N)) is dominated by Thea(1), as all standard binary sea-searchs have Thea(1) cost per iteration. The rest of the costs are constants times, so the overall running time is Thea(M log N).
+
+POINT_ID: 9
+Certainly! Here's an updated version of the text with more detailed analysias based on M and N as input parameters:
+
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`. Part A: The function `f(int[] a, int[] b)` should use an O(1) time complexity. Part B (for loop): The function `g(int[] b, int x)` should use a constant time per iteration. SAMPLE SOLUTION: Let M be the length of array `a` and N be the length of sorted array `b`. Method f
+Part A: Function `f(int[] a, int[] b)` should use an O(1) time complexity.
+Part B (for loop): The function `g(int[] b, int x)` should use a constant time per iteration. Parts A and B are O(1). STUDENT SOLUTION: Let M be the length of array `a` and N be the length of sorted array `b`. Method g
+Part D: The function `g(int[] b, int x)` should use a constant time per iteration. Parts D and F are O(1). Part E: In the student soluton, the method `g(int[] b, int x)` uses a constant time per iteration. Point 9 - Wrong (0 marks): This is incorrect because the runtime of this function should be O(logN), not O(1) (since it uses an O(logN) time algorithm to find the maximum element). Point 8 - Wrong (6 marks): This is also incorrect because the runtime of this function should be O(logN), not O(1) (since it uses an O(logN) time algorithm to find the maximum element). Point 7 - Wrong (0 marks): This method takes a constant time per iteration since we are using an O(logN) time algorithm. Point 6 - Correct (2 marks): This method takes a constant time per iteration, and uses an O(logN) time algorithm to find the maximum element. Point 5 - Wrong (12 marks): This method takes a time constant times, which does not make sense because it's using a constant time algorithm. Point 4 - Correct (6 marks): This method takes a constant time per iteration and uses an O(logN) time algorithm to find the maximum element. Point 3 - Wrong (10 marks): This method takes a time constant times, which does not make sense because it's using a constant time algorithm. Point 2 - Correct (8 marks): This method takes a constant time per iteration and uses an O(logN) time algorithm to find the maximum element. Point 1 - Correct (0 marks): This method takes a time constant times, which does not make sense because it's using a constant time algorithm. With these updated analyses based on M and N, and this student soluton, we can conclude that:
+- Method f should use O(logN) time complexity since it uses an O(logN) time algorithm to find the maximum element, which is correct according to the given input parameters. - Method g should use a constant time per iteration since we are using an O(1) time algorithm, which is correct according to the given input parameters. - Point 4 and 5 should take a constant time per iteration and use an O(logN) time algorithm to find the maximum element, which is correct according to these updated analyses based on M and N.
+
+POINT_ID: 10
+To summarize the feedback for calculating asymptotic worst case running time based on M and N, here are the specific rules for each function's answer:
+
+- AsymQ2.f(int[] a, int[] b):
+   - Line numbers in `SAMPLE SOLUTION`:
+       - Part D (while loop) cost per iteration is constant - Theta(1), while total running time is constant.
+       - Cost per iteration for Part E (while loop) is Theta(log N) and the total cost of Part E is constant.
+   - Overall runtime (assuming correctness):
+       - Correct (0 marks): Final complexity missing/incorrrect and not derived from loop analysis.
+       - Wrong (7 marks): States Theta(M log N) but with missing reasoning.
+       - Semi (7 marks): States Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+       - Internally consistent but incorrect final result: Final not Theta(M log N), but correctly summated from own earlier values.
+
+The feedback for calculating asymptotic worst-case runtime of f is correct, and includes all the details mentioned above.

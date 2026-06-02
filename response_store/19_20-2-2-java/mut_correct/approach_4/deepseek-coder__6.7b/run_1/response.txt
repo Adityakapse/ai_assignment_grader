@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student's code does not iterate over all elements in the input array or process them from left to right. It also doesn't distinguish between numbers and operators, treating both equally.
+
+RUBRIC POINT 2 - Operator Execution
+The method executes operators based on their symbols: + for addition, - for subtraction, * for multiplication, / for division.
+Buckets:
+-
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student has used Integer.parseInt() method for converting string numbers into integer, but they have not handled cases where there might be multiple digit numbers in the input array. They may push these as strings to the stack instead of integers.
+
+### Instruction
+RUBRIC POINT:
+Point 3 - Operator handling: pop from stack and calculation
+  When an operator token is encountered, it performs a mathematical operation
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly applies the operations to the top two elements of the stack but fails to push the result back onto the stack after computation.
+
+RUBRIC POINT:
+Point 3 — Operator handling: pop, compute, push
+  When an operator token is encountered, exactly two values are popped from the stack, the operation is applied, and the result is pushed back. This is evaluated independently of operand
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student has used the right operation but inverted the operands, which would lead to incorrect results. For example, if they have "2 3 -", it should be interpreted as "2 - 3" not "2 3 -". Similarly for division "/", the first popped value is the divisor and second one is the dividend.
+
+### Instruction
+RUBRIC POINT:
+Point 
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly implements all four operators and processes the input in the correct order. It also handles complex nested expressions without any issues.
+
+RUBRIC POINT:
+Point 5 — Overall correctness
+  The method returns the correct integer result for all valid RPN expressions, including expressions with all four operators and multiple nested operations.
+  Buckets:
+     - Wrong (0 marks): Method fails to compile

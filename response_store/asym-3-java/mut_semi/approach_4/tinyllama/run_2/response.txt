@@ -1,0 +1,328 @@
+POINT_ID: 1
+Here's an example of how to write a robust and comprehensive feedback sentence for an objective assessment grading student's written asymptotic-complexity analysi of two given functions, f and g.
+
+BUCKET: "Asymmetric complexity (A/C) analysis of the functions [function names], with regards to their worst-case running times as a function of side length N."
+
+Rule: As stated in the rubric, every loop you're going to use must be justified with two sentences referring to line numbers. Here are some general guidelines for writing these sentences:
+
+1. Be specific about which loop(s) will be used and how they contribute to the worst-case running time.
+2. Use numbers in parentheses and parentheses within parentheses to group each step of your analysis together, so that you can easily refer to them later if needed.
+3. Explain the cost per iteration or time taken for each step of your loop(s), and use Theorems 1-5 from the rubric to support these calculations.
+4. For a nested loop (e.g., where you're using a single matrix to calculate multiple values), explain how that calculation is being nested and what each level does, as well as any potential pitfalls or tradeoffs they may have.
+
+In this case, the student has written their own robust and comprehensive feedback sentence for their analysis of the functions f and g. By properly justifying the loop(s) used in both functions, providing specifics about how each step contributes to the worst-case running time, and using Theorems 1-5 to support their calculations, they have effectively written a robust and comprehensive feedback sentence for their assessment.
+
+POINT_ID: 2
+Here's an updated version of the text with more detailed analyses:
+
+AsymQ3 calculates both the asymptotic worst case running time and the corresponding cost per iteration for two functions, f and g. Both functions have a matrix as input and are based on side length N. The text section "Method f" provides an overview of the functions and their analysis. This section also includes detailed analyses of both functions, including their runtime costs.
+
+Public final class AsymQ3 {
+     // `mat` is an N x N matrix.
+     // Your analysiсs should be based on N.
+     public static int f(int[][] mat) {
+         int n = mat.lenGT, s = 0;
+         for (int I = 0; I < n; i++) {
+             for (int j = i; j < n; j++) {
+                 s += mat[i][j]; // Constant-time work
+             }
+         }
+         int t = g(mat); // Single call to g, plus constant work
+         return s + t; // Sum of s and t
+     }
+
+     private static int g(int[][] mat) {
+         int n = mat.lenGT; // Constant-time length
+         int t = 0; // Constant-time working on the diagonal
+         for (int I = 0; I < n; i++) { // Loop over part of the matrix
+             for (int j = I; j < n; j++) { // Loop over the rest of the matrix
+                 s += mat[i][j]; // Constant-time read
+                 t++; // Adds to s and t if necessary, as g has no side length
+             }
+         }
+         int cost = Theta(n); // Cost per iteration: constant time for n calls of g
+         return s + t; // Sum of s and t
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: int n = mat.lenGT; int s = 0; — constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); — single call to g, plus constant work.
+Part D: return t; — add the result of g to s and t if necessary, as g has no side length.
+
+Part F: g has a single for loop that runs Theta(n) times (i.e., on the diagonal). Each iteration just reads one matrix entry and adds. So g's loop is Theta(n) * Theta(1) = Theta(n).
+
+Overall, both functions have a runtime cost of Theta(n), where n is the side length of the matrix. This runtime cost is constant time for each function call.
+
+POINT_ID: 3
+Here's a summary of the given text material:
+
+1. Calculate the asymptotic worst-case running time for two functions f and g that both pass their analysiis based on a N-by-N matrix mat, where each loop sweeps over part of the matrix. The functions have been identified as AsymQ3.
+2. Write detailed analyses for both functions, including the cost per iteration.
+3. Determine the two buckets for referring to the two analyses (either wrong or semi-correct).
+4. Provide specific justification for each bucket, with references to either the upper triangle of the matrix or the average inner Theta(N) time in a loop.
+5. Summarize both functions with one sentence per line based on the text material:
+   - AsymQ3, calculating the worst-case running time for two functions f and g that pass their analysiis based on a N-by-N matrix mat (where each loop sweeps over part of the matrix).
+
+Explanation:
+
+1. Calculate the asymptotic worst case running time of the functions f and g by analyzing them based on matrix mat with an N-by-N matrix. The function AsymQ3 refers to the analysis of one of these two functions, where the cost per iteration is Theta(N^2), but for a single loop that sweeps over part of the matrix.
+
+2. Analyze f by referring to Part A and calculating its time complexity using Theta(1) (since the nested loops are performed on part of the matrix, which makes each loop run Theta(N^2)). For Part D, calculate a single calculation costing Theta(N).
+
+3. Analyze g by referring to Part E and calculating its time complexity using Theta(1) (as it is only performing the outer loop along the diagonal, which has an N-by-1 matrix as input). Again, for Part D, calculate a single calculation costing Theta(N) (the inner loop that reads a matrix entry also performs N+1 calculations in total).
+
+As for bucket summation, refer to either the upper triangle or average inner Theta(N) time. For Part A, use the reference "AsymQ3" and write "AsymQ3, calculating one of these two functions with a single loop on an N-by-N matrix." For Part E, use the reference "AsymQ3, calculating one of these two functions using a single loop on an N-by-1 matrix along the diagonal." For Part F, use the reference "AsymQ3, calculating one of these two functions with a double loop on an N-by-N matrix." Again, these references are provided by AsymQ3.
+
+POINT_ID: 4
+Based on the given text material, the student's written asymptotic-complexity analysi for two given functions f and g is as follows:
+
+Asymptotic worst case running time: f(mat) takes O(N^2), while g(mat) takes O(1 + N^2).
+
+Bucket: Each loop of f has two nested loops, each with a single matrix access and one += assignment. The cost per iteration is Theta(N^2) * Theta(1), so the asymptotic worst case running time of the function is O(N^2 + N^4).
+
+Bucket: Similarly for g, the cost per iteration is Theta(1 + N^2) = Theta(N^2) * Theta(1). The runtime is thus O(1 + N^2).
+
+The student's written analysis of f and g includes a detailed analysi of both functions. They include information on the cost of each loop, as well as the cost of each step in the loops. They also refer to line numbers for each step of each loop, which helps to guide the reader through the code. The student writes their answer in Theta notation with tiith bounds, using the Big-O notation and T = g(mat) notation to specify the asymptotic worst case running time of the function. For every loop they include a sentence referring to line numbers. Each part of the analysi has a detailed breakdown into constant and non-constant components. Overall, the student's analysis includes enough detail for readers to understand the logic behind each step in both functions, while still remaining clear and concise.
+
+POINT_ID: 5
+Certainly! Here's the revised text with detailed analyses and feedback:
+
+QUESTION:
+Calculate the asymptotic worst-case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N). Use Theta notation or big-O notation with tighter bounds for each loop. Your analyses should include detailed step-by-step analyses based on loops and the matrix, refer to line numbers, justify your choices with justified sentences, and provide a clear conclusion that summarizes your findings.
+
+POINT_ID: 6
+[Question]
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziс of both functions.
+- You can use the Theta notation or the big-O notation with tiith bounds.
+- Your analyziс should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyziс should be justified with one or two sentences.
+
+public final class AsymQ3 {
+     // `mat` is an N x N matrix.
+     // Your analyziс should be based on N.
+     public static int f(int[][] mat) {
+         int n = mat.length;
+         int s = 0;
+         for (int i = 0; i < n; i++) {
+             for (int j = i; j < n; j++) {
+                 s += mat[i][j];
+             }
+         }
+         int t = g(mat);
+         return s + t;
+     }
+
+     private static int g(int[][] mat) {
+         int n = mat.length;
+         int t = 0;
+         for (int i = 0; i < n; i++) {
+             t += mat[i][i];
+         }
+         return t;
+     }
+}
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: int n = mat.length; int s = 0; — constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); return s + t; — single call to g plus constant work.
+
+Parts A and the return statement of Part C are Theta(1).
+
+Part B (nested loops):
+- Combined iterations: for each i, j runs from i to N-1.
+- Each iteration just reads one matrix entry and adds, which is Theta(1) since it is an integer addition. So the cost of Part C is Theta(1).
+- Since the cost of g is also Theta(1), so the total cost of Parts A and B is Theta(1) * Theta(1) = Theta(N).
+
+Overall, f has a cost of Theta(N).
+
+POINT_ID: 7
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziс of both functions.
+- You can use the Theta notation or the big-O notation with tiith bounds.
+- Your analyziѕ should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyziѕ should be justified with one or two sentences.
+
+public final class AsymQ3 {
+    
+    // `mat` is an N x N matrix.
+    
+    // Your analysiсs should be based on N.
+    
+    public static int f(int[][] mat) {
+        
+        int n = mat.length;
+        
+        int s = 0;
+        int t = g(mat);
+        
+        return s + t; // The function is O(n^2) worst case, since each loop of the inner loop costs O(1)
+    }
+    
+    private static int g(int[][] mat) {
+        
+        int n = mat.length;
+        
+        int t = 0; // The function is O(n^2) worst case, since each loop of the inner loop costs O(1)
+        
+        return t;
+    }
+    
+    SAMPLE SOLUTION:
+    
+    Let N be the side length of the matrix mat (mat is N x N).
+    
+    Method f
+    
+    Part A: int n = mat.length; // Inner loop runs from j = i to j = N-1. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Combinered iterations:
+    
+    - Cost of Part B (nested loops): for each i, j runs from i to N-1, giving (N - i) iterations. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Cost per iteration:
+    
+    Part B: Cost of inner loop: cost of each loop of the inner loop is O(1), since each step inside the loop costs O(1). So total time:
+    
+    Total Time: 
+    
+    Method g
+    
+    Part E: int s = 0; // Set to the correct value in outer loop, as needed. Inner loop runs from j = i to j = N-1. Total number of iterations:
+    
+    - Cost of Part D (for loop): single for loop that runs Theta(N) times since it just reads one matrix entry and adds. So total time:
+    
+    Total Time: 
+    
+    SAMPLE RUBRIC POITNS:
+    
+    Point 7 — g(): Loop iterations
+        - Wrong (0 marks): Iteration count missing or not Theta(N).
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) because each loop of the inner loop costs O(1) since each step inside the loop costs O(1), and the outer loop runs only N iterations, each iteration costing O(1). So total time:
+        
+    Point 8 — f(): Loop iterations
+        - Wrong (0 marks): Iteration count missing or not Theta(N).
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) because each loop of the inner loop costs O(1) since each step inside the loop costs O(1), and the outer loop runs only N iterations, each iteration costing O(1). So total time:
+        
+    Point 9 — g(): Wrong (0 marks): Iteration count missing or not Theta(N) for loop.
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) because each loop of the inner loop costs O(1) since each step inside the loop costs O(1). So total time: 
+        
+    Point 10 — f(): Wrong (0 marks): Iteration count missing or not Theta(N) for loop.
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) because each loop of the inner loop costs O(1) since each step inside the loop costs O(1). So total time: 
+        
+    Point 11 — g(): Wrong (0 marks): Inner loop run only N iterations.
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) because the outer loop runs only N iterations. So total time: 
+        
+    Point 12 — f(): Wrong (0 marks): Inner loop run only N iterations.
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) because the outer loop runs only N iterations. So total time: 
+        
+    Point 13 — g(): Wrong (0 marks): Combinered iterations:
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) since each loop of the inner loop costs O(1) and the outer loop runs only N iterations, each iteration costing O(1). So total time: 
+        
+    Point 14 — f(): Wrong (0 marks): Combinered iterations:
+        - Semi (5 marks): States Theta(N) but explanation is unclear.
+        - Correct (10 marks): Justifies Theta(N) since each loop of the inner loop costs O(1) and the outer loop runs only N iterations, each iteration costing O(1). So total time: 
+
+POINT_ID: 8
+Here's a modified version of the student solution with explicit justifications for each step:
+
+BUCKET: “<exact bucket label>”
+FEEDBACK: “In line(9): Write a detailed analysi that accurately describes both functions and includes specific steps for calculating their asymptotic worst-case running times, as well as the corresponding cost per iteration per loop iteration. Please include details such as the number of iterations needed to compute the function output, the time it takes to access each matrix element, and the overall runtime per loop iteration. In addition, please justify your choices for using Theta notation or Big-O notation with ti ghbounds."
+
+Student Solution:
+AsymQ3: N is the side length of the input matrix `mat` (which is N x N).
+
+Method f:
+Part A: int n = mat.length;
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1.
+Part C: int t = g(mat); return s + t;
+
+Partes A and the return statement of Part C are Theta(1). Parts B (nested loops):
+- Combined iterations: For each I, J runs from I = j to I = N-1, giving (N - I) iterations. Total = N + (N-I) + ... + 1 = N(N+1)/2.
+- Cost per iteration: Theta(1) - one array access, one += assignment, loop checks and increments.
+- Total cost of Part B: Theta(N^2). - Total cost of Part C: Theta(N^2). Method g:
+Part D: int n = mat.length; int t = 0;
+Part E (for loop along the diagonal): Single loop over I from 0 to N-1. Part F: return t; - Cost per iteration: Theta(1) - one matrix access mat[i][i], one += assignment, loop check and increment. Total cost of Part E: Theta(N^2). Method f has two nested loops and then calls g. The setup statements outside the loops are constant.
+The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix. Each iteration just reads a matrix entry and accumulate into s, which is Theta(1). So the nested loops cost Theta(N^2). F calls g, adds some constant per-iteration cost as follows: Cost per iteration: Theta(1) per iteration. In summary, for each loop iteration, f has a single for loop that runs N^2 times since it is essentially a double loop on an N x N matrix. Each iteration reads a matrix entry and accumulates into s, which is Theta(1). The nested loops have two loops, which run (N - I) iterations each. So the total cost of f is N^2 + (N - I)^2 = N(N+1) * 1^2 = N * Theta(N^2), which is Theta(N) in the original student solution. Overall, f has a total runtime cost of Theta(N^2). Semi:
+Point 8 — g(): Cost per iteration: Theta(1). Method f has two nested loops and then calls g. In particular: The nested loop sweeps over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix. Each iteration just reads a matrix entry and adds to s, which is Theta(1). Overall, f has a total runtime cost of Theta(N^2). Buckets:
+- Wrong (0 marks): Suggests constant time but lacked explicit justification for each step. Specifically: For each loop iteration, f has a single for loop that runs N^2 times since it is essentially a double loop on an N x N matrix. Each iteration reads a matrix entry and adds to s, which is Theta(1). Overall, f has a runtime of Theta(N^2).
+
+POINT_ID: 9
+Here's a revised version of your feedback for the given code and rubric:
+
+BUCKET: "Wrong"
+FEEDBACK: "Semi"
+
+Rule: The function should combine iteration counts x per-iteration costs (Theta(N)) and multiply them using own values (but unclear or incorrect). Instead, it multiplies the per-iteration cost by Theta(1) = Theta(1). This is a wrong analysis. You will receive a mark of 3.
+
+AsymQ3: Incorrectly analyzes functions with nested loops that are essentially a double loop on an NxN matrix. Instead, it calculates the total cost for each iteration (Theta(1) = Theta(1)), which is correct.
+
+POINT_ID: 10
+Certainly! Here's a more detailed analysi of each function, using Big-O notation as per the given rubric:
+
+AsymQ3:
+
+Function f(int[][] mat) {
+    int n = mat.lengt; // Side length of matrix N x N
+    int s = 0; // Running sum
+    for (int i = 0; I < n; i++) { // Inner loop over row indices I from 0 to n-1
+        for (int j = i; j < n; j++) { // Inner loop over column indices j from I to n-1
+            s += mat[i][j]; // Sum of elements in the ith row and jth column
+        }
+    }
+    int t = g(mat); // Call to function g, which calculates sum using matrix operations
+    return s + t; // Return value: sum of s and t (the running sums of the inner loop values)
+}
+
+Method f:
+Part A: In this step, we combine two nested loops over indices I and j. The inner loop runs from index I to N-1, giving (N - i) iterations. Total number of iterations is Theta(N^2), which is constant and independent of the matrix size. So the outer loop's time cost here is Theta(N).
+
+Part B: We call function g once at the end with parameter mat, and then we calculate sum s = g(mat) using the inner loop values of s in Part A.
+
+Part C: Finally, the function returns s + t, which are Theta(N^2) - 1 = Theta(N) times the result of inner loop operations, since it's a double loop on matrix elements (which is an N x N matrix).
+
+Method g:
+Part D: Inside this method, we have one inner loop over I, with parameter I from 0 to n-1. Total number of iterations in Part D is Theta(n) - which is also constant and independent of the matrix size (so the outer loop's time cost here is Theta(N)). So the inner loop's time cost here is Theta(n).
+
+Part E: We add up all the s at the end, which are summed using matrix operations. This adds up Theta(N^2) times the value of sum s, since it's a double loop on matrix elements and we need to add them together to get the running sum. So this step takes Theta(N) * Theta(1) = Theta(N).
+
+Overall, g has a single nested loop with 3 parameters: (i,j), which represents a row and column index respectively, and the matrix elements at (i,j). The inner loop has constant cost per iteration (Theta(n)), so this adds up to Theta(N) * Theta(1) = Theta(N).
+
+So our overall worst-case time for f is given by:
+
+Worst-case time: The sum of the running sum (from Part D) and the matrix operations (from Part E) times n, so:
+
+Worst-case time:
+
+Built-in O-notation:
+
+We use Big-O notation to express this number. "Big-O" is the name for the smallest possible constant that must be present in the number, and it's the most precise way of expressing how fast a function runs as the input size goes to infinity. So "Big-O(n)" means that for every sufficiently large N (i.e., for all positive integers), we can guarantee that our function will always run at least as fast as any other n-independent function.
+
+So:
+
+Worst-case time: The sum of the running sum and matrix operations is not only Big-O(n) but also independent of the input size. This means that for every sufficiently large N, the worst-case time for f will be at most (Big-O(n) * Big-O(1)) = Big-O(N).
+
+POINT_ID: 11
+Thank you for providing your feedback on our AsymQ3 class problem set. We appreciate the attention to detail and analysis provided in our solutions, which helped us understand the concepts better.
+
+In response to your comments regarding Line 12 of the given code snippet:
+- Your answer should indicate that we incorrectly calculated the complexity for the part E loop (in Part D) in our method g because it was not properly absorbed by the lower order Theta(N). However, we have added a note indicating this in the SAMPLE SOLUTION to aid in understanding of the overall runtime.
+- We are confident that our final solution will meet the rubric point and demonstrate proper analysis as specified.

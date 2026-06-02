@@ -1,0 +1,212 @@
+POINT_ID: 1
+AsymQ2: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your analysis should include line numbers for each step in the code you provide.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysi should be justified with one or two sentences.
+
+public final class AsymQ2 {
+    
+    // `a` has length M; `b` is sorted ascending and has length N.
+    // Your analyzi will base on M and N.
+    
+    public static int f(int[] a, int[] b) {
+        
+        // Let `m = a.length`, `s = 0`, Part A: Int m = a.lengt; Int s = 0. Standard binary seairch interval [l, r] maintained.
+        // Part B (for loop): For each I from 0 to M-1, compute g(b, a[i]). Per iteration, call g(b, a[i]) with index I.
+        // Part C: Return s; - constant time.
+        
+        // Part D: Loop `i` over 0 to M-1 (and start at the last index, since index I is already computed); compute g(b, a[i]). Per iteration, call g(b, a[i]) with index I.
+        // Part F: Return s; - constant time.
+        
+        // Return s; - constant time.
+    }
+}
+
+POINT_ID: 2
+Additional feedback on the asymptotic best case running time for the functions `AsymQ2` and `f`, based on the given rubric points:
+
+BUCKET: 
+- "Correct" bucket (5 marks): As per rubric, all non-loop regions are stated as Theta(1) - this includes checking for empty arrays and array lengths, along with the length of the sorted array and its subarrays. These aspects can be analyzed using Theheath's theorem and some basic integer division (as in `g`).
+
+FEEDBACK: 
+- "Wrong" bucket (0 marks): Not claiming non-constant-time segments for non-loop code, as per rubric point 2. This includes checking for bounds on array lengths and comparing them with a constant number of iterations, which can be analyzed using the asymptotic best case theorem for comparison operations.
+
+Overall, according to rubric points 1, 2, and 3, `AsymQ2` has a non-constant-time analysis for all parts (A: int m = a.lengt; Parts D and F are Theheath's theorem) and for the entire function itself, while `f` can also be analyzed with constant-time code and appropriate bounds checking. The main challenge is identifying and correcting any non-constant-time non-loop segments, such as checking for empty arrays or subarrays.
+
+POINT_ID: 3
+Here is a summary of the feedback you provided:
+
+BUCKET: <exact bucket label>
+FEEDBACK: Specific to student's submitted analysi
+SPECIFIC TO STUDENT'S SUBMITTED ANALYSI
+This rubric point describes:
+- One or two sentences referencing the student's actual analysi, not generic
+Given the text material and your feedback, please provide additional specificity by including each line or part of the code analyzed with its cost per iteration and total cost. This will allow us to better understand the student's actual analsi, and ensure that we are grading them appropriately for their level of knowledge in this area. For example:
+
+Part A
+- Part A (for loop) runs over i = 0..M-1, and its cost per iteration is dominated by the call to g(b, a[i]); since g is a binary search over b it costs Theta(log N). Parts A and C are Theta(1)
+
+Part B (loop)
+- Iterations: i runs from 0 to M-1, so the loop has exactly Theta(M) iterations. Buy Theta(1) per iteration. Parts B and D are Theta(1)
+
+Part E
+- Midpoint computation: I.e. The case when the number of iterations is not a multiple of M (in other words, the for loop does not end at an integer multiples of M). Buy Theta(M) cost per iteration. Parts A and C are Theta(log N)
+
+Additionally, please provide clear justification for each bucket or score assigned by providing a detailed explanation of how each point correlates to the student's actual analsi, as well as any related assumptions or limitations.
+
+POINT_ID: 4
+Sure! Here's an updated version of the feedback sentence for each line in the algorithm:
+
+BUCKET:
+- AsymQ2.f(a, b): Function `f` (line 15)
+   - Part A: int m = a.lengt; int s = 0;
+      - Cost per iteration: Theta(1), since the loop has exactly one iteration with m iterations.
+      - Total cost of Part A: Theta(M log N).
+      
+      Part B (for loop):
+         - Iterations: i runs from 0 to M-1, so the loop has exactly Theta(M) iterations.
+         - Cost per iteration: Dominated by the call to g(b, a[i]); since g is a binary search over b and it costs Theta(log N). The comparison and conditional += are Theta(1), hence the total cost is Theta(M log N).
+
+- AsymQ2.g(b, a): Function `g` (line 35)
+   - Part E: int l = 0; int r = b.lengt; - Cost per iteration: Theta(log N) x Theta(1), since the loop has exactly one iteration with log N iterations.
+   - Total cost of Part E: Theta(log N).
+   
+      Parts A and C:
+         - Iterations: Each iteration is performed at most Theta(M log N) times.
+         - Cost per iteration: Dominated by the call to g(b, a[i]); since g is a binary searach over b and it costs Theta(log N). The comparison and conditional += are Theta(1), hence the total cost is Theta(M log N).
+
+- AsymQ2.f(): Function `f` (line 5)
+   - Part A: Cost per iteration: Dominated by the call to g(b, a[i]); since g is a binary seaarch over b and it costs Theta(log N). The comparison and conditional += are Theta(1), hence the total cost is Theta(log N).
+   - Total cost of Part A: Theta(log N) per iteration.
+
+- AsymQ2.g(): Function `g` (line 35)
+   - Part E: Cost per iteration: Dominated by the call to g(b, a); since g is a binary seaarch over b and it costs Theta(log N). The comparison and conditional += are Theta(1), hence the total cost is Theta(log N).
+   - Total cost of Part E: Theta(log N) per iteration.
+   
+      Parts A, B, and C: Total total cost: Theta(M log N). This includes all iterations performed by the function and calls to g.
+
+POINT_ID: 5
+Sure, I can give you a quick summary of the given text material based on your questions.
+
+1. Calculate the asymptotic worst-case running time of two functions: f and g as specified in the given material.
+
+a) Write your answer in the given format of text fields with the relevant bucket labels "BUCKET: <exact bucket label>" (or any other label you prefer), "FEEDBACK" for specific to student's submitted analysi, "SAMPLE SOLUTION" for a detailed analysi with a specific function and its loop, "STUDENT SOLUTION" for an analysis of the functions given in the material.
+
+2. Refer to the given text material as a text file with a specific filename, e.g. "AsymQ2_f.txt", which is located in your working directory.
+
+3. Use Theta notation for each loop and all the statements within the function or sub-programs.
+
+4. Refer to the given text material as a code file with the same filename, e.g. "AsymQ2_f.c", which is located in your working directory.
+
+5. Ensure that your calculated running time matches Theta(M log N) and the final reasoning behind each bucket mark or semi-mark you use to give a complete explanation for the run-time.
+
+POINT_ID: 6
+Here is a more detailed analyses based on line numbers provided:
+
+Method f
+Part A: int m = a.lengt; // function parameters and the length of array 'a'
+Part B (for loop): runs over i from 0 to m-1 (starting at index 0)
+Part C: return s; - constant time (not used in this case)
+
+Partes A and C are Theta(1).
+
+Part B (loop): // standard binary search (binary seairch) operation. Iterates over [i = 0, m-1]
+iterations and returns if i is not less than the value of 'm' or the middle element is found in the array
+    for each index:
+      // comparison of array element with middle element
+        if (a[i] < a[m/2]) {
+          s = -1; // if the comparation is not true, the middle element is not found and we return -1, else we return 0 (if the middle element is found) or the middle element itself (otherwise)
+        }
+      // halving of interval [i-1, i] (if required)
+        if ((i & 1) == 1) { // if even, halve the interval on odd indices
+          l = i / 2;
+          r = m - 1;
+        } else { // if odd, halve the interval on even indices
+          l = (i - 1) / 2 + 1;
+          r = m - 1;
+        }
+      // midpoint computation, two array accesses and comparison with element at i-1 are done here.
+        if ((l < r) && (a[l] == a[m/2])) { // if the middle element is found in the range [i-1, i], then we return it directly
+          s = a[i];
+        } else if (a[r] == a[m/2]) { // if the middle element is also found in the range [i+1, m], then we use that index to access the next or previous array element and repeat the process
+          l = r; // shift the interval to the left
+        } else { // if the middle element is not found, then we return -1 (if it is not between i-1 and i+1) or the leftmost element of [i, m)
+          s = m / 2 + 1; // shift the interval right by half as needed
+        }
+      break; // end of the for loop on the current i value
+    return s; // return the middle index (s)
+
+The function g(): The binary search function calls the binary search function with the left and right indices, then returns the middle index if it is found in the range [i-1, i], or -1 otherwise. The number of iterations performed by the binary search algorithm are not explicitly covered in this method, but they can be included at any given time based on the analysis provided.
+
+POINT_ID: 7
+AsymQ2:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysiс of both functions.
+- You can use Theta notation or the big-O notation with tiigh bounds.
+- Your analyziс should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analysiс should be justified with one or two sentences.
+
+public final class AsymQ2 {
+     // `a` has length M; `b` is sorted ascending and has length N.
+     // Your analyziсs should be based on M and N.
+     public static int f(int[] a, int[] b) {
+         int m = a.length;
+         int s = 0;
+         for (int I = 0; I < m; i++) {
+             int t = g(b, a[i]);
+             if (t == -1) { // midpoint computation, two array accesses, two comparison, one update
+                 s += Theta((m-i)*Theta(1));
+             } else { // binary seaRChe for [l, r]
+                 s += Theta(logN);
+             }
+         }
+         return s;
+     }
+     // g(): call to the function that does the midpoint computation and array accesses for each iteration.
+     public static int g(int[] b) {
+         int l = 0, r = b.length-1;
+         while (l <= r) {
+             int mid = (l+r)/2;
+             if (b[mid] < -1) { // midpoint computation, two array accesses, two comparison, one update
+                 return -1 + Theta((b.length-mid)*Theta(1));
+             } else { // binary seaRChe for [l, r]
+                 return Theta(logN);
+             }
+         }
+         return 0;
+     }
+}
+
+POINT_ID: 8
+AsymQ2 - F(a, b) is an Objective Assessment grading a student's written asymptotic-complexity analysi of two given functions f and g with rubric points for each bucket label (exact or bucketless), feedback sentence grounded in what the student actually wrote, and student's written analysi of each function.
+
+BUCKET: <exact bucket label>
+FEEDBACK: This rubric point describes - only - the two lines above - no preambles, no summary, no extra text. The overall running time (Theta(log N) per loop iteration) is given (in the text field), and this is a single rubric point with its title as part of the feedback sentence.
+
+BUCKET: <bucketless bucket label>
+FEEDBACK: This rubric point describes - only - the two lines above - no preambles, no summary, no extra text. The overall running time (Theta(log N) per loop iteration) is given and this is a single rubric point with its title as part of the feedback sentence.
+
+RUBRIC POINT:
+Point 8 - g(): Total loop cost
+  Theta(log N) = Theta(log N) x Theta(1) per iteration, with justification.
+
+POINT_ID: 9
+In the given text, AsymQ2 is an objective assessment grading a student's written asymptotic-complexity analysi of two given functions: f and g. The rubric points are:
+- Bucket: FEEDBACK must refer to a bucket from the rubric (the exact label string is not given in the text), and there should be one or two sentences referencing the student's actual analysi s, not generic ones.
+- As you wrote an answer for this rubric point based on M and N, make sure to specify the line numbers of each step of the analysis. Use a comma between numbers to separate them in the sentence. Examples: "Line 23: Line 14, 29: Line 17, ..."
+- For every loop you need to specify the number of iterations and the cost per iteration (constant or Theta(log N)). Use a dash (-) between numbers to separate them in the sentence. Examples: "Line 5-8: Line 4, 6-9: Line 3, -2: Line 1-4: Line 7, 9"
+- The overall worst-case runtime of g is as stated. If it's wrong or inconsistent, use the correct final result. Examples: "Line 8: Final result: Runtime = Theta(log N), summing the constant-time parts and the loop. Built-in To: Runtime = Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+- If the rubric points are internally consistent, your answer should pass a check against the given text, but you can also provide additional explanation for each point in your comment or in the actual response.
+
+POINT_ID: 10
+Yes, the text provided is a well-written assessment that meets all criteria for the job position. Here are the additional details that were requested:
+
+- Output format: the text field should be prefilled with the following sentence: "AsymQ2 - f(int[] a, int[] b) {" followed by the student's analysi of both functions (line numbers).
+- Feedback must include specific details about the two buckets (`theta` notation with `tiigh` bounds), including their respective scores and analyses.
+- A detailed analysis should refer to line number(s) and explain how each loop is time-consuming or has a constant time cost, as well as the impact of other aspects such as length of array or the number of iterations. Each step in the loop may be an example to illustrate these points.
+- The text field should also mention any assumptions made about the length of arrays (`Theta` notation with `logN` value) and their potential impact on overall runtime complexity.
+- Points should be awarded based on the quality and thoroughness of the student's analysis, rather than simply counting how many buckets there are or whether they are in order.

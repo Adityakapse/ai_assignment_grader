@@ -1,0 +1,804 @@
+POINT_ID: 1
+Yes, you can write your own feedback for each student's submitted analysi on this rubric. However, please make sure that your specific analyzi is grounded in a specific bucket label of your own choosing based on the given text provided (or any other relevant information). This will allow students to easily see what they should focus on and what they did well or incorrectly.
+
+In addition, please include detailed analysis in each line number. This will help students understand what part of the code they were analyzing and where to focus their efforts. Here are some sample feedback sections based on the text provided:
+
+1. Feedback section for Line 32:
+- AsymQ3:
+   - Correct (5 marks): Clear separation of f's nested loop and the call to g; line numbers referenced consistently.
+   - Point 1: Splitting code into parts, referrers to non-loop components, and line numbers are clear or consistent.
+   - Point 2: Identifying separate components and referencing them as they were defined in the text provided.
+
+2. Feedback section for Line 59:
+- Correct (5 marks): Referencing relevant code segments based on student's own chosen bucket label.
+   - Part A: Analysis of f's nested loop, referrers to non-loop components, and line numbers are consistent.
+   - Point 1: Clearly separate f from g and show that the nested loop is a subsection of the larger g function, and line numbers referenced correctly.
+   - Point 2: Refer to specific code segments based on student's chosen bucket label, such as "mat[i][j]" for the inner loop.
+
+3. Feedback section for Line 106:
+- Correct (5 marks): Referencing relevant code segments based on student's own chosen bucket label.
+   - Part A: Analysis of f's nested loop, referrers to non-loop components, and line numbers are clear or consistent.
+   - Point 1: Clearly separate f from g and show that the nested loop is a subsection of the larger g function, and line numbers referenced correctly.
+   - Point 2: Refer to specific code segments based on student's chosen bucket label, such as "mat[i][j]" for the inner loop.
+
+POINT_ID: 2
+Sure, here's a thorough and detailed analysis of the asymptotic worst case running time of both functions given in the original text material:
+
+AsymQ3: Calculate the asymptotic worst-case running time of the functions f and g. Your answer should include a detailed analyzi of both functions, with precise calculations for each loop and step, as well as detailed comments to explain any assumptions or assumptions that could affect your analysis. Please also provide examples of how the stated bucket labels might be generated or why you believe one label rather than another would be more appropriate. Your answer should follow The Big-O notation format with ticks and buckets, indicating the type of worst-case behavior at each scale.
+
+Public final class AsymQ3 {
+     // `mat` is an N x N matrix.
+     // Your analyziis should be based on N.
+     public static int f(int[][] mat) {
+         int n = mat.length;
+         int s = 0;
+         
+         // Combined iterations: total number of iterations
+         int t = n * (n - 1) / 2;
+         
+         // Cost per iteration: time to read and add each element, plus one more step at the end
+         int u = 1 + (n - 1) * ((n - 1) / 2);
+         
+         // Constants: constants that cannot change the running time
+         int v = n;
+         int w = n * 3;
+         int x = 0;
+         
+         // Warm-up step: calculate s + v + w + 1, which will be the number of non-zero elements in each row
+         int s_plus_v = s + v;
+         
+         // Loop: iterate over all rows and columns
+         for (int I = 0; I < n; ++i) {
+             // Initialization
+             int s__prev1 = s;
+             int s = s_plus_v;
+             if ((s & 1) == 0) {
+                 s = s_plus_v + 1;
+             }
+             s__prev1 = s;
+             for (int j = i * 3 + 2; j < n * 3; j += 4) {
+                 if ((j & 1) == 0) { // skip non-zero elements in this row and column
+                     u++;
+                     s--;
+                 }
+             }
+             s_plus_v = s;
+             x = (j - I * 3) / 2 + 1; // count how many elements are non-zeros on the current column
+         }
+         
+         // Final step: return value of matrix s + v + w + 1, which will be the total number of non-zero elements in each row and column
+         int s__prev2 = s;
+         int s__prev3 = s;
+         s = s_plus_v;
+         if ((s & 1) == 0) {
+             s = s_plus_v + 1;
+         }
+         s__prev3 = s;
+         s = s_plus_v;
+         s__prev2 = s;
+         int w__prev1 = w;
+         int w = w_plus_1;
+         w_plus_1 = x;
+         w__prev1 = w;
+         for (int I = 0; I < n; ++i) {
+             int u__prev2 = u;
+             int u = u_plus_1;
+             u_plus_1 = x;
+             u__prev2 = u;
+             for (int j = i * 3 + 2; j < n * 3; j += 4) {
+                 if ((j & 1) == 0) { // skip non-zero elements in this row and column
+                     u--;
+                     s_plus_v++;
+                 }
+             }
+             u__prev2 = u;
+         }
+         w_plus_1 = w;
+         s_plus_v = s;
+         w = w_plus_1; // update final sum of non-zero elements in each row
+         
+         // Warm-up step: calculate u__prev1, which will be the number of non-zero elements added to every row by each loop iteration
+         int u__prev1 = u;
+         for (int I = 0; I < n; ++i) {
+             int u_plus_2 = u_plus_1 + 1; // calculate sum of added non-zero elements in each row after each loop iteration
+             u = u_plus_2; // update final number of non-zero elements in each row
+         }
+         
+         // Final step: return the number of non-zero elements added to each row by all loops, which will be the total number of non-zero elements in the entire matrix s + v + w + 1
+         int u_plus_2 = u_plus_1 + 1;
+         int v__prev1 = v;
+         int v = v_plus_1;
+         v_plus_1 = x;
+         v__prev1 = v;
+         for (int I = 0; I < n; ++i) {
+             int w__prev1 = w;
+             int w = w_plus_1;
+             w_plus_1 = x;
+             w__prev1 = w;
+             for (int j = i * 3 + 2; j < n * 3; j += 4) {
+                 if ((j & 1) == 0) { // skip non-zero elements in this row and column
+                     u_plus_2++;
+                 }
+             }
+             w = w_plus_1;
+         }
+         v_plus_1 = v;
+         u_plus_2 = u_plus_1 + 1; // update final number of non-zero elements in each row by all loops
+         
+         // Warm-up step: calculate u__prev, which will be the total sum of added non-zero elements for all rows by all loops iteration
+         int u__prev = u;
+         for (int I = 0; I < n; ++i) {
+             int u_plus_2 = u_plus_1 + 1; // calculate sum of added non-zero elements in each loop iteration
+             u = u_plus_2; // update final sum of added non-zero elements in each loop iteration
+         }
+         
+         // Final step: return the total number of non-zero elements added to each row by all loops iteration
+         int u__prev1 = u;
+         for (int I = 0; I < n; ++i) {
+             int u_plus_2 = u_plus_1 + 1; // calculate sum of added non-zero elements in each loop iteration
+             u__prev = u;
+         }
+         
+         u_plus_2 = u_plus_1 + 1;
+         u = u_plus_2;
+     
+         return s, w;
+     }
+     
+     private void update(int[][] matrix) {
+         int n = matrix.length;
+         int k = 0;
+         
+         // Warm-up step: calculate s, which will be the number of non-zero elements added to each column by all loops iteration
+         int s__prev1 = s;
+         for (int I = 0; I < n; ++i) {
+             int s_plus_2 = s__prev1 + k * matrix.length + (k * k + matrix[i][i] + 1) / 2; // calculate sum of added non-zero elements in each column for all rows by all loops iteration
+             s = s_plus_2; // update final sum of added non-zero elements in each column by all loops iteration
+             k++;
+         }
+         
+         // Final step: return the total number of non-zero elements added to each column by all loops iteration
+         int s__prev = s;
+         for (int I = 0; I < n; ++i) {
+             int s_plus_2 = s__prev + k * matrix.length + (k * k + matrix[i][i] + 1) / 2; // calculate sum of added non-zero elements in each column for all rows by all loops iteration
+             s = s_plus_2;
+         }
+         k *= matrix.length;
+     
+         int[][] d = new int[n][];
+         for (int I = 0; I < n; ++i) {
+             int sum = 0;
+             for (int j = i + 1; j < n; ++j) {
+                 int x = matrix[i][j];
+                 if ((x & 1) == 0) {
+                     sum += x;
+                 }
+             }
+             d[i] = new int[sum];
+             System.arraycopy(matrix, i + 1, d[i], 0, sum);
+         }
+         
+         int[][] d__prev = d;
+         for (int I = 0; I < n; ++i) {
+             int[] u = new int[s];
+             System.arraycopy(d[i], 0, u, 0, s);
+             int s__prev1 = s;
+             for (int j = i + 1; j < n; ++j) {
+                 int x = d[j][i];
+                 if ((x & 1) == 0) { // skip non-zero elements in this column by all loops iteration
+                     u[s_plus_2] += x; // add to sum of added non-zero elements in each row and column by all loops iteration
+                 }
+             }
+             s = s__prev1;
+         }
+         
+         matrix = new int[n][];
+         for (int I = 0; I < n; ++i) {
+             System.arraycopy(d[i], 0, matrix[i], 0, s);
+         }
+     }
+     
+     private void printMatrix() {
+         int[][] d = new int[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsInt() {
+         int[][] d = new int[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsDouble() {
+         double[][] d = new double[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject() {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(Class<?> cls) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(cls.getDeclaringClass().getName() + "." + Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(int[][] arr) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(int[][] arr, Class<?> cls) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(cls.getDeclaringClass().getName() + "." + Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, Class<?> cls) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(cls.getDeclaringClass().getName() + "." + Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, Class<?> cls) {
+         Object[][] d = new Object[n][];
+         for (int I = 0; I < n; ++i) {
+             System.out.print(cls.getDeclaringClass().getName() + "." + Arrays.toString(d[i]) + "\n");
+         }
+     }
+     
+     private void printMatrixAsObject(int[][] arr, int[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, int[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[i]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+ 
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+ 
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(double[][] arr, double[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+     
+     private void printMatrixAsObject(float[][] arr, float[][] cols) {
+         Object[][] d = new Object[cols.length][];
+         for (int I = 0; I < cols.length; ++i) {
+             for (int j = 0; j < cols[i].length; ++j) {
+                 System.out.print(Arrays.toString(d[j]) + "\n");
+             }
+         }
+     }
+ 
+     
+}
+
+POINT_ID: 3
+AsymQ3: How to write an asymptotic worst case running time for the functions f and g given in the text?
+
+Step 1: Choose a bucket label. This will be one of the following two lines above - no preamble, or one or two sentences referencing the student's actual analysi. For example, if you were grading a function f(x) = x^2, your choice would be the line "AsymQ3: f(x) = x^2" for the first student analysi, and "F(x) = x^2" for the second student analysi.
+
+Step 2: Calculate the cost per iteration of each nested loop as Theta(1). This is the total number of times a single matrix access or other work needs to be done, multiplied by one matrix read and one += assignment. For example, with the function f(x) = x^2, the cost per iteration of the inner loop might be Theta(1), multiplied by two matrices (one matrix access, then another matrix access).
+
+Step 3: Calculate the total number of iterations needed for each nested loop using this formula: Cost per iteration * Number of nested loops. For example, with the function f(x) = x^2 and the inner loop:
+
+- Inner loop: (2 * 1) + (4 * 1) + (8 * 0) = 12
+
+Step 4: Calculate the total number of iterations needed for all nested loops using this formula: Cost per iteration * Number of nested loops. For example, with the function f(x) = x^2 and the outer loop:
+
+- Outer loop: (2 * 0) + (4 * 1) + (8 * 1) = 6
+
+Step 5: Calculate the total cost of the function g for all nested loops using this formula: Cost per iteration * Number of nested loops. For example, with the function f(x) = x^2 and the inner loop:
+
+- Inner loop: (2 * 1) + (4 * 0) = 6
+
+Step 6: Calculate the total cost of the function g for all nested loops using this formula: Cost per iteration * Number of nested loops. For example, with the function f(x) = x^2 and the outer loop:
+
+- Outer loop: (2 * 1) + (4 * 1) + (8 * 0) = 6
+
+Step 7: Calculate the total cost of both functions g and f as the sum of their costs per iteration times their number of nested loops. For example, with the function f(x) = x^2 and the inner loop:
+
+- Inner loop: (2 * 1) + (4 * 0) = 6
+
+- Outer loop: (2 * 1) + (4 * 1) + (8 * 0) = 12
+
+Step 8: Calculate the worst case cost of f(x) = x^2 as the sum of its inner and outer loop costs. For example, with the function f(x) = x^2 and the inner loop:
+
+- Inner loop: (2 * 1) + (4 * 0) = 6
+
+Step 9: Calculate the worst case cost of g as the sum of its inner and outer loop costs. For example, with the function f(x) = x^2 and the outer loop:
+
+- Outer loop: (2 * 1) + (4 * 0) = 6
+
+Step 10: Calculate the total cost of both functions as their worst case cost times their number of nested loops. For example, with the function f(x) = x^2 and the inner loop:
+
+- Inner loop: 6 * 1 + (4 * 0) = 12
+
+- Outer loop: 6 * 1 + (4 * 0) = 12
+
+Step 11: Calculate the worst case cost of g as the total number of nested loops multiplied by its worst case cost. For example, with the function f(x) = x^2 and the outer loop:
+
+- Outer loop: (6 * 0) * 1 + (4 * 1) = 12
+
+Step 12: Calculate the total cost of both functions as their worst case cost times their number of nested loops. For example, with the function f(x) = x^2 and the inner loop:
+
+- Inner loop: 6 * 0 + (4 * 1) = 12
+
+- Outer loop: 6 * 0 + (4 * 1) = 12
+
+Overall, this calculation provides a worst case scenario for both functions that can be used to estimate the actual running time or cost of implementing these algorithms.
+
+POINT_ID: 4
+This is a sample assessment on the objective grading rubric for the given material, AsymQ3. Please review it thoroughly to understand what you need to do to receive a passing grade in this subject. If you have any questions, please feel free to ask.
+
+Based on the NxN matrix `mat` and two functions `f` and `g`, write an analysis that evaluates their asymptotic worst-case running times. The function `AsymQ3.java` should include a detailed analysiw of both functions, including line numbers for each step. Your analyziw should refer to the side length `n` of the input matrix `mat`, as well as the function parameters and any loops you may have included. Be sure to clearly explain what each step in each function does, how it is based on N, and how it affects overall running time. Please use Theta notation (asymptotic worst-case) with appropriate bounds, such as O(1), O(n^2), or O(N^2).
+
+POINT_ID: 5
+Sure, here's a thorough analysis for the given code:
+
+BUCKET: <exact bucket label>
+FEEDBACK: "<one or two sentences referencing the student's actual analysis>"
+
+Rule:
+- Output only the two lines above - no preamble, no summary, no extra text
+- BUCKET must be the exact label string from the rubric - do not paraphrase or invent labels
+- FEEDBACK must be specific to the student's submitted analysi s, not generic
+- Your analyzi s should be based on N.
+
+In this case, we can confirm that the SAMPLE SOLUTION analyzes the given matrix mat (N x N) using Theta(1) and Theta(N^2) workloads, respectively. We can also calculate the total loop cost for both functions (f() and g()), which results in:
+
+- Total loop cost: Theta(N^2) from Theta(N^2) iterations x Theta(1) per-iteration cost, or total complexity does not match own analyzi.s
+
+In this case, we can confirm that the given code doesn't follow the rubric and thus, it cannot be scored as a perfect example of the rubric. Therefore, it is recommended to modify/improve the code based on the given feedback.
+
+POINT_ID: 6
+Here's a brief analysis of how the student's written analyis compares to the rubric points:
+
+BUCKET: Correct (6 marks)
+FEEDBACK: Please refer to the text provided and write a detailed, specific, and accurate analysiс for both functions, based on the rubrics given. Make sure to include detailed descriptions of the loop logic, cost per iteration, and work done with Theta notation in the text. Do not paraphrase or use generic labels. Use Theta notation where appropriate. If applicable, add additional information about the input matrix "mat" (the number of rows and columns, N) and how you obtained the side length N for the output matrix "asymQ3". Incorporate relevant examples or real-world scenarios to illustrate your analysis.
+
+POINT_ID: 7
+The asymptotic worst-case running time of the functions in the text is determined based on the input matrix `mat`, which consists of a side length of `n` (the number of rows and columns). The function f calculates the product `f(mat)` using the Theta notation. The function g converts this product into an array of size `n` by executing a single matrix access at each iteration. This is followed by a call to g, resulting in constant time overhead for the first loop and a total cost of Theta(N^2). Overall, the worst-case running time of f is determined based on its Theta notation. However, g requires additional explanations, as it has multiple outputs but is not defined using Theta notation, hence the additional 5 marks (semi Marks).
+
+The method for calculating the asymptotic worst-case running time is detailed in the text. To calculate the total cost of Part E, we only have to add up the costs for all iterations, which are based on Theta(1) and Theta(N). In summary, the function f calculates a product efficiently using Theta notation, but g requires additional explanations and is not defined using Theta notation. Despite this, the method used for calculating the total cost of Part E is detailed in the text, and it results in a Semi Mark, which reflects that the calculations are clear enough to understand.
+
+POINT_ID: 8
+The student has provided a detailed feedback on the asymptotic worst case running time of functions `AsymQ3`, which is based on matrices of side length N, as given in the rubric point. The outputs must include specific analyzes for both functions and are written using the text field provided. The analyses must refer to the line number for each loop. The student should also provide justification for their analyzis and make sure to use Theorema notation with buckets or intervals. The analyses must be clear, concise, and provide a detailed breakdown of the cost per iteration along with the bucket labeling system used.
+
+POINT_ID: 9
+Sure, here's a more detailed analyzi of the given functions:
+
+AsymQ3:
+
+Method f:
+
+Part A: int n = mat.length;
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1. Total = N + (N-1) + ... + 1 = Theta(N^2).
+- Constant time cost of Part B: Theta(N^2). So the total running time of f is
+Theta(1) + Theta(N^2) = Theta(N^2). Parts A and the return in Part C are Theta(1), which makes for a total time of Theta(N^2).
+
+Part C:
+- Cost of g is Theta(N) (see g below); additions and returns have Theta(1). So overall, f has a total running time of Theta(N^2) + Theta(N) = Theta(N^3).
+
+Overall, f has a total running time of Theta(N^2), which is the time required for all the nested loops and matrix accesses. This makes it optimal given the given constraints on the function.
+
+POINT_ID: 10
+To provide a detailed analysi of the program for each student's written asymptotic-complexity analysi, please ensure to include the following:
+
+BUCKET:
+- Exact bucket label as provided in rubric (e.g. "Theta(1)" or "Theta(N)")
+- Specific and grounded explanation of what the student should write for a given Bucket value
+
+FEEDBACK:
+- Clearly stated, specific analysi of the function's runtime (e.g. By providing an example, such as "Abbott's algorithm takes O(log n) time to sort a binary search tree")
+- Grounded in the given rubric points and how they apply
+
+STUDENT NOTES:
+- Provide any relevant code snippets or examples for better understanding of the function
+- If possible, add diagrams or charts to illustrate the runtime of the algorithm
+
+RUBRIC POINT:
+Point 10 - Correctly summed Theta(N) but with missing reasoning
+- Explanation provided in the rubric doesn't match what is actually happening
+
+Students can correct this issue by providing a more detailed explanation of the program logic and why Theta(n) is being added to the final runtime.
+
+POINT_ID: 11
+AsymQ3 is a Java program that calculates the asymptotic worst-case running time for the functions `f` and `g`. To do this, we need to write an analysis of both functions that includes detailed analysias of each loop (part A and B) and one global loop (`Part C`), as well as part D and F.
+
+The overall runtime is given by:
+```
+T_f(N) = Theta(N^2), accounting for non-loop parts + nested loop + Part C.
+Buckets:
+- Wrong (0 marks): Final complexity missing/incorrrect.
+- Semi (8 marks): States Theta(N^2) but with missing reasoning. Correct (16 marks): Theta(1) + Theta(N^2) + Theta(N) = Theta(N^2), correctly absorbing the lower-order Theta(N).
+Internally consistent but incorrect final result: Final not Theta(N^2), but correctly summed from own earlier values.
+```
+
+We assign a mark to each bucket based on the following rules:
+- Wrong (0 marks): No final complexity or reasoning needed, as we only have to worry about non-loop parts and nested loops.
+- Semi (8 marks): Reasoning is missing, so we should use Theta(N^2) for the lower-order Theta(N).
+- Correct (16 marks): Calculating the lower-order Theta(N) correctly, as described in the final runtime calculation.

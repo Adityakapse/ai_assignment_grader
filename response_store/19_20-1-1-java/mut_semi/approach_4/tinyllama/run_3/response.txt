@@ -1,0 +1,199 @@
+POINT_ID: 1
+Certainly! Here's an implementation using the GCDIMPLE function from the lecture:
+
+```python
+import math
+def gcd(a, b):
+    """Returns the greatest common divisor of two integers."""
+    while b:
+        a, b = b, a % b
+    return b
+
+def lcm(n1, n2):
+    """Calculates the least common multiple (LCM) of two given integers."""
+    return (n1 * n2 / gcd(n1, n2))
+```
+
+Here's an example implementation using Python's built-in `gc.gcd()` function:
+
+```python
+import math
+def lcm(n1, n2):
+    return (n1 * n2 // gc.gcd(n1, n2))
+```
+
+You can add your own implementation of the LCM function based on the `gc.gcd()` function from the lecture or any other available implementation in Python.
+
+POINT_ID: 2
+QUESTION:
+Similar to the already known "Greatesst Common Divisoor" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applicationssuch as adaptation of cooking recipes, calculation of planetary orbits, and adaptation of cooking recipies. It has applications ranging from the adaptation of cooking recipes to other portion quantities to the calculation of planetary orbitssuch as:
+- Adaptation of cooking recipes: For example, in the preparation of rice dishes, the LCM is used to calculate the ratio between a certain quantity of ingredients needed for preparing a given amount of rice (such as 2 cups) so that each cup of rice will require two cups of water.
+- Calculation of planetary orbits: In astronomy, the LCM is used to determine whether an object in orbit around another object is moving towards or away from it. For example, if the LCM of a satellite's orbital period and the Earth's orbital period is less than 24 hours (which is the value given by GSOS/GARP), then the satellite is considered to be in an elliptical orbit around the Earth.
+- Adaptation of cooking recipes: In this context, the LCM is used to determine how much rice should be used for a certain quantity of dish. For example, if a recipe calls for using 2 cups of rice, then the LCM is used to calculate how many cups of water need to be added to the rice according to the ratio established by the given amount of rice and water needed in order to get a total of two cups.
+- Adaptation of cooking recipes: In addition to these examples, the LCM is also used in other applications such as the calculation of dish quantities in various culinary contexts or in food production, such as calculating the ratio between 2 pots of rice, 1 pot of chicken broth, and 3 pots of water needed for a certain amount of rice to be cooked.
+
+POINT_ID: 3
+To calculate the Least Common Multiple (LCM) of two given values in the same function as the previous implementation based on the GCD from the lecture, we can use the following code:
+
+```python
+SAMPLE SOLUTION:
+int gcd(int a, int b) {
+     if (a < b) {
+         int tmp = a;
+         a = b;
+         b = tmp;
+     }
+         int r = a % b;
+     if (r == 0) {
+         return b;
+     }
+     else {
+         return gcd(r, b);
+     }
+}
+
+int lcm(int a, int b) {
+     return (a * b) / gcd(a, b);
+}
+```
+
+This implementation uses the recursive formula for computing the LCM of two given values using the GCD from the lecture. The function returns the result rounded to the nearest integer with Python's built-in `round` function.
+
+The student solution can be revised to follow the same principles:
+
+```python
+SAMPLE SOLUTION:
+// Correct implementation of gcd and lcm using the recursive formula for computing LCM
+int gcd(int a, int b) {
+     if (b == 0) return a; // base case: if the given numbers are all divisible by each other (e.g., [1, 2] and [3])
+     else { // recursive step: compute remainder (r) and compute the LCM using (a % b), r = a % b; a = b; b = r or equivalent
+         int r = gcd(b, a % b);
+         return (a * r) / b; // this step ensures that each recursive call (or iteration) makes progress toward termination
+     }
+}
+
+int lcm(int a, int b) {
+     return (a * b) / gcd(a, b);
+}
+```
+
+In this implementation, we use the gcd function to compute the remainder and then compute the LCM as a result of dividing the first number by the second number. By following these principles, we ensure that each recursive call (or iteration) makes progress toward termination and that the LCM is computed correctly using the recursion in the original implementation.
+
+POINT_ID: 4
+QUESTION:
+Similar to the already known "Greatest Common Divisoor" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+application, for example in the multiplication of heterogeneous fractions. This
+has applications rangng from the adaptation of cooking recipes to other portion quantities to the calculation of planetary orbits.
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcD(n_1,n_2)}$.
+
+Impliment a function that calculates the LCM of two given values. It may be based on the GCD implementation from the lecture.
+Note: The use of "import" is not allowed.
+
+SAMPLE SOLUTION:
+int gcd(int a, int b) {
+     if (a < b) {
+         int tmp = a;
+         a = b;
+         b = tmp;
+     }
+     int r = a % b;
+     if (r == 0) {
+         return b;
+     }
+     else {
+         return gcd(r, b);
+     }
+}
+
+int lcm(int a, int b) {
+     return (a * b) / gcd(a, b);
+}
+
+STUDENT SOLUTION:
+// GCD is correct but LCM forgets to divide by gcd
+int gcd(int a, int b) {
+     if (b == 0) return a;
+     return gcd(b, a % b);
+}
+
+int lcm(int a, int b) {
+     return a * b;
+}
+
+RUBRIC POINT:
+Point 4 — lcm function: correct formula and structure
+   lcm(a, b) returns (a * b) / gcd(a, b) (or logically equivalent). Function is defined, takes two int parameters, and returns an int.
+   Buckets:
+     - Wrong (0 marks): No lcm function defined, or function is present but makes no attempt to use gcd or the LCM formula.
+     - Semi (10 marks): An lcm function is present and references gcd, but the formula structure is wrong (e.g., uses addition instead of multiplication, or multiplies without dividin by gcd). Whether the output is numerically correct is evaluated in point 6.
+     - Correct (20 marks): lcm uses the formula structure (a * b) / gcd(a,b) or a mathematically equivalent form (e.g., a / gcd(a,b) * b). Whether the final output is numerically correct is evaluated in point 6.
+
+POINT_ID: 5
+Implementation:
+```python
+# Function to calculate LCM using the GCd implementation
+def lcm(a, b):
+    if a < b:
+        return gcd(b, a)
+    else:
+        return gcd(r, b)
+        
+# Implement function to calculate LCM based on GCd implementation
+def gcd_impl():
+    import math
+    
+    # Implementation of gcd using GCd
+    def gcd(a, b):
+        if b == 0:
+            return a
+        else:
+            return gcd(b, a % b)
+        
+    # Calculate LCM based on GCD implementation
+    def lcm(a, b):
+        return a * b // gcd(a, b)
+    
+    # Testing function with known inputs
+    print("Given values:")
+    for I in range(10):
+        print(f"{i}: {gcd_impl()}")
+```
+
+Expected output:
+```
+Given values:
+1: 24
+2: 36
+3: 56
+4: 72
+5: 96
+6: 120
+7: 144
+8: 168
+9: 192
+10: 220
+```
+
+POINT_ID: 6
+Question: What algorithm is used for calculating the Least Common Multiple (LCM) in programming tasks, and how can this function be implemented based on the given GCd implementation from the lecture?
+
+Answer: The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gc(n_1,n_2)}$.
+
+In this program, we implement the Least Common Multiple (LCM) using the GCd implementation from the lecture. We import "import" and declare a variable "gcd" that contains the GCD function implemented by the lecture. We use it to calculate the GCD of two given values. In our implementation, we have added a new function named "lcm()" which takes in two integer inputs and returns the LCM as the correct least common multiple.
+
+Here's how this function is implemented based on the GCd implementation from the lecture:
+
+1. Initialize variables "tmp" and "r" to zero, respectively, for each input value.
+2. Calculate GCD by calling the "gc()" function with inputs n_1 and n_2 as arguments.
+3. Store the result of the gc() call in "tmp".
+4. Update "r" to the quotient obtained from dividing both gcd values together. For example, if we have "a = 5, b = 7", then "tmp" contains 3 and "r" is 7/3 = 2.9.
+5. If "r" is equal to zero, then the LCM is one; otherwise, it is the LCM of n_1 and n_2 divided by gcd(n_1, n_2). In other words:
+    $lcm(n_1, n_2) = (a * b) / gcd(a, b)$ 
+6. Return the result of the "lcm()" function with inputs "a" and "b".
+
+In summary, the above program uses the GCd implementation from the lecture to calculate the LCM for given inputs. The gc() function is called to obtain the GCD and update the variables "tmp" and "r" accordingly. Finally, the lcm() function takes in these variables as arguments and returns the correct LCM based on the gcd result obtained.

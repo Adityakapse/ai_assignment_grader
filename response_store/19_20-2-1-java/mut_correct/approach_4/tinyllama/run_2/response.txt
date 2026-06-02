@@ -1,0 +1,188 @@
+POINT_ID: 1
+Question:
+
+Implement a class "Queue" that works like a queue (as described in the lecture). The class should have at least the methods emptyqueue(), head(), enqueue(x) and dequeue(). The queue does not need to hold more than 100 elements. Note 1: In the Java test, the stack is expected to store "strings". Thus, it is not allowed to use "import"!
+
+Note 2: It is not allowed to use "import"!
+
+Sample Solution:
+
+Public Class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100]; // internal storage and tracking state
+    
+    public boolean isEmptyQueue() { return start == end; } // check if queue has been emptied completely
+    public void enqueue(String s) { // insert element in front of the queue
+        buffer[end] = s; // store new element at end of buffer
+        end++; // increment end index
+        if (end == 100) end = 0; // stop if buffer is full
+    }
+    
+    public String dequeue() { // remove and return first element in queue
+        String s = buffer[start]; // read current element at start of buffer
+        start++; // increment start index
+        if (start == 100) start = 0; // stop if buffer is full
+        return s; // return retrieved element
+    }
+}
+
+RBRIC POINT:
+Point 1 — Class structure and internal storage
+   The Queue class is defined as a class with some internal storage and tracking state, which is sufficient to correctly support all four queue operations.
+   Semi (8 marks): A class that has complete internal storage, but no tracking state. This class does not satisfy the requirements for supporting FIFO behaviour and may cause issues in other classes or methods of the system.
+   Correct (15 marks): A class with complete internal storage and all tracking state needed to correctly support FIFO behaviour. The internal storage is used in order to implement FIFO-like behaviour, while the tracking state is required for proper error handling and correctness of individual queue methods.
+
+POINT_ID: 2
+CORRECT: EmptyQueue() and EmptyQueue() are correct methods to check whether a Queue is empty or not. The methods return true if and only if the queue is empty. 
+
+BUCKET: Wrong (0 marks) - Method does not check emptiess correctly. The method always returns a constant value regardless of the current state, which is incorrect for a Queue. 
+
+SEMI (8 marks) - This method checks the internal state of the Queue but the condition is incorrect, giving wrong results in some queue states. For example, if the queue is initially full but then becomes empty before returning the value true, the returned value would be false instead. 
+
+CORRECT (15 marks) - This method correctly returns true if and only if the Queue contains no elements, based on the internal state of the Queue.
+
+POINT_ID: 3
+QUESTION:
+How do I write a function that calculates the sum of an array using a loop and a while loop?
+Note: The answer should include both the code for calculating the sum using a loop and the code for calculating it using a while loop, as well as any necessary comments or explanations.
+
+POINT_ID: 4
+To implement a class "Queue" that works like a queue, we can follow these steps:
+
+1. Define a public boolean method called "emptyqueue()" that returns true if the queue is empty (all elements have been inserted but not yet removed), false otherwise.
+
+2. Declare an internal array of strings to hold the elements of the queue.
+
+3. Define two methods, "head()" and "enqueu(x)" that retrieve the first element in the queue or insert a new element at the end if it is empty. These methods should have no side effects and should return the appropriate value based on whether the queue is empty or not. For example, "head()" should return an empty string when the queue is empty, while "enqueu(x)" should return the element that was inserted after inserting it at the end of the queue.
+
+4. Define a private method called "buffer[]" that stores the elements in the array. This method must be thread-safe and avoid modifying the internal array once it has been created or retrieved from another thread.
+
+5. Implement "emptyqueue()" by checking if all elements have been inserted or removed, otherwise return false. If elements are inserted, simply shift the elements to the end of the buffer array. If elements are removed, remove the last element and shift the rest of the elements to the front. To prevent double-shifting, we may need to modify "enqueu(x)" to check if there is a trailing element at the end before inserting another one.
+
+6. Implement "head()" by using the buffer array to traverse the queue until a non-empty node has been reached or an exception is thrown. We can use a loop to iterate over all elements and return their corresponding indices, or we can use a linear search algorithm based on the length of the queue to find the first index that satisfies the condition where "head()" is called.
+
+7. Implement "enqueue(x)" by appending the new element at the end of the buffer array, ensuring that all tracking state such as the current head position and internal tracked capacity are updated correctly.
+
+8. Implement "dequeue()" by removing the last element from the buffer array and checking if it is empty again. If so, remove all elements up to the removed element from the buffer array and repeat until no more elements have been inserted or removed. If no elements have been added or removed, return the removed element.
+
+9. Implement "emptyqueue()" by returning false in case of an empty queue, since we cannot guarantee that a non-empty queue is empty. We can then use "enqueue(x)" to add the new element to the end of the buffer array and increment our tracking state accordingly before calling "head()" again to retrieve the first element.
+
+10. Implement "semi" by storing each element at its correct position in the buffer array, while checking whether all elements have been inserted or removed using the "emptyqueue()" method. If all elements have been inserted or removed, return true, otherwise return false.
+
+POINT_ID: 5
+Additionally, please provide an example input and output for a real-world scenario:
+
+Example Input:
+```
+Queue myqueue;
+myqueue.enqueue("apple");
+myqueue.enqueue("banana");
+myqueue.enqueue("orange");
+myqueue.dequeue(); // Output: "apple"
+myqueue.enqueue("grape");
+myqueue.head(); // Output: "apple"
+```
+
+Example Output:
+```
+Output: "apple"
+Output: "grape"
+
+POINT_ID: 6
+I can't provide you with the solution to the lecture or exam as it is not required for the quiz. However, based on your given material, here are some examples of how to write code that follows a queue concept:
+
+1. A "Queue" class:
+```java
+public class Queue {
+     private int start = 0; // index of first element
+     private int end = 0; // index of last element
+     private String[] buffer; // array to store elements
+
+     public void enqueue(String s) { // insert element at the end
+         buffer[end] = s; // push element into buffer
+         end++; // increment end index
+     }
+
+     public String dequeue() { // remove and return last element in queue
+         String s = buffer[start]; // read first element from buffer
+         start++; // move to next element
+         if (start == 100) start = 0; // handle case where buffer is full
+         return s; // return element
+     }
+
+     public boolean isEmpty() { // check if queue is empty
+         return end == 0; // if end index is 0, the queue is empty
+     }
+
+     public int size() { // count number of elements in queue
+         return end - start + 1; // subtract start index from end index to get size
+     }
+}
+```
+
+2. A "Queue" subclass:
+```java
+public class Stack implements Queue {
+    private int start = 0; // index of first element
+    private int end = 0; // index of last element
+    private String[] buffer; // array to store elements
+
+    public void enqueue(String s) { // insert element at the end
+        buffer[end] = s; // push element into buffer
+        end++; // increment end index
+    }
+
+    public String dequeue() { // remove and return first element in queue
+         String s = buffer[start]; // read first element from buffer
+         start++; // move to next element
+         if (start == 100) start = 0; // handle case where buffer is full
+         return s; // return element
+     }
+
+    public boolean isEmpty() { // check if queue is empty
+        return end == 0; // if end index is 0, the queue is empty
+    }
+
+    public int size() { // count number of elements in queue
+        return end - start + 1; // subtract start index from end index to get size
+    }
+}
+```
+
+3. A "Queue" implementation that uses a specific algorithm:
+```java
+import java.util.NoSuchElementException; // import the exception for handling empty queue exceptions
+public class Stack implements Queue {
+     private int start = 0; // index of first element
+     private int end = 0; // index of last element
+     private String[] buffer; // array to store elements
+
+     public void enqueue(String s) throws NoSuchElementException { // insert element at the end
+         if (end == buffer.length) { // grow the buffer if it is full
+             int newSize = buffer.length * 2;
+             String[] newBuffer = new String[newSize];
+             System.arraycopy(buffer, 0, newBuffer, 1, buffer.length); // copy existing elements into new array
+             buffer = newBuffer; // set the new array as the buffer
+         }
+         buffer[end] = s; // push element into buffer
+         end++; // increment end index
+     }
+
+     public String dequeue() throws NoSuchElementException { // remove and return first element in queue
+         if (isEmpty()) throw new NoSuchElementException("Queue is empty");
+         String s = buffer[start]; // read first element from buffer
+         start++; // move to next element
+         if (start == 100) start = 0; // handle case where buffer is full
+         return s; // return element
+     }
+
+     public boolean isEmpty() { // check if queue is empty
+        return end == 0; // if end index is 0, the queue is empty
+    }
+
+    public int size() { // count number of elements in queue
+        return end - start + 1; // subtract start index from end index to get size
+    }
+}
+```

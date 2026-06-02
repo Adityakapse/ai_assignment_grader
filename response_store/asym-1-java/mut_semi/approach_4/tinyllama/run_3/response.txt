@@ -1,0 +1,235 @@
+POINT_ID: 1
+Here's an updated version of the text with all the necessary information for grading:
+
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`. The function `AsymQ1` takes two arguments `n`, representing the length of the input array, and returns a single constant-time value. It also defines two nested loops over `i` and `j`, which each execute for every `(i, j)` pair with `0 <= j <= i < N`. Finally, it calculates a single constant-time value using `g`, which additionally performs multiple array accesses (`a[k - 1]`, where `k` is the index of an element), a multiplication, and one more `+=` assignment at the end. Here's the text with line numbers and buckets labeled:
+
+```
+BUCKET: <exact bucket label>
+FEEDBACK: <one or two sentences referencing the student's actual analysi...
+RUBRIC POINT:
+Point 1 — Splitting code into parts + referencing line numbers
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+     - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+     - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+     - Correct (5 marks): Clear separation of f and g; loop and non-loop regions and the call to g identified; line numbers referenced consistently.
+Method f
+Part A: int n = a.lengtjh;
+int s = 0;
+— constant-time initialisation
+Part B (nested loops over i, j):
+— Combined iterations: The loop executes one more times for each `(i, j)` pair where `0 <= j <= i < N`.
+   Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+     - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+     - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+     - Correct (5 marks): Clear separation of f and g; loop and non-loop regions and the call to g identified; line numbers referenced consistently.
+Method g
+Part D: int n = a.lengtjh;
+int t = 0;
+— constant-time initialisation
+Part E (nested loops over i, j):
+— Combined iterations: The loop executes two more times for each `(i, j)` pair where `0 <= j <= i < N`.
+   Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+     - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+     - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+     - Correct (5 marks): Clear separation of f and g; loop and non-loop regions and the call to g identified; line numbers referenced consistently.
+Method g
+Part F: int n = a.lengtjh;
+int t = 0;
+— constant-time initialisation
+Part G: int n = a.lengtjh;
+int s = 0;
+— constant-time finalization
+Part H: int n = a.lengtjh;
+int t = 0;
+int k = n - 1;
+while (k >= 0) {
+   s += g(a[k]);
+   t++;
+   k--;
+}
+— constant-time calculation of value `s` using loop `k`, and increment of counter `t` at end of loop.
+   Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+     - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+     - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+     - Correct (5 marks): Clear separation of f and g; loop and non-loop regions and the call to g identified; line numbers referenced consistently.
+
+POINT_ID: 2
+Here's a more detailed analysi of the functions:
+
+AsymQ1: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- The two nested loops in f (`for` loop over `i`, `j`) with `0 <= j <= i < N`, and g(`a`) are both Theta(1) (non-constant time segments).
+
+- There is a single constant-time call to the function g with N as argument. This is used to add constant value to the result in the return statement of Part C, so it has Theta(N^2) cost.
+
+- There are two nested loops over `i` and `j`, with 0 <= j <= i < N. The inner loop (over I = 0 ... N - 1) takes N iterations (one per array read) and performs a multiplication, division and addition. This has Theta(N^2) cost per iteration.
+
+- Part C (`g`) is called with N as argument, so it has Theta(N^2) cost.
+
+Part A: The constant-time loop `for` over `i`, initialized to zero, executes N iterations (total of 1 + 2 ... + N), each time I being incremented by one. It performs a multiplication, division and addition in each iteration, so has Theta(log N) cost per iteration.
+
+Part B: Combined iterations (`for` loop over `i`, `j`) with `0 <= j <= i < N-1`. This has two inner loops (with 0 <= j <= I < N and I < J < I+N), each of which performs a multiplication, division, and addition. The loop checks for halves of the array, so it has Theta(log N) cost per iteration.
+
+Part C: The call to `g` is constant-time (Theta(log N)).
+
+AsymQ1: Overall, the functions have Theta(N^2) total time.
+
+POINT_ID: 3
+Yes, this is a clear example of a student's written asymptotic-complexity analysi. You can use either the Theta notation or big-O notation with tier bounds for every loop. Each step of the analyzi should be justified with one or two sentences. Additionally, you need to include a detailed analyzi of both functions and make sure each step of the analyzi is based on the N length of the input array. Finally, your analyzi should refer to line numbers for easy reference.
+
+POINT_ID: 4
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysiS of both functions.
+- You can use Theta notation or the big-O notation with tier bounds.
+- Your analyziS should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analyziS should be justified with one or two sentences.
+
+Public final class AsymQ1 {
+    // `a` has length N.
+    // Your analysiS should be based on N.
+    
+    public static int f(int[] a) {
+        int n = a.lenGH;
+        int s = 0;
+        
+        // Part A: int n = a.lenGT; int s = 0;
+        
+        // Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N. Total time cost is Theta(N^2).
+        
+        // Part C: int t = g(a); return s + t;
+        
+        // Parts A and C: Combination of iterations: when I=0 the inner loop runs once; when I=1, it runs twice; ...; when I=N-1, it runs N times. Total cost of Part C is Theta(N^2).
+        
+        // Overall running time of f:
+        // Theta(1) (Part A): Two array reads, one multiplication, one += assignment, loop checks, and incrementing.
+        // Cost per iteration: Theta(1).
+        
+        // Overall running time of g:
+        // Theta(1) (Part C): Constant-time initialisations; constant time accesses to a[k-1]; constant time arithmetic operations and comparisons with 0 <= j <= i < N. Total cost is Theta(logN) * Theta(1).
+        
+        // STUDENT SOLUTION:
+        // f has two nested loops and then calls g. Inner body performs an array read, multiplication, addition, division, and increment. All arithmetic operations are constant-time in terms of N, so the whole loop runs in Theta(logN) time. The outer loop also performs a constant number of array reads and adds, but it is expensive to do, so total running time is Theta(logN).
+        // G:
+        
+        // Semi (6 marks): Suggests constant time for each iteration, with no explicit division or multiplication.
+        // Correctness is based on the fact that all operations are O(1) time, and that the loop starts at 0, so there is only one array read each time. The loop terminates after N iterations, so the addition of the final value should add up to the sum from start to end, which is also a constant time operation.
+        
+        // BUG: You did not write the builT of the nested loops in g. Correct the code to include the outer loop's additions and multiplications, and the inner loop's multiplies.
+
+POINT_ID: 5
+As per the Rubric Points provided, the following feedback sentence will be appropriate for this student's submitted analysi:
+
+BUCKET: "The nested loops of f have O(1) complexity and add constant-time cost to their iterations. The call to g has a logarithmic cost per iteration due to the initialization in Part A, but each loop check (i=0, j<=i, ..., i=n-1, j=i+1) costs O(1), thus adding O(log N) cost for Part B and Logarithmically increasing O(N^2) cost per iteration for g. Overall, the function has a total loop complexity of O(log N) and a constant cost per iteration."
+
+POINT_ID: 6
+According to the rubric point, the overall running time of the functions can be described by Theta(N^2), where N is the length of the input array. This indicates that they have a total cost of O(N^2) and take constant time as a function of the input array's length N. To calculate this value, we need to analyze both functions and their respective analyses.
+
+AsymQ1: The AsymQ1 function is based on N, which is an input parameter for both the function and its analysi. The cost of running time is proportional to the length of the array a, which increases with every iteration. This increases gradually until the last step of each loop, where it doubles. However, the value of this constant can't exceed the total number of iterations. As mentioned earlier, f has an average cost of O(N^2), while g has an average cost of O(log N). These averages are Theta(log N) and Theta(1), respectively. Therefore, both functions can be described as having a total running time of Theta(log N) + Theta(1), which is O(N^2).
+
+SAMPLE SOLUTION: Let's analyze the function f for an input array of length 10 using these two functions. AsymQ1:
+As stated before, both functions have a total cost of O(log N) and Theta(log N) for each loop. Here is an example of how this can be calculated:
+
+Let's first analyze f with a single nested loop over the length 10 array a, where we calculate the initial s value using a multiplication by a[9] and a sum of a[i]*a[i], then add them up to create s. The cost of this single loop is O(1) since it's an array access and addition. Next, let's analyze g with a single nested loop over the same length 10 array, where we call g twice using a while loop that runs Theta(log N) times. The cost of these nested loops is O(log N), as they also involve constant time operations. Therefore, f and g can be described as having a total running time of Theta(log N) + Theta(1) = Theta(log N). Overall, both functions have a total cost of Theta(log N) + Theta(1), which is O(N^2). AsymQ1 and g can be described as having a total cost of O(log N + log N) = O(N^2). Therefore, both functions are described in this way.
+
+In summary, both functions can be characterized as having a total running time of O(N^2), with AsymQ1 describing the asymptotic behavior of f and g, and SAMPLE SOLUTION describing the actual running time of each function for a given input array length 10.
+
+POINT_ID: 7
+AsymQ1: F(arr[a]) = AsymQ1.f(arr);
+
+Method f:
+- (int[] a) {
+    int n = a.length; // length of array
+    int s = 0;         // constant initialisation
+    for (int I = 0; I < n; i++) {
+        for (int j = 0; j <= i; j++) { // nested loops over I, j
+            for (int k = i / 2; k <= i; k += 2) { // inner loop with half-adjustment
+                s += arr[k - 1] * arr[i]; // multiply and add the corresponding array elements
+            }
+        }
+    }
+    int t = g(arr);           // call to g()
+    return s + t;             // return value with constant-time cost of g() + Theta(log n)
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f:
+Part A: int n = a.length;     -- constant-time initialisation
+Part B (nested loops over i, j):
+- Combined iterations: when I = 0 the inner loop runs once; when I = 1 it runs twice; ...; when I = N-1 it runs N times. Total = 1 + 2 + ... + N = N(N+1)/2. -- Theta(1) -- two array reads, one multiplication, one += assignment, loop checks and increments.
+- Cost of Part B: Theta(log N). -- constant-time cost of g() + Theta(log n) = Theta(log n).
+Part C:                   -- cost of call to g()
+- Total cost of Part C: Theta(log N). -- constant-time cost of g() + Theta(log n) = Theta(log n).
+Method g:
+Part D: int n = a.length;     -- constant-time initialisation
+Part E (while loop):
+- Setup statements: constant - Theta(1) -- one array read, one += assignment, one division, one comparison. -- This is not an integral part of g() but is rather just an empty loop without any real purpose or cost.
+
+Overall, f has two nested loops with a total of Theta(log n) cost (logarithmic in log(n)), and each inner loop costs Theta(1). However, the call to g() itself can have additional costs, but these are not counted due to the constant cost of g().
+
+POINT_ID: 8
+Additionally, the text mentions that AsymQ1's analysi for `f` function has Theta notation with only two sentences referencing the student's actual analysi. This suggests that the student's correctness is covered in the bucket label "semi", with justification provided for operations being small/constant but lacking explicit Theta(1) justifications. The text does not go into further details about this bucket label and the cost per iteration, so we will grade it as correct (8 marks).
+
+POINT_ID: 9
+As stated in the given text, an objective assessor grading a student's written asymptotic-complexity analysi of two given functions f and g is required to select one of the following rubrics points to write their feedback:
+
+1. BUCKET: "The AsymQ1 method f (int[] a) contains two nested loops over i, j with k starting from N for each (i, j), total number of iterations = 1 + n(n+1)/2, and the function g is applied to the summed output, i.e., g (a) in Part D."
+
+2. BUCKET: "The method f (int[] a) has two nested loops over i, j where k starts at N and halves it each time. The outer loop performs an array access, multiplication, and addition in Part E while the inner loop performs a += assignment in Part F."
+
+3. BUCKET: "The method g (int[] a) has two nested loops over i, j where k starts at N and halves it after each iteration. The outer loop performs an array access and multiplication in Part D while the inner loop halves k in Part E."
+
+4. BUCKET: "The cost of f is constant (Theta(1)) and that of g is Theta(log N) (Theta(log N)+Theta(1)). Therefore, the method has a total cost of Theta(log N), and the student's work is assessed as correct."
+
+These rubrics points are based on the text provided. They are explained in detail in the given feedback section.
+
+POINT_ID: 10
+Here is a more detailed analysis of the `AsymQ1` class from the given program, including specific analyzes for each loop and step of the function's complexity.
+
+- Calculating the asymptotic worst case running time of `f(a)` based on the given program:
+
+1. Part A: Introducing the "n" constant used in both loops (`n = a.length`) and calculating its initial value using the given input array (`s = 0`).
+2. Part B: Combining the inner loop iterations, performing two array accesses (`a[k-1]`, `a[k]`), and executing a multiplication followed by an addition (`(a[k] * a[i]) + s`) for every iteration of the outer loop.
+3. Part C: Internalizing each loop check and incrementing a "s" variable to account for both inner loop iterations.
+4. Calculating the total cost of the function based on Part B, taking into account the additional array accesses and multiplication in Part A and two nested loops (`Part A` and `Part E`) (`Theta(1)`).
+5. Calculating the total time complexity (part C) using a separate "Theta" bucket with a value of 1. This is added to the overall running time calculated by the previous step.
+6. Calculating a "buckets" label for Part A, representing this as a single rubric point with a label indicating its value ("Wrong" marking), but ensuring that this does not apply to any other rubrics in the program (Semi marks and Correctly calculating the WC).
+
+The following analyzes should be grounded in each loop:
+
+1. Part A: Introducing the "n" constant (`n = a.lengtH`) and calculating its initial value.
+2. Part B: Performing two array accesses (`a[k-1]`, `a[k]`), executing a multiplication, then an addition (`(a[k] * a[i]) + s`), in the outer loop. This is the WC for both nested loops (`Part A` and `Part E`) as well as the sum of all inner loop iterations (`Part B`).
+3. Part C: Including separate bucket labels for each inner loop (`Part A`, `Part B`, `Part C`) and calculating their time complexity as a single rubric point with value "Wrong". This ensures that this is not counted incorrectly as a correct implementation of the program.
+
+Overall, the program has a WC in Part A for both Parts A and E due to its incorrect implementation of the loop, but the correct implementation in Part B produces the correct result based on the input array. The program also correctly calculates the WC for both nested loops (`Part A` and `Part E`) as well as the sum of all inner loop iterations (`Part B`).
+
+POINT_ID: 11
+Here's an answer to the original text:
+
+AsymQ1 is a program that performs a given function on an array of N elements called `a`. The function is defined in line 2 as a single int procedure called `f` with no input parameters. The function should perform a worst-case O(N^2) analysis, which refers to the worst case scenario where all inputs have length N and each loop takes O(1) time and the remaining constant cost is also O(1).
+
+The text provides an example of calculating the asymptotic WCORP (worst-case O(N^2)) run-time using the Theta notation. The text asks for feedback, which should include detailed analyses based on line numbers and be written in Theta notation. Specifically, the analysi of f should cover the following steps:
+
+1. Read an array `a` of length N, which will be used to perform `f`
+2. Calculate two constant-time initialisations for the loop variables (inner and outer loop), which are needed in both nested loops over each index (`i`) and addition (`t`) of the array. These values are Theta(1)
+3. Initialize a variable `s`, which will be used to store the result of `f` (which is a single value, since `f` is a single procedure). This is Theta(1)
+4. Execute a nested loop over each index (`i`) of the array with length `(n = a.lengt)`
+5. For each iteration of this loop, perform an array access using constant-time operations (in this case, adding two indices to find `t` for a particular `i`) and an operation on the sum of elements at `j`-th index of `a` (`s += a[j]`). This is Theta(1)
+6. Perform addition of all values in `a`, resulting in the sum of all array elements, which is also Theta(1)
+7. Execute a nested loop over each other element in the array (`t`) with length `(n = 2 * N)`
+8. For each iteration of this loop, perform an array access using constant-time operations (in this case, adding two indices to find `s[j]` for a particular `i` and `k`-th index of `a`), and an operation on the sum of elements at `j`, `k`-th index of `a`. This is Theta(log N)
+9. Perform multiplication of all values in `a` (which is Theta(1))
+10. Execute a non-looping function, `g`, that performs an array access with constant-time operations (`g(n)`), and addition of all values of the same length (`g(n) += a[j]`). This is Theta(log N)
+11. Perform another nested loop over each element in the array (`t`) with length `(n = 2 * N)`
+12. For each iteration of this loop, perform an array access using constant-time operations (in this case, adding two indices to find `s[j]` for a particular `i` and `k`-th index of `a`), and an operation on the sum of elements at `j`, `k`-th index of `a`. This is Theta(log N)
+13. Perform addition of all values in `a`, resulting in the sum of all array elements, which is also Theta(log N)
+14. Execute a non-looping function, `h`, that performs an array access with constant-time operations (`h(n)`), and multiplication of all values of the same length (`h(n) * a[j]`). This is Theta(log N)
+15. Perform another nested loop over each element in the array (`t`) with length `(n = 2 * N)`
+16. Execute another function, `g`, which performs an additional array access with constant-time operations (`g(n)`), and multiplication of all values of the same length (`g(n) * a[j]`). This is Theta(log N)
+17. Perform a final non-looping function, `f` (which calls itself again using constant-time operations to do the multiplication), and addition of all values of the array to result in the final value `(s * a)`
+18. Execute an unrelated function called `i`, which multiplies each element in `a` with its index (as previously calculated) and adds it to the sum, resulting in the final value `(s * a) + h(n)`. This is Theta(log N)
+
+This gives the correct WCORP run-time for both `f` and `i`, as they are called at least once.

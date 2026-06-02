@@ -1,0 +1,45 @@
+POINT_ID: 1
+BUCKET: Correct
+
+FEEDBACK: The student correctly separates the analysis of `f` into its nested loops and the call to `g`, and references line numbers appropriately. They also correctly identify that `g` has a single loop along the diagonal.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that the non-loop code in both `f` and `g` is constant time, but only partially explains why. They mention that the setup statements outside loops are constant, which is correct. However, they do not justify each statement as Theta(1) or explain how these operations run in a fixed amount of time regardless of N.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims that the combined iterations of the nested loops in f are Theta(N^2), but does not provide a correct justification. The analysis incorrectly sums N + (N-1) + ... + 1 without addressing the lower bound j = i, leading to an incomplete understanding.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly states that each iteration of the inner loop in f costs Theta(1) due to one matrix access and one += assignment.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student does not multiply the iteration count by the per-iteration cost for the nested loops in f, resulting in an incorrect analysis.
+
+POINT_ID: 6
+BUCKET: Wrong
+
+FEEDBACK: The student correctly identifies that calling `g` contributes Theta(N) to the cost, but they do not include the constant-time addition and return in their analysis of Part C of `f`, leading to an incomplete description of the overall complexity of `f`.
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: The student states that g has Theta(N) iterations, but the analysis does not justify this claim clearly. The loop runs from `i = 0` to `i = N-1`, which is indeed Theta(N), but the justification provided is insufficient.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student incorrectly claims that each iteration of the loop in g is Theta(1) without providing any justification or explanation. The sample solution correctly identifies that each iteration involves a matrix access and an addition, which are both constant time operations.
+
+POINT_ID: 9
+BUCKET: Correct  
+FEEDBACK: The student correctly combines the number of iterations \( N \) and the cost per iteration \( \Theta(1) \) for the loop in `g`, resulting in \( \Theta(N) \times \Theta(1) = \Theta(N) \).
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student's analysis for g states that it is Theta(N), but they do not provide a detailed breakdown of the iterations and cost per iteration, which is required by the rubric.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that \( T_f(N) = \Theta(1) + \Theta(N^2) + \Theta(N) = \Theta(N^2) \). They clearly state the nested loops contribute to \( \Theta(N^2) \) and understand that lower-order terms can be absorbed in Big-O notation.

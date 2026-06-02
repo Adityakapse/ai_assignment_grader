@@ -1,0 +1,129 @@
+POINT_ID: 1
+QUESTION:
+Similar to the already known "Greatest Common Divisoor" (GCD), the Least Common Multiple (LCM) is also used in elementary mathematical applications, for example in the multiplication of heterogeneous fraction. This has applications rangng from the adaptation of cooking recipes to other portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcgd(n_1,n_2)}$.
+
+Implment a function that calculate LCM of two given values, based on the GCD implementation from the lecture.
+Note: The use of "import" is not allowed.
+
+POINT_ID: 2
+QUESTION:
+Similar to the already known "Greatest Common Divisoor" (GCD), the Least Common Multiple (LCM) is also used in elementary mathematical applications, for example in the multiplication of heterogeneous fractional parts. This application has applications range from cooking recipes to planetary orbits calculations.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcdo(n_1,n_2)}$
+
+A function can be implemented based on the GCD implementation from the lecture to calculate LCM. However, note that the use of "import" is not allowed.
+
+POINT_ID: 3
+To calculate the Least Common Multiple (LCM) of two given values using Python's built-in `gcd` function, you can follow these steps:
+1. Import the required module or library:
+    ```python
+    import math
+    ```
+2. Define a constant called `gc_divisor`:
+    ```python
+    gc_divisor = 1000000007 # GCD is always 1 (modulus 1)
+    ```
+3. Calculate the least common multiple (`lcm`) of two given values:
+    ```python
+    lcm = gcd(gc_divisor, gc_divisor) // If gc_divisor is less than or equal to zero, the function will raise a TypeError.
+    
+    # If gc_divisor is not a positive integer, then the input values are not divisible by each other. In this case, lcm = gcd(gc_divisor, gc_divisor)
+    ```
+4. Return the result:
+   ```python
+    return lcm
+   ```
+
+In order to check if the LCM calculation is correct and reduce inputs strictly toward the base case, you can use recursion or iterative steps. Recursive calls will make progress toward termination, while iterative steps can be logically incorrect (i.e., they do not guarantee reduction) and can loop infinitely on most input values.
+
+POINT_ID: 4
+QUESTION:
+What steps should be taken to calculate the LCM of two given values using the GCD implementation from the lecture?
+
+ANSWER:
+To calculate the LCM of two given values, we must follow these steps:
+1. Import the required "import" statement in the code so that it can be recognized by the IDE (Integrated Development Environment)
+2. Define the function `lcm` to calculate the LCM of two integers using the Greates Common Divisor (GCD) algorithm from the lecture as implemented in Python. This function takes two integer parameters, `a` and `b`, and returns an integer representing the LCM. 3. Implement the `gcd` function used to solve for the GCD of two integers using the Python built-in `gcd` function.
+4. Define a tuple of integers `gcdemp()` as a function that takes one integer parameter, `a`, and returns an integer representing the GCD of `a` and its greatest common divisor (GCD). `gcdemp()` is used to find the GCD of two integers before the LCM calculation.
+5. Define the function `lcm_calculation(a, b)` that takes two integer parameters and returns the LCM of the given values. This function uses the GCD formula `(a * b) / gcd(a, b)` to calculate the LCM as mentioned in the problem statement. 6. Test if the calculated LCM is equal to the expected value by checking point 4 of the Rubric (numerical correctness) or point 2 of the Points (calculating numerical output).
+7. Implement a function `compute_lcm(a, b)` that takes two integer parameters and returns the result as a tuple containing the LCM and GCD values. This will be used to calculate multiple LCM values for given inputs using the code block below. 8. Define an input parameter `max_inputs` and set it to a value greater than one for easy testing of larger values. 9. Use `import` statements from each step as necessary, but do not add any new modules or libraries. This will allow the code to run without problems and test different functions. By following these steps, we should be able to calculate the LCM of two given integers using the GCD algorithm, and have a function that calculates and returns the result.
+
+POINT_ID: 5
+Answer:
+Based on the specified criteria and rubric points, the student solution should meet the following Rubric Points:
+- GCd(a, b) = Correct (17): The student's input validation function should correctly check if gcd(a, b) is a valid and non-negative integer. This includes ensuring that gcd(a, b) < n and that the inputs are positive integers.
+- Semi (9): The student's implementation of gcd() should return the correct result for all valid input values, including edge cases or specific inputs.
+- Correct (17): The student's final output should match the expected value (GCD) returned by gcd().
+
+In the given sample solution, GCd(a, b) = Correct (17), and as such, it meets all Rubric Points.
+
+POINT_ID: 6
+To implement the Least Common Multiple (LCM) function in Python, follow these steps:
+
+1. Import the necessary modules:
+   - `math` for calculating GCD
+   - `datetime` for converting dates to datetime format
+
+2. Create a function that calculates the LCM:
+   ```python
+   def lcm(a, b):
+       if b == 0:
+           return a
+       else:
+           r = lcm(b, a % b)
+           return (a * r) / gcd(a, b)
+   ```
+
+3. Implement the GCD function:
+   ```python
+   def gcd(a, b):
+       while b != 0:
+           r = a % b
+           a = b
+           b = r
+        return a
+    ```
+
+4. Test the LCM function with sample input and student's own gcd implementation. Follow these steps to test both functions:
+   - Generate valid inputs for the LCM function (e.g., 3 and 6, 5 and 10, etc.)
+   - Use a timestamp to create student's own GCD implementation for each input value. Format the date as `YYY-MM-DD HH:MI:SS` using the `datetime` module.
+   - Calculate LCM with both functions (e.g., 3 and 6, 5 and 10) and compare results. The function should correctly calculate and return the LCM for all valid inputs.
+
+5. Implement an RBR Pointer:
+   ```python
+   RBR_POINT = [
+       {
+           'mark': 8,
+           'points': ['Overall correctness of lcm', 'lcm produces correct results when gcd is correct and formula has minor error causing occasional wrong output'],
+           'buckets': ['Wrong (0 marks)', 'Semi (9 marks)', 'Correct (18 marks)', 'Internally consistent but incorrect final result (13 marks)'],
+       },
+       {
+           'mark': 9,
+           'points': ['LCM returns correct result for most standard inputs and is semi consistent with gcd implementation.', 'Internally consistent but incorrect final result (13 marks)'],
+           'buckets': ['Wrong (0 marks)', 'Semi (9 marks)', 'Correct (18 marks)', 'Internally consistent but incorrect final result (13 marks)'],
+       },
+   ]
+   ```
+
+6. Assign the RBR Pointer to the relevant section of the input file:
+   ```python
+   with open('input.txt', 'r') as f:
+       for line in f:
+           data = line.split()
+           lcm_result, lcm_error = calculate_lcm(int(data[0]), int(data[1]))
+           if lcm_error:
+               output['RBR'][6] = lcm_error
+           else:
+               output['RBR'][6] = lcm_result
+   ```
+
+7. Display the results to the user or write a report of the testing:
+   ```python
+   with open('output.txt', 'w') as f:
+       for key, value in output.items():
+           f.write(f"{key} - {value}\n")
+   ```

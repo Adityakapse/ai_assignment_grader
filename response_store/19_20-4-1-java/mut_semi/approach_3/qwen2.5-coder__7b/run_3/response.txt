@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while loop correctly walks from the root to a null position based on the value of insert.key compared to x.key, reliably reaching the correct insertion point.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parent pointer is tracked during traversal; after the loop there is no reference to the node that should become the parent of insert.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: insert is not attached to the parent node at all. The correct child relationship based on key comparison is never established.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: insert.parent is not set, and is assigned a value unrelated to the traversal (null).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Method returns null or leaves the tree unmodified for most inputs. The method does not handle the empty tree case correctly, nor does it properly attach the new node as per the BST rules.

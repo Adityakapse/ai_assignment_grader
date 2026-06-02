@@ -93,8 +93,8 @@ def _rq1_runs_subplot(ax, df_q, approach, students, runs):
     x = np.arange(len(students))
     width = 0.7 / len(runs)
     for i, run in enumerate(runs):
-        run_data = subset[subset["run"] == run].set_index("student_id")
-        heights = [float(run_data.loc[s, "total"]) if s in run_data.index else 0.0
+        run_data = subset[subset["run"] == run].groupby("student_id")["total"].first()
+        heights = [float(run_data.loc[s]) if s in run_data.index else 0.0
                    for s in students]
         offset = (i - (len(runs) - 1) / 2) * width
         ax.bar(x + offset, heights, width, label=run.replace("run_", "Run "),
@@ -445,6 +445,113 @@ def plot_rq2_spearman(df, gt_df, output_dir, model=None):
     _plot_rq2_spearman_figure(df, gt_df, model, output_dir, "rq2_spearman_by_approach.png")
 
 
+def _plot_rq2_time_figure(df, models, output_dir, filename):
+    group_a = ["approach_1", "approach_3"]
+    group_b = ["approach_2", "approach_4"]
+    ordered = [a for a in group_a if a in df["approach"].values] + \
+              [a for a in group_b if a in df["approach"].values]
+
+    model_colours = _model_colour_map(models)
+    bar_width = 0.22
+    n_models = len(models)
+    offsets = np.linspace(-(n_models - 1) / 2, (n_models - 1) / 2, n_models) * bar_width
+
+    # x positions with gap between groups
+    x_positions = []
+    for i, a in enumerate(ordered):
+        x_positions.append(i if a in group_a else i + 0.7)
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    for j, model in enumerate(models):
+        df_m = df[df["model"] == model]
+        means = df_m.groupby("approach")["time_seconds"].mean()
+        heights = [means.get(a, 0.0) for a in ordered]
+        xpos = [x + offsets[j] for x in x_positions]
+        bars = ax.bar(xpos, heights, width=bar_width,
+                      color=model_colours[model], label=model,
+                      edgecolor="white", linewidth=0.6)
+        for bar, h in zip(bars, heights):
+            if h > 0:
+                ax.text(bar.get_x() + bar.get_width() / 2, h + 0.3,
+                        f"{h:.0f}s", ha="center", va="bottom", fontsize=7)
+
+    n_a = len([a for a in ordered if a in group_a])
+    n_b = len([a for a in ordered if a in group_b])
+    mid_a = sum(x_positions[:n_a]) / n_a
+    mid_b = sum(x_positions[n_a:]) / n_b
+    y_label = -ax.get_ylim()[1] * 0.1
+    ax.text(mid_a, y_label, "Whole Rubric", ha="center", fontsize=9, color="gray")
+    ax.text(mid_b, y_label, "Per Rubric Point", ha="center", fontsize=9, color="gray")
+
+    divider_x = (x_positions[n_a - 1] + x_positions[n_a]) / 2
+    ax.axvline(divider_x, color="gray", linestyle="--", linewidth=1, alpha=0.6)
+
+    ax.set_xticks(x_positions)
+    ax.set_xticklabels([a.replace("approach_", "AP") for a in ordered], fontsize=10)
+    ax.set_ylabel("Avg time per grading (seconds)", fontsize=10)
+    ax.set_title("RQ2 — Average grading time by approach", fontsize=11)
+    ax.legend(title="Model", fontsize=8)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.yaxis.grid(True, linestyle="--", alpha=0.4, zorder=0)
+    ax.set_axisbelow(True)
+    plt.tight_layout()
+    _save(fig, output_dir, filename)
+
+
+def plot_rq2_time(df, output_dir, models=None):
+    models = models or sorted(df["model"].dropna().unique().tolist())
+    _plot_rq2_time_figure(df, models, output_dir, "rq2_time_by_approach.png")
+
+
+# ---------------------------------------------------------------------------
+# RQ3
+# ---------------------------------------------------------------------------
+
+def _plot_rq3_stability_figure(df, output_dir, filename):
+    deviations = (
+        df.groupby(["question_id", "student_id", "approach", "model"])["total"]
+        .agg(lambda x: (x - x.median()).abs().max())
+        .reset_index()
+        .rename(columns={"total": "max_dev"})
+    )
+
+    approach_colours = _approach_colour_map()
+    approaches = [a for a in APPROACHES if a in deviations["approach"].values]
+    models = sorted(deviations["model"].dropna().unique().tolist())
+
+    fig, ax = plt.subplots(figsize=(11, 5))
+    sns.boxplot(
+        data=deviations,
+        x="model", y="max_dev", hue="approach",
+        order=models,
+        hue_order=approaches,
+        palette={a: approach_colours[a] for a in approaches},
+        width=0.6, linewidth=1.2, fliersize=4,
+        ax=ax,
+    )
+
+    ax.set_xlabel("Model", fontsize=10)
+    ax.set_ylabel("Max deviation from median run (marks)", fontsize=10)
+    ax.set_title("RQ3 — Score stability across runs by model and approach", fontsize=11)
+    ax.set_xticks(range(len(models)))
+    ax.set_xticklabels([m.split(":")[0] for m in models], fontsize=9)
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles, [l.replace("approach_", "Approach ") for l in labels],
+              title="Approach", fontsize=8)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.yaxis.grid(True, linestyle="--", alpha=0.4, zorder=0)
+    ax.set_axisbelow(True)
+    plt.tight_layout()
+    _save(fig, output_dir, filename)
+
+
+def plot_rq3_stability(df, output_dir):
+    _plot_rq3_stability_figure(df, output_dir, "rq3_stability_by_model.png")
+
+
 # ---------------------------------------------------------------------------
 # RQ graphs go here — added one at a time after discussion
 # ---------------------------------------------------------------------------
@@ -464,6 +571,9 @@ def main(result_store_dir, datastore_dir, output_dir="graph_store",
     if "rq2" in rq_set:
         plot_rq2_mae(df, gt_df, output_dir)
         plot_rq2_spearman(df, gt_df, output_dir)
+        plot_rq2_time(df, output_dir, models=models)
+    if "rq3" in rq_set:
+        plot_rq3_stability(df, output_dir)
     if "rq4" in rq_set:
         plot_rq4_leniency(df, gt_df, output_dir)
 

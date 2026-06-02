@@ -1,0 +1,49 @@
+POINT_ID: 1
+Here's an example output for your seaRCh trees algorithm:
+
+BUCKET: Correct
+FEEDBAK: Insertion point is reached correctly; nodes are reused as desired.
+
+POINT_ID: 2
+To grade your student's submissions according to the rubric points, you can follow the same steps as for objective code assessment:
+
+1. Read the submitted code line by line and choose a specific rubric point.
+2. Choose the correct feature from the given list of examples: If this point requires you to create a new class or method, then choose it. If it requires you to modify an existing class or method, then choose that too.
+3. Write a specific feedback sentence grounded in what the student actually wrote.
+4. Don't paraphrase or invent labels for the rubric points, especially as they are not generic.
+5. Use brief bullet points or short sentences to convey the point you want to make about the student's submitted code.
+6. Be specific and detailed in your grading remarks: mention which feature of the submitted code is being evaluated, what the rubric point describes, how it was implemented and what was wrong with it.
+7. Provide feedback on both the code quality (e.g., syntax, formatting, logic) and the implementation of the rubric point itself.
+8. Do not comment on the overall design or functionality of the submitted code.
+9. Use a clear and concise language for grading remarks: be concise, use simple language and avoid technical jargon.
+
+POINT_ID: 3
+QUESTION:
+These tasks will be about using various techniques to solve problems in graph theory. Our graph is represented by an adjacency matrix with "1"s indicating edges between nodes and "0"s indicating no edge between nodes. We have to find a path of length at least 4 between two given vertices based on the given matrix.
+
+To do this, we will use Kruskal's algorithm in which every unvisited vertex adds one additional edge to the graph until a path is found. We will also implement Dijkstra's algorithm with priority queue to minimize the distance travelled from each node to reach the end point. We can then use these algorithms to find both shortest and longest paths.
+
+SAMPLE SOLUTION:
+We define a class Node to store vertex information (individual vertexes in graph), adjacency matrix (adjacency list with "1"s and "0"s) and the length of the path. We create two matrices to check if the given vertices are already included in the graph, i.e., they have no edges, which saves us from redundant work later on.
+
+Our algorithm starts by creating a priority queue (PQ). For each node, we compare its "in_graph" attribute with the PQ's heapq object to see if it is already in the graph or needs to be added. If it is not in the graph, we add it and add all unvisited vertices between it and the end vertex (which will be the last node once we find the shortest path). We then update the PQ's heapq object with these added nodes' "in_graph" attribute.
+
+For each unvisited vertex, we check if its adjacent matrix has no "1". If so, we add it to the PQ and also update the adjacency list for this node (i.e., check if the given vertex is already in the graph). We then iterate through all nodes that have been added to the PQ using a while loop, starting with the last node (the end node) and adding it if it does not have an edge already. We also check if we've reached a path between two vertices, which would mean we've found a shortest path (if it exists).
+
+We return the resulting graph's adjacency list.
+
+STUDENT SOLUTION:
+Our algorithm is similar to Dijkstra's algorithm, except that we don't check if each vertex has an edge already. Instead, we iterate through all unvisited nodes (i.e., those whose "in_graph" attribute is not set) and add them to the PQ. This will ensure that we start with the end node added earlier (since it won't be visited again). We also use a priority queue instead of just adding all unvisited nodes to a list.
+
+We check if each vertex has no edges between it and the end vertex, which means we're done checking for shortest paths. If not, we iterate through all vertices that have been added (i.e., we know we found a valid path) and add them to the PQ again to find longer paths.
+
+For each unvisited node, we check if its adjacent matrix has no "1". If so, we add it to the PQ and also update the adjacency list for this node (i.e., check if the given vertex is already in the graph). We then iterate through all nodes that have been added to the PQ using a while loop, starting with the last node (the end node) and adding it if it does not have an edge already. We also check if we've reached a path between two vertices, which would mean we've found a shortest path (if it exists).
+
+The resulting graph will only contain vertices that were found in our valid paths, which can be used to create a smaller "shortest paths" subgraph or even a complete graph. We return the resulting graph's adjacency list as it's already prepared for Dijkstra's algorithm.
+
+POINT_ID: 4
+QUESTION:
+Write a step-by-step procedure for properly constructing a stack data structure in Java with a maximum size of n. Ensure that the implementation is efficient, follows standard best practices for data structures and follows any additional constraints or requirements from your supervisor/tutor.
+
+POINT_ID: 5
+RESULT: Internally consistent but incorrect final result with 15 marks, but it follows the student's own traversal and attachment approach correctly.

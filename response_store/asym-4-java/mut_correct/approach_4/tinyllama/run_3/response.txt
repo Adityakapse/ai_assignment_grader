@@ -1,0 +1,217 @@
+POINT_ID: 1
+Sure, here's an updated version with additional details on the student's written analyis:
+
+AsymQ4 QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`. Part B (loop):
+- Iterations: k starts at 1 and is multiplied by 2 each iteration. The loop continues while k <= N, so k reaches the bound after about log2(N) doublings. Number of iterations: Theta(log N). Per iteration: Theta(N). As per the rubric, the analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing. Bucket:
+- Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing. Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous. Correct (5 marks): Clear separation of f and g; the doubling loop and the linear loop are identified; line numbers referenced consistently.
+
+Brief Analysis: The program's best case worst-case analysis does not explicitly separate functions f and g, or loops vs non-loops. However, it does make clear that the analyzis is based on the non-looped version of each function. This means that the runtime will be proportional to the number of iterations k, which is dominated by a single loop per iteration (i.e. The logarithm). As for line numbers, they are clearly referenced consistently throughout the program. This shows good practice in program design and helps ensure that the rubric's evaluation criteria are being met.
+
+POINT_ID: 2
+Sure, here's a more detailed analyis for QuesTIOn 4:
+
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided. - Your analysiсs should include detailed analyses based on line numbers.
+
+Public final class AsymQ4 {
+    
+    // `a` has length N.
+    
+    // Your analyziS should be based on N.
+    
+    public static int f(int[] a) {
+        
+        int n = a.lengtH;
+        
+        int s = 0;
+        int k = 1;
+        
+        while (k <= n) {
+            
+            s += g(a, k);
+            
+            k = k * 2;
+            
+        }
+        
+        return s;
+    }
+    
+    private static int g(int[] a, int x) {
+        
+        int t = 0;
+        
+        for (int I = 0; I < a.lengtH; i++) {
+            
+            if (a[i] < x) {
+                
+                t += a[i];
+                
+                k = k * 2;
+                
+            } else {
+                
+                return t;
+            }
+        
+        }
+        
+        return t;
+    }
+    
+}
+
+Step 1: Find the constant time non-loop parts in f and g.
+
+For Step 3 (writing an analisys based on line numbers):
+
+In f, there are no predefined non-constant loops. You must analyze each segment of the function to determine its runtime complexity.
+
+In g, the constant-time sections at the beginning and end of the function are not considered non-constants. Therefore, we can only estimate their runtime complexity based on what is available in the code.
+
+Here's how we can find this information:
+
+1. Analyze each line of f (step 3):
+
+For each line (e.g., at index 6):
+
+    Look for a segment of code that has an inner loop (n < k) and/or a predefined loop (k > n). This means we can calculate the runtime complexity in this part of the function.
+
+2. Analyze each line of g (step 4):
+
+For each line (e.g., at index 13):
+
+    Look for a segment of code that has an inner loop (k < n) and/or a predefined loop (n > k). This means we can calculate the runtime complexity in this part of the function.
+
+Step 2: Implement each analysis based on line numbers, and check your work against the actual code.
+
+For Step 3: Analyze f:
+
+1. Step 6: For each line (e.g., at index 7):
+
+    Look for a segment of code that has an inner loop (n < k) and/or a predefined loop (k > n). This means we can calculate the runtime complexity in this part of the function.
+    
+    (Step 4: Calculate `f(a)` by analyzing each line):
+    
+        For each line (e.g., at index 12):
+        
+            If step 3:
+            
+                Run your analysis for this segment of code in f, and check your work against the actual code. The runtime complexity should be calculated as follows:
+                
+                `a[i] = n * k + (n - k) / n`
+                
+                This is the recursive formula used to calculate the maximum value of a non-constant loop.
+            
+3. Step 12: Calculate `f(a)` by analyzing each line in f, and check your work against the actual code.
+
+For Step 4: Analyze g:
+
+1. Step 7: For each line (e.g., at index 8):
+
+    Look for a segment of code that has an inner loop (n < k) and/or a predefined loop (k > n). This means we can calculate the runtime complexity in this part of the function.
+    
+    (Step 5: Calculate `g(a)` by analyzing each line):
+    
+        For each line (e.g., at index 14):
+        
+            If step 3:
+            
+                Run your analysis for this segment of code in g, and check your work against the actual code. The runtime complexity should be calculated as follows:
+                
+                `a[i] = n * k + (n - k) / n`
+                
+                This is the recursive formula used to calculate the maximum value of a non-constant loop.
+            
+3. Step 14: Calculate `g(a)` by analyzing each line in g, and check your work against the actual code.
+
+POINT_ID: 3
+[Student]
+Thank you for providing us with the rubric points and student-friendly explanations regarding the AsymQ4 function. Could you please summarize the student's feedback in one sentence or two?
+
+POINT_ID: 4
+Please provide detailed feedback on each function using the given rubric points and the chosen bucket labels. This should include specific analyzias for each step in each function, as well as justification for any assumptions or omissions in your choice of labels. Please make sure to use Theta notation throughout all analyses.
+
+POINT_ID: 5
+Yes, you can do it! Our text field above has been formatted for ease of writing and analysis.
+
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`. You must write your answer in text format, including detailed analyses of both functions with a list of named bucket labels (one or two sentences each) that best describe what they do. Use Theta notation for any mathematical constants you need to define. Your output should include specifics such as the total cost of Part E and the number of iterations and doublings in each loop, and provide justification for each step based on your method of analysis.
+
+POINT_ID: 6
+Sure, I can provide you with the feedback sentence that matches the rubric point in the given student solution:
+
+BUCKET: "The asymptotic worst-case running time of functions f and g is Theta(log N) x Theta(N)"
+
+POINT_ID: 7
+Here is an additional assessment of the student's written asymptotic-complexity analysi:
+
+SAMPLE SOLUTION:
+Let N be the length of the input array `a`, and let `f` and `g` be the functions defined as follows:
+
+```c++
+#include <iostream>
+using namespace std;
+
+template<typename T>
+void big_O(const string& fname, const string& func, const int n, const string& tgt) {
+    // ...
+}
+
+template<typename T>
+double theta(int n) {
+    return 1.0; // constant time cost per iteration
+}
+
+// ...
+```
+
+Method f (input array `a`):
+- Part A: int n = a.length;
+- Part B (while loop): condition k <= n, the body calls g(a, k) and doubles k.
+- Per iterations: Theta(1).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Method g (input array `a`):
+- Part D: int t = 0; - constant time
+- Part E (for loop): scan the entire array a regardless of x.
+- Per iterations: Theta(1) - one array read, one comparison, possibly one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Method g (input array `a`):
+- Parts A and C are Theta(1) due to the initial constant time cost per iteration in method f.
+
+Overall running time of method f (input array `a`):
+Theta(1) + Theta(log N) + Theta(N) = Theta(N).
+
+Method g (input array `a`):
+- Parts A and C are Theta(1) due to the initial constant time cost per iteration in method f.
+
+Overall running time of method g (input array `a`):
+Theta(1) + Theta(log N) + Theta(N) = Theta(N).
+
+POINT_ID: 8
+Sure! Here's a summary of the student's analyses:
+
+BUCKET: <exact bucket label>
+FEEDBACK: <one or two sentences referencing the student's actual analysi:
+
+1. Line 2-4: The function f takes an array `a` as input, which has length N. It calculates a constant time worst case running time of O(N) and also an asymptotic worst case running time of O(log N).
+
+2. Lines 6-8: AsymQ4 uses Theta notation with tiugh bounds (`tiith` for the tight bound `t`, `h` for half-open interval `(0,h)`) and inserts buckets as defined in the rubric. The function g has a single iteration that doubles the size of the input array (i.e., n).
+
+3. Line 12: AsymQ4's analysi also includes a detailed analysis of the loop (`Part A`) that takes N iterations and costs Theta(logN) times, or Theta(N) per iteration. The function g is defined as a single linear scan, with no doubling or other time-consuming operations.
+
+4. Line 15: AsymQ4's buckets are wrong (no `semi` marks), since the loop cost doesn't take into account any multiplication that could be done using own values but unclear or partially derived. Correct buckets should only consider the actual multiplication operation in each iteration.
+
+POINT_ID: 9
+Question: Calculate the asymptotic worst case running time of two functions, `f` and `g`, with lengths `a` and `b` respectively. Consider both functions as part of a larger problem, and write an analyziation based on line numbers that is tailored to their inputs. Ensure that your response includes a detailed analysis of each loop and its cost per iteration, along with the overall running time of each function. Your output should be in the style and format provided.
+
+POINT_ID: 10
+Here's a summary of the results:
+
+BUCKET: Theta(logN)
+FEEDBACK: The function's asymptotic worst-case runtime is based on a length N, which is given as input. The function's output for each loop iteration will be:
+- Part A: int n = a.lengtH; int s = 0; int k = 1; - constant time (Theta(1))
+- Part B (while loop): condition k <= n, the body calls g(a, k), which doubles k (Theta(N) per iteration). The final cost is:
+- Total time: Theta(logN x Theta(N)) = Theta(logN) + Theta(N) + Theta(1); RUBRIC POINT: Wrong (0): Final complexity missing/incorrrect. Semi (7): States Theta(N log N) but with missing reasoning. Correct (14): Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N). Internally consistent but incorrect final result (10 marks): Final not Theta(N log N), but correctly summated from own earlier values.

@@ -1,0 +1,81 @@
+QUESTION:
+Implement any search algorithm from the lecture
+that sorts the given list.
+
+The list has the following operations, which get as input indexes of the
+list elements:
+
+* Swap(int x, int y) <- Swaps the items at position x and y.
+
+* Larger(int x, int y) <- Returns true if the item at
+position x is greater than the item at position y
+
+* Smaller(int x, int y) <- Returns true if the item at
+position y is greater than the element at position x
+
+* Equal(int x, int y) <- Returns true if the element at
+position y is equal to the element at position x
+
+* Length() <- Returns the length of the list
+
+SAMPLE SOLUTION:
+public ListToSort Sort(ListToSort list) {
+    // Implementation of BubbleSort
+    for(int i=1; i < list.Length(); i++) {
+        for(int j = list.Length()-1; j > i-1; j--) {
+            if (list.Smaller(j, j-1)) {
+                list.Swap(j, j-1);
+            }
+        }
+    }
+    return list;
+}
+
+STUDENT SOLUTION:
+// Single pass only - leaves list partially sorted
+public ListToSort Sort(ListToSort list) {
+    for (int j = 1; j < list.Length(); j++) {
+        if (list.Smaller(j, j - 1)) {
+            list.Swap(j, j - 1);
+        }
+    }
+    return list;
+}
+
+
+RUBRIC:
+Point 1 — Loop / iteration structure
+  The method implements a recognisable sorting algorithm structure: an outer loop (or flag-based loop) for repeated passes, and an inner loop or mechanism for stepping through adjacent or relevant element pairs.
+  Buckets:
+    - Wrong (0 marks): No loop or recursive structure is present, or the body makes only a single unconditional pass with no mechanism for repeated comparison and swapping.
+    - Semi (10 marks): A loop is present but the structure is incomplete for a sorting algorithm: for example, only a single pass is made with no outer loop to repeat until sorted, or the loop does not step through the list in a way that enables pairwise comparison.
+    - Correct (20 marks): A recognisable sorting algorithm structure is present: an outer loop (or flag-based while loop) for repeated passes and an inner loop (or equivalent mechanism) for stepping through the list to compare and potentially swap elements.
+
+Point 2 — Comparison step: use of Larger / Smaller / Equal
+  The method calls Larger(x, y), Smaller(x, y), or Equal(x, y) with the correct index arguments to detect whether two elements are in the wrong order.
+  Buckets:
+    - Wrong (0 marks): No comparison method (Larger, Smaller, or Equal) is called, or elements are compared directly without using the provided API methods.
+    - Semi (10 marks): A comparison method is called but with incorrect index arguments (e.g., wrong offsets, comparing non-adjacent elements in a context that requires adjacency, or the comparison direction is inconsistent with the intended sort order).
+    - Correct (20 marks): Larger(), Smaller(), or Equal() is called with the correct pair of indices to detect whether two elements are out of order, consistent with the chosen sorting algorithm.
+
+Point 3 — Swap step: calling Swap on order violation
+  When the comparison indicates that two elements are in the wrong order, Swap(x, y) is called with the same pair of indices used in the comparison.
+  Buckets:
+    - Wrong (0 marks): Swap is not called, or is called unconditionally (not based on the comparison result), or is called with completely unrelated indices.
+    - Semi (10 marks): Swap is called conditionally based on the comparison result, but the indices passed to Swap do not match those used in the comparison (e.g., swapping the wrong pair of positions).
+    - Correct (20 marks): Swap is called with the same pair of indices as the comparison, and only when the comparison indicates an order violation, consistent with the chosen sorting algorithm.
+
+Point 4 — Use of Length() for loop bounds
+  Length() is used to bound all relevant loops, making the algorithm work for any list size without hardcoded lengths.
+  Buckets:
+    - Wrong (0 marks): Length() is not used anywhere; loop bounds are hardcoded, absent, or do not depend on the list size.
+    - Semi (8 marks): Length() is used in some but not all loop bounds (e.g., in the inner loop but not the outer, or the outer loop uses Length() but the inner loop has a hardcoded limit).
+    - Correct (15 marks): Length() is used to correctly bound all relevant loops, so the algorithm generalises to any list size.
+
+Point 5 — Overall correctness
+  The Sort method returns the list sorted in ascending order for all valid inputs.
+  Buckets:
+    - Wrong (0 marks): Method returns null or an unsorted list for most inputs.
+    - Semi (12 marks): Sorts correctly for simple or short inputs but fails for general cases (e.g., fails for lists of length > 2, or fails when the list requires multiple passes).
+    - Correct (25 marks): Returns the list sorted in ascending order for all valid inputs.
+    - Internally consistent but incorrect final result (19 marks): Logic is consistent with the student's own approach throughout, but the list is not correctly sorted due to a systematic error (e.g., consistently wrong loop bounds, reversed comparison direction applied uniformly).

@@ -1,0 +1,179 @@
+POINT_ID: 1
+Here's another version of the same code with added comments to explain each step of the analysis:
+
+```java
+// Define functions with a function name as a string.
+public final class AsymQ1 {
+     // `a` has length N.
+     // Your analysiwse should be based on N.
+     public static int f(int[] a) {
+         int n = a.lengtth; // Get the length of array "a".
+         int s = 0; // Set initial value of sum of elements to zero.
+         for (int I = 0; I < n; i++) { // Loop over all elements in array "a" from index "i" to index "i+1" (included).
+             for (int j = 0; j <= i; j++) { // Loop over each "j" such that 0<=j<i. This is a nested loop.
+                 s += a[j] * a[i]; // Multiply the element at index "i" by the elements of array "a" at index "j". For example, if i=1 and j=2, the element at index 1 would be multiplied with the element at index 2. // Add this result to the sum.
+             }
+         }
+         int t = g(a); // Call function g that returns a single value only, called "g" here. // Multiply each result of nested loops by a constant "t". // This is just an initialization step. // Sum of all elements up to index 0 (excluding index 0) + sum of all elements from index 1 to the end (which is inclusive).
+         return s + t; // Combine results in one value that represents the sum of all elements up to index 0 (including index 0), and the result of adding the sums of all elements at index 1 to the end.
+     }
+
+     private static int g(int[] a) {
+         int n = a.lengtth; // Get the length of array "a".
+         int t = 0; // Initialize an initial value of constant "t" for the sum of all elements.
+         int k = n; // Set initial value of counter "k" to the length of array "a", initialized to be "n".
+         while (k > 0) { // Loop over each index "k" such that 0<=j<i < N, where 0<=j<=i is the index of the current element. This is a nested loop.
+             t += a[k-1]; // Add the value at index "k-1" (the value just before the current element) to the sum of all elements. For example, if k=2 and j=1, we would add the value at index 2 to the sum of all elements.
+             k /= 2; // Divide "k" by two, for division into small loops. This ensures that each loop has a constant number of iterations. // Sum of all elements up to index "j-1", which is a smaller range than "j". // Multiply this result by the sum of all elements, which is the current element itself. // Add the multiplication to the constant "t" to get the value of the final sum.
+         }
+         return t; // Get the value of the final sum.
+     }
+
+     public static void main(String[] args) {
+         int[] array = {1, 2, 3, 4}; // Create an array with 4 elements.
+         System.out.println("Before calling g():" + Arrays.toString(array)); // Output the input array as a string.
+         int sumOfAllElements = g(array); // Call function "g" to get the final value of the sum of all elements (which is 12).
+         System.out.println("After calling g():" + Arrays.toString(array)); // Output the output array as a string.
+     }
+}
+```
+
+POINT_ID: 2
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the length N of the input array `a`. - You must write your answer in the text field provided. - Your answer should include a detailed analyziS of both functions. - You can use Theta notation or big-O notation with appropriate tie-breakers. - Your analyziS should refer to line numbers, and for every loop you need to specify the number of iterations and the cost per iteration. Line 6: n = a.lengtH; s = 0; k = n; t = g(a); return s + t; Line 15: Part E
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminates after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times). - Cost per iteration: Theta(1) + Theta(log N) + Theta(1) = Theta(log N)
+- Overall running time of g: Theta(1) + Theta(log N) + Theta(1) = Theta(log N)
+
+POINT_ID: 3
+According to the rubric point, the student's written analysi of the functions below should include a detailed analysi of both functions with specific references to the input array `a`. The analysi should refer to Lines Number and use the Theta notation with TBGT bounds. Each loop should have a cost of O(N) time, and the function should run in O(N) time. Additionally, the analysi should include Theah(N^2) and Wrong (0 marks), while having strong justifications for their respective statements.
+
+POINT_ID: 4
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+public final class AsymQ1 {
+    // `a` has length N.
+    // Your analyzi...
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array `a`.
+
+Method f
+Part A: int n = a.length; int s = 0; — constant-time initialisation. Part B (nested loops over i, j): the body executes for every (i, j) with 0 <= j <= i < N. Part C: int t = g(a); return s + t; — a single call to `g` plus a constant-time return. Parts A and the return statement of Part C are Theta(1). Part B (nested loops):
+- Combined iterations: when I = 0 the inner loop runs once; when I = 1 it runs twice; ...; when I = N-1 it runs N times. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2). Part C:
+- Cost per iteration: Theta(1) — two array reads, one multiplication, one += assignment, loop checks and increments. - Total cost of Part C: Theta(N^2). Overall running time of f:
+Theta(1) (Part A) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2). Method g
+Part D: int n = a.length; int t = 0; int k = n; — constant-time initialisations. Part E (while loop): each iteration accesses `a[k-1]` and halves `k`, so the loop terminates after Theta(log N) iterations (`k` replaces itself logarithmically). - Iterations: k starts at N and is replaced by k/2 each iteration, so the loop terminate(s) after Theta(log N) iterations (k reaches 0 when it has been halved log2(N)+1 times). Total running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N). STUDENT SOLUTION:
+The function f has a loop, so it runs in O(N) time. Inside the loop body it performs some small operations like adding and multiplying values from the array, and halving `k`. The g method does some halving thing and looks small. The answer is f = O(N) and g = O(1). RUBRIC POINT:
+Point 4 — f(): Cost per iteration
+  Theta(1) per inner iteration. Bu...
+
+POINT_ID: 5
+Here's a fresh take on the same problem, using different symbols and noting the constraints of each symbol:
+
+Question:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysi of both functions.
+- You can use the following symbols or their equivalent:
+
+BUCKET: [exact]
+FEEDBACK: [specific]
+FEEDBACKS: [exact]
+
+Rule:
+For each loop, perform an action with a specified cost. The asymptotic worst case running time of the function is equal to the sum of these actions multiplied by the number of iterations. Each iteration involves performing at most (or fewer if it is a loop) operations with expected cost (i.e., using buckets [specific] and getting the correct feedback from an action).
+
+- You must refer to each loop (and possibly other parts of the function, depending on context) by its specific name. For example:
+  Part A: int n = a.length; int s = 0; ...
+  Part B: [specific] costs and feedbacks that follow.
+- You must use all available symbols for your answers or equivalent ones.
+- Your answer should be written in clear, concise English.
+- Use appropriate and consistent variable names throughout.
+- If the function is complex or ambiguous, include a diagram of the buckets or a list of relevant actions.
+- Ensure that each loop is logically independent from all others.
+
+Here's an attempt using the symbols:
+
+Question:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include detailed analysi of both functions.
+- You can use the following symbols:
+
+BUCKET: [specific]
+FEEDBACK: [specific]
+FEEDBACKS: [exact or specific]
+
+Rule:
+For each loop, perform an action with a specified cost and obtain correct feedback from an action. The asymptotic worst case running time of the function is equal to the sum of these actions multiplied by the number of iterations. Each iteration involves performing at most (or fewer if it is a loop) operations with expected costs (i.e., using buckets [specific] and getting the correct feedback from an action).
+
+- Part A: int n = a.length; int s = 0; ...
+  - This specific symbol refers to an array of length N, which is input to the function.
+- The first loop uses the following costs (in order): [specific] x [specific] cost(s). For each iteration involving that action, the expected cost is [specific] + [specific] times [specific] x [specific] cost(s). - This specific symbol refers to an array of length N, which is used as the input in this loop.
+- Part B: int n = a.length; int s = 0; ...
+  - The second loop uses the following costs (in order): [specific] x [specific] cost(s). For each iteration involving that action, the expected cost is [specific] + [specific] times [specific] x [specific] cost(s). - This specific symbol refers to an array of length N, which is used as the input in this loop.
+- Part C: int n = a.length; int s = 0; ...
+  - The third loop uses the following costs (in order): [specific] x [specific] cost(s). For each iteration involving that action, the expected cost is [specific] + [specific] times [specific] x [specific] cost(s). - This specific symbol refers to an array of length N, which is used as the input in this loop.
+- Each loop involves performing at most (or fewer if it is a loop) operations with expected costs.
+
+As you can see, the symbolic analysis is quite straightforward here. The actual implementation may differ slightly from what you have, but the basic concepts are still there.
+
+POINT_ID: 6
+Here's a summary of the student's written analysi:
+
+AsymQ1: A function to calculate the asymptotic worst-case running time (as defined in the rubric point) for the functions `f` and `g`, based on the length of the input array `a`. The main function is called with the length of the array as argument. In `f(int[] a)`, the loop iterates N times, where N is the length of the array. As mentioned in the rubric point, the function is based on N, and it can be seen that this is an asymptotic run-time analysis.
+
+For the main analysi, we write a detailed analysi for both functions, including step-by-step calculations, constant-time operations, and additional information about the cost of each operation. For `f(int[] a)`, the function performs some simple calculations like adding or multiplying values from the array, halves itself when needed, and returns the result. The g method calls g(a), but it doesn't perform any other work besides calling it. Overall, the asymptotic worst-case running time is O(N) time.
+
+Furthermore, the student writes two buckets for each loop: one bucket indicating how many iterations were made and another indicating how much time was spent per iteration, which will be Theta(1), given by the constant term of g(a). We can then use this information to calculate the final analysis.
+
+Lastly, based on the student's summary, the rubric point is correct, as they correctly account for both the g method and the constant work done in each loop. The student also correctly notes that the cost of each operation comes from g but is clear about the type of time (asymptotic) the student has calculated.
+
+POINT_ID: 7
+Here's another attempt to provide a more detailed analysi of the functions in the given text:
+
+FUNCTIONS:
+- Calculate the asymptotic worst-case running time of functions `f` and `g`, as a function of input array length `n`.
+
+BUCKETS:
+- Write the exact rubric point `BUCKET` with its title, description, and list of named bucket labels (each with an associated bucket label string).
+
+RUSSHYE:
+- Use The Theta notation or Big-O notation with timed bounds to refer to line numbers.
+
+ASSESSOR:
+- Write your answer in the given text field provided, including details on each function and how they are used in the problem statement.
+
+POINT_ID: 8
+Question:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyziс of both functions.
+- You can use Theta notation or the big-O notation with ti ght bounds.
+- Your analysiс should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyziѕshould be justified with one or two sentences.
+
+POINT_ID: 9
+Assessor: Thank you for providing your analysis of the AsymQ1 function that calculates its asymptotic worst case running time based on both functions, `f` and `g`. Your feedback is detailed and well-grounded in the text provided. 
+
+Bucket:
+I appreciate the specificity and detailing of your analyses. However, I would like to see more information regarding the analysis of each loop or iteration inside `f`, including the total number of iterations required for the function to run, along with any related costs or overheads. This can help in understanding the overall complexity of the function better. Please provide more details regarding the loop's cost per iteration and any relevant assumptions made by the author. 
+
+Based on the given text, I recommend grading this rubric point as WRONG (0 marks), considering that the loop count is not combined into a single run, and the total number of iterations is not included in its total cost. Furthermore, none of the analyses provided mention any specific assumptions made by the author regarding the loop's cost or overhead, further supporting the wrong rubric point.
+
+POINT_ID: 10
+Answer:
+- FEEDBACK must be specific to the student's submitted analysi, not generic
+- FEEDBACK must refer to the student's actual analyzi, not the rubric's definition of worst case running time
+
+BUCKET: `O(N)`
+FEEDBACK: `Wrong`
+FEEDBACK: As the function f runs in O(N) time, it cannot run in WCRT as stated by the rubric. However, it does meet all other criteria and is considered correct for this rubric point.
+
+POINT_ID: 11
+As per your requirement, we have created a text field for you to provide detailed analysios based on N of the input array `a`. Please feel free to use any suitable Theta notation or Big-O notation with tiers as per your preference, and also please refer to line numbers. In terms of loop analysis, we have defined two loops over each integer value in the array, and inside the loop, we make several constant-time operations like accessing the array elements and multiplying them by elements on adjacent positions. Therefore, we obtain Theta(1) per loop. Once these loops are done, we add a constant-time return value at the end, resulting in Theta(N^2). Overall, the function runs in O(N) time. We have calculated the complexity of each part separately using Theta notation and line numbers.

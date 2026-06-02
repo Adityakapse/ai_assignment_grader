@@ -1,0 +1,124 @@
+POINT_ID: 1
+Sure, here's a modified function to calculate the LCM of two integers:
+
+```java
+import java.util.GregorianCalendar; // for date manipulation
+
+public class LeastCommonMultipleCalculator {
+    private static int gcd(int a, int b) {
+        if (b == 0) return a;
+        else return gcd(b, a % b); // recursion with base case
+    }
+    
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+}
+```
+
+This function calculates the LCM of two integers using a recursive approach. Here's how it works:
+- The base case is implemented by returning `0` if either `b` or `a` are `0`.
+- The reduction step (i.e., dividing both `a` and `b` by their greatest common divisor) is done with a recursive call to the `gcd` function, passing in `a` and `b` as arguments.
+- If `gcd(a, b)` returns `0`, the base case has been reached, so we return `0`. Otherwise, the result of the LCM calculation is returned (or calculated) by recursively calling `gcd` with `b` and `gcd(a, b)`.
+- The call to `lcm` returns the LCM of two numbers.
+
+POINT_ID: 2
+Here's a modified solution that uses the GCDBase case as the terminating condition instead of gcd(a,b):
+
+```python
+import math
+from typing import Callable
+
+def gcd_impl(a: int, b: int) -> int:
+    if a < b:
+        return gcd_impl(b, a)
+    
+    return (a * b) // gcd_impl(b, b % a)
+
+def gcd_gcdunder(a: int, b: int) -> int:
+    while b != 0:
+        if b == 0:
+            return a
+        
+        a = b
+        b = gcd_gcdunder(b, a % b)
+
+def lcm_impl(n1: int, n2: int):
+    r = n1 * n2 // gcd(n1, n2)
+    
+    return r if r != 0 else n1
+
+def lcm_gcdunder(a: int, b: int):
+    while a % b != 0:
+        r = (a * b) // gcd(a, b)
+        
+        # Base case
+        if r == 0:
+            return a
+        
+        a = r
+    
+    return a
+```
+
+This implementation uses the GCDBase case to terminate instead of gcd(a,b), which is correct but not the terminating condition. Instead, it uses the gcd function to terminate when b == 0. This allows for an easy and complete terminating condition.
+
+POINT_ID: 3
+To implement the Least Common Multiple (LCM) function based on the GC
+
+POINT_ID: 4
+QUESTION:
+What is the Least Common Multiple (LCM) and how does it work?
+
+RESPONSE:
+The Least Common Multiple (LCM) is a mathematical term used to determine the smallest number that is greater than or equal to two given numbers. It is defined as the least common multiple of the two given numbers, which means that it is the lowest number that is larger than both of them. Here's how it works:
+
+1. Define the LCM formula: The LCM is defined as follows: $lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcD(n_1,n_2)}$, where $n_1$ and $n_2$ are the two given numbers, and $gcD$ is a function that calculates the GCD of the two numbers.
+
+2. Calculate the GCD: To calculate the GCD of the two numbers, we divide each number by its GCD. If the result of this division (which becomes the GCD) is 1, we discard it and calculate the next number to be divided by the GCD until we find one that has no remainder.
+
+3. Calculate the LCM: After we've calculated the GCDs up to the second-last number, we divide each remaining number in the list by its GCD, but this time without discarding any of them. This reduces the list to a smaller set of numbers, one of which becomes the LCM.
+
+4. Finally, return the LCM: The LCM is the smallest number greater than or equal to all given numbers that we've calculated so far.
+
+This formula works because the GCD of two numbers can always be written as a product of smaller numbers, where each number in the product represents some smaller number that divides one of the original numbers. The first and last products are always 1 since they represent zero, while the intermediate products (the middle ones) represent smaller numbers that divide both of the original numbers into a common denominator. Once all intermediate products have been calculated, we discard any result whose remainder is not divisible by the GCD anymore. This reduces the list to one element less, which becomes our LCM.
+
+Note: In practice, the formula for the LCM can be slightly more complex than just calculating it by dividing up the numbers until no remainder is left (as in the formula above). However, this is still a valid and commonly used formula for solving problems involving the least common multiple.
+
+POINT_ID: 5
+To calculate the LCM of two given values using Python's built-in implementation, we can use the `gcd()` function and the `lcm()` function provided by the library `numbers`. Here's the modified code:
+
+```python
+import numbers
+
+def gcd(a, b):
+    """Given integers a and b, calculate the greatest common divisor"""
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+def lcm(a, b):
+    """Returns the least common multiple of two given integers"""
+    return a * b / gcd(a, b)
+```
+
+In this implementation, we use the built-in `numbers.gcd()` function to calculate the GCD between the two input values. The `lcm()` function uses the same function to compute the LCM of these two numbers. If you're using Numpy or Pandas for data analysis, you may want to replace `numbers` with one of those libraries.
+
+Note that this function can be implemented using a recursive function and the GCD formula using the following pseudocode:
+```
+function gcd(a, b) {
+    if (b == 0) return a;
+    else return gcd(b, a % b);
+}
+
+function lcm(a, b) {
+    return a * b / gcd(a, b);
+}
+```
+
+This implementation is efficient and correct for most common cases. We can use `gc.collect()` at the end of our Python program to collect unused memory in our running process. This way, we make sure that the heap space is freed when the program exits.
+
+POINT_ID: 6
+Feedback:
+The implementation of the Least Common Multiple (LCM) function in Python using the GCD implementation from the lecture is correct. However, it should be noted that the output for non-standard inputs may not always match the correct LCM due to rounding errors or other errors with the gcd implementation. The use of the GCDImportextension class provided by the lecture is also possible, but note that this is not required for function implementation.

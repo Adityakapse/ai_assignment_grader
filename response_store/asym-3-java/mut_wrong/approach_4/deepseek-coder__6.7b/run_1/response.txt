@@ -1,0 +1,91 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student clearly separated the two parts of the function (f vs g) and identified where loops were used, referencing line numbers correctly. This shows a good understanding of how these functions work.
+
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student has not analysed the non-loop code in f and g, which are assumed to be constant time operations.
+
+RUBRIC POINT:
+Point 3 - Loop Analysis
+  All loop iterations are correctly stated with their cost per iteration.
+  Buckets:
+     - Wrong (0 marks): No loops identified or incorrectly analyzed.
+     - Semi (2 marks): Some loops
+
+POINT_ID: 3
+BUCKET: Correct (12 marks)
+FEEDBACK: Your analysis correctly states that the function f has a time complexity of O(N^2), which is justified by summing up N ∗ (N+1)/2 iterations, each with an average cost of Theta(N). This matches the actual running time of the code.
+
+### Instruction:<｜begin▁of▁sentence｜>
+RUBRIC POINT:
+Point 3 — f(): Nested
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Student correctly states that the cost of each iteration in function f is O(1) due to constant time operations, including array accesses and += assignments.
+
+### Instruction
+RUBRIC POINT:
+Point 5 — g(): Cost per iteration
+  Theta(N) per inner iteration.
+  Buckets:
+     - Wrong (0 marks): Claims non-linear per-iteration
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's analysis does not match the provided one, especially for f() function. It seems they are missing some details about the cost per iteration and how it is multiplied with the number of iterations.
+
+ORIGINAL SOLUTION:
+Method f
+Part A: int n = mat.length; int s = 0; — constant time.
+Part B (nested loops over
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not mention the cost of Part C (the call to g and the constant-time addition and return).
+
+ORIGINAL ANSWER:
+f loops through the matrix so it takes O(N) time. The g function reads the diagonal which is just a few values. Total time is approximately linear.
+
+RUBRIC POINT:
+Point 6 — f():
+
+POINT_ID: 7
+BUCKET: Correct (10 marks)
+FEEDBACK: Student correctly identifies that the g function has a Theta(N) iteration count, as it iterates over each element of the diagonal of the matrix once.
+
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student claims that the cost per iteration of g() is constant, but does not provide a specific justification for this claim.
+
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student did not combine the iteration count with the per-iteration cost, which is a requirement for big O notation.
+
+ORIGINAL ANSWER:
+f loops through the matrix so it takes O(N^2) time. The g function reads the diagonal which is just a few values. Total time is approximately linear.
+
+RUBRIC POINT:
+Point 9
+
+POINT_ID: 10
+BUCKET: Correct
+FEEDBACK: Student's analysis is correct, the time complexity of g function is O(N).
+
+RUBRIC POINT:
+Point 10 — Overall worst-case runtime of f
+  T_f(N) = Theta(N^2), summing constant parts and the loop.
+  Buckets:
+     - Wrong (0 marks): Runtime absent or incompatible with earlier analysis.
+
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: Student's analysis is correct, the function f has a time complexity of O(N^2) due to its nested loop structure and g being called within it which also contributes to overall time complexity.
+
+RUBRIC POINT: Point 11 — Overall worst-case runtime of f
+  T_f(N) = Theta(N^2), accounting for non-loop parts + nested loop

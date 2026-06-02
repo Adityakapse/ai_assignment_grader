@@ -1,0 +1,859 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 1 — Splitting code into parts + referencing line numbers
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+  Buckets:
+    - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+    - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+    - Correct (5 marks): Clear separation of f and g; the doubling loop and the linear loop are identified; line numbers referenced consistently.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 2 — Constant-time non-loop parts
+  All non-loop code in f and g is Theta(1).
+  Buckets:
+    - Wrong (0 marks): Non-loop code not analysed or incorrectly claimed to be non-constant.
+    - Semi (3 marks): Some constant-time segments identified but others missing.
+    - Correct (5 marks): All non-loop regions stated as Theta(1).
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 3 — f(): Loop iterations
+  Theta(log N) iterations because k doubles each iteration.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(log N) (e.g. claims Theta(N)).
+    - Semi (6 marks): States Theta(log N) but does not explain the doubling of k.
+    - Correct (12 marks): Justifies Theta(log N) by explaining that k starts at 1 and is multiplied by 2 each iteration, so the loop runs until k exceeds N.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 4 — f(): Cost per iteration
+  Theta(N) per iteration, dominated by the call to g(a, k).
+  Buckets:
+    - Wrong (0 marks): Claims Theta(1) per iteration or ignores the cost of g.
+    - Semi (6 marks): Recognises the call to g but does not establish Theta(N) per iteration.
+    - Correct (12 marks): States Theta(N) per iteration, justified by g performing a linear scan of a regardless of x.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 5 — f(): Total loop cost
+  Theta(N log N) from Theta(log N) iterations x Theta(N) per iteration.
+  Buckets:
+    - Wrong (0 marks): No multiplication of iteration count x per-iteration cost, or unrelated complexity.
+    - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+    - Correct (8 marks): Theta(log N) x Theta(N) = Theta(N log N), with justification.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 6 — g(): Loop iterations
+  Theta(N) iterations of the for loop over a.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(N).
+    - Semi (6 marks): States Theta(N) but explanation incomplete.
+    - Correct (12 marks): Justifies Theta(N) because i runs from 0 to a.length - 1 regardless of x.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 7 — g(): Cost per iteration
+  Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Claims non-constant per-iteration cost.
+    - Semi (6 marks): Suggests constant time but lacks explicit Theta(1) justification.
+    - Correct (12 marks): Each iteration Theta(1): one array read, one comparison, possibly one += assignment.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 8 — g(): Total loop cost
+  Theta(N) = Theta(N) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Does not combine iteration count x per-iteration cost.
+    - Semi (4 marks): Attempts multiplication using own values but unclear or partially derived.
+    - Correct (8 marks): Theta(N) x Theta(1) = Theta(N).
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 9 — Overall worst-case runtime of g
+  T_g(N) = Theta(N), summing constant parts and the loop.
+  Buckets:
+    - Wrong (0 marks): Runtime absent or incompatible with earlier analysis.
+    - Semi (6 marks): States Theta(N) but with missing reasoning.
+    - Correct (12 marks): Theta(1) + Theta(N) + Theta(1) = Theta(N).
+    - Internally consistent but incorrect final result (10 marks): Final not Theta(N), but correctly summed from own earlier values.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ4 {
+    // `a` has length N.
+    // Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int x) {
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and is doubled each iteration (k = k * 2). The loop continues while k <= N, so it runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by the call to g(a, k), which is Theta(N) (a single linear scan of a, see analysis of g). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: int t = 0; — constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t; — constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to i = a.length - 1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) — one array read, one comparison, possibly one += assignment, loop check and increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+
+
+RUBRIC POINT:
+Point 10 — Overall worst-case runtime of f
+  T_f(N) = Theta(N log N), accounting for non-loop parts + loop.
+  Buckets:
+    - Wrong (0 marks): Final complexity missing/incorrect.
+    - Semi (7 marks): States Theta(N log N) but with missing reasoning.
+    - Correct (14 marks): Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+    - Internally consistent but incorrect final result (10 marks): Final not Theta(N log N), but correctly summed from own earlier values.

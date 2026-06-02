@@ -1,0 +1,159 @@
+POINT_ID: 1
+FEEDBACK: The LCM calculation implemented using the GCDBased implementation from the lecture does not take into account the case where the base cases have to be executed recursively or iteratively. This means that the LCM function does not handle those cases correctly and may produce incorrect results. Therefore, the student's submission should only include a gcd function with the correct signature and a recognizable recursive or iterative structure for the reduction step. The Rubric Point for this criterion is Point 1 (Wrong) with a score of 8 marks.
+
+POINT_ID: 2
+I don't have access to a specific student solution, but I can provide you with an example implementation using "gcddiv" from the lecture. Here it is:
+
+```java
+import java.util.function.IntUnaryOperator;
+
+public class LCMCalculator {
+    public static void main(String[] args) {
+        // Sample Solution:
+        int gcd = gcddiv(24, 7);
+        System.out.println("LCM of 24 and 7 is: " + gcd);
+        
+        // Trivial stubs for the LCM calculator:
+        int gcdBaseCase = gcd(24, 7);
+        System.out.println("Base case for LCM of 24 and 7 is: " + gcdBaseCase);
+        int gcdIterativeCase = gcddiv(24, 7);
+        System.out.println("Iterative case for LCM of 24 and 7 is: " + gcdIterativeCase);
+    }
+    
+    public static int gcddiv(int base, int divisor) {
+        return gcdBaseCase != 0 ? gcdIterativeCase = gcd(base, gcdIterativeCase == 1 ? divisor : (base % divisor + divisor)) : base;
+    }
+    
+    public static void main(String[] args) {
+        int lcm = gcddiv(24, 7); // Sample Solution:
+        System.out.println("LCM of 24 and 7 is: " + lcm);
+        
+        int lcmBaseCase = gcd(24, 7);
+        System.out.println("Base case for LCM of 24 and 7 is: " + lcmBaseCase);
+        int lcmIterativeCase = gcddiv(24, 7);
+        System.out.println("Iterative case for LCM of 24 and 7 is: " + lcmIterativeCase);
+    }
+}
+```
+
+POINT_ID: 3
+QUESTION: In your implementation of the LCM function in C++, please use the implementation from the lecture (where it's possible). Additionally, can you include an example output with sample input and corresponding expected output?
+
+POINT_ID: 4
+QUESTION: Can you provide an example of how to implement a lcm function in Rust?
+
+ANSWER: Certainly! Here's an example implementation for calculating LCM using the Rust `gcd` and `lcm` functions:
+
+```rust
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_gcd() {
+        assert_eq!(gcd(10, 5), 15);
+    }
+
+    #[test]
+    fn test_lcm() {
+        let mut lcm = 0;
+        for I in 1..6 {
+            for j in 1..i {
+                lcm += (i * j) / gcd(i, j);
+            }
+        }
+        assert_eq!(lcm, 25);
+    }
+}
+
+fn main() {
+    println!("test gcd: {}", gcd(10, 5));
+    println!("test lcm: {:?}", lcm(10, 5));
+}
+```
+
+In this implementation, we've used the `gcd` and `lcm` functions to calculate the GCD (greatest common divisor) of two integers `a` and `b`. We then use this value as the base for the LCM calculation:
+
+- The function `gcd` takes in two arguments `a` and `b`, which must be integers.
+- It returns an integer `gcd` if these arguments are in fact GCD (or GCD = 0, meaning they divide each other). Otherwise, it returns `1`.
+- In our implementation, we call `gcd(a, b)` for each input value and store the result in a mutable variable `lcm`, which can be used to calculate LCM later.
+- We then loop through all possible values of `i` (inclusive) and `j` (inclusive), using the formula `i * j` as the base for the LCM.
+- Finally, we add up all the results (which are in fact sums of integers) to get our LCM value.
+
+POINT_ID: 5
+To calculate the least common multiple (LCM) of two given values using a Least Common Multiple (GCD) implementation, you can follow these steps:
+
+1. Define the GCD function that takes two non-negative integer inputs as arguments. The function returns the greatest common divisor for both inputs.
+
+```python
+import math
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        t = a % b
+        a, b = b, a // b
+    return a
+```
+
+2. Define the LCM function that takes two non-negative integer inputs as arguments and returns their LCM. The LCM is calculated by dividing the smaller number (LCM of a and b) by gcd(a, b).
+
+```python
+def lcm(a, b):
+    return (a * b) / gcd(a, b)
+```
+
+3. Define a sample solution that computes the LCM using your implementation. The code will prompt the user to input two non-negative integers and then compute their LCM using your function.
+
+Here's an example:
+
+```python
+import math
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        t = a % b
+        a, b = b, a // b
+    return a
+
+def lcm(a, b):
+    return (a * b) / gcd(a, b)
+
+def main():
+    try:
+        while True:
+            n1, n2 = map(int, input("Enter two non-negative integers separated by space: ").split())
+            print(f"LCM({n1}, {n2}) = {lcm(n1, n2)}")
+    except ValueError as e:
+        print(e)
+
+if __name__ == '__main__':
+    main()
+```
+
+This code prompts the user to enter two non-negative integers, computes their LCM using your function, and displays the result on the console. Note that you may need to install Python dependencies like `pyglet` for this to work.
+
+POINT_ID: 6
+Sure, here's a Python implementation of the "Greatest Common Divisor" (GCD) algorithm for calculating the least common multiple (LCT):
+
+```python
+import math # for dividing two numbers modulo each other
+
+def gcd(a, b):
+    while b != 0: # find greatest common divisor
+        t = b # save the remainder
+        b = a % b # calculate remainder by dividing a by b
+        a = t # update a with remainder a/b
+
+    return a
+
+def lcm(a, b):
+    r = (a * b) / gcd(a, b) # calculate LCM using the formula above
+    return r
+```
+
+The implementation follows the Python standard library `math` module for the division and modulo operations. The function `gcd` first divides each number by its remainder, which is then used to calculate the GCD. It then updates both variables a and b with the final quotient and remainder, respectively. The LCM formula is then calculated using the original inputs as their divisors (the final quotient), and the resulting value returned. This ensures that the LCM of two given numbers is the greatest common divisor of those two numbers, which in turn is also the least common multiple (LCM) for those two numbers.
+
+The function should only handle inputs where both numbers are positive integers, otherwise it will return a non-LCM value and not calculate anything meaningful. The final result is then calculated using this formula and returned as a float. The `lcm` function takes in two integer arguments and returns the LCM or `None` if they don't have any common divisors or if their GCD can't be calculated due to some input error.
+
+The code should be implemented using descriptive variable names, appropriate commenting and documentation throughout.

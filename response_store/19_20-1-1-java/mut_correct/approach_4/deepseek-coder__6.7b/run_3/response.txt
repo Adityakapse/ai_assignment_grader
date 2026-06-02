@@ -1,0 +1,44 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The gcd function seems to be defined but lacks an identifiable loop or recursion, nor does it correctly implement the Euclidean algorithm for finding the greatest common divisor of two numbers. It might not even use the correct parameters (two integers a and b) as per its signature.
+
+### Instruction
+RUBRIC POINT:
+Point 2 — lcm function present and structurally correct
+  
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The recursion does not terminate if b equals to zero. It should return a instead of returning gcd(r, b), which will cause an infinite loop when b is zero.
+
+Rubric point 2 - gcd base case / termination condition
+The recursive Euclidean algorithm correctly stops and returns the GCD when the remainder r is zero. The iterative version should also have a similar termination condition.
+B
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly implements the reduction step in their recursive GCD calculation. They use the formula gcd(a%b, b) or gcd(b, a%b), ensuring that they are reducing the problem towards termination. This is crucial for calculating LCM using the given formula.
+
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the LCM formula using the GCD function provided. They have used the structure (a * b) / gcd(a, b), which is mathematically equivalent to finding the LCM of two numbers.
+
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly implements Euclid’s algorithm for calculating the greatest common divisor (gcd) of two numbers. It also uses this gcd to calculate the least common multiple (lcm).
+
+RUBRIC POINT:
+Point 6 — Overall correctness of lcm
+  lcm(a, b) returns the correct least common multiple for all valid non-negative integer inputs.
+  Buck
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The solution implements the least common multiple (LCM) calculation based on the provided greatest common divisor (GCD). It correctly applies the formula for calculating LCM using GCD, which is lcm(a, b) = |a*b| / gcd(a, b).
+
+---
+
+BUCKET: Semi
+FEEDBACK: The solution implements a correct version of the greatest common divisor (

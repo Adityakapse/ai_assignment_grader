@@ -1,0 +1,199 @@
+POINT_ID: 1
+The Reverse Polish Notation / Postfix Notation is a special notation for mathematical expressions, where the numbers are given first, followed by the operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation. A calculator for this notation can be represented well with the help of a stack. The notation is processed from left to right.
+
+If a number is processed, it is put on the stack. If an operator is encountered, then the uppermost two numbers are taken from the stack, the operator is executed and the result is put back on the stack. After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method. It should be able to process the operators plus (+), minus (-), times (*) and division (/, rounded down). You will receive a stack with the following known methods, which you have to use in your implementation:
+
+1. public void push(int i); - Method to put a number on the stack
+2. public int pop(); - Method to remove a number from the stack
+3. public void push(int I); - Method to put an operator on the stack
+4. public int pop(); - Method to remove an operator from the stack
+
+The method receives as input a list of strings in which the numbers and operators are already separated (e.g., "1", "+", "2", "*", "-", "/", "+"). Strings can be converted with the help of IntegeR.parseInt(myString);. You will also get a stack, which you should use.
+
+The method should return the correct result as an integer. The implementation assumes that the input is a correct formula and implements all operators correctly.
+
+POINT_ID: 2
+As per the given material, the Reverse Polish Notation / Postfix Notation system used in this task is based on the Stack class available in Java. The method implemented for processing numbers and operators (plus (+), minus (-), times (*) and division (/, rounded down)) is called "calculator". The input array contains valid formulas, such as "1 * 2 + 3 * 4", "4 * 6 - 8 * 7", "9 / 2 - 4 // 1" and so on.
+
+The method receives a list of strings, each representing a separate formula with numbers and operators separated by commas or semicolons (e.g., "+", "-", "*", "/"). The IntegeR class is used to convert the input string into an array of integers. The "push" method is called for processing each number separately, while the "pop" method is called when reaching the end of the formula.
+
+The method calculates the result from the stack (pop) and returns it as an integer. The return value corresponds to the correct result that should be obtained after processing each formula correctly.
+
+In order to handle the Semi (8 marks) and Correct (15 marks) cases, the "push" method is called with each number on its own line (without operator or conversion), while the "pop" method takes the highest number on the stack and returns it in the correct format for the corresponding token.
+
+Finally, the method checks if the stack is empty, as it should be before processing any more formulas. The "emptystack()" and "push(int i)" methods are used to check if the stack has enough elements to process the current formula (if the user inputs an incorrect number or operator, the calculator would return 0).
+
+In summary, the implementation ensures that each correct formula gets a unique result, while ignoring wrong inputs. The method checks if the stack is empty at the end of processing all formulas, and terminates gracefully when there are no more operations remaining.
+
+POINT_ID: 3
+To implement such a calculator in a method, you would need to create a stack class to keep track of each operator and its corresponding value on top, and push/pop operations for each operation. For the operators (+, *, /), multiplication, division, and negation, you could define custom methods that perform arithmetic operations with two numbers using recursion or a loop. The calculator should check if the left-hand side is empty (i.e., there are no operators to pop) and if the right-hand side has only one operand (i.e., an operator followed by zero operands), then it should evaluate and push the result onto the stack. If the input string contains valid mathematical expressions, you can assume that the operators have been separated correctly from non-operand values, so you can safely use the stack to handle any arithmetic operations. You will also need to check if the pop operation takes an integer value (i.e., the number of operands) and perform appropriate error checking on the left or right hand side.
+
+Here's an example implementation using a stack class with methods for handling the operators (+, *, /), multiplication, division, negation, and empty/non-empty status. Note that this code is just one possible implementation and there may be different ways to implement each operator in a more efficient or flexible way.
+
+```java
+public class IntegerStack {
+    public booleaan emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+
+public int Calculator(String[] input, IntegerStack s) {
+    for (int I = 0; I < input.Length; ++I) {
+        switch (input[i]) {
+            case "+":
+                // Check if there are any operands to pop
+                int n1 = s.pop();
+                int n2 = s.pop();
+                int n3 = s.pop();
+                // Perform arithmetic operation with two numbers and push the result onto the stack
+                s.push(n3);
+                break;
+            case "*":
+                // Check if there are no operands to pop
+                int n1 = s.pop();
+                int n2 = s.pop();
+                int n3 = s.pop();
+                // Perform multiplication operation with two numbers and push the result onto the stack
+                s.push(n3 * n2);
+                break;
+            case "/":
+                // Check if there are no operands to pop
+                int n1 = s.pop();
+                int n2 = s.pop();
+                int n3 = s.pop();
+                // Perform division operation with two numbers and push the result onto the stack
+                s.push(n3 / n2);
+                break;
+            case "0":
+            case ".":
+                // Handle operators (either/and) when empty, or not when full
+                if (s.isEmpty()) {
+                    // Empty stack or no operators, pop and push as result
+                    s.pop();
+                    s.push(Integer.SEMI);
+                } else {
+                    // Not an empty stack with at least one operator, pop first two values and then compute the result (with recursion)
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    int n3 = s.pop();
+                    // Perform arithmetic operation with two numbers and push the result onto the stack
+                    s.push(n3);
+                }
+                break;
+            default:
+                // Check if the operator is valid (either/and)
+                if (!s.isEmpty() && s.peek() == Integer.OPERATOR && s.pop() != "0" && s.pop() != ".") {
+                    // Pop first two values and compute result (with recursion)
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    int n3 = s.pop();
+                    // Perform arithmetic operation with two numbers and push the result onto the stack
+                    s.push(n3);
+                } else {
+                    // Not a valid operator, pop and push semicolon (with recursion)
+                    s.pop();
+                    s.push(Integer.SEMI);
+                }
+        }
+    }
+    return Intege r;
+}
+```
+
+POINT_ID: 4
+Yes, the Reverse Polish Notation / Postfix Notation is a special notation for mathematical expressions that allows processing the operators plus (+), minus (-), times (*) and division (/, rounded down). The expression (1 * 2)+(3 * 4) would be "1 2 * 3 4 * +", while the operation could be simplified to "+". In this task, you are asked to implement a calculator using Reverse Polish Notation / Postfix Notation and process the operators in the given example.
+
+To achieve this, we will first create an IntegeirStack object that stores the operands (numbers or operators) on the stack. We then convert our input array of strings into an array of String objects representing each token, which will be processed by a for loop to extract the operator and the corresponding operand from each string. After each iteration through the loop, we will add the corresponding operand to the end of the stack.
+
+We use a helper method called emptyStack() that returns whether the stack is empty, as it does not make sense to process an expression with no operators or operands when the stack is empty. We also have a function called push(int) that adds the given number to the top of the stack (which must be an integer due to the input being Reverse Polish Notation), followed by calling pop() on the stack to remove it from the end of the array and return the value (if any).
+
+Similarly, we use a function called pop() that removes the last element from the stack. Finally, we have a helper method called Calculator(String[] input, IntegeirStack s) that processes the operators in the given example by processing each operator in turn and calling calculate(int i) for each token (i.e., adding/subtracting/multiplying/dividing), where calculate(int opcode) checks whether a particular opcode should be processed, and if so, calculates the corresponding result on the stack based on the previous values.
+
+Finally, we convert the final value back to its original string representation using the pop() method.
+
+POINT_ID: 5
+To implement this calculator in C#, here is the code:
+
+```csharp
+using System;
+
+namespace Reversed_Postfix_Notation
+{
+    public class IntegeRStack : Stack<int>
+    {
+        public void Push(int num) => base.Push(num);
+        public int Pop() => base.Pop();
+        public override string ToString() => base.ToString();
+    }
+    
+    public class IntegeRCalculator
+    {
+        public static bool IsEmptyStack(IntegeRStack s) => s.IsEmpty;
+        public static void Push(IntegeRStack s, int val) => s.Push(val);
+        public static int Pop(IntegeRStack s) => s.Pop();
+        
+        public static int Calculator(string[] input, IntegeRStack stack)
+        {
+            for (int I = 0; I < input.Length; i++)
+            {
+                switch (input[i])
+                {
+                    case "+":
+                        int n1 = Stack.Pop();
+                        int n2 = Stack.Pop();
+                        stack.Push(n2 + n1);
+                        break;
+                    
+                    case "-":
+                        n1 = Stack.Pop();
+                        n2 = Stack.Pop();
+                        stack.Push(n2 - n1);
+                        break;
+                    
+                    case "*":
+                        int n1 = Stack.Pop();
+                        int n2 = Stack.Pop();
+                        stack.Push(n2 * n1);
+                        break;
+                    
+                    case "/":
+                        n1 = Stack.Pop();
+                        n2 = Stack.Pop();
+                        if (stack.IsEmpty)
+                            throw new Exception("Cannot divide by zero");
+                        
+                        stack.Push(n2 / n1);
+                        break;
+                    
+                    default:
+                        stack.Push(IntegeR.Parse(input[i]));
+                        break;
+                }
+            }
+            
+            return stack.Pop();
+        }
+        
+        public static bool IsValidInput(string[] input) => input.All(IsDigit);
+    }
+    
+    class IntegeRStack
+    {
+        private readonly Stack<int> _stack = new();
+        
+        public void Push(int val) => _stack.Push(val);
+        public int Pop() => _stack.Pop();
+        public override string ToString() => _stack.ToString();
+    }
+    
+    class IntegeRCalculator : Reversed_Postfix_Notation.IntegeRCalculator, System.IComparable<IntegeRCalculator>
+    {
+        public int CompareTo(IntegeRCalculator other) => _stack.Pop().CompareTo(_stack.Pop());
+        
+        public override string ToString() => base.ToString();
+    }
+}
+```

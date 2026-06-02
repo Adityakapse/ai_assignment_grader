@@ -1,0 +1,150 @@
+POINT_ID: 1
+To score 75 points, your job is to write a detailed analysi of both functions `f(int[] a, int[] b)` and `g(int[] b, int[] a)` in the text provided. Your answer should include a detailed analyzi of both functions, including an explanation for each loop or step, Theta notation with appropriate bounds (if applicable), justification for the choice of runtime metrics to use, and a justified comparison between each function's time and cost based on given rubric points (using the big-O notation if necessary). Your analysi should include line numbers where relevant to reference and explain.
+
+POINT_ID: 2
+Here's a summary of the main points in the text:
+
+1. Calculate the asymptotic worst-case running time for the functions `f` and `g` (functions of length M and N respectively) using the Theta notation or big-O notation with timed bounds.
+2. In the text, the analysi is based on M and N (lengths of array `a` and sorted array `b`), but you can use any lengths that fit your analysis.
+3. You should refer to line numbers for each step in the analyzis.
+4. The main cost comes from the `g(b, a[i]);` call (Theta(1) with timed bounds), which has log N iterations and dominates all the rest of the time.
+5. The method f also has some non-loop parts that use Theta(1), so its overall cost is around log N.
+6. The method g uses a while loop with mid = (l + r) / 2, which runs log N iterations. This is constant-time in the time complexity sense.
+
+POINT_ID: 3
+Here's a summary of the student solution and feedback, along with a possible grading rubric:
+
+BUCKET: "AsymQ2"
+FEEDBACK: "Time O(MlogN), space O(1) for M log N iterations, Theta(logN), Asympetic worst-case running time."
+
+RUBRIC: 5 points for each line numbered. Each step of the analyzis should be justified with a sentence (or two sentences) based on the line numbers. Use the big-O notation or Theta notation with tiith bounds to justify your analysi. The analyzsi should refer to M and N, and include a detailed analysi of both functions. The final result should show the asymptotic worst-case running time.
+
+EXAMPLE:
+f(arr)
+(int[])
+     int m = arr.lenge(0);
+     int s = 0;
+     for (int i = 0; I < m; i++) {
+         int t = g(arr, arr[i]);
+         if (t >= 0) s += t;
+     }
+     return s;
+
+SAMPLE SOLUTION:
+Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: int m = arr.lenge(0); int s = 0;
+(for loop):
+- Iterations: the loop runs over I = 0..M-1, so it has M iterations.
+- Cost per iteration: dominated by the call to g(arr, arr[i]); since g is a binary search for array b
+- Total cost of Part A: Theta(M) x Theta(log N).
+
+Part B (loop):
+- Iterations:
+- Iteration count missing or not Theta(M)
+- Cost per iteration: dominated by the call to g(arr, arr[i]); since g is a binary search for array b
+- Total cost of Part B: Theta(log N) x Theta(1).
+
+Method g
+Part D: int l = 0; int r = b.lenge(b.lenge(l), b[b.lenge(l, l+1)]);
+(while loop):
+- Iterations: the loop maintains a sea of array [l, r]; each iteration either returns (so loop ends) or replaces the interval by one of its halves.
+- Cost per iteration: dominated by the call to g(arr, arr[i]); since g is a binary search for array b
+- Total cost of Part E: Theta(log N) x Theta(1).
+
+Part E: The body of f's loop has a call to g, plus a comparison and an addition. Since g is a binary search for array b (with log N cost), this loop has log N iterations. Each iteration just does a few comparison and updates, which are constant (since it's a binary search for array b). So f's loop costs around log N time.
+
+F: Asymptotic worst-case running time is approximately log N, with the total cost being Theta(logN). The first line of f is dominated by the call to g, and the second line has logN iterations. Therefore, this part of the analysis shows that f's worst case running time is approximately log N (with respect to M) and the total cost (which includes the cost of the loop) is Theta(logN).
+
+Students should aim for a score of at least 42 out of 50, with 1 point deducted if one or both lines are omitted, and points given based on each line numbered in the student's solution. The rubric should include a section for grading the total cost (log N), which is the final result of the two parts combined.
+
+POINT_ID: 4
+Question: Calculate the asymptotic worst case running time of the functions `f` and `g` below as functions of the length of each array `a` and the length of sorted array `b`. Use big-O notation with bounds and specify detailed analyzi
+as per each loop. Each step should be based on M and N, and your analysi should refer to line numbers.
+
+AsymQ2:
+Calculate the asymptotic worst case running time of the functions `f` and `g` as functions of the length of `a` and `b`, using Theta notation with bounds and specify detailed analyzi per loop. Each step should be based on M and N, and your analysi should refer to line numbers.
+
+Method f:
+Method f has a single for loop that iterates over array `a`. The loop runs M times because `i` goes from 0 to m. Inside the loop, it calls method g and compares the output of g with mid = (l + r) / 2. The comparison takes log N time. So overall cost per iteration depends on g, but it's log N time for each iteration, so overall cost is log N.
+
+Method g:
+Method g uses a while loop with `mid` set to (l + r) / 2. Each iteration only compares two elements, and the comparison takes log N time. Overall running time of method g depends on g but it's log N time for each iteration, so overall cost is log N.
+
+Both methods have a total cost of log N, since the loop uses mid = (l + r) / 2 to compare the output of g and update `mid`.
+
+AsymQ2:
+Calculate the asymptotic worst case running time of the functions `f` and `g` as functions of the length of each array `a`, using big-O notation with bounds and specify detailed analyzi per loop. Each step should be based on M and N, and your analysi should refer to line numbers.
+
+Method f:
+Method f has a single for loop that iterates over array `a`. The loop runs M times because `i` goes from 0 to m. Inside the loop, it calls method g, which has an outer loop with `M` iterations. Each iteration takes log N time for each iteration, so overall cost is log N.
+
+Method g:
+Method g has a total cost of log N since each iteration takes log N time for each element in the array.
+
+AsymQ2:
+Calculate the asymptotic worst case running time of the functions `f` and `g` as functions of the length of each sorted array `b`, using big-O notation with bounds and specify detailed analyzi per loop. Each step should be based on M and N, and your analysi should refer to line numbers.
+
+Method f:
+Method f has a single for loop that iterates over array `a`. The loop runs M times because `i` goes from 0 to m. Inside the loop, it calls method g, which has an outer loop with `M` iterations. Each iteration takes log N time for each element in the array, so overall cost is log N.
+
+Method g:
+Method g has a total cost of log N since each iteration takes log N time for each element in the array.
+
+AsymQ2:
+Calculate the asymptotic worst case running time of the functions `f` and `g` as functions of both `a` and `b`, using big-O notation with bounds and specify detailed analyzi per loop. Each step should be based on M, N, and `M + N`, so overall cost is log N plus log N, for a total cost of log N.
+
+Method f:
+Method f has a total cost of log N since each loop iterates at most log N elements. The loops have a total cost of log N, since they're balanced and don't need extra work to iterate over the same elements more than once.
+
+Method g:
+Method g also has a total cost of log N since each iteration takes log N time for each element in the array, so overall cost is log N.
+
+AsymQ2:
+Calculate the asymptotic worst case running time of the functions `f` and `g` as functions of both `a` and `b`, using big-O notation with bounds and specify detailed analyzi per loop. Each step should be based on M, N, and `M + N`, so overall cost is log N plus log N, for a total cost of log N.
+
+Method f:
+Method f has a total cost of log N since each loop iterates at most log N elements. The loops have a total cost of log N, since they're balanced and don't need extra work to iterate over the same elements more than once.
+
+Method g:
+Method g also has a total cost of log N since each iteration takes log N time for each element in the array, so overall cost is log N.
+
+Both methods have a total cost of log N, which is the asymptotic worst case running time for both functions.
+
+POINT_ID: 5
+Here's a summary of the answers provided:
+
+BUCKET: "AsymQ2"
+FEEDBACK: "Sorry, but your function is not analyzable based on text provided."
+
+RUBRIC POINT: The total loop cost is around log N (constant) and f uses a while loop with mid = (l + r) / 2. It runs M log N times per iteration and each iteration just does a few comparison and updates, which are also constant, making it a semi bucket.
+
+POINT_ID: 6
+Based on the provided text material, you have been asked to calculate the asymptotic worst-case running time of two functions: one function `f` and another function `g`. The text material includes detailed analyses for both functions using `Theta` notation and Big-O notations with tighter bounds. Your job is to write an analyis for each function, which should include a detailed explanation based on M and N. You may use the Theta notation or big-O notation with tiphr bounds, but must justify each step of the analyses with one or two sentences. Each step should be justified with one or two sentences to provide a thorough understanding of the method used in computing the asymptotic worst-case running time.
+
+POINT_ID: 7
+QUESTION: Calculate the asymptotic worst case running time of the functions below as functions of the lengths M and N of arrays `a` and `b`, respectively. Use Theta notation or Big-O notation with boundtips and specify each loop to refer to a single function. Your answers should include detailed analyses based on iterations, running times, and worst case scenarios for different inputs. Ensure that you justify each analysis with one or two sentences.
+
+POINT_ID: 8
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M and N of two given arrays `a` and `b`. Use Theta notation or big-O notation for the analysis based on iterators and sorted arrays. Your analyzi should refer to line numbers and justify your reasoning. Please include detailed analyzi for both functions using a text field provided.
+
+POINT_ID: 9
+Here is an updated version with more detailed analysias for the student's and instructor's feedback, as well as additional information on the Big-O notation. Please let me know if you have any other questions or need further clarification.
+
+BUCKET: `<exact bucket label>`
+FEEDBACK: `<one or two sentences referencing the student's actual analysias>`
+
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`. Use Theta notation with specified bounds for each loop. Ensure that your answer includes detailed analyses based on M and N, including a specific analysias for every loop, along with Thea(1) or Big-O notation for their runtimes depending on the type of function involved (binary search versus linear search). Additionally, please provide an explanation to help the instructor understand your reasoning.
+
+POINT_ID: 10
+Here's a step-by-step analysis of the functions you've provided:
+
+1. Calculate the worst case running time for both functions, with respect to their input data lengths `M` and `N`, respectively.
+2. Analyse each loop in both functions (incorporating the use of big-O notation) separately, considering the total cost of all iterations (`cost_per_iteration`) as well as the number of iterations (`total_iterations`).
+3. Use Theta notation to convert these numbers into a single value (the asymptotic worst-case running time).
+4. Determine the correctness and consistency of your analysis, based on the information provided.
+
+Based on these criteria, the function with higher cost per iteration (`f`) is more complicated than the one with lower `cost_per_iteration`. However, both functions have a total running time that is at least approximately equal to Theta(M log N), which indicates a good balance between complexity and runtime.
+
+In terms of internal consistency, it's crucial to make sure that your analysis doesn't assume any particular ordering or sequence for the iterations in either function (e.g., don't use a specific order for comparing two arrays). However, in both functions, you have established a clear order and pattern for the iterations, which allows you to correctly sum up the running times across all `total_iterations`.

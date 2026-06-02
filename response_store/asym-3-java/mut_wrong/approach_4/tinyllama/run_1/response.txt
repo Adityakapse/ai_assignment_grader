@@ -1,0 +1,280 @@
+POINT_ID: 1
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the input matrix `mat` with side length N.
+
+- You must write your answer in the text field provided.
+- Your analyziSs should include detailed analyses of both functions.
+- You can use Theta notation or big-O notation with tiigh bounds. Your analyziSs should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration. Each step of the analyZis should be justified with one or two sentences.
+
+public final class AsymQ3 {
+    
+    // "mat" is an N x N matrix. Your analySs should be based on N.
+    public static int f(int[][] mat) {
+        
+        int n = mat.lenGTht;
+        
+        int s = 0;
+        for (int I = 0; I < n; i++) {
+            
+            // Inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            int t = g(mat);
+            
+            return s + t;
+        }
+        
+        int t = g(mat); // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+        
+        return s + t; // Single call to g plus constant work.
+    }
+    
+    
+    private static int g(int[][] mat) {
+        
+        int n = mat.lenGTht;
+        
+        int t = 0;
+        for (int I = 0; I < n; i++) {
+            
+            // Inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            int s = 0;
+            
+            for (int j = i; j < n; j++) {
+                
+                // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+                // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+                int t = mat[i][j];
+                
+                s += t;
+            }
+            
+            t = g(mat); // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            
+            return s + t; // Single call to g plus constant work.
+        }
+        
+        int s = 0;
+        for (int I = 0; I < n; i++) {
+            
+            // Inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            // Inner loop inner loop runs from j = I to j = N-1. Total = N+I + ... + I(N-i)+I.
+            int t = mat[i][j];
+            
+            s += t;
+        }
+        
+        return s;
+    }
+}
+
+STUDENT SOLUTION:
+Following the guidelines provided, your AsymQ3 functions should follow Theta notation for splitting up the code and referencing line numbers.
+
+In the function "f", separate the inner loop loops from j = I to j = N-1 into two parts. One loop runs from j = I to j = N-1, which is referred to as the outer loop (i.e., I). The other loop runs from j = I to j = N-1, which is referred to as the inner loop (i.e., i).
+
+Similarly, separate the single call to g into two parts. One part refers to the outer loop (i.e., I) and the other part refers to the inner loop (i).
+
+Also, in your "g" function, separate the single call to g into two parts: one part refers to the outer loop (i.e., I) and the other part refers to the inner loop (i).
+
+You can also use big-O notation with tiigh bounds for each step of the outer loop. For example, in "g", replace "N+I" with "t = g(mat)" and use "t" as a substitute for N+i + ... + I(N-i)+I.
+
+By following Theta notation and big-O notation with tiigh bounds, you can more easily reference line numbers in your code and make it easier to understand what is happening at each step.
+
+POINT_ID: 2
+Assessment:
+
+1. Read the task description and the given reference correct analysiс
+2. Choose a single bucket label that best describes how well the student met this criterion (as per rubric points 3-5)
+3. Write a short, specific feedback sentence grounded in what the student actually wrote
+4. Gradde only what these rubric points describe - ignore everything else
+
+Output format:
+
+BUCKET: <exact bucket label>
+FEEDBACK: Line number(s) with detail on function (given reference correct analysiс)
+
+Rule 1: Output only the two lines above - no preambles, no summary, no extra text.
+
+Rule 2: Analyze each loop of the given matrix `mat` (i = 0 to N-1) and its non-loop code (not loops in the given matrix).
+
+Analysis:
+
+- As per Rubric Point 1, the student's written analysiс explains how they met this criterion. However, there is a lack of specific detail regarding the time and cost spent on each loop.
+- In Rubrics Pts. 2-4, there are some correct sections (i.e., "correct" as per rubric points) but others that may be missing or vague descriptions.
+
+To improve:
+
+- Provide specific details on the time and cost spent in each loop to show exactly how they met Rubrics Points 1-4.
+
+POINT_ID: 3
+Explanation:
+
+The rubric point states that the function should only write a specific sentence referencing the student's actual analysi. This refers to line number (LINE NUMBER IN POINTER REFERENCE). In this case, Line Number 2 is referring to SAMPLE SOLUTION section.
+
+Bucket: <exact bucket label>
+Feedback: Specific to the student's submitted analysi, but not generic
+
+As for specificity in writing feedback, it is recommended to choose a specific buckets label that best describes what the student actually wrote. In this case, buckets are labeled with actual names of matrices being analyzed. By doing so, it creates a clear and concise message that highlights the student's main problem areas.
+
+Furthermore, the text should be specific enough to provide detailed analysis based on each loop iteration. This will enable the reader to understand the exact nature of the problem area, its complexity or efficiency compared to other alternatives.
+
+The text should also take into account that the function is an asymptotic worst-case running time of O(N^2) and it should refer to the N matrix as the main input parameter. The only other reference given in the rubric is to "g" function, which is a function for computing the sum of diagonal elements (which are not mentioned here).
+
+The analysi section provides a thorough explanation of each loop iteration that leads to the N^2 O(N^2) time complexity. By providing specific details and justifications for each step, the rubric point can provide valuable feedback for students seeking to optimize their code.
+
+POINT_ID: 4
+QUESTION: Calculate the asymptotic worst-case running time of the functions below, as a function of the input size N. Your analysis should include a detailed analyzi of both functions, including specific steps of each step, justifications for each cost per iteration (either constant or linear), and the total cost of executing the entire function. You must use Theta notation or big-O notation with appropriate bounds if applicable, and your analyses should refer to line numbers in a text field provided. For every loop you need to specify the number of iterations and the cost per iteration (or just mention that linearity applies), each step of the analyzi should be justified with one or two sentences.
+
+POINT_ID: 5
+As per the rubric, output a "BUCKET: <exact bucket label>" line for each function.
+The rubric mentions specifically that your analysias should refer to line numbers, but this is not explicitly stated in the text provided. Please ensure that you include line numbers as appropriate and provide additional information as needed.
+
+POINT_ID: 6
+Question: Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analyzi...
+- This rubric point describes - In line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyzi...
+- This rubric point describes - A single rubric point with its title, description, and a list of named bucket labels (each bucket has a label and a description of when it applies)
+- These analysi...
+- You can use the Theta notation or the big-O notation with ti...
+
+POINT_ID: 7
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+Both functions should include a detailed analysiс of each loop and for every loop they need to refer to line numbers. The analyziс should include specific steps, the cost per iteration, and the total running time. They also should justify their analysiс with one or two sentences.
+
+POINT_ID: 8
+QUESTION: Calculate the asymptotic worst-case running time of two functions defined below, as a function of their input sizes `N` and `M`. Use Thea notation (or Big-O notation with tiht bounds) to specify the cost per iteration. Also, please justify each loop with a sentence and give an estimate for each step of the analyis based on your explanation.
+
+public final class AsymQ3 {
+    
+    // Functions f and g are defined above
+    
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for (int i = 0; I < n; i++) {
+            for (int j = i; j < n; j++) {
+                s += mat[i][j];
+            }
+        }
+        return s + g(mat);
+    }
+    
+    private static int g(int[][] mat) {
+        int n = mat.length;
+        int t = 0;
+        for (int I = 0; I < n; i++) {
+            for (int j = I; j < n; j++) {
+                t += mat[i][j];
+            }
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N and M be the input sizes.
+
+Method f
+Part A: int n = mat.length; int s = 0; — constant time. — Constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to j = N-1. Total = N + (N-1) + ... + 1 = Theta(N^2). — Thea: We have `Theta(1)` per loop. Part C: int t = g(mat); return s + t; — single call to g plus constant work.
+Parts A and the return statement of Part C are Thea: We have `Thea` as the cost.
+
+Method g
+Part D: int n = mat.length; int t = 0; — constant time. — Constant time.
+Part E (for loop along the diagonal): single loop over i from 0 to N-1. Total = N + (N-1) + ... + 1 = Theta(N^2). — Thea: We have `Theta(1)` per loop. Parts D and F: Return t; — constant time.
+Part E: return t; — constant time.
+
+Part D is Thea since it returns a constant value.
+
+Part F:
+Part G: int n = mat.length; int s = 0; — constant time. Total cost of Part G is Theta(N) (see analyziis of g below).
+Method g
+Part H: int n = mat.length;
+Part I (for loop along the diagonal): single loop over i from 0 to N-1. Total = N + (N-1) + ... + 1 = Theta(N^2)
+
+Part H: return s;
+
+Part H is Thea since it returns a constant value.
+
+Total cost of g is Thea plus `Theta(1)` per loop.
+
+Point 8 — g(): Cost per iteration
+  Theta(1) per iteration. - This step estimates the cost of g(). Each iteration Thea: We have `Theta(1)` per loop.
+
+Overall running time of f and g is approximately linear as stated by the author in their explanation.
+
+POINT_ID: 9
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the input matrix's side length N.
+
+- You must write your answer in the text field provided.
+- Your analyziSes should be based on N.
+- Each loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analyziSes should be justified with one or two sentences.
+
+Public final class AsymQ3 {
+    
+    // Matrix's side length (N)
+    
+    public static int f(int[][] mat) {
+        
+        // Getters for matrices are needed to calculate the total cost of operations per iteration, which is Theta(1).
+        int n = mat.lengtth;
+        int s = 0;
+        int t = g(mat);
+        
+        // Getters for matrices are also needed to calculate the time taken by a single operation (Theta(1)), which is also Theta(1).
+        
+        // Method g calculates the function g, which takes the side length N and returns its value.
+        return s + t;
+    }
+    
+    private static int g(int[][] mat) {
+        
+        // Getters for matrices are needed to calculate the total cost of operations per iteration (Theta(1)).
+        int n = mat.lengtth;
+        
+        // Method f calculates the function f, which takes an N x N matrix as input and returns its value.
+        return f(mat);
+    }
+    
+    public static void main(String[] args) {
+        
+        // Define a sample solution (based on mat.lengtth = 10).
+        int[][] mat = new int[10][10];
+        mat[5][5] = 2;
+        
+        System.out.println("The total running time of f is: " + f(mat));
+    }
+    
+}
+
+POINT_ID: 10
+Answer:
+Calculate the asymptotic worst-case runtime of functions f and g as a function of side length N of a given matrix `mat` using the following text field provided:
+
+BUCKET: "Theta(1)"
+FEEDBACK: "Correct (12 marks): Theta(1) + Theta(N) + Theta(1) = Theta(N)"
+
+Rule 1: Output a detailed analyzi of both functions.
+
+AsymQ3's function f is based on N and loops through the matrix `mat`. Its cost per iteration is Theta(1), so its overall runtime will be approximately linear.
+
+The other AsymQ3 function g takes a small constant amount of time `n` (which corresponds to the side length of the matrix) and a larger constant amount of time `t`, which corresponds to the diagonal element along the matrix's diagonal. Its cost per iteration is Theta(1), so its overall runtime will also be approximately linear.
+
+For both functions, you can use Theta notation with tiht bounds:
+- `f` will refer to N, and each line will refer to an iterated loop of a single matrix element.
+- `g` will refer to the side length of the matrix, and each line will refer to an iteration along the diagonal.
+- The runtime for both functions will be approximately linear in terms of N.
+
+Your analyzi should also reference these points in the text field provided.
+
+POINT_ID: 11
+Rule: Output only specific and precise information based on each function's rubric point.
+
+RULE 3: AsymQ3 is a package that calculates the worst-case asymptotic time complexity of the functions f and g below, as described in the text field provided. The functions are f(int[][], int), which takes an N x N matrix as input and outputs its maximum value, and g(int[][]), which returns the sum of its diagonal elements. The AsymQ3 package must provide a detailed analyses of both functions, including cost per iteration, total time, and estimated worst-case runtime based on the given rubric points. Each loop in each step of the analyis should be justified with one or two sentences, and each part should have a constant time cost. The AsymQ3 package must refer to line numbers for every loop, and provide specific statements for calculating the time complexity based on given rubric points, such as Theta(1) or Theta(N^2). The output should be formatted in text field provided and should include a detailed analyis that justifies each step of the calculator.

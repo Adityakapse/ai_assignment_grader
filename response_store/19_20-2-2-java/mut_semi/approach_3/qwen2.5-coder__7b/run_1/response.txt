@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method iterates through all tokens in the input from left to right and correctly distinguishes numeric tokens from operator tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are correctly converted to integers and pushed onto the stack.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: For subtraction and division, the operands are not in the correct order. The student pops the first value as `n1` and the second value as `n2`, which computes `first_popped - second_popped` instead of `second_popped - first_popped`.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Operand order is reversed for subtraction and division, producing incorrect results.
+
+POINT_ID: 5
+BUCKET: Internally consistent but incorrect final result
+FEEDBACK: The method internally follows logic consistent with the student's own earlier implementation but produces incorrect output due to consistently reversing the operand order for subtraction and division.

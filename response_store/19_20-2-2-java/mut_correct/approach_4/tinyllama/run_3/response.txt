@@ -1,0 +1,172 @@
+POINT_ID: 1
+In this task, you will be required to implement an abstract calculator in Java that can handle both numeric and operator-based calculations. The calculator should accept a list of strings from which the numbers and operators are already separated, and return the corresponding results as integers.
+
+The implementation should follow the Reverse Polish Notation / Postfix Notation for handling mathematical expressions. In this notation, operators like +, -, *, and / are represented by their numbers, followed by an operator (e.g., "+" becomes 1 * 2 +), while numbers represent the numbers or variables in the expression (e.g., 3 * 4 means 5).
+
+To process this notation, you should use a stack to store the operands and operators on the left side of the parentheses, and the resulting result on the right side of the parentheses. The method should also handle cases where multiple operators are present or no operators appear at all.
+
+Here is an implementation using an abstract calculator class and a stack implementation. You may need to modify the class structure to suit your specific needs, but this should be a good starting point:
+
+```java
+public abstract class IntegeRStack {
+    public int head() { return -1; }
+    public void push(int i) { throw new RuntimeException("Implementation error."); }
+    public int pop() { throw new RuntimeException("Implementation error."); }
+}
+
+public abstract class IntegeRCalculator {
+    public String[] input = null;
+    public IntegeRStack s = null;
+    
+    // ... Implement the Calculator method here...
+    
+    public int Calculator(String[] input, IntegeRStack s) {
+        for (int I = 0; I < input.length; ++i) {
+            switch (input[i]) {
+                case "+":
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    s.push(n2 + n1);
+                    break;
+                case "-":
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    s.push(n2 - n1);
+                    break;
+                case "*":
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    s.push(n2 * n1);
+                    break;
+                case "/":
+                    int n1 = s.pop();
+                    int n2 = s.pop();
+                    s.push(n2 / n1);
+                    break;
+                default:
+                    s.push(IntegeR.parseInt(input[i]))
+            }
+        }
+        
+        return s.pop();
+    }
+}
+```
+
+Note that this implementation assumes the inputs are well-formed, meaning they should contain only numeric operators and operands (i.e., not empty strings or empty arrays). If this is not the case, you may need to modify the logic accordingly.
+
+POINT_ID: 2
+Question: How can the Reverse Polish Notation / Postfix Notation be represented in a calculator for this notation, using a stack?
+
+Assessment:
+The Reverse Polish Notation / Postfix Notation is a special notation for mathematical expressions, where the numbers are given first, followed by the operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation. A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right. If a number is processed, it is put on the stack. If an operator is encountered, then the uppermost two numbers are taken from the stack, the operator is executed and the result is put back on the stack. After the calculation, the result is the only number on the stack.
+In this task, you will receive a stack with the following known methods:
+
+1. A method that receives as input a list of strings in which the numbers and operators are already separated (e.g., `"1" 2 + "3" 4 * +`), so that each number is on the stack.
+2. A method for pushing an integer to the stack if it matches with the numeric token that comes next, and it is also checked if the conversion is correct or if there are some invalid tokens. If a valid number is pushed, its type (int) is returned by the method, otherwise it returns null.
+3. A method for popping an integer from the stack to return the result of the calculation (if applicable).
+
+In this task you have to implement such a calculator in a method that takes as input a list of strings and pops each number from the stack until the operator is encountered, processes it and pushes the result back onto the stack. Your implementation should use the methods above for each step and check if the resulting integer is valid (i.e., it matches with the numeric token that comes next).
+
+Note: You can assume that the input is a correct formula and that there are only numbers, operators, and * as characters in the input string. If you face any issues with the implementation or need more clarification, please don't hesitate to ask!
+
+POINT_ID: 3
+Here's a code snippet that uses a stack to implement the Reverse Polish Notation/Postfix Notation calculator:
+
+```java
+import java.util.Scanner;
+
+public class Calculator {
+     public static void main(String[] args) {
+         Scanner input = new Scanner(System.in);
+         System.out.print("Enter the number of expressions:\t");
+         int expressionNumber = Integer.parseInt(input.nextLine());
+
+         // Create an empty stack to keep track of evaluated expressions
+         Intege rStack = new Intege();
+
+         for (int I = 0; I < expressionNumber; i++) {
+             System.out.print("Enter an expression in Reverse Polish Notation: ");
+             String inputLine = input.nextLine();
+             String[] inputSplit = inputLine.split("\\s+");
+             rStack.push(inputSplit[0]); // Add the first token (minus, plus, times) to the stack
+         }
+
+         while (!rStack.isEmpty()) {
+             int operation = rStack.pop();
+             String opString = " ";
+             switch (operation) {
+                 case "+": opString = "+"; break; // Handle plus operation
+                 case "-": opString = "-"; break; // Handle minus operation
+                 case "*": opString = "*"; break; // Handle multiply operation
+                 default: opString = "(error) "; // Non-numeric operation
+             }
+             String operand1 = rStack.pop();
+             int result;
+             switch (opString) {
+                 case "": // If stack is empty, no evaluation needed
+                     System.out.println("Expression evaluation finished with value 0."); break;
+                 case "(error)": result = -1; break; // Non-numeric operation
+                 case "+": result = rStack.pop() + rStack.pop(); break; // Handle plus operation
+                 case "-": result = rStack.pop() - rStack.pop(); break; // Handle minus operation
+                 case "*": result = rStack.pop() * rStack.pop(); break; // Handle multiply operation
+             }
+             System.out.println(operand1 + " = " + result); // Print the result on the screen
+         }
+     }
+}
+``` 
+
+This implementation uses a stack to process the expressions, and handles non-numeric operations correctly (i.e., evaluates them according to their sign). The calculator also prompts the user for each expression in a clear way, which may help with understanding what's happening on the screen.
+
+POINT_ID: 4
+Certainly! Here's a revised implementation of the calculator using a stack instead of an array to store operations and values.
+
+SAMPLE SOLUTION:
+// This implementation assumes input is a correct formula
+public int Calculator(String[] input, IntegerStack s) {
+     for (int I = 0; i < input.length; ++i) {
+         switch (input[i]) {
+             case "+":
+                 int n1 = s.pop();
+                 int n2 = s.pop();
+                 s.push(n2 + n1);
+                 break;
+             case "-":
+                 n1 = s.pop();
+                 n2 = s.pop();
+                 s.push(n2 - n1);
+                 break;
+             case "*":
+                 n1 = s.pop();
+                 n2 = s.pop();
+                 s.push(n2 * n1);
+                 break;
+             case "/":
+                 n1 = s.pop();
+                 n2 = s.pop();
+                 s.push(n2 / n1);
+                 break;
+             default:
+                 s.push(Intege r.parseInt(input[i]))
+                 break;
+         }
+     }
+     return s.pop();
+}
+
+STUDENT SOLUTION:
+public int Calculator(String[] input, Intege r stack) {
+     while (!stack.isEmpty()) {
+         int n1 = stack.pop();
+         int n2 = stack.pop();
+         stack.push(n2 + n1);
+     }
+     return stack.pop();
+}
+
+Remember to always include a proper error handling section in your implementation, as well as documentation of your code's input and output formats. Also, be sure to check for null pointers in your inputs and make sure that your stack implementation doesn't produce errors or deadlocks (e.g., overflow or underflow).
+
+POINT_ID: 5
+Question: Write a method in Java that processes an operational expression using the Reverse Polish Notation/Postfix Notation notation, where operators are represented by the numbers 0, +, -, * and /. The notations should be processed from left to right, with the number followed by the operator executed and the result put back on the stack. In this task you will receive a stack containing the initial two operands, and pop one of them to perform an operation (e.g., add, multiply) with another operand. Your method should return the correct integer result for all valid RPN expressions. The method must be able to handle nested expressions and error conditions related to operator order, division rounding, or incorrect final result. Please provide comments in your code to explain each step and detail the logic of each operation.

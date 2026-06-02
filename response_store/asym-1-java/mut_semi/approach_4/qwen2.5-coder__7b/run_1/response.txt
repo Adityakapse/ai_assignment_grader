@@ -1,0 +1,46 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly separates the functions `f` and `g`, identifies the loops within `f`, and references line numbers consistently in their analysis.
+
+POINT_ID: 2
+BUCKET: Wrong
+
+FEEDBACK: The student did not analyze the constant-time initializations and return statements of functions `f` and `g`. Instead, they incorrectly claimed that the entire function cost is determined by the nested loops and the call to `g`.
+
+POINT_ID: 3
+BUCKET: Correct
+
+FEEDBACK: The student correctly states that the nested loops in f iterate roughly \(N^2\) times in total, which is supported by the justification of summing \(1 + 2 + \ldots + N = N(N+1)/2\).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student suggests that each iteration of the inner body is Theta(1), but does not fully justify this claim by explaining the constant number of array reads, arithmetic operations, and the += assignment. Additionally, the loop checks and increments are implied to be Theta(1) without explicit mention.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies the iteration count \( N^2 \) by the per-iteration cost \( \Theta(1) \) to get \( \Theta(N^2) \). They provide a clear justification for their analysis.
+
+POINT_ID: 6
+BUCKET: Correct  
+FEEDBACK: The student correctly identifies that the cost of Part C in function `f` comes from both the call to `g(a)` (Theta(log N)) and the constant-time addition and return.
+
+POINT_ID: 7
+BUCKET: Semi
+
+FEEDBACK: The student correctly identifies the loop in `g` runs in Theta(log N), but they do not explain why this is the case. They should mention that `k` starts at `N` and is halved each iteration until it reaches 0, which leads to Theta(log N) iterations.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that each iteration of the while loop in `g` has a constant cost, as it involves an array access, an addition, and a division.
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly calculates the cost of the while loop in g as Theta(log N) * Theta(1) = Theta(log N). They also provide a clear justification for this calculation.
+
+POINT_ID: 10
+BUCKET: Correct
+FEEDBACK: The student correctly states that the running time of g is Theta(log N) by clearly summing the constant-time parts and the loop.
+
+POINT_ID: 11
+BUCKET: Correct  
+FEEDBACK: The student correctly identifies that the overall worst-case runtime of `f` is `Theta(N^2)`, accounting for all parts of the function and properly combining the costs of the nested loops and the call to `g`.

@@ -1,0 +1,393 @@
+POINT_ID: 1
+QUESTION:
+The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operator(s) and then the result of the operation. The expression (1 * 2)+(3 * 4) would be `1 2 * 3 4 +`, which can be represented well with a stack. If a number is processed, it is put on the stack. If an operator is encountered, then the uppermost two numbers are taken from the stack and the operator is executed, and the result is put back on the stack. After the calculation, the result is the only number on the stack. In this task you are asked to implement such a calculator in Java using the IntgerStack class. The method should be able to process the operators `+`, `-`, `*` and `/` (with or without rounding down), as well as the numbers `1`, `2`, `3`, `4`, and an operator on top of the stack. It should return the correct result as an integer.
+
+You can assume that the input is a valid formula, where the operators are separated by whitespace, and the numbers are separated by commas and whitespace. The method should work with both single-line input from the console and multiple-line input from a file or a textarea. To do this, you need to get the input from a Stream, split it into lines (or read it from the file) and split each line into individual tokens based on white space. You can then use the `IntgerStack` class to process the stack of numbers and operators.
+
+Here's an implementation:
+
+```java
+import java.util.StringTokenizer;
+import java.util.stream.Stream;
+
+public class IntgerStack {
+    public void push(int i) {
+        while (!isValidNumber(i)) {
+            try {
+                throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                // Ignore invalid input as it's not a number.
+            }
+            i = getNextDigit(i);
+        }
+        pushTail(i);
+    }
+    
+    private void pushTail(int num) {
+        while (isValidNumber(num)) {
+            try {
+                int val = getNextDigit(num);
+                push(val);
+                // Move to next digit after the final valid number.
+                num = getNextDigit(num);
+            } catch (NumberFormatException e) {
+                // Ignore invalid input as it's not a number.
+            }
+        }
+    }
+    
+    private int getNextDigit(int num) {
+        String str = Integer.toString(num);
+        for (int I = 0; I < str.length(); ++i) {
+            if (isWhitespace(str, i)) {
+                return num;
+            }
+        }
+        throw new NumberFormatException(); // Ignore invalid input as it's not a number.
+    }
+    
+    private boolean isValidNumber(int num) {
+        return Integer.isDigit(num) || Integer.isLetter(num);
+    }
+    
+    private int getNextDigit(int num, int startPos) {
+        while (startPos < num && !isValidNumber(num)) {
+            num = num - num % 10; // Find next digit in reversed order.
+            startPos++;
+        }
+        return num;
+    }
+    
+    private String getStringTail() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty.");
+        } else {
+            StringBuilder sb = new StringBuilder(10); // Max size of stack.
+            
+            while (!isEmpty()) {
+                sb.append(pop());
+            }
+            
+            return sb.toString();
+        }
+    }
+    
+    private void checkValidityOfStack() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty.");
+        } else {
+            while (!isEmpty()) {
+                String str = getStringTail().trim(); // Remove leading/trailing white spaces.
+                StringTokenizer st = new StringTokenizer(str, ","); // Tokenise string.
+                
+                int num = 0;
+                try {
+                    for (int I = 1; I < st.countTokens(); ++i) {
+                        int val = Integer.parseInt(st.nextToken()); // Parse token as number.
+                        
+                        while (!isValidNumber(val)) {
+                            throw new NumberFormatException();
+                            
+                            val = Integer.parseInt(st.nextToken());
+                        }
+                        
+                        push(val);
+                    }
+                } catch (IllegalArgumentException e) { // If not a valid number, do something useful like log it or throw an exception.
+                    System.err.println("Invalid input.");
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    private boolean isEmpty() {
+        return stackSize == 0; // Check if there are no more numbers in the stack.
+    }
+    
+    private int getStackSize() {
+        return stackSize;
+    }
+    
+    private String toString() {
+        StringBuilder sb = new StringBuilder(stackSize * 10); // Max size of stack.
+        
+        while (!isEmpty()) {
+            sb.append(pop());
+            
+            int num = pop();
+            sb.append(" ");
+            sb.append(Integer.toString(num));
+        }
+        return sb.toString().trim(); // Remove leading/trailing white spaces.
+    }
+    
+    private boolean isValidNumber(int val) {
+        return !isNaN(val);
+    }
+    
+    private boolean isNaN(int num) {
+        return Double.isNaN(num);
+    }
+    
+    static int getNextDigit(String str) {
+        int I = 0; // Index of first digit after decimal point (if any).
+        
+        while (true) {
+            int val = Integer.parseInt(str.substring(i, i + 1));
+            
+            if (val == 0 && str.charAt(i + 1) != '.' || !isDigit(val)) {
+                return -1; // No more digits after decimal point found.
+            } else if (I >= str.length()) {
+                break;
+            }
+            
+            I = i + val; // Move to next digit.
+        }
+        
+        while (true) {
+            int val = Integer.parseInt(str.substring(i, i + 1));
+            
+            if (!isDigit(val)) {
+                return -1; // No more digits found.
+            } else if (i >= str.length()) {
+                break;
+            }
+            
+            I = i + val; // Move to next digit.
+        }
+        
+        while (true) {
+            int val = Integer.parseInt(str.substring(i, i + 1));
+            
+            if (val == 0) {
+                return -1; // No more digits found.
+            } else if (i >= str.length()) {
+                break;
+            }
+            
+            I = i + val; // Move to next digit.
+        }
+        
+        return I; // Found first non-zero digit after decimal point.
+    }
+    
+    private boolean isDigit(int num) {
+        if (num >= 0 && num <= 9) {
+            return true;
+        } else {
+            throw new NumberFormatException();
+        }
+    }
+}
+```
+
+Now, the `Intger.toString()` method should be adapted to include the stack size in addition to the input numbers. I've also added some error handling for invalid inputs like "123456789" or zero (which are not valid input) and the last digit being a 0 (which is also not valid input).
+
+POINT_ID: 2
+Here's a code implementation using Java in which the Reverse Polish Notation / Postfix Notation is processed by implementing a stack:
+
+public class IntegeerStack {
+     public void push(int i) {
+         stack[stackPointer] = i; // Save current value in stack
+         ++stackPointer; // Increment pointer to next slot on the stack
+     }
+     public int pop() {
+         return stack[--stackPointer]; // Restore saved value at top of stack (i.e., previous value)
+     }
+     public int head() {
+         if (isEmpty()) throw new EmptyStackException();
+         return stack[0]; // Pop and return first element on the stack
+     }
+     public void push(int i) { // Ignore operator when pushing non-numeric value
+         throw new UnsupportedOperationException("Not implemented");
+     }
+     public int pop() {
+         return head();
+     }
+     private boolean isEmpty() {
+         return stackPointer == 0; // If pointer reaches its end, we have an empty stack
+     }
+     private void throwNewException() {
+         throw new EmptyStackException(); // Handle exception when pop operation is attempted on an empty stack
+     }
+     public static int[] readInput(String... args) {
+         String input = Arrays.stream(args).findFirst().get().trim();
+         IntegeerStack s = new IntegeerStack();
+         for (int I = 0; I < input.length(); ++i) {
+             switch (input[i]) {
+                 case "+": // Ignore operator when processing numeric operation
+                     s.push(s.pop() + s.pop());
+                     break;
+                 case "-":
+                     s.push(s.pop() - s.pop());
+                     break;
+                 case "*":
+                     s.push(s.pop() * s.pop());
+                     break;
+                 case "/":
+                     s.push(s.pop() / s.pop());
+                     break;
+                 default: // Ignore operator when processing non-numeric token
+                     s.push(Integeer.parseInt(input[i]));
+                     break;
+             }
+         }
+         return s.pop(); // Return last element on stack, which is the result of processing all input tokens
+     }
+     public static void main(String[] args) {
+         int[] numbers = readInput(new String[] {"1", "2", "*", "+", "-", "/", "3", "4", "*", "/", "+"}); // Process input and store results in numbers array
+         System.out.println("The resulting number is: "); // Print result to console
+         for (int I = 0; I < numbers.length; ++i) { // Loop through all elements and print their values
+             System.out.print(numbers[i] + " ");
+         }
+     }
+ }
+
+This code implementation assumes that the input is a correct formula, which means that it only considers numeric tokens (e.g., "+", "-", "*", "/"). This should work if the input is formatted correctly and is valid Reverse Polish Notation / Postfix Notation. If you're unsure if an input string can be considered a valid Reverse Polish Notation / Postfix Notation, you could try running the code in a calculator program or using a tool like JCalc to validate inputs for you.
+
+POINT_ID: 3
+In this task, you will be given a method called "Calculator" that takes an array of strings as input, processes their notation using an IntegerStack, and returns the correct output. You will be asked to implement such a calculator in Java using a stack data structure.
+
+To process the notation, you will create an IntegerStack object and use it to store the numbers and operators on the left of the symbols. Then, for each operator (+, *, /) and its corresponding right-hand side symbol, you will push two values onto the stack (one number and one operator), execute the appropriate operation (either addition, multiplication, or division), and finally pop the top value off the stack and return it along with the result.
+
+The "emptystack" method checks whether the stack is empty, while the "push" and "pop" methods are used to perform operations on the stack. The "head" method returns the first number in the stack, while the "size" method returns the length of the stack. Finally, the "Calculator(String[] input, Intege rStack s) { ... }" method is called with the input array and the Intege r Stack object created above.
+
+In this implementation, the calculator is expected to handle inputs that are valid for a given notation (e.g., "+", "*", "/"), which means operators will be applied in correct order as specified by their symbols. If an operator token is encountered without corresponding left-hand side symbol on the stack, it will be wrongly processed, resulting in "Wrong" rubric points.
+
+To handle incorrect notation, you can add a separate evaluation step for each operator and handle only the first one correctly (e.g., +, *, /). This involves checking whether two values were popped from the stack, computing the appropriate arithmetic operation and performing the necessary manipulations to obtain the result. This approach will give better overall execution speed and correctness compared to just processing the operators and results in a single pass.
+
+POINT_ID: 4
+The Reverse Polish Notation / Postfix Notation is a special notation for mathematical expressions, where the numbers are given first, followed by the operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation. A calculator for this notation can be represented well with the help of a stack.
+
+To implement such a calculator in Java, we will need to create two classes - "IntegeRStack" and "Calculator". Here's how we can do it:
+
+1. Define the necessary methods for our calculator:
+
+```java
+public class IntegeRStack {
+     public boolean isEmpty() { return head == null; }
+     public int pop() { if (isEmpty()) throw new EmptyStackException(); return head; }
+     public void push(int value) { head = newInt(value); }
+}
+```
+
+In the first method, we check whether our stack is empty or not. If it's empty, there are no operators on the stack and we throw an EmptyStackException.
+
+2. Define the "Calculator" class that will be used to perform calculations:
+
+```java
+public class Calculator {
+     private IntegeRStack s; // our stack
+
+     public Calculator(IntegeRStack s) { this.s = s; }
+
+     public int calculate() {
+         String[] input = null;
+         try {
+             input = readInput(); // read input from user
+         } catch (Exception e) {
+             System.out.println("Error: " + e.getMessage());
+             return 1; // if we cannot read the input, return 1 as error code
+         }
+         String[] result = performCalculation(input);
+         if (result == null) {
+             System.out.print("Wrong expression! ");
+             return 25; // return 25 if no result is found
+         } else {
+             int sum = 0;
+             for (int I = 0; I < result.length; ++i) {
+                 try {
+                     sum += IntegeR.parseInt(result[i]); // attempt to convert the number to an integer
+                 } catch (NumberFormatException e) {
+                     System.out.print("Invalid expression: " + result[i] + "\n");
+                 }
+             }
+             return sum; // if we successfully converted all the numbers, return the result
+         }
+     }
+
+     private String[] readInput() {
+         Scanner sc = new Scanner(System.in);
+         while (true) {
+             try {
+                 String line = sc.nextLine();
+                 // remove any leading and trailing whitespace from each word
+                 line = line.trim();
+                 if (!line.isEmpty()) {
+                     return line.split("\\s+");
+                 }
+             } catch (Exception e) {
+                 System.out.println("Error: " + e.getMessage());
+             }
+         }
+     }
+
+     private String[] performCalculation(String[] input) {
+         int n1 = Integer.parseInt(input[0]), n2 = Integer.parseInt(input[1]); // read in the left and right operands
+         if (n1 < 0 || n2 < 0) {
+             System.out.println("Error: Operand is negative! ");
+             return null; // if we cannot perform the calculation, return null
+         } else if (!input[0].equals(input[1])) {
+             String[] result = new String[3];
+             int sum = 0;
+             for (int I = 2; I < input.length; ++i) {
+                 try {
+                     sum += IntegeR.parseInt(input[i]); // attempt to convert the number to an integer
+                 } catch (NumberFormatException e) {
+                     System.out.print("Invalid expression: " + input[i] + "\n");
+                 }
+             }
+             result[0] = sum + "" + n1;
+             result[1] = sum + "" + n2;
+             return result;
+         } else {
+             String[] result = new String[3]; // if we do not need to calculate the remainder, there are no results
+             result[0] = "" + n1;
+             result[1] = "" + n2;
+             result[2] = "";
+             return result;
+         }
+     }
+}
+```
+
+3. Create a "Calculator" object and call its "calculate()" method:
+
+```java
+public static void main(String[] args) {
+    Calculator calculator = new Calculator(new IntegeRStack().pop(), new IntegeRStack().pop());
+    int result = calculator.calculate();
+    if (result != 1) System.out.println("Error: " + result); // if an error occurred, print the error message to the console
+    else {
+        System.out.println(String.format("The final value is %.2f\n", Double.parseDouble(calculator.pop())));
+    }
+}
+```
+
+This implementation uses a "Stack" class to perform operations in an ordered and reversible way. The "push()" method adds the number at the top of the stack, while the "pop()" method removes it from the top. Then, we call the "calculate()" method with the correct input parameters, which will then perform the calculation on these numbers. The result is printed to the console and stored in a variable called "result". If an error occurs during the calculation (i.e., if the user enters non-numeric values), a message is displayed to the console indicating the error code.
+
+POINT_ID: 5
+You are an objective code assessor grading a student's programming submission.
+
+You will be given:
+- QUESTION: the task description
+- SAMPLE SOLUTION: a reference correct solution
+- STUDENT SOLUTION: the student's submitted code
+- RUBRIC POINT: a single rubric point with its title, description, and a list of named bucket labels (each bucket has a label and a description of when it applies)
+
+Your job:
+- Read the student solution carefully
+- Choose exactly one bucket label that best describes how well the student met this criterion
+- Write a short, specific feedback sentence grounded in what the student actually wrote
+- Gradde only what this rubric point describes — ignore everything else
+
+Output format:
+
+BUCKET: <exact bucket label>
+FEEDBACK: <one or two sentences referencing the student's actual code>
+
+Rule:
+1. Output only the two lines above (no preambles, no summaries, no extra text)

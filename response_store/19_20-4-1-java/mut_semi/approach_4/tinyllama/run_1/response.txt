@@ -1,0 +1,96 @@
+POINT_ID: 1
+QUESTION:
+Write a function in JavaScript that takes two arguments as input - an array of integers and another array of strings. The function should sort the second array alphabetically based on their contents and return a new array with the sorted elements. The function should not modify the original arrays, but create a new one. Use an efficient sorting algorithm (e.g., quicksort) and avoid using any built-in JavaScript functions for this task.
+
+POINT_ID: 2
+QUESTION:
+Write a C++ program that generates a random permutation of an array. The program should accept input from the user and generate a specific number of permutations based on the specified size, sort the permutations in ascending order, and output each permutation as a string with its corresponding element position separated by spaces. Ensure the program follows proper coding conventions and includes necessary comments to explain the logic behind the program's functionality.
+
+POINT_ID: 3
+FIRST ASSISTANT:
+Sure, here's a revised solution with more detailed comments on the different Rubric Points:
+
+---
+Example output:
+BUCKET: Wrong
+FEEDBACK: The solution does not correctly place insert in its BST. Insert is always attached as parent, regardless of the comparison direction or if key is smaller than parent's key.
+
+RUBRIC POINT:
+Point 3 — Attaching insert as left/right child
+  1) After traversal, insert is attached to the parent node (i.e., it is either attached as the left child or right child depending on the comparison direction) as per the Rubric Points.
+  2) Check for Semi and Correct points:
+      - If the comparison direction is not specified in the Rubric Point, then insert will be attached to the parent node as per Point 3.
+      - If it's set to "semi", insert will be attached to either the left child or right child of the parent based on the comparison direction.
+      - If it's set to "correct", insert will be attached to the parent node, correcting any errors in the traversal/insertion.
+      
+      Point 3-Semi:
+         - Semi (10 marks): Insert is attached as left child of the parent if parent's key is smaller than insert's key, and right child otherwise.
+         - Correct (20 marks): If both parents have the same key, then we attach insert to the parent node using Point 3-Semi.
+         - If key is greater than or equal to both parent keys, but not all parents have been traversed yet, then we use the left child. If key is less than any parent's key, but no parent has been traversed yet, we use the right child. Otherwise, we return the root node (which is correct).
+         - If the comparison direction is set to "correct", and the keys are equal but the traversal has not reached a leaf node, then we attach insert as parent.
+     
+      Point 3-Correct:
+        - Correct (20 marks): Insert is attached as the parent node itself, correcting any errors in the traversal/insertion.
+    
+      
+---
+Example output:
+BUCKET: Semi
+FEEDBACK: The solution correctly places insert within its BST, but it may have been attached to a non-leaf node (e.g., root node). Insert is attached as parent if the parent has the same key as insert, and right child otherwise.
+
+POINT_ID: 4
+CORRECT:
+
+RUBRIC POINT:
+Points 4 and 9 mark the following bullet points as relevant for the seaRCH trees task:
+
+Point 6 - Using the wrong variable (`x`) instead of the live traversal pointer (`traversed.right`) in case of a "Wrong" bucket, since `x` is set to null after the loop but not assigned to `traversed.right`. This results in an incorrect parent reference for `insert`, causing a null pointer dereference error when attempting to access `y.parent`.
+
+Point 8 - Using the wrong variable (`traversed`) instead of the live traversal pointer (`x`) in case of a "Semi" bucket, since `traversed` is set but not assigned to `y` after the loop, which results in an incorrect reference (i.e., null) for `insert.parent`. This causes a null parent reference error in the tree insertion method.
+
+Points 10 and 15 - Correctly setting the upward link in the tree by passing the correct traversal pointer (`traversed`) to the insert method when assigning `insert.parent` during the traversal loop.
+
+POINT_ID: 5
+Answer:
+Question:
+These tasks will be about searching trees. Our search trees are built from "nodes", analogous to the lecture. A node looks like this:
+
+public class Node {
+     public int key;
+     public Node left;
+     public Node right;
+     public Node parent;
+}
+
+In the lecture, you have already seen an algorithm for searching in a search tree.
+
+You are to implement different methods for searching the trees.
+For this task, implement a method "search" that searches for a specific value in the seaRCch trees and returns the node that contains it or null if not found.
+The nodes can be reused as desired. The function is passed the root of the tree and the search key to be searched.
+
+SAMPLE SOLUTION:
+public Node search(Node root, int key) {
+     Node x = root;
+     while (x != null) {
+         if (key == x.key) return x; // node contains key
+         else if (key < x.key) x = x.left; // search left branch
+         else x = x.right; // search right branch
+     }
+     return null; // not found
+}
+
+STUDENT SOLUTION:
+// Traversal correct, attaches as child but never sets search node
+public Node search(Node root, int key) {
+     Node x = root;
+     while (x != null) {
+         if (key == x.key) return x; // node contains key
+         else if (key < x.key) x = x.left; // search left branch
+         else x = x.right; // search right branch
+     }
+     return null; // not found
+}
+
+RUBRIC POINT:
+Point 5 — Overall correctness
+   The method returns a valid BST after searching for the key, including searching for non-existent keys or keys that do not belong to any node. The search method preserves the internal structure of the tree, with nodes being either empty or containing nodes, and handles all searches correctly. Semi (10 marks): Searching for a non-existent key returns null. Internally consistent but incorrect final result (15 marks): Logic follows consistently from the student's traversal and attachment approach, but the resulting tree is not internally consistent due to a systematic error in searching for a non-existent key.

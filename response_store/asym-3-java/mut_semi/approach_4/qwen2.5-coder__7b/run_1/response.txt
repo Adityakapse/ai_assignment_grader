@@ -1,0 +1,45 @@
+POINT_ID: 1
+BUCKET: Correct
+
+FEEDBACK: The student clearly separates `f`'s nested loop from the call to `g`, and references line numbers appropriately.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not analyze the non-loop parts of the functions f and g, instead focusing only on the nested loops. The setup statements outside the loops were incorrectly claimed to be constant time, but this was not accurately explained or substantiated.
+
+POINT_ID: 3
+BUCKET: Semi
+
+FEEDBACK: The student correctly identifies that the nested loops iterate Theta(N^2) times, but they lack a strong justification for this claim. They do not mention the lower bound of j starting at i or explain how the sum of N + (N-1) + ... + 1 equals N(N+1)/2.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student incorrectly states that the cost per iteration of the nested loops in f is O(N), when it should be O(1). They do not provide justification for why each iteration is constant time, instead suggesting that the complexity arises from reading and writing to memory.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly calculates the total loop cost of `f` as Theta(N^2) by multiplying the number of iterations (N^2) by the per-iteration cost (Theta(1)).
+
+POINT_ID: 6
+BUCKET: Wrong  
+FEEDBACK: The student's analysis does not account for the constant-time operations involved in calling `g` and adding the results, leading to an incorrect complexity of just `Theta(N)` for Part C of function `f`.
+
+POINT_ID: 7
+BUCKET: Correct  
+FEEDBACK: The student correctly identifies that the diagonal loop in `g` runs Theta(N) times, as it iterates from `i = 0` to `i = N-1`.
+
+POINT_ID: 8
+BUCKET: Correct  
+FEEDBACK: The student correctly states that each iteration of the nested loops in `f` is Theta(1) due to a single matrix access and one addition, which is supported by the specific line number mentioned (line 6).
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly calculates the total loop cost of g as Theta(N) by multiplying the number of iterations (N) by the per-iteration cost (Theta(1)).
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student states that g has a runtime of Theta(N), which is correct. However, the reasoning provided is missing and does not follow the steps outlined in the sample solution for analyzing the loop in g.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: The student correctly identified that T_f(N) = Theta(N^2), accounting for the nested loop and function call to g, and correctly absorbed the lower-order term Theta(N).

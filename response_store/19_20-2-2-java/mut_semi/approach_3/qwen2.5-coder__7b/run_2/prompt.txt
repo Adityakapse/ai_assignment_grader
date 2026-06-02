@@ -1,0 +1,127 @@
+QUESTION:
+The Reverse Polish Notation / Postfix Notation is a special notation for
+for mathematical expressions, where the numbers are given first, followed by the
+operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation.
+
+A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack.
+If an operator is encountered, then the uppermost two numbers are taken from the stack,
+the operator is executed and the result is put back on the stack.
+After the calculation, the result is the only number on the stack.
+
+In this task you are asked to implement such a calculator in a method.
+It should be able to process the operators plus (+), minus (-), times (*)
+and division (/, rounded down). You will receive a stack with the following
+known methods, which you have to use in your implementation:
+
+public class IntegerStack {
+    public boolean emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+
+The method receives as input a list of strings in which the
+numbers and operators are already separated (e.g..: String[] input =
+{"1", "2", "*", "3", "4", "*", "+"};). Strings can be converted with the help of
+"Integer.parseInt(myString);". You will also get a stack, which you should use.
+The method should return the correct result as an integer.
+
+You can assume that the input is a correct formula.
+
+SAMPLE SOLUTION:
+// This implementation assumes input is a correct formula
+public int Calculator(String[] input, IntegerStack s) {
+    for(int i = 0; i < input.length; ++i) {
+        switch(input[i]) {
+            case "+":
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n2 + n1);
+                break;
+            case "-":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 - n1);
+                break;
+            case "*":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 * n1);
+                break;
+            case "/":
+                n1 = s.pop();
+                n2 = s.pop();
+                s.push(n2 / n1);
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}
+
+STUDENT SOLUTION:
+// Wrong operand order for non-commutative operators (- and /)
+public int Calculator(String[] input, IntegerStack s) {
+    for (int i = 0; i < input.length; ++i) {
+        switch (input[i]) {
+            case "+":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 + n1); }
+                break;
+            case "-":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n1 - n2); }
+                break;
+            case "*":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n2 * n1); }
+                break;
+            case "/":
+                { int n1 = s.pop(); int n2 = s.pop(); s.push(n1 / n2); }
+                break;
+            default:
+                s.push(Integer.parseInt(input[i]));
+                break;
+        }
+    }
+    return s.pop();
+}
+
+
+RUBRIC:
+Point 1 — Iteration and token classification
+  The method iterates through all tokens in the input from left to right, and distinguishes numeric tokens from operator tokens.
+  Buckets:
+    - Wrong (0 marks): No iteration over the input, or all tokens are treated identically with no distinction between numbers and operators.
+    - Semi (10 marks): Iteration is present but incomplete (e.g., does not process all tokens, or skips the first/last token), or classification logic is partially correct (e.g., only operators are recognised, numbers are not handled separately).
+    - Correct (20 marks): All tokens are processed left to right, and the method correctly distinguishes numeric tokens from operator tokens as a basis for the two different actions.
+
+Point 2 — Number handling: push to stack
+  When a numeric token is encountered, it is converted to an integer and pushed onto the stack.
+  Buckets:
+    - Wrong (0 marks): Numeric tokens are not pushed onto the stack, or are pushed without conversion (e.g., pushed as a string).
+    - Semi (8 marks): Numeric tokens are pushed but conversion is incorrect or missing in some cases (e.g., only works for single-digit numbers, or conversion is applied to operators as well).
+    - Correct (15 marks): Numeric tokens are correctly converted to integers and pushed onto the stack.
+
+Point 3 — Operator handling: pop, compute, push
+  When an operator token is encountered, exactly two values are popped from the stack, the operation is applied, and the result is pushed back. This is evaluated independently of operand order.
+  Buckets:
+    - Wrong (0 marks): No stack operations are performed for operators, or only one value is popped, or the result is not pushed back onto the stack.
+    - Semi (12 marks): Two values are popped and a result is pushed, but the computation step is missing or incorrect for some operators (e.g., always adds regardless of operator, or handles only some operators). Operand order is evaluated separately in point 4.
+    - Correct (25 marks): For every operator token, exactly two values are popped, the correct arithmetic operation is applied for all four operators, and the result is pushed back. Operand order is evaluated separately in point 4.
+
+Point 4 — Correct operand order for non-commutative operators (- and /)
+  For subtraction and division, the first value popped from the stack is the right operand and the second popped is the left operand (i.e., result = second_popped op first_popped). This matches RPN semantics.
+  Buckets:
+    - Wrong (0 marks): Operand order is reversed for subtraction and/or division (e.g., computes first_popped - second_popped), producing incorrect results for non-symmetric expressions.
+    - Semi (12 marks): Operand order is correct for one of subtraction or division but wrong for the other, or the order is correct but integer division is not applied (e.g., uses floating-point division).
+    - Correct (25 marks): Both subtraction and division use the correct operand order: second_popped op first_popped. Integer (floor) division is applied for '/'.
+
+Point 5 — Overall correctness
+  The method returns the correct integer result for all valid RPN expressions, including expressions with all four operators and multiple nested operations.
+  Buckets:
+    - Wrong (0 marks): Method fails to compile or run, or produces incorrect output for most test cases.
+    - Semi (8 marks): Method produces correct results for simple expressions (e.g., single operator) but fails for more complex inputs, or fails specifically for subtraction and division due to operand order.
+    - Correct (15 marks): Method produces the correct result for all test cases, including complex nested expressions and all four operators.
+    - Internally consistent but incorrect final result (11 marks): Method follows logic consistent with the student's own earlier implementation, but produces incorrect output due to a systematic error (e.g., consistently wrong operand order or wrong division rounding).

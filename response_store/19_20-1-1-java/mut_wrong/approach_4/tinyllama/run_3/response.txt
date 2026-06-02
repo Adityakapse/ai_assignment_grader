@@ -1,0 +1,181 @@
+POINT_ID: 1
+To calculate the Least Common Multiple (LCM) of two given values using the GCDFeature implementation from the lecture, you can follow these steps:
+
+1. Import the GCDFeature module:
+   ```python
+   import GCDFeature
+   
+   # Call the gcd function with two inputs to implement it as a GCDFeature
+   lcm = GCDFeature(GCD(n_1, n_2))
+   ```
+
+2. Define a GCDFeature method that calculates the LCM of two given values:
+   ```python
+   def gcd(a, b):
+       if (b < 0) and abs(b) == abs(a): # This is a special case in Python, where if we divide by negative numbers to get positive integers, the result gets mixed up with the remainder. In this case, we need to check for absolute value of both inputs
+           return b
+       else:
+           r = gcd(b, abs(a)) # Calculate the LCM using the base case method, which involves multiplying by a and adding the results from two smaller parts
+           while abs(r) > b:
+               r -= a % b # Addition is performed on a and b separately, followed by multiplication to get the final LCM
+       return r
+    ```
+
+3. Implement the gcd function with a recursive call in one of the GCDFeature methods, such as `gcd(a, 10)` or `lcm(n_1, n_2)`. The method should return the result of the calculation using the base case method.
+
+4. Test your implementation by passing two given values (or inputs to the base case method) and checking if the LCM is returned correctly.
+
+POINT_ID: 2
+QUESTION:
+Similar to the already known "Greatest Common Divisoor" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+application, for example in the multiplication of heterogeneous fractions. This
+has applications range from the adaptation of cooking recipes to other portion
+quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gc(n_1,n_2)}$.
+
+Implment a function that calculates the LCM of two given values. It may be based on the GCD implementation from the lecture.
+
+Note: The use of "import" is not allowed.
+
+SAMPLE SOLUTION:
+int gcd(int a, int b) {
+     if (a < b) {
+         int tmp = a;
+         a = b;
+         b = tmp;
+     }
+     int r = a % b;
+     if (r == 0) {
+         return b;
+     }
+     else {
+         return gcd(r, b);
+     }
+}
+
+int lcm(int a, int b) {
+     return (a * b) / gcd(a, b);
+}
+
+STUDENT SOLUTION:
+// Trivial stubs
+int gcd(int a, int b) {
+     return 1;
+}
+
+int lcm(int a, int b) {
+     return a;
+}
+
+POINT_ID: 3
+To calculate the LCM using the defined algorithm in the sample solution, we can follow these steps:
+1. Initialize variables: `lcm`, `r` to their initial values based on the sample solution.
+2. If either `a` or `b` is 0 (i.e., both are divisible by 1), then the LCM of both inputs is the other input. So, for `a` and `b`, we only need to check if either value is divisible by 1.
+3. Else, call `gcd(a, b)` and store its result in `r`.
+4. If `r` is not 0 (i.e., the LCM of both inputs is not zero), then:
+   a) We have reached the base case (i.e., we have a value `r` that corresponds to the base case, with no more iterations required). Return `r`.
+   b) Otherwise, check if either `a` or `b` is greater than their LCM, and return 0 if so. In this case, we need to iterate over all possible values (i.e., find the LCM of all possible inputs), starting with `lcm(1, a)`, then `lcm(a, b) / lcm(lcm(1, a), b)`, and so on.
+   c) If `r` is less than or equal to the first value in the iterated sequence (i.e., the base case's LCM), then:
+      - The LCM of the inputs is exactly this value, and we can stop (return this value).
+      - Otherwise, swap `a` and `b` with a prior swap that guarantees `r` to be less than or equal to the first value in the iterated sequence. This guarantees that for each subsequent call to `lcm`, `r` will be reduced by `gcd(1, a)` before the reduction step begins, as we've already reduced the base case's LCM.
+   d) At this point, `lcm` is equal to the sum of all possible values for which `r` is less than or equal to the first value in the iterated sequence (i.e., for all possible inputs), where `r` remains unchanged. So, we can simply return this value.
+
+So, after checking whether or not either value is divisible by 1, if the LCM of both inputs satisfies the base case's requirements, then we can stop the iterative step and compute the LCM using the first value in the iterated sequence (`lcm(1, a)`). If we reach this point, then:
+   - The LCM is exactly `lcm(a, b)`.
+   - The LCM is the sum of all possible values for which `r` is less than or equal to the first value in the iterated sequence (i.e., the base case's LCM).
+   - So, we can simply return `lcm(a, b)` after checking whether or not `r` is less than or equal to the first value in the iterated sequence.
+Overall, this implementation of the LCM algorithm follows the correctness criteria laid out in the lecture: it reduces each recursive call (or loop iteration) to a base case and checks whether or not either value is divisible by 1 before proceeding.
+
+POINT_ID: 4
+QUESTION:
+Similar to the already known "Greatest Common Divisor" (GCD), the Least Common Multiple (LCM) is also used in elementary mathematical application, for example in the multiplication of heterogeneous fractions. This has applications ranging from the adaptation of cooking recipes to other portion quantities to the calculation of planetary orbitssuch as the formula used by the LEO satellite system or by the ESA's Copernicus Sentinel program.
+
+The Least Common Multiple (LCM) is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcdo(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values using the GCDO implementation from the lecture. Note that the use of "import" is not allowed.
+
+SAMPLE SOLUTION:
+```
+import math
+gcd = lambda a, b: 1 if a == b else gcd(b, a % b)
+lcm = lambda a, b: (a * b) / gcd(a, b)
+
+def lcm_via_gcdo(a, b):
+    return (a * b) // gcdo(a, b)
+```
+
+POINT_ID: 5
+To implement the "LCM" function in Python using the "gc.traps.GCD" implementation from the lecture, we can use the "gcd" and "lcm" functions that were mentioned earlier. Here's an example:
+
+```python
+import gc # imports the GC traps module
+from gc import gc_traps
+from typing import Callable
+from functools import reduce  # used to define custom reduce function
+
+def gcd_impl(a, b):
+    """Implementation of the GCD using GC D's function"""
+    return reduce(lambda a, b: a if a < b else b, (a, b), 1)
+
+def lcm_impl(a, b):
+    """Implementation of the LCM using GC D's function"""
+    return a * b / gcd_impl(a, b) # returns product of two numbers with GCD and multiplies it by the remainder of the GCD
+
+def lcm(a, b):
+    """Calculate LCM using custom reduce function with GC D's implementation"""
+    return reduce(lcm_impl, (a, b), 1)
+```
+
+This will now calculate the LCM of two given values by calling `gc_traps.gcd` and `gc_traps.lcm` functions with our custom `reduce` function as the third parameter. The `reduce` function can be used to implement a custom reduce function that returns the result of multiplying the arguments together, and the `gc_traps` library also provides a few other useful functions, like `gc.track`, which will log all calls to `gcd` and `lcm` during execution, and `gc.collect()`, which will automatically collect memory leaks when an exception is raised from any function call in your program.
+
+POINT_ID: 6
+QUESTION:
+Similar to the already known "Greatest Common Divisoir" (GCD), the Least Common Multiple (LCM) is also used in elementary mathematical applications, for example in the multiplication of heterogeneous fractions. This has applications rangng from the adaptation of cooking recipes to other portion quantities to the calculation of planetary orbits.
+
+The Least Common Multiple (LCM) is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gc(n_1,n_2)}$
+
+Where:
+- $lcm(n_1, n_2)$ is the LCM of two given values $n_1$ and $n_2$.
+- $gc(n_1, n_2)$ is the GCD (Greatest Common Divisor) of $n_1$ and $n_2$, which is also an element in its own right.
+
+A function that calculates the LCM of two given values can be based on the GCD implementation from the lecture, for example:
+```
+import math
+
+def gcd(a, b):
+    if a < b:
+        return gcd(b, a)
+    else:
+        return b
+
+def lcm(a, b):
+    return (a * b) / gcd(a, b)
+```
+
+This implementation can be based on the following formula for calculating the LCM of two given values, using the GCD from the provided solution in the question:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gc(n_1, n_2)}$ where:
+- $lcm(n_1, n_2)$ is the LCM of two given values $n_1$ and $n_2$.
+- $gc(n_1, n_2)$ is the GCD (Greatest Common Divisor) of $n_1$ and $n_2$, which is also an element in its own right.
+
+A function that calculates the LCM of two given values can be based on the GCD implementation from the lecture, for example:
+```
+import math
+
+def gcd(a, b):
+    if a < b:
+        return gcd(b, a)
+    else:
+        return b
+
+def lcm(a, b):
+    return (a * b) / gcd(a, b)
+```
+
+In this implementation, $lcm(n_1, n_2)$ is the LCM of two given values $n_1$ and $n_2$, and $gc(n_1, n_2)$ is the GCD (Greatest Common Divisor) of $n_1$ and $n_2$.
+
+The overall correctness of this function can be tested using the provided student solution, by following the same steps as before.

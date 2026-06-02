@@ -1,0 +1,45 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student has created a basic structure for the queue, but it lacks any internal storage or state fields that are necessary to maintain elements in FIFO order.
+
+RUBRIC POINT:
+Point 2 — Method definitions and correctness of implementation
+  All four methods (emptyqueue(), head(), enqueue(x), dequeue()) are defined correctly, but the student has not implemented them yet.
+ 
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The method checks emptiness by comparing start and end indices but it does not consider the case where both are at the end of the buffer (100). This can lead to incorrect results when the queue is full (end == start - 1) or empty.
+### Instruction
+RUBRIC POINT:
+Point 3 — head(): correct retrieval of first element
+  The method returns the first element
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The method head() returns the first element from the queue but also changes the start index which is not expected according to this problem statement. It should only return the front of the queue without removing it or changing internal state.
+
+---
+
+RUBRIC POINT:
+Point 3 — enqueue(x): adds x at end of queue
+  The method enqueue() appends a new element to the back of
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The enqueue method is adding elements but it does not update the internal tracking state after inserting an element at the end of queue, causing subsequent operations to fail or produce incorrect results.
+
+Rubric point 5 — dequeue(): removes and returns the frontmost element from the queue
+  dequeue() correctly retrieves and removes the frontmost element from the queue and updates all internal tracking state so that subsequent operations remain consistent
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The dequeue method appears to retrieve the correct element but does not remove it or update the start index of the queue. It might be missing some error checking for when the queue is empty.
+
+RUBRIC POINT:
+Point 6 — enqueue(x): adds x at the end of the queue
+  enqueue(x) inserts an element 'x' to the back of the queue, updates all
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The solution correctly implements a queue using an array and maintains FIFO order by incrementing start and end indices appropriately. It also handles edge cases where the end index reaches 100, it resets it to 0. No 'import' is present in the submission.

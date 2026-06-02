@@ -1,0 +1,40 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student clearly separates the analysis of `f` and `g`, identifying the call to `g(p)` inside the loop of `f`. They also consistently reference line numbers.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not analyze the non-loop code parts of both functions f and g. For function f, the initialization `int s = 0; Node p = h;` is incorrectly claimed to have a traversal cost, which is not true. For function g, the analysis misses the constant-time initialization part.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student states that the outer loop of f runs about N times, which is correct. However, the explanation for why this is true is incomplete. Specifically, the student does not mention that p advances by one node per iteration (p = p.next), which is essential to justify why the loop runs Theta(N) times.
+
+POINT_ID: 4
+BUCKET: Semi
+
+FEEDBACK: The student correctly identifies that the call to `g(p)` dominates the cost per iteration of `f`. However, they do not establish that this cost is `Theta(N)` in the worst case, instead suggesting it depends on the rest of the list without committing.
+
+POINT_ID: 5
+BUCKET: Semi (4 marks)
+FEEDBACK: The student correctly identified that f calls g(p) for each node in the list, leading to an overall cost proportional to N times the cost of g. However, the simplification is unclear; they mention "some traversal cost" but do not clearly explain why it contributes to a quadratic term.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student states that g has "Theta(N) iterations in the worst case," but the explanation is incomplete. The student does not justify why the loop visits all N nodes when called with start = h, which is necessary to fully demonstrate the Theta(N) complexity.
+
+POINT_ID: 7
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims that each iteration of g has a cost of Theta(N), which is incorrect. The cost per iteration should be constant, as accessing a field and performing a few operations are both O(1) operations.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student correctly calculates the total loop cost of g() as Theta(N) by multiplying the number of iterations (Theta(N)) by the per-iteration cost (Theta(1)).
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly states the runtime of g as \( \Theta(N) \) and provides a detailed explanation of why, including the reasoning that it visits each node once in the worst case.
+
+POINT_ID: 10
+BUCKET: Correct
+FEEDBACK: The student correctly states that the overall worst-case runtime of function `f` is Theta(N^2) by accounting for both the non-loop parts and the loop, as well as the correct summation of these components to arrive at Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).

@@ -1,0 +1,151 @@
+POINT_ID: 1
+QUESTION:
+Based on the seaRCH trees described above, how can you implement a "insert" method for the searcH tree that returns the new node and does not repeat traversal to the insertion point? Answer according to: Implement different methods for the seaRCH trees. For this task, implement a method "insert" that insert a "Node" into the seaRChee tree and returns the new seaRCH tree. The nodes can be reuseD as desired. The function is passed the root of the seaRCH tree and the new Node. Parent. SAMPLE SOLUTION:
+public Node insert(Node root, Node insert) {
+     Node x = root;
+     Node y = null; // saves Node.Parent
+     while (x != null) {
+         y = x;
+         if (insert.key < x.key) {
+             x = x.left;
+         } else {
+             x = x.right;
+         }
+     }
+
+     insert.parent = y;
+     if (y == null) {
+         return insert;
+     } else if (insert.key < y.key) {
+         y.left = insert;
+     } else {
+         y.right = insert;
+     }
+
+     return root;
+}
+
+STUDENT SOLUTION:
+// Just returns the new node, dropping the rest of the tree
+public Node insert(Node root, Node insert) {
+    root.insert(insert);
+    return root;
+}
+
+POINT_ID: 2
+QUESTION: How should the parent pointer be tracked during traversal in the seaRChe trees method proposed by students? Answer according to: Point 2 — Parent tracking during traversal
+   A separate pointer (e.g., y) is maintained and updated at each step of the traversal, so that after the loop it holds the parent of the null insertion point.
+   BUCKET: "Wrong"
+   FEEDBACK: No parent variable is tracked during traversal; after the loop there is no reference to the node that should become the parent of insert.
+
+POINT_ID: 3
+FIRST SESSION:
+In this first session, we'll work on writing a simple "inserts" method that adds a new node to a seaRch tree. The method will take two parameters - the root of the tree and the new node - and return the new tree. Here's an example implementation:
+
+```java
+public Node insert(Node root, Node insert) {
+    Node x = root; // Save root node to be able to compare with inserted node later
+    Node y = null; // Save Node.Parent if it doesn't exist already and has been set by the caller
+    
+    while (x != null) { // Traverse tree till we find inserted node
+        y = x; // Save node.parent to compare with inserted node later
+        
+        if (insert.key < x.key) {
+            x = x.left; // If inserted key is less than current key, traverse left subtree
+        } else {
+            x = x.right; // If insertion key is greater than current key, traverse right subtree
+        }
+    }
+    
+    if (y == null) { // Case: Insertion node was not found, so root node becomes the new tree's root
+        return insert;
+    } else { // Case: Insertion node was found, set the inserted node as the left or right child of root
+        
+        y.left = insert; // Set inserted node as left child
+        
+        if (y == root) { // If y is the new root, then we're done
+            return y;
+        } else if (insert.key < y.key) {
+            y.right = insert; // If inserted key is less than current key, set as right child of y
+        } else {
+            y.left = insert; // If insertion key is greater than current key, set as left child of y
+        }
+        
+        return root;
+    }
+}
+```
+
+In this method, we use the "while" loop to traverse the tree until we find an inserted node with smaller keys. After that, we compare the keys to determine if it should be attached to its parent node or its left/right child. If we don't have a parent at all, then we set it as the new root of the tree. We also call the "insert" method on the root node once we've found the inserted node and attached it correctly to its parent node.
+
+The "root" parameter is used to keep track of the original "search tree", which we're inserting into. The "parent" parameter stores the Node.Parent of the inserted node, so that if we need to attach a new node to its parent later (e.g., for updating the BST), we can use this information.
+
+SECOND SESSION:
+In this second session, we'll implement a method that checks whether an insertion point is already in the tree or not. We will use this check to ensure that our new node doesn't have to be inserted into an empty tree, since we assume that any inserted node has a parent with no children. The "check" method will compare the "key" field of the "insert" node and its parent node. If the key is less than the current parent, then we know it's already in the tree.
+
+Here's the implementation:
+
+```java
+public boolean check(Node root, Node insert) {
+    return (root != null && insert.key < root.key) || insert == root; // If key is less than current parent, then we know it's already in the tree
+}
+```
+
+This method checks whether a new node "insert" has its key less than the current parent "root". If it does, then that means it's already inserted into the tree. We return true to indicate success, and false to indicate failure. If we know there's no other nodes in the tree, we return false too.
+
+THIRD SESSION:
+Finally, in this third session, we'll test our new "insert" method using the previous code snippets. We'll use a simple test case that inserts a new node with different keys at different positions into a seaRch tree. The method will check that its insertion points are already in the tree or not, and return true if they are.
+
+Here's an example implementation of the "check" method:
+
+```java
+boolean check(Node root, Node insert) {
+    boolean found = false; // Mark to indicate if inserted node is found
+    
+    while (root != null && !found) { // Traverse tree till we find a non-empty node with no parent (i.e., found == false)
+        if (insert.key < root.key) { // Check if insertion key is less than the current key of current node
+            root = root.left; // If so, recursively check left subtree and move to next node
+        } else if (root.key < insert.key) { // Check if inserted key is less than current key of parent node or its right child
+            root = root.right; // If so, recursively check right subtree and move to next node
+        } else { // If both nodes have same keys, then we've found our inserted node
+            return true; // We know it's already in the tree (i.e., found == true)
+        }
+        
+        found = root != null; // Mark if we've found a non-empty node with no parent
+    }
+    
+    return false; // If we're here, then inserted node was not found and it's not in the tree yet
+}
+```
+
+In this method, we check if the "found" variable is false. It means that our search didn't find a non-empty node with the same keys as our insertion point. We return true to indicate that we have found our inserted node and it's already in the tree. Otherwise, we return false to indicate that we haven't found it yet and we need to continue traversing the tree until we do.
+
+POINT_ID: 4
+Rule: Output only two lines above — no preambles or summaries. No extra text.
+Bucket: "Wrong"
+Feedback sentence: "The solution increments a counter until a multiple of both a and b is found; no GCD-based or sub-linear approach is present."
+
+POINT_ID: 5
+QUESTION:
+Implementing methods for searching trees is an important aspect of this task. You are required to implement two methods: "search" and "inorder".
+
+The search method should return the root node, either the given key or a root node with the same key if no such key exists in the tree. If the key does not exist in the tree, the method should raise an exception or return null.
+
+Here is how you can implement this method for searching in a binary search tree (BST):
+
+1. Define "root" as the first node in the BST and initialize it to be null.
+2. For each node "n" in the tree, check if it has already been visited or not. If it hasn't been visited yet, then visit it and set its parent to be "null".
+3. Loop through all the children of a node until you reach the root node.
+4. If "n" is null, then it means that there is no such key in the tree, so return null.
+5. If the current node is less than or equal to "key" and "n" has not been visited yet (i.e., it's a right child), then set the value of "n" to be the current node.
+6. If the current node is greater than or equal to "key", then set the value of "n" to be the root node.
+7. Return "root".
+
+The inorder method should traverse through all the nodes of a BST, starting from the left child and ending at the right child, recursively calling this method on the siblings (if any). It should then return the rightmost node of the BST. Here is how you can implement this method for a binary search tree:
+
+1. Define "root" as null and initialize it to be null.
+2. For each node "n" in the tree, check if it has already been visited or not. If it hasn't been visited yet, then visit it and set its parent to be null (to prevent infinite loops).
+3. Recurse through all the children of a node until you reach the root node.
+4. If "n" is null, then return null as "root" was already returned.
+5. Otherwise, recursively call this method on the right child (if any) and update "root" with the rightmost node.
+6. Return "root".

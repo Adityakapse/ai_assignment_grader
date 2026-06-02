@@ -1,0 +1,46 @@
+POINT_ID: 1
+BUCKET: Correct  
+FEEDBACK: The student clearly separates the analysis of `f` and `g`, identifying loops and non-loop code, and references line numbers appropriately.
+
+POINT_ID: 2
+BUCKET: Wrong  
+FEEDBACK: The student incorrectly claimed that the non-loop parts of both functions were constant time. The sample solution correctly identified these parts, but the student did not analyze them properly.
+
+POINT_ID: 3
+BUCKET: Semi
+
+FEEDBACK: The student correctly identifies that the nested loops in `f` iterate roughly \(N^2\) times, but lacks a complete justification. The statement "double loop ⇒ N^2" is not specific enough and does not reference the condition \(j \leq i\).
+
+POINT_ID: 4
+BUCKET: Semi (6 marks)
+FEEDBACK: The student suggests that each iteration of the inner body in `f` is O(1) but lacks a clear explanation for why. They mention array reads, multiplication, addition, and += assignment, which are correct, but they do not explicitly state that these operations together make each iteration Theta(1).
+
+POINT_ID: 5
+BUCKET: Correct
+
+FEEDBACK: The student correctly identifies that the total cost of the nested loops in `f` is \( \Theta(N^2) \) because there are \( N^2 \) iterations, and each iteration costs \( \Theta(1) \). This aligns with the provided sample solution.
+
+POINT_ID: 6
+BUCKET: Semi
+
+FEEDBACK: The student correctly identifies that the call to `g` in `f` contributes a cost of Theta(log N), but does not explicitly state that the addition and return are Theta(1), instead simply saying "then f calls g, which adds some extra cost from g."
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that the loop in g runs Theta(log N) times, but they do not explain why this is the case. They should have mentioned that k is halved each iteration, starting from N and continuing until it reaches 0.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student does not provide a clear or specific statement of the cost per iteration for function g. Instead, they suggest that operations are small/constant but do not explicitly state Theta(1) justification.
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the cost of each iteration in the loop of `g` as Theta(1) and accurately calculates the total complexity as Theta(log N).
+
+POINT_ID: 10
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies the runtime of g as Theta(log N). However, they do not provide a clear justification for this result, nor do they sum the constant-time operations with the loop iterations, which is necessary to derive the correct asymptotic complexity.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that the overall worst-case runtime of function `f` is Θ(N^2).

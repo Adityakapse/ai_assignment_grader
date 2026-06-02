@@ -1,0 +1,306 @@
+POINT_ID: 1
+1. F(int[] a)
+    Line 2: Introduction to the function "f"
+        SAMPLE SOLUTION:
+        Let N be the length of array a.
+        Method f
+            Part A: int n = a.lengt; // The length of array a
+            Part B (while loop): condition k <= n, body calls g and doubles k.
+            Part C: return s; // The function "f" returns the asymptotic worst case running time in seconds.
+    Line 4-5: Definition of the function "g"
+        SAMPLE SOLUTION:
+        Let N be the length of array a.
+        Method g
+            Part D: int t = 0; // The function "g" starts with an initial value of 0
+            Part E (for loop): scan the entire array a regardless of x
+            Part F: return t; // The function "g" returns the asymptotic worst case running time in seconds.
+
+POINT_ID: 2
+Here is a revised version of the student's written asymptotic-complexity analysi, using Theta notation:
+
+AsymQ4 | Parts A and C are Theta(log N), Parts B and D are Theta(1), Part E is Theta(1), Part F is Theta(1) and Part G is Theta(1). Overall running time is constant at O(N), with logarithmic complexity.
+
+BUCKET: Logarithmic complexity (<exact bucket label>)
+FEEDBACK: Specific to student's submitted analysi, not generic
+
+POINT_ID: 3
+Yes, you can do this in Python using the `big_O` notation, as shown above. The output format for your AsymQ4 analysi should be as follows:
+
+```
+BUCKET: <exact bucket label>
+FEEDBACK: <one or two sentences referencing the student's actual analysiis>
+```
+
+Here are some detailed analyzii of each function in AsymQ4:
+
+- f() (int n = a.length)
+  - Part A: int n = a.lengt, s = 0, k = 1
+    - Constant time for this part, because we know the length of the array is N.
+    - We start with `s` and update it by calling g() (int t = 0), which takes constant time.
+    - The loop continues until k exceeds N, where we update s to include the value of k when it reaches the bound (k * 2) each iteration.
+    - This requires `Theta(log N)` time for the total loop, since we need to multiply by a constant and add one value per iteration.
+    - The total cost is: `Theta(1)`, as there are no pre- or postconditions in this part.
+  - Part B (while loop): condition k <= n, body calls g() and doubles k; the doubled value is added to s at each iteration and returned.
+    - This costs `Theta(log N)` time for the total loop.
+    - The total cost of Part B is: `Theta(log N) * 2`, which makes up for the addition of k each time.
+  - Returning s: Since we need to multiply by a constant and add one value per iteration, this returns a single value and is thus a constant-time operation.
+    - The total cost is: `Theta(1)`, as there are no pre- or postconditions in this part.
+
+Regarding the other methods, you can also do this by using `big_O()` notation for each method:
+
+```python
+def f():  # AsymQ4: Part A: int n = a.lengt, s = 0, k = 1
+    ...
+    
+def g():  # AsymQ4: While loop: condition k <= n and body calls g() and doubles k; s += doubled value at each iteration...
+    ...
+    return s
+```
+
+And the output format would be something like this:
+
+```
+BUCKET: <exact bucket label>
+FEEDBACK: Part A: int n = a.lengt, s = 0, k = 1
+    
+FEEDBACK: Returning s: Since we need to multiply by a constant and add one value per iteration, this returns a single value and is thus a constant-time operation. The total cost is: `Theta(1)`, as there are no pre- or postconditions in this part. ```
+
+I hope that helps! Let me know if you have any further questions.
+
+POINT_ID: 4
+Yes, you can do this in C# with the help of LINQ:
+
+```csharp
+using System;
+
+public class AsymQ4 {
+    // `a` has length N.
+    // Your analysi should be based on N.
+    public static int F(int[] a) {
+        int n = a.Length;
+        
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += G(a, k);
+            k *= 2;
+        }
+        return s;
+    }
+    
+    private static int G(int[] a, int x) {
+        int t = 0;
+        
+        for (int I = 0; I < a.Length; i++) {
+            if (a[i] < x) {
+                t += G(a, a[i]);
+            } else {
+                t += a[i];
+            }
+            
+            // If I is the index of the next larger integer, return 2 times t.
+            if (i == a.Length - 1 && t > n) {
+                t /= 2;
+                return 2 * t;
+            }
+        }
+        
+        // If no such I exists, then we've finished scanning the input array and cannot compute the asymptotic worst-case running time.
+        throw new ArgumentException("Exceeded input size!");
+    }
+    
+    private static int G(int[] a, int x) {
+        // Compute the cost per iteration for the linear scan of a[0..i-1].
+        return (int)Math.Pow(2, x - 1);
+    }
+    
+    public static void Main() {
+        var input = new int[5];
+        for (int I = 0; I < input.Length; i++) {
+            input[i] = Convert.ToInt32(Console.ReadLine());
+        }
+        
+        // Calculate the asymptotic worst-case running time of the function F(x) as the average cost per iteration of the linear scan of x.
+        Console.WriteLine($"Asymptotic worst-case running time: {(int)(F(input, 2).Item1 / F(input, 1).Item1):f0}");
+    }
+}
+```
+
+This program calculates the asymptotic worst-case runtime of `F` in terms of `n`. The inner loop of `G` uses the same logic as `F`, computing the cost per iteration for each linear scan of a. This is then used to estimate the running time, which should be accurate up to logarithmic factors. The program also calculates the average cost per iteration using `Math.Pow()`, and prints out the result with an error margin of at most 2*log(n) in the log-scale.
+
+POINT_ID: 5
+To calculate the asymptotic worst case running time of two functions `f` and `g`, as a function of the length of the input array `a`.
+
+The student's written analysi is based on N, which is the length of `a`. Therefore, the rubric point is:
+- Output only the two lines above - no preamble, no summary, no extra text
+- BUCKET must be the exact label string from the rubric - do not paraphrase or invent labels
+- FEEDBACK must be specific to the student's submitted analysi.
+
+The student's answer should include a detailed analyzi for both functions, each with their own feature. The final output format should include:
+- A single line for the part of the function with the most costly loop (either `f` or `g`, depending on which is being analyzed)
+- A constant time cost per iteration (`Theta(1)`) and a total cost per iteration (`Theta(log N)`), both of which are given by Theta notation.
+
+Part A:
+The loop in part A of both functions has a constant time cost, and can be simulated in a single linear scan (i.e., one array read and comparison). Therefore, the total cost is:
+- Part B (loop): Linear scan of length `N` x Theta(1) = Theta(log N), with no additional per-iteration complexity. Therefore, the overall cost of part B is:
+   - Wrong (0 marks): No multiplication, but final simplification or reasoning is unclear or incorrect.
+   - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+   - Correct (8 marks): The loop has a constant time cost and multiple iterations result in no additional per-iteration complexity.
+
+Part B:
+Both functions have a total loop cost of `N log N` where `log N` represents the base 2 logarithm, so:
+- Part F (for loop): Linear scan of length `a.lengtch` x Theta(1) = Theta(N log N), with no additional per-iteration complexity. Therefore, the overall cost of part F is:
+   - Wrong (0 marks): No multiplication, but final simplification or reasoning is unclear or incorrect.
+   - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+   - Correct (8 marks): The loop has a constant time cost and multiple iterations result in no additional per-iteration complexity.
+
+Therefore, the total cost of both functions is:
+- Wrong (0 marks): No multiplication, but final simplification or reasoning is unclear or incorrect.
+   - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+   - Correct (8 marks): The loop has a constant time cost and multiple iterations result in no additional per-iteration complexity.
+
+POINT_ID: 6
+In the question, you are required to write your answer for each function. Your answers should include detailed analysias based on N, the length of the input array `a`, and each loop iteration. Additionally, your analyses should refer to line numbers for every loop you mention. For every step of the function, you need to justify using a specificTheta notation or big-O notation with corresponding tbgth bounds. You can use Theta notation for constant time cost per iteration, especially if the cost per iteration is dominated by a linear scan of a. Similarly, you can use big-O notation for asymptotic worst case running time. For example:
+
+AsymQ4.f(a)
+Part A: int n = a.lengtH;
+Part B (while loop): condition k <= n, body calls g(a, k);
+Part C: return s; — constant time. Parts A and C are Theta(1). AsymQ4.g()
+Part D: int t = 0; — constant time. AsymQ4.f()
+Part E (for loop): scan a.lengtH - 1, the loop runs from i=0 to i=a.lengtH-1 and costs Theta(N) per iteration regardless of x. AsymQ4.g()
+Part F: return t; — constant time. Parts A, D, and F are Theta(1). For every loop you mention, you should justify using a specificTheta notation or big-O notation with corresponding tbgth bounds, such as using Theta(logN) for constant time running time and Theta(log2(N)) for log2(N) cost per iteration. You can also use Theta(N) to express asymptotic worst case running time. For example:
+
+Stub 1.f()
+Part A: int n = a.lengtH;
+Part B (for loop): scan a.lengtH - 1, the loop runs from i=0 to i=a.lengtH-1 and costs Theta(N) per iteration regardless of x. Stub 2.g()
+Part E (for loop): scan a.lengtH - 1, the loop runs from i=0 to i=a.lengtH-1 costs Theta(logN) for logarithmic scaling running time and Theta(log2(N)) for log2(N) cost per iteration for any N. Stub 3.f()
+Part F (for loop): scan a.lengtH - 1, the loop runs from i=0 to i=a.lengtH-1 costs Theta(logN) for logarithmic scaling running time and Theta(log2(N)) for log2(N) cost per iteration for any N. Stub 4.g()
+Part E (for loop): scan a.lengtH - 1, the loop runs from i=0 to i=a.lengtH-1 costs Theta(logN) for logarithmic scaling running time and Theta(log2(N)) for log2(N) cost per iteration for any N.
+
+POINT_ID: 7
+Sure! Here's a detailed analysis of the two functions you provided:
+
+AsymQ4 (Part A) - The cost of Part A is constant time per iteration. This means that in the worst case scenario, where the input array has length N, each iteration takes N steps at most. In terms of Theta notation, this cost is `n`. As for Part B (loop), it involves a single linear scan of the input array. Since the loop runs until k exceeds N, the number of iterations required is also constant time per iteration. This means that the total cost of Part B is also constant time per iteration - in the worst case scenario, where the input array has length N, each iteration takes N steps at most.
+
+For Part C (while loop), each iteration doubles the value of `k` until it reaches a bound of log2(N). At this point, the number of iterations required is:
+
+1 + 3 + ... + (log2(N) - 1) = log2(N) steps at most.
+
+In other words, each iteration takes at most `log2(N)` steps at most. This means that the total cost of Part C is:
+
+1 + 3 + ... + (log2(N) - 1) * log2(N) = log2(N) * `log2(N)` steps at most.
+
+In summary, for Parts A and B, the total cost per iteration is:
+
+- Part A: constant time per iteration
+- Part B (loop): constant time per iteration, as mentioned above
+
+Overall, the total cost of AsymQ4 is:
+
+- Cost per iteration: `log2(N)` steps at most
+- Total cost per iteration: `n` steps at most
+
+As for Part C, this also involves a linear scan of the input array. Since each iteration doubles the value of `k`, in the worst case scenario (where `k` exceeds log2(N)), the number of iterations required is `log2(N) - 1`. In other words, each iteration takes at most:
+
+1 + ... + 0 = 1 step at most
+
+In summary, the total cost of Part C for each iteration is:
+
+- Cost per iteration: 1 step at most (since each iteration doubles `k`)
+- Total cost per iteration: 1 step at most
+
+Overall, the total cost of Part C in AsymQ4 (i.e., including Parts A and B) is:
+
+- Cost per iteration: 0 steps at most
+- Total cost per iteration: 0 steps at most
+
+The above analysis supports your original comments that each iteration costs `log2(N)` steps for Parts A and B, and the total cost of Part C is `n` steps at most.
+
+POINT_ID: 8
+Here is a summary of the rules outlined in the given text for calculating asymptotic worst case running time of functions `f` and `g`:
+
+- Line 5: The student's analysiis should be based on the N length of the input array.
+- Line 7: `f(a)` has length N, therefore we have N lines to analyze.
+- Line 14: The loop is executed for the length of array a (N), and the number of iterations and cost per iteration is calculated as follows:
+  - Line 15: Part A runs for `k` starting from 1, with constant time costs.
+  - Line 16: Part B (while loop) is run for `k` starting at `k` * 2 (logarithmic doubling), with cost per iteration dominated by the call to g(a, k).
+- Line 23: The total cost of Part B is Theta(log N), as we have a linear scan of array a and the loop executes for log2(N) iterations.
+- Line 24: We are interested in part C (for loop), which consists of an additional `s` variable, with constant time costs.
+- Line 25: Part D (for loop) is executed for the length of array a (N), giving total cost per iteration dominated by Theta(1).
+- Line 30: Overall running time is Theta(log N + log2(N)) = Theta(log N), as we have an additional logarithmic doubling of the loop, followed by one linear scan with no additional costs.
+- Rule 8: g(): Total loop cost is Theta(N) x Theta(1) per iteration.
+
+POINT_ID: 9
+Here is the revised text with feedback and additional clarifications:
+
+QUESTION: Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`. **SAMPLE SOLUTION**
+
+public final class AsymQ4 {
+    
+    // `a` has length N.
+    
+    // Your analysips should be based on N.
+    
+    public static int f(int[] a) {
+        
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a, k);
+            k = k * 2;
+        }
+        return s;
+    }
+    
+    private static int g(int[] a, int x) {
+        
+        int t = 0;
+        for (int i = 0; I < a.length; i++) {
+            if (a[i] < x) t += a[i];
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; — constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s; — constant time.
+
+Parts A and C are Theta(log N).
+
+Part D: int t = 0; - constant time.
+Part E: Built-in functions: sum(array), max(array)
+   T_g(N) = Theta(1) + Theta(N) + Theta(1) = Theta(N).
+   Correct (9 marks): Final not Theta(N), but correctly summed from own earlier values.
+
+Semigroups of integers:
+  - Integers with sum of all elements = 0
+  - Integers with product of all elements > 1
+  - Integers with greatest common divisor (gcd) of all elements = 1
+
+Integers having a least lower bound for all their elements:
+  - Integers with smallest element >= 2 and only two elements have sum equal to 0
+  - Integers with largest element <= 0 and at most one element has sum equal to 0
+  - Integers with greatest lower bound for all elements > 1 and only one element has sum equal to 0
+
+POINT_ID: 10
+Method f
+Part A: int n = a.length; int s = 0; int k = 1; - constant time. Part B (while loop): condition k <= n, the body calls g(a, k) and doubles k. Part C: return s; - constant time. Parts A and C are Theta(1).
+Part B (loop):
+- Iterations: k starts at 1 and is multiplied by 2 each iteration. The loop continues while k <= N, so k reaches the bound after about log2(N) doublings. Number of iterations: Theta(log N).
+- Cost per iteration: dominated by the call g(a, k), which is Theta(N) (a full linear scan of a; see also g below); see also g below. Doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+Method g
+Part D: int t = 0; - constant time. Part E (for loop): scan the entire array a regardless of x. Part F: return t; - constant time. Parts D and F are Theta(1).
+Part E:
+- Iterations: the loop runs i from 0 to a.length - 1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read, one comparison, possibly one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+Overall worst-case runtime of f
+Point 10 — Wrong: Final not Theta(N log N), but correctly summed from own earlier values; see also g below. Correct final result is Theta(N) (a full linear scan of a; also g below). This is not correct, because in the worst case, the loop will end up with n=1, and this would cause an overflow error with the given input array length. Point 7 — Wrong: Semi consistent with previous point: If the input array length is larger than log2(N), then the inner loop body will perform a full linear scan of the array, which can easily lead to an overflow when the array has only one element. This is because n=1 results in k<=log2(N)<=0, and we are performing a square root in g(k) (assuming that k>=0), so we cannot perform any further operations while the loop is active (i.e., while k>log2(N)). Point 9 — Correct: Semi consistent with previous point: If n=1, then all iterations will end up with k<=log2(N)<=0, and there are no further operations while the loop is active, as we cannot perform any further operations when the inner loop body performs a square root in g(k). Point 8 — Correct: Internally consistent: While the given input array length does not have more than log2(N)-1 elements, the loop will still end up with k<=log2(N)<=0, and there are no further operations while the loop is active. This is because the value of n at the time that the loop ends will be less than or equal to (i.e., greater than or equal to) log2(N)-1, which satisfies the condition in g(k). Point 6 — Correct: Semi consistent with previous point: If the input array length is not larger than log2(N), then we can perform an accurate multiplication in g(k) for each iteration. This is because in this case, n>log2(N) and thus k<=log2(N)-1, which is a valid condition for any k in the loop. Point 5 — Correct: Semi consistent with previous point: If the input array length is larger than log2(N), then we cannot perform an accurate multiplication in g(k) because n<=log2(N) and thus k>log2(N)-1, which leads to a square root that can cause an overflow in the final result. Point 4 — Wrong: Final not Theta(N log N): We perform the inner loop body while the value of n is less than or equal to log2(N), but then perform the computation g(k) for each iteration, which can lead to an overflow when k>=log2(N). Point 3 — Correct: Semi consistent with previous point: If the input array length is larger than log2(N), then we cannot perform an accurate multiplication in g(k) because n<=log2(N), which leads to a square root that can cause an overflow in the final result. Overall worst-case runtime of f
+Point 7 — Wrong: Semi consistent with previous point: If the input array length is larger than log2(N), then we cannot perform an accurate multiplication in g(k) for each iteration, which leads to a square root that can cause an overflow when k>=log2(N). Point 9 — Correct: Internally consistent: While the given input array length does not have more than log2(N)-1 elements, the loop will still end up with k<=log2(N)<=0, and there are no further operations while the loop is active. This is because the value of n at the time that the loop ends will be less than or equal to (i.e., greater than or equal to) log2(N)-1, which satisfies the condition in g(k). Point 6 — Correct: Semi consistent with previous point: If the input array length is not larger than log2(N), then we can perform an accurate multiplication in g(k) for each iteration. This is because in this case, n>log2(N) and thus k<=log2(N)-1, which is a valid condition for any k in the loop. Point 5 — Correct: Semi consistent with previous point: If the input array length is larger than log2(N), then we cannot perform an accurate multiplication in g(k) because n<=log2(N) and thus k>log2(N)-1, which leads to a square root that can cause an overflow when k>=log2(N). Point 4 — Wrong: Final not Theta(N log N): We perform the inner loop body while the value of n is less than or equal to log2(N), but then perform the computation g(k) for each iteration, which can lead to an overflow when k>=log2(N). Point 3 — Correct: Internally consistent: While the given input array length does not have more than log2(N)-1 elements, the loop will still end up with k<=log2(N)<=0, and there are no further operations while the loop is active. This is because the value of n at the time that the loop ends will be less than or equal to (i.e., greater than or equal to) log2(N)-1, which satisfies the condition in g(k).

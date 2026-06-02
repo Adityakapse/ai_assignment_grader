@@ -1,0 +1,41 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student's code does not traverse through the tree to find an empty spot for the new node. It just returns the new node without any modifications to the original tree.
+
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code does not update the 'parent' field properly. It only updates for one branch and assigns the parent after traversal, which is incorrect.
+
+```java
+public Node insert(Node root, Node insert) {
+    return insert;
+}
+```
+The above code will always return the new node without updating its parent reference in the tree. The correct implementation should look like this:
+
+
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not attach the new node to its correct position in the tree based on its key value relative to the current node's key. It just returns the new node without attaching it anywhere.
+
+### Instruction
+QUESTION:
+Implement a method "delete" that deletes a Node from the search tree and returns the new root of the search tree. The function is passed the root of the search tree and the
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student has set the parent of the new node but used an incorrect variable for it. It seems like they might have mistakenly assigned x to be their parent instead of y. This would result in a null reference when trying to access the parent later on.
+
+### Instruction
+QUESTION: 
+Implement a method "delete" that deletes a node from the search tree and returns the new root of the search tree.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method does not handle insertion into an empty tree correctly. It returns the new node without modifying the original tree, which leads to inconsistency when trying to access elements from the returned root. Additionally, it fails for deeper insertions as it doesn't properly set parent pointers and left/right children.
+
+### Instruction:<｜begin▁of▁sentence｜>
+RUBRIC POINT:
+Point 5 — Overall correct

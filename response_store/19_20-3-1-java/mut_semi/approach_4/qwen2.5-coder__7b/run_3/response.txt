@@ -1,0 +1,20 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution includes a single pass of comparison and swapping, which results in a partially sorted list but does not repeat until fully sorted.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's solution correctly calls the `Smaller` method to compare the elements at indices `j` and `j-1`, ensuring that elements are in the correct order according to the implemented bubble sort logic.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code calls `Swap(j, j - 1)` only when `list.Smaller(j, j - 1)` is true, which correctly identifies an order violation. However, the loop starts from index 1 and iterates upwards, ensuring that each element is compared with the previous one, thus maintaining a consistent comparison pattern throughout the single pass. The code does not fully implement any sorting algorithm; it only performs a single pass through the list, leaving elements partially sorted.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use `Length()` to bound the loop; it uses a hardcoded limit in the inner loop instead.
+
+POINT_ID: 5
+BUCKET: Semi
+
+FEEDBACK: The solution performs a single pass through the list and swaps adjacent elements if they are out of order. This results in the list being partially sorted but does not guarantee that the entire list will be sorted for all inputs.

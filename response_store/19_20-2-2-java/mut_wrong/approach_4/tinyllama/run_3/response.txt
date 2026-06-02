@@ -1,0 +1,210 @@
+POINT_ID: 1
+QUESTION:
+Design a Java program that uses the Reverse Polish Notation (Postfix) notation for mathematical expressions, where the numbers are given first, followed by the operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation. A calculator for this notation can be represented well with the help of a stack. The notation is processed from left to right.
+If a number is processed, it is put on the stack. If an operator is encountered, then the uppermost two numbers are taken from the stack, the operator is executed and the result is put back on the stack. After the calculation, the result is the only number on the stack.
+In this task you will receive a stack with the following methods that can be used to process the operators:
+public class IntegeStack {
+    public boolean emptystack();
+    public int head();
+    public void push(int i);
+    public int pop();
+}
+The method receives as input a list of strings in which the numbers and operators are already separated (e.g., "1", "2", "*", "3", "4", "*", "+"). Strings can be converted with IntegeR.parseInt(myString);. You will also get a stack, which you should use.
+The method should return the correct result as an integer when processing an expression in this notation.
+
+
+POINT_ID: 2
+The Reverse Polish Notation / Postfix Notation notation is a special notation for mathematical expressions that uses a stack to perform calculations. The notation allows operators, numbers, and operators to be pushed or popped from the stack in a specific order as shown above. In this task, you will need to implement such a calculator using a method.
+
+To process the Reverse Polish Notation notation, you'll need to use a stack to store operators, numbers, and operators to be used in the calculation. For example, to calculate 1 * 2 + 3 * 4, we would first push 1 onto the stack, then push 2 onto the stack, then push 3 onto the stack, and finally push 4 onto the stack. Once all operations have been performed and all numbers have been pushed onto the stack, the result can be obtained by popping the last two numbers off the stack.
+
+To implement this calculator using a stack, you'll need to use the following methods:
+
+1. EmptyStack(): Returns false indicating that there are no operators or numbers on the stack.
+2. Push(int): Adds the given integer to the top of the stack.
+3. Pop(): Removes the top element from the stack and returns it.
+
+To handle the operators in this notation, you'll need to convert between string representations and numbers as necessary for each operation. You can assume that the input is a correct formula since we're performing operations using the given notation.
+
+Here's an implementation of the above methods:
+
+```java
+public class Intege r Stack {
+     public int emptyStack();
+     public void push(int n);
+     public int pop();
+ }
+
+ public int Calculator(String[] input, Int e r Stack s) {
+     for (int I = 0; I < input.length; ++i) {
+         switch (input[i]) {
+             case "+":
+                 int n1 = s.pop();
+                 int n2 = s.pop();
+                 s.push(n2 + n1);
+                 break;
+             case "-":
+                 n1 = s. pop();
+                 n2 = s. pop();
+                 s.push(n2 - n1);
+                 break;
+             case "*":
+                 n1 = s.pop();
+                 n2 = s. pop();
+                 s.push(n2 * n1);
+                 break;
+             case "/":
+                 n1 = s. pop();
+                 n2 = s. pop();
+                 s.push(n2 / n1);
+                 break;
+             default:
+                 s. push(Int e r Stack.parseInt(input[i]))
+             }
+     }
+     return s.pop();
+ }
+ ```
+
+POINT_ID: 3
+Certainly! Here's a solution to this challenge using Java programming language:
+
+Assuming that the input array contains valid mathematical expressions (e.g., 1 * 2 + 3 * 4). The program should be able to process the following operators (+, -, *. /), as well as perform appropriate stack manipulations to handle each case.
+
+1. Pop: pops the topmost value from the stack and puts it on the output string.
+
+2. Compute: If an operator token is encountered with a plus (or * or /) at its beginning, computes the operation and appends the result to the output string. This process involves pushing values onto the stack, performing arithmetic operations based on the operators, then popping values back off the stack.
+
+3. Push: If an operator token is encountered with a minus (or /) at its beginning, pushes the operand and operator to the stack in the correct order (i.e., the operator comes before the operands).
+
+4. RBRIC POINT: The program should be able to handle each type of operator correctly by computing the operation based on the current stack state, then properly handling the result (if any) using push/pop operations. This involves performing appropriate arithmetic steps for all four operators, as well as checking if a certain value has been pushed or popped successfully.
+
+To implement this program, we'll create an abstract class called IntegerStack that extends an ArrayList in Java, which provides various methods for stack manipulation (e.g., peek, pop, etc.). Here's the implementation of the method to pop a value from the stack, as well as the correct handling of operators:
+
+public class IntegerStack {
+     public intea n;
+         
+    // Empty stack constructor
+    public IntegerStack() {
+        this.n = 0;
+    }
+    
+    // Pop an element from the stack
+    public void pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack is empty");
+        n = n - 1;
+    }
+    
+    // Empty stack implementation (for peek)
+    public intpeek() {
+        return n;
+    }
+    
+    // Empty stack implementation (for pop)
+    public void ppop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack is empty");
+        n = n - 1;
+    }
+}
+
+The program should be able to handle both positive (+) and negative (-) operators correctly based on the input, so we'll use a check for the operator token at the beginning of each arithmetic expression. If a minus token is encountered, pop the operand (an integer value) off the stack, push it onto the output string using the push() method, and perform the appropriate calculation based on the current state of the stack, as shown in the code above:
+
+public class IntegeRStack {
+     public intea n;
+         
+    // Empty stack constructor
+    public IntegeRStack() {
+        this.n = 0;
+    }
+    
+    // Pop an element from the stack (i.e., pop operand)
+    public void pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack is empty");
+        n = n - 1;
+        
+        // Check for minus token (i.e., pop operand and shift to right)
+        if (n == 0) {
+            n++; // Pop an extra value, move to next element (to push output string)
+        }
+    }
+    
+    // Empty stack implementation (for peek)
+    public intpeek() {
+        return n;
+    }
+    
+    // Empty stack implementation (for pop)
+    public void ppop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack is empty");
+        
+        // Check for minus token and shift to right (i.e., pop operand and push output string)
+        n = n - 1;
+    }
+}
+
+In this implementation, the stack manipulation operations (e.g., peek, pop, etc.) are applied in the correct order based on the input. The pop method handles pushing an operand onto the output string first before popping an extra value to move to the next element in the stack, while the ppop method handles shifting values from the output string up to and including the pushed value.
+
+The program should be able to handle each type of operator correctly based on the input, as we've implemented a stack manipulation strategy for each type of operator (i.e., push/pop) in the appropriate order.
+
+POINT_ID: 4
+The Reverse Polish Notation / Postfix Notation is a special notation for mathematical expressions, where the numbers are given first, followed by the operators. The expression (1 * 2)+(3 * 4) would be 1 2 * 3 4 * + in this notation. A calculator for this notation can be represented well with the help of a stack.
+The notation is processed from left to right.
+If a number is processed, it is put on the stack. If an operator is encountere d, then the uppermost two numbers are taken from the stack, the operator is executed and the result is put back on the stack. After the calculation, the result is only one number on the stack.
+In this task you are asked to implement such a calculator in a method. It should be able to process the operators plus (+), minus (-), times (*) and division (/, rounded down). The method receives as input a list of strings in which the numbers and operators are already separated (e.g., "1", "*", "+").
+String[] input = {"1", "*", "+"};
+Intege rStack s; // A stack with the following methods: push(int), pop(), getTop()
+public int Calculator(String[] input, Intege rStack s) {
+    for (int i = 0; i < input.length; ++i) {
+        switch (input[i]) {
+            case "+": // If plus operator is found, push two numbers and continue processing
+                   int n1 = s.pop();
+                   int n2 = s.pop();
+                   s.push(n2 + n1);
+                   break;
+            case "*":
+                n1 = s.pop(); // If the first number is found, push it to the stack and continue processing
+                n2 = s.pop(); // and add them together
+                s.push(n2 * n1);
+                break;
+            case "-": // If minus operator is found, pop two numbers from the stack and add them together
+                   int n1 = s.pop();
+                   int n2 = s.pop();
+                   s.push(n1 - n2);
+                   break;
+            case "/":
+                n1 = s.pop(); // If the first number is found, pop it and divide it by the second number
+                n2 = s.pop(); // and add them together
+                s.push(n1 / n2);
+                break;
+            default:
+                s.push(Intege rStack.getTop()); // If non-commutative operator, pop top number and process it
+                                               // If not, proceed with the previous step of processing left operators
+        }
+    }
+    return s.getTop();
+}
+// Sample student solution:
+int Calculator(String[] input, Intege rStack s) {
+    int sum = 0;
+    for (int I = 0; I < input.length - 1; ++i) {
+        try { // Ignore operators for non-commutative ones (- and /)
+            String op = input[i];
+            if ("-".equals(op)) { // If a minus operator is found, pop two numbers from the stack and add them together
+                int n1 = s.pop();
+                int n2 = s.pop();
+                s.push(n1 - n2);
+            } else { // If an arithmetic operator (+ or *), push the right operand to the stack, perform the left operator on it, and then push the result back to the stack
+                int n1 = s.pop();
+                int n2 = input[i+1]; // Pop the second number from the stack and add it to the first
+                s.push(n1 + n2);
+            }
+        } catch (NumberFormatException e) { // If either number is not of float type, propagate the exception to the student solution
+            int err = 0; // Initialize error counter for non-float numbers
+            while (!s.pop().equals(new Float(1)) && err < input.length - i); // Propagate until a float number is found or all left operators are ignored
+        }
+    }
+    return s.getTop();
+}
+
+POINT_ID: 5
+Assuming that all inputs are valid RPN expressions, the Reverse Polish Notation / Postfix Notation method implemented in the given task will be able to process operators such as plus (+), minus (-), times (*) and division (/). The program will also handle nested operations and output correct results for most test cases. However, if a specific input is entered or a particular type of error occurs during execution, the program's overall correctness may not be guaranteed.
