@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The implementation only contains a single loop and lacks the outer loop or mechanism required to perform multiple passes for a complete sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses `list.Smaller(j, j - 1)` to detect if the element at index `j` is out of order relative to its predecessor.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When a violation is detected, `list.Swap(j, j - 1)` is called using the exact same indices used in the comparison step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop boundary is correctly defined using `list.Length()`, ensuring the algorithm adapts to the list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: As noted in the student's own comment, the single-pass approach fails to sort the list correctly for any case requiring multiple passes.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution includes an inner loop that steps through adjacent elements and swaps them if they are in the wrong order. However, it lacks an outer loop to ensure multiple passes over the list for sorting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution correctly uses `Smaller(j, j - 1)` to compare whether two elements are out of order before swapping them.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution correctly calls `Swap(j, j - 1)` when the comparison indicates that the elements are in the wrong order, maintaining consistency with the comparison indices.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution uses `Length()` to bound the outer loop but does not use it for the inner loop's bounds. The inner loop has a hardcoded limit instead of using `Length()`.
+
+POINT_ID: 5
+BUCKET: Internally consistent but incorrect final result
+FEEDBACK: The logic is internally consistent with the student's approach, performing adjacent swaps in a single pass through the list. However, this results in only partial sorting, failing to sort the list completely for most inputs.

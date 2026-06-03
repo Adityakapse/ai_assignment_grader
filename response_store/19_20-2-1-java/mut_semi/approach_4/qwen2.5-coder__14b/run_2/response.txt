@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class is defined with internal storage using an ArrayList, but it lacks the necessary tracking state to correctly support all four queue operations (e.g., no head or tail pointers).
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The `emptyqueue()` method incorrectly returns true when the list is empty but does not check for the case when all elements have been dequeued, leaving the list with non-relevant elements.
+
+POINT_ID: 3
+BUCKET: Wrong  
+FEEDBACK: The head() method does not modify the internal state but always returns the first element added to the list instead of the current front element.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses an ArrayList which is not allowed by the rubric, as it does not implement a fixed-size array-based queue.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method does not remove the front element; instead, it returns the first element without modifying the list.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The dequeue() method does not remove the front element from the list; it only returns the first element repeatedly. This violates FIFO order, which is crucial for a queue. Additionally, the use of 'import' is present, as ArrayList is imported from java.util.

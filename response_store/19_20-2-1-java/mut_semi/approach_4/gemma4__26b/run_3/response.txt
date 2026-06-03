@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class is correctly defined with an internal `java.util.ArrayList` that serves as both the storage and the necessary tracking state for the elements.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The method correctly returns the result of `list.isEmpty()`, accurately reflecting whether the internal list is empty.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The method returns the element at index 0 using `list.get(0)` without modifying the underlying ArrayList.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Although the method correctly appends elements to the end of the list, the implementation fails to maintain a consistent queue state because subsequent calls to emptyqueue() will never return true after an element is added.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue method retrieves the first element using list.get(0) but fails to remove it from the internal ArrayList.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: While the basic logic works for a single element, the dequeue method does not remove the head of the queue, causing the FIFO order to fail during repeated operations.

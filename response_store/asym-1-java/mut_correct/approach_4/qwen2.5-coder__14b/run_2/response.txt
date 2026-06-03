@@ -1,0 +1,44 @@
+POINT_ID: 1
+BUCKET: Semi
+
+FEEDBACK: The analysis separates functions `f` and `g`, but it does not clearly distinguish between loops and non-loop code within each function, and there are no specific line numbers referenced.
+
+POINT_ID: 2
+BUCKET: Correct  
+FEEDBACK: The student correctly identified all non-loop parts of both functions f and g as being constant-time operations.
+
+POINT_ID: 3
+BUCKET: Semi  
+FEEDBACK: The student correctly identifies the combined iterations as Theta(N^2), but the justification is weak. Instead of summing 1 + 2 + ... + N = N(N+1)/2 or referencing the j <= i bound, the student simply states 'double loop ⇒ N^2' without further explanation.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly states that the cost per iteration isTheta(1) but does not provide a detailed justification for why each operation within the inner loop is constant time. The feedback should have been more specific about justifying array accesses and arithmetic operations as contributing to this constant cost.
+
+POINT_ID: 5
+BUCKET: Correct  
+FEEDBACK: The student correctly multiplies the iteration count by the per-iteration cost and simplifies to Theta(N^2) for both parts of function f, providing a clear justification for each step.
+
+POINT_ID: 6
+BUCKET: Correct  
+FEEDBACK: The student correctly identifies that the call to `g` costs Θ(log N) and adds that the constant-time return is also considered.
+
+POINT_ID: 7
+BUCKET: Semi  
+FEEDBACK: The student correctly states that the loop runs Theta(log N) times, but does not explain why k is halved in each iteration.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student analysis mentions that each operation in the iteration is small or constant but does not explicitly state that the cost per iteration is Theta(1).
+
+POINT_ID: 9
+BUCKET: Correct  
+FEEDBACK: The student correctly multiplies the iteration count by the per-iteration cost and arrives at the correct complexity of Theta(log N).
+
+POINT_ID: 10
+BUCKET: Correct  
+FEEDBACK: The analysis correctly states the overall worst-case runtime of g as Theta(log N) and provides reasoning that sums the constant-time parts and the loop, aligning with the earlier analysis.
+
+POINT_ID: 11
+BUCKET: Correct  
+FEEDBACK: The student correctly states that the overall worst-case runtime of f is Theta(N^2) by summing the costs of all parts, including the non-loop parts and Part C, which accounts for the call to g.
