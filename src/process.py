@@ -88,7 +88,8 @@ def get_expected_point_ids(datastore_dir, question_id):
 
 def _split_into_point_blocks(text):
     # Splits an LLM response into (point_id, block_text) pairs using POINT_ID: markers.
-    pattern = re.compile(r"POINT_ID:\s*(\d+)(.*?)(?=POINT_ID:\s*\d+|\Z)", re.DOTALL)
+    # Accepts bare integers ("1") and word-prefixed forms ("Point 1") from models like gemma4.
+    pattern = re.compile(r"POINT_ID:\s*(?:Point\s+)?(\d+)(.*?)(?=POINT_ID:\s*(?:Point\s+)?\d+|\Z)", re.DOTALL)
     return [(int(m.group(1)), m.group(2)) for m in pattern.finditer(text)]
 
 
@@ -100,8 +101,12 @@ def _extract_marks(block_text):
 
 def _extract_bucket(block_text):
     # Extracts the label after BUCKET: from a point block; returns None if absent.
+    # Strips parenthetical mark hints some models append, e.g. "Correct (15 marks)" → "Correct".
     m = re.search(r"BUCKET:\s*(.+)", block_text)
-    return m.group(1).strip() if m else None
+    if not m:
+        return None
+    label = m.group(1).strip()
+    return re.sub(r"\s*\(.*?\)\s*$", "", label).strip()
 
 
 def _extract_feedback(block_text):

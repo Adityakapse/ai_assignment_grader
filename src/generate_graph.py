@@ -1,3 +1,4 @@
+import json
 import os
 
 import matplotlib.pyplot as plt
@@ -8,7 +9,9 @@ from scipy.stats import spearmanr
 
 PALETTE = sns.color_palette("tab10")
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
-PRIMARY_MODEL = "qwen2.5-coder:7b"
+PRIMARY_MODEL = "gemma4:26b"
+# PRIMARY_MODEL = "qwen2.5-coder:14b"
+
 DPI = 150
 
 
@@ -214,7 +217,8 @@ def _plot_rq1_kde_figure(df, gt_df, model, output_dir, filename):
                     color=approach_colours[approach], linewidth=2, clip=(0, 100))
 
     if gt_df is not None and "human_total" in gt_df.columns:
-        human_vals = gt_df["human_total"].dropna().values
+        valid_qids = set(deduped["question_id"].dropna().unique())
+        human_vals = gt_df[gt_df["question_id"].isin(valid_qids)]["human_total"].dropna().values
         if len(human_vals) >= 2:
             sns.kdeplot(human_vals, ax=ax, label="Human", color="black",
                         linewidth=2, linestyle="--", clip=(0, 100))
@@ -343,12 +347,12 @@ def _plot_rq2_mae_figure(df, gt_df, model, output_dir, filename):
             len([a for a in ordered if a in group_a])
     mid_b = sum(x_positions[len([a for a in ordered if a in group_a]):]) / \
             len([a for a in ordered if a in group_b if a in mae.index])
-    ax.text(mid_a, -ax.get_ylim()[1] * 0.12, "Whole Rubric",
-            ha="center", fontsize=9, color="gray")
-    ax.text(mid_b, -ax.get_ylim()[1] * 0.12, "Per Rubric Point",
-            ha="center", fontsize=9, color="gray")
+    ymax = ax.get_ylim()[1]
+    ax.text(mid_a, -ymax * 0.12, "Whole Rubric", ha="center", fontsize=9,
+            color="gray", clip_on=False)
+    ax.text(mid_b, -ymax * 0.12, "Per Rubric Point", ha="center", fontsize=9,
+            color="gray", clip_on=False)
 
-    # Divider between groups
     divider_x = (x_positions[len(group_a) - 1] + x_positions[len(group_a)]) / 2
     ax.axvline(divider_x, color="gray", linestyle="--", linewidth=1, alpha=0.6)
 
@@ -420,8 +424,8 @@ def _plot_rq2_spearman_figure(df, gt_df, model, output_dir, filename):
     n_b = len([a for a in ordered if a in group_b])
     mid_a = sum(x_positions[:n_a]) / n_a
     mid_b = sum(x_positions[n_a:]) / n_b
-    ax.text(mid_a, -1.18, "Whole Rubric", ha="center", fontsize=9, color="gray")
-    ax.text(mid_b, -1.18, "Per Rubric Point", ha="center", fontsize=9, color="gray")
+    ax.text(mid_a, -1.18, "Whole Rubric", ha="center", fontsize=9, color="gray", clip_on=False)
+    ax.text(mid_b, -1.18, "Per Rubric Point", ha="center", fontsize=9, color="gray", clip_on=False)
 
     divider_x = (x_positions[n_a - 1] + x_positions[n_a]) / 2
     ax.axvline(divider_x, color="gray", linestyle="--", linewidth=1, alpha=0.6)
@@ -480,9 +484,11 @@ def _plot_rq2_time_figure(df, models, output_dir, filename):
     n_b = len([a for a in ordered if a in group_b])
     mid_a = sum(x_positions[:n_a]) / n_a
     mid_b = sum(x_positions[n_a:]) / n_b
-    y_label = -ax.get_ylim()[1] * 0.1
-    ax.text(mid_a, y_label, "Whole Rubric", ha="center", fontsize=9, color="gray")
-    ax.text(mid_b, y_label, "Per Rubric Point", ha="center", fontsize=9, color="gray")
+    ymax = ax.get_ylim()[1]
+    ax.text(mid_a, -ymax * 0.1, "Whole Rubric", ha="center", fontsize=9,
+            color="gray", clip_on=False)
+    ax.text(mid_b, -ymax * 0.1, "Per Rubric Point", ha="center", fontsize=9,
+            color="gray", clip_on=False)
 
     divider_x = (x_positions[n_a - 1] + x_positions[n_a]) / 2
     ax.axvline(divider_x, color="gray", linestyle="--", linewidth=1, alpha=0.6)
@@ -509,9 +515,10 @@ def plot_rq2_time(df, output_dir, models=None):
 # RQ3
 # ---------------------------------------------------------------------------
 
-def _plot_rq3_stability_figure(df, output_dir, filename):
+def _plot_rq3_stability_figure(df, models, output_dir, filename):
+    df_filtered = df[df["model"].isin(models)]
     deviations = (
-        df.groupby(["question_id", "student_id", "approach", "model"])["total"]
+        df_filtered.groupby(["question_id", "student_id", "approach", "model"])["total"]
         .agg(lambda x: (x - x.median()).abs().max())
         .reset_index()
         .rename(columns={"total": "max_dev"})
@@ -519,7 +526,6 @@ def _plot_rq3_stability_figure(df, output_dir, filename):
 
     approach_colours = _approach_colour_map()
     approaches = [a for a in APPROACHES if a in deviations["approach"].values]
-    models = sorted(deviations["model"].dropna().unique().tolist())
 
     fig, ax = plt.subplots(figsize=(11, 5))
     sns.boxplot(
@@ -536,7 +542,7 @@ def _plot_rq3_stability_figure(df, output_dir, filename):
     ax.set_ylabel("Max deviation from median run (marks)", fontsize=10)
     ax.set_title("RQ3 — Score stability across runs by model and approach", fontsize=11)
     ax.set_xticks(range(len(models)))
-    ax.set_xticklabels([m.split(":")[0] for m in models], fontsize=9)
+    ax.set_xticklabels(models, fontsize=9)
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, [l.replace("approach_", "Approach ") for l in labels],
               title="Approach", fontsize=8)
@@ -548,13 +554,247 @@ def _plot_rq3_stability_figure(df, output_dir, filename):
     _save(fig, output_dir, filename)
 
 
-def plot_rq3_stability(df, output_dir):
-    _plot_rq3_stability_figure(df, output_dir, "rq3_stability_by_model.png")
+def plot_rq3_stability(df, output_dir, models=None):
+    models = models or sorted(df["model"].dropna().unique().tolist())
+    _plot_rq3_stability_figure(df, models, output_dir, "rq3_stability_by_model.png")
+
+
+def _plot_rq3_format_failures_figure(df, models, output_dir, filename):
+    approaches = [a for a in APPROACHES if a in df["approach"].values]
+    model_colours = _model_colour_map(models)
+    bar_width = 0.22
+    n_models = len(models)
+    offsets = np.linspace(-(n_models - 1) / 2, (n_models - 1) / 2, n_models) * bar_width
+    x_positions = np.arange(len(approaches))
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for j, model in enumerate(models):
+        df_m = df[df["model"] == model]
+        counts = df_m.groupby("approach")["format_ok"].apply(lambda x: (x == False).sum())
+        heights = [counts.get(a, 0) for a in approaches]
+        xpos = [x + offsets[j] for x in x_positions]
+        bars = ax.bar(xpos, heights, width=bar_width,
+                      color=model_colours[model], label=model,
+                      edgecolor="white", linewidth=0.6)
+        for bar, h in zip(bars, heights):
+            if h > 0:
+                ax.text(bar.get_x() + bar.get_width() / 2, h + 0.3,
+                        str(int(h)), ha="center", va="bottom", fontsize=8)
+
+    ax.set_xticks(x_positions)
+    ax.set_xticklabels([a.replace("approach_", "Approach ") for a in approaches], fontsize=10)
+    ax.set_ylabel("Format failure count", fontsize=10)
+    ax.set_title("RQ3 — Format failures by approach and model", fontsize=11)
+    ax.legend(title="Model", fontsize=8, loc="upper right")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.yaxis.grid(True, linestyle="--", alpha=0.4, zorder=0)
+    ax.set_axisbelow(True)
+    plt.tight_layout()
+    _save(fig, output_dir, filename)
+
+
+def plot_rq3_format_failures(df, output_dir, models=None):
+    models = models or sorted(df["model"].dropna().unique().tolist())
+    _plot_rq3_format_failures_figure(df, models, output_dir, "rq3_format_failures.png")
 
 
 # ---------------------------------------------------------------------------
-# RQ graphs go here — added one at a time after discussion
+# RQ4
 # ---------------------------------------------------------------------------
+
+def _parse_json_col(val):
+    if pd.isna(val) or str(val).strip() in ("", "{}", "nan"):
+        return {}
+    try:
+        return json.loads(val)
+    except Exception:
+        return {}
+
+
+def _load_rubric_bucket_marks(datastore_dir, question_id):
+    task_id = question_id.rsplit("-", 1)[0]
+    path = os.path.join(datastore_dir, "rubrics", task_id, "rubric.json")
+    if not os.path.isfile(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        rubric = json.load(f)
+    result = {}
+    for point in rubric.get("rubric_points", []):
+        pid = str(point["id"])
+        result[pid] = {float(b["marks"]): b["label"] for b in point.get("buckets", [])}
+    return result
+
+
+def _mark_to_bucket(mark, bucket_marks_for_point):
+    if not bucket_marks_for_point:
+        return None
+    closest = min(bucket_marks_for_point.keys(), key=lambda m: abs(m - float(mark)))
+    return bucket_marks_for_point[closest]
+
+
+def _normalise_label(label):
+    if label and "internally" in str(label).lower():
+        return "Semi"
+    return label
+
+
+def _collect_bucket_counts(df, datastore_dir, model):
+    df_m = df[df["model"] == model].copy()
+    deduped = _deduplicated_per_student(df_m)
+    counts = {a: {"Correct": 0, "Semi": 0, "Wrong": 0} for a in APPROACHES}
+
+    for _, row in deduped.iterrows():
+        approach = row["approach"]
+        if approach not in counts:
+            continue
+        if approach in ("approach_3", "approach_4"):
+            buckets = _parse_json_col(row.get("buckets_per_point", "{}"))
+            for label in buckets.values():
+                label = _normalise_label(label)
+                if label in counts[approach]:
+                    counts[approach][label] += 1
+        else:
+            scores = _parse_json_col(row.get("scores_per_point", "{}"))
+            if not scores:
+                continue
+            rubric = _load_rubric_bucket_marks(datastore_dir, row["question_id"])
+            for pid, mark in scores.items():
+                label = _normalise_label(_mark_to_bucket(mark, rubric.get(pid, {})))
+                if label and label in counts[approach]:
+                    counts[approach][label] += 1
+
+    return counts
+
+
+def _collect_human_bucket_counts(gt_df, valid_question_ids):
+    counts = {"Correct": 0, "Semi": 0, "Wrong": 0}
+    filtered = gt_df[gt_df["question_id"].isin(valid_question_ids)]
+    for _, row in filtered.iterrows():
+        buckets = _parse_json_col(row.get("buckets_per_point", "{}"))
+        for label in buckets.values():
+            label = _normalise_label(label)
+            if label in counts:
+                counts[label] += 1
+    return counts
+
+
+def _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output_dir, filename):
+    if gt_df is None:
+        print(f"Skip {filename}: no ground truth data")
+        return
+
+    df_m = df[df["model"] == model]
+    valid_question_ids = set(df_m["question_id"].dropna().unique())
+
+    approach_counts = _collect_bucket_counts(df, datastore_dir, model)
+    human_counts = _collect_human_bucket_counts(gt_df, valid_question_ids)
+
+    categories = ["Wrong", "Semi", "Correct"]
+    groups = ["Human"] + [a.replace("approach_", "AP") for a in APPROACHES]
+    all_counts = [human_counts] + [approach_counts[a] for a in APPROACHES]
+
+    def to_pct(cnt):
+        total = sum(cnt.values())
+        return {k: round(v / total * 100, 1) if total > 0 else 0 for k, v in cnt.items()}
+
+    all_pcts = [to_pct(c) for c in all_counts]
+
+    colours = ["black"] + [_approach_colour_map()[a] for a in APPROACHES]
+    n_groups = len(groups)
+    bar_width = 0.15
+    offsets = np.linspace(-(n_groups - 1) / 2, (n_groups - 1) / 2, n_groups) * bar_width
+    x = np.arange(len(categories))
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for j, (label, pct, colour) in enumerate(zip(groups, all_pcts, colours)):
+        heights = [pct.get(cat, 0) for cat in categories]
+        bars = ax.bar(x + offsets[j], heights, width=bar_width,
+                      color=colour, label=label, edgecolor="white", linewidth=0.6)
+        for bar, h in zip(bars, heights):
+            if h > 0:
+                ax.text(bar.get_x() + bar.get_width() / 2, h + 0.5,
+                        f"{h:.0f}%", ha="center", va="bottom", fontsize=7)
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(categories, fontsize=11)
+    ax.set_ylabel("% of rubric point classifications", fontsize=10)
+    ax.set_ylim(0, 100)
+    ax.set_title(f"RQ4 — Bucket pickup % by approach vs human  |  model: {model}", fontsize=11)
+    ax.legend(title="Grader", fontsize=8, loc="upper right")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.yaxis.grid(True, linestyle="--", alpha=0.4, zorder=0)
+    ax.set_axisbelow(True)
+    plt.tight_layout()
+    _save(fig, output_dir, filename)
+
+
+def plot_rq4_bucket_distribution(df, gt_df, datastore_dir, output_dir, model=None):
+    model = model or PRIMARY_MODEL
+    _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output_dir,
+                                         "rq4_bucket_distribution.png")
+
+
+def _plot_rq4_length_bias_figure(df, solutions, model, output_dir, filename):
+    if solutions is None:
+        print(f"Skip {filename}: no solutions data")
+        return
+
+    solutions = solutions.copy()
+    solutions["length"] = solutions["solution"].astype(str).apply(len)
+
+    df_m = df[df["model"] == model].copy()
+    deduped = _deduplicated_per_student(df_m)
+    merged = deduped.merge(solutions[["question_id", "student_id", "length"]],
+                           on=["question_id", "student_id"], how="inner")
+    if merged.empty:
+        print(f"Skip {filename}: no matched rows after joining solutions")
+        return
+
+    approaches = [a for a in APPROACHES if a in merged["approach"].values]
+    colours = _approach_colour_map()
+
+    fig, axes = plt.subplots(2, 2, figsize=(12, 9), sharey=True)
+    axes = axes.flatten()
+
+    for ax, approach in zip(axes, approaches):
+        sub = merged[merged["approach"] == approach].dropna(subset=["length", "median"])
+        if sub.empty:
+            ax.set_visible(False)
+            continue
+
+        x = sub["length"].values
+        y = sub["median"].values
+
+        ax.scatter(x, y, color=colours[approach], alpha=0.7, s=50, zorder=3)
+
+        if len(x) >= 2:
+            rho, _ = spearmanr(x, y)
+            ax.annotate(f"ρ = {rho:.2f}", xy=(0.05, 0.92), xycoords="axes fraction",
+                        fontsize=9, fontweight="bold")
+
+        ax.set_title(approach.replace("approach_", "Approach "), fontsize=10)
+        ax.set_xlabel("Solution length (characters)", fontsize=9)
+        ax.set_ylabel("Median marks", fontsize=9)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+
+    for ax in axes[len(approaches):]:
+        ax.set_visible(False)
+
+    fig.suptitle(
+        f"RQ4 — Length bias: solution length vs LLM score  |  model: {model}",
+        fontsize=11,
+    )
+    plt.tight_layout()
+    _save(fig, output_dir, filename)
+
+
+def plot_rq4_length_bias(df, datastore_dir, output_dir, model=None):
+    model = model or PRIMARY_MODEL
+    solutions = load_solutions(datastore_dir)
+    _plot_rq4_length_bias_figure(df, solutions, model, output_dir, "rq4_length_bias.png")
 
 
 def main(result_store_dir, datastore_dir, output_dir="graph_store",
@@ -573,9 +813,12 @@ def main(result_store_dir, datastore_dir, output_dir="graph_store",
         plot_rq2_spearman(df, gt_df, output_dir)
         plot_rq2_time(df, output_dir, models=models)
     if "rq3" in rq_set:
-        plot_rq3_stability(df, output_dir)
+        plot_rq3_stability(df, output_dir, models=models)
+        plot_rq3_format_failures(df, output_dir, models=models)
     if "rq4" in rq_set:
         plot_rq4_leniency(df, gt_df, output_dir)
+        plot_rq4_bucket_distribution(df, gt_df, datastore_dir, output_dir)
+        plot_rq4_length_bias(df, datastore_dir, output_dir)
 
 
 if __name__ == "__main__":

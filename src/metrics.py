@@ -70,6 +70,8 @@ def load_rubric_buckets(datastore_dir, question_id):
     # Loads bucket definitions for a question's rubric, used to convert free marks to bucket labels.
     task_id = question_id.rsplit("-", 1)[0]
     path = os.path.join(datastore_dir, "rubrics", task_id, "rubric.json")
+    if not os.path.isfile(path):
+        return {}
     with open(path, encoding="utf-8") as f:
         rubric = json.load(f)
     result = {}
