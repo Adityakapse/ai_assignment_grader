@@ -145,7 +145,7 @@ def build_prompt_point(question, solution, point, free_marks):
 
 def call_ollama(prompt, model, system_prompt, retries=3, timeout=300):
     # Sends a prompt to the local Ollama API and returns the model's response text.
-    # Retries up to `retries` times on timeout before raising.
+    # Retries up to `retries` times on timeout or empty response before giving up.
     if model == "deepseek-coder:6.7b":
         options = {
             "temperature": 0.0,
@@ -164,11 +164,16 @@ def call_ollama(prompt, model, system_prompt, retries=3, timeout=300):
     for attempt in range(1, retries + 1):
         try:
             response = requests.post(OLLAMA_API, json=payload, timeout=timeout)
-            return response.json()["response"]
+            result = response.json()["response"]
+            if result.strip():
+                return result
+            if attempt < retries:
+                print(f"  [warn] Empty response (attempt {attempt}/{retries}), retrying...")
         except requests.exceptions.Timeout:
             if attempt == retries:
                 raise
             print(f"  [warn] Ollama timeout (attempt {attempt}/{retries}), retrying...")
+    return ""
 
 
 def assemble_per_point_response(point_results):
@@ -181,11 +186,12 @@ def assemble_per_point_response(point_results):
 
 
 def response_exists(response_store_dir, question_id, student_id, approach, model, run_n, response_file):
-    # Checks if a response file already exists so completed runs are not re-graded.
+    # Checks if a non-empty response file already exists so completed runs are not re-graded.
+    # Empty files (from a previous failed attempt) are treated as not done and will be retried.
     path = os.path.join(
         response_store_dir, question_id, student_id, approach, _to_fs_name(model), run_n, response_file
     )
-    return os.path.isfile(path)
+    return os.path.isfile(path) and os.path.getsize(path) > 0
 
 
 def save_run(response_store_dir, question_id, student_id, approach, model, run_n,
