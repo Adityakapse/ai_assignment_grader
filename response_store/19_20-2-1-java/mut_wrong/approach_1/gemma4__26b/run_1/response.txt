@@ -1,25 +1,25 @@
 POINT_ID: 1
 MARKS: 0
-FEEDBACK: The internal storage `last` is only capable of holding a single element and cannot maintain elements in FIFO order.
+FEEDBACK: The class lacks the necessary array or tracking pointers (like start/end) required to store multiple elements and maintain FIFO order.
 
 POINT_ID: 2
 MARKS: 5
-FEEDBACK: While the check `last == null` works for the single-element case, it does not correctly represent the emptiness of a queue that should hold multiple elements.
+FEEDBACK: While the method checks if 'last' is null, this check only works for a single-element storage rather than a true queue state.
 
 POINT_ID: 3
-MARKS: 12
-FEEDBACK: The `head()` method correctly returns the current element without modifying any internal state.
+MARKS: 10
+FEEDBACK: The head() method correctly returns the stored element without modifying the internal state.
 
 POINT_ID: 4
 MARKS: 0
-FEEDBACK: The `enqueue` method overwrites the existing value rather than adding a new element to the back of a sequence.
+FEEDBACK: The enqueue method overwrites the existing element instead of adding it to the back of a sequence or updating tracking state.
 
 POINT_ID: 5
-MARKS: 9
-FEEDBACK: The `dequeue` method correctly removes and returns the single element it stores, though it cannot handle a queue structure.
+MARKS: 5
+FEEDBACK: The dequeue method removes and returns the only stored element, but it cannot function as part of a multi-element queue.
 
 POINT_ID: 6
 MARKS: 0
-FEEDBACK: The implementation fails to preserve FIFO order because it can only store the most recent element and overwrites previous ones.
+FEEDBACK: The implementation fails to preserve FIFO order across repeated operations because it can only ever hold one element.
 
-TOTAL: 26
+TOTAL: 20

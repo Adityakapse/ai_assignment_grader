@@ -1,7 +1,0 @@
-To achieve the correctness requirement of Point 5, the Sort method should be implemented by recursively calling itself on each sublist containing only elements from the original list that have not been already sorted in ascending order. This ensures that the resulting sorted list will contain all valid inputs, as long as they are still in ascending order within their corresponding sublists.
-
-To make this recursive call, we can use the appropriate indices provided by Point 2. For example, if the comparisons show two elements to be out of order (larger than smaller or smaller than larger), then Swap will be called with indices equal to both x and y for Larger(x, y) and Smaller(y, x).
-
-In the loop body, we check each element in the sublist using its corresponding index. If an element is greater than all elements in the previous sublist, then it is already sorted according to the rules of the algorithm. In this case, we simply return without swapping. If a larger or smaller element is found with elements from another sublist in ascending order (i.e., Equal), then we call Swap with indices equal to x and y for Larger(x, y) and Smaller(y, x).
-
-By following this recursive approach, we ensure that the final sorted list only contains those elements that have been already sorted in ascending order within their corresponding sublists.

@@ -5,7 +5,32 @@
       "WebFetch(domain:ollama.com)",
       "WebFetch(domain:www.morphllm.com)",
       "WebFetch(domain:www.promptquorum.com)",
-      "WebFetch(domain:markaicode.com)"
+      "WebFetch(domain:markaicode.com)",
+      "PowerShell($env:OLLAMA_MODELS; [System.Environment]::GetEnvironmentVariable\\(\"OLLAMA_MODELS\", \"Machine\"\\); [System.Environment]::GetEnvironmentVariable\\(\"OLLAMA_MODELS\", \"User\"\\))",
+      "PowerShell(ls \"$env:USERPROFILE\\\\.ollama\\\\models\" -ErrorAction SilentlyContinue; ls \"Z:\\\\\" | Select-Object Name)",
+      "PowerShell(ls \"$env:USERPROFILE\\\\.ollama\\\\models\" -ErrorAction SilentlyContinue | Select-Object Name)",
+      "PowerShell(ls \"$env:USERPROFILE\\\\.ollama\" -ErrorAction SilentlyContinue)",
+      "PowerShell(ls \"Z:\\\\\" -Recurse -Depth 3 -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match \"model|blob|manifest|ollama\" } | Select-Object FullName)",
+      "PowerShell(wsl --list --verbose 2>&1)",
+      "PowerShell([System.Environment]::SetEnvironmentVariable\\(\"OLLAMA_MODELS\", \"Z:\\\\ollama-models\", \"Machine\"\\))",
+      "PowerShell([System.Environment]::GetEnvironmentVariable\\(\"OLLAMA_MODELS\", \"Machine\"\\))",
+      "PowerShell([System.Environment]::SetEnvironmentVariable\\(\"OLLAMA_MODELS\", \"Z:\\\\ollama-models\", \"User\"\\))",
+      "PowerShell(Write-Host \"Machine: $\\([System.Environment]::GetEnvironmentVariable\\('OLLAMA_MODELS', 'Machine'\\)\\)\"; Write-Host \"User:    $\\([System.Environment]::GetEnvironmentVariable\\('OLLAMA_MODELS', 'User'\\)\\)\")",
+      "PowerShell($env:OLLAMA_MODELS = \"Z:\\\\ollama-models\"; & \"Z:\\\\ollama\\\\ollama.exe\" pull qwen2.5-coder:14b)",
+      "PowerShell(Get-Process | Where-Object { $_.Name -match \"ollama\" } | Select-Object Name, Id)",
+      "PowerShell(Stop-Process -Id 4948 -Force)",
+      "PowerShell(Start-Process \"Z:\\\\ollama\\\\ollama app.exe\" -WindowStyle Hidden)",
+      "PowerShell(Start-Sleep -Seconds 5; $env:OLLAMA_MODELS = \"Z:\\\\ollama-models\"; & \"Z:\\\\ollama\\\\ollama.exe\" pull qwen2.5-coder:14b)",
+      "PowerShell(Invoke-RestMethod -Uri \"http://localhost:11434/api/tags\" -Method GET -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Process | Where-Object { $_.Name -match \"ollama\" } | Stop-Process -Force; Start-Sleep -Seconds 2; Get-Process | Where-Object { $_.Name -match \"ollama\" })",
+      "PowerShell($env:OLLAMA_MODELS = \"Z:\\\\ollama-models\"; Start-Process \"Z:\\\\ollama\\\\ollama.exe\" -ArgumentList \"serve\" -WindowStyle Hidden; Start-Sleep -Seconds 6; Invoke-RestMethod -Uri \"http://localhost:11434/api/tags\" -Method GET | ConvertTo-Json)",
+      "PowerShell(Invoke-RestMethod -Uri \"http://localhost:11434/api/tags\" -Method GET)",
+      "PowerShell($env:OLLAMA_MODELS = \"Z:\\\\ollama-models\"; Start-Job -ScriptBlock { $env:OLLAMA_MODELS = \"Z:\\\\ollama-models\"; & \"Z:\\\\ollama\\\\ollama.exe\" serve } | Out-Null; Start-Sleep -Seconds 8; Invoke-RestMethod -Uri \"http://localhost:11434/api/tags\" -Method GET | ConvertTo-Json)",
+      "PowerShell($env:OLLAMA_MODELS = \"Z:\\\\ollama-models\"; $env:OLLAMA_HOST = \"http://localhost:11434\"; & \"Z:\\\\ollama\\\\ollama.exe\" pull qwen2.5-coder:14b)",
+      "PowerShell($env:PATH -split \";\" | Where-Object { $_ -match \"ollama\" })",
+      "PowerShell([System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"Machine\"\\) -split \";\" | Where-Object { $_ -match \"ollama\" }; [System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"User\"\\) -split \";\" | Where-Object { $_ -match \"ollama\" })",
+      "PowerShell(Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer, Model, TotalPhysicalMemory; Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed; Get-CimInstance Win32_VideoController | Select-Object Name, AdapterRAM, DriverVersion; Get-CimInstance Win32_DiskDrive | Select-Object Model, Size; \\(Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture\\))",
+      "PowerShell(nvidia-smi --query-gpu=name,memory.total,memory.free,driver_version --format=csv,noheader)"
     ]
   }
 }

@@ -1,25 +1,25 @@
 POINT_ID: 1
 MARKS: 0
-FEEDBACK: The internal storage `last` can only hold a single element, which is insufficient to maintain elements in FIFO order.
+FEEDBACK: The internal storage is limited to a single variable, which is insufficient to maintain elements in FIFO order.
 
 POINT_ID: 2
-MARKS: 0
-FEEDBACK: While the method checks for null, it cannot correctly report emptiness for a sequence of operations because the structure cannot store more than one element.
+MARKS: 5
+FEEDBACK: While the check `last == null` works for a single-element implementation, it does not correctly represent the emptiness of a queue containing multiple elements.
 
 POINT_ID: 3
-MARKS: 0
-FEEDBACK: The `head()` method returns the most recent element rather than the front of a FIFO queue.
+MARKS: 6
+FEEDBACK: The head() method correctly returns the stored element without modifying the internal state.
 
 POINT_ID: 4
 MARKS: 0
-FEEDBACK: The `enqueue` method overwrites the existing element, failing to maintain the necessary state for a queue.
+FEEDBACK: The enqueue method overwrites the existing element instead of adding it to the back of a queue, failing to maintain consistency for multiple elements.
 
 POINT_ID: 5
-MARKS: 0
-FEEDBACK: While it returns and nullifies the single element, the method does not facilitate the retrieval of elements in the order they were added.
+MARKS: 8
+FEEDBACK: The dequeue method retrieves the current element and clears the storage by setting it to null.
 
 POINT_ID: 6
 MARKS: 0
-FEEDBACK: The implementation fails to preserve FIFO order across repeated operations, meaning it does not function as a queue.
+FEEDBACK: The implementation fails to preserve FIFO order across repeated operations as it cannot store more than one element.
 
-TOTAL: 0
+TOTAL: 19
