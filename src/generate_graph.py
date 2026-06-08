@@ -675,12 +675,6 @@ def _mark_to_bucket(mark, bucket_marks_for_point):
     return bucket_marks_for_point[closest]
 
 
-def _normalise_label(label):
-    if label and "internally" in str(label).lower():
-        return "Semi"
-    return label
-
-
 def _collect_bucket_counts(df, datastore_dir, model):
     df_m = df[df["model"] == model].copy()
     deduped = _deduplicated_per_student(df_m)
@@ -693,7 +687,6 @@ def _collect_bucket_counts(df, datastore_dir, model):
         if approach in ("approach_3", "approach_4"):
             buckets = _parse_json_col(row.get("buckets_per_point", "{}"))
             for label in buckets.values():
-                label = _normalise_label(label)
                 if label in counts[approach]:
                     counts[approach][label] += 1
         else:
@@ -702,7 +695,7 @@ def _collect_bucket_counts(df, datastore_dir, model):
                 continue
             rubric = _load_rubric_bucket_marks(datastore_dir, row["question_id"])
             for pid, mark in scores.items():
-                label = _normalise_label(_mark_to_bucket(mark, rubric.get(pid, {})))
+                label = _mark_to_bucket(mark, rubric.get(pid, {}))
                 if label and label in counts[approach]:
                     counts[approach][label] += 1
 
@@ -715,7 +708,6 @@ def _collect_human_bucket_counts(gt_df, valid_question_ids):
     for _, row in filtered.iterrows():
         buckets = _parse_json_col(row.get("buckets_per_point", "{}"))
         for label in buckets.values():
-            label = _normalise_label(label)
             if label in counts:
                 counts[label] += 1
     return counts
