@@ -161,6 +161,8 @@ def call_ollama(prompt, model, system_prompt, retries=3, timeout=300):
         "system": system_prompt,
         "options": options,
     }
+    if model == "gemma4:26b":
+        payload["think"] = False
     for attempt in range(1, retries + 1):
         try:
             response = requests.post(OLLAMA_API, json=payload, timeout=timeout)

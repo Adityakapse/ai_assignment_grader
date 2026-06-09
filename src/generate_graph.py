@@ -10,7 +10,9 @@ from scipy.stats import spearmanr
 PALETTE = sns.color_palette("tab10")
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 PRIMARY_MODEL = "gemma4:26b"
-# PRIMARY_MODEL = "qwen2.5-coder:14b"
+# PRIMARY_MODEL = "devstral-small-2"
+# PRIMARY_MODEL = "Qwen3:14b"
+
 
 DPI = 150
 
@@ -267,8 +269,8 @@ def _plot_rq4_leniency_figure(df, gt_df, model, output_dir, filename):
     ax.axhline(0, color="black", linewidth=1.2, linestyle="--", zorder=3)
 
     for bar, h in zip(bars, heights):
-        label_y = h + 0.5 if h >= 0 else h - 0.5
-        va = "bottom" if h >= 0 else "top"
+        label_y = h - 0.1 if h >= 0 else h + 0.1
+        va = "top" if h >= 0 else "bottom"
         ax.text(bar.get_x() + bar.get_width() / 2, label_y,
                 f"{h:+.1f}", ha="center", va=va, fontsize=9, fontweight="bold")
 
@@ -329,7 +331,7 @@ def _plot_rq4_leniency_scatter_figure(df, gt_df, model, output_dir, filename):
     handles = [plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=c,
                            markersize=7, label=s.replace("mut_", ""))
                for s, c in student_colours.items()]
-    ax.legend(handles=handles, title="Student", fontsize=8, loc="lower right")
+    ax.legend(handles=handles, title="Student", fontsize=8, loc="upper right")
     ax.set_xticks(x_positions)
     ax.set_xticklabels([a.replace("approach_", "Approach ") for a in approaches], fontsize=10)
     ax.set_ylabel("LLM − Human (marks)", fontsize=10)

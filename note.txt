@@ -1,0 +1,70 @@
+GEMMA4:26B THINKING MODE FIX — REGRADING NOTE
+==============================================
+Date: 2026-06-09
+
+ROOT CAUSE
+----------
+gemma4:26b runs in thinking mode by default. Ollama strips thinking tokens from
+the `response` field. When the model exhausted its token budget during thinking,
+the response field was empty (done_reason: length, eval_count: 1341, response: '').
+
+FIX APPLIED
+-----------
+In src/grade.py `call_ollama`, added `payload["think"] = False` at the top level
+of the Ollama API payload for gemma4:26b. This skips the reasoning phase entirely
+and the model produces a direct response (eval_count: 590, done_reason: stop).
+
+NOTE: `"think"` must be a TOP-LEVEL field in the JSON payload, NOT inside `options`.
+Putting it inside options is silently ignored by Ollama.
+
+TO REVERT (if thinking mode is needed again)
+--------------------------------------------
+Remove the line `if model == "gemma4:26b": payload["think"] = False` from
+src/grade.py `call_ollama` function.
+Then delete the empty response files listed below and re-run grading.
+
+EMPTY RESPONSE FILES REGRADED (40 total)
+-----------------------------------------
+These had response.txt size = 0 bytes before the fix. They will be overwritten
+on the next grading run since grade.py skips only non-empty files.
+
+19_20-2-1-java/mut_wrong/approach_3/gemma4__26b/run_2
+asym-1-java/mut_correct/approach_3/gemma4__26b/run_1
+asym-1-java/mut_correct/approach_3/gemma4__26b/run_2
+asym-1-java/mut_correct/approach_3/gemma4__26b/run_3
+asym-1-java/mut_semi/approach_1/gemma4__26b/run_3
+asym-1-java/mut_semi/approach_3/gemma4__26b/run_1
+asym-1-java/mut_semi/approach_3/gemma4__26b/run_2
+asym-1-java/mut_semi/approach_3/gemma4__26b/run_3
+asym-1-java/mut_wrong/approach_3/gemma4__26b/run_1
+asym-2-java/mut_correct/approach_1/gemma4__26b/run_2
+asym-2-java/mut_correct/approach_3/gemma4__26b/run_1
+asym-2-java/mut_correct/approach_3/gemma4__26b/run_2
+asym-2-java/mut_correct/approach_3/gemma4__26b/run_3
+asym-2-java/mut_semi/approach_3/gemma4__26b/run_1
+asym-2-java/mut_semi/approach_3/gemma4__26b/run_2
+asym-2-java/mut_semi/approach_3/gemma4__26b/run_3
+asym-2-java/mut_wrong/approach_3/gemma4__26b/run_1
+asym-3-java/mut_correct/approach_1/gemma4__26b/run_2
+asym-3-java/mut_correct/approach_3/gemma4__26b/run_1
+asym-3-java/mut_correct/approach_3/gemma4__26b/run_2
+asym-3-java/mut_correct/approach_3/gemma4__26b/run_3
+asym-3-java/mut_semi/approach_3/gemma4__26b/run_1
+asym-3-java/mut_semi/approach_3/gemma4__26b/run_2
+asym-3-java/mut_semi/approach_3/gemma4__26b/run_3
+asym-4-java/mut_correct/approach_3/gemma4__26b/run_1
+asym-4-java/mut_correct/approach_3/gemma4__26b/run_2
+asym-4-java/mut_correct/approach_3/gemma4__26b/run_3
+asym-4-java/mut_semi/approach_3/gemma4__26b/run_1
+asym-4-java/mut_semi/approach_3/gemma4__26b/run_2
+asym-4-java/mut_semi/approach_3/gemma4__26b/run_3
+asym-5-java/mut_correct/approach_3/gemma4__26b/run_1
+asym-5-java/mut_correct/approach_3/gemma4__26b/run_2
+asym-5-java/mut_correct/approach_3/gemma4__26b/run_3
+asym-5-java/mut_semi/approach_1/gemma4__26b/run_2
+asym-5-java/mut_semi/approach_1/gemma4__26b/run_3
+asym-5-java/mut_semi/approach_3/gemma4__26b/run_1
+asym-5-java/mut_semi/approach_3/gemma4__26b/run_2
+asym-5-java/mut_semi/approach_3/gemma4__26b/run_3
+asym-5-java/mut_wrong/approach_3/gemma4__26b/run_1
+asym-5-java/mut_wrong/approach_3/gemma4__26b/run_2

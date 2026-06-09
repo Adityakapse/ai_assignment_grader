@@ -87,16 +87,24 @@ def get_expected_point_ids(datastore_dir, question_id):
 
 
 def _split_into_point_blocks(text):
-    # Splits an LLM response into (point_id, block_text) pairs using POINT_ID: markers.
-    # Accepts bare integers ("1") and word-prefixed forms ("Point 1") from models like gemma4.
-    pattern = re.compile(r"POINT_ID:\s*(?:Point\s+)?(\d+)(.*?)(?=POINT_ID:\s*(?:Point\s+)?\d+|\Z)", re.DOTALL)
-    return [(int(m.group(1)), m.group(2)) for m in pattern.finditer(text)]
+    # Splits an LLM response into (point_id, block_text) pairs.
+    # Handles three header forms emitted by different models:
+    #   "POINT_ID: 1"       (standard)
+    #   "POINT_ID: Point 1" (gemma4)
+    #   "POINT_1:"          (Qwen3 variant)
+    pattern = re.compile(
+        r"(?:POINT_ID:\s*(?:Point\s+)?(\d+)|POINT_(\d+):)"
+        r"(.*?)"
+        r"(?=POINT_ID:\s*(?:Point\s+)?\d+|POINT_\d+:|\Z)",
+        re.DOTALL,
+    )
+    return [(int(m.group(1) or m.group(2)), m.group(3)) for m in pattern.finditer(text)]
 
 
 def _extract_marks(block_text):
-    # Extracts the integer after MARKS: from a point block; returns None if absent.
-    m = re.search(r"MARKS:\s*(\d+)", block_text)
-    return int(m.group(1)) if m else None
+    # Extracts the mark after MARKS: from a point block; accepts decimals (e.g. 4.0, 7.5) and rounds to int.
+    m = re.search(r"MARKS:\s*(\d+(?:\.\d+)?)", block_text)
+    return round(float(m.group(1))) if m else None
 
 
 def _extract_bucket(block_text):

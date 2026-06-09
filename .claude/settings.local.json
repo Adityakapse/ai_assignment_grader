@@ -30,7 +30,13 @@
       "PowerShell($env:PATH -split \";\" | Where-Object { $_ -match \"ollama\" })",
       "PowerShell([System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"Machine\"\\) -split \";\" | Where-Object { $_ -match \"ollama\" }; [System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"User\"\\) -split \";\" | Where-Object { $_ -match \"ollama\" })",
       "PowerShell(Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer, Model, TotalPhysicalMemory; Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed; Get-CimInstance Win32_VideoController | Select-Object Name, AdapterRAM, DriverVersion; Get-CimInstance Win32_DiskDrive | Select-Object Model, Size; \\(Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture\\))",
-      "PowerShell(nvidia-smi --query-gpu=name,memory.total,memory.free,driver_version --format=csv,noheader)"
+      "PowerShell(nvidia-smi --query-gpu=name,memory.total,memory.free,driver_version --format=csv,noheader)",
+      "Bash(Get-ChildItem \"z:\\\\dissertation\\\\ai_assignment_grader\\\\result_store\" -Recurse -Filter \"*.csv\")",
+      "Bash(Select-Object FullName)",
+      "Bash(Get-ChildItem \"z:\\\\dissertation\\\\ai_assignment_grader\\\\response_store\" -Recurse -Directory)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem \"z:\\\\dissertation\\\\ai_assignment_grader\\\\response_store\\\\asym-1-java\\\\mut_correct\\\\approach_3\\\\gemma4__26b\" -Recurse -Filter \"response.txt\" | Select-Object -First 1 | ForEach-Object { Get-Content $_.FullName -Raw })",
+      "PowerShell(cd \"z:\\\\dissertation\\\\ai_assignment_grader\" ; $env:PYTHONIOENCODING=\"utf-8\" ; python main.py --skip_preprocessing --skip_grading --skip_processing)"
     ]
   }
 }
