@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while loop correctly traverses from the root to a null position, moving left when insert.key < x.key and right otherwise.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parent pointer is tracked during traversal; after the loop there is no reference to the node that should become the parent of insert.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: insert is attached as parent.left when insert.key < parent.key, and as parent.right otherwise, correctly placing it in the BST.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: insert.parent is not set at all; there is no assignment to insert.parent in the student's code.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Insertion works for simple cases but fails to set insert.parent, and the empty tree case (y == null) is handled by returning insert as the new root, though the BST property is not fully preserved due to missing parent links.

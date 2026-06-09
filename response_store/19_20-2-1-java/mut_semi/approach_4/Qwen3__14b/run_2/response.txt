@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defined a Queue class with internal storage (an ArrayList) and tracking state (the list itself), which is sufficient to maintain FIFO order, even though the dequeue method is incorrectly implemented.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The emptyqueue() method correctly returns list.isEmpty(), which accurately reflects whether the queue contains no elements based on the internal ArrayList state.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method correctly returns the first element of the ArrayList (list.get(0)) without modifying the internal state or the queue's contents.
+
+POINT_ID: 4
+BUCKET: Correct (18 marks)
+FEEDBACK: The enqueue() method correctly appends elements to the end of the ArrayList, ensuring subsequent operations like dequeue() and head() will access elements in the correct order.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The dequeue() method returns list.get(0) but does not remove the element from the ArrayList, leaving the internal structure unchanged and violating the requirement to remove the front element.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue() method does not remove the front element from the ArrayList, violating FIFO behavior, and the solution uses java.util.ArrayList which requires an import statement contrary to the problem's constraints.

@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student separated f and g into parts (A, B, C for f; D, E, F for g) and identified loops vs non-loops, but did not reference specific line numbers as required by the question. The sample solution also omitted line numbers, but the rubric explicitly requires them.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Correct
+FEEDBACK: The student correctly identified all non-loop regions (initializations and returns in f and g) as Theta(1), aligning with the sample solution's analysis.
+
+POINT_3: f(): Nested loop iterations
+BUCKET: Correct
+FEEDBACK: The student clearly justified the Theta(N²) iteration count by explicitly summing 1 + 2 + ... + N = N(N+1)/2, matching the sample solution's reasoning.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student explicitly listed the constant-time operations per iteration (two array reads, multiplication, += assignment, and loop checks) to justify Theta(1) per iteration, as in the sample.
+
+POINT_5: f(): Total loop cost = iterations x per-iteration
+BUCKET: Correct
+FEEDBACK: The student correctly multiplied Theta(N²) iterations by Theta(1) per iteration to obtain Theta(N²) for the nested loops, as shown in the sample.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Correct
+FEEDBACK: The student accounted for both the Theta(log N) cost of the g call and the Theta(1) return/addition, matching the sample's analysis of Part C.
+
+POINT_7: g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly explained that k is halved each iteration, leading to Theta(log N) iterations, as in the sample solution.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student explicitly listed the operations (array read, +=, division, loop check) to justify Theta(1) per iteration, aligning with the sample.
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplied Theta(log N) iterations by Theta(1) per iteration to obtain Theta(log N) for the loop, as in the sample.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Correct
+FEEDBACK: The student summed Theta(1) + Theta(log N) + Theta(1) to get Theta(log N), matching the sample solution's conclusion.
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Correct
+FEEDBACK: The student correctly combined Theta(1) + Theta(N²) + Theta(log N) to obtain Theta(N²), absorbing the lower-order term as shown in the sample.

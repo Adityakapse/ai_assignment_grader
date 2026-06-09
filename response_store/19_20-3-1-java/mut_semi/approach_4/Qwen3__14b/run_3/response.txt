@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code implements a single loop that performs one pass through the list, but lacks an outer loop structure to repeat passes until the list is fully sorted, which is required for a complete sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly uses list.Smaller(j, j-1) to compare adjacent elements, which accurately detects when two elements are out of order for an ascending sort, matching the expected comparison pattern.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly calls Swap(j, j-1) when the comparison list.Smaller(j, j-1) indicates an order violation, using the exact same indices as the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student uses list.Length() as the upper bound for the single loop, ensuring the algorithm works for any list size without hardcoded limits.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution performs a single pass through the list, only addressing adjacent inversions once, which partially sorts the list but fails to fully sort it for inputs requiring multiple passes (e.g., [3, 2, 1] becomes [2, 1, 3]).

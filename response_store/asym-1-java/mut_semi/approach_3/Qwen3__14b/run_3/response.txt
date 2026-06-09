@@ -1,0 +1,63 @@
+**Point 1 (Splitting code into parts and referencing line numbers):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student separated f and g and mentioned loops in both, but did not reference specific line numbers as required. While they attempted to structure the analysis, the absence of line number references makes this "Semi."
+
+---
+
+**Point 2 (Constant-time non-loop parts):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student correctly identified constant-time setup in f but omitted the constant-time parts in g (e.g., initialization and return statements). This incomplete coverage aligns with the "Semi" bucket.
+
+---
+
+**Point 3 (f() nested loop iterations):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student stated that the nested loops iterate roughly $ N^2 $ times but provided a weak justification ("two nested loops over the array"). The lack of a detailed explanation (e.g., summing $ 1+2+\dots+N $) makes this "Semi."
+
+---
+
+**Point 4 (Cost per iteration for f's loop):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student correctly identified operations (array read, multiplication, addition) as $ O(1) $ but omitted the loop checks and increments. This incomplete justification aligns with the "Semi" bucket.
+
+---
+
+**Point 5 (Total loop cost for f):**  
+**Bucket:** "Correct"  
+**Reasoning:** The student correctly multiplied $ \Theta(N^2) \times \Theta(1) = \Theta(N^2) $, fulfilling the "Correct" bucket.
+
+---
+
+**Point 6 (Cost of Part C in f):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student acknowledged that g contributes additional cost but did not specify $ \Theta(\log N) $. The vague reference to "some extra cost from g" aligns with the "Semi" bucket.
+
+---
+
+**Point 7 (g() loop iterations):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student noted that the loop runs $ \Theta(\log N) $ times and mentioned that $ k $ is halved each iteration. However, they omitted the explanation that $ k $ starts at $ N $, which is required for the "Correct" bucket.
+
+---
+
+**Point 8 (Cost per iteration for g):**  
+**Bucket:** "Correct"  
+**Reasoning:** The student grouped operations (array access, addition, division) as $ \Theta(1) $ and stated "all of which are $ \Theta(1) $", which implicitly includes the loop check. This suffices for the "Correct" bucket.
+
+---
+
+**Point 9 (Total loop cost for g):**  
+**Bucket:** "Correct"  
+**Reasoning:** The student correctly multiplied $ \Theta(\log N) \times \Theta(1) = \Theta(\log N) $, fulfilling the "Correct" bucket.
+
+---
+
+**Point 10 (Overall runtime of g):**  
+**Bucket:** "Semi"  
+**Reasoning:** The student stated $ \Theta(\log N) $ but did not explicitly sum the constant-time parts (initialization and returns) with the loop cost. This omission aligns with the "Semi" bucket.
+
+---
+
+**Point 11 (Overall runtime of f):**  
+**Bucket:** "Correct"  
+**Reasoning:** The student correctly concluded $ \Theta(N^2) $ by absorbing the lower-order $ \Theta(\log N) $ term, fulfilling the "Correct" bucket.

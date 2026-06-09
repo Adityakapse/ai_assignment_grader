@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly separated the analysis of f and g and identified loops, but did not reference specific line numbers as required. They mentioned "the outer loop" and "g's loop" without explicitly citing line numbers from the code.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student correctly identified the return statements as constant time but omitted explicit analysis of variable initializations (e.g., "int s = 0;" and "Node p = h;") in both functions, leaving some non-loop parts unmentioned.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly states that the outer loop in f() runs Theta(N) times but does not explicitly justify this by explaining that p advances by one node per iteration (as required by the rubric). The analysis mentions "about N times" without the key detail about p = p.next.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student recognizes that g(p) contributes to the cost per iteration but does not explicitly state that each iteration of f's loop has Theta(N) cost in the worst case, instead vaguely referring to "some traversal cost" and relying on the later statement that g is Theta(N).
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly identifies that f() has Theta(N) iterations and each call to g(p) has Theta(N) cost in the worst case, leading to a total of Theta(N^2) by multiplying these values, matching the required analysis.
+
+POINT_ID: 6
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly justified that g's loop has Theta(N) iterations by noting that when called with start = h, it visits all N nodes, matching the sample solution's explanation.
+
+POINT_ID: 7
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly identified that each iteration of g's loop has a constant time cost, explicitly stating that "each step is a constant amount of work" and mentioning specific operations (reading q.v and following q.next) that are Theta(1). This aligns with the required justification for the cost per iteration.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly states that g's loop has Theta(N) iterations and Theta(1) per-iteration cost, and explicitly writes the multiplication as Theta(N) * Theta(1) = Theta(N).
+
+POINT_ID: 9
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies that g's loop runs Theta(N) times with Theta(1) per iteration, but omits explicit mention of adding the constant-time initialization and return steps to the loop cost, which is required for full credit.
+
+POINT_ID: 10
+BUCKET: Correct (14 marks)
+FEEDBACK: The student correctly identifies that f is Theta(N^2) by explaining that the outer loop runs N times and each call to g(p) takes Theta(N) time, leading to N * Theta(N) = Theta(N^2). The analysis implicitly accounts for the constant-time non-loop parts, as they are negligible compared to the dominant term.

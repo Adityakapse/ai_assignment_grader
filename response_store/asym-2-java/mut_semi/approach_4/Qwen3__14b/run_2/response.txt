@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student separates f and g and identifies loops in both, but does not reference specific line numbers as required. For example, they mention "the for loop" and "the while loop" without citing line numbers from the code.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student correctly identified that some non-loop parts (like the return statements) are constant-time, but missed explicitly stating that assignments like `int m = a.length;` and `int s = 0;` in f, and `int l = 0;`/`int r = ...` in g are also Theta(1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly states the loop runs M times but provides a weak justification ("i goes from 0 to m") without explicitly explaining that the loop increments i once per iteration from 0 to M-1, as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that the cost per iteration depends on the call to g, but uses vague phrasing ("presumably takes log N or so") without explicitly justifying that g is a binary search over a sorted array of length N, which is required for a full Theta(log N) justification.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly multiplies the number of iterations (M) by the per-iteration cost (log N) to arrive at Theta(M log N) for f, justifying the reasoning with "M * cost_of_g" and stating g is "around log N".
+
+POINT_ID: 6
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly states that g's loop runs Theta(log N) times but does not explicitly justify this by explaining that the search interval [l, r] halves with each iteration, as required for full credit.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that g's iterations have constant cost but does not explicitly list the specific operations (midpoint computation, array accesses, comparisons) that justify the Theta(1) claim, as required by the rubric.
+
+POINT_ID: 8
+BUCKET: Semi (4 marks)
+FEEDBACK: The student correctly identifies that g's loop runs log N times and that each iteration is constant time, but does not explicitly state the multiplication of these terms (Theta(log N) x Theta(1)) to arrive at Theta(log N), making the justification partially derived.
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: The student correctly states that g's runtime is Theta(log N) but omits explicit justification for the constant-time parts (initialization and return statement), which are required for full credit under this rubric point.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly identifies f's runtime as Theta(M log N) but omits explicit justification for the constant-time non-loop components (initialization and return statements) that are part of the full analysis.

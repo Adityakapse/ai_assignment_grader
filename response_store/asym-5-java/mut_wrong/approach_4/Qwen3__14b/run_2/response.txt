@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions both functions f and g but fails to reference specific line numbers or distinguish between the loop in f (line 7) and the nested loop in g (line 15), and incorrectly claims both are O(N) without analyzing the nested structure in f.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student did not analyze or mention the constant-time non-loop parts (e.g., variable initializations and return statements) in either function, incorrectly implying all code is linear-time.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student did not explicitly state the number of iterations for the loop in f(), nor did they explain that p advances by one node per iteration, which is required to justify Theta(N) iterations.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student mentions that g is called in f's loop but does not explicitly state that each call to g(p) can take Theta(N) time in the worst case, failing to establish the per-iteration cost justification required.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims f is O(N) without analyzing that each call to g(p) in the loop takes O(N) time, leading to a total of O(N²) time. They failed to account for the nested traversal in the worst case.
+
+POINT_ID: 6
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly states that g() has Theta(N) iterations but fails to justify this by explaining that in the worst case (start = h), the loop traverses all N nodes, as required by the rubric.
+
+POINT_ID: 7
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies that g has O(N) time but does not explicitly justify that each iteration is Theta(1) by mentioning the constant-time operations (field access, assignment, pointer advance, null check) as required by the rubric.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly identified that g runs in O(N) time, which aligns with the correct analysis of Theta(N) iterations multiplied by Theta(1) per iteration.
+
+POINT_ID: 9
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identified that g runs in O(N) time but did not provide the required breakdown of Theta(1) + Theta(N) + Theta(1) = Theta(N) as specified in the rubric, missing the justification for loop iterations and per-iteration cost.
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims f is O(N), ignoring that each call to g(p) inside the loop in f traverses a sublist of length up to N, leading to a total of O(N^2) time.

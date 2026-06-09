@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class uses an ArrayList for storage, which provides internal state tracking, but the dequeue() method does not remove elements, making the storage insufficient to support all queue operations correctly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method correctly returns true when the list is empty by using list.isEmpty(), which accurately reflects the internal state.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The head() method returns the correct front element, but it does not modify the queue, so it meets the requirement of not modifying state. However, the dequeue() issue affects overall consistency.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue(x) method correctly adds elements to the back of the list and updates the internal state by appending to the ArrayList.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method does not remove the front element from the list, so it fails to update the internal structure or return the correct value after removal.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The queue mostly preserves FIFO order for simple cases, but dequeue() does not remove elements, causing failures under repeated operations. Additionally, the use of 'import' violates the restriction.

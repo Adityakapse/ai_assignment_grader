@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly defines the Queue class and utilizes a fully qualified `java.util.ArrayList` as internal storage, which provides the necessary capacity and state to implement FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Although `list.isEmpty()` correctly checks the underlying list, the method will return an incorrect value (false) following a `dequeue()` operation since the student's implementation fails to remove elements from the internal state.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method correctly retrieves the element at index 0 of the ArrayList without modifying the underlying list.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly appends the element to the end of the list, but since the dequeue implementation does not remove elements, the internal state does not allow subsequent emptyqueue() calls to function correctly.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue method returns the element at index 0 but does not remove it from the internal list, as noted in the student's own code comment.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Although the student avoided using an explicit "import" statement, the dequeue method fails to remove the element from the list, causing the FIFO order to break during repeated operations.

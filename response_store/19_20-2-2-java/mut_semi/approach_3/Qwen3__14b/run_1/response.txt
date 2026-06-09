@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code iterates through all tokens in the input array and correctly distinguishes between numeric tokens (pushed to stack) and operator tokens (processed with switch cases).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The default case correctly converts numeric strings to integers using Integer.parseInt() and pushes them onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For all four operators, the code pops two values from the stack, applies the correct arithmetic operation, and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: For subtraction and division, the code uses n1 - n2 and n1 / n2 instead of the required n2 - n1 and n2 / n1, reversing the operand order for non-commutative operations.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method produces correct results for addition and multiplication but incorrect results for subtraction and division due to reversed operand order, failing complex test cases involving these operators.

@@ -1,0 +1,97 @@
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods emptyqueue(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+    
+    public boolean emptyqueue() {
+        return start == end;
+    }
+    
+    public String head() {
+        return buffer[start];
+    }
+    
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if(end == 100) {
+            end = 0;
+        }
+    }
+    
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if(start == 100) {
+            start = 0;
+        }
+        return s;
+    }
+}
+
+STUDENT SOLUTION:
+// Stub that only ever stores the most recent element
+public class Queue {
+    private String last;
+
+    public boolean emptyqueue() { return last == null; }
+    public String head() { return last; }
+    public void enqueue(String s) { last = s; }
+    public String dequeue() { String s = last; last = null; return s; }
+}
+
+
+RUBRIC:
+Point 1 — Class structure and internal storage
+  The Queue class is defined and contains internal storage and any necessary tracking state sufficient to maintain elements in FIFO order.
+  Buckets:
+    - Wrong (0 marks): No Queue class defined, or class is defined but contains no internal storage or state fields whatsoever.
+    - Semi (8 marks): A Queue class is defined and has some internal storage, but it is incomplete or insufficient to correctly support all four queue operations (e.g., storage present but no tracking state, or tracking state present but no storage).
+    - Correct (15 marks): A Queue class is defined with complete internal storage and all tracking state needed to implement FIFO behaviour. Correctness of individual methods is evaluated in points 2 to 5.
+
+Point 2 — emptyqueue() / isEmpty(): correct emptiness check
+  The method returns true if and only if the queue contains no elements, based on the internal state of the queue.
+  Buckets:
+    - Wrong (0 marks): Method is missing, always returns a constant value regardless of queue state, or checks a condition unrelated to whether the queue is empty.
+    - Semi (8 marks): Method attempts to check emptiness using the internal state but the condition is incorrect, giving wrong results for some queue states.
+    - Correct (15 marks): Returns true if and only if the queue contains no elements, using a condition that correctly reflects the current internal state.
+
+Point 3 — head(): returns front element without modifying queue
+  head() returns the element at the front of the queue without removing it or modifying any internal state.
+  Buckets:
+    - Wrong (0 marks): Method is missing, returns an element from the wrong end of the queue, or always returns a default value regardless of queue contents.
+    - Semi (6 marks): Returns the correct element but also modifies internal state (i.e., behaves like dequeue rather than a pure read), or reads from the correct end but uses an incorrect index or offset.
+    - Correct (12 marks): Returns the front element of the queue without advancing any pointer, removing any element, or modifying the queue in any way.
+
+Point 4 — enqueue(x): adds element to the back of the queue
+  enqueue(x) inserts the element at the back of the queue and correctly updates all internal tracking state so subsequent operations remain consistent.
+  Buckets:
+    - Wrong (0 marks): Method is missing, does not store the element in the internal structure, or inserts at the wrong position (e.g., prepends instead of appending to the back).
+    - Semi (9 marks): Stores the element at the correct end but does not fully update the internal tracking state afterwards, causing subsequent operations to fail or produce incorrect results.
+    - Correct (18 marks): Correctly inserts the element at the back of the queue and updates all tracking state so that subsequent head(), dequeue(), and emptyqueue() calls continue to work correctly.
+
+Point 5 — dequeue(): removes and returns the front element
+  dequeue() retrieves the element at the front of the queue, removes it, updates all internal tracking state, and returns the retrieved element.
+  Buckets:
+    - Wrong (0 marks): Method is missing, does not retrieve the correct element, or returns the value without removing it from the internal structure.
+    - Semi (9 marks): Retrieves and returns the correct element and attempts removal, but the internal tracking state is not fully or correctly updated, leaving the queue in an inconsistent state for subsequent operations.
+    - Correct (18 marks): Correctly retrieves the front element, removes it from the internal structure, updates all tracking state, and returns the retrieved value so that subsequent operations on the queue remain consistent.
+
+Point 6 — Overall correctness of Queue
+  All four methods work correctly together: the queue preserves FIFO order across repeated enqueue and dequeue operations, and does not use 'import'.
+  Buckets:
+    - Wrong (0 marks): Class fails to compile or run, or most methods produce incorrect output.
+    - Semi (11 marks): Basic FIFO behaviour is correct for simple cases but fails under repeated or boundary operations (e.g., many enqueue and dequeue calls, reuse of freed storage), or 'import' is present in the submission.
+    - Correct (22 marks): All methods work correctly together across all test cases. FIFO order is preserved under repeated operations and no 'import' is present.

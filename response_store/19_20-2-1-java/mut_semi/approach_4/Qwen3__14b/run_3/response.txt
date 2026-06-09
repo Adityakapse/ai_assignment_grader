@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student used an ArrayList for storage but lacks tracking state variables like start/end indices, and the dequeue() method does not actually remove elements from the list, leaving the FIFO behavior incomplete.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The emptyqueue() method correctly returns list.isEmpty(), which accurately reflects whether the queue contains no elements based on the internal ArrayList state.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns list.get(0), which correctly accesses the front element of the queue without modifying the internal state or removing any elements.
+
+POINT_ID: 4
+BUCKET: Correct (18 marks)
+FEEDBACK: The enqueue method correctly appends the element to the end of the ArrayList, which corresponds to the back of the queue, and the internal tracking state (the ArrayList itself) is properly updated.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns list.get(0) but does not remove the element from the list, leaving the queue's internal state unchanged and violating the requirement to remove the front element.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue() method does not remove the front element from the ArrayList, causing repeated dequeues to return the same element, and the solution uses forbidden imports via java.util.ArrayList.

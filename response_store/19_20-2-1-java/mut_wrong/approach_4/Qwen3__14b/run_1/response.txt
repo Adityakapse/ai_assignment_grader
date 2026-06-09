@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class uses a single "last" field to store only the most recent element, which lacks the necessary internal storage and tracking state to maintain FIFO order for multiple elements.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The emptyqueue() method correctly checks if the 'last' field is null, which accurately reflects whether the queue contains no elements based on the internal state of the student's implementation.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The head() method returns the 'last' variable (most recently enqueued element) instead of the front element of the queue, which would require accessing the oldest element in the buffer.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The enqueue method overwrites the "last" variable instead of storing elements in a structured queue format, causing all but the most recent element to be lost and violating queue behavior.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The dequeue() method correctly returns the stored element and sets 'last' to null, but the internal state tracking is incomplete since the queue structure only supports a single element, leading to inconsistency when multiple elements are enqueued.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The queue implementation only stores the most recent element, so enqueue and dequeue operations do not preserve FIFO order. The head() method returns the last enqueued element instead of the oldest one.

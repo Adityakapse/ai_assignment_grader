@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi (3 marks)
+FEEDBACK: The student separated analysis of f and g and identified loops, but did not reference any line numbers as required. They mentioned "nested loops in f" and "g has a while loop" without citing specific lines from the code.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student correctly identified setup statements in f as constant-time but omitted explicit mention of initializations and return statements in g, which are also Theta(1) as per the rubric's requirements.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student states the nested loops have Theta(N^2) iterations but provides only a vague justification ("double loop ⇒ N^2") without referencing the critical detail that the inner loop runs from j=0 to j=i, leading to the sum 1+2+...+N.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that each inner loop iteration has constant cost but only mentions array read, multiplication, and addition, omitting loop checks/increments which are also Theta(1) as required by the rubric.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly multiplied Theta(N^2) iterations by Theta(1) per-iteration cost, explicitly stating "Theta(N^2) * Theta(1) = Theta(N^2)" with clear justification about simple operations in the loop body.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that the call to g contributes additional cost but fails to explicitly state that the call to g is Theta(log N) and the return operation is Theta(1), as required by the rubric point.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly identifies the loop in g runs Theta(log N) times but does not explain that the halving of k (k = k / 2) each iteration justifies this bound, as required by the rubric.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student correctly identified that each iteration of g involves Theta(1) operations but omitted the explicit mention of the loop check (comparison) and the += assignment, which are part of the cost per iteration as specified in the sample solution.
+
+POINT_ID: 9
+BUCKET: Correct (6 marks)
+FEEDBACK: The student correctly states that the loop in g() runs Theta(log N) times and that each iteration has Theta(1) cost, then explicitly multiplies them to get Theta(log N) total cost, with clear justification for both factors.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly identifies the loop in g runs Theta(log N) times and each iteration is Theta(1), but fails to explicitly account for the constant-time initializations (int t = 0; int k = n;) and the return statement, which are required for a complete Theta(log N) justification.
+
+POINT_ID: 11
+BUCKET: Correct (16 marks)
+FEEDBACK: The student correctly states that f's runtime is Theta(N²) by accounting for the nested loops (Theta(N²)) and the call to g (Theta(log N)), and correctly absorbs the lower-order log N term.

@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student separated f and g and identified loops in both, but did not reference specific line numbers as required. The analysis mentions "while loop" and "for loop" without citing their positions in the code.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student correctly identified that the return statements in f and g are constant-time, but failed to explicitly mention the initializations (e.g., int n = a.length; int s = 0; int k = 1; in f) as Theta(1), leaving some non-loop code unaddressed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly identified Theta(log N) iterations but did not explicitly explain that k starts at 1 and doubles each iteration, which is needed to justify the logarithmic bound.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that the while loop in f calls g and that g runs in Theta(N), but does not explicitly state that each iteration of the while loop has a cost of Theta(N) due to the call to g.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly multiplies Theta(log N) iterations by Theta(N) per-iteration cost (from g) to get Theta(N log N) for f, with clear justification referencing g's analysis.
+
+POINT_ID: 6
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly states that the for loop in g() has Theta(N) iterations but does not explicitly justify this by noting that the loop runs from i=0 to a.length-1, which is independent of x. The explanation lacks the specific reference to the loop bounds that determine the iteration count.
+
+POINT_ID: 7
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly identified that each iteration of g's loop involves a constant amount of work (one array access, one comparison, and possibly an addition), explicitly justifying Theta(1) per iteration as required.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly states that g's loop has Theta(N) iterations and Theta(1) per-iteration cost, multiplying them to get Theta(N) total cost for g.
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: The student correctly identified g's runtime as Theta(N) but omitted explicit reference to the constant-time initialization and return statements, which are required for full credit under this rubric point.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly identifies f's runtime as Theta(N log N) but omits explicit justification for the Theta(1) non-loop components (initialization and return statement) required by the rubric.

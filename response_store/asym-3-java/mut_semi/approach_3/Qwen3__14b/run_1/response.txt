@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student mentions f's nested loops and g's loop but does not reference specific line numbers or clearly separate components like the sample solution does.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student notes setup statements are constant but does not explicitly state all non-loop regions (like return statements) are Theta(1).
+
+POINT_3: f(): Nested loop iterations
+BUCKET: Semi
+FEEDBACK: The student correctly claims Theta(N²) but justifies it vaguely as "double loop on N x N matrix" without explaining the summation of N + (N-1) + ... + 1.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student states each iteration is Theta(1) and justifies it with reading a matrix entry and accumulation, matching the sample solution.
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies Theta(N²) iterations by Theta(1) per iteration to get Theta(N²) total cost.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student notes g adds some cost but does not explicitly state that the call to g is Theta(N) and the addition/return are Theta(1).
+
+POINT_7: g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the loop runs Theta(N) times, justifying it by iterating along the diagonal.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student states each iteration is Theta(1) and justifies it with matrix access and accumulation, matching the sample.
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies Theta(N) iterations by Theta(1) per iteration to get Theta(N) total cost.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student implies g is Theta(N) but does not explicitly sum the constant parts and loop cost as the sample solution does.
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The student concludes f is Theta(N²) but does not explicitly add all components (Theta(1) + Theta(N²) + Theta(N)) as the sample solution does.

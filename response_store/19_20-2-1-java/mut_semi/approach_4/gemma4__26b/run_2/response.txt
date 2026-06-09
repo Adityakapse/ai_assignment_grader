@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented the Queue class using a java.util.ArrayList, which provides both the necessary internal storage and the implicit tracking state (size) required for FIFO operations.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: While the method correctly uses the internal ArrayList to check for emptiness, it will return an incorrect result (false) after elements are dequeued because the dequeue implementation fails to remove elements from the list.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method correctly returns the element at index 0, which represents the front of the queue, without modifying the internal ArrayList.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: While the enqueue method correctly adds elements to the end of the ArrayList, the lack of removal in the dequeue method means that subsequent calls to head() and emptyqueue() will not behave correctly for a queue.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue method returns the element at index 0 but fails to remove it from the internal ArrayList, which is explicitly acknowledged in the code's comment.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: While the use of a fully qualified name avoids an import statement, the dequeue method fails to remove elements from the list, which prevents the queue from maintaining FIFO order during repeated operations.

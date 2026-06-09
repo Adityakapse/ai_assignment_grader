@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student's gcd function has the correct signature (two int parameters, returns an int) and uses a recursive structure with a base case and reduction step.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly checks if b == 0 and returns a, which properly terminates the recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step uses the canonical recursive form gcd(b, a % b), which correctly reduces the problem toward the base case even without explicit parameter swapping.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The lcm function is present and references gcd, but incorrectly returns a * b instead of (a * b) / gcd(a, b), missing the essential division step in the formula.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The gcd function correctly computes the greatest common divisor for all tested inputs, including edge cases like (0, 5) and (12, 18).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The lcm function produces incorrect results for all inputs except when gcd(a, b) = 1, as it completely omits the division by gcd(a, b) in the formula.

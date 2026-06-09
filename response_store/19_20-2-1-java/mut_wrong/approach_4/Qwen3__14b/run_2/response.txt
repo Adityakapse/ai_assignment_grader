@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class has internal storage (the 'last' field) but lacks sufficient tracking state to maintain FIFO order, as it only stores the most recent element and overwrites previous values during enqueue.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The method checks if 'last' is null to determine emptiness, but this is incorrect because the queue can contain elements even when 'last' is not null (e.g., after multiple enqueues and dequeues).
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The head() method returns the 'last' variable which only stores the most recent element, not the front of the queue. This violates the requirement to return the correct front element without modifying the queue.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The enqueue method overwrites the 'last' variable instead of appending to a structure that can hold multiple elements, preventing the queue from storing more than one item.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The dequeue() method returns the only stored element (last) and sets it to null, but does not properly track multiple elements or maintain queue order, leaving the internal state inconsistent for subsequent operations.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The queue only stores the most recent element, overwriting previous values during enqueue and failing to preserve FIFO order across multiple operations.

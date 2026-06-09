@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses a for loop to iterate through every element in the input array and utilizes a switch statement to distinguish between operator tokens and numeric tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are correctly converted using Integer.parseInt and pushed onto the stack in the default case of the switch statement.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For every operator, the solution correctly pops two values from the stack and pushes the result of the corresponding arithmetic operation back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: For both subtraction and division, the implementation incorrectly performs the operation using the first popped value as the left operand and the second popped value as the right operand (e.g., `n1 - n2` and `n1 / n2`).
+
+POINT_ID: 5
+BUCKET: Semi (8 marks)
+FEEDBACK: The solution fails specifically for subtraction and division because it performs the operation using the incorrect operand order (`n1 - n2` and `n1 / n2` instead of `n2 - n1` and `n2 / n1`).
