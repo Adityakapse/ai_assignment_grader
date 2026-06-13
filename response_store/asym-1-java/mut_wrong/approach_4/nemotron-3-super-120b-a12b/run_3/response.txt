@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not separate f and g into distinct parts, does not identify loop versus non-loop code, and provides no line‑number references.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not mention or analyze any constant‑time parts such as the initializations or return statements in f or g, instead treating the whole functions as either loop‑dominated or constant without identifying non‑loop Theta(1) segments.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student states that f runs in O(N) time because it has a loop, ignoring the inner loop whose bound j ≤ i causes the total iterations to be 1+2+…+N = Θ(N²), and provides no justification for the iteration count.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student never explicitly states that each inner iteration costs Θ(1); they only say the body performs "small operations" without justifying the constant‑time cost via array reads, multiplication, addition, and loop overhead.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student stated that f runs in O(N) time without analyzing the nested loops; they did not compute the number of iterations of the inner loop or multiply it by the per‑iteration cost, so the total loop cost is not derived as iterations × per‑iteration.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student claims that g runs in O(1) time, implying that the call to g in f’s Part C is constant‑time, but the correct analysis shows g takes Θ(log N) time, so Part C should be Θ(log N), not Θ(1).
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: The student claimed g runs in O(1) time, stating it "does some halving thing and looks small," but failed to recognize that the while loop iterates Θ(log N) times because k is halved each iteration until it reaches 0.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student stated that g() runs in O(1) overall but did not explicitly state or justify that each iteration of the while loop takes Theta(1) time (e.g., one array read, one += assignment, one division, and loop check), which is required for this rubric point.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student claimed g runs in O(1) time without analyzing the while loop's iteration count or per‑iteration cost, so they did not combine iteration count × per‑iteration cost to derive Θ(log N).
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student states that g runs in O(1) time, ignoring the while loop that halves k each iteration; this loop executes Θ(log N) times, giving g a Θ(log N) worst‑case runtime, not constant time.
+
+POINT_ID: 11
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student states that f runs in O(N) time, ignoring the nested loop that yields Θ(N²) iterations, and therefore provides an incorrect overall complexity for f.

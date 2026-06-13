@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method iterates through all tokens with a for loop from left to right and uses a switch statement to separate operator tokens from numeric tokens (the default case handles numbers).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted to integers using Integer.parseInt(input[i]) and pushed onto the stack via s.push(...).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, the code pops two values, applies the appropriate arithmetic operation (+, -, *, /), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: For subtraction and division the code computes n1 - n2 and n1 / n2, reversing the operand order (first popped is used as left operand) instead of the required second_popped op first_popped.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method produces correct results for expressions that use only + and *, but returns incorrect values for any expression containing subtraction or division due to the reversed operand order.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over every element of the input array and uses a switch (with a default case that parses integers) to distinguish operator tokens from numeric tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the default case the student uses `Integer.parseInt(input[i])` and pushes the resulting integer onto the stack, correctly handling numeric tokens.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code pops two values and pushes a result for each operator, but for “-” and “/” it computes n1 - n2 and n1 / n2, reversing the correct operand order.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In both the '-' and '/' cases you compute `n1 - n2` and `n1 / n2`, reversing the required order (the left operand should be the second pop). This yields incorrect results for non‑commutative operations.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code swaps the operand order for “-” and “/” (using n1 - n2 and n1 / n2), so results are wrong whenever subtraction or division appears in the RPN expression.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution includes only one for‑loop that performs a single pass and never repeats the comparisons, so it lacks the outer loop required for a full sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution calls list.Smaller(j, j‑1) to compare adjacent elements before swapping, using the provided API with the proper index order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code calls `list.Swap(j, j - 1)` only when `list.Smaller(j, j - 1)` is true, using the exact same pair of indices as the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The only loop in the solution uses `list.Length()` as its bound, ensuring the algorithm works for lists of any size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code performs only a single left-to-right pass, swapping adjacent out-of-order elements, which may sort very short lists but fails to fully sort longer lists requiring multiple passes.

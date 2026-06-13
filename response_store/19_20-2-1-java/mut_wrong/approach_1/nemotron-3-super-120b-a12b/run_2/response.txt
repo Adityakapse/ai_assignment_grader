@@ -1,0 +1,25 @@
+POINT_ID: 1
+MARKS: 4
+FEEDBACK: The Queue class is defined with a private String last field, but this only stores a single element and lacks the array or indices needed to maintain FIFO order for multiple items.
+
+POINT_ID: 2
+MARKS: 3
+FEEDBACK: The emptyqueue() method returns true when last == null, which is correct for an empty or cleared queue, but after enqueuing two elements it incorrectly reports false only when the most recent element is present, ignoring the first element that should still be in the queue.
+
+POINT_ID: 3
+MARKS: 2
+FEEDBACK: head() returns the value of last, which is the most recently enqueued element rather than the front element, so it does not return the correct front without modifying the queue.
+
+POINT_ID: 4
+MARKS: 2
+FEEDBACK: enqueue(String s) simply assigns last = s, overwriting any previous value instead of placing the element at the back of a buffer, so the queue cannot accumulate more than one item.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: dequeue() returns last and then sets last to null, which retrieves the most recent element rather than the front element and does not maintain any queue state for remaining items.
+
+POINT_ID: 6
+MARKS: 5
+FEEDBACK: Because the methods only ever keep a single element, the queue does not preserve FIFO order across multiple enqueue and dequeue operations, and thus the overall correctness is minimal.
+
+TOTAL: 18

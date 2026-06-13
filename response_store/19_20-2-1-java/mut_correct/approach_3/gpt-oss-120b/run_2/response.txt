@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The class `Queue` is defined with `start`, `end`, and a `String[] buffer` of size 100, providing complete internal storage and state tracking.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `emptyqueue()` returns `start == end`, which accurately reflects whether the queue is empty.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `head()` returns `buffer[start]` without altering any indices, correctly exposing the front element.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: `enqueue(String s)` stores the element at `buffer[end]`, increments `end`, and wraps it at 100, properly updating the queue state.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `dequeue()` captures `buffer[start]`, advances `start` (with wrap‑around), and returns the stored value, correctly removing the front element.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: All four methods work together to preserve FIFO order, handle wrap‑around, and the code contains no `import` statements.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑loop walks from the root, moving left when insert.key < x.key and right otherwise, and stops when x becomes null, correctly locating the insertion point.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code declares `y` and assigns `y = x` on each iteration of the while loop, ensuring that after the loop `y` holds the last non‑null node visited (the correct parent).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution correctly uses `if (insert.key < y.key) y.left = insert; else y.right = insert;` to attach the new node as the left or right child based on the key comparison.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code never assigns a value to insert.parent, so the new node lacks the required upward link.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method correctly finds the insertion spot, handles the empty‑tree case, attaches the new node as a child and returns the appropriate root, though it omits setting insert.parent.

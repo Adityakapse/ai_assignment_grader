@@ -4,8 +4,8 @@
 
 MSc Computer Science (Intelligent Systems) dissertation exploring whether LLMs can
 reliably grade student algorithm submissions. The framework runs student code solutions
-through 4 grading approaches using local LLMs (via Ollama) and compares outputs against
-human-graded ground truth across 6 research questions.
+through 4 grading approaches using local LLMs (via Ollama) and cloud LLMs (via NVIDIA NIM)
+and compares outputs against human-graded ground truth across 6 research questions.
 
 ---
 
@@ -47,10 +47,12 @@ Raw Dataset
 │   ├── solutions/
 │   │   └── solutions.csv    — student_id, question_id, solution
 │   ├── rubrics/
-│   │   └── {question_id}/
+│   │   └── {task_id}/
 │   │       └── rubric.json
+│   ├── ground_truth.csv     — human-graded reference scores
 │   ├── system_prompt/
-│   │   └── approach_n.txt — approach_1.txt, approach_2.txt, approach_3.txt, approach_4.txt
+│   │   ├── approach_1..4.txt          — implementation question prompts
+│   │   └── analysis_approach_1..4.txt — analysis/asymptotic question prompts
 │   └── tests/
 │       └── {question_id}/
 ├── response_store/          — Response Store
@@ -64,7 +66,9 @@ Raw Dataset
 ├── result_store/            — Result Store
 │   └── result.csv           — question_id, student_id, approach_n, run_n, total, metrics
 └── graph_store/             — Graph Store
-    └── graph_rqs/
+    ├── overall/             — graphs across all questions
+    ├── implementation/      — graphs for implementation questions only (19_20- prefix)
+    └── asymptotic/          — graphs for asymptotic analysis questions only (asym- prefix)
 ```
 
 ---
@@ -116,6 +120,9 @@ Every approach runs 3 times per (question, student, model). Median of 3 runs = f
 }
 ```
 
+Every rubric has exactly 3 buckets: `Correct`, `Semi`, `Wrong`. The `Correct` values sum to 100.
+The `Internally consistent but incorrect final result` bucket was removed from all rubrics.
+
 ---
 
 ## Ground Truth
@@ -126,11 +133,20 @@ compared against.
 
 ---
 
-## Models (local Ollama)
+## Models
 
-- `tinyllama`
-- `qwen2.5-coder:7b`
-- `deepseek-coder:6.7b`
+### Local (Ollama)
+- `qwen2.5-coder:14b`
+- `qwen3:14b`
+- `devstral-small-2`
+
+### Cloud (NVIDIA NIM — free endpoint)
+- `nvidia/nemotron-3-super-120b-a12b`
+
+Model lists are defined in `main.py` as `OLLAMA_MODELS`, `NIM_MODELS`, and `ALL_MODELS`.
+`NIM_API_KEY` is read from the `NIM_API_KEY` environment variable.
+`grade.py` selects the backend via `--backend ollama|nim`; folder names in `response_store`
+use only the model name (vendor prefix stripped), e.g. `nemotron-3-super-120b-a12b`.
 
 ---
 

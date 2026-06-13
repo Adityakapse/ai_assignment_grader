@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly distinguished the analysis of f and g and identified the loops, but you never referenced the specific line numbers from the code as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer never mentions the initialization statements (e.g., int s = 0, Node p = h) or the return statements, so the constant‑time non‑loop parts are not analyzed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly identifies Θ(N) iterations for the outer loop and justifies it by noting that p moves forward with p = p.next through the N‑node list.
+
+POINT_ID: 4
+BUCKET: Semi (6 marks)
+FEEDBACK: You note that each iteration calls g(p) and that g traverses the rest of the list, but you do not explicitly state that the per‑iteration cost is Θ(N) in the worst case, leaving the cost description vague.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly notes N iterations of the outer loop and a worst‑case Θ(N) cost for each call to g, multiplying them to obtain Θ(N²) for f’s total loop cost.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: You correctly state that g’s loop iterates Θ(N) times in the worst case and justify it by noting that q advances via q.next until null, with the worst case occurring when start = h.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly note that each iteration does constant work (reading q.v and following q.next) and label those operations Θ(1), but you do not explicitly list all constant‑time steps (e.g., the += assignment and null check) required for a full justification.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: You correctly identified Θ(N) iterations and Θ(1) work per iteration for g’s loop and multiplied them to state the total cost as Θ(N).
+
+POINT_ID: 9
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly concludes that g’s runtime is Θ(N) and provides reasoning that the loop iterates Θ(N) times with constant work per iteration, implicitly accounting for the constant‑time initialization and return.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly concluded that f runs in Θ(N²), but you did not explicitly account for the Θ(1) non‑loop work (initialization and return) as required for a full justification.

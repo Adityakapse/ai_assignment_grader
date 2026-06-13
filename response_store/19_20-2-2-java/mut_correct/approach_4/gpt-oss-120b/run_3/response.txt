@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code loops over the entire input array with a for‑loop and uses a switch to handle the four operators, while the default case parses and pushes numeric tokens, correctly distinguishing numbers from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The default case calls Integer.parseInt on each token before pushing it onto the stack, correctly converting numeric strings to integers.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In each operator case the code pops two values (n1 and n2), applies the appropriate arithmetic (+, -, *, /), and pushes the result back onto the stack, matching the required behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In both the “-” and “/” cases you pop the right operand first (n1) and then the left operand (n2), and you compute n2 - n1 and n2 / n1, which follows the proper RPN order and uses integer division.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, correctly handling all four operators with proper operand order and returning the final stack value, so it will produce the right result for any valid RPN expression.

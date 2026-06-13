@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over every token in the input array with a for loop and uses a switch statement to distinguish operator tokens (+,-,*,/) from numeric tokens, which are handled in the default case by parsing and pushing them onto the stack.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly converts each numeric token with Integer.parseInt and pushes the resulting integer onto the stack, as seen in the default case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator token the student pops two values, applies the correct arithmetic operation (+, -, *, /), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student computes subtraction as n1 - n2 and division as n1 / n2, which reverses the required operand order (second popped operator first popped) for both non‑commutative operators.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student incorrectly reverses the operand order for subtraction and division (using n1 - n2 and n1 / n2), which yields wrong results for expressions containing those operators, though addition and multiplication are handled correctly.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution contains only a single for-loop with no outer loop to repeat passes, so it lacks the repeated-pass structure required for a sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The comparison uses list.Smaller(j, j-1) with the correct adjacent indices to detect when element j is smaller than element j-1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the comparison indicates an out-of-order pair, list.Swap(j, j-1) is called with the same indices, satisfying the swap condition.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop bound uses list.Length() to iterate over all valid indices, allowing the method to handle lists of any size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because only one pass is performed, lists longer than two elements are not fully sorted (e.g., [3,2,1] becomes [2,1,3]), so the method does not correctly sort all inputs.

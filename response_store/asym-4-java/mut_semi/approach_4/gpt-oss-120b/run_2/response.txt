@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly distinguished the while loop in f and the for loop in g, but you did not reference specific line numbers or discuss the non‑loop statements, so the separation is incomplete.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The analysis never mentions the initialization statements (e.g., `int n = a.length; int s = 0; int k = 1;` and `int t = 0;`) or the return statements, so the constant‑time non‑loop parts are not identified.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly states Θ(log N) iterations but only says “k changes by a factor” without explicitly explaining that k starts at 1 and is multiplied by 2 each iteration.
+
+POINT_ID: 4
+BUCKET: Correct (12 marks)
+FEEDBACK: You correctly identified that each iteration of f’s while loop costs Θ(N) because it calls g, and you justified this by explaining that g performs a linear scan of the array regardless of x.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: You correctly identified that the while loop executes Θ(log N) times and that each iteration costs Θ(N) due to the call to g, and you combined them to state the total cost is Θ(N log N).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: You correctly state that the for‑loop in g runs Θ(N) times, but your justification only notes that it loops over the array without explicitly explaining that i runs from 0 to a.length‑1 regardless of x.
+
+POINT_ID: 7
+BUCKET: Correct
+FEEDBACK: You correctly identified that each iteration of g does a constant amount of work and explicitly justified it by mentioning the array read, comparison, and possible addition.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly state that g’s loop runs Θ(N) iterations and each iteration costs Θ(1), and you combine them as Θ(N) × Θ(1) = Θ(N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(N) and explain the loop’s Θ(N) iterations with constant work per iteration, but you do not mention the Θ(1) cost of the initialization and return statements.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly concluded that f runs in Θ(N log N) and explained the loop’s Θ(log N) iterations and the Θ(N) cost of each g call, but you did not explicitly account for the constant‑time work before and after the loop.

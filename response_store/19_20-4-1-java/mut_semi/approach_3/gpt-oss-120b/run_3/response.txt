@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑loop walks from the root, updating x left or right based on insert.key < x.key until x becomes null, correctly locating the insertion slot.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Variable y is initialized to null and set to the current x at each iteration, so after the loop y holds the parent of the null position.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After traversal the code compares insert.key with y.key and assigns y.left or y.right accordingly, correctly attaching the new node as a left or right child.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The implementation never assigns insert.parent, leaving the upward link unset.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns insert when the original tree is empty and otherwise returns the original root, producing a correctly structured BST for all cases.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The method uses a for loop that iterates over each token in the input array from left to right, and the switch statement distinguishes operators from numbers.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: When a token is not an operator, the default case converts it with Integer.parseInt and pushes it onto the stack via s.push(Integer.parseInt(input[i]));
+
+POINT_ID: 3
+MARKS: 25
+FEEDBACK: For each operator case, the code pops two values, applies the operation, and pushes the result back, e.g., in the '+' case: int n1 = s.pop(); int n2 = s.pop(); s.push(n2 + n1);
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For subtraction and division, the code pops n1 then n2 and computes n2 - n1 and n2 / n1, ensuring the first popped value is the right operand as required.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The method correctly evaluates RPN expressions and returns the final stack value with return s.pop();, matching the expected behavior for all valid inputs.
+
+TOTAL: 100

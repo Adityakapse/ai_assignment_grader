@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The method uses a for loop to iterate over each token in the input array from left to right and uses a switch statement to separate operators from numbers.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: For numeric tokens, the code correctly parses the string with Integer.parseInt and pushes the integer onto the stack via s.push.
+
+POINT_ID: 3
+MARKS: 25
+FEEDBACK: Each operator case pops two values from the stack, performs a computation, and pushes the result back, satisfying the pop‑compute‑push requirement.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: However, for subtraction and division the student pushes n1 - n2 and n1 / n2 respectively, which reverses the operand order; in RPN the first popped value is the right operand, so the correct expressions should be n2 - n1 and n2 / n1.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the operand order is wrong for - and /, the method returns incorrect results for expressions containing those operators, so it is not fully correct for all valid RPN expressions.
+
+TOTAL: 60

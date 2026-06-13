@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses a for‑loop over the entire input array and a switch (with a default case) to separate operator strings from numeric strings, correctly handling each token type.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the default case the student uses `Integer.parseInt(input[i])` and pushes the resulting int onto the stack, correctly handling numeric tokens.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code pops two values for each operator and pushes a result back, handling all four operators (though the operand order for - and / is reversed).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In both the '-' and '/' cases you compute `n1 - n2` and `n1 / n2` after popping, which reverses the required operand order (the left operand should be the second pop).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code swaps the operand order for subtraction and division (e.g., it does `n1 - n2` and `n1 / n2` instead of `n2 - n1` and `n2 / n1`), causing incorrect results for those operators.

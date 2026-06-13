@@ -1,0 +1,25 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The class defines only a single String field 'last' which can hold one element, insufficient for FIFO storage of multiple items.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: emptyqueue() checks if last == null, but after enqueue A; enqueue B; dequeue() it incorrectly reports the queue as empty when element A remains.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: head() returns the most recently enqueued element (last) rather than the front element, so it does not return the queue's head without modification.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: enqueue() simply assigns the argument to last, discarding any previously stored elements, so it does not add to the back of a FIFO queue.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: dequeue() returns the most recent element and sets last to null, which does not remove the front element nor preserve remaining items.
+
+POINT_ID: 6
+MARKS: 0
+FEEDBACK: Because the methods do not correctly implement FIFO behavior, the queue fails to preserve order across repeated enqueue and dequeue operations.
+
+TOTAL: 0

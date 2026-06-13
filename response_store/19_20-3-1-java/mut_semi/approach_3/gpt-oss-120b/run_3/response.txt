@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The method contains a single for‑loop that makes only one left‑to‑right pass; there is no outer loop or repeat‑until‑sorted mechanism, so the sorting structure is incomplete.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code calls `list.Smaller(j, j - 1)` with adjacent indices, correctly detecting when the element at j is smaller than its predecessor.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the `Smaller` comparison is true, `list.Swap(j, j - 1)` is invoked with the same pair of indices, matching the comparison step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop bound uses `list.Length()` (`j < list.Length()`), so the algorithm adapts to any list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because only a single pass is performed, the method sorts correctly for very short lists but leaves longer lists partially unsorted, failing to guarantee a fully sorted result.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code includes a while‑loop that walks from the root, moving left when insert.key < x.key and right otherwise, stopping when x becomes null.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The variable y is initialised to null and updated to the current node (y = x) on each iteration, so after the loop it holds the parent of the null insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After traversal the code compares insert.key with y.key and assigns y.left = insert or y.right = insert accordingly, correctly attaching the new node.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The method never assigns a value to insert.parent, leaving the upward link unset.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The insertion works for empty and non‑empty trees and returns the proper root, but because insert.parent is not set the resulting tree is not fully correct according to the specification.

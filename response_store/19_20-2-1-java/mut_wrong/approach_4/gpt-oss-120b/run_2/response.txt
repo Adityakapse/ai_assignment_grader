@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class defines a single field `last` to hold one element, which provides some storage but is insufficient to maintain multiple elements in FIFO order.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method returns `last == null`, correctly reflecting whether the queue (as implemented) currently holds an element.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The head() method returns the value of `last`, which holds the most recently enqueued element rather than the front of the queue, so it returns the wrong element.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The enqueue method simply assigns the new string to the single field `last`, overwriting any previous element instead of adding it to the back of a queue and updating appropriate tracking state.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue() method returns the stored element and then sets last to null, properly removing it and updating the internal state so that subsequent calls reflect an empty queue.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The implementation only keeps a single `last` element, so after multiple enqueues the earlier items are lost and dequeue does not follow FIFO order.

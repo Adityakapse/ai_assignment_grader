@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not separate f and g into distinct parts, does not identify loop versus non-loop code, and does not reference any line numbers.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not mention any non-loop code such as variable initializations or return statements, so they failed to analyze constant-time parts.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student says f loops over array a so it is O(M), but does not explicitly state Theta(M) iterations or justify that the loop runs from i=0 to M-1 once per iteration.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student claimed that f runs in O(M) time and described g as "running through array b," ignoring or mischaracterizing the cost of the call to g inside f’s loop; they did not state that each iteration of f incurs Θ(log N) time due to g’s binary search.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student claimed f runs in O(M) time and described the total time as linear in M and N, failing to account for the Θ(log N) cost of each call to g inside the loop and therefore not multiplying the Θ(M) iterations by the per‑iteration Θ(log N) cost.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student states that g "runs through array b," implying a linear number of iterations, and does not mention or justify the Theta(log N) iteration count or the halving of the search interval.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student says g performs simple operations inside its loop but does not explicitly claim each iteration is Theta(1) or justify it with the specific constant‑time operations (midpoint computation, two array accesses, two comparisons, one update).
+
+POINT_ID: 8
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student says g "uses some indices and runs through array b" and that the total time is roughly linear in M and N, but never identifies the loop’s iteration count as Θ(log N) nor multiplies it by the per‑iteration cost, so they do not combine iteration count × per‑iteration cost for g.
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student states that g "runs through array b," implying a linear O(N) runtime, but g actually performs a binary search with Θ(log N) iterations; they omitted the logarithmic reasoning and incorrectly described the runtime as linear.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student stated that f runs in O(M) and that the total time is roughly linear in M and N, ignoring the Θ(log N) cost of the binary search in g and therefore providing an incorrect worst‑case complexity for f.

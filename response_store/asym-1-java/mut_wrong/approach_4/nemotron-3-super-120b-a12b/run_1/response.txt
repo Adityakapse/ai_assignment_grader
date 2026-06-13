@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student did not separate f and g into distinct parts, did not identify loops versus non‑loop code, and provided no line‑number references.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not mention or analyze any constant-time initializations or return statements in f or g, treating the whole functions as loop-dominated without separating non-loop parts.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student states that f runs in O(N) time because it has a loop, ignoring the inner loop whose bound j ≤ i causes the total iterations to be 1+2+…+N = Θ(N²); thus the iteration count is incorrect and not Θ(N²).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student did not explicitly state that each inner iteration of f runs in constant time; they only referred to "small operations" without justifying that the cost per iteration is Θ(1).
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed f runs in O(N) time without computing the number of loop iterations or the per‑iteration cost, and did not multiply iteration count by per‑iteration work to derive the total loop cost.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student claims that g runs in O(1) time and therefore treats the call to g in f as constant‑time, but the while loop in g halves k each iteration, giving Θ(log N) time, so Part C should be Θ(log N), not Θ(1).
+
+POINT_ID: 7
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed that g runs in O(1) time, saying only that it "does some halving thing and looks small," without correctly identifying or justifying that the loop iterates Θ(log N) times due to k being halved each iteration.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student said the g method "does some halving thing and looks small," implying constant work per iteration, but did not explicitly state that each iteration costs Θ(1) by citing the array read, addition, division, and loop check.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student claims g runs in O(1) time without providing an iteration count for the while loop or a per‑iteration cost, and therefore does not combine iteration count × per‑iteration cost to derive the total loop cost.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You claimed g runs in O(1) time, but the while loop halves k each iteration, executing Θ(log N) times, so the correct bound is Θ(log N).
+
+POINT_ID: 11
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed f runs in O(N) time, but the nested loops in f actually execute Θ(N²) iterations, and they omitted the contribution of the inner loop and the call to g, leading to an incorrect overall complexity.

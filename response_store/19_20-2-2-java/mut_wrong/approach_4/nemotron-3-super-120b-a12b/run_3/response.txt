@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over all tokens from left to right and uses a try‑catch to distinguish numeric tokens (which are added to sum) from operator tokens (which are ignored), thereby correctly classifying each token.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never pushes numeric tokens onto the stack; it only sums them into a local variable and ignores the stack entirely.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not perform any stack operations for operators; it merely sums all parsable numbers and ignores tokens like "+", "-", "*", "/", so no values are popped, computed, or pushed back.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student solution ignores all operators and merely sums the numeric tokens, so it never pops operands or applies subtraction or division, resulting in incorrect operand order (and incorrect results) for expressions containing - or /.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution ignores all operators and merely sums the numeric tokens, so it returns incorrect results for any expression containing operators (e.g., "1 2 *" yields 3 instead of 2).

@@ -1,0 +1,27 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The analysis does not reference any line numbers and does not clearly separate the initialization, loop, and return parts of f and g.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The analysis does not mention the constant-time operations such as variable initializations and return statements in either f or g.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: While you correctly state the loop runs Theta(log N) times, you do not explain that k starts at 1 and is doubled each iteration, which is needed to justify the logarithmic count.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You note that each iteration calls g, but you do not justify that g runs in Theta(N) time independent of k, so the per‑iteration cost is not established as Theta(1).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: You conditionally state the loop cost as Theta(log N) * cost_per_iter but do not explicitly multiply Theta(log N) by Theta(N) to obtain Theta(N log N).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: You claim the for loop iterates Theta(N) times without explaining that i runs from 0 to a.length‑1 regardless of the value of x.
+
+POINT_ID: 7
+BUCKET: Correct
+FEEDBACK: You correctly identify that each iteration of g performs a constant amount of work (one array read, a comparison,

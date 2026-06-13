@@ -9,9 +9,9 @@ from scipy.stats import spearmanr
 
 PALETTE = sns.color_palette("tab10")
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
-PRIMARY_MODEL = "gemma4:26b"
+# PRIMARY_MODEL = "gemma4:26b"
 # PRIMARY_MODEL = "devstral-small-2"
-# PRIMARY_MODEL = "Qwen3:14b"
+PRIMARY_MODEL = "nemotron-3-super-120b-a12b"
 
 
 DPI = 150
@@ -476,7 +476,7 @@ def _plot_rq2_spearman_figure(df, gt_df, model, output_dir, filename):
     ax.set_xticks(x_positions)
     ax.set_xticklabels([a.replace("approach_", "AP") for a in ordered], fontsize=10)
     ax.set_ylabel("Spearman ρ", fontsize=10)
-    ax.set_ylim(-1, 1)
+    ax.set_ylim(-1, 1.12)
     ax.set_title(f"RQ2 — Spearman correlation by approach  |  model: {model}", fontsize=11)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)

@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly distinguished the work in f and g and identified the loops, but you did not reference specific line numbers as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You correctly noted that the setup statements in f are constant, but you did not explicitly identify the constant‑time parts in g (the variable initializations and the return) nor the final return in f, so some non‑loop code is missing from your analysis.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly state that the nested loops run Θ(N²) times, but your justification is vague (“essentially a double loop on an N×N matrix”) and does not reference the j = i lower bound or the summation N + (N‑1) + … + 1.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly states that each inner iteration runs in Θ(1), noting it reads a matrix entry and accumulates into s, which provides the required justification.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly notes Θ(N^2) total iterations for the nested loops, identifies Θ(1) work per iteration, and multiplies them to conclude a total cost of Θ(N^2).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The analysis mentions that f calls g but does not specify the cost of Part C as Θ(N) for the g call plus the Θ(1) addition/return, leaving the cost of this part missing.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly state that the loop in g() runs Θ(N) times, but your justification (“runs Θ(N) times (along the diagonal)”) does not clearly explain that i increments from 0 to N‑1.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: You correctly state that each iteration of g() is Θ(1), noting it reads a matrix entry and performs an addition, which justifies the constant‑time cost per iteration.
+
+POINT_ID: 9
+BUCKET: Correct (6 marks)
+FEEDBACK: You correctly state that g’s loop runs Θ(N) times and each iteration costs Θ(1), and you combine them as Θ(N) × Θ(1) = Θ(N).
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(N) and explain the loop’s Θ(N) iterations with Θ(1) work per iteration, but you do not mention the constant‑time initialization and return statements.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: You correctly identified the constant setup, the Θ(N²) nested loops, and the Θ(N) cost of g, and you combined them to conclude that f runs in Θ(N²), properly absorbing the lower‑order term.

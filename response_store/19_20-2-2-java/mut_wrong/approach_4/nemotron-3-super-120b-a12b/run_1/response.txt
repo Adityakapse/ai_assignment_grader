@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over all tokens from left to right and uses a try/catch around Integer.parseInt to distinguish numeric tokens (which are added to sum) from operator tokens (which are ignored), thus correctly classifying the tokens.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student never pushes numeric tokens onto the stack; instead they parse numbers and add them to a local sum, so the stack is unused for number handling.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code does not perform any stack operations when encountering operator tokens; it merely parses integers and accumulates a sum, never popping two values or pushing a result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code ignores operators and merely sums all numbers, so it never pops two operands for subtraction or division, resulting in incorrect operand order for those operations.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution ignores all operators and merely sums the numeric tokens, so it returns incorrect results for any expression containing subtraction, multiplication, division, or more than one addition.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The class defines a Queue with a single String field 'last', which provides some internal storage but is insufficient to maintain FIFO order for up to 100 elements.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The emptyqueue() method checks if last == null, which correctly reports emptiness only when the queue holds zero or one element, but gives wrong results when more than one element have been enqueued.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The head() method returns the value stored in 'last', which is the most recently enqueued element, not the front of the queue, thus returning the wrong end.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The enqueue() method simply assigns the new string to 'last', overwriting any previous element, so it does not add to the back of a multi‑element queue.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns and clears 'last', which only works when the queue holds exactly one element; otherwise it does not remove the true front element.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: Because the internal storage cannot maintain more than one element, the queue fails to preserve FIFO order across repeated enqueue/dequeue operations, and thus overall correctness is not achieved.

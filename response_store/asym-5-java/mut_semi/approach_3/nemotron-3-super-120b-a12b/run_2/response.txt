@@ -1,0 +1,121 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p) which traverses the rest of the list.
+
+So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g.
+
+g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h). Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N^2) and g is Theta(N)."
+
+Now we need to assign bucket for each point.
+
+Point 1: Splitting code into parts + referencing line numbers.
+
+Student solution: No line numbers referenced at all. No clear separation of f and g? They talk about f and g but not referencing line numbers. They mention outer loop, body calls g(p). They don't separate constant parts. So they fail to reference line numbers. So bucket: Wrong (0 marks). Because analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+
+Thus Point1: BUCKET: Wrong.
+
+Feedback: mention missing line numbers and lack of clear separation.
+
+Point2: Constant-time non-loop parts.
+
+Student solution: They didn't mention any constant parts (like int s=0; Node p=h; return s; in f; int c=0; Node q=start; return c; in g). They only discussed loops. So they didn't analyze non-loop parts. So bucket: Wrong (0 marks). Because non-loop code not analysed.
+
+Feedback: they omitted analysis of constant-time statements.
+
+Point3: f(): Loop iterations.
+
+They said: "f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times." They didn't explicitly say p advances by one node each iteration, but they implied using p = p.next. They didn't reference line numbers. They said "about N times" not Theta(N). They didn't justify that p starts at h and advances by p.next each iteration until null after visiting N nodes. So bucket: Semi (6 marks). Because they state Theta(N) (they said about N times) but explanation incomplete (does not say p advances by one node per iteration). Actually they said "using p = p.next". That implies advancement, but they didn't explicitly say each iteration advances by one node. Might be considered incomplete. So Semi.
+
+Feedback: mention they need to explicitly state that p moves one node per iteration and justify N iterations.
+
+Point4: f(): Cost per iteration.
+
+They said: "The body calls g(p) which traverses the rest of the list. So the cost per iteration of f is some traversal cost." They didn't establish Theta(N) per iteration; they said "some traversal cost". They didn't commit to Theta(N). So bucket: Semi (6 marks). Because they recognise call to g but does not establish Theta(N) (says depends on rest of list without committing). Yes.
+
+Feedback: need to state that g(p) scans from p to end, worst-case Theta(N).
+
+Point5: f(): Total loop cost.
+
+They said: "Multiplying gives roughly N times the cost of g." They didn't compute Theta(N^2) explicitly; they said f is Theta(N^2) at end but not derived from multiplication. They said "So f is Theta(N^2)". They didn't show multiplication of iterations and per-iteration cost. They just asserted. So bucket: Semi (4 marks). Because they multiplied own values but final simplification unclear or incorrect? They said N times cost of g, and they earlier said cost of g is Theta(N). So N * Theta(N) = Theta(N^2) but they didn't show that step. Might be considered semi. So bucket: Semi.
+
+Feedback: need to explicitly multiply Theta(N) iterations by Theta(N) per iteration to get Theta(N^2).
+
+Point6: g(): Loop iterations.
+
+They said: "g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h)." They didn't justify that q advances by q.next each iteration until null. They just stated visits Theta(N) nodes. So bucket: Semi (6 marks). Because states Theta(N) but explanation incomplete (does not justify worst-case traversal from h). Actually they did mention worst case when start = h, but didn't say q advances by q.next each iteration. So Semi.
+
+Feedback: need to justify that q moves one node per iteration and visits N nodes when start = h.
+
+Point7: g(): Cost per iteration.
+
+They said: "Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1)." They didn't mention += assignment or null check, but they said constant amount of work. They didn't explicitly say Theta(1) per iteration but implied. They said each step is constant amount of work. That's basically Theta(1). However they didn't mention the null comparison. But still they said constant. The rubric expects explicit Theta(1) justification with field access, +=, pointer advance, null check. Student omitted some details. So bucket: Semi (6 marks). Because suggests constant time but lacks explicit Theta(1) justification.
+
+Feedback: need to explicitly state each iteration does q.v read, +=, q.next assignment, null check, all Theta(1).
+
+Point8: g(): Total loop cost.
+
+They said: "Total cost of g's loop: Theta(N) * Theta(1) = Theta(N)." They did multiply iterations Theta(N) by cost per iteration Theta(1). They stated Theta(N) * Theta(1) = Theta(N). That's correct. So bucket: Correct (8 marks). Because they combined iteration count x per-iteration cost.
+
+Feedback: confirm correct multiplication.
+
+Point9: Overall worst-case runtime of g.
+
+They didn't explicitly sum constant parts and loop. They only gave loop cost Theta(N). They didn't mention constant parts. So bucket: Semi (6 marks). Because states Theta(N) but missing reasoning about constant parts. Actually they didn't mention constant parts at all. So Semi.
+
+Feedback: need to include Theta(1) for initialization and return, summing to Theta(N).
+
+Point10: Overall worst-case runtime of f.
+
+They said: "So f is Theta(N^2)". They didn't sum constant parts. They didn't mention Theta(1) + Theta(N^2) + Theta(1). So bucket: Semi (7 marks). Because states Theta(N^2) but missing reasoning about constant parts.
+
+Feedback: need to include constant parts and sum to Theta(N^2).
+
+Now produce output blocks in order.
+
+We must output exactly:
+
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: ...
+
+Repeat.
+
+Let's craft feedback sentences referencing student's actual analysis.
+
+Point1: Student didn't reference line numbers or clearly separate f/g loops vs non-loops.
+
+Feedback: "The analysis does not reference any line numbers and does not clearly separate the initialization, loop, and return parts of f and g."
+
+Point2: Student omitted constant-time parts.
+
+Feedback: "The analysis does not mention the constant-time statements such as variable initializations and returns in either f or g."
+
+Point3: Student said outer loop runs about N times but didn't justify p advances by one node each iteration.
+
+Feedback: "While you state the outer loop runs about N times, you do not explicitly justify that p advances by one node per iteration (p = p.next) starting from h until null after N nodes."
+
+Point4: Student recognised call to g but did not establish Theta(N) per iteration.
+
+Feedback: "You note that each iteration calls g(p) which traverses the rest of the list, but you do not state that this traversal costs Theta(N) in the worst case (when p is the head)."
+
+Point5: Student asserted f is Theta(N^2) without showing multiplication of iteration and per-iteration costs.
+
+Feedback: "You conclude f is Theta(N^2) but do not show the multiplication of Theta(N) iterations by Theta(N) worst‑case cost per iteration (or the sum 1+2+…+N)."
+
+Point6: Student said g visits Theta(N) nodes in worst case but did not justify q advances by q.next each iteration.
+
+Feedback: "You state g visits Theta(N) nodes in the worst case (when start = h) but do not explain that q advances by q.next each iteration until it becomes null after visiting all N nodes."
+
+Point7: Student said each step is constant work but did not explicitly list the Theta(1) operations.
+
+Feedback: "You claim each step is constant work, but you do not explicitly identify the Theta(1) operations per iteration (reading q.v, the += assignment, advancing q = q.next, and the null check)."
+
+Point8: Student correctly multiplied Theta(N) iterations by Theta(1) per iteration.
+
+Feedback: "You correctly compute the loop cost as Theta(N) iterations × Theta(1) per iteration = Theta(N)."
+
+Point9: Student gave Theta(N) for

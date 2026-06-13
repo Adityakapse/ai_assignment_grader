@@ -1,0 +1,79 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f has two nested loops and then calls g. The setup statements are constant.
+
+The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N. Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations. So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+Then f calls g, which adds some extra cost from g.
+
+g has a while loop that runs Theta(log N) times. Each iteration of g does an array access, an addition and a division, all of which are Theta(1). Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N).
+
+Overall, g runs in Theta(log N) and f runs in Theta(N^2)."
+
+We need to assign bucket for each point.
+
+Let's go point by point.
+
+Point 1 — Splitting code into parts + referencing line numbers.
+
+Student solution: No line numbers referenced. They mention "setup statements are constant" but no line numbers. They separate f and g? They talk about f then g but not explicit separation of parts. They mention nested loops, then call to g. They don't reference line numbers. So they do not clearly separate f vs g? They do talk about f and g but not referencing line numbers. The rubric expects clear separation and line numbers referenced consistently. Student solution lacks line numbers and only vague separation. So bucket: Wrong (0 marks) or Semi? They have some attempt: they separate f and g (they talk about f then g). They mention nested loops and call to g. But they don't reference line numbers. The rubric says: "Wrong: Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing." Student solution: they separate f and g (they talk about f then g). They mention loops vs non-loops? They mention "setup statements are constant" (non-loop) and nested loops. So they do separate loops vs non-loops somewhat. However line numbers missing. The description for Wrong includes "line numbers are unclear or missing." So that qualifies as Wrong. Semi: "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous." They did separate components (f, g, loops, non-loops) but no line numbers. That could be considered Semi? The rubric says Semi: Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous. They attempted separation but no line numbers. I'd lean Semi because they did separate f and g and loops vs non-loops. However they didn't reference line numbers at all. The Wrong bucket says line numbers unclear or missing. That seems to fit. But Semi says some attempt to separate components or refer to line numbers. They didn't refer to line numbers at all, so maybe not even attempt to refer to line numbers. The phrase "refer to line numbers" is part of Semi: "Some attempt to separate components or refer to line numbers". They didn't refer to line numbers, so they didn't attempt that part. But they did separate components. The Semi bucket is ambiguous: It says "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous." So if they attempted to separate components (they did) but didn't refer to line numbers, that still qualifies as some attempt to separate components. So Semi seems appropriate.
+
+Thus Point 1: Semi (3 marks). Feedback: mention missing line numbers.
+
+Point 2 — Constant-time non-loop parts.
+
+Student: "The setup statements are constant." They mention that but not explicit Theta(1) for all non-loop parts: they mention setup statements constant, but they didn't mention return statements, etc. They didn't explicitly say Theta(1) for non-loop parts in f and g. They said "The setup statements are constant." That's vague. They didn't mention that the return statements are constant. So some constant-time segments identified but others missing or vaguely stated. That matches Semi (3 marks). Feedback: need to explicitly state that initializations and returns are Theta(1).
+
+Point 3 — f(): Nested loop iterations.
+
+Student: "The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N." They claim roughly N^2 but justification is weak: they didn't reference j <= i bound, just said two nested loops over array length N. That's weak justification. So bucket: Semi (6 marks) (States Theta(N^2) but with weak or incomplete justification). Feedback: need to sum 1+2+...+N.
+
+Point 4 — f(): Cost per iteration.
+
+Student: "Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations." They mention array read, multiplication, addition. They didn't mention loop checks and increments, but that's okay; they said simple operations O(1). They didn't explicitly state Theta(1) but O(1) implies constant. They gave justification: array read, multiplication, addition. That's enough? The rubric for Correct: States Theta(1), justified by constant number of array reads, arithmetic operations, and the += assignment; loop checks and increments are Theta(1). Student mentioned array read, multiplication, addition into s (which is +=). They didn't mention loop checks and increments but that's minor. They said O(1) since simple operations. I'd say Semi (6 marks) because they suggest constant time but missing explanation of loop checks and increments? However they said "these are all O(1) since they are simple operations." Could be considered sufficient? The rubric Semi: Suggests constant time but with incomplete reasoning (missing explanation of array accesses and arithmetic). They did explain array accesses and arithmetic. So maybe Correct? They didn't mention loop checks and increments but that's part of constant. The rubric expects mention of loop checks and increments. Student didn't. So Semi.
+
+Thus Point 4: Semi (6 marks). Feedback: need to mention loop overhead.
+
+Point 5 — f(): Total loop cost = iterations x per-iteration.
+
+Student: "So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2)." They explicitly multiplied Theta(N^2) * Theta(1) = Theta(N^2). That's correct. They used Theta notation. So bucket: Correct (8 marks). Feedback: good.
+
+Point 6 — f(): Cost of Part C (call to g + constant work).
+
+Student: "Then f calls g, which adds some extra cost from g." They didn't explicitly state Theta(log N) for call to g plus constant work. They later said overall g runs in Theta(log N) and f runs in Theta(N^2). They didn't break down Part C. So they didn't account for constant work. So bucket: Wrong? They didn't mention cost of Part C at all. They just said calls g adds some extra cost. No explicit Theta(log N). So Wrong (0 marks). Feedback: need to state that call to g costs Theta(log N) and addition/return Theta(1).
+
+Point 7 — g(): Loop iterations.
+
+Student: "g has a while loop that runs Theta(log N) times." No justification. They didn't explain halving. So bucket: Semi (5 marks) (States Theta(log N) but does not explain the halving). Feedback: need to explain k = k/2 each iteration.
+
+Point 8 — g(): Cost per iteration.
+
+Student: "Each iteration of g does an array access, an addition and a division, all of which are Theta(1)." They mentioned array access, addition, division. They didn't mention loop check. But similar to f case. So Semi (4 marks). Feedback: need to mention loop check and that each operation constant.
+
+Point 9 — g(): Total loop cost.
+
+Student: "Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N)." They multiplied. So Correct (6 marks). Feedback: good.
+
+Point 10 — Overall worst-case runtime of g.
+
+Student: "Overall, g runs in Theta(log N)". They didn't sum constant parts. They just stated overall. So bucket: Semi (6 marks) (States Theta(log N) but with missing reasoning (not clearly summing the constant-time parts and the loop)). Feedback: need to include constant initializations and return.
+
+Point 11 — Overall worst-case runtime of f.
+
+Student: "Overall, g runs in Theta(log N) and f runs in Theta(N^2)." They didn't sum parts. They just stated f runs Theta(N^2). No explicit sum of non-loop parts + nested loop + Part C. So bucket: Semi (8 marks) (States Theta(N^2) but with missing reasoning (not clearly adding all parts of f)). Feedback: need to sum Theta(1)+Theta(N^2)+Theta(log N)=Theta(N^2).
+
+Now produce output blocks in order.
+
+We need to output:
+
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: ...
+
+Make sure bucket label exactly as in rubric: "Wrong", "Semi", "Correct". Case-sensitive.
+
+Let's craft feedback sentences referencing student's actual analysis.
+
+Point 1: Student didn't

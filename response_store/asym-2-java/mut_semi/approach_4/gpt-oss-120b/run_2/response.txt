@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly separated the analysis of f and g and identified the loops, but you did not reference specific line numbers from the code.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer never mentions the initialization statements (e.g., int m = a.length, int s = 0) or the return statements, so the constant‑time non‑loop parts are not identified as Θ(1).
+
+POINT_ID: 3
+BUCKET: Correct (12 marks)
+FEEDBACK: You correctly state that the outer for loop runs Θ(M) times and justify it by noting that i increments from 0 to m‑1, covering each element of array a.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You correctly noted that each iteration calls g, which is a binary search, but you did not explicitly state the per‑iteration cost as Θ(log N) with a clear justification.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: You correctly noted that the for‑loop runs Θ(M) times and that each iteration calls g, which you identified as Θ(log N), and you combined them to give a total cost of Θ(M log N).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly states that g’s loop has Θ(log N) iterations, but does not explain that the interval [l, r] is halved each iteration.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly noted that each iteration of g does only a few comparisons and updates, implying constant time, but you did not explicitly state the per‑iteration cost as Θ(1) or detail the operations (midpoint computation, array accesses, etc.) as required.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: You correctly noted that g’s while loop executes Θ(log N) iterations and that each iteration does constant‑time work, leading to a total cost of Θ(log N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: The student correctly states that g runs in Θ(log N) and notes that the loop iterates log N times with constant work per iteration, but they do not explicitly account for the constant‑time initialization and return steps.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly concluded that f runs in Θ(M log N) and explained that the loop iterates M times and each iteration calls g which is Θ(log N), but you did not explicitly account for the constant‑time work before and after the loop.

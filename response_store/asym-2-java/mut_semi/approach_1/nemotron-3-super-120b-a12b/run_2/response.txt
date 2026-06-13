@@ -1,0 +1,102 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f has a single for loop that iterates over array a. The loop runs M times because i goes from 0 to m. Inside the loop f calls g(b, a[i]).
+
+The body of f's loop has a call to g, plus a comparison and an addition. The g call presumably takes log N or so since it looks like a binary search. So f's loop cost per iteration depends on g.
+
+f total cost ~ M * cost_of_g.
+
+g uses a while loop with mid = (l + r) / 2. It runs log N times. Each iteration just does a few comparisons and updates, which is constant. So g is around log N.
+
+Overall: g = Theta(log N), f = Theta(M log N)."
+
+We need to assign marks per rubric point.
+
+Let's examine each rubric point.
+
+Point 1 — Splitting code into parts + referencing line numbers (0–5)
+Requirement: Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently.
+
+Student solution: They mention f has a single for loop, loop runs M times, inside loop calls g. They mention body of f's loop has a call to g, plus a comparison and an addition. They mention g uses a while loop with mid = (l + r) / 2. They do not reference any line numbers. No line numbers at all. So they fail to reference line numbers. Also they didn't separate non-loop parts explicitly (like initialization, return). They didn't separate f and g parts clearly? They did talk about f and g but not referencing line numbers. So likely low marks. The rubric expects line numbers referenced consistently. Since none, maybe 0 or 1. The valid range 0-5. I'd give 0 because no line numbers.
+
+Point 2 — Constant-time non-loop parts (0–5)
+All non-loop code in f and g is Theta(1).
+
+Student solution: They didn't explicitly mention non-loop parts. They said f has a single for loop that iterates over array a. They didn't mention the initialization int m = a.length; int s = 0; or return s; They didn't mention g's initialization int l = 0; int r = b.length - 1; or return -1; So they didn't address constant-time non-loop parts. Could infer they implicitly considered them negligible? But rubric expects explicit statement that all non-loop code is Theta(1). Since they didn't, likely 0.
+
+Point 3 — f(): Loop iterations (0–12)
+Theta(M) iterations of the outer for loop.
+
+Student: "The loop runs M times because i goes from 0 to m." That's correct. They didn't use Theta notation but said runs M times. That's essentially Theta(M). So likely full marks? The rubric expects Theta(M) iterations. They said runs M times. That's correct. So I'd give full marks, maybe 12.
+
+Point 4 — f(): Cost per iteration (0–12)
+Theta(log N) per iteration, dominated by the call to g(b, a[i]).
+
+Student: "The body of f's loop has a call to g, plus a comparison and an addition. The g call presumably takes log N or so since it looks like a binary search. So f's loop cost per iteration depends on g." They didn't explicitly state Theta(log N) per iteration, but they said g call presumably takes log N or so. They didn't mention that the comparison and addition are constant. They didn't explicitly say per iteration cost is Theta(log N). However they implied that the dominant cost is g which is log N. So likely partial credit. The rubric expects Theta(log N) per iteration, dominated by call to g. They mentioned that. I'd give maybe 8 out of 12? Let's see. They didn't use Theta notation, but they said "presumably takes log N or so". That's somewhat vague. Might be considered correct enough. I'd give 10? Need to be conservative. I'd give 8.
+
+Point 5 — f(): Total loop cost (0–8)
+Theta(M log N) from Theta(M) iterations x Theta(log N) per iteration.
+
+Student: "f total cost ~ M * cost_of_g." They didn't explicitly multiply M * log N, but they said f total cost ~ M * cost_of_g, and earlier said g is log N. So they implied M * log N. They didn't explicitly state Theta(M log N). But they concluded overall: g = Theta(log N), f = Theta(M log N). Actually at the end they said: "Overall: g = Theta(log N), f = Theta(M log N)." So they did state that. So they have total loop cost Theta(M log N). So full marks 8.
+
+Point 6 — g(): Loop iterations (0–12)
+Theta(log N) iterations because the search interval halves each iteration.
+
+Student: "g uses a while loop with mid = (l + r) / 2. It runs log N times." They didn't explicitly mention halving interval, but they said runs log N times. That's correct. So likely full marks 12.
+
+Point 7 — g(): Cost per iteration (0–12)
+Theta(1) per iteration.
+
+Student: "Each iteration just does a few comparisons and updates, which is constant." That's Theta(1). So full marks 12.
+
+Point 8 — g(): Total loop cost (0–8)
+Theta(log N) = Theta(log N) iterations x Theta(1) per iteration.
+
+Student: They said g runs log N times, each iteration constant, so overall log N. They didn't explicitly state Theta(log N) = iterations x cost per iteration, but they implied. At end they said g = Theta(log N). So likely full marks 8.
+
+Point 9 — Overall worst-case runtime of g (0–12)
+T_g(N) = Theta(log N), summing the constant-time parts and the loop.
+
+Student: They said overall: g = Theta(log N). They didn't explicitly sum constant-time parts, but they implied. So maybe full marks 12? They didn't mention constant parts but they said g = Theta(log N). That's correct. I'd give full marks 12.
+
+Point 10 — Overall worst-case runtime of f (0–14)
+T_f(M, N) = Theta(M log N), accounting for non-loop parts + loop.
+
+Student: They said overall: f = Theta(M log N). They didn't explicitly account for non-loop parts, but they said f = Theta(M log N). That's correct. So full marks 14.
+
+Now sum marks.
+
+Let's assign:
+
+Point1: 0
+Point2: 0
+Point3: 12
+Point4: 8 (maybe 10? Let's decide 8)
+Point5: 8
+Point6: 12
+Point7: 12
+Point8: 8
+Point9: 12
+Point10: 14
+
+Sum = 0+0+12+8+8+12+12+8+12+14 = 86? Let's compute: 12+8=20, +8=28, +12=40, +12=52, +8=60, +12=72, +14=86. Yes.
+
+Check if any point could be higher.
+
+Point4 maybe 10? If we give 10, sum becomes 88. But we need to be justified.
+
+Let's review point4 description: "The body of f's loop has a call to g, plus a comparison and an addition. The g call presumably takes log N or so since it looks like a binary search. So f's loop cost per iteration depends on g."
+
+They didn't explicitly say per iteration cost is Theta(log N). They said depends on g. They didn't mention that the comparison and addition are constant. However they implicitly treat g as dominant. The rubric expects Theta(log N) per iteration, dominated by the call to g. The student mentioned that g call presumably takes log N or so. That's essentially saying per iteration cost is log N (dominant). I think it's enough for full marks? But they didn't use Theta notation, but they said "presumably takes log N or so". Might be considered correct. The rubric may accept that as correct. However they didn't explicitly state that the other operations are constant. But they said "plus a comparison and an addition". That indicates they are aware of extra constant work. So they effectively said per iteration cost = g + constant. Since g is log N, per iteration is log N + constant = Theta(log N). So I'd lean to full marks 12.
+
+Let's see point4 valid range 0-12. If we give 12, sum becomes 90.
+
+But we need to be careful: The student didn't explicitly state Theta(log N) per iteration; they said "presumably takes log N or so". That's a bit vague but likely acceptable. I'd give 12.
+
+Now point2: They didn't mention constant-time non-loop parts. Could we give partial? They didn't mention them at all. So 0.
+
+Point1: No line numbers. So 0.
+
+Now point9: They

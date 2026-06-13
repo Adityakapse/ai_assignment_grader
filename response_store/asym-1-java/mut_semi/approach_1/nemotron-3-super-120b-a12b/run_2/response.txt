@@ -1,0 +1,104 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f has two nested loops and then calls g. The setup statements are constant.
+
+The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N. Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations. So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+Then f calls g, which adds some extra cost from g.
+
+g has a while loop that runs Theta(log N) times. Each iteration of g does an array access, an addition and a division, all of which are Theta(1). Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N).
+
+Overall, g runs in Theta(log N) and f runs in Theta(N^2)."
+
+We need to assign marks per rubric point.
+
+Let's list rubric points:
+
+1 — Splitting code into parts + referencing line numbers (0-5)
+   Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+
+Student solution: They mention "f has two nested loops and then calls g. The setup statements are constant." They mention "nested loops in f iterate roughly N^2 times". They mention "g has a while loop". They do not reference line numbers at all. No line numbers. So they fail referencing line numbers. They do separate f and g somewhat, but no line numbers. So marks maybe low. Range 0-5. I'd give maybe 1 or 2? Since they separated f and g but no line numbers. The description: "Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently." They have separation and loops vs non-loop identified (they mention setup statements constant, nested loops, while loop). But line numbers missing. So partial credit. I'd give 2 out of 5.
+
+2 — Constant-time non-loop parts (0-5)
+   All non-loop code in f and g is Theta(1); may be grouped.
+
+Student: They said "The setup statements are constant." They didn't explicitly mention other constant parts like return statements, but they implied. They said "Overall, g runs in Theta(log N) and f runs in Theta(N^2)." They didn't break down constant parts explicitly but they said setup statements constant. Likely they consider non-loop parts constant. So they satisfy. I'd give full marks 5.
+
+3 — f(): Nested loop iterations (0-12)
+   Theta(N^2) combined iterations of the nested for loops.
+
+Student: "The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N." They said roughly N^2, which is Theta(N^2). Good. So full marks maybe 12.
+
+4 — f(): Cost per iteration (0-12)
+   Theta(1) per inner iteration.
+
+Student: "Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations." So they claim Theta(1). Good. Full marks 12.
+
+5 — f(): Total loop cost = iterations x per-iteration (0-8)
+   Theta(N^2) from Theta(N^2) iterations x Theta(1) per iteration.
+
+Student: "So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2)." Good. Full marks 8.
+
+6 — f(): Cost of Part C (call to g + constant work) (0-6)
+   Theta(log N), accounting for both the cost of the g call and the constant-time return.
+
+Student: They mention "Then f calls g, which adds some extra cost from g." They didn't explicitly state Theta(log N) for Part C, but they later say overall f runs in Theta(N^2). They didn't break down Part C cost. They didn't mention that call to g is Theta(log N) plus constant. They just said calls g adds some extra cost. Not explicit. So they may not get full marks. Possibly partial. The rubric expects Theta(log N) accounting for both call and constant work. Student didn't specify that. So maybe 2 out of 6? Let's see: they didn't mention constant work, but they implied that g's cost is Theta(log N) and they added it to f. They didn't separate Part C. I'd give 2.
+
+7 — g(): Loop iterations (0-10)
+   Theta(log N) iterations because k is halved each iteration.
+
+Student: "g has a while loop that runs Theta(log N) times." Good. Full marks 10.
+
+8 — g(): Cost per iteration (0-8)
+   Theta(1) per iteration.
+
+Student: "Each iteration of g does an array access, an addition and a division, all of which are Theta(1)." Good. Full marks 8.
+
+9 — g(): Total loop cost (0-6)
+   Theta(log N) = Theta(log N) iterations x Theta(1) per iteration.
+
+Student: "Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N)." Good. Full marks 6.
+
+10 — Overall worst-case runtime of g (0-12)
+   T_g(N) = Theta(log N), summing the constant-time parts and the loop.
+
+Student: "Overall, g runs in Theta(log N)". They didn't explicitly sum constant parts but they implied. Probably full marks 12.
+
+11 — Overall worst-case runtime of f (0-16)
+   T_f(N) = Theta(N^2), accounting for non-loop parts + nested loop + Part C.
+
+Student: "Overall, g runs in Theta(log N) and f runs in Theta(N^2)." They didn't explicitly account for non-loop parts + Part C, but they said f runs in Theta(N^2) which is correct. Might be partial. I'd give maybe 12 out of 16? Let's see: they didn't break down non-loop parts and Part C, but they concluded Theta(N^2). The rubric expects accounting for non-loop parts + nested loop + Part C. They didn't mention those explicitly. So maybe 8? Let's think: They said "f has two nested loops and then calls g. The setup statements are constant." So they acknowledged setup statements constant. They didn't mention the return statement or addition of s+t constant. But they might consider that included in constant. They didn't explicitly add Part C cost. However they said f runs in Theta(N^2) which dominates. So they implicitly accounted. I'd give moderate marks, maybe 10 out of 16.
+
+Let's compute total: 2+5+12+12+8+2+10+8+6+12+10 = 87? Let's sum: 2+5=7, +12=19, +12=31, +8=39, +2=41, +10=51, +8=59, +6=65, +12=77, +10=87.
+
+But need to ensure each mark within valid range. All are within.
+
+Now produce feedback per point referencing student's actual analysis.
+
+We need to write feedback sentence(s) referencing what student wrote.
+
+Let's craft each.
+
+Point 1: Feedback: "You separated f and g and identified loops vs non‑loop code, but you did not reference any line numbers as required."
+
+Point 2: Feedback: "You correctly noted that the setup statements in f and the initialisations in g are constant‑time, covering all non‑loop parts."
+
+Point 3: Feedback: "You stated that the nested loops iterate roughly N² times, which matches the Theta(N²) combined iterations."
+
+Point 4: Feedback: "You argued that each inner iteration does only an array read, multiplication and addition, all O(1), giving Theta(1) per iteration."
+
+Point 5: Feedback: "By multiplying the Theta(N²) iteration count by the Theta(1) per‑iteration cost you obtained Theta(N²) for the loop total."
+
+Point 6: Feedback: "You mentioned that f calls g and adds extra cost, but you did not explicitly state that this Part C costs Theta(log N) (including the constant‑time return)."
+
+Point 7: Feedback: "You correctly identified that the while loop in g runs Theta(log N) times because k is halved each iteration."
+
+Point 8: Feedback: "You noted that each iteration of g performs an array access, addition and division, all constant‑time, giving Theta(1) per iteration."
+
+Point 9: Feedback: "You multiplied the Theta(log N) iterations by the Theta(1) per‑iteration cost to obtain Theta(log N) for the loop total."
+
+Point 10: Feedback: "You concluded that g runs in Theta(log N), which correctly sums its constant‑time parts and the loop."
+
+Point 11: Feedback: "You stated that f runs in Theta(N²), but you did not explicitly break down the contribution of the non‑loop

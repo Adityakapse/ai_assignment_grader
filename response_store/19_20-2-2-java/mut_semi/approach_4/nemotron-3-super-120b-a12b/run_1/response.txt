@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over every token in the input array with a for loop from left to right, and the switch statement separates the four operator symbols from all other strings, which are parsed as numbers, correctly classifying tokens for the two different actions.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly converts each numeric token using Integer.parseInt and pushes the resulting integer onto the stack in the default case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the student pops two values, applies the correct arithmetic operation (addition, subtraction, multiplication, or division), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student computes subtraction as n1 - n2 and division as n1 / n2, reversing the operand order; correct RPN requires second popped minus/divided by first popped.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student reverses the operand order for subtraction and division, computing n1 - n2 and n1 / n2 instead of n2 - n1 and n2 / n1, which yields correct results only for expressions that use only + and *.

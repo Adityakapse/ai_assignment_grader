@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method iterates over the entire input array and uses a try‑catch block to separate numeric tokens (which parse successfully) from operator tokens (which throw NumberFormatException).
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Instead of pushing parsed numbers onto the provided IntegerStack, the code adds them to a local sum variable, so no numbers are ever pushed onto the stack.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: When an operator is encountered the catch block is empty, so no values are popped, no computation is performed, and nothing is pushed back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Because subtraction and division operators are ignored, the method never pops two values or applies the correct operand order for these non‑commutative operators.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns the sum of all numeric tokens, which is not the correct RPN evaluation result for expressions containing operators, so it fails on most test cases.

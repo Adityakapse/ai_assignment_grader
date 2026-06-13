@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses an outer loop with variable i and an inner loop with variable j that iterates from the end of the list down to i, providing the repeated-pass structure needed for bubble sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The comparison uses list.Smaller(j, j-1) which correctly detects when the element at position j-1 is greater than the element at j, indicating an out-of-order pair for ascending order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the Smaller test is true, the code calls list.Swap(j, j-1) with the same indices, swapping only the out-of-order adjacent elements.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both loops use list.Length() to compute their bounds (outer: i < list.Length(); inner: j starts at list.Length()-1 and continues while j > i-1), ensuring the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implemented bubble sort returns the list sorted in ascending order for all valid inputs, as it repeatedly moves larger elements toward the end until the list is ordered.

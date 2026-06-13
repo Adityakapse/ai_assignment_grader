@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses a for‑loop that iterates over every element of the input array and a switch statement that handles the four operators while the default case parses and pushes numeric tokens, correctly distinguishing numbers from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the default case the student uses Integer.parseInt to convert each numeric token and then pushes the integer onto the stack, which matches the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the solution pops two values, performs the corresponding arithmetic (using the operator token), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In both the '-' and '/' cases you use `n1 - n2` and `n1 / n2`, but the first popped value is the right operand, so the correct order should be `n2 - n1` and `n2 / n1`; the current code reverses the operand order.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles addition and multiplication, but for subtraction and division it uses the wrong operand order (e.g., `s.push(n1 - n2)` instead of `s.push(n2 - n1`), leading to incorrect results on those operators.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method uses a for‑loop over the entire input array and a switch to separate operator tokens from the default numeric case, so every token is processed left‑to‑right.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the default branch the code calls Integer.parseInt(input[i]) and pushes the resulting int onto the stack, correctly handling numeric tokens.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator case the code pops two values from the stack and pushes a result back, so the required pop‑compute‑push pattern is implemented for all four operators.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The subtraction and division cases use n1 - n2 and n1 / n2, reversing the required operand order (second‑popped should be the left operand), leading to incorrect results for non‑commutative operators.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the operand order for '-' and '/' is wrong, the method returns incorrect results for any expression that includes subtraction or division, so it does not produce the correct overall result.

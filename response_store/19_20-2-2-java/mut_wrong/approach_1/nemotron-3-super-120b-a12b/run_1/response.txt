@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The method loops through each token and uses Integer.parseInt with a try‑catch block to separate numeric tokens from operators, thereby iterating left‑to‑right and classifying tokens correctly.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Although numeric tokens are parsed, they are added to a local sum variable instead of being pushed onto the provided stack, so the stack is never used for number handling.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: When an operator token is encountered, the code does nothing (the catch block is empty); it never pops two values, applies the operator, or pushes a result back onto the stack.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: Because operators are ignored, there is no attempt to pop operands or enforce the correct order for subtraction or division.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The method returns the sum of all numeric tokens, which is incorrect for RPN expressions containing operators, so it does not produce the correct result for valid inputs.
+
+TOTAL: 20

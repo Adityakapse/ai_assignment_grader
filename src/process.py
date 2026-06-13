@@ -16,7 +16,7 @@ VALID_APPROACHES = list(APPROACH_CONFIG.keys())
 
 
 def _to_fs_name(model):
-    return model.replace(":", "__")
+    return model.split("/")[-1].replace(":", "__")
 
 
 def _from_fs_name(folder):

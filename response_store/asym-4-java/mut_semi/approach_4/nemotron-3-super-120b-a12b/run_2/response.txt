@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student’s analysis never cites any line numbers, and although they distinguish f from g and point out the loops, they provide no line‑number references as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student’s analysis does not discuss any non‑loop code (e.g., variable initializations, assignments, or return statements) in either f or g, so the constant‑time parts are not analysed at all.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly states that the while loop runs Θ(log N) times because “k changes by a factor each iteration,” but they do not explain that k starts at 1 and is doubled (multiplied by 2) each iteration, nor that the loop continues until k exceeds N. This missing justification places the answer in the Semi bucket.
+
+POINT_ID: 4
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly states that each iteration of f’s while loop costs Θ(N) because it calls g, which they show performs a linear scan of the array a regardless of x, justifying the Θ(N) per‑iteration cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly stated that the while loop in f runs Θ(log N) times and that each iteration calls g, which costs Θ(N), then multiplied these to obtain Θ(N log N) for f’s loop, providing the required justification.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly states that g’s for loop iterates Θ(N) times, but does not explicitly justify that the loop runs from i = 0 to a.length‑1 regardless of the value of x, which is needed for a complete justification.
+
+POINT_ID: 7
+BUCKET: Correct
+FEEDBACK: The student explicitly notes that each iteration of g performs a constant amount of work—one array access, one comparison, and possibly an addition—providing the required Theta(1) justification per iteration.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that g's for loop iterates Θ(N) times, each iteration does Θ(1) work, and then multiplies them to obtain Θ(N) × Θ(1) = Θ(N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: The student states that g runs in Θ(N) but does not explicitly mention or sum the constant‑time parts (initialization and return), so the reasoning is incomplete according to the rubric.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly states that f runs in Θ(N log N) and explains the loop iterations and the cost of g, but they do not explicitly account for the constant‑time operations outside the loop (the initializations and return statement) as required for a full justification.

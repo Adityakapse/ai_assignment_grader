@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a while loop `while (x != null)` and moves left with `if (insert.key < x.key) x = x.left; else x = x.right;`, correctly walking to the null insertion point.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The variable `y` is initialized to null and updated with `y = x;` on each loop iteration, so after the loop it holds the parent of the null slot.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After traversal the code attaches the node with `if (insert.key < y.key) y.left = insert; else y.right = insert;`, correctly choosing left or right based on the key comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The statement `insert.parent = y;` assigns the tracked parent `y` to `insert.parent`, establishing the correct upward link.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `insert` when `y == null` (empty tree) and otherwise returns the original `root`, preserving the BST structure for all insertion cases.

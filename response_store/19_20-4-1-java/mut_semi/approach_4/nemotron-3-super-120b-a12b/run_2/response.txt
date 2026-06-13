@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while loop correctly traverses from the root, moving left when insert.key < x.key and right otherwise, until it finds the null insertion point.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code declares y and updates it to x at each step of the traversal, so after the loop y correctly holds the parent of the insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly compares insert.key with y.key and assigns y.left or y.right accordingly, properly attaching the node as a left or right child of its parent.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's insert method never assigns insert.parent, leaving the upward link unset.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's insert method correctly handles the empty tree case by returning the new node as root, and for non‑empty trees it traverses to find the proper leaf and attaches the node as a left or right child while returning the original root, preserving the BST property for all inputs.

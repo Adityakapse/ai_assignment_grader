@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class defines an ArrayList for storage but lacks any index or removal mechanism, so the storage alone is insufficient to support all queue operations correctly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: emptyqueue() correctly returns list.isEmpty(), which is true exactly when the queue has no elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: head() returns list.get(0) without modifying the list, thus providing the front element as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: enqueue() uses list.add(s) to append the element to the back of the internal ArrayList, correctly updating the storage.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: dequeue() returns list.get(0) but never removes the element, so it does not actually dequeue anything.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: Because dequeue fails to remove elements, the queue does not preserve FIFO order—after an enqueue followed by a dequeue the element remains, breaking basic queue behavior.

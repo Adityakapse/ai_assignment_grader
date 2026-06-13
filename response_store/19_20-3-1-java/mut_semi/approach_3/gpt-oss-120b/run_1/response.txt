@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code contains only a single for‑loop that makes one pass over the list and never repeats the pass, so it lacks the outer loop needed for a complete sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It correctly calls list.Smaller(j, j - 1) to detect when the element at index j is smaller than the element at j‑1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the Smaller check is true, the code calls list.Swap(j, j - 1) using the same pair of indices as the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop condition uses list.Length() (j < list.Length()), so the bound adapts to any list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because only a single pass is performed, the method fails to fully sort lists that require multiple passes, working correctly only for very short or nearly sorted inputs.

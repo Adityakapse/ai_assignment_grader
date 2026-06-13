@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method iterates over the whole `input` array with `for (int i = 0; i < input.length; ++i)` and uses a `switch` to separate operator tokens from numeric tokens (handled in the `default` case).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `default` branch the code calls `Integer.parseInt(input[i])` and pushes the resulting integer onto the stack, correctly converting numeric strings.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator case the code pops two values (`n1 = s.pop(); n2 = s.pop();`), performs an arithmetic operation, and pushes the result back onto the stack, covering all four operators.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The subtraction and division cases use `s.push(n1 - n2)` and `s.push(n1 / n2)`, reversing the required order (the left operand should be the second popped value).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the operand order for `-` and `/` is incorrect, the method yields wrong results for expressions involving subtraction or division, so it does not return the correct overall result.

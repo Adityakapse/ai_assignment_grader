@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly separated the analysis of f and g and identified the loops, but you did not reference any line numbers from the source code.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer never mentions the initialization statements (e.g., `int s = 0; Node p = h;` and `int c = 0; Node q = start;`) or the return statements, so the constant‑time non‑loop parts are not analyzed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student states the outer loop runs about N times and notes that it uses p = p.next, correctly justifying Θ(N) iterations because p advances one node per iteration through the N-node list.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You noted that each iteration calls g(p) and that g traverses the remaining list, but you did not explicitly state that this gives a Θ(N) cost per iteration, only describing it as “some traversal cost.”
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: You correctly noted that the outer loop runs Θ(N) times and that each iteration incurs the cost of g, which you identified as Θ(N), resulting in a total loop cost of Θ(N²).
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The student correctly states that g’s loop iterates Θ(N) times and justifies it by noting the loop traverses the list and in the worst case (start = h) visits all N nodes.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly state that each iteration of g does constant work (reading q.v and following q.next) and note it’s Θ(1), but you don’t explicitly enumerate all constant‑time steps (e.g., the += assignment and null check) required for full credit.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly identified Θ(N) iterations and Θ(1) work per iteration for g’s loop and combined them to state the total cost as Θ(N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(N) and explain that the loop visits Θ(N) nodes with constant work per step, but you do not explicitly account for the Θ(1) initialization and return statements.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly concluded that f runs in Θ(N²), but you did not explicitly break down the Θ(1) non‑loop work or fully detail the per‑iteration cost, so the reasoning is incomplete.

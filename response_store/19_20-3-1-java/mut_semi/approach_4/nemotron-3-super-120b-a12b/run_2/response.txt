@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution contains only a single for‑loop that makes one pass over the list, lacking an outer loop to repeat passes until the list is fully sorted.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly calls list.Smaller(j, j-1) with adjacent indices to detect when the element at j-1 is greater than the element at j, which is the proper comparison for an ascending sort.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student calls list.Swap(j, j-1) only when list.Smaller(j, j-1) returns true, using the exact same pair of indices as the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student uses list.Length() to bound the loop, so the algorithm adapts to any list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation performs only a single pass through the list, which moves the largest element to the end but leaves the rest unsorted (e.g., input [3,2,1] becomes [2,1,3]).

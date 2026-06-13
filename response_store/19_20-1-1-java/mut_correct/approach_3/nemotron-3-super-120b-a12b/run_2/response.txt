@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The gcd function is defined with the correct signature (two int parameters, returns int) and contains a recognizable recursive structure with a swap, remainder calculation, and recursive call.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The base case checks if the remainder r is zero and returns b, which works when b ≠ 0, but the function lacks a check for b == 0, leading to division‑by‑zero for inputs where either argument is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After ensuring a ≥ b via the swap, the code computes r = a % b and recurses with gcd(r, b), which correctly reduces the problem each step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function directly returns (a * b) / gcd(a, b), matching the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the gcd works correctly for positive inputs, it fails for edge cases where either argument is zero because the modulo operation divides by zero, so it is not fully correct for all non‑negative inputs.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For positive integer inputs the gcd works, so lcm(a, b) = (a * b) / gcd(a, b) yields the correct least common multiple.

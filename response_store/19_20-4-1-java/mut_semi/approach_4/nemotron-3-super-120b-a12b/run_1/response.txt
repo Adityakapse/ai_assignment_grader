@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The loop correctly walks from the root to a null child, moving left when insert.key < x.key and right otherwise, reaching the proper insertion point.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution declares y, initializes it to null, and updates y = x inside the loop on each iteration, so after traversal y correctly points to the parent of the insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly compares insert.key with y.key and assigns y.left when insert.key < y.key, otherwise y.right, attaching the node as the appropriate child.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution never assigns insert.parent, leaving the upward link unset.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly traverses the tree, attaches the new node as a left or right child, and handles the empty tree case by returning the new node as root, but it never sets insert.parent, leaving the parent pointer uninitialized.

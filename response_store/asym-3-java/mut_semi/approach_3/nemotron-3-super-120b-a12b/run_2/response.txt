@@ -1,0 +1,71 @@
+We need to produce blocks for each rubric point (1-11). For each, decide bucket based on student solution.
+
+Let's examine student solution:
+
+"f has two nested loops and then calls g. The setup statements outside the loops are constant.
+
+The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix. Each iteration just reads a matrix entry and accumulates into s, which is Theta(1). So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+f then calls g, which adds some cost from g.
+
+g has a single for loop that runs Theta(N) times (along the diagonal). Each iteration is Theta(1) since it just reads one matrix entry and adds. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+Overall, g is Theta(N) and f is Theta(N^2)."
+
+Now evaluate each rubric point.
+
+Point 1: Splitting code into parts + referencing line numbers. Student solution does not reference line numbers at all. It mentions "setup statements outside the loops are constant" but no line numbers. It separates f and g but not referencing line numbers. So it's incomplete. According to rubric: "Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing." Student does separate f vs g and loops vs non-loops somewhat, but line numbers missing. So bucket: Wrong (0 marks). However there is "Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous." They did separate components (f loops, g loop) but no line numbers. That could be considered some attempt but missing line numbers. The rubric says "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous." Since they separated components but no line numbers, that's some attempt. I'd lean to Semi because they did separate f and g and loops vs non-loop. They didn't reference line numbers, but they did separate. The "Wrong" bucket says line numbers unclear or missing AND does not clearly separate f vs g, or loops vs non-loops. Since they did separate, maybe not Wrong. So Semi.
+
+Point 2: Constant-time non-loop parts. Student says "The setup statements outside the loops are constant." That's vague but indicates they think setup statements are constant. They didn't explicitly mention all non-loop parts (like int n = mat.length; int s = 0; int t = g(mat); return s + t; and in g: int n = mat.length; int t = 0; return t;). They just said setup statements outside loops are constant. That's somewhat correct but incomplete. According to rubric: Semi: "Some constant-time segments identified but others missing or vaguely stated." That matches. So bucket Semi.
+
+Point 3: f(): Nested loop iterations. Student says: "The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix." They claim Theta(N^2) but justification is weak: they say essentially a double loop on an N x N matrix, not referencing j=i lower bound. According to rubric: Semi (6 marks): States Theta(N^2) but with weak or incomplete justification (does not reference the j = i lower bound). So bucket Semi.
+
+Point 4: f(): Cost per iteration. Student: "Each iteration just reads a matrix entry and accumulates into s, which is Theta(1)." That's correct and justified. So bucket Correct (12 marks).
+
+Point 5: f(): Total loop cost. Student: "So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2)." That's multiplication and correct. So bucket Correct (8 marks).
+
+Point 6: f(): Cost of Part C (call to g + constant work). Student: "f then calls g, which adds some cost from g." They didn't specify Theta(N) or mention constant addition/return. They just say adds some cost from g. No explicit Theta(N). So bucket: Wrong? Let's see rubric: Wrong (0 marks): Cost of Part C missing or incorrect. Semi (3 marks): Notes that cost comes from g but unclear about Theta(N). Correct (6 marks): Theta(N) for the call to g plus Theta(1) for the addition / return. Student notes cost comes from g but unclear about Theta(N). They didn't mention Theta(N) explicitly. So Semi.
+
+Point 7: g(): Loop iterations. Student: "g has a single for loop that runs Theta(N) times (along the diagonal)." They state Theta(N) but justification minimal: just says along the diagonal. According to rubric: Semi (5 marks): States Theta(N) but explanation is unclear. Correct (10 marks): Justifies Theta(N) because i increments from 0 to N-1. So bucket Semi.
+
+Point 8: g(): Cost per iteration. Student: "Each iteration is Theta(1) since it just reads one matrix entry and adds." That's correct. So bucket Correct (8 marks).
+
+Point 9: g(): Total loop cost. Student: "So g's loop is Theta(N) * Theta(1) = Theta(N)." That's multiplication and correct. So bucket Correct (6 marks).
+
+Point 10: Overall worst-case runtime of g. Student: "Overall, g is Theta(N)". They didn't sum constant parts but implied. According to rubric: Semi (6 marks): States Theta(N) but with missing reasoning. Correct (12 marks): Theta(1) + Theta(N) + Theta(1) = Theta(N). Student just says overall g is Theta(N) without showing constant parts. So Semi.
+
+Point 11: Overall worst-case runtime of f. Student: "Overall, g is Theta(N) and f is Theta(N^2)." They didn't sum constant parts or show Theta(1)+Theta(N^2)+Theta(N)=Theta(N^2). So Semi (8 marks): States Theta(N^2) but with missing reasoning. Correct (16 marks) would require showing sum. So bucket Semi.
+
+Now produce output blocks in order.
+
+Each block:
+
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: ... referencing student's actual analysis.
+
+We need to write feedback sentence(s) specific to what they wrote.
+
+Let's craft.
+
+Point 1: They separated f and g and loops vs non-loops but didn't reference line numbers. Feedback: "You correctly distinguished f and g and separated loop from non‑loop code, but you did not cite any line numbers as required."
+
+Point 2: They said setup statements outside loops are constant, but missed some non‑loop parts. Feedback: "You identified that the statements outside the loops are constant‑time, but you did not explicitly mention all non‑loop statements (e.g., the initializations, the call to g, and the return statements)."
+
+Point 3: They claimed Theta(N^2) with weak justification. Feedback: "You stated that the nested loops run Theta(N^2) times, but your justification only referred to it being 'essentially a double loop on an N x N matrix' without referencing the j = i lower bound or summing the series."
+
+Point 4: They correctly said each iteration is Theta(1). Feedback: "You correctly noted that each iteration performs one matrix read and one addition, which is Theta(1)."
+
+Point 5: They multiplied Theta(N^2) by Theta(1) to get Theta(N^2). Feedback: "You correctly multiplied the iteration count by the per‑iteration cost to obtain Theta(N^2) for the nested loops."
+
+Point 6: They noted the call to g adds some cost but didn't specify Theta(N) or the constant work. Feedback: "You mentioned that f calls g and adds some cost, but you did not state that this contributes Theta(N) (the cost of g) plus Theta(1) for the addition and return."
+
+Point 7: They said g's loop runs Theta(N) times with unclear explanation. Feedback: "You stated that g’s loop runs Theta(N) times, but your explanation only mentioned 'along the diagonal' without noting that i iterates from 0 to N‑1."
+
+Point 8: They correctly said each iteration of g is Theta(1). Feedback: "You correctly observed that each iteration of g’s loop does one matrix access and one addition, which is Theta(1)."
+
+Point 9: They multiplied Theta(N) by Theta(1) to get Theta(N) for g’s loop. Feedback: "You correctly multiplied the loop’s iteration count by its per‑iteration cost to obtain Theta(N) for g’s loop."
+
+Point 10: They said g is Theta(N) without showing constant parts. Feedback: "You concluded that g runs in Theta(N) time, but you did not explicitly add the constant‑time initializations and return to show Theta(1)+Theta(N)+Theta(1)=Theta(N)."
+
+Point 11: They said f is Theta(N^2) without showing the sum of parts. Feedback: "You concluded that f runs in Theta(N^2) time, but

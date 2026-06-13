@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The class defines a field `private String last;` which provides storage, but a single variable cannot hold more than one element, so the internal state is insufficient for a FIFO queue.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `emptyqueue()` returns `last == null`, correctly indicating emptiness based on the sole internal field.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `head()` simply returns `last` without altering any state, so it reads the front element without side effects (as far as the single‑element representation allows).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: `enqueue(String s)` assigns `last = s`, overwriting any previous element; it stores the new item but does not maintain additional state needed for multiple queued items.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: `dequeue()` returns `last` and sets it to `null`, which works for a single element but does not handle removal correctly when more than one element would be present.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The implementation works for at most one element but fails to preserve FIFO order across repeated enqueues and dequeues; no imports are used, but overall queue behavior is incomplete.

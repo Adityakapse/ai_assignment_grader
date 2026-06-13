@@ -1,0 +1,101 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f has two nested loops and then calls g. The setup statements outside the loops are constant.
+
+The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix. Each iteration just reads a matrix entry and accumulates into s, which is Theta(1). So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+f then calls g, which adds some cost from g.
+
+g has a single for loop that runs Theta(N) times (along the diagonal). Each iteration is Theta(1) since it just reads one matrix entry and adds. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+Overall, g is Theta(N) and f is Theta(N^2)."
+
+We need to assign marks per rubric point.
+
+Let's list rubric points:
+
+1 — Splitting code into parts + referencing line numbers (0-5)
+2 — Constant-time non-loop parts (0-5)
+3 — f(): Nested loop iterations (0-12)
+4 — f(): Cost per iteration (0-12)
+5 — f(): Total loop cost (0-8)
+6 — f(): Cost of Part C (call to g + constant work) (0-6)
+7 — g(): Loop iterations (0-10)
+8 — g(): Cost per iteration (0-8)
+9 — g(): Total loop cost (0-6)
+10 — Overall worst-case runtime of g (0-12)
+11 — Overall worst-case runtime of f (0-16)
+
+We need to see if student solution addresses each point.
+
+Student solution does not reference line numbers at all. So point 1: they didn't split code into parts referencing line numbers. They gave high-level description but no line numbers. So likely low marks. The rubric expects clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently. Student didn't reference line numbers. So maybe 0 or 1. Let's see if they at least separated f and g? They mention f and g but not line numbers. So maybe 1 point for splitting code into parts (they identified f and g) but lacking line numbers. The description: "Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently." They didn't reference line numbers, so missing that component. Could get partial credit for separation and loops vs non-loop? They said "setup statements outside the loops are constant." That's referencing non-loop parts. They didn't explicitly mention line numbers. I'd give maybe 2 out of 5? But need to be within range. Let's think: The rubric likely expects full credit if they do all three: separation, loops vs non-loop identified, line numbers referenced. Student missing line numbers, so maybe 2-3. I'd assign 2.
+
+Point 2: Constant-time non-loop parts. Student said: "The setup statements outside the loops are constant." That's referencing non-loop parts in f. For g, they didn't explicitly mention constant parts but they said overall g is Theta(N). They didn't break down constant parts. However they implicitly considered that the loop is Theta(N) and rest constant. Could be considered they acknowledged constant parts. The rubric: "All non-loop code in f and g is Theta(1)." Student mentioned setup statements outside loops are constant (for f). For g, they didn't mention but they said g's loop is Theta(N) and overall g is Theta(N). Implicitly they considered other parts constant. Might get partial. I'd give maybe 3 out of 5.
+
+Point 3: f(): Nested loop iterations. Student said: "The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix." That's correct: they identified Theta(N^2) iterations. So full marks likely 12.
+
+Point 4: f(): Cost per iteration. Student said: "Each iteration just reads a matrix entry and accumulates into s, which is Theta(1)." So they said cost per iteration Theta(1). Full marks 12.
+
+Point 5: f(): Total loop cost. Student said: "So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2)." That's correct. Full marks 8.
+
+Point 6: f(): Cost of Part C (call to g + constant work). Student said: "f then calls g, which adds some cost from g." They didn't explicitly state Theta(N) for that part. They didn't break down Part C. They just said adds some cost from g. No explicit Theta(N). So likely low marks. Could give 0 or maybe 1 if they implied. The rubric expects Theta(N), accounting for cost of g plus constant-time addition and return. Student didn't mention that. So 0.
+
+Point 7: g(): Loop iterations. Student said: "g has a single for loop that runs Theta(N) times (along the diagonal)." So full marks 10.
+
+Point 8: g(): Cost per iteration. Student said: "Each iteration is Theta(1) since it just reads one matrix entry and adds." So full marks 8.
+
+Point 9: g(): Total loop cost. Student said: "So g's loop is Theta(N) * Theta(1) = Theta(N)." That's total loop cost. Full marks 6.
+
+Point 10: Overall worst-case runtime of g. Student said: "Overall, g is Theta(N)". That's correct. Full marks 12.
+
+Point 11: Overall worst-case runtime of f. Student said: "Overall, g is Theta(N) and f is Theta(N^2)." They concluded f is Theta(N^2). They didn't explicitly sum constant parts + nested loop + Part C, but they implied. The rubric expects Theta(N^2) accounting for non-loop parts + nested loop + Part C. Student didn't mention Part C cost explicitly but they said f then calls g, which adds some cost from g. They didn't quantify. However they concluded Theta(N^2) which is correct. Might get partial. I'd give maybe 8 out of 16? Let's see: They got the asymptotic right but missing justification of summing parts. Could give half. The range 0-16. I'd give 8.
+
+Now compute total.
+
+Let's assign:
+
+1: 2
+2: 3
+3: 12
+4: 12
+5: 8
+6: 0
+7: 10
+8: 8
+9: 6
+10: 12
+11: 8
+
+Sum = 2+3=5, +12=17, +12=29, +8=37, +0=37, +10=47, +8=55, +6=61, +12=73, +8=81.
+
+Total 81.
+
+Check if any marks exceed max: point1 max 5 we gave 2 ok. point2 max5 we gave3 ok. point3 max12 we gave12 ok. point4 max12 we gave12 ok. point5 max8 we gave8 ok. point6 max6 we gave0 ok. point7 max10 we gave10 ok. point8 max8 we gave8 ok. point9 max6 we gave6 ok. point10 max12 we gave12 ok. point11 max16 we gave8 ok.
+
+Now feedback per point: need short specific feedback referencing student's actual analysis.
+
+We'll write for each point.
+
+Point1: Feedback: "You identified f and g but did not reference any line numbers or explicitly separate loop vs non-loop code with line numbers."
+
+Point2: Feedback: "You noted that setup statements outside the loops are constant for f, but you did not explicitly state that all non-loop parts in both f and g are Θ(1)."
+
+Point3: Feedback: "You correctly stated that the nested loops run Θ(N²) times, covering the upper‑triangle of the matrix."
+
+Point4: Feedback: "You correctly argued that each inner‑loop iteration does only a constant‑time matrix read and addition, i.e., Θ(1)."
+
+Point5: Feedback: "You correctly multiplied the Θ(N²) iterations by the Θ(1) per‑iteration cost to obtain Θ(N²) for the nested loops."
+
+Point6: Feedback: "You mentioned that f calls g but did not quantify the cost of that call or the constant‑time addition/return, so the analysis of Part C is missing."
+
+Point7: Feedback: "You correctly identified that g’s single loop runs Θ(N) times along the diagonal."
+
+Point8: Feedback: "You correctly stated that each iteration of g’s loop performs a constant‑time matrix read and addition, i.e., Θ(1)."
+
+Point9: Feedback: "You correctly computed the loop cost as Θ(N) × Θ(1) = Θ(N)."
+
+Point10: Feedback: "You correctly concluded that g’s overall running time is Θ(N)."
+
+Point11: Feedback: "While you gave the correct final bound Θ(N²) for f, you did not explicitly

@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not reference any line numbers and fails to clearly separate loop from non‑loop parts of f and g (e.g., variable initialization, loop body, and return statements).
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not mention or analyze the constant‑time parts such as the initializations (int s = 0; Node p = h; and int c = 0; Node q = start;) and the return statements in f and g, so the analysis of non‑loop code is missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student states that the outer loop runs about N times and explicitly mentions the update p = p.next, which shows that p advances by one node per iteration, thus justifying the Theta(N) iteration count.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student notes that each iteration of f calls g(p) which “traverses the rest of the list,” but they do not explicitly state that this cost is Θ(N) per iteration in the worst case; they only describe it vaguely as “some traversal cost” without committing to a Θ(N) bound.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: You correctly noted that the outer loop in f runs Θ(N) times and that each call to g(p) costs Θ(N) in the worst case (when p points to the head), so the total loop cost is Θ(N)·Θ(N)=Θ(N²).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs Θ(N) iterations in the worst case when start = h, but you do not explicitly justify this by noting that q advances by q.next each iteration until it becomes null.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student states that each iteration of g does constant work by reading q.v and following q.next, but does not explicitly mention the += assignment or the null‑check, so the justification for Theta(1) per iteration is incomplete.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly stated that g's loop executes Θ(N) iterations, each with Θ(1) work, and then multiplied them to obtain Θ(N) total loop cost.
+
+POINT_ID: 9
+BUCKET: Semi (6 marks)
+FEEDBACK: You correctly stated that g's loop runs Theta(N) times with constant work per iteration, but you omitted the constant‑time initialization and return statements when giving the overall runtime.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly concludes that f runs in Θ(N²) time, but omits explicit justification for the constant‑time parts (initialization and return) and does not show the per‑iteration cost summation, so the reasoning is incomplete.

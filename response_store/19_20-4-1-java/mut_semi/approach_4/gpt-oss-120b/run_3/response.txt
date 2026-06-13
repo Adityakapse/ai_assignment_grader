@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a while loop that moves left when insert.key < x.key and right otherwise, correctly walking from the root to the null insertion slot.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code declares `y` and assigns `y = x` on every loop iteration before moving `x`, so after the loop `y` correctly references the parent of the insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After finding the parent `y`, the code uses `if (insert.key < y.key) y.left = insert; else y.right = insert;`, correctly attaching the node as left or right child based on the key comparison.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code inserts the node as a child but never assigns insert.parent, so the upward link is missing.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The insertion logic correctly places the new node and returns the proper root for both empty and non‑empty trees, preserving the BST property.

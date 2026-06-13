@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student separates f and g and identifies loops vs. non‑loop code, but never references any line numbers, so the analysis lacks the required line‑number citations.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student noted that the setup statements outside f's loops are constant, but did not explicitly state that all non-loop parts in both f and g (such as variable initializations, the call to g, and return statements) are Θ(1); they omitted or were vague about these parts, especially in g.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly claims the nested loops run Θ(N²) times but only offers a weak justification ("essentially a double loop on an N×N matrix") without referencing the j = i lower bound or showing the sum N + (N‑1) + … + 1.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly states that each inner-loop iteration performs one matrix access and one addition assignment, giving Θ(1) cost per iteration.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that the nested loops execute Θ(N²) iterations, each with Θ(1) work, and multiplies them to obtain a total loop cost of Θ(N²).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student notes that f’s cost includes the call to g but does not explicitly state that this part is Θ(N) due to g’s Θ(N) work plus the Θ(1) addition and return, leaving the Θ(N) claim unclear.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly states that g’s loop runs Θ(N) times, but the justification only mentions “along the diagonal” without explicitly noting that the loop index i runs from 0 to N‑1, which makes the explanation somewhat unclear.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student correctly states that each iteration of g's loop is Θ(1) because it performs one matrix access mat[i][i] and one addition, which matches the required justification.
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly states that g's loop runs Θ(N) iterations with Θ(1) cost per iteration and multiplies them to obtain Θ(N).
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that g’s loop runs Θ(N) times with Θ(1) work per iteration, giving Θ(N) overall, but does not explicitly mention or sum the constant‑time initialization and return statements; a full solution would show Θ(1)+Θ(N)+Θ(1)=Θ(N).
+
+POINT_ID: 11
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that f’s nested loops run Θ(N²) times and that g runs Θ(N) time, and notes the constant‑time setup, but does not explicitly combine the three parts (Θ(1) + Θ(N²) + Θ(N)) and show how the lower‑order terms are absorbed to obtain Θ(N²).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code includes an outer for‑loop over i and an inner for‑loop over j that iterate through the list, comparing adjacent elements with list.Smaller and swapping when needed, which is a recognizable bubble‑sort iteration structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code calls `list.Smaller(j, j - 1)` with the proper adjacent indices to detect out‑of‑order elements, matching the bubble‑sort comparison step.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code calls `list.Swap(j, j - 1)` only inside the `if (list.Smaller(j, j - 1))` block, using the exact same indices as the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer loop (`i < list.Length()`) and the inner loop (`j = list.Length() - 1`) use `list.Length()` to set their bounds, ensuring the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the bubble sort from the sample, iterating through the list with nested loops and swapping when a smaller element follows a larger one, thus correctly sorting any valid input list.

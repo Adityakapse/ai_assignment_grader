@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The method loops through each token in the input array and uses a try‑catch block to treat successfully parsed integers as numbers and catching NumberFormatException to identify operators, thus classifying tokens.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: When a numeric token is parsed, the code adds it to a local sum variable instead of converting it to an integer and pushing it onto the provided stack.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: For operator tokens the catch block does nothing, so no values are popped from the stack, no computation is performed, and nothing is pushed back.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: Because operators are ignored, the method never pops operands for subtraction or division, so the required operand order (second popped op first popped) is not implemented.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The method returns the sum of all numeric tokens, which is not the correct result for Reverse Polish Notation expressions; e.g., for input {\"1\",\"2\",\"*\",\"3\",\"4\",\"*\",\"+\"} it returns 10 instead of 14.
+
+TOTAL: 20

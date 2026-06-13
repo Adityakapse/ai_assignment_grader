@@ -1,0 +1,23 @@
+POINT_ID: Point 1 — gcd function present and structurally correct
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with a recursive call `return gcd(r, b);`, matching the required signature and structure.
+
+POINT_ID: Point 2 — gcd base case / termination condition
+BUCKET: Correct
+FEEDBACK: The function computes `int r = a % b;` and returns `b` when `r == 0`, which correctly implements the Euclidean base case.
+
+POINT_ID: Point 3 — gcd recursive/iterative step (reduction)
+BUCKET: Correct
+FEEDBACK: After swapping to ensure `a >= b`, the code calls `gcd(r, b)`, and the subsequent swap in the next call reduces the problem, effectively performing the Euclidean reduction.
+
+POINT_ID: Point 4 — lcm function: correct formula and structure
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined as `return (a * b) / gcd(a, b);`, exactly matching the required formula.
+
+POINT_ID: Point 5 — Overall correctness of gcd
+BUCKET: Semi
+FEEDBACK: The implementation works for typical positive inputs but crashes on cases where either argument is zero (e.g., `gcd(0, n)`), so it fails for edge‑case inputs.
+
+POINT_ID: Point 6 — Overall correctness of lcm
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, `lcm` correctly computes the least common multiple using the proper formula and a working `gcd`.

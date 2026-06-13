@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with the proper signature, return type, and a recursive call, satisfying the structural requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (b == 0) return a;` correctly terminates the recursion for all valid inputs.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step `return gcd(b, a % b);` correctly reduces the problem toward the base case using the Euclidean algorithm.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The `lcm` function returns `a * b` and never invokes `gcd`, so it does not implement the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The gcd implementation produces the correct greatest common divisor for all non‑negative integer inputs, including edge cases like `gcd(0, n)`.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: Because `lcm` simply multiplies the two numbers, it yields incorrect results for most inputs (e.g., `lcm(4,6)` returns 24 instead of 12).

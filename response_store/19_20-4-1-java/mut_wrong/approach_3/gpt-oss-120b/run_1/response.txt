@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The method immediately returns insert without any loop or recursion, so it never traverses from the root to find the proper null position.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parent variable is declared or updated during any traversal; the code does not track a potential parent for the insertion point.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The new node is never attached to a left or right child of any parent; the code simply returns insert, leaving the tree unchanged.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: insert.parent is never assigned, so the upward link to a parent node is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method discards the existing tree and always returns the new node, so the BST property is not preserved and insertion fails for all inputs.

@@ -1,0 +1,119 @@
+We need to produce feedback for each rubric point based on student solution.
+
+Let's examine student solution:
+
+Student solution text:
+
+"f has two nested loops and then calls g. The setup statements are constant.
+
+The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N. Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations. So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+Then f calls g, which adds some extra cost from g.
+
+g has a while loop that runs Theta(log N) times. Each iteration of g does an array access, an addition and a division, all of which are Theta(1). Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N).
+
+Overall, g runs in Theta(log N) and f runs in Theta(N^2)."
+
+Now evaluate each rubric point.
+
+Point 1: Splitting code into parts + referencing line numbers.
+
+Student solution: No line numbers referenced at all. They mention "setup statements are constant", "nested loops in f", "calls g". They separate f and g but no line numbers. So they didn't reference line numbers. According to rubric: "Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing." They did separate f vs g and loops vs non-loops somewhat, but line numbers missing. So bucket: Wrong.
+
+Point 2: Constant-time non-loop parts.
+
+Student says: "The setup statements are constant." They mention setup statements (int n = a.length; int s = 0; int t = g(a); return s + t?). Actually they didn't explicitly mention return or int t = g(a) as constant? They said "Then f calls g, which adds some extra cost from g." They didn't analyze the constant parts in g (int n = a.length; int t = 0; int k = n; return t;). They didn't mention those. So they partially identified constant parts but missing some. According to rubric: Semi (3 marks): Some constant-time segments identified but others missing or vaguely stated. So bucket: Semi.
+
+Point 3: f(): Nested loop iterations.
+
+Student says: "The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N." They didn't reference the j <= i bound, just said two nested loops over array length N. That's weak justification. So bucket: Semi (6 marks) because states Theta(N^2) but with weak justification.
+
+Point 4: f(): Cost per iteration.
+
+Student says: "Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations." They mention array read, multiplication, addition. They didn't mention loop checks and increments. But they said these are O(1). The rubric expects justification of constant number of array reads, arithmetic, and += assignment; loop checks and increments are Theta(1). Student missed loop checks/increments but still says O(1). Might be considered incomplete reasoning. Bucket: Semi (6 marks) because suggests constant time but with incomplete reasoning (missing explanation of array accesses and arithmetic? Actually they gave array read, multiplication, addition; missing loop overhead). So Semi.
+
+Point 5: f(): Total loop cost = iterations x per-iteration.
+
+Student says: "So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2)." They multiplied iterations and per-iteration cost. They gave correct multiplication. They didn't discuss simplification but it's fine. Bucket: Correct (8 marks) because they multiplied own values and got Theta(N^2). The rubric: Correct: Theta(N^2) x Theta(1) = Theta(N^2), with clear justification. They gave justification? They said "So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2)." That's clear enough. So Correct.
+
+Point 6: f(): Cost of Part C (call to g + constant work).
+
+Student says: "Then f calls g, which adds some extra cost from g." They didn't state that cost is Theta(log N) or mention constant work. They didn't analyze Part C explicitly. So bucket: Wrong (0 marks) because cost of Part C missing or incorrect.
+
+Point 7: g(): Loop iterations.
+
+Student says: "g has a while loop that runs Theta(log N) times." They didn't explain halving. So bucket: Semi (5 marks) because states Theta(log N) but does not explain halving.
+
+Point 8: g(): Cost per iteration.
+
+Student says: "Each iteration of g does an array access, an addition and a division, all of which are Theta(1)." They missed loop check and maybe assignment? They mentioned array access, addition, division. They didn't mention loop check and increment (k = k / 2). But they said all are Theta(1). Might be considered incomplete reasoning. Bucket: Semi (4 marks) because suggests operations are small/constant but lacks explicit Theta(1) justification (missing loop check etc). Actually they gave array access, addition, division; missing loop check and assignment. So Semi.
+
+Point 9: g(): Total loop cost.
+
+Student says: "Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N)." They multiplied. That's correct. Bucket: Correct (6 marks) because they combined iteration count x per-iteration cost.
+
+Point 10: Overall worst-case runtime of g.
+
+Student says: "Overall, g runs in Theta(log N)". They didn't sum constant-time parts. They didn't mention constant parts. So bucket: Semi (6 marks) because states Theta(log N) but with missing reasoning (not clearly summing constant-time parts and the loop). Actually they didn't mention constant parts at all. So Semi.
+
+Point 11: Overall worst-case runtime of f.
+
+Student says: "f runs in Theta(N^2)". They didn't sum constant parts, nested loop, and Part C. They just said f runs in Theta(N^2). They didn't mention adding Theta(1)+Theta(N^2)+Theta(log N). So bucket: Semi (8 marks) because states Theta(N^2) but with missing reasoning (not clearly adding all parts of f). So Semi.
+
+Now produce output blocks in order.
+
+Each block:
+
+POINT_ID: <id>
+BUCKET: <label>
+FEEDBACK: <sentence(s)>
+
+We need exact bucket labels from rubric.
+
+List:
+
+Point1 buckets: Wrong, Semi, Correct.
+
+Point2: Wrong, Semi, Correct.
+
+Point3: Wrong, Semi, Correct.
+
+Point4: Wrong, Semi, Correct.
+
+Point5: Wrong, Semi, Correct.
+
+Point6: Wrong, Semi, Correct.
+
+Point7: Wrong, Semi, Correct.
+
+Point8: Wrong, Semi, Correct.
+
+Point9: Wrong, Semi, Correct.
+
+Point10: Wrong, Semi, Correct.
+
+Point11: Wrong, Semi, Correct.
+
+Now fill.
+
+Point1: Wrong. Feedback: "The analysis does not reference any line numbers and only loosely separates f and g without identifying specific code sections."
+
+Point2: Semi. Feedback: "You identified the setup statements as constant but omitted the constant‑time parts in g (initialisations and return) and the return statement in f."
+
+Point3: Semi. Feedback: "You claimed the nested loops run Θ(N²) times but justified it only by saying they are two nested loops over the array, without referencing the j ≤ i bound or summing 1+2+…+N."
+
+Point4: Semi. Feedback: "You stated each inner iteration is O(1) by citing an array read, multiplication and addition, but you did not mention the loop checks, increments, or the += assignment as part of the constant work."
+
+Point5: Correct. Feedback: "You correctly multiplied the Θ(N²) iteration count by the Θ(1) per‑iteration cost to obtain Θ(N²) for the nested loops."
+
+Point6: Wrong. Feedback: "You did not analyse the cost of the call to g plus the constant‑time addition and return; you only noted that f calls g adds extra cost without giving its asymptotic value."
+
+Point7: Semi. Feedback: "You said the while loop runs Θ(log N) times but did not explain that this follows from repeatedly halving k (k = k / 2) each iteration."
+
+Point8: Semi. Feedback: "You claimed each iteration of g is Θ(1) by noting an array access, addition and division, but you omitted the loop condition check and the assignment k = k / 2 from the per‑iteration cost."
+
+Point9: Correct. Feedback: "You correctly multiplied the Θ(log N) iteration count by the Θ(1) per‑iteration cost to obtain Θ(log N) for the loop in g."
+
+Point10: Semi. Feedback: "You gave Θ(log N) as the overall running time of g but did not sum the constant‑time initialisations and return with the loop cost to justify why they do not change the asymptotic bound."
+
+Point11: Semi. Feedback: "You concluded f runs in Θ(N²) without explicitly adding the constant‑time parts, the nested‑loop cost, and

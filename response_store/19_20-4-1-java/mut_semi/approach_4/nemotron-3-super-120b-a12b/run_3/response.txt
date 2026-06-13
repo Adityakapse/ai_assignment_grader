@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while loop in the student's code correctly walks from the root, moving left when insert.key < x.key and right otherwise, stopping at the null child where the new node should be attached.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student declares a parent pointer y, initializes it to null, and updates y = x at every iteration of the traversal loop, so after the loop y correctly holds the parent of the insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly attaches insert as y.left when insert.key < y.key and as y.right otherwise, fulfilling the left/right attachment rule.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's insert method never assigns insert.parent, so the upward link is not established for the inserted node.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method correctly returns insert for an empty tree and root otherwise, and it attaches the new node as the appropriate left or right child while preserving BST ordering; the only missing step is setting insert.parent, which does not affect the BST validity.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution contains only a single for-loop that iterates once through the list, lacking an outer loop to repeat passes until the list is sorted.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The Smaller(j, j-1) call correctly compares adjacent elements to detect when they are out of order for an ascending sort.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When Smaller returns true, Swap(j, j-1) is called with the same indices, performing a conditional swap based on the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop bound uses list.Length() so the algorithm adapts to any list size, though only a single pass is performed.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because only one pass is made, the list is left partially sorted and the method fails on inputs that require multiple passes, such as [3,2,1].

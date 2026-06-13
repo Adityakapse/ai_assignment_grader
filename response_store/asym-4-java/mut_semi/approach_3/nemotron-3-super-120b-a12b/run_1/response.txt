@@ -1,0 +1,78 @@
+We need to evaluate student solution against rubric.
+
+Student solution: 
+"f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N)."
+
+We need to assign bucket for each point.
+
+Let's go point by point.
+
+Point 1: Splitting code into parts + referencing line numbers.
+Student solution: No line numbers referenced at all. They talk about f and g but not line numbers. They separate f and g? They mention f and g but not clearly separate loops vs non-loop code. They mention while loop, body calls g, but they don't separate constant parts (like int n = a.length; int s = 0; int k = 1; return s;). They don't reference line numbers. So bucket: Wrong (0 marks). Because analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+
+Point 2: Constant-time non-loop parts.
+Student solution: They didn't mention any constant parts. They only talk about loops. So they didn't state that non-loop parts are Theta(1). So bucket: Wrong (0 marks). Because non-loop code not analysed or incorrectly claimed to be non-constant.
+
+Point 3: f(): Loop iterations.
+Student: "The loop runs Theta(log N) times since k changes by a factor each iteration." They didn't explain doubling of k, just says changes by a factor each iteration. They didn't justify Theta(log N) by explaining that k starts at 1 and is multiplied by 2 each iteration, so the loop runs until k exceeds N. So bucket: Semi (6 marks). Because they state Theta(log N) but do not explain the doubling of k.
+
+Point 4: f(): Cost per iteration.
+Student: "The body calls g, so each iteration's cost depends on g. If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter." They recognize call to g but do not establish Theta(N) per iteration; they conditionally say "If g runs in Theta(N)". They didn't justify that g is Theta(N) (they later do for g). But they didn't explicitly state Theta(N) per iteration. So bucket: Semi (6 marks). Because they recognise the call to g but do not establish Theta(N) per iteration.
+
+Point 5: f(): Total loop cost.
+Student: They say "If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter." They didn't actually compute final complexity; they left it as product. They didn't state Theta(N log N) explicitly. They later say "So f is Theta(N log N)" at the end. Actually they conclude: "So f is Theta(N log N) and g is Theta(N)." So they did state final complexity. However for point 5, we need to see if they multiplied iteration count x per-iteration cost and justified simplification. They said "If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter." They didn't explicitly say cost_per_iter is Theta(N). They later conclude f is Theta(N log N). But point 5 is about total loop cost: Theta(log N) x Theta(N) = Theta(N log N), with justification. Did they justify? They said "If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter." They didn't state cost_per_iter is Theta(N). They later say g is Theta(N). So they implicitly used that. But they didn't explicitly multiply Theta(log N) x Theta(N) and justify simplification. The bucket Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect. They did multiply but reasoning unclear. I'd give Semi (4 marks). Because they attempted multiplication but reasoning unclear.
+
+Point 6: g(): Loop iterations.
+Student: "g has a for loop over a, so it iterates Theta(N) times." They didn't justify that i runs from 0 to a.length - 1 regardless of x. So bucket: Semi (6 marks). Because states Theta(N) but explanation incomplete.
+
+Point 7: g(): Cost per iteration.
+Student: "Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add." That's Theta(1) justification. They mention array access, comparison, maybe add. That's good. So bucket: Correct (12 marks). Because they justify each iteration Theta(1): one array read, one comparison, possibly one += assignment.
+
+Point 8: g(): Total loop cost.
+Student: They said "g's loop is Theta(N) * Theta(1) = Theta(N)." They multiplied iterations Theta(N) by cost per iteration Theta(1). That's correct. They gave justification? They said "Each iteration of g does a constant amount of work ... So g's loop is Theta(N) * Theta(1) = Theta(N)." That's multiplication and simplification. So bucket: Correct (8 marks). Because Theta(N) x Theta(1) = Theta(N).
+
+Point 9: Overall worst-case runtime of g.
+Student: They didn't explicitly sum constant parts and loop. They just said g is Theta(N). They didn't mention constant parts. So bucket: Semi (6 marks). Because states Theta(N) but with missing reasoning (missing constant parts). Actually they didn't mention constant parts at all. So Semi.
+
+Point 10: Overall worst-case runtime of f.
+Student: They concluded f is Theta(N log N). They didn't sum constant parts. They didn't mention Theta(1)+Theta(N log N)+Theta(1). So bucket: Semi (7 marks). Because states Theta(N log N) but with missing reasoning (missing constant parts). Actually they didn't mention constant parts. So Semi.
+
+Now produce output blocks in order.
+
+We need to output:
+
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: ...
+
+Make sure bucket label exactly as in rubric: "Wrong", "Semi", "Correct". Note capitalization: In rubric they are like "Wrong (0 marks):", "Semi (3 marks):", "Correct (5 marks):". So bucket labels are "Wrong", "Semi", "Correct". Use exactly those.
+
+Now feedback sentences referencing student's actual analysis.
+
+Let's craft.
+
+Point 1: Student didn't reference line numbers or separate f/g loops vs non-loop. Feedback: "The analysis does not reference any line numbers and does not clearly separate the constant‑time parts from the loops in f and g."
+
+Point 2: Student didn't analyse non-loop parts. Feedback: "No mention is made of the constant‑time statements (e.g., variable initializations and returns), so the non‑loop code is not analysed as Theta(1)."
+
+Point 3: Student states Theta(log N) but doesn't explain doubling. Feedback: "You correctly state that the while loop runs Theta(log N) times, but you do not justify this by explaining that k starts at 1 and is doubled each iteration until it exceeds N."
+
+Point 4: Student recognises call to g but doesn't establish Theta(N) per iteration. Feedback: "You note that each iteration calls g, but you do not show that g itself runs in Theta(N) time, leaving the per‑iteration cost unspecified."
+
+Point 5: Student attempts multiplication but reasoning unclear. Feedback: "You suggest the loop cost is Theta(log N) times the cost of g, but you do not explicitly combine Theta(log N) iterations with Theta(N) per iteration to obtain Theta(N log N) with clear justification."
+
+Point 6: Student states Theta(N) iterations for g but explanation incomplete. Feedback: "You say the for loop iterates Theta(N) times, but you do not explain that the index i runs from 0 to a.length‑1 regardless of the value of x."
+
+Point 7: Student correctly justifies constant work per iteration. Feedback: "You correctly argue that each iteration of g does constant work—one array read, one comparison, and possibly an addition—so the cost per iteration is Theta(1)."
+
+Point 8: Student correctly multiplies iterations and per‑iteration cost. Feedback: "You correctly multiply the Theta(N) iterations by the Theta(1) per‑iteration cost to obtain Theta(N) total for the loop in g."
+
+Point 9: Student states Theta(N) for g but omits constant parts. Feedback: "You give the overall running time of g as Theta(N) but do not add the constant‑time initialisation and return statements to show Theta(1)+Theta(N)+Theta(1)=Theta(N)."
+
+Point 10: Student states Theta(N log N) for f but omits constant parts. Feedback: "You conclude that f runs in Theta(N

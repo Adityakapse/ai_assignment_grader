@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution contains only a single for-loop that makes one pass over the list, lacking an outer loop to repeat passes until the list is fully sorted.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution correctly calls Smaller(j, j-1) to test whether the element at position j-1 is greater than the element at position j, which is the proper comparison for an ascending sort.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student conditionally calls Swap(j, j-1) only when Smaller(j, j-1) indicates that the element at j-1 is greater than the element at j, using the same indices in both the comparison and the swap.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's single loop uses list.Length() as its upper bound (for (int j = 1; j < list.Length(); j++)), which correctly bounds the loop for any list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution performs only a single pass through the list, which moves the largest element to the end but leaves the rest unsorted (e.g., input [3,2,1] becomes [2,1,3]), so it fails for lists longer than two elements.

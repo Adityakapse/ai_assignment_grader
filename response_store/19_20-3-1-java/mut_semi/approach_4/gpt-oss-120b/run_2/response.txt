@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code includes a single for‑loop that makes only one left‑to‑right pass and lacks an outer loop (or repeat‑until‑sorted mechanism), so it cannot fully sort the list.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution calls `list.Smaller(j, j - 1)` to compare adjacent elements before swapping, using the provided API with the proper index order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code calls `list.Swap(j, j - 1)` only inside the `if (list.Smaller(j, j - 1))` block, using the same indices as the comparison, satisfying the swap step requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The single for‑loop iterates with the condition `j < list.Length()`, correctly using Length() to bound the loop.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code performs only a single left‑to‑right pass with one loop, so it correctly swaps adjacent out‑of‑order pairs but does not repeat passes, leaving longer lists partially unsorted.

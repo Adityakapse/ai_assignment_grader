@@ -1,0 +1,104 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p) which traverses the rest of the list.
+
+So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g.
+
+g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h). Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N^2) and g is Theta(N)."
+
+We need to assign marks per rubric point.
+
+Let's examine each point.
+
+Point 1 — Splitting code into parts + referencing line numbers (0–5). Student solution does not reference line numbers at all. No clear separation of f and g into parts (they talk about loops but not explicit parts). So likely 0 marks.
+
+Point 2 — Constant-time non-loop parts (0–5). Student solution does not mention non-loop parts (initialization, return). They didn't state they are Theta(1). So 0.
+
+Point 3 — f(): Loop iterations (0–12). Student says outer loop runs about N times. That's correct Theta(N). They didn't reference line numbers but that's okay for this point? The point only about iterations. They gave correct statement. So full marks? Range 0-12. Likely full 12.
+
+Point 4 — f(): Cost per iteration (0–12). Student says "The cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g." They didn't explicitly state Theta(N) per iteration, but they implied cost per iteration is cost of g which is Theta(N). They said "roughly N times the cost of g". Actually they said cost per iteration is some traversal cost, multiplying gives roughly N times cost of g. That is ambiguous. They didn't explicitly state per iteration cost Theta(N). Might get partial. The rubric expects: Theta(N) per iteration in worst case, dominated by call to g(p). Student didn't mention worst case, didn't mention dominated by call to g(p). They said "some traversal cost". I'd give maybe 6 out of 12? Need to decide.
+
+Point 5 — f(): Total loop cost (0–8). Student says "Multiplying gives roughly N times the cost of g." Since g is Theta(N), N * Theta(N) = Theta(N^2). They didn't explicitly state Theta(N^2) but implied. They concluded f is Theta(N^2) later. So they got total loop cost Theta(N^2). Probably full marks 8.
+
+Point 6 — g(): Loop iterations (0–12). Student says g visits Theta(N) nodes in worst case (when start = h). That's correct. So full 12.
+
+Point 7 — g(): Cost per iteration (0–12). Student says each step is constant amount of work - reads q.v and follows q.next, both Theta(1). So Theta(1) per iteration. Full 12.
+
+Point 8 — g(): Total loop cost (0–8). Student says total cost of g's loop: Theta(N) * Theta(1) = Theta(N). That's correct. Full 8.
+
+Point 9 — Overall worst-case runtime of g (0–12). Student didn't explicitly sum constant parts, but they concluded g is Theta(N). They didn't mention constant parts but implied. Might be partial. The rubric expects summing constant parts and loop. Student didn't mention constant parts. Could give maybe 6 out of 12.
+
+Point 10 — Overall worst-case runtime of f (0–14). Student says f is Theta(N^2). They didn't mention constant parts. But they concluded overall Theta(N^2). Might be partial. Could give maybe 7 out of 14.
+
+We need to be consistent with rubric: each point has description. Let's evaluate each.
+
+Point 1: "Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently." Student didn't separate into parts, no line numbers. So 0.
+
+Point 2: "All non-loop code in f and g is Theta(1)." Student didn't mention non-loop code. So 0.
+
+Point 3: "Theta(N) iterations of the outer while loop." Student: outer loop runs about N times. That's Theta(N). So full marks. I'd give 12.
+
+Point 4: "Theta(N) per iteration in the worst case, dominated by the call to g(p)." Student: cost per iteration is some traversal cost. They didn't specify Theta(N) per iteration, nor worst case, nor dominated by call to g(p). They said multiplying gives roughly N times cost of g. That implies per iteration cost is cost of g, which is Theta(N). But they didn't explicitly state Theta(N). Might get partial. I'd give 6.
+
+Point 5: "Theta(N^2) for the loop overall." Student: Multiplying gives roughly N times cost of g => N * Theta(N) = Theta(N^2). They concluded f is Theta(N^2). So they got Theta(N^2) for loop overall. Full 8.
+
+Point 6: "Theta(N) iterations in the worst case." Student: g visits Theta(N) nodes in worst case (when start = h). So full 12.
+
+Point 7: "Theta(1) per iteration." Student: each step constant work, Theta(1). Full 12.
+
+Point 8: "Theta(N) = Theta(N) iterations x Theta(1) per iteration." Student: total cost of g's loop: Theta(N) * Theta(1) = Theta(N). Full 8.
+
+Point 9: "T_g(N) = Theta(N), summing constant parts and the loop." Student didn't mention constant parts. They just said g is Theta(N). Might lose some. I'd give 6.
+
+Point 10: "T_f(N) = Theta(N^2), accounting for non-loop parts + loop." Student didn't mention non-loop parts. They just said f is Theta(N^2). Might lose some. I'd give 6.
+
+Now sum: 0+0+12+6+8+12+12+8+6+6 = 70? Let's compute: 0+0=0; +12=12; +6=18; +8=26; +12=38; +12=50; +8=58; +6=64; +6=70.
+
+Total 70.
+
+We need to output blocks for each point in order.
+
+Make sure MARKS are whole numbers within valid range.
+
+Check ranges:
+
+Point1 0-5: we gave 0 ok.
+Point2 0-5: 0 ok.
+Point3 0-12: 12 ok.
+Point4 0-12: 6 ok.
+Point5 0-8: 8 ok.
+Point6 0-12: 12 ok.
+Point7 0-12: 12 ok.
+Point8 0-8: 8 ok.
+Point9 0-12: 6 ok.
+Point10 0-14: 6 ok.
+
+Now feedback sentences referencing student's actual analysis.
+
+We need one or two sentences referencing what they wrote.
+
+Let's craft feedback per point.
+
+Point1: "The student did not split the code into parts or reference any line numbers, so no credit for this criterion."
+
+Point2: "The student did not mention the constant-time initialization or return statements in either function, thus missing the non-loop Theta(1) components."
+
+Point3: "The student correctly stated that the outer loop in f runs about N times, which corresponds to Theta(N) iterations."
+
+Point4: "While the student noted that each iteration calls g(p) and that this leads to roughly N times the cost of g, they did not explicitly state that the per‑iteration cost is Theta(N) in the worst case or that it is dominated by the call to g(p)."
+
+Point5: "The student correctly inferred that multiplying the N iterations by the Theta(N) cost of g yields a Theta(N^2) total loop cost for f."
+
+Point6: "The student accurately observed that g visits Theta(N) nodes in the worst case (when start = h), giving Theta(N) loop iterations."
+
+Point7: "The student correctly identified that each iteration of g performs only constant‑time work (reading q.v and advancing q.next), i.e., Theta(1) per iteration."
+
+Point8: "The student correctly computed the total loop cost of g as Theta(N) iterations × Theta(1) per iteration = Theta(N)."
+
+Point9: "The student concluded that g runs in Theta(N) time but did not explicitly add the constant‑time parts, so the summation of constant parts and the loop is missing."
+
+Point10: "The student

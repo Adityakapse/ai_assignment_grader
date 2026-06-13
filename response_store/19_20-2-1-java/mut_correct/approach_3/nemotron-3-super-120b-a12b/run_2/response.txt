@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class is defined with a String[100] buffer and start/end indices, providing sufficient internal storage and state for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method returns true exactly when start equals end, correctly reflecting whether the queue contains no elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns buffer[start] without altering start or end, thus reading the front element without modifying the queue.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: enqueue(String s) places the element at buffer[end], increments end with wrap‑around, properly updating the back pointer.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: dequeue() retrieves buffer[start], increments start with wrap‑around, and returns the removed front element, correctly updating state.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: All four methods work together preserving FIFO order, and the submission contains no import statements, meeting overall correctness.

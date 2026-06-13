@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not separate f and g into distinct parts, does not identify loops versus non‑loop code, and provides no line‑number references.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not mention or evaluate any non-loop parts (such as variable initializations and return statements) in either f or g, so the constant-time non-loop code is not analyzed at all.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student says f walks through the list in linear time but does not explicitly state that the outer while loop runs Θ(N) iterations or justify that p advances by one node per iteration until it becomes null.
+
+POINT_ID: 4
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student states that f runs in O(N) time, which implies they treat each iteration of f's while loop as constant‑time and ignore the O(N) cost of the g(p) call inside the loop.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student claimed f runs in linear time without analyzing the cost of g(p) inside the loop; they did not provide iteration count or per‑iteration cost for the loop in f, and thus missed the quadratic total cost.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student claims g is O(N) because it walks the list, but does not state the loop iteration count or justify that in the worst case (start = h) the loop runs exactly N times.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student states that g walks the list and is O(N) but does not explicitly justify that each iteration takes constant time (e.g., one field access, one addition, one pointer advance, and one null check).
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student claims g is O(N) because it walks the list, but does not show the iteration count multiplied by the constant‑time cost per iteration, failing to combine the two factors as required.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student states that g runs in O(N) but gives no line‑by‑line justification, does not specify the number of iterations or cost per iteration, and omits the constant‑time parts and their summation, so the analysis lacks the required reasoning for a Theta(N) bound.
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed f runs in O(N) time, but f actually calls g for each node, and g scans the remaining list, leading to Θ(N^2) total work; the analysis omitted the cost of g inside f's loop.

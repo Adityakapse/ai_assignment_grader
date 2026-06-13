@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not separate f and g into distinct parts, does not identify loop versus non-loop code, and does not reference any line numbers.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not mention or evaluate any non-loop statements such as variable initializations or return statements, so it fails to identify them as constant‑time.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student stated that f runs in O(N) time because it "has a loop," ignoring the inner loop whose bound j ≤ i causes the total iterations to be 1+2+…+N = Θ(N²), not Θ(N).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student only mentioned that the loop body performs "some small operations" without explicitly stating that each inner iteration costs Θ(1) or justifying it with the constant number of array reads, arithmetic operations, and the += assignment.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed f runs in O(N) time because it "has a loop," but they did not identify the nested loops, compute the iteration count (which is Θ(N²)), or multiply that by the per‑iteration cost; instead they gave an unsupported O(N) bound.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student states that g runs in O(1) time, so they treat the call to g in f as constant‑time, but the correct analysis shows g takes Θ(log N) time, making Part C actually Θ(log N).
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: The student claimed that g runs in O(1) time, saying the g method "does some halving thing and looks small" and gave g = O(1), which fails to recognize that the while loop iterates Θ(log N) times because k is halved each iteration.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student did not explicitly state the cost per iteration of g's loop; they only claimed g runs in O(1) time without justifying per‑iteration work as Theta(1).
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student claimed g runs in O(1) because it "looks small," without analyzing the while loop's iteration count or the constant work per iteration, so they did not combine iteration count × per‑iteration cost to obtain Θ(log N).
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student claims g runs in O(1) time, but the while loop halves k each iteration, resulting in Θ(log N) iterations, so the correct worst‑case runtime of g is Θ(log N), not constant.
+
+POINT_ID: 11
+BUCKET: Wrong
+FEEDBACK: The student claimed f runs in O(N) time, but the nested loops in f actually execute Θ(N²) iterations, and the call to g adds Θ(log N); thus the overall worst‑case runtime of f is Θ(N²), not O(N).

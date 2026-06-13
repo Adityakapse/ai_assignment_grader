@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method iterates through all tokens left‑to‑right and uses Integer.parseInt inside a try‑catch to distinguish numeric tokens (which parse successfully) from operator tokens (which throw NumberFormatException).
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Numeric tokens are merely added to a local sum variable; they are never converted and pushed onto the provided IntegerStack.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: When an operator token is encountered the catch block does nothing, so no values are popped from the stack, no computation is performed, and nothing is pushed back.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Because operators are ignored, subtraction and division are never executed, so operand order is incorrect (effectively treated as a no‑op).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns the sum of all numeric tokens, which yields the wrong result for any expression containing operators (e.g., "5 3 -" returns 8 instead of the correct 2).

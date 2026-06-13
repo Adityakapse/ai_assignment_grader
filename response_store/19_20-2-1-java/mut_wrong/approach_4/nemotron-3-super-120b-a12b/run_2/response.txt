@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The class defines a Queue with only a single String field 'last', which can hold at most one element and lacks the array or tracking indices needed to store multiple items in FIFO order.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The emptyqueue() method returns true only when the last field is null, which incorrectly reports the queue as empty after multiple enqueues without dequeues because it does not track all stored elements.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The head() method returns the field `last`, which holds the most recently enqueued element (the back of the queue), not the front element, so it returns the wrong end of the queue.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The enqueue method overwrites the single 'last' field instead of adding elements to a queue structure, so it does not insert at the back of a queue and loses previous elements.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue method returns the most recently enqueued element (the only element stored in `last`) rather than the front of a proper queue, and the internal state cannot represent a queue with more than one element.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student's Queue only keeps a single element (last) and cannot preserve FIFO order for multiple enqueues; enqueue overwrites previous values and dequeue always returns the most recent element.

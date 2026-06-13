@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class is defined with an internal ArrayList<String> list to store elements, providing the storage needed for FIFO order.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method returns list.isEmpty(), which correctly reflects whether the internal ArrayList contains any elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns list.get(0), which is the front element, and does not modify the list or any internal state.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method uses list.add(s), which appends the element to the back of the internal ArrayList and updates its size, ensuring that later head(), dequeue(), and emptyqueue() operations see the correct state.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns list.get(0) without removing the element from the ArrayList, leaving the queue unchanged and violating the requirement to remove the front element.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue method returns list.get(0) without removing the element, so the queue never advances and FIFO order is broken across repeated operations.

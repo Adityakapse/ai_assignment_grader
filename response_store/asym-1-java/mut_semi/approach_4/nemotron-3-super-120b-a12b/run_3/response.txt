@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student separates f and g and identifies loops vs non‑loop code, but never references any line numbers, which is required for a clear, consistent analysis.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student noted that the “setup statements are constant,” which identifies some non‑loop code as Θ(1), but did not explicitly state that the initialisations and return statements in both f and g are Θ(1), leaving some constant‑time parts unmentioned or vaguely described.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student claims the nested loops iterate roughly N² times because they are two nested loops over the array, but does not justify the triangular count (e.g., summing 1+2+…+N) that arises from the j ≤ i condition.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student claims the inner iteration is Θ(1) because it does an array read, multiplication, and addition, but omits justification for the loop index increments and condition checks, making the reasoning incomplete.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the nested loops as having Θ(N²) iterations, each with Θ(1) cost, and explicitly multiplies them to obtain Θ(N²) total loop cost, satisfying the required iteration‑times‑per‑iteration reasoning.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly notes that the call to g adds Θ(log N) time, but fails to mention the constant‑time addition and return statement in Part C, so the full cost of Part C (call + constant work) is not accounted for.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student states that g's while loop runs Θ(log N) times, but does not justify this by explaining that k starts at N and is divided by 2 each iteration (k = k / 2) until it reaches 0.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student notes that each iteration performs an array access, an addition and a division, all Theta(1), but does not explicitly mention the loop‑check (while k>0) cost, which is required for a complete Theta(1) per‑iteration justification.
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly states that the while loop in g runs Θ(log N) times, each iteration costs Θ(1), and multiplies them to obtain Θ(log N) total loop cost, which matches the required form.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student correctly identified the loop cost as Theta(log N) but did not explicitly account for the constant-time initialization and return statements when summing to get the overall Theta(log N) runtime of g.
+
+POINT_ID: 11
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that the nested loops in f give Θ(N²) and that g contributes Θ(log N), but they do not explicitly show the addition of all parts of f (the Θ(1) initialization, the Θ(N²) loops, and the Θ(log N) call to g) and argue that the lower‑order terms are absorbed, which is required for a full justification.

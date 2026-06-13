@@ -11,10 +11,21 @@ import preprocessing
 import validation
 
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
+
 # MODELS = ["tinyllama", "qwen2.5-coder:7b", "qwen2.5-coder:14b"]
 # MODELS = ["qwen2.5-coder:14b", "deepseek-coder:16b", "gemma4:31b-it-q4_K_M"]
 # MODELS = ["qwen2.5-coder:14b","gemma4:26b"]
-MODELS = ["Qwen3:14b","devstral-small-2","gemma4:26b"]
+# OLLAMA_MODELS = ["Qwen3:14b","devstral-small-2","gemma4:26b"]
+OLLAMA_MODELS = ["Qwen3:14b","devstral-small-2"]
+# OLLAMA_MODELS = []
+NIM_MODELS    = ["nvidia/nemotron-3-super-120b-a12b","openai/gpt-oss-120b"]
+# NIM_MODELS    = ["openai/gpt-oss-120b"]
+
+# ALL_MODELS    = NIM_MODELS
+ALL_MODELS    = OLLAMA_MODELS + NIM_MODELS
+
+
+NIM_API_KEY = os.environ.get("NIM_API_KEY", "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")
 
 
 
@@ -63,12 +74,10 @@ def step_validation(args):
     validation.main(args.datastore_dir)
 
 
-def step_grading(args):
-    # Step 3: runs grade.py for every approach × model combination via subprocess.
-    total = len(APPROACHES) * len(MODELS)
-    n = 0
+def _grade_model_list(args, models, backend, api_key, n_start, total):
+    n = n_start
     for approach in APPROACHES:
-        for model in MODELS:
+        for model in models:
             n += 1
             cmd = [
                 sys.executable, os.path.join("src", "grade.py"),
@@ -77,10 +86,20 @@ def step_grading(args):
                 "--approach",            approach,
                 "--model",               model,
                 "--runs",                str(args.runs),
+                "--backend",             backend,
+                "--api_key",             api_key,
             ]
             if args.question_id:
                 cmd += ["--question_id", args.question_id]
             _run(f"Step 3 — Grading [{n}/{total}] {approach} / {model}", cmd)
+    return n
+
+
+def step_grading(args):
+    # Step 3: runs grade.py for every approach × model combination via subprocess.
+    total = len(APPROACHES) * len(ALL_MODELS)
+    n = _grade_model_list(args, OLLAMA_MODELS, "ollama", "",          0,     total)
+    _grade_model_list(args, NIM_MODELS,    "nim",    NIM_API_KEY,  n,     total)
 
 
 def step_processing(args):
@@ -110,7 +129,7 @@ def step_graphs(args):
         args.datastore_dir,
         output_dir=args.graph_store_dir,
         ground_truth=args.ground_truth,
-        models=MODELS,
+        models=[m.split("/")[-1] for m in ALL_MODELS],
     )
 
 

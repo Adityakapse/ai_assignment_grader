@@ -1,0 +1,92 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+"f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N)."
+
+We need to assign marks for each rubric point.
+
+Let's list rubric points:
+
+1 — Splitting code into parts + referencing line numbers (0-5)
+   Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+
+Student solution: They mention f has a while loop, g has a for loop. They do not reference line numbers at all. They do not separate non-loop parts (like variable initialization, return). They just talk about loops. So they fail to reference line numbers, and they don't clearly separate non-loop parts. So mark likely low, maybe 0 or 1. Since they didn't reference line numbers at all, they get minimal. The rubric expects clear separation and line numbers referenced consistently. Student didn't do that. So maybe 0 or 1. I'd give 0 because they didn't reference line numbers at all, and didn't separate non-loop parts. However they did separate f and g implicitly by talking about each. But they didn't identify non-loop code. So I'd give 1? Let's think: The description: "Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently." Student: They separate f and g (they talk about f then g). They identify loops (while loop in f, for loop in g). They do not identify non-loop code (initializations, returns). They do not reference line numbers. So they satisfy partially: separation of f and g yes, loops identified yes, but non-loop code not identified, line numbers not referenced. So maybe 1 out of 5. I'd give 1.
+
+2 — Constant-time non-loop parts (0-5)
+   All non-loop code in f and g is Theta(1).
+
+Student solution: They didn't mention non-loop parts at all. They didn't state they are Theta(1). So they get 0 for this point. Because they didn't address it. Could we infer they implicitly assume? The rubric expects explicit statement. Since they didn't, mark 0.
+
+3 — f(): Loop iterations (0-12)
+   Theta(log N) iterations because k doubles each iteration.
+
+Student: "f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration." That's correct. They mention Theta(log N). So full marks? Range 0-12, likely full 12. So give 12.
+
+4 — f(): Cost per iteration (0-12)
+   Theta(N) per iteration, dominated by the call to g(a, k).
+
+Student: They say "If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter." They didn't explicitly state cost per iteration is Theta(N). They imply but not explicit. They didn't state cost per iteration is Theta(N). They just say cost depends on g, and if g is Theta(N) then loop cost is product. They didn't explicitly say per iteration cost is Theta(N). So maybe partial. They didn't give cost per iteration analysis. So maybe 0-6? Let's see: They didn't give cost per iteration; they just said cost_per_iter depends on g. They didn't state it's Theta(N). So I'd give low, maybe 2? But we need to justify based on what they wrote. They didn't mention that per iteration includes call to g which is Theta(N). They didn't mention that g is Theta(N) (they later say if g runs in Theta(N)). They didn't confirm g's cost. So they didn't establish cost per iteration. So I'd give 0? However they did mention that if g runs in Theta(N) then loop cost is product. That implies they think per iteration cost is Theta(N) assuming g is Theta(N). But they didn't prove g is Theta(N) in that point; they later discuss g. The rubric for point 4 expects them to state Theta(N) per iteration, dominated by call to g. Student didn't explicitly state that. So I'd give maybe 3? Let's think typical grading: If they missing explicit statement, they lose marks. I'd give 4 out of 12? Hmm.
+
+Better to be conservative: Since they didn't state cost per iteration is Theta(N), they get 0 for that point. But they did mention that if g runs in Theta(N) then loop cost is product, which suggests they think per iteration cost is Theta(N) (since they multiply). However they didn't state g's cost. But they later analyze g and conclude Theta(N). So overall they implicitly assume. But point 4 is about f's cost per iteration; they need to justify that it's Theta(N) due to g. They didn't do that explicitly. So I'd give low, maybe 2.
+
+Let's see other points.
+
+5 — f(): Total loop cost (0-8)
+   Theta(N log N) from Theta(log N) iterations x Theta(N) per iteration.
+
+Student: They say "If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter." They didn't compute total loop cost explicitly as Theta(N log N). They later say "So f is Theta(N log N)". That's overall f, not just loop cost. But they didn't break down loop cost. However they implied loop cost is Theta(log N)*Theta(N) = Theta(N log N). They didn't explicitly state that. So maybe partial. I'd give maybe 3 out of 8.
+
+6 — g(): Loop iterations (0-12)
+   Theta(N) iterations of the for loop over a.
+
+Student: "g has a for loop over a, so it iterates Theta(N) times." That's correct. So full 12.
+
+7 — g(): Cost per iteration (0-12)
+   Theta(1) per iteration.
+
+Student: "Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add." That's Theta(1). So full 12.
+
+8 — g(): Total loop cost (0-8)
+   Theta(N) = Theta(N) iterations x Theta(1) per iteration.
+
+Student: They said "g's loop is Theta(N) * Theta(1) = Theta(N)." That's exactly total loop cost. So full 8.
+
+9 — Overall worst-case runtime of g (0-12)
+   T_g(N) = Theta(N), summing constant parts and the loop.
+
+Student: They didn't explicitly sum constant parts; they just said g is Theta(N). They didn't mention constant parts. But they implicitly considered loop only. However they said g's loop is Theta(N) and that's it. They didn't add constant parts. So maybe partial. I'd give maybe 6 out of 12? Since they got the right asymptotic but didn't mention constant parts. The rubric expects summing constant parts and loop. Student didn't mention constant parts. So I'd give maybe 4.
+
+10 — Overall worst-case runtime of f (0-14)
+   T_f(N) = Theta(N log N), accounting for non-loop parts + loop.
+
+Student: They said "So f is Theta(N log N)". They didn't mention non-loop parts. They just gave overall. So partial. I'd give maybe 6 out of 14.
+
+Now we need to assign whole numbers within ranges.
+
+Let's decide:
+
+Point1: 1 (out of 5)
+Point2: 0 (out of 5)
+Point3: 12 (out of 12)
+Point4: maybe 2 (out of 12) - because they didn't explicitly state cost per iteration is Theta(N). They only said if g is Theta(N) then loop cost is product. They didn't state g's cost. So low.
+Point5: maybe 3 (out of 8) - they didn't explicitly compute loop cost as product, just implied.
+Point6: 12 (out of 12)
+Point7: 12 (out of 12)
+Point8: 8 (out of 8)
+Point9: maybe 6 (out of 12) - they got Theta(N) but didn't sum constants.
+Point10: maybe 6 (out of 14) - they got Theta(N log N) but didn't account non-loop parts.
+
+Let's compute total: 1+0+12+2+3+12+12+8+6+6 = 62.
+
+Check ranges: each within.
+
+Now feedback per point: need short specific feedback referencing student's actual analysis.
+
+We'll write feedback

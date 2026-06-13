@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The method loops through each token in the input array and uses Integer.parseInt inside a try‑catch to separate numeric tokens (which succeed) from operator tokens (which throw NumberFormatException).
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: When a numeric token is successfully parsed, the code adds it to a local sum variable instead of pushing it onto the provided IntegerStack, so the stack is never used for numbers.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: When an operator token is encountered, the catch block does nothing; no values are popped from the stack, no computation is performed, and nothing is pushed back.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: Because operators are ignored, the method never pops operands for subtraction or division, so the required operand order (second popped op first popped) is not implemented.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The method returns the sum of all numeric tokens, which is not the correct result for RPN expressions (e.g., for input {\"1\",\"2\",\"*\",\"3\",\"4\",\"*\",\"+\"} it returns 10 instead of 14), so the overall implementation is incorrect.
+
+TOTAL: 20

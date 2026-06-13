@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's analysis does not separate f and g into distinct parts, does not identify loops versus non‑loop code, and contains no line‑number references.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not mention or analyze any constant-time operations such as variable initializations, assignments, or return statements in either f or g, so the non-loop parts were not addressed.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims that f runs in O(N) time because it "loops through the matrix," but the nested loops actually iterate over the upper‑triangle of the matrix, giving Θ(N²) iterations (sum of N + (N‑1) + … + 1), not Θ(N).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student did not discuss the cost per iteration of the inner loop in f(); they only claimed the whole function runs in O(N) time without addressing the per‑iteration work, so they failed to state or justify a Theta(1) cost per inner iteration.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student stated that f runs in O(N) time without analyzing the nested loops; they did not compute the iteration count (which is Θ(N²)) nor multiply it by the per‑iteration cost, so the total loop cost is incorrect.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student did not correctly account for the cost of the call to g in Part C; they stated that g reads only a few values and gave an overall linear time, missing the Theta(N) contribution from g.
+
+POINT_ID: 7
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student said g "reads the diagonal which is just a few values," implying constant‑time work and never stating that the loop runs N times; thus the iteration count for g’s diagonal loop is missing and not identified as Theta(N).
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student notes that g reads the diagonal but does not explicitly justify that each iteration runs in constant time (e.g., one matrix access mat[i][i] and one += assignment), missing the required per‑iteration justification.
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student said g reads the diagonal which is "just a few values," failing to state that the loop runs N iterations and to multiply that by the constant per‑iteration cost.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student claims that g reads the diagonal which is "just a few values," implying constant time, but the diagonal has N elements, so g actually runs in Θ(N) time, not constant.
+
+POINT_ID: 11
+BUCKET: Wrong
+FEEDBACK: The student states that f runs in O(N) time because it "loops through the matrix," but the nested loops in f iterate over roughly N(N+1)/2 entries, yielding Θ(N²) work; thus the overall worst‑case runtime of f is Θ(N²), not linear.

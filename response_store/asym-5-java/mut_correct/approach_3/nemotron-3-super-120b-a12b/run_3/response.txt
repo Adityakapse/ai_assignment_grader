@@ -1,0 +1,118 @@
+We need to evaluate student solution against rubric.
+
+Student solution text:
+
+Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: int s = 0; Node p = h; - constant time.
+Part B (while loop): traverses the list, calling g(p) at each node.
+Part C: return s; - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p starts at h and is advanced by p = p.next in each iteration, until it becomes null after visiting all N nodes. Theta(N) iterations.
+- Cost per iteration: dominated by the call g(p). In the worst case g scans from p to the end of the list - when p = h this is N nodes, when p is the i-th node it is N - i nodes. The worst-case per-iteration cost is Theta(N).
+- Total cost of Part B: summing exact costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) worst-case per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: int c = 0; Node q = start; - constant time.
+Part E (while loop): traverses from start to the end of the list.
+Part F: return c; - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at start and advances by q.next each iteration until q becomes null. In the worst case (start = h) the loop visits all N nodes, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one field access q.v, one += assignment, one pointer advance, one null check.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+Now we need to map to rubric points.
+
+Point 1 — Splitting code into parts + referencing line numbers
+Student: They split f into parts A, B, C; g into D, E, F. They didn't reference line numbers explicitly. The rubric expects line numbers referenced consistently. The student didn't mention any line numbers. So they didn't reference line numbers. That would be "Wrong" or maybe "Semi"? Let's see description: Buckets:
+- Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+- Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+- Correct (5 marks): Clear separation of f and g and identification of the call to g inside f's loop; line numbers referenced consistently.
+
+Student clearly separates f vs g, loops vs non-loops (they have parts A,B,C etc). However they did not reference line numbers. So line numbers missing => unclear or missing. According to Wrong bucket: "line numbers are unclear or missing." So that matches Wrong. However they did separate components. The Wrong bucket says "does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing." It's a conjunction? It says "does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing." The phrasing ambiguous: likely means if any of those conditions hold? Usually they'd say if fails to separate or line numbers missing => Wrong. Since they separated but missing line numbers, still maybe Wrong. Semi bucket: "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous." They did separate components clearly, but no line numbers. That could be considered some attempt to separate components (they did) but missing line numbers => structure incomplete? Might be Semi. However they didn't refer to line numbers at all, so not "refer to line numbers". The Semi bucket says "Some attempt to separate components or refer to line numbers". They did separate components, so that qualifies for some attempt. The structure is incomplete or ambiguous? They have clear separation but missing line numbers; maybe still considered incomplete because line numbers missing. I'd lean Semi because they did separate f/g and loops vs non-loops. The Wrong bucket requires missing separation AND missing line numbers? It says "does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing." The "and" suggests both conditions must hold for Wrong: not clearly separate AND line numbers unclear/missing. Since they did separate clearly, Wrong not satisfied. So Semi fits: some attempt to separate components (they did) but structure incomplete (missing line numbers). So Point 1: Semi.
+
+Point 2 — Constant-time non-loop parts
+Student: They said Parts A and C are Theta(1); Parts D and F are Theta(1). They identified all non-loop parts. So Correct.
+
+Point 3 — f(): Loop iterations
+Student: They said iterations: p starts at h and is advanced by p = p.next in each iteration, until it becomes null after visiting all N nodes. Theta(N) iterations. They justified that p advances by one node per iteration. So Correct.
+
+Point 4 — f(): Cost per iteration
+Student: They said cost per iteration dominated by call g(p). In worst case g scans from p to end of list - when p = h this is N nodes, when p is i-th node it is N - i nodes. The worst-case per-iteration cost is Theta(N). They justified that g(p) potentially scans entire list from p to end. So Correct.
+
+Point 5 — f(): Total loop cost
+Student: They said total cost: summing exact costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) worst-case per iteration = Theta(N^2). That's correct. So Correct.
+
+Point 6 — g(): Loop iterations
+Student: They said iterations: q starts at start and advances by q.next each iteration until q becomes null. In the worst case (start = h) the loop visits all N nodes, giving Theta(N) iterations. They justified worst-case traversal from h. So Correct.
+
+Point 7 — g(): Cost per iteration
+Student: They said cost per iteration: Theta(1) - one field access q.v, one += assignment, one pointer advance, one null check. They gave explicit Theta(1) justification. So Correct.
+
+Point 8 — g(): Total loop cost
+Student: They said total cost of Part E: Theta(N) x Theta(1) = Theta(N). That's correct. So Correct.
+
+Point 9 — Overall worst-case runtime of g
+Student: They said overall running time of g: Theta(1) + Theta(N) + Theta(1) = Theta(N). They summed constant parts and loop. So Correct.
+
+Point 10 — Overall worst-case runtime of f
+Student: They said overall running time of f: Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2). They accounted for non-loop parts + loop. So Correct.
+
+Thus only Point 1 is Semi, rest Correct.
+
+Now produce output blocks in order.
+
+Format:
+
+POINT_ID: <id>
+BUCKET: <exact bucket label>
+FEEDBACK: <one or two sentences referencing the student's actual analysis>
+
+We need to use exact bucket labels from rubric.
+
+List them:
+
+Point 1 buckets: Wrong, Semi, Correct.
+
+Point 2: Wrong, Semi, Correct.
+
+Point 3: Wrong, Semi, Correct.
+
+Point 4: Wrong, Semi, Correct.
+
+Point 5: Wrong, Semi, Correct.
+
+Point 6: Wrong, Semi, Correct.
+
+Point 7: Wrong, Semi, Correct.
+
+Point 8: Wrong, Semi, Correct.
+
+Point 9: Wrong, Semi, Correct.
+
+Point 10: Wrong, Semi, Correct.
+
+Now feedback for each.
+
+Point 1: Student separated f and g and loops vs non-loops but did not reference line numbers. So feedback: "You clearly separated f and g and identified loops vs non‑loop code, but you did not reference any line numbers as required."
+
+Point 2: Student correctly identified all non‑loop parts as Theta(1). Feedback: "You correctly stated that the initializations and return statements in both f and g are Theta(1)."
+
+Point 3: Student justified Theta(N) iterations for f's loop by noting p advances by p.next each iteration until null after N nodes. Feedback: "You correctly explained that the outer loop in f runs Theta(N) times because p starts at h and moves one node per iteration until it becomes null after visiting all N nodes."
+
+Point 4: Student justified Theta(N) worst‑case cost per iteration due to g(p) possibly scanning the rest of the list. Feedback: "You correctly argued that each iteration’s cost is dominated by g(p), which in the worst case scans from p to the end of the list, giving Theta(N) per iteration."
+
+Point 5: Student combined iteration count and per‑iteration cost to obtain Theta(N^2), either by summation or multiplication. Feedback: "You correctly derived the loop’s total cost as Theta(N^

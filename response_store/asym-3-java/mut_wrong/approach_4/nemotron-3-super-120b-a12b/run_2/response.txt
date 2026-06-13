@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's analysis does not clearly separate f and g, treats the nested loop in f as a single loop, and provides no line‑number references to justify the breakdown of the code.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student did not mention any non-loop code (such as variable initializations, the call to g, or return statements) and therefore failed to analyze constant-time parts as Theta(1).
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims that f runs in O(N) time because it "loops through the matrix," but the nested loops in f actually iterate over the upper‑triangle of the matrix, giving Θ(N²) iterations; the analysis omits the j = i lower bound and the summation N + (N‑1) + … + 1.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student stated that f runs in O(N) time and did not mention or justify the cost per iteration of the inner loop; they neither claimed it is Theta(1) nor provided any reasoning about matrix access and addition.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student claimed f runs in O(N) time, but the nested loops actually iterate over roughly N(N+1)/2 entries, giving Theta(N^2) iterations each costing Theta(1); they did not multiply iteration count by per‑iteration cost or derive the correct quadratic bound.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student did not identify the cost of Part C as the call to g (Θ(N)) plus constant‑time work; they only stated that f is O(N) and g reads a few values, omitting the explicit Θ(N) contribution and the constant addition/return.
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: The student did not specify that the loop in g runs N times; they claimed it reads just a few values, missing the justification that i increments from 0 to N‑1, which yields Θ(N) iterations.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student states that g “reads the diagonal which is just a few values,” implying constant‑time work per iteration, but they do not explicitly justify that each iteration costs Θ(1) (e.g., one matrix access mat[i][i] and one += assignment).
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student claimed g reads the diagonal which is just a few values, but did not state the number of iterations (N) nor the per‑iteration cost, nor combine them to show Theta(N) = Theta(N) × Theta(1).
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student claims that g reads the diagonal which is "just a few values," implying constant time, but does not state Θ(N) or provide any reasoning about the loop's iterations or cost per iteration.
+
+POINT_ID: 11
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student states that f runs in O(N) time, but the nested loops in f iterate over approximately N(N+1)/2 matrix elements, yielding Θ(N²) work, so the overall complexity is not linear.

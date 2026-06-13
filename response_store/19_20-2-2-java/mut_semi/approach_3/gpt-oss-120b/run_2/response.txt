@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code iterates with `for (int i = 0; i < input.length; ++i)` and uses a `switch` to separate operator tokens from the default numeric case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `default` branch the token is converted with `Integer.parseInt(input[i])` and pushed onto the stack, handling numbers correctly.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: Each operator case pops two values and pushes a result, but the computation for `-` and `/` uses `n1 - n2` and `n1 / n2`, which is the wrong operation for those operators.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: For subtraction and division the code uses the first popped value as the left operand (`n1 - n2`, `n1 / n2`) instead of the required `second_popped op first_popped`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the operand order for `-` and `/` is reversed, the method yields incorrect results for any RPN expression that includes subtraction or division.

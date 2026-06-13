@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student separates f and g and identifies the loop and the call to g, but does not reference any line numbers, so the analysis lacks the required line-number references.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: You did not mention any constant-time non-loop parts (e.g., variable initializations or return statements) in either f or g, so the analysis of non-loop code is missing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student states that the loop runs M times because i goes from 0 to m, but does not explicitly justify that i increments by exactly one each iteration and that the loop executes once for each index from 0 to M‑1, making the justification weak.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student states that each iteration of f's loop calls g, which they identify as a binary search taking Θ(log N) time, and they combine this with the constant‑time comparison and addition to conclude that f runs in Θ(M log N), thereby correctly asserting Θ(log N) per iteration.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly stated that the for loop runs M times and each iteration incurs Θ(log N) work from the binary search in g, yielding a total cost of Θ(M log N).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly states that g’s loop runs Θ(log N) times, but they do not justify this by explaining that each iteration halves the search interval [l, r] (or returns), which is required for a full justification.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly notes that each iteration of g does a constant amount of work (a few comparisons and updates), but they do not explicitly state that the cost per iteration is Theta(1) nor list the specific operations (midpoint computation, two array accesses, two comparisons, one update) as required for full credit.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student correctly notes that g’s while loop executes Θ(log N) iterations and that each iteration performs only constant‑time operations, leading to a total loop cost of Θ(log N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: The student correctly states that g runs Θ(log N) because its while loop iterates Θ(log N) times with constant work per iteration, but they omit the constant‑time initialization and return statement, so the reasoning is incomplete.
+
+POINT_ID: 10
+BUCKET: Semi (7 marks)
+FEEDBACK: The student correctly states that f runs in Θ(M log N) and g in Θ(log N), but they do not explicitly account for the constant‑time operations outside the loop in f (the initializations and the return statement), which is required for a full justification of the overall runtime.

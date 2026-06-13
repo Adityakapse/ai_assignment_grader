@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The Queue class defines a single String field `last` for storage, but this is insufficient to hold multiple elements needed for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: `emptyqueue()` returns `last == null`, which correctly reports emptiness only when the internal state is null, but fails after multiple enqueues/dequeues because the internal state does not reflect the true queue contents.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: `head()` returns the `last` field, which holds the most recently enqueued element rather than the front of the queue.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: `enqueue(String s)` simply assigns `last = s`, overwriting any previous element and thus failing to store elements at the back of a queue.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: `dequeue()` returns and clears the `last` field, removing the most recent element instead of the front element and discarding earlier entries.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEFFEDBACK: Because the queue stores only one element, FIFO order is not preserved across repeated enqueue and dequeue operations, so the methods do not work together correctly. (No import is present, but the functional correctness fails.)

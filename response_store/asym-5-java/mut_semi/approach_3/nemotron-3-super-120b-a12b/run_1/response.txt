@@ -1,0 +1,75 @@
+We need to produce blocks for each rubric point (1-10). For each, choose bucket label based on student solution.
+
+Let's analyze student solution:
+
+Student solution text:
+
+"f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p) which traverses the rest of the list.
+
+So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g.
+
+g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h). Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N^2) and g is Theta(N)."
+
+Now evaluate each rubric point.
+
+Point 1: Splitting code into parts + referencing line numbers.
+
+Student solution: No line numbers referenced. They talk about f and g but not referencing line numbers. They separate f and g? They talk about f then g. They mention outer loop, body calls g(p). They don't explicitly separate non-loop parts. They didn't reference line numbers. So bucket: Wrong (0 marks) because line numbers missing and not clear separation of loops vs non-loops. Could be Semi? They did separate f and g somewhat, but no line numbers. The rubric says: Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently. Student: They mention f walks through list using p = p.next (that's loop), body calls g(p). They didn't mention initialization int s=0; Node p = h; or return s. They didn't separate non-loop parts. So it's incomplete. I'd choose Wrong (0 marks). However maybe Semi (3 marks) because they attempted to separate components (f vs g) but line numbers missing and loop vs non-loop not fully identified. The rubric: Semi: Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous. That fits: they attempted to separate f and g, but no line numbers, and loop vs non-loop not fully identified. So Semi.
+
+I'll go Semi.
+
+Point 2: Constant-time non-loop parts.
+
+Student solution: They didn't mention any non-loop parts. They didn't state that int s=0; Node p = h; or return s are Theta(1). They didn't mention g's initialization or return. So they didn't analyse non-loop code. So bucket: Wrong (0 marks) because non-loop code not analysed.
+
+Point 3: f(): Loop iterations.
+
+Student: "f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times." They didn't justify that p advances by one node per iteration (they said using p = p.next, which implies that). They didn't explicitly say p starts at h and advances by p.next each iteration until null after visiting N nodes. They said "outer loop runs about N times". That's somewhat incomplete justification. According to rubric Semi: States Theta(N) but explanation is incomplete (does not say p advances by one node per iteration). They did mention p = p.next, which is advancing by one node per iteration. Actually they said "using p = p.next". That is referencing the increment. But they didn't explicitly say p starts at h and advances each iteration until null. Might be considered incomplete. I'd choose Semi (6 marks). Because they state Theta(N) but explanation incomplete (does not say p advances by one node per iteration). They did mention p = p.next though. But the rubric's Semi description: "States Theta(N) but explanation is incomplete (does not say p advances by one node per iteration)." The student said "using p = p.next". That does say p advances by one node per iteration (the assignment). However they didn't mention starting at h and ending after N nodes. Might still be considered incomplete. I'll go Semi.
+
+Point 4: f(): Cost per iteration.
+
+Student: "The body calls g(p) which traverses the rest of the list. So the cost per iteration of f is some traversal cost." They didn't establish Theta(N) per iteration; they said "some traversal cost". They didn't commit to Theta(N). They didn't justify that g(p) scans from p to end, worst-case N. So bucket: Wrong? They didn't claim Theta(1) per iteration; they recognized call to g but didn't establish Theta(N). According to rubric Semi: Recognises the call to g but does not establish Theta(N) (e.g. says it depends on the rest of the list without committing). That matches: they said "traverses the rest of the list" which is depends on rest of list but didn't commit to Theta(N). So Semi (6 marks).
+
+Point 5: f(): Total loop cost.
+
+Student: "So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g." They then later say g is Theta(N). So they effectively say f is N * Theta(N) = Theta(N^2). They didn't explicitly show multiplication or summation. They said "Multiplying gives roughly N times the cost of g." That's essentially Theta(N) * Theta(N) = Theta(N^2). They didn't show sum of series or explicit multiplication. The rubric Semi: Multiplies own values but final simplification or reasoning is unclear or incorrect. They did multiply N times cost of g (which they later said is Theta(N)). They didn't explicitly state Theta(N) per iteration but implied. I'd say Semi (4 marks) because they multiplied but reasoning unclear.
+
+Point 6: g(): Loop iterations.
+
+Student: "g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h)." They didn't justify that q advances by q.next each iteration until null. They said visits Theta(N) nodes in worst case (when start = h). That's somewhat incomplete justification. Rubric Semi: States Theta(N) but explanation incomplete (does not justify worst-case traversal from h). They did mention worst case when start = h, but didn't say q advances by q.next each iteration until null. So Semi (6 marks).
+
+Point 7: g(): Cost per iteration.
+
+Student: "Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1)." They didn't mention += assignment or null check, but they said constant amount of work. They didn't explicitly state Theta(1) per iteration but implied. Rubric Semi: Suggests constant time but lacks explicit Theta(1) justification. They gave some justification (reads q.v and follows q.next). Missing += assignment and null check. So Semi (6 marks).
+
+Point 8: g(): Total loop cost.
+
+Student: "Total cost of g's loop: Theta(N) * Theta(1) = Theta(N)." They explicitly multiplied Theta(N) iterations by Theta(1) per iteration. That's correct. So bucket: Correct (8 marks). They combined iteration count x per-iteration cost.
+
+Point 9: Overall worst-case runtime of g.
+
+Student didn't explicitly sum constant parts and loop. They only gave total cost of g's loop as Theta(N). They didn't mention constant parts. However they earlier said each step is constant work, and they didn't mention initialization/return. So they didn't state T_g(N) = Theta(1) + Theta(N) + Theta(1) = Theta(N). So bucket: Semi (6 marks) because they state Theta(N) but missing reasoning about constant parts. Or maybe Wrong? They didn't mention runtime absent; they gave Theta(N) for loop only. The rubric Semi: States Theta(N) but with missing reasoning. That fits.
+
+Point 10: Overall worst-case runtime of f.
+
+Student: "So f is Theta(N^2) and g is Theta(N)." They didn't sum constant parts. They just stated f is Theta(N^2). They didn't mention Theta(1)+Theta(N^2)+Theta(1). So bucket: Semi (7 marks) because they state Theta(N^2) but missing reasoning about non-loop parts. According to rubric Semi: States Theta(N^2) but with missing reasoning. So Semi.
+
+Now produce output blocks in order.
+
+Need to output exactly:
+
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: <specific feedback>
+
+Repeat.
+
+Make sure bucket labels exactly as in rubric: "Wrong", "Semi", "Correct". Note capitalization: In rubric they are like "- Wrong (0 marks):", "- Semi (3 marks):", "- Correct (5 marks):". So bucket labels are "Wrong", "Semi", "Correct". Use exactly those.
+
+Now craft feedback sentences referencing student's actual analysis.
+
+Point 1: Student didn't reference line numbers and only partially separated components. Feedback: "You identified f and g but did not reference any line numbers or clearly separate loop vs non‑loop code (e.g., you omitted the initialization and return statements)."
+
+Point 2: Student didn't analyse non‑loop parts. Feedback: "You did not mention or analyse the constant‑time

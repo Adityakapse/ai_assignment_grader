@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution only keeps a single reference (last) and lacks an array or indices to store multiple elements, so it cannot maintain FIFO order for more than one item.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The emptyqueue() method only checks whether the last element is null, so it fails to correctly report emptiness for a queue that should be able to hold multiple elements; it cannot distinguish between a queue with one element and a queue with more than one element.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The head() method returns the last enqueued element (the only stored element) rather than the front element of the queue, so it does not correctly return the front element for a queue with more than one element.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The enqueue method only assigns the new element to the single field 'last', overwriting any previous value, and does not maintain an array or indices to store multiple elements, so it does not add to the back of a queue.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: The dequeue method returns the value stored in last and then sets last to null, which only works for a queue of size zero or one and does not correctly remove the front element when multiple items have been enqueued.
+
+POINT_ID: 6
+MARKS: 0
+FEEDBACK: The implementation only retains the most recent element, so repeated enqueue/dequeue does not preserve FIFO order (e.g., enqueue A then B then dequeue returns B instead of A).

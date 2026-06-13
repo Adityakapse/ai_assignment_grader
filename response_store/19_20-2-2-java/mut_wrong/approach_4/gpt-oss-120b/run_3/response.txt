@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over the entire input array from left to right and uses Integer.parseInt inside a try‑catch to separate numeric tokens (added to sum) from operator tokens (caught and ignored), thus distinguishing the two token types.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution parses numeric tokens but adds them to a local sum instead of converting and pushing them onto the provided IntegerStack.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code never performs any stack pops or pushes when encountering operators; it simply sums the numeric tokens and ignores operator handling entirely.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code never processes the '-' or '/' operators—instead it just sums all numeric tokens—so it does not apply the required operand order for subtraction or division.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation only parses integers and adds them together, completely ignoring the operators, so it returns incorrect results for any expression that requires actual RPN evaluation.
