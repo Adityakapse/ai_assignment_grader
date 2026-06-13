@@ -1995,3 +1995,2280 @@ Part E:
 
 Overall running time of g:
 Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-1-python,Asymptotic Analysis - Triangular Sum with Halving Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        for j in range(i + 1):
+            s += a[j] * a[i]
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    k = n
+    while k > 0:
+        t += a[k - 1]
+        k = k // 2
+    return t","Let N be the length of array a.
+
+Method f
+Part A: n = len(a); s = 0 - constant-time initialisation.
+Part B (nested loops over i, j): the body runs for every (i, j) with 0 <= j <= i < N.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: i = 0 gives 1 inner step, i = 1 gives 2, ..., i = N-1 gives N. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - two array reads, one multiplication, one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(log N) = Theta(N^2).
+
+Method g
+Part D: n = len(a); t = 0; k = n - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and becomes k // 2 each iteration, so the loop runs Theta(log N) times until k is 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-2-python,Asymptotic Analysis - Cross-Array Binary Search (Python),"Calculate the asymptotic worst case running time of the functions below, as functions of the length M of array `a` and the length N of the sorted array `b`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a, b):
+    m = len(a)
+    s = 0
+    for i in range(m):
+        t = g(b, a[i])
+        if t >= 0:
+            s += t
+    return s
+
+def g(b, x):
+    l = 0
+    r = len(b) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if b[mid] == x:
+            return mid
+        if b[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1","Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: m = len(a); s = 0 - constant time.
+Part B (for loop): runs over i = 0..M-1.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to M-1, so Theta(M) iterations.
+- Cost per iteration: dominated by the call g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and += are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(M) x Theta(log N) = Theta(M log N).
+
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+
+Method g
+Part D: l = 0; r = len(b) - 1 - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the search interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-3-python,Asymptotic Analysis - Matrix Upper Triangle with Diagonal Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        for j in range(i, n):
+            s += mat[i][j]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        t += mat[i][i]
+    return t","Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: n = len(mat); s = 0 - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(mat); return s + t - one call to g plus constant work.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(mat) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(N) = Theta(N^2).
+
+Method g
+Part D: n = len(mat); t = 0 - constant time.
+Part E (for loop along the diagonal): single loop over i = 0..N-1.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access mat[i][i] and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-4-python,Asymptotic Analysis - Doubling Outer with Linear Inner (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    k = 1
+    while k <= n:
+        s += g(a, k)
+        k = k * 2
+    return s
+
+def g(a, x):
+    t = 0
+    for i in range(len(a)):
+        if a[i] < x:
+            t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: n = len(a); s = 0; k = 1 - constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration, so the loop runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by g(a, k), a single linear scan of a costing Theta(N). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: t = 0 - constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs over all elements of a, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one array read, one comparison, possibly one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-5-python,Asymptotic Analysis - Linked List with Suffix-Scan Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+class Node:
+    def __init__(self, v, nxt):
+        self.v = v
+        self.next = nxt
+
+h = None  # head of the linked list
+
+def f():
+    s = 0
+    p = h
+    while p is not None:
+        s += g(p)
+        p = p.next
+    return s
+
+def g(start):
+    c = 0
+    q = start
+    while q is not None:
+        c += q.v
+        q = q.next
+    return c","Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: s = 0; p = h - constant time.
+Part B (while loop): traverses the list, calling g(p) at each node.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p advances by p.next each iteration, so starting from h the loop runs exactly N times before p becomes None. Theta(N) iterations.
+- Cost per iteration: dominated by g(p). In the worst case g scans from p to the end of the list - when p = h this is N nodes. The per-iteration cost is therefore Theta(N) in the worst case.
+- Total cost of Part B: summing the actual per-iteration costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) worst-case per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: c = 0; q = start - constant time.
+Part E (while loop): traverses from start to the end of the list.
+Part F: return c - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q advances by q.next until None. In the worst case start = h, so the loop visits all N nodes; the iteration count is Theta(N).
+- Cost per iteration: Theta(1) - one += assignment, one pointer advance, one None comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-6-java,Asymptotic Analysis - Linear Scan with Halving Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ6 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            s += a[i];
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        int k = n;
+        while (k > 0) {
+            t += a[k - 1];
+            k = k / 2;
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (single for loop over i): sums the array.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N) + Theta(log N) = Theta(N), because log N is dominated by N.
+
+Method g
+Part D: the initialisations of n, t and k - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop runs Theta(log N) times until k becomes 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-6-python,Asymptotic Analysis - Linear Scan with Halving Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        s += a[i]
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    k = n
+    while k > 0:
+        t += a[k - 1]
+        k = k // 2
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (single for loop over i): sums the array.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N) + Theta(log N) = Theta(N), because log N is dominated by N.
+
+Method g
+Part D: the initialisations of n, t and k - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop runs Theta(log N) times until k becomes 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-7-java,Asymptotic Analysis - Triple Nested Loop with Linear Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ7 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    s += a[i] + a[j] + a[k];
+                }
+            }
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (triple nested loops over i, j, k): each loop runs independently over 0..N-1.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the three loops are independent, so the body runs N x N x N = Theta(N^3) times.
+- Cost per iteration: Theta(1) - three array reads, two additions, one += assignment.
+- Total cost of Part B: Theta(N^3) x Theta(1) = Theta(N^3).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^3) + Theta(N) = Theta(N^3), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (single for loop): sums the array.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-7-python,Asymptotic Analysis - Triple Nested Loop with Linear Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                s += a[i] + a[j] + a[k]
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (triple nested loops over i, j, k): each loop runs independently over 0..N-1.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the three loops are independent, so the body runs N x N x N = Theta(N^3) times.
+- Cost per iteration: Theta(1) - three array reads, two additions, one += assignment.
+- Total cost of Part B: Theta(N^3) x Theta(1) = Theta(N^3).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^3) + Theta(N) = Theta(N^3), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (single for loop): sums the array.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-8-java,Asymptotic Analysis - Count Matches by Binary Search (Java),"Calculate the asymptotic worst case running time of the functions below, as functions of the length N of array `a` and the length N of the sorted array `b` (both of length N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ8 {
+    // `a` has length N; `b` is sorted ascending and also has length N.
+    public static int f(int[] a, int[] b) {
+        int n = a.length;
+        int c = 0;
+        for (int i = 0; i < n; i++) {
+            if (g(b, a[i]) >= 0) {
+                c++;
+            }
+        }
+        return c;
+    }
+
+    private static int g(int[] b, int x) {
+        int l = 0;
+        int r = b.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (b[mid] == x) return mid;
+            if (b[mid] < x) l = mid + 1;
+            else r = mid - 1;
+        }
+        return -1;
+    }
+}","Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N) x Theta(log N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-8-python,Asymptotic Analysis - Count Matches by Binary Search (Python),"Calculate the asymptotic worst case running time of the functions below, as functions of the length N of array `a` and the length N of the sorted array `b` (both of length N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a, b):
+    n = len(a)
+    c = 0
+    for i in range(n):
+        if g(b, a[i]) >= 0:
+            c += 1
+    return c
+
+def g(b, x):
+    l = 0
+    r = len(b) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if b[mid] == x:
+            return mid
+        if b[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1","Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N) x Theta(log N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-9-java,Asymptotic Analysis - Halving Loop with Halving Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ9 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = n;
+        while (k > 0) {
+            s += g(a, k);
+            k = k / 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a, int m) {
+        int t = 0;
+        int j = m;
+        while (j > 0) {
+            t += a[j - 1];
+            j = j / 2;
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a, k) and halves k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a, k). In the worst case (the first iteration) m = N, so g costs Theta(log N) (see g below). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(log N) iterations x Theta(log N) per iteration = Theta((log N)^2).
+
+Overall running time of f:
+Theta(1) + Theta((log N)^2) + Theta(1) = Theta((log N)^2).
+
+Method g
+Part D: the initialisations of t and j - constant time.
+Part E (while loop): j starts at m and is halved each iteration.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at m and is replaced by j/2 each iteration, so the loop runs Theta(log m) times; in the worst case m = N, giving Theta(log N) iterations.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g (worst case m = N):
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-9-python,Asymptotic Analysis - Halving Loop with Halving Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    k = n
+    while k > 0:
+        s += g(a, k)
+        k = k // 2
+    return s
+
+def g(a, m):
+    t = 0
+    j = m
+    while j > 0:
+        t += a[j - 1]
+        j = j // 2
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a, k) and halves k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a, k). In the worst case (the first iteration) m = N, so g costs Theta(log N) (see g below). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(log N) iterations x Theta(log N) per iteration = Theta((log N)^2).
+
+Overall running time of f:
+Theta(1) + Theta((log N)^2) + Theta(1) = Theta((log N)^2).
+
+Method g
+Part D: the initialisations of t and j - constant time.
+Part E (while loop): j starts at m and is halved each iteration.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at m and is replaced by j/2 each iteration, so the loop runs Theta(log m) times; in the worst case m = N, giving Theta(log N) iterations.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g (worst case m = N):
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-10-java,Asymptotic Analysis - Two Sequential Linear Passes (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ10 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            s += a[i] * 2;
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): one linear pass over a.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read, one multiplication, one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) is a second linear pass costing Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N). The two passes run one after another, so their costs ADD (Theta(N) + Theta(N) = Theta(N)); they are not multiplied.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-10-python,Asymptotic Analysis - Two Sequential Linear Passes (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        s += a[i] * 2
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): one linear pass over a.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read, one multiplication, one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) is a second linear pass costing Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N). The two passes run one after another, so their costs ADD (Theta(N) + Theta(N) = Theta(N)); they are not multiplied.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-11-java,Asymptotic Analysis - Matrix Scan with Binary Search (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the matrix `mat` (N x N) and the sorted array `b` of length N.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ11 {
+    // `mat` is N x N; `b` is sorted ascending of length N.
+    public static int f(int[][] mat, int[] b) {
+        int n = mat.length;
+        int c = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (g(b, mat[i][j]) >= 0) {
+                    c++;
+                }
+            }
+        }
+        return c;
+    }
+
+    private static int g(int[] b, int x) {
+        int l = 0;
+        int r = b.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (b[mid] == x) return mid;
+            if (b[mid] < x) l = mid + 1;
+            else r = mid - 1;
+        }
+        return -1;
+    }
+}","Let N be the side length of mat and the length of b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (nested loops over i, j): the body runs for every cell of the N x N matrix.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: dominated by g(b, mat[i][j]); since g is a binary search over b it costs Theta(log N). The matrix access, comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N^2) x Theta(log N) = Theta(N^2 log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2 log N) + Theta(1) = Theta(N^2 log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-11-python,Asymptotic Analysis - Matrix Scan with Binary Search (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the matrix `mat` (N x N) and the sorted array `b` of length N.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat, b):
+    n = len(mat)
+    c = 0
+    for i in range(n):
+        for j in range(n):
+            if g(b, mat[i][j]) >= 0:
+                c += 1
+    return c
+
+def g(b, x):
+    l = 0
+    r = len(b) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if b[mid] == x:
+            return mid
+        if b[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1","Let N be the side length of mat and the length of b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (nested loops over i, j): the body runs for every cell of the N x N matrix.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: dominated by g(b, mat[i][j]); since g is a binary search over b it costs Theta(log N). The matrix access, comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N^2) x Theta(log N) = Theta(N^2 log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2 log N) + Theta(1) = Theta(N^2 log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-12-java,Asymptotic Analysis - Doubling Window Sum (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ12 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int len = 1; len <= n; len = len * 2) {
+            for (int j = 0; j < len; j++) {
+                s += a[j];
+            }
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and len - constant time.
+Part B (nested loops): the outer variable len takes the values 1, 2, 4, ..., up to N; the inner loop runs len times.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the inner loop runs len times where len = 1, 2, 4, ..., 2^floor(log2 N). The total number of inner iterations is 1 + 2 + 4 + ... + 2^floor(log2 N) < 2N = Theta(N). This is a geometric series dominated by its largest term, so the total is Theta(N), NOT Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-12-python,Asymptotic Analysis - Doubling Window Sum (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    length = 1
+    while length <= n:
+        for j in range(length):
+            s += a[j]
+        length = length * 2
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and len - constant time.
+Part B (nested loops): the outer variable len takes the values 1, 2, 4, ..., up to N; the inner loop runs len times.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the inner loop runs len times where len = 1, 2, 4, ..., 2^floor(log2 N). The total number of inner iterations is 1 + 2 + 4 + ... + 2^floor(log2 N) < 2N = Theta(N). This is a geometric series dominated by its largest term, so the total is Theta(N), NOT Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-13-java,Asymptotic Analysis - Character Frequency Sum (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ13 {
+    // `s` is a string of length N.
+    public static int f(String s) {
+        int n = s.length();
+        int total = 0;
+        for (int i = 0; i < n; i++) {
+            total += g(s, s.charAt(i));
+        }
+        return total;
+    }
+
+    private static int g(String s, char x) {
+        int n = s.length();
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == x) {
+                count++;
+            }
+        }
+        return count;
+    }
+}","Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-13-python,Asymptotic Analysis - Character Frequency Sum (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count","Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-14-java,Asymptotic Analysis - Doubling Counter with Linear Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ14 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = 1;
+        while (k <= n) {
+            s += g(a);
+            k = k * 2;
+        }
+        return s;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a) and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration until it exceeds N, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a), a full linear scan costing Theta(N) (see g below). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-14-python,Asymptotic Analysis - Doubling Counter with Linear Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    k = 1
+    while k <= n:
+        s += g(a)
+        k = k * 2
+    return s
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a) and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration until it exceeds N, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a), a full linear scan costing Theta(N) (see g below). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-15-java,Asymptotic Analysis - Two Sequential Halving Loops (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ15 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        int k = n;
+        while (k > 0) {
+            s += a[k - 1];
+            k = k / 2;
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        int j = n;
+        while (j > 0) {
+            t += a[j - 1];
+            j = j / 2;
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): each iteration reads a[k-1] and halves k.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part B: Theta(log N) x Theta(1) = Theta(log N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) (Part B) + Theta(log N) (Part C) = Theta(log N). The two halving loops run one after another, so their costs add (Theta(log N) + Theta(log N) = Theta(log N)).
+
+Method g
+Part D: the initialisations of n, t and j - constant time.
+Part E (while loop): each iteration reads a[j-1] and halves j.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-15-python,Asymptotic Analysis - Two Sequential Halving Loops (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    k = n
+    while k > 0:
+        s += a[k - 1]
+        k = k // 2
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    j = n
+    while j > 0:
+        t += a[j - 1]
+        j = j // 2
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): each iteration reads a[k-1] and halves k.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part B: Theta(log N) x Theta(1) = Theta(log N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) (Part B) + Theta(log N) (Part C) = Theta(log N). The two halving loops run one after another, so their costs add (Theta(log N) + Theta(log N) = Theta(log N)).
+
+Method g
+Part D: the initialisations of n, t and j - constant time.
+Part E (while loop): each iteration reads a[j-1] and halves j.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-16-java,Asymptotic Analysis - Doubling Outer with Full Inner Pass (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ16 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int k = 1; k <= n; k = k * 2) {
+            for (int j = 0; j < n; j++) {
+                s += a[j];
+            }
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (nested loops): the outer variable k takes the values 1, 2, 4, ..., up to N; the inner loop runs the full N each time.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs Theta(log N) times (k doubles until it exceeds N); the inner loop runs exactly N times each, independent of k. Total = Theta(log N) x Theta(N) = Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N log N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(N) = Theta(N log N), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-16-python,Asymptotic Analysis - Doubling Outer with Full Inner Pass (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    k = 1
+    while k <= n:
+        for j in range(n):
+            s += a[j]
+        k = k * 2
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (nested loops): the outer variable k takes the values 1, 2, 4, ..., up to N; the inner loop runs the full N each time.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs Theta(log N) times (k doubles until it exceeds N); the inner loop runs exactly N times each, independent of k. Total = Theta(log N) x Theta(N) = Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N log N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(N) = Theta(N log N), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-17-java,Asymptotic Analysis - Linear Caller with Quadratic Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ17 {
+    // `mat` is N x N. Your analysis should be based on N.
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            s += mat[i][0];
+        }
+        int t = g(mat);
+        return s + t;
+    }
+
+    private static int g(int[][] mat) {
+        int n = mat.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                t += mat[i][j];
+            }
+        }
+        return t;
+    }
+}","Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).",analysis
+asym-17-python,Asymptotic Analysis - Linear Caller with Quadratic Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t","Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).",analysis
+asym-18-java,Asymptotic Analysis - Constant-Bounded Inner Loop (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ18 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 5; j++) {
+                s += a[i];
+            }
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += a[i];
+        }
+        return t;
+    }
+}","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops): outer loop over i = 0..N-1, inner loop fixed at j = 0..4.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs N times; the inner loop runs exactly 5 times regardless of N. Total = 5N = Theta(N). The inner loop is bounded by a constant, so it does NOT add a factor of N.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-18-python,Asymptotic Analysis - Constant-Bounded Inner Loop (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        for j in range(5):
+            s += a[i]
+    t = g(a)
+    return s + t
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t","Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops): outer loop over i = 0..N-1, inner loop fixed at j = 0..4.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs N times; the inner loop runs exactly 5 times regardless of N. Total = 5N = Theta(N). The inner loop is bounded by a constant, so it does NOT add a factor of N.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-19-java,Asymptotic Analysis - Triangular Sum with Binary-Search Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as functions of the length N of array `a` and the length N of the sorted array `b` (both of length N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ19 {
+    // `a` has length N; `b` is sorted ascending and also has length N.
+    public static int f(int[] a, int[] b) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                s += a[j];
+            }
+        }
+        int t = g(b, a[0]);
+        return s + t;
+    }
+
+    private static int g(int[] b, int x) {
+        int l = 0;
+        int r = b.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (b[mid] == x) return mid;
+            if (b[mid] < x) l = mid + 1;
+            else r = mid - 1;
+        }
+        return -1;
+    }
+}","Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(b, a[0]); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(b, a[0]) is a binary search costing Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2), absorbing the lower-order Theta(log N) term.
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-19-python,Asymptotic Analysis - Triangular Sum with Binary-Search Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as functions of the length N of array `a` and the length N of the sorted array `b` (both of length N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a, b):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        for j in range(i, n):
+            s += a[j]
+    t = g(b, a[0])
+    return s + t
+
+def g(b, x):
+    l = 0
+    r = len(b) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if b[mid] == x:
+            return mid
+        if b[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1","Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(b, a[0]); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(b, a[0]) is a binary search costing Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2), absorbing the lower-order Theta(log N) term.
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).",analysis
+asym-20-java,Asymptotic Analysis - Full Matrix Scan with Row Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ20 {
+    // `mat` is N x N. Your analysis should be based on N.
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                s += mat[i][j];
+            }
+        }
+        int t = g(mat);
+        return s + t;
+    }
+
+    private static int g(int[][] mat) {
+        int n = mat.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            t += mat[0][i];
+        }
+        return t;
+    }
+}","Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): visits every cell of the N x N matrix.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(mat) scans a single row and costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): scans the first row of mat.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-20-python,Asymptotic Analysis - Full Matrix Scan with Row Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        for j in range(n):
+            s += mat[i][j]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        t += mat[0][i]
+    return t","Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): visits every cell of the N x N matrix.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(mat) scans a single row and costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): scans the first row of mat.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-21-java,Asymptotic Analysis - Linked List with Full-List Helper (Java),"Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ21 {
+    static class Node {
+        int v;
+        Node next;
+        Node(int v, Node next) { this.v = v; this.next = next; }
+    }
+
+    static Node h;   // head of the linked list
+
+    // Your analysis should be based on the number of nodes N in the list with head h.
+    public static int f() {
+        int s = 0;
+        Node p = h;
+        while (p != null) {
+            s += g();
+            p = p.next;
+        }
+        return s;
+    }
+
+    private static int g() {
+        int c = 0;
+        Node q = h;
+        while (q != null) {
+            c += q.v;
+            q = q.next;
+        }
+        return c;
+    }
+}","Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: the initialisations of s and p - constant time.
+Part B (while loop): traverses the list from h, calling g() at each node.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p advances by p.next each iteration, so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by g(), which scans the WHOLE list from the head every time and costs Theta(N) (see g below). The pointer advance is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of c and q - constant time.
+Part E (while loop): traverses the entire list from the head h.
+Part F: return c - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at h and advances by q.next until null, visiting all N nodes; Theta(N) iterations.
+- Cost per iteration: Theta(1) - one field access, one += assignment, one pointer advance, one null comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis
+asym-21-python,Asymptotic Analysis - Linked List with Full-List Helper (Python),"Calculate the asymptotic worst case running time of the functions below, as a function of the number of nodes N in the linked list with head h.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+class Node:
+    def __init__(self, v, nxt):
+        self.v = v
+        self.next = nxt
+
+h = None  # head of the linked list
+
+def f():
+    s = 0
+    p = h
+    while p is not None:
+        s += g()
+        p = p.next
+    return s
+
+def g():
+    c = 0
+    q = h
+    while q is not None:
+        c += q.v
+        q = q.next
+    return c","Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: the initialisations of s and p - constant time.
+Part B (while loop): traverses the list from h, calling g() at each node.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p advances by p.next each iteration, so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by g(), which scans the WHOLE list from the head every time and costs Theta(N) (see g below). The pointer advance is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of c and q - constant time.
+Part E (while loop): traverses the entire list from the head h.
+Part F: return c - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at h and advances by q.next until null, visiting all N nodes; Theta(N) iterations.
+- Cost per iteration: Theta(1) - one field access, one += assignment, one pointer advance, one null comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).",analysis

@@ -36,7 +36,12 @@
       "Bash(Get-ChildItem \"z:\\\\dissertation\\\\ai_assignment_grader\\\\response_store\" -Recurse -Directory)",
       "Bash(Sort-Object FullName)",
       "PowerShell(Get-ChildItem \"z:\\\\dissertation\\\\ai_assignment_grader\\\\response_store\\\\asym-1-java\\\\mut_correct\\\\approach_3\\\\gemma4__26b\" -Recurse -Filter \"response.txt\" | Select-Object -First 1 | ForEach-Object { Get-Content $_.FullName -Raw })",
-      "PowerShell(cd \"z:\\\\dissertation\\\\ai_assignment_grader\" ; $env:PYTHONIOENCODING=\"utf-8\" ; python main.py --skip_preprocessing --skip_grading --skip_processing)"
+      "PowerShell(cd \"z:\\\\dissertation\\\\ai_assignment_grader\" ; $env:PYTHONIOENCODING=\"utf-8\" ; python main.py --skip_preprocessing --skip_grading --skip_processing)",
+      "PowerShell($p='z:\\\\dissertation\\\\ai_assignment_grader\\\\datastore\\\\questions\\\\question.csv'; $b=[System.IO.File]::ReadAllBytes\\($p\\); \"len=$\\($b.Length\\)\"; \"last4bytes=\" + \\(\\($b[-4..-1]\\) -join ','\\); \"endsWithNewline=\" + \\($b[-1] -eq 10\\))",
+      "Bash(python _gen_asym_questions.py)",
+      "Bash(python src/validation.py datastore)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(python -)"
     ]
   }
 }
