@@ -88,17 +88,27 @@ def get_expected_point_ids(datastore_dir, question_id):
 
 def _split_into_point_blocks(text):
     # Splits an LLM response into (point_id, block_text) pairs.
-    # Handles three header forms emitted by different models:
-    #   "POINT_ID: 1"       (standard)
-    #   "POINT_ID: Point 1" (gemma4)
-    #   "POINT_1:"          (Qwen3 variant)
+    # Handles header forms emitted by different models:
+    #   "POINT_ID: 1"           (standard)
+    #   "POINT_ID: Point 1"     (gemma4)
+    #   "POINT_1:"              (Qwen3 variant)
+    #   "POINT ID: Point 1"     (gpt-oss: space instead of underscore)
+    #   "POINT 1 — title"       (gpt-oss: no ID keyword, optional em-dash title)
     pattern = re.compile(
-        r"(?:POINT_ID:\s*(?:Point\s+)?(\d+)|POINT_(\d+):)"
+        r"(?:^\s*POINT_ID:\s*(?:Point\s+)?(\d+)(?:[^\S\n]*[—\-][^\n]*)?"
+        r"|^\s*POINT\s+ID:\s*(?:Point\s+)?(\d+)(?:[^\S\n]*[—\-][^\n]*)?"
+        r"|^\s*POINT_(\d+):"
+        r"|^\s*POINT\s+(\d+)(?:[^\S\n]*[—\-][^\n]*)?)"
         r"(.*?)"
-        r"(?=POINT_ID:\s*(?:Point\s+)?\d+|POINT_\d+:|\Z)",
-        re.DOTALL,
+        r"(?=^\s*POINT_ID:\s*(?:Point\s+)?\d+"
+        r"|^\s*POINT\s+ID:\s*(?:Point\s+)?\d+"
+        r"|^\s*POINT_\d+:"
+        r"|^\s*POINT\s+\d+"
+        r"|\Z)",
+        re.DOTALL | re.MULTILINE,
     )
-    return [(int(m.group(1) or m.group(2)), m.group(3)) for m in pattern.finditer(text)]
+    return [(int(m.group(1) or m.group(2) or m.group(3) or m.group(4)), m.group(5))
+            for m in pattern.finditer(text)]
 
 
 def _extract_marks(block_text):
