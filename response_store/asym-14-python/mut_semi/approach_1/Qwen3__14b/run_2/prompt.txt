@@ -1,0 +1,98 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a):
+    n = len(a)
+    s = 0
+    k = 1
+    while k <= n:
+        s += g(a)
+        k = k * 2
+    return s
+
+def g(a):
+    n = len(a)
+    t = 0
+    for i in range(n):
+        t += a[i]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a) and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration until it exceeds N, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a), a full linear scan costing Theta(N) (see g below). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+f uses a doubling while loop and calls g inside the loop; the outer loop runs about log N times (N is the length of array a). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the log N iterations by the cost of g gives roughly N log N for f overall.
+
+g uses a for loop over a. It runs Theta(N) times in the worst case because i runs from 0 to N-1. Each step is constant work - an array read and an addition, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N log N) and g is Theta(N).
+
+RUBRIC:
+Point 1 — Splitting code into parts + referencing line numbers (valid range: 0–5)
+  Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently.
+
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+  All non-loop code in f and g is Theta(1).
+
+Point 3 — f(): Loop iterations (valid range: 0–12)
+  Theta(log N) iterations because k doubles each iteration.
+
+Point 4 — f(): Cost per iteration (valid range: 0–12)
+  Theta(N) per iteration, dominated by the call to g(a).
+
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(N log N) from Theta(log N) iterations x Theta(N) per iteration.
+
+Point 6 — g(): Loop iterations (valid range: 0–12)
+  Theta(N) iterations of the for loop over a.
+
+Point 7 — g(): Cost per iteration (valid range: 0–12)
+  Theta(1) per iteration.
+
+Point 8 — g(): Total loop cost (valid range: 0–8)
+  Theta(N) = Theta(N) iterations x Theta(1) per iteration.
+
+Point 9 — Overall worst-case runtime of g (valid range: 0–12)
+  T_g(N) = Theta(N), summing constant parts and the loop.
+
+Point 10 — Overall worst-case runtime of f (valid range: 0–14)
+  T_f(N) = Theta(N log N), accounting for non-loop parts + loop.

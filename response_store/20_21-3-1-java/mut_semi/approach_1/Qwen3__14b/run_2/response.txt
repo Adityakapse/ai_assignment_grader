@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The DP table is correctly allocated with dimensions (n+1) x (capacity+1) and initialized to 0, matching the sample solution.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates over items correctly, but the inner loop starts at j=1 instead of j=0, missing the zero-capacity column required to handle subproblems properly.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code uses a strict < comparison (volumes[i] < j) instead of <=, which incorrectly excludes items with volume exactly equal to the current capacity j, leading to incorrect feasibility checks.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation references the same row (Result[i][j - volumes[i]]) instead of the previous row (Result[i+1][j - volumes[i]]), allowing items to be reused multiple times and violating the 0/1 knapsack constraint.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to errors in the inner loop range, incorrect feasibility checks, and flawed recurrence relation, the code fails to compute the correct maximum value for all valid inputs, including edge cases with zero-volume items.
+
+TOTAL: 30

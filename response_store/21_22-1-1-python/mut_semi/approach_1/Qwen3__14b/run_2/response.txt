@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's code returns expo(a, b, c) without subtracting 1, which is required by the closed form a_n = 2^n - 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The base case correctly returns 1 % c when b == 0, which aligns with the expected behavior for exponentiation.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case, the student returns expo(a, b-1, c) % c instead of (a * expo(a, b-1, c)) % c, missing the required multiplication by a.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even case correctly computes tmp = expo(a, b//2, c) and returns (tmp * tmp) % c, which matches the expected halving and squaring approach.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code fails to subtract 1 from the exponentiation result and incorrectly handles the odd case, leading to incorrect outputs for all n ≥ 1.
+
+TOTAL: 35

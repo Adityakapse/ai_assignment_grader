@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The memo array is correctly allocated with size n+1, but it is initialized to 0 instead of -1 as required, which may lead to incorrect cache checks and results.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The base case for n == 1 is missing entirely. The code will fail for inputs with n = 1 since it does not return max(W[0], W[1]) as required.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The cache check uses "memo[n] != 0" instead of "memo[n] != -1", which is incorrect because the memo array was initialized to 0, not -1. This leads to incorrect cache behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence relation is correctly implemented as max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)), and the result is stored in memo[n] before returning.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code fails for n = 1 due to the missing base case, and the memo initialization is incorrect, leading to incorrect results for some inputs and potential runtime errors (e.g., when n-2 is negative).
+
+TOTAL: 35

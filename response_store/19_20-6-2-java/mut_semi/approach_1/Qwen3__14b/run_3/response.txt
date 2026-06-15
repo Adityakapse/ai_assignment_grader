@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) with proper initialization to 0 through the double[][] Result = new double[n + 1][capacity + 1]; line.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The nested loops correctly iterate over all items (from n-1 down to 0) and all capacities (from 0 to capacity), matching the required structure for dynamic programming subproblem processing.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition "if (volumes[i] <= j)" correctly checks whether the current item can fit into the current capacity, ensuring only feasible items are considered for inclusion.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation is incorrect - it unconditionally adds values[i] + Result[i+1][j - volumes[i]] when the item fits, without comparing it to the case where the item is not included. This fails to implement the crucial max comparison that defines the knapsack DP solution.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to the incorrect recurrence relation, the algorithm will fail to return the correct maximum value for test cases like the sample input (capacity 3), which requires selecting only the first item but would be incorrectly computed by this implementation.
+
+TOTAL: 75

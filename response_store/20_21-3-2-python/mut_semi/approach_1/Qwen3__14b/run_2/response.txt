@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The graph construction does not include a virtual source node 0 with edges to all other nodes, which is required to ensure all paths are considered in the DFS.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array is correctly initialized to -1 for all nodes and the code checks memo[node] != -1 before recomputing values.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The base case correctly returns 0 for nodes with no outgoing edges, as required for leaf nodes in the DAG.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence incorrectly computes sol = max(sol, dfs(child, ...)) without adding 1 for each edge, which is essential for counting path length.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The final result is incorrect because the code does not include the virtual source node, fails to add 1 in the recurrence, and does not subtract 1 at the end as required.
+
+TOTAL: 35

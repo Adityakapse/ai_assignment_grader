@@ -1,0 +1,74 @@
+QUESTION:
+Input: $n_0 \in \mathbb{N}_0: \; 0 \leq n_0 \leq 10^{9}$ 
+
+Output: $a_{n_0} \; mod \; 10^9+7$ with
+$a_{n+1}=2 a_{n}+1 \; \; n \in \mathbb{N}_0, a_{0}=0$
+
+Calculate in $O(\: log \: n)$ the output for any input
+in the function "def calc(n):" that takes only an integer as a parameter.
+For the implementation you must not use the keyword
+"import", "**", "eval" , "checkCalc", "globals", "pow" or "expo".
+
+For easier debugging, you can divide your result in each calculation step by modulo $10^9+7$. For example:
+
+def calc(a,b,c):
+
+    res = (a+b) % 10000007
+
+    res = (res+c) % 10000007
+
+    return (res+1000) % 10000007
+
+Hints:
+
+1. Find a closed form for the recurrence.
+
+2. Use "//" (without the quotation marks) to perform integer division in
+Python and to avoid floats.
+
+3. If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+def calc(n):
+    a = 2; b = n; c = 1000000007
+    return expo(a,b,c) - 1
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c
+
+STUDENT SOLUTION:
+# Iterates the recurrence linearly; works only for small n.
+def calc(n):
+    a = 0
+    c = 1000000007
+    for i in range(n):
+        a = (2 * a + 1) % c
+    return a
+
+
+RUBRIC:
+Point 1 — Closed form derivation (valid range: 0–25)
+  The student identifies that a_n = 2^n - 1, so calc(n) = (2^n mod c) - 1 where c = 10^9 + 7.
+
+Point 2 — Expo base case: b == 0 (valid range: 0–15)
+  When the exponent b == 0, the expo function returns 1 (or 1 % c).
+
+Point 3 — Expo odd case: reduce by 1 and multiply (valid range: 0–15)
+  When b is odd, returns (a * expo(a, b-1, c)) % c.
+
+Point 4 — Expo even case: halve and square (valid range: 0–20)
+  When b is even, computes tmp = expo(a, b//2, c) once and returns (tmp * tmp) % c.
+
+Point 5 — Overall correctness (valid range: 0–25)
+  calc(n) returns (2^n - 1) mod (10^9+7) correctly for all valid inputs, without using forbidden keywords.

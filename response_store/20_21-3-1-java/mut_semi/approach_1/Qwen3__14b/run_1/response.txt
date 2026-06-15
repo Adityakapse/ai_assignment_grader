@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: A 2D table of size (n+1) x (capacity+1) is correctly allocated and initialized to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates over all items correctly, but the inner loop starts at j=1, missing the j=0 column which is required for handling zero-weight items.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code checks if volumes[i] < j instead of <= j, which incorrectly excludes items with volume 0 when j=0 and fails to handle zero-weight items properly.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation incorrectly references Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]], allowing items to be reused multiple times, which violates the problem constraints.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code fails to handle zero-weight items and allows item reuse, leading to incorrect results for all inputs, including those with zero-volume items.
+
+TOTAL: 30

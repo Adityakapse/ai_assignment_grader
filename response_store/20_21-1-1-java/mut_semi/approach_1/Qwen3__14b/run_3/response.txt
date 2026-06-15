@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails when c == 1 (e.g., 1 mod 1 should be 0, but returns 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code correctly uses b % 2 != 0 to distinguish odd and even cases, satisfying the parity detection requirement.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The odd case returns expo(a, b-1, c) % c instead of (a * expo(a, b-1, c)) % c, which omits the critical multiplication by a.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The even case correctly computes a = expo(a, b/2, c) % c and returns (a * a) % c, satisfying the halve-and-square logic.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to incorrect base case and missing multiplication in the odd case, the function fails to compute a^b mod c correctly for all inputs.
+
+TOTAL: 40

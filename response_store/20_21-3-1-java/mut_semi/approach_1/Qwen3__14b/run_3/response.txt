@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The DP table is correctly allocated as (n+1) x (capacity+1) with proper initialization.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the zero-capacity column required for handling zero-weight items.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The feasibility check uses "volumes[i] < j" instead of "volumes[i] <= j", incorrectly excluding items that exactly match the current capacity.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation incorrectly references the same row (Result[i][...]) instead of the previous row (Result[i+1][...]), allowing items to be reused multiple times.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to multiple errors in loop structure, feasibility checks, and recurrence relation, the solution fails to compute correct results for all valid inputs.
+
+TOTAL: 20

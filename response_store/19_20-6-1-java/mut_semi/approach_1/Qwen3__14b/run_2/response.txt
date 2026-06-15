@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The DP table is correctly allocated with dimensions (m+1) x (n+1) and nested loops iterate from 1 to m and 1 to n, matching the required bottom-up approach.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The base cases (edDis[i][0] = i and edDis[0][j] = j) are completely missing, leaving the first row and column initialized to zero instead of their correct values.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The character match case correctly assigns edDis[i][j] = edDis[i-1][j-1] when a.charAt(i-1) == b.charAt(j-1), accurately reflecting no edit needed.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The mismatch recurrence correctly uses 1 + Math.min of the three possible operations (insert, delete, replace) through the three neighboring cells.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code fails to initialize base cases, leading to incorrect edit distances for all inputs where either string is non-empty, despite correctly implementing the recurrence and avoiding recursion.
+
+TOTAL: 60
