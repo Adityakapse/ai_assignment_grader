@@ -1755,3 +1755,1590 @@ So f is Theta(N^2) and g is Theta(N).
 "
 mut_wrong,asym-5-java,"f walks through nodes of the linked list which takes linear time. g also walks the list and counts something. Both functions are O(N). The answer is f = O(N) and g = O(N).
 "
+mut_correct,asym-1-python,"Let N be the length of array a.
+
+Method f
+Part A: n = len(a); s = 0 - constant-time initialisation.
+Part B (nested loops over i, j): the body runs for every (i, j) with 0 <= j <= i < N.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: i = 0 gives 1 inner step, i = 1 gives 2, ..., i = N-1 gives N. Total = 1 + 2 + ... + N = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - two array reads, one multiplication, one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(log N) = Theta(N^2).
+
+Method g
+Part D: n = len(a); t = 0; k = n - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and becomes k // 2 each iteration, so the loop runs Theta(log N) times until k is 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-1-python,"f has two nested loops and then calls g. The setup statements are constant.
+
+The nested loops in f iterate roughly N^2 times in total because they are two nested loops over the array of length N. Each iteration of the inner body performs an array read, a multiplication and an addition into s; these are all O(1) since they are simple operations. So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+Then f calls g, which adds some extra cost from g.
+
+g has a while loop that runs Theta(log N) times. Each iteration of g does an array access, an addition and a division, all of which are Theta(1). Total cost of the loop: Theta(log N) * Theta(1) = Theta(log N).
+
+Overall, g runs in Theta(log N) and f runs in Theta(N^2).
+"
+mut_wrong,asym-1-python,"The function f has a loop, so it runs in O(N) time. Inside the loop body it performs some small operations like adding and multiplying values from the array. The g method does some halving thing and looks small. The answer is f = O(N) and g = O(1).
+"
+mut_correct,asym-2-python,"Let M be the length of array a and N be the length of array b.
+
+Method f
+Part A: m = len(a); s = 0 - constant time.
+Part B (for loop): runs over i = 0..M-1.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to M-1, so Theta(M) iterations.
+- Cost per iteration: dominated by the call g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and += are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(M) x Theta(log N) = Theta(M log N).
+
+Overall running time of f:
+Theta(1) + Theta(M log N) + Theta(1) = Theta(M log N).
+
+Method g
+Part D: l = 0; r = len(b) - 1 - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the search interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-2-python,"f has a single for loop that iterates over array a. The loop runs M times because i goes from 0 to m. Inside the loop f calls g(b, a[i]).
+
+The body of f's loop has a call to g, plus a comparison and an addition. The g call presumably takes log N or so since it looks like a binary search. So f's loop cost per iteration depends on g.
+
+f total cost ~ M * cost_of_g.
+
+g uses a while loop with mid = (l + r) / 2. It runs log N times. Each iteration just does a few comparisons and updates, which is constant. So g is around log N.
+
+Overall: g = Theta(log N), f = Theta(M log N).
+"
+mut_wrong,asym-2-python,"f loops over array a so it is O(M). g uses some indices and runs through array b. Both functions perform simple operations inside their loops. The total time is roughly linear in M and N.
+"
+mut_correct,asym-3-python,"Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: n = len(mat); s = 0 - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(mat); return s + t - one call to g plus constant work.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(mat) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(N) = Theta(N^2).
+
+Method g
+Part D: n = len(mat); t = 0 - constant time.
+Part E (for loop along the diagonal): single loop over i = 0..N-1.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs from i = 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access mat[i][i] and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-3-python,"f has two nested loops and then calls g. The setup statements outside the loops are constant.
+
+The nested loops sweep over part of the matrix; together they run Theta(N^2) times since it is essentially a double loop on an N x N matrix. Each iteration just reads a matrix entry and accumulates into s, which is Theta(1). So the nested loops cost Theta(N^2) * Theta(1) = Theta(N^2).
+
+f then calls g, which adds some cost from g.
+
+g has a single for loop that runs Theta(N) times (along the diagonal). Each iteration is Theta(1) since it just reads one matrix entry and adds. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+Overall, g is Theta(N) and f is Theta(N^2).
+"
+mut_wrong,asym-3-python,"f loops through the matrix so it takes O(N) time. The g function reads the diagonal which is just a few values. Total time is approximately linear.
+"
+mut_correct,asym-4-python,"Let N be the length of array a.
+
+Method f
+Part A: n = len(a); s = 0; k = 1 - constant time.
+Part B (while loop): condition k <= n, body calls g and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration, so the loop runs until k exceeds N, which takes Theta(log N) iterations.
+- Cost per iteration: dominated by g(a, k), a single linear scan of a costing Theta(N). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: t = 0 - constant time.
+Part E (for loop): scans the entire array a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the loop runs over all elements of a, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one array read, one comparison, possibly one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-4-python,"f has a while loop that uses k as a counter. The loop runs Theta(log N) times since k changes by a factor each iteration. The body calls g, so each iteration's cost depends on g.
+
+If g runs in Theta(N), then f's loop costs roughly Theta(log N) * cost_per_iter.
+
+g has a for loop over a, so it iterates Theta(N) times. Each iteration of g does a constant amount of work - one array access, a comparison, maybe an add. So g's loop is Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N log N) and g is Theta(N).
+"
+mut_wrong,asym-4-python,"f keeps multiplying k by 2 so it runs forever or a lot. Inside the body it calls g which does something on the array. The functions probably take linear time overall. f = O(N) and g = O(N).
+"
+mut_correct,asym-5-python,"Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: s = 0; p = h - constant time.
+Part B (while loop): traverses the list, calling g(p) at each node.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p advances by p.next each iteration, so starting from h the loop runs exactly N times before p becomes None. Theta(N) iterations.
+- Cost per iteration: dominated by g(p). In the worst case g scans from p to the end of the list - when p = h this is N nodes. The per-iteration cost is therefore Theta(N) in the worst case.
+- Total cost of Part B: summing the actual per-iteration costs gives N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2). Equivalently, Theta(N) iterations x Theta(N) worst-case per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: c = 0; q = start - constant time.
+Part E (while loop): traverses from start to the end of the list.
+Part F: return c - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q advances by q.next until None. In the worst case start = h, so the loop visits all N nodes; the iteration count is Theta(N).
+- Cost per iteration: Theta(1) - one += assignment, one pointer advance, one None comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-5-python,"f walks through the linked list using p = p.next. Since the list has N nodes, the outer loop runs about N times. The body calls g(p) which traverses the rest of the list.
+
+So the cost per iteration of f is some traversal cost. Multiplying gives roughly N times the cost of g.
+
+g is a while loop that goes through the linked list. It visits Theta(N) nodes in the worst case (when called with start = h). Each step is a constant amount of work - it reads q.v and follows q.next, both of which are Theta(1). Total cost of g's loop: Theta(N) * Theta(1) = Theta(N).
+
+So f is Theta(N^2) and g is Theta(N).
+"
+mut_wrong,asym-5-python,"f walks through nodes of the linked list which takes linear time. g also walks the list and counts something. Both functions are O(N). The answer is f = O(N) and g = O(N).
+"
+mut_correct,asym-6-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (single for loop over i): sums the array.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N) + Theta(log N) = Theta(N), because log N is dominated by N.
+
+Method g
+Part D: the initialisations of n, t and k - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop runs Theta(log N) times until k becomes 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-6-java,"f has a single for loop over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a while loop that runs Theta(log N) times. Every iteration does an array read, an addition and a halving of k, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(N)."
+mut_wrong,asym-6-java,"f has a single for loop over a, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function halves k each step with simple constant operations inside, and seems small. So the answer is f = O(N^2) and g = O(N)."
+mut_correct,asym-6-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (single for loop over i): sums the array.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N) + Theta(log N) = Theta(N), because log N is dominated by N.
+
+Method g
+Part D: the initialisations of n, t and k - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop runs Theta(log N) times until k becomes 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-6-python,"f has a single for loop over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a while loop that runs Theta(log N) times. Every iteration does an array read, an addition and a halving of k, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(N)."
+mut_wrong,asym-6-python,"f has a single for loop over a, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function halves k each step with simple constant operations inside, and seems small. So the answer is f = O(N^2) and g = O(N)."
+mut_correct,asym-7-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (triple nested loops over i, j, k): each loop runs independently over 0..N-1.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the three loops are independent, so the body runs N x N x N = Theta(N^3) times.
+- Cost per iteration: Theta(1) - three array reads, two additions, one += assignment.
+- Total cost of Part B: Theta(N^3) x Theta(1) = Theta(N^3).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^3) + Theta(N) = Theta(N^3), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (single for loop): sums the array.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-7-java,"f has three nested for loops over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N^3 iterations in total (N is the length of array a). Each pass does a few array reads and additions, all Theta(1) simple operations, so f's own loop work is Theta(N^3).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N^3)."
+mut_wrong,asym-7-java,"f has three nested for loops over a, so it runs in O(N^2). Inside the loop it only does a few array reads and additions, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-7-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (triple nested loops over i, j, k): each loop runs independently over 0..N-1.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the three loops are independent, so the body runs N x N x N = Theta(N^3) times.
+- Cost per iteration: Theta(1) - three array reads, two additions, one += assignment.
+- Total cost of Part B: Theta(N^3) x Theta(1) = Theta(N^3).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^3) + Theta(N) = Theta(N^3), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (single for loop): sums the array.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-7-python,"f has three nested for loops over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N^3 iterations in total (N is the length of array a). Each pass does a few array reads and additions, all Theta(1) simple operations, so f's own loop work is Theta(N^3).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N^3)."
+mut_wrong,asym-7-python,"f has three nested for loops over a, so it runs in O(N^2). Inside the loop it only does a few array reads and additions, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-8-java,"Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N) x Theta(log N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-8-java,"f uses a for loop over a and calls g inside the loop; the outer loop runs about N times (N is the length of a and b). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N iterations by the cost of g gives roughly N log N for f overall.
+
+g uses a binary search while loop. It runs Theta(log N) times in the worst case because the search interval halves each iteration. Each step is constant work - a midpoint, two array accesses and a comparison, all Theta(1) - so g's loop is Theta(log N) x Theta(1) = Theta(log N).
+
+So overall f is Theta(N log N) and g is Theta(log N)."
+mut_wrong,asym-8-java,"f loops over a, so it is O(N). It calls g inside, but the operations are simple and constant. g also does a binary search on b doing simple constant work, so it looks logarithmic. The answer is f = O(N) and g = O(N)."
+mut_correct,asym-8-python,"Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(b, a[i]); since g is a binary search over b it costs Theta(log N). The comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N) x Theta(log N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-8-python,"f uses a for loop over a and calls g inside the loop; the outer loop runs about N times (N is the length of a and b). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N iterations by the cost of g gives roughly N log N for f overall.
+
+g uses a binary search while loop. It runs Theta(log N) times in the worst case because the search interval halves each iteration. Each step is constant work - a midpoint, two array accesses and a comparison, all Theta(1) - so g's loop is Theta(log N) x Theta(1) = Theta(log N).
+
+So overall f is Theta(N log N) and g is Theta(log N)."
+mut_wrong,asym-8-python,"f loops over a, so it is O(N). It calls g inside, but the operations are simple and constant. g also does a binary search on b doing simple constant work, so it looks logarithmic. The answer is f = O(N) and g = O(N)."
+mut_correct,asym-9-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a, k) and halves k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a, k). In the worst case (the first iteration) m = N, so g costs Theta(log N) (see g below). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(log N) iterations x Theta(log N) per iteration = Theta((log N)^2).
+
+Overall running time of f:
+Theta(1) + Theta((log N)^2) + Theta(1) = Theta((log N)^2).
+
+Method g
+Part D: the initialisations of t and j - constant time.
+Part E (while loop): j starts at m and is halved each iteration.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at m and is replaced by j/2 each iteration, so the loop runs Theta(log m) times; in the worst case m = N, giving Theta(log N) iterations.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g (worst case m = N):
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-9-java,"f uses a halving while loop and calls g inside the loop; the outer loop runs about log N times (N is the length of array a). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the log N iterations by the cost of g gives roughly (log N)^2 for f overall.
+
+g uses a halving while loop. It runs Theta(log N) times in the worst case because j is halved each iteration (worst case it starts at N). Each step is constant work - an array read, an addition and a halving, all Theta(1) - so g's loop is Theta(log N) x Theta(1) = Theta(log N).
+
+So overall f is Theta((log N)^2) and g is Theta(log N)."
+mut_wrong,asym-9-java,"f runs a halving loop, so it is O(N). It calls g inside, but the operations are simple and constant. g also halves its counter each step doing simple constant work, so it looks small. The answer is f = O(N) and g = O(N)."
+mut_correct,asym-9-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a, k) and halves k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a, k). In the worst case (the first iteration) m = N, so g costs Theta(log N) (see g below). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(log N) iterations x Theta(log N) per iteration = Theta((log N)^2).
+
+Overall running time of f:
+Theta(1) + Theta((log N)^2) + Theta(1) = Theta((log N)^2).
+
+Method g
+Part D: the initialisations of t and j - constant time.
+Part E (while loop): j starts at m and is halved each iteration.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at m and is replaced by j/2 each iteration, so the loop runs Theta(log m) times; in the worst case m = N, giving Theta(log N) iterations.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g (worst case m = N):
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-9-python,"f uses a halving while loop and calls g inside the loop; the outer loop runs about log N times (N is the length of array a). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the log N iterations by the cost of g gives roughly (log N)^2 for f overall.
+
+g uses a halving while loop. It runs Theta(log N) times in the worst case because j is halved each iteration (worst case it starts at N). Each step is constant work - an array read, an addition and a halving, all Theta(1) - so g's loop is Theta(log N) x Theta(1) = Theta(log N).
+
+So overall f is Theta((log N)^2) and g is Theta(log N)."
+mut_wrong,asym-9-python,"f runs a halving loop, so it is O(N). It calls g inside, but the operations are simple and constant. g also halves its counter each step doing simple constant work, so it looks small. The answer is f = O(N) and g = O(N)."
+mut_correct,asym-10-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): one linear pass over a.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read, one multiplication, one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) is a second linear pass costing Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N). The two passes run one after another, so their costs ADD (Theta(N) + Theta(N) = Theta(N)); they are not multiplied.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-10-java,"f has a single for loop over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read, a multiply and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N)."
+mut_wrong,asym-10-java,"f has a single for loop over a, so it runs in O(N^2). Inside the loop it only does an array read, a multiply and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-10-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): one linear pass over a.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read, one multiplication, one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) is a second linear pass costing Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N). The two passes run one after another, so their costs ADD (Theta(N) + Theta(N) = Theta(N)); they are not multiplied.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-10-python,"f has a single for loop over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read, a multiply and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N)."
+mut_wrong,asym-10-python,"f has a single for loop over a, so it runs in O(N^2). Inside the loop it only does an array read, a multiply and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-11-java,"Let N be the side length of mat and the length of b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (nested loops over i, j): the body runs for every cell of the N x N matrix.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: dominated by g(b, mat[i][j]); since g is a binary search over b it costs Theta(log N). The matrix access, comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N^2) x Theta(log N) = Theta(N^2 log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2 log N) + Theta(1) = Theta(N^2 log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-11-java,"f uses two nested loops over the cells of mat and calls g inside the loop; the outer loop runs about N^2 times (N is the side length of mat). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N^2 iterations by the cost of g gives roughly N^2 log N for f overall.
+
+g uses a binary search while loop. It runs Theta(log N) times in the worst case because the interval halves each iteration. Each step is constant work - a midpoint, two array accesses and a comparison, all Theta(1) - so g's loop is Theta(log N) x Theta(1) = Theta(log N).
+
+So overall f is Theta(N^2 log N) and g is Theta(log N)."
+mut_wrong,asym-11-java,"f loops over every cell, so it is O(N^2). It calls g inside, but the operations are simple and constant. g also does a binary search on b doing simple constant work, so it looks logarithmic. The answer is f = O(N^2) and g = O(N)."
+mut_correct,asym-11-python,"Let N be the side length of mat and the length of b.
+
+Method f
+Part A: the initialisations of n and c - constant time.
+Part B (nested loops over i, j): the body runs for every cell of the N x N matrix.
+Part C: return c - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: dominated by g(b, mat[i][j]); since g is a binary search over b it costs Theta(log N). The matrix access, comparison and increment are Theta(1). Per iteration: Theta(log N).
+- Total cost of Part B: Theta(N^2) x Theta(log N) = Theta(N^2 log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2 log N) + Theta(1) = Theta(N^2 log N).
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-11-python,"f uses two nested loops over the cells of mat and calls g inside the loop; the outer loop runs about N^2 times (N is the side length of mat). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N^2 iterations by the cost of g gives roughly N^2 log N for f overall.
+
+g uses a binary search while loop. It runs Theta(log N) times in the worst case because the interval halves each iteration. Each step is constant work - a midpoint, two array accesses and a comparison, all Theta(1) - so g's loop is Theta(log N) x Theta(1) = Theta(log N).
+
+So overall f is Theta(N^2 log N) and g is Theta(log N)."
+mut_wrong,asym-11-python,"f loops over every cell, so it is O(N^2). It calls g inside, but the operations are simple and constant. g also does a binary search on b doing simple constant work, so it looks logarithmic. The answer is f = O(N^2) and g = O(N)."
+mut_correct,asym-12-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and len - constant time.
+Part B (nested loops): the outer variable len takes the values 1, 2, 4, ..., up to N; the inner loop runs len times.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the inner loop runs len times where len = 1, 2, 4, ..., 2^floor(log2 N). The total number of inner iterations is 1 + 2 + 4 + ... + 2^floor(log2 N) < 2N = Theta(N). This is a geometric series dominated by its largest term, so the total is Theta(N), NOT Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-12-java,"f has a doubling outer loop with an inner loop and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N)."
+mut_wrong,asym-12-java,"f has a doubling outer loop with an inner loop, so it runs in O(N log N). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N log N) and g = O(log N)."
+mut_correct,asym-12-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and len - constant time.
+Part B (nested loops): the outer variable len takes the values 1, 2, 4, ..., up to N; the inner loop runs len times.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the inner loop runs len times where len = 1, 2, 4, ..., 2^floor(log2 N). The total number of inner iterations is 1 + 2 + 4 + ... + 2^floor(log2 N) < 2N = Theta(N). This is a geometric series dominated by its largest term, so the total is Theta(N), NOT Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-12-python,"f has a doubling outer loop with an inner loop and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N)."
+mut_wrong,asym-12-python,"f has a doubling outer loop with an inner loop, so it runs in O(N log N). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N log N) and g = O(log N)."
+mut_correct,asym-13-java,"Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-13-java,"f uses a for loop over the characters of s and calls g inside the loop; the outer loop runs about N times (N is the length of string s). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N iterations by the cost of g gives roughly N^2 for f overall.
+
+g uses a for loop over the string. It runs Theta(N) times in the worst case because it scans the whole string regardless of x. Each step is constant work - a character access and a comparison, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N^2) and g is Theta(N)."
+mut_wrong,asym-13-java,"f loops over the characters, so it is O(N). It calls g inside, but the operations are simple and constant. g also scans the whole string doing simple constant work, so it looks linear. The answer is f = O(N) and g = O(1)."
+mut_correct,asym-13-python,"Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-13-python,"f uses a for loop over the characters of s and calls g inside the loop; the outer loop runs about N times (N is the length of string s). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N iterations by the cost of g gives roughly N^2 for f overall.
+
+g uses a for loop over the string. It runs Theta(N) times in the worst case because it scans the whole string regardless of x. Each step is constant work - a character access and a comparison, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N^2) and g is Theta(N)."
+mut_wrong,asym-13-python,"f loops over the characters, so it is O(N). It calls g inside, but the operations are simple and constant. g also scans the whole string doing simple constant work, so it looks linear. The answer is f = O(N) and g = O(1)."
+mut_correct,asym-14-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a) and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration until it exceeds N, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a), a full linear scan costing Theta(N) (see g below). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-14-java,"f uses a doubling while loop and calls g inside the loop; the outer loop runs about log N times (N is the length of array a). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the log N iterations by the cost of g gives roughly N log N for f overall.
+
+g uses a for loop over a. It runs Theta(N) times in the worst case because i runs from 0 to N-1. Each step is constant work - an array read and an addition, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N log N) and g is Theta(N)."
+mut_wrong,asym-14-java,"f runs a doubling loop, so it is O(N). It calls g inside, but the operations are simple and constant. g also loops once over the array doing simple constant work, so it looks linear. The answer is f = O(N) and g = O(1)."
+mut_correct,asym-14-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): body calls g(a) and doubles k.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at 1 and doubles each iteration until it exceeds N, so the loop runs Theta(log N) times.
+- Cost per iteration: dominated by g(a), a full linear scan costing Theta(N) (see g below). The doubling and += are Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(log N) x Theta(N) = Theta(N log N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(1) = Theta(N log N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-14-python,"f uses a doubling while loop and calls g inside the loop; the outer loop runs about log N times (N is the length of array a). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the log N iterations by the cost of g gives roughly N log N for f overall.
+
+g uses a for loop over a. It runs Theta(N) times in the worst case because i runs from 0 to N-1. Each step is constant work - an array read and an addition, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N log N) and g is Theta(N)."
+mut_wrong,asym-14-python,"f runs a doubling loop, so it is O(N). It calls g inside, but the operations are simple and constant. g also loops once over the array doing simple constant work, so it looks linear. The answer is f = O(N) and g = O(1)."
+mut_correct,asym-15-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): each iteration reads a[k-1] and halves k.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part B: Theta(log N) x Theta(1) = Theta(log N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) (Part B) + Theta(log N) (Part C) = Theta(log N). The two halving loops run one after another, so their costs add (Theta(log N) + Theta(log N) = Theta(log N)).
+
+Method g
+Part D: the initialisations of n, t and j - constant time.
+Part E (while loop): each iteration reads a[j-1] and halves j.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-15-java,"f has a halving while loop over a and then calls g. The setup statements are constant.
+
+The loop in f runs about log N iterations in total (N is the length of array a). Each pass does an array read, an addition and a halving, all Theta(1) simple operations, so f's own loop work is Theta(log N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a halving while loop that runs Theta(log N) times. Every iteration does an array read, an addition and a halving, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(log N)."
+mut_wrong,asym-15-java,"f has a halving while loop over a, so it runs in O(N). Inside the loop it only does an array read, an addition and a halving, which are simple constant operations. The g function halves its counter each step with simple constant operations inside, and seems small. So the answer is f = O(N) and g = O(N)."
+mut_correct,asym-15-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (while loop): each iteration reads a[k-1] and halves k.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: k starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part B: Theta(log N) x Theta(1) = Theta(log N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(log N) (Part B) + Theta(log N) (Part C) = Theta(log N). The two halving loops run one after another, so their costs add (Theta(log N) + Theta(log N) = Theta(log N)).
+
+Method g
+Part D: the initialisations of n, t and j - constant time.
+Part E (while loop): each iteration reads a[j-1] and halves j.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: j starts at N and is halved each iteration, so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-15-python,"f has a halving while loop over a and then calls g. The setup statements are constant.
+
+The loop in f runs about log N iterations in total (N is the length of array a). Each pass does an array read, an addition and a halving, all Theta(1) simple operations, so f's own loop work is Theta(log N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a halving while loop that runs Theta(log N) times. Every iteration does an array read, an addition and a halving, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(log N)."
+mut_wrong,asym-15-python,"f has a halving while loop over a, so it runs in O(N). Inside the loop it only does an array read, an addition and a halving, which are simple constant operations. The g function halves its counter each step with simple constant operations inside, and seems small. So the answer is f = O(N) and g = O(N)."
+mut_correct,asym-16-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (nested loops): the outer variable k takes the values 1, 2, 4, ..., up to N; the inner loop runs the full N each time.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs Theta(log N) times (k doubles until it exceeds N); the inner loop runs exactly N times each, independent of k. Total = Theta(log N) x Theta(N) = Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N log N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(N) = Theta(N log N), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-16-java,"f has a doubling outer loop with a full inner pass over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N log N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N log N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N log N)."
+mut_wrong,asym-16-java,"f has a doubling outer loop with a full inner pass over a, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-16-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n, s and k - constant time.
+Part B (nested loops): the outer variable k takes the values 1, 2, 4, ..., up to N; the inner loop runs the full N each time.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs Theta(log N) times (k doubles until it exceeds N); the inner loop runs exactly N times each, independent of k. Total = Theta(log N) x Theta(N) = Theta(N log N).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N log N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N log N) + Theta(N) = Theta(N log N), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-16-python,"f has a doubling outer loop with a full inner pass over a and then calls g. The setup statements are constant.
+
+The loop in f runs about N log N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N log N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N log N)."
+mut_wrong,asym-16-python,"f has a doubling outer loop with a full inner pass over a, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-17-java,"Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2)."
+mut_semi,asym-17-java,"f has a single loop over the first column of mat and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the side length of mat). Each pass does a matrix access and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses two nested loops over the cells of mat that runs Theta(N^2) times. Every iteration does a matrix access and an addition, all Theta(1), so the loop is Theta(N^2) x Theta(1) = Theta(N^2).
+
+Putting it together, g is Theta(N^2) and f is Theta(N^2)."
+mut_wrong,asym-17-java,"f has a single loop over the first column of mat, so it runs in O(N). Inside the loop it only does a matrix access and an addition, which are simple constant operations. The g function scans the whole matrix with simple constant operations inside, and seems quadratic. So the answer is f = O(N) and g = O(N)."
+mut_correct,asym-17-python,"Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2)."
+mut_semi,asym-17-python,"f has a single loop over the first column of mat and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the side length of mat). Each pass does a matrix access and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses two nested loops over the cells of mat that runs Theta(N^2) times. Every iteration does a matrix access and an addition, all Theta(1), so the loop is Theta(N^2) x Theta(1) = Theta(N^2).
+
+Putting it together, g is Theta(N^2) and f is Theta(N^2)."
+mut_wrong,asym-17-python,"f has a single loop over the first column of mat, so it runs in O(N). Inside the loop it only does a matrix access and an addition, which are simple constant operations. The g function scans the whole matrix with simple constant operations inside, and seems quadratic. So the answer is f = O(N) and g = O(N)."
+mut_correct,asym-18-java,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops): outer loop over i = 0..N-1, inner loop fixed at j = 0..4.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs N times; the inner loop runs exactly 5 times regardless of N. Total = 5N = Theta(N). The inner loop is bounded by a constant, so it does NOT add a factor of N.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-18-java,"f has an outer loop over a with a small fixed inner loop and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N)."
+mut_wrong,asym-18-java,"f has an outer loop over a with a small fixed inner loop, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-18-python,"Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops): outer loop over i = 0..N-1, inner loop fixed at j = 0..4.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer loop runs N times; the inner loop runs exactly 5 times regardless of N. Total = 5N = Theta(N). The inner loop is bounded by a constant, so it does NOT add a factor of N.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N) (Part C) = Theta(N).
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): one linear pass over a.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-18-python,"f has an outer loop over a with a small fixed inner loop and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the length of array a). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single for loop that runs Theta(N) times. Every iteration does an array read and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N)."
+mut_wrong,asym-18-python,"f has an outer loop over a with a small fixed inner loop, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function loops once over the array with simple constant operations inside, and seems linear. So the answer is f = O(N^2) and g = O(log N)."
+mut_correct,asym-19-java,"Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(b, a[0]); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(b, a[0]) is a binary search costing Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2), absorbing the lower-order Theta(log N) term.
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-19-java,"f has two nested loops over a where the inner starts at i and then calls g. The setup statements are constant.
+
+The loop in f runs about N^2 iterations in total (N is the length of a and b). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N^2).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a binary search while loop that runs Theta(log N) times. Every iteration does a midpoint, a couple of array accesses and comparisons, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(N^2)."
+mut_wrong,asym-19-java,"f has two nested loops over a where the inner starts at i, so it runs in O(N). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function does a binary search on b with simple constant operations inside, and seems logarithmic. So the answer is f = O(N) and g = O(N)."
+mut_correct,asym-19-python,"Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(b, a[0]); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(b, a[0]) is a binary search costing Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2), absorbing the lower-order Theta(log N) term.
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+mut_semi,asym-19-python,"f has two nested loops over a where the inner starts at i and then calls g. The setup statements are constant.
+
+The loop in f runs about N^2 iterations in total (N is the length of a and b). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N^2).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a binary search while loop that runs Theta(log N) times. Every iteration does a midpoint, a couple of array accesses and comparisons, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(N^2)."
+mut_wrong,asym-19-python,"f has two nested loops over a where the inner starts at i, so it runs in O(N). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function does a binary search on b with simple constant operations inside, and seems logarithmic. So the answer is f = O(N) and g = O(N)."
+mut_correct,asym-20-java,"Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): visits every cell of the N x N matrix.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(mat) scans a single row and costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): scans the first row of mat.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-20-java,"f has two nested loops over the cells of mat and then calls g. The setup statements are constant.
+
+The loop in f runs about N^2 iterations in total (N is the side length of mat). Each pass does a matrix access and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N^2).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single loop over one row that runs Theta(N) times. Every iteration does a matrix access and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N^2)."
+mut_wrong,asym-20-java,"f has two nested loops over the cells of mat, so it runs in O(N). Inside the loop it only does a matrix access and an addition, which are simple constant operations. The g function scans one row with simple constant operations inside, and seems linear. So the answer is f = O(N) and g = O(log N)."
+mut_correct,asym-20-python,"Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): visits every cell of the N x N matrix.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(mat) scans a single row and costs Theta(N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(N) (Part C) = Theta(N^2), absorbing the lower-order Theta(N) term.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (for loop): scans the first row of mat.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-20-python,"f has two nested loops over the cells of mat and then calls g. The setup statements are constant.
+
+The loop in f runs about N^2 iterations in total (N is the side length of mat). Each pass does a matrix access and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N^2).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a single loop over one row that runs Theta(N) times. Every iteration does a matrix access and an addition, all Theta(1), so the loop is Theta(N) x Theta(1) = Theta(N).
+
+Putting it together, g is Theta(N) and f is Theta(N^2)."
+mut_wrong,asym-20-python,"f has two nested loops over the cells of mat, so it runs in O(N). Inside the loop it only does a matrix access and an addition, which are simple constant operations. The g function scans one row with simple constant operations inside, and seems linear. So the answer is f = O(N) and g = O(log N)."
+mut_correct,asym-21-java,"Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: the initialisations of s and p - constant time.
+Part B (while loop): traverses the list from h, calling g() at each node.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p advances by p.next each iteration, so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by g(), which scans the WHOLE list from the head every time and costs Theta(N) (see g below). The pointer advance is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of c and q - constant time.
+Part E (while loop): traverses the entire list from the head h.
+Part F: return c - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at h and advances by q.next until null, visiting all N nodes; Theta(N) iterations.
+- Cost per iteration: Theta(1) - one field access, one += assignment, one pointer advance, one null comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-21-java,"f uses a while loop over the list nodes and calls g inside the loop; the outer loop runs about N times (N is the number of nodes). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N iterations by the cost of g gives roughly N^2 for f overall.
+
+g uses a while loop from the head. It runs Theta(N) times in the worst case because it scans the whole list from the head every call. Each step is constant work - a field access, an addition and a pointer move, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N^2) and g is Theta(N)."
+mut_wrong,asym-21-java,"f walks the list, so it is O(N). It calls g inside, but the operations are simple and constant. g also walks the whole list doing simple constant work, so it looks linear. The answer is f = O(N) and g = O(1)."
+mut_correct,asym-21-python,"Let N be the number of nodes in the linked list with head h.
+
+Method f
+Part A: the initialisations of s and p - constant time.
+Part B (while loop): traverses the list from h, calling g() at each node.
+Part C: return s - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: p advances by p.next each iteration, so starting from h the loop runs exactly N times before p becomes null. Theta(N) iterations.
+- Cost per iteration: dominated by g(), which scans the WHOLE list from the head every time and costs Theta(N) (see g below). The pointer advance is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) iterations x Theta(N) per iteration = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of c and q - constant time.
+Part E (while loop): traverses the entire list from the head h.
+Part F: return c - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: q starts at h and advances by q.next until null, visiting all N nodes; Theta(N) iterations.
+- Cost per iteration: Theta(1) - one field access, one += assignment, one pointer advance, one null comparison.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N)."
+mut_semi,asym-21-python,"f uses a while loop over the list nodes and calls g inside the loop; the outer loop runs about N times (N is the number of nodes). The setup is constant, and each pass costs about as much as g.
+
+Multiplying the N iterations by the cost of g gives roughly N^2 for f overall.
+
+g uses a while loop from the head. It runs Theta(N) times in the worst case because it scans the whole list from the head every call. Each step is constant work - a field access, an addition and a pointer move, all Theta(1) - so g's loop is Theta(N) x Theta(1) = Theta(N).
+
+So overall f is Theta(N^2) and g is Theta(N)."
+mut_wrong,asym-21-python,"f walks the list, so it is O(N). It calls g inside, but the operations are simple and constant. g also walks the whole list doing simple constant work, so it looks linear. The answer is f = O(N) and g = O(1)."
