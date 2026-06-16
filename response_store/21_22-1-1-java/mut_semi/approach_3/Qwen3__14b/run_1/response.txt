@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly implements exponentiation by squaring for 2^n but fails to subtract 1 from the result, which is required by the closed-form solution a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 1 when b == 0, ensuring proper termination of the recursive exponentiation function.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case returns expo(a, b-1, c) % c without multiplying by a, which violates the recurrence relation a^b = a^(b-1) * a.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) once and returns (tmp * tmp) % c, achieving O(log b) time complexity.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The final result is missing the -1 adjustment required by the closed-form solution, causing incorrect outputs for all inputs except when 2^n ≡ 1 mod 10^9+7.

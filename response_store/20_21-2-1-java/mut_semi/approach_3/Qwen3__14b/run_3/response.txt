@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The counting array C is allocated with size B.length + 1, which satisfies the constraint max(A) ≤ |B| - 1, and is properly initialized to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The frequency loop increments C[i]++ using the loop index i instead of the element value A[i], leading to incorrect frequency counts for categories in A.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at i=1 instead of i=0 and ends at B.length-1, skipping the first element (i=0) and producing a string of length m-1 instead of m.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code appends '1' when C[i] > B[i] and '0' otherwise, which inverts the required condition (should be '1' when C[i] ≤ B[i]).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code fails to produce the correct binary string for most inputs due to incorrect frequency counting, off-by-one error in the output loop, and reversed comparison logic, despite avoiding forbidden substrings.

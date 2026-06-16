@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (capacity+1) and initializes it to 0.0 by default, matching the required DP table structure.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the zero-capacity column which is necessary to handle base cases and zero-weight items properly.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution uses "volumes[i] < j" instead of "volumes[i] <= j", which incorrectly excludes items that exactly match the current capacity j, failing to handle both regular items and zero-weight items as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation incorrectly uses Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]] when the item fits, allowing items to be reused multiple times and violating the 0/1 knapsack constraint.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code allows reusing items (incorrect recurrence references same row), skips capacity 0 column, and uses incorrect volume comparison (strict < instead of <=), leading to wrong results for all inputs including zero-volume items.

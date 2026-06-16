@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a prefix sum array `c` of size `n` and initializes `c[0]` to `a[0]` as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop for building the prefix sum incorrectly sets `c[i] = a[i]` without accumulating `c[i-1]`, failing to compute the cumulative sum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output array `d` is allocated with size `n`, and a loop correctly iterates over all `n` queries in `b`.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The range sum computation uses `c[b[i][0] - 1]` unconditionally, which causes an index error when `b[i][0] == 0` (accessing `c[-1]`), failing to handle the `l == 0` edge case.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm runs in O(n) time, but the prefix sum is incorrect (due to missing accumulation), leading to wrong results for all queries. Forbidden keywords are absent.

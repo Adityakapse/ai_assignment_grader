@@ -1,0 +1,45 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly constructs the adjacency list and adds a virtual source node 0 with edges to all other nodes, matching the sample solution's approach for ensuring a single DFS traversal covers all nodes.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the memo array with -1 for all nodes and checks memo[node] != -1 to return cached values, matching the sample solution's approach for memoization.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly implements the base case for leaf nodes by returning 0 when the node's adjacency list is empty, matching the sample solution's approach.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly implements the recurrence relation by iterating through each child node, computing the maximum path length as `max(sol, dfs(child) + 1)`, and storing the result in `memo[node]` before returning.
+
+POINT_ID: 5
+The student's code is **correct** and **identical** to the sample solution. Here's a breakdown of why:
+
+---
+
+### **Key Points of Correctness**
+
+1. **Graph Initialization and Edge Addition**:
+   - The loop in the `calc` function iterates from `i = 0` to `N`, and for each `i`, it:
+     - Adds a new empty list to the graph (for the node `i`).
+     - **Only adds an edge from node `0` to node `i` if `i != 0`**.
+   - This ensures that **node `0` has edges to all nodes from `1` to `N`**, but **no self-loop** on node `0`. The self-loop is **not created**, which avoids introducing cycles into the graph.
+
+2. **DFS Functionality**:
+   - The DFS function is identical to the sample solution. It:
+     - Recursively explores the graph while updating the memoization table.
+     - Handles cycles in the graph (which are not present in the input) through memoization, preventing infinite recursion.
+   - Since the input graph is guaranteed to be a DAG, and the dummy node `0` is only connected to other nodes (not to itself), the DFS will not encounter cycles in the input.
+
+3. **Return Value**:
+   - The final result is computed as `dfs(0, graph, memo) - 1`. This is correct because:
+     - The dummy node `0` has paths to all nodes in the original graph.
+     - The DFS function returns the length of the longest path from node `0` to any node, which includes the number of edges. Subtracting `1` gives the number of nodes in that path, which is the expected result.
+
+---
+
+### **Conclusion**
+
+The student's code is **correct** and **identical** to the sample solution. It properly initializes the graph, adds edges from the dummy node to all other nodes, and computes the longest path in the DAG using DFS with memoization. No logical errors or infinite loops are present.

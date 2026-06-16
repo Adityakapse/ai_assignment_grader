@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The adjacency list is built correctly from the input array A, and a virtual source node 0 is added with edges to all nodes 1 through N, ensuring the DFS can explore all possible paths.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is properly initialized to -1 for all nodes, and the DFS checks memo[node] != -1 before returning cached results, ensuring each node is computed only once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 for nodes with no outgoing edges, accurately representing the length of a path ending at a leaf node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly iterates through all children of a node, computes the maximum path length as `dfs(child) + 1`, and stores the result in `memo[node]` before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `calc` function returns `dfs(0, graph, memo) - 1`, which correctly adjusts for the virtual source node, ensuring the longest path length is computed accurately for all DAGs.

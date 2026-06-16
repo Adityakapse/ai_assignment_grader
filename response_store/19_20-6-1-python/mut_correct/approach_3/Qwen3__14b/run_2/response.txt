@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (m+1) x (n+1) using list comprehension and uses nested loops with i and j starting from 1 to m and n respectively, filling the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised - the first row (edDis[i][0] = i) and first column (edDis[0][j] = j) are properly filled for all indices from 0 to m and 0 to n.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if a[i-1] == b[j-1] and sets edDis[i][j] to edDis[i-1][j-1] when characters match, exactly matching the required logic for the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly uses 1 + min of the three neighboring cells (edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) to represent insert, delete, and replace operations respectively.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation returns edDis[m][n] which is the correct edit distance, and the entire solution is iterative with no recursion, matching the required specification.

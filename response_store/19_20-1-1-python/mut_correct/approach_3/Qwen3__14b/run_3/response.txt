@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The GCD function has the correct two-parameter signature, uses recursion, and swaps a and b to ensure a >= b before computing the remainder.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly checks if r == 0 and returns b, which terminates the recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The recursive call uses GCD(r, b), which is logically equivalent to the canonical form GCD(b, a%b) due to the initial a/b swap ensuring a >= b.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The LCM function correctly uses integer division (//) with the formula (a * b) // GCD(a, b) and has the correct two-parameter signature.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The GCD function fails for inputs where either a or b is zero (e.g., GCD(0, 5) would cause a division-by-zero error), which are valid non-negative integer inputs.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The LCM function is correct for all positive integer inputs, assuming the GCD function works correctly for those cases (which it does for positive integers).

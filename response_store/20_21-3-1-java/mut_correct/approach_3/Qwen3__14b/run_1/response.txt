@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D double array with dimensions (n+1) x (capacity+1) and initializes all cells to 0 by default, matching the required DP table structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates from n-1 to 0 (all items) and the inner loop runs from j=0 to capacity inclusive, correctly covering all subproblems including zero-weight items at j=0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition "volumes[i] <= j" is used, which correctly allows items to be included when they fit exactly or with room to spare, and properly handles zero-weight items at j=0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly uses Math.max(values[i] + Result[i+1][j - volumes[i]], Result[i+1][j]) when the item fits, and Result[i+1][j] when it doesn't, consistently referencing the previous row (i+1) as required.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns Result[0][capacity], which is the correct cell for the maximum value, and the implementation handles all edge cases including zero-weight items and zero capacity as required.

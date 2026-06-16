@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code processes all tokens in the input list from left to right, correctly distinguishing between numeric strings (converted to integers) and operator strings (+, -, *, /) using explicit conditionals.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The student correctly converts numeric tokens to integers using int(i) and pushes them onto the stack in the else clause.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, exactly two values are popped from the stack, the correct arithmetic operation is applied (addition, subtraction, multiplication, division), and the result is pushed back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The subtraction and division operations use the wrong operand order (n1 - n2 and n1 / n2), which reverses the expected RPN semantics (should be n2 - n1 and n2 / n1). Integer division is also not implemented.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles addition and multiplication but reverses operand order for subtraction and division (n1 - n2 instead of n2 - n1), leading to incorrect results for expressions involving those operators.

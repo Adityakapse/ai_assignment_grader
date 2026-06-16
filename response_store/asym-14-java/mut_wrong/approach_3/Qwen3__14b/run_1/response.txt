@@ -1,0 +1,39 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student did not reference line numbers or clearly separate f and g; they only mentioned "f runs a doubling loop" and "g loops once" without citing specific lines from the code.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claimed that g's operations are "simple and constant" without analyzing the non-loop parts of f or g, and failed to state that all non-loop code is Theta(1).
+
+POINT_3: f(): Loop iterations
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claimed f's loop runs O(N) times, ignoring the doubling of k. The correct iteration count is Theta(log N), but this was not explained.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed f's cost per iteration is O(1), completely ignoring the Theta(N) cost of the g(a) call. This is a fundamental error in the analysis.
+
+POINT_5: f(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly concluded f's total loop cost is O(N), failing to multiply Theta(log N) iterations by Theta(N) per iteration to arrive at Theta(N log N).
+
+POINT_6: g(): Loop iterations
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly stated g's loop runs "once" (implying O(1)), whereas the for loop iterates Theta(N) times (from i=0 to N-1).
+
+POINT_7: g(): Cost per iteration
+BUCKET: Semi (6 marks)
+FEEDBACK: The student vaguely mentioned "simple constant work" for g's loop, which is correct but lacked explicit justification for Theta(1) per iteration (e.g., array read and += operation).
+
+POINT_8: g(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claimed g's total loop cost is O(1), failing to multiply Theta(N) iterations by Theta(1) per iteration to arrive at Theta(N).
+
+POINT_9: Overall worst-case runtime of g
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly stated g's overall runtime as O(1), ignoring the Theta(N) loop cost and failing to sum Theta(1) parts with the loop.
+
+POINT_10: Overall worst-case runtime of f
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claimed f's overall runtime is O(N), ignoring the Theta(N log N) contribution from the loop and failing to justify the final complexity.

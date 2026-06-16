@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's code does not handle the case where the node to delete has two children, failing to set y to the successor node using tree_minimum as required when both children exist.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution does not implement the required tree_minimum helper function, which is essential for handling the two-child case in the delete operation as specified in the rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code incorrectly uses delete's children to determine x, rather than y's children as required. This fails to handle cases where y is a different node (like the successor) and would produce incorrect results when deleting nodes with two children.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly updates x.parent to y.parent (delete.parent) and adjusts the parent's child pointer (or root) to x, properly handling the leaf and one-child cases required for splicing y out of the tree.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution does not include the key-copying step from the sample solution where delete.key = y.key when y is the in-order successor (the case where y != delete). This results in incorrect logical deletion when a node with two children is removed.
+
+POINT_ID: 6
+MARKS: 6
+FEEDBACK: The solution incorrectly handles nodes with two children by not finding a successor or copying values, leading to invalid BST structure in such cases.

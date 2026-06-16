@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly constructed from A, but the virtual source node 0 is missing, so the algorithm can only find paths starting from node 1 rather than the globally longest path.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is properly initialised to -1 for all nodes, and the cache check correctly returns memo[node] when it is not -1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 when a node has no outgoing edges, as required for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over children but fails to increment the result by +1 for each edge, leading to an undercount of path lengths by 1 for all paths.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code calls dfs(1) without a virtual source and returns the result directly, leading to incorrect results for DAGs where the longest path starts at nodes other than 1.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The loop correctly navigates from the root to a null position by comparing insert.key with each node's key and moving left or right accordingly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The variable y is initialized before the loop and updated to the current node (x) at each step, ensuring it holds the parent of the insertion point after the loop.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly attaches insert as the left or right child of y based on whether insert.key is less than y.key, maintaining the BST property.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code completely omits the line that sets insert.parent = y, leaving the parent pointer of the inserted node unassigned.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles the empty tree case by returning insert, but fails to set insert.parent, which breaks the parent-child linkage in the tree structure.

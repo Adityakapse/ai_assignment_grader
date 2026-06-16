@@ -1,0 +1,27 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code does not handle the case where the node has two children, failing to select the correct successor using treeMinimum on the right subtree, and instead incorrectly uses the left child in all cases.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not include a treeMinimum helper function, which is required to handle the two-child case during deletion as specified in the rubric.
+
+POINT_ID: 3
+The student's code correctly identifies `x` as the child of the node to be deleted (`delete`) in the cases where the node has no or one child. Specifically, the code sets `x` to `delete.left` if non-null, otherwise `delete.right`. This aligns with the **"Correct"** bucket of the rubric point, which requires setting `x` to `y.left` if non-null, else `y.right`. In this context, since `y` (the node to be deleted) is equivalent to `delete` in the cases handled by the code, the logic is valid.
+
+However, the code does not address the **two-child case** (where the node has both left and right children), which is part of the algorithm. This omission is not directly addressed by the rubric point, which focuses specifically on the logic for setting `x` as the child of `y`. Since the code correctly implements this logic for the cases it handles, it satisfies the **"Correct"** bucket.
+
+**Answer:**  
+The student's code correctly identifies `x` as the child of the node to be deleted in the cases it handles (no or one child), aligning with the **"Correct"** bucket of the rubric point.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly updates x.parent to delete.parent (y.parent) when x is non-null, adjusts the parent's child pointer (left/right) to x, and handles the root replacement case when delete.parent is null.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The code completely omits the key copy operation (delete.key = y.key) entirely, leaving delete.key unchanged even when a successor node is used for deletion.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code correctly handles leaf and one-child deletions by updating parent pointers and root, but completely omits handling the two-children case (no successor node logic), leading to incorrect deletions when the node has two children.

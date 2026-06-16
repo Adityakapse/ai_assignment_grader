@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a counting array C of size B.length + 1, which is sufficient given the constraint max(A) ≤ |B| - 1, and initialized it to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The frequency counting loop incorrectly increments C[i]++ using the loop index i instead of the element value A[i], leading to incorrect frequency counts for categories.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at i=1 and ends at B.length-1, skipping index 0 and producing a string of length m-1 instead of m, which is an off-by-one error.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The comparison checks if C[i] > B[i] and appends '1' instead of '0', inverting the intended logic for determining whether the category fits in the sleigh capacity.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code contains incorrect frequency counting, an off-by-one error in the output loop, and reversed comparison logic, leading to incorrect outputs for most inputs despite avoiding forbidden substrings.

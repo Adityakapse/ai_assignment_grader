@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code processes all tokens in the input list sequentially, using conditional checks to distinguish between operators (+, -, *, /) and numeric strings, then applying the appropriate stack operations for each case.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The student correctly converts numeric tokens to integers using int(i) and pushes them onto the stack in the else clause.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, the student correctly pops two values from the stack, applies the corresponding arithmetic operation (e.g., subtraction for '-', division for '/'), and pushes the result back onto the stack. The operand order issue is addressed separately in another rubric point.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code computes subtraction and division with reversed operand order (first_popped - second_popped and first_popped / second_popped), which produces incorrect results for non-symmetric expressions.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles addition and multiplication but subtracts and divides in the wrong order (n1 - n2 instead of n2 - n1 and n1 / n2 instead of n2 / n1), leading to incorrect results for expressions involving subtraction and division.

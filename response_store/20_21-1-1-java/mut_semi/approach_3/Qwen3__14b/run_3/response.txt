@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails when c == 1 because 1 % 1 equals 0, not 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The parity check correctly uses b % 2 != 0 for odd and b % 2 == 0 for even, distinguishing between the two cases properly.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case returns expo(a, b-1, c) % c but omits the required multiplication by a, leading to incorrect results for odd exponents.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) % c and returns (tmp * tmp) % c, achieving O(log b) recursion depth through halving and squaring.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The base case returns 1 without % c (fails for c == 1), and the odd case misses the multiplication by a, causing incorrect results for many valid inputs.

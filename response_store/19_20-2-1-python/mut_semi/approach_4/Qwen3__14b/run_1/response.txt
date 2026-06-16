@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class is properly defined with internal storage (self.lst) and maintains FIFO order through list-based tracking state, even though the dequeue() method incorrectly fails to remove elements.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty() method correctly checks if the queue is empty by comparing the length of the internal list to zero, which accurately reflects the queue's state.
+
+POINT_ID: 3
+BUCKET: Correct (12 marks)
+FEEDBACK: The head() method correctly returns the first element of the list (self.lst[0]) without modifying the queue's internal state or advancing any pointers.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method correctly appends elements to the end of the internal list using self.lst.append(x), ensuring subsequent operations like dequeue() and head() function properly.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The dequeue() method returns self.lst[0] but does not remove it from the list, leaving the internal state unchanged and violating the requirement to remove the front element.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns the first element but does not remove it from the list, causing the queue to fail to maintain FIFO order as elements are not actually dequeued.

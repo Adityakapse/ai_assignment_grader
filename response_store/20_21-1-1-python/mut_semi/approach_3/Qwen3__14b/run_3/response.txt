@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails when c == 1 (e.g., returns 1 instead of 0 for a=2, b=0, c=1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The parity check correctly uses b % 2 to distinguish odd and even cases, with the odd case handled by the elif clause and even by the else clause.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case reduces b by 1 and recurses, but forgets to multiply by a (returns expo(a, b-1, c) % c instead of (a * expo(...)) % c).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b//2, c) % c once, then returns (tmp * tmp) % c, achieving O(log b) recursion depth.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for inputs where c == 1 (due to missing % c in base case) and for odd exponents (due to missing multiplication by a in odd case), but avoids 'import' and '**' as required.

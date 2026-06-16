@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D table of size (m+1) x (n+1) is correctly allocated using list comprehensions, and nested loops properly iterate from 1 to m and 1 to n to fill the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised - the first row and column are filled with incremental values from 0 to m and 0 to n respectively, matching the standard edit distance DP initialization.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks for character matches using a[i-1] == b[j-1] and assigns edDis[i][j] = edDis[i-1][j-1] when characters match, exactly as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly implements the recurrence relation with 1 + min of the three neighboring cells (insert, delete, replace), using the exact same formula as the sample solution.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly returns edDis[m][n] for all valid inputs, uses an iterative approach without recursion, and matches the sample solution's logic and output for all test cases.

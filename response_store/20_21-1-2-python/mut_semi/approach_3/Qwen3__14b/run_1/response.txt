@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The recursive quicksort structure is present with left and right subarray calls, but the partition function only swaps the first element with the pivot if it's larger, failing to fully partition the array.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly checks if l < r before making recursive calls, preventing infinite recursion on single-element subarrays.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The partition function only checks the first element against the pivot and performs a single swap if needed, but leaves most elements unpartitioned, failing to establish proper order.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The pivot is always selected as the last element without any randomisation, providing no worst-case O(n log n) guarantee as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to sort the array correctly due to the incomplete partitioning logic, even though it avoids using 'sort' or 'numpy' as substrings.

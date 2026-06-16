@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The upper bound is set to 1000000000L (1e9) instead of 1e18, which will fail for N values exceeding this limit.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop uses the correct termination condition (l <= r) and computes the midpoint as (l + r)/2, which correctly implements binary search logic.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: When f_N(m) == 1, the code incorrectly updates l = m + 1 instead of r = m - 1, and when f_N(m) == 0, it updates r = m - 1 instead of l = m + 1, reversing the search direction.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code returns m unconditionally without checking f_N(m) after the loop, which fails when the loop exits with f_N(m) == 0 (the correct return would be m + 1).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for N > 1e9 due to the small upper bound, has incorrect narrowing logic, and returns m unconditionally, leading to incorrect results for many inputs.

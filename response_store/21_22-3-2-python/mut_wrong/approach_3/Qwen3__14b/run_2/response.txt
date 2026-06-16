@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly constructed by iterating through edges and adding them to the graph, but the virtual source node 0 with edges to all other nodes is missing, preventing the algorithm from considering all possible starting points.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used at all; the function simply returns 0 immediately after building the graph, which would cause exponential recomputation on large DAGs.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No DFS function or base case is implemented; the function returns 0 unconditionally, which would crash or loop indefinitely on nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No DFS recurrence logic is present; the function returns 0 immediately without iterating over children or computing max path lengths.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns 0 for all inputs regardless of the graph structure, which is incorrect for any DAG with edges and fails to compute the longest path length.

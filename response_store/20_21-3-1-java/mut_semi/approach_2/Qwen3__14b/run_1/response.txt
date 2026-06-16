@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (capacity+1) and initializes it to 0.0 using the double[][] constructor, matching the sample solution's approach.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The inner loop starts at j=1 instead of 0, missing the zero-capacity column which is required to handle items with weight 0 and ensure correct initialization of the DP table.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code uses "volumes[i] < j" instead of "volumes[i] <= j" for capacity feasibility, which incorrectly excludes items that exactly match the current capacity j, violating the requirement to handle both regular and zero-weight items properly.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation incorrectly references Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]], allowing items to be reused multiple times and violating the 0-1 knapsack constraint.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: The solution incorrectly references Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]], allowing items to be reused multiple times which violates the 0/1 knapsack constraint.

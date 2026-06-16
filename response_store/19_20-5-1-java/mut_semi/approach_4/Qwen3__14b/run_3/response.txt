@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly initializes the queue with the start node and uses a while loop that processes nodes until the queue is empty, meeting the structural requirements for BFS.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code uses queue.remove(queue.size() - 1) to pop from the end of the list, implementing LIFO behavior (DFS) rather than FIFO (BFS) as required. This violates the FIFO dequeue requirement for correct BFS traversal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student checks if a node is in visited before processing and adds it to visited when processed, ensuring no duplicates or infinite loops, even though the queue is implemented as a stack (which changes the traversal order).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly iterates through all neighbors of the current node and adds each unvisited neighbor to the back of the queue using queue.add(vertex), which aligns with BFS requirements.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution uses a stack (removing from the end of the list) instead of a queue, leading to a depth-first search order rather than the required breadth-first level-by-level traversal.

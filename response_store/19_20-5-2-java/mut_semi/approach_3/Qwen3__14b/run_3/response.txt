@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is pushed before the loop and the loop runs while the stack is not empty, but the loop condition includes a safety counter that may prematurely terminate the traversal.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses stack.pop() to remove nodes from the top of the stack, ensuring depth-first traversal order.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code adds each popped node to visited without checking if it's already been visited, allowing duplicate entries and failing to prevent infinite loops on cyclic graphs.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code pushes all neighbors to the stack without checking if they've been visited, violating the requirement to only push unvisited neighbors.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method may return duplicate nodes and fails to properly handle cycles due to missing visited checks, resulting in incorrect traversal order and incomplete reachability.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly implements the closed-form solution $a_n = 2^n - 1$ by calling `expo(2, n, 1000000007) - 1`, which matches the required formula.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (b == 0) return 1;` correctly returns 1 for exponent 0, ensuring proper termination of the recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case `else if (b % 2 == 1) return (a * expo(a, b-1, c)) % c;` correctly reduces the exponent by 1 and multiplies by the base, applying the modulo at each step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case `else { a = expo(a, b/2, c); return (a * a) % c; }` correctly computes the square of the result of the halved exponent, ensuring logarithmic time complexity.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly computes $(2^n - 1) \mod (10^9+7)$ in $O(\log n)$ time without forbidden keywords, and applies modulo at every recursive step.

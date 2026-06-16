@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 without applying % c, which fails when c == 1 (e.g., 1 mod 1 should be 0, but returns 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly distinguishes odd (b % 2 != 0) and even (else) cases using modulo 2, leading to different recursive branches.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case reduces b by 1 and recurses, but omits the required multiplication by a (returns expo(...) % c instead of (a * expo(...)) % c).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) % c and returns (tmp * tmp) % c, achieving O(log b) depth with proper squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function fails for inputs where c == 1 (due to missing % c in base case) and for odd exponents (due to missing multiplication by a), but works for many other cases.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) and initializes all cells to 0 using "double[][] Result = new double[n + 1][capacity + 1];".
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the zero-capacity column needed to handle items with volume 0, which is required for correct handling of zero-weight items.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The feasibility check uses "volumes[i] < j" instead of "volumes[i] <= j", incorrectly excluding items that exactly match the remaining capacity (e.g., j=2 and volume=2).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence relation references the current row (Result[i][j - volumes[i]]) instead of the previous row (Result[i+1][j - volumes[i]]), allowing items to be reused multiple times, which violates the 0-1 knapsack constraint.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle zero-weight items correctly due to the inner loop starting at j=1 and the incorrect recurrence relation, leading to incorrect results for inputs with zero-volume items or when the capacity exactly matches an item's volume.

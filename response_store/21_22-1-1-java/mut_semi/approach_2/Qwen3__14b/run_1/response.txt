@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution incorrectly returns 2^n mod c without subtracting 1, missing the crucial adjustment required by the closed-form formula a_n = 2^n - 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student correctly implements the base case for the expo function, returning 1 when b == 0, matching the sample solution's handling of the exponent zero scenario.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The odd case in expo returns expo(a, b-1, c) % c without multiplying by a, missing the required a * expo(...) step specified in the rubric.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) once and returns (tmp * tmp) % c, matching the sample solution's halve-and-square approach.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution misses the -1 adjustment required by the closed-form formula and incorrectly computes the exponentiation for odd exponents by not multiplying by a.

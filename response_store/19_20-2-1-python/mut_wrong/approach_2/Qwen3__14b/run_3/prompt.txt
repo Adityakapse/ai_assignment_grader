@@ -1,0 +1,483 @@
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+class Queue:
+    """Klasse, die eine selbstgebaute Queue darstellt.
+    """
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """
+        return len(self.lst) == 0
+
+    def head(self):
+        """Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """
+        self.lst.append(x)
+
+    def dequeue(self):
+        """Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError
+
+STUDENT SOLUTION:
+# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+
+
+RUBRIC POINT:
+Point 1 — Class structure and internal storage (valid range: 0–15)
+  The Queue class is defined and contains internal storage and any necessary tracking state sufficient to maintain elements in FIFO order.
+
+========================================
+
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+class Queue:
+    """Klasse, die eine selbstgebaute Queue darstellt.
+    """
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """
+        return len(self.lst) == 0
+
+    def head(self):
+        """Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """
+        self.lst.append(x)
+
+    def dequeue(self):
+        """Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError
+
+STUDENT SOLUTION:
+# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+
+
+RUBRIC POINT:
+Point 2 — emptyqueue() / isEmpty(): correct emptiness check (valid range: 0–15)
+  The method returns true if and only if the queue contains no elements, based on the internal state of the queue.
+
+========================================
+
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+class Queue:
+    """Klasse, die eine selbstgebaute Queue darstellt.
+    """
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """
+        return len(self.lst) == 0
+
+    def head(self):
+        """Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """
+        self.lst.append(x)
+
+    def dequeue(self):
+        """Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError
+
+STUDENT SOLUTION:
+# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+
+
+RUBRIC POINT:
+Point 3 — head(): returns front element without modifying queue (valid range: 0–12)
+  head() returns the element at the front of the queue without removing it or modifying any internal state.
+
+========================================
+
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+class Queue:
+    """Klasse, die eine selbstgebaute Queue darstellt.
+    """
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """
+        return len(self.lst) == 0
+
+    def head(self):
+        """Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """
+        self.lst.append(x)
+
+    def dequeue(self):
+        """Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError
+
+STUDENT SOLUTION:
+# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+
+
+RUBRIC POINT:
+Point 4 — enqueue(x): adds element to the back of the queue (valid range: 0–18)
+  enqueue(x) inserts the element at the back of the queue and correctly updates all internal tracking state so subsequent operations remain consistent.
+
+========================================
+
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+class Queue:
+    """Klasse, die eine selbstgebaute Queue darstellt.
+    """
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """
+        return len(self.lst) == 0
+
+    def head(self):
+        """Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """
+        self.lst.append(x)
+
+    def dequeue(self):
+        """Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError
+
+STUDENT SOLUTION:
+# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+
+
+RUBRIC POINT:
+Point 5 — dequeue(): removes and returns the front element (valid range: 0–18)
+  dequeue() retrieves the element at the front of the queue, removes it, updates all internal tracking state, and returns the retrieved element.
+
+========================================
+
+QUESTION:
+Implement a class "Queue" that works like a queue (as described in the
+the lecture). The class should have at least the
+methods isEmpty(), head(), enqueue(x) and dequeue(). The
+queue does not need to hold more than 100 elements.
+
+Note 1: In the Java test, the stack is expected to store "strings".
+Since Python is dynamically typed, this does not apply.
+
+Note 2: It is not allowed to use "import"!
+
+SAMPLE SOLUTION:
+class Queue:
+    """Klasse, die eine selbstgebaute Queue darstellt.
+    """
+    def __init__(self):
+        self.lst = []
+
+    def isEmpty(self) -> bool:
+        """Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """
+        return len(self.lst) == 0
+
+    def head(self):
+        """Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """
+        if not self.isEmpty():
+            return self.lst[0]
+        else:
+            return None
+
+    def enqueue(self, x):
+        """Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """
+        self.lst.append(x)
+
+    def dequeue(self):
+        """Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """
+        if not self.isEmpty():
+            returnvalue = self.lst[0]
+            for i in range(len(self.lst) - 1):
+                self.lst[i] = self.lst[i+1]
+            del self.lst[-1]
+            return returnvalue
+        else:
+            raise IndexError
+
+STUDENT SOLUTION:
+# Stub that only ever stores the most recent element
+class Queue:
+    def __init__(self):
+        self.last = None
+
+    def isEmpty(self):
+        return self.last is None
+
+    def head(self):
+        return self.last
+
+    def enqueue(self, x):
+        self.last = x
+
+    def dequeue(self):
+        v = self.last
+        self.last = None
+        return v
+
+
+RUBRIC POINT:
+Point 6 — Overall correctness of Queue (valid range: 0–22)
+  All four methods work correctly together: the queue preserves FIFO order across repeated enqueue and dequeue operations, and does not use 'import'.

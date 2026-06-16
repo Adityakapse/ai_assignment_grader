@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (capacity+1) using double[n + 1][capacity + 1], which properly initializes all elements to 0.0 by default in Java.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the zero-capacity column required to handle items with zero weight and properly initialize the DP table.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution uses "volumes[i] < j" instead of "volumes[i] <= j" for feasibility checks, which incorrectly excludes items that exactly match the current capacity, violating the required condition for handling zero-weight and regular items properly.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence relation incorrectly references Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]] when including the item, allowing items to be reused multiple times and violating the 0/1 knapsack constraint.
+
+POINT_ID: 5
+MARKS: 6
+FEEDBACK: The student's code incorrectly allows item reuse by referencing Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]], and skips initializing the j=0 column, leading to incorrect results for zero-capacity and items with volume 0.

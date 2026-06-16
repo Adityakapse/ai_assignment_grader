@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) 2D table and uses nested loops with i and j ranging from 1 to m and n respectively, matching the required bottom-up DP structure.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's code initializes the entire matrix with zeros and completely omits the critical base case initialization for edDis[i][0] = i and edDis[0][j] = j, which are essential for correctly calculating edit distances when one string is empty.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly sets edDis[i][j] to edDis[i-1][j-1] when a[i-1] == b[j-1], properly handling the character match case as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters using 1 + min of the three neighboring cells (left, above, and diagonal), matching the sample solution's logic.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution fails to initialize the base cases (first row and column) with the correct values (i and j), leading to incorrect edit distance calculations as all initial values are zero.

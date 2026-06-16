@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student mentions both f and g but does not reference line numbers. They vaguely refer to "loops over array a" and "runs through array b" without specifying which lines or how loops are structured.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student does not mention any non-loop code in f or g, nor do they analyze constant-time operations. Their analysis entirely ignores the constant-time parts of the functions.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly identifies the outer loop in f as O(M) but provides no justification for why the loop runs M times, relying only on the vague claim "loops over array a."
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student claims "simple operations" inside loops but completely ignores the call to g(b, a[i]), which dominates the cost. They do not mention that g performs a binary search (log N time).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student concludes the total time is "linear in M and N" (O(M + N)), which is incorrect. They fail to multiply the M iterations of f by the log N cost per iteration of g.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student says g "runs through array b" but does not explain that the loop in g performs binary search with Theta(log N) iterations due to halving the interval. They miss the key justification.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student implies that g's loop has constant-time operations ("simple operations") but does not explicitly state this as Theta(1) or explain why (e.g., mid computation, comparisons).
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student does not calculate the total cost for g's loop, failing to combine Theta(log N) iterations with Theta(1) per-iteration cost.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student does not state the overall runtime for g explicitly. They mention "runs through array b" but do not conclude Theta(log N) for g.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student claims the total time is "linear in M and N" (O(M + N)), which is incorrect. They fail to derive Theta(M log N) for f by combining M iterations with log N per-iteration cost.

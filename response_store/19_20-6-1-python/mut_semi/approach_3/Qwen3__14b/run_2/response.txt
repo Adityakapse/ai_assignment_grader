@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D table of size (m+1) x (n+1) is correctly allocated using list comprehensions, and nested loops iterate from 1 to m and 1 to n to fill the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Neither the first row (edDis[0][j] = j) nor the first column (edDis[i][0] = i) is initialised; the base cases remain zero, which will produce incorrect results for any non-empty input strings.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if a[i-1] == b[j-1] and sets edDis[i][j] to edDis[i-1][j-1], properly handling the character match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly uses 1 + min of edDis[i][j-1], edDis[i-1][j], and edDis[i-1][j-1], representing insert, delete, and replace operations respectively.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code fails to initialize base cases, leading to incorrect results for inputs where one string is empty or both have non-zero lengths. For example, editDistance("a", "") would return 0 instead of 1.

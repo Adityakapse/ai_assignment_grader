@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocated a 2D table of size (m+1) x (n+1) and used nested loops with i and j starting from 1 to m and n respectively, matching the required bottom-up filling structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The base case initialization is completely missing - the first row and column of the DP table remain at 0 instead of being set to i and j values, which will produce incorrect results for all non-zero inputs.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The character match case correctly compares a.charAt(i-1) with b.charAt(j-1) and sets edDis[i][j] to edDis[i-1][j-1] when characters match, matching the required logic exactly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly computes 1 + Math.min of the three possible operations (insert, delete, replace) using the correct table indices, matching the required recurrence relation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation returns incorrect results for all cases where either string is non-empty due to missing base case initialization, even though the core DP logic is correct.

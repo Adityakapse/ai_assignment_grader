@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student mentions f's loop and g's matrix scan but does not reference specific line numbers or clearly separate components like initializations or returns.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Wrong
+FEEDBACK: The student does not analyze any non-loop parts (e.g., initializations or returns) and does not mention they are Theta(1).
+
+POINT_3: f(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student states f's loop runs O(N) but does not justify why i runs from 0 to N-1, as required for a correct analysis.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the cost per iteration as constant operations (matrix access and addition).
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student implies the total loop cost is O(N), which aligns with Theta(N) iterations multiplied by Theta(1) per iteration.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student notes that g is quadratic but does not explicitly state that the call to g contributes Theta(N²) and the addition/return are Theta(1).
+
+POINT_7: g(): Nested loop iterations
+BUCKET: Semi
+FEEDBACK: The student mentions g scans the whole matrix and is quadratic but does not explain that both loops run N times, as required for a correct justification.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the cost per iteration as constant operations (matrix access and addition).
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student implies the total loop cost is O(N²), which aligns with Theta(N²) iterations multiplied by Theta(1) per iteration.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student states g is O(N) but does not mention the constant-time parts (initializations and returns) that sum to Theta(N²).
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Wrong
+FEEDBACK: The student incorrectly claims f is O(N) instead of Theta(N²), failing to account for the Theta(N²) cost of the call to g.

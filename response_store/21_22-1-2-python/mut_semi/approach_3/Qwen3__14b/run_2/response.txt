@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The upper bound is set to 10^9 instead of 10^18, which will fail for N > 10^9, as required by the problem constraints.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop condition "while l <= r" is correct, and the midpoint is computed as "(l + r) // 2" which is equivalent to the sample solution's "(r + l) // 2".
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: When f(m) == 1, the code incorrectly sets l = m + 1 instead of r = m - 1, and when f(m) == 0, it sets r = m - 1 instead of l = m + 1 — the search direction is reversed.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code returns m unconditionally without checking f(m) after the loop, which would fail when the loop exits with f(m) == 0 (the correct answer is m + 1 in that case).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for N > 1e9 due to the small upper bound, and contains an inverted search direction that prevents convergence. It does not use forbidden keywords but fails correctness for many inputs.

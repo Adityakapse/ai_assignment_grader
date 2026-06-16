@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D list with (n+1) rows and (capacity+1) columns, and initializes all cells to 0 using list comprehension.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items (from n-1 to 0) and the inner loop iterates j from 0 to capacity inclusive, covering all required subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if volume[i] <= j before attempting to include the item, ensuring items only fit when their volume is less than or equal to the current capacity.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence relation lacks the critical max() comparison between including and excluding the item. It always adds the item's value when feasible, leading to incorrect selections.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to compute correct maximum values for inputs requiring trade-offs between items. For example, it would select the first item in the sample input even if a better combination exists.

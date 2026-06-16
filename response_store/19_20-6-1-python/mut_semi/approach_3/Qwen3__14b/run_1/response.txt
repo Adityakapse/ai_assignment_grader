@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (m+1) x (n+1) using list comprehensions and uses nested loops with i and j starting from 1 to m and n respectively.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The base case initialization for the first row and column is completely missing, leaving all values in edDis[0][...] and edDis[...][0] as 0 instead of being set to their respective indices.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks for character matches using a[i-1] == b[j-1] and sets edDis[i][j] to edDis[i-1][j-1] when characters match.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly implements the mismatch recurrence with 1 + min of the three neighboring cells (edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) when characters differ.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code fails to initialize the base cases, leading to incorrect results for all inputs since the first row and column remain zero instead of being set to their respective indices.

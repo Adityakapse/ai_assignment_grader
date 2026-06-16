@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: No 2D table is allocated; instead, a simple double variable 'total' is used and values are summed directly without storing subproblem results.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No nested loops are present; only a single loop over items is used without iterating through all capacities.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if volumes[i] <= capacity before adding the value, correctly allowing items that exactly fill the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence relation is applied; values are simply summed directly without referencing previously computed subproblems.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns incorrect results for inputs requiring optimal selection (e.g., returns 0.5 for capacity 7 when the correct answer is 0.8 due to greedy selection of higher-value items).

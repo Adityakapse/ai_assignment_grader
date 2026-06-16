@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly uses exponentiation by squaring on base 2 but omits the final "-1" adjustment required by the closed-form formula a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 1 % c when b == 0, properly terminating the recursion and handling the exponent 0.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case returns expo(a, b-1, c) % c without multiplying by a, violating the required formula a * expo(a, b-1, c) % c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b//2, c) % c once and returns (tmp * tmp) % c, achieving O(log b) time complexity.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly avoids forbidden keywords but fails to subtract 1 from the exponentiation result, leading to incorrect outputs for all n ≥ 0.

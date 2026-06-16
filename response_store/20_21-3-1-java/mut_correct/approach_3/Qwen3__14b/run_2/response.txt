@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) and initializes all cells to 0, matching the sample solution.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items (from i = n-1 downto 0) and the inner loop iterates j from 0 to capacity inclusive, ensuring zero-weight items and capacity 0 are handled properly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition "volumes[i] <= j" is used to check if an item fits, correctly allowing items that exactly fill the remaining capacity and handling zero-weight items at j=0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly computes Result[i][j] as the maximum of including the item (values[i] + Result[i+1][j - volumes[i]]) or excluding it (Result[i+1][j]), referencing the correct previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code returns Result[0][capacity], which contains the correct maximum value for all valid inputs, including zero-weight items and capacity 0, as demonstrated by the sample inputs.

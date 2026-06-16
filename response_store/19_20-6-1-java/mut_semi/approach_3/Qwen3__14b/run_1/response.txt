@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D table of size (m+1) x (n+1) is correctly allocated, and nested loops iterate i from 1 to m and j from 1 to n to fill it bottom-up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Neither base case is initialised; the first row and column remain 0 due to default array initialisation, making the DP table incorrect for any non-empty string.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The character match case correctly uses a.charAt(i-1) == b.charAt(j-1) and sets edDis[i][j] to edDis[i-1][j-1].
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch recurrence correctly uses 1 + Math.min of edDis[i][j-1], edDis[i-1][j], and edDis[i-1][j-1] to represent insert, delete, and replace operations.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns incorrect results for most inputs due to missing base case initialisation, even though the DP structure and recurrence are technically correct.

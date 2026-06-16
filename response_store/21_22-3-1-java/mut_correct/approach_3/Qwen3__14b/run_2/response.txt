@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The memo array is correctly allocated with size n+1 and initialized to -1 for all entries, matching the required sentinel value for uncached subproblems.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are implemented correctly: n == 0 returns W[0], and n == 1 returns the maximum of W[0] and W[1], covering all edge cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if memo[n] != -1 at the start of each helper call and returns the cached value immediately, ensuring each subproblem is computed only once.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence correctly computes memo[n] as the maximum of taking W[n] + opt_helper(n-2) or skipping W[n] with opt_helper(n-1), and stores the result in memo[n] before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly computes the maximum profit for all valid input sizes (1 ≤ n ≤ 1000) in O(n) time using dynamic programming with memoization.

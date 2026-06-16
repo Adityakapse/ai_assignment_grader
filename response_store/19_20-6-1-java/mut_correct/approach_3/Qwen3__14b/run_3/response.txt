@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (m+1) x (n+1) and uses nested loops with i and j starting from 1 to m and n respectively, filling the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised with edDis[i][0] = i for all i and edDis[0][j] = j for all j, matching the requirements for the first row and column.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks for character matches using a.charAt(i-1) == b.charAt(j-1) and sets edDis[i][j] to edDis[i-1][j-1] when characters match.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly uses 1 + Math.min of the three possible previous states (edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) to compute the edit distance.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly returns edDis[m][n] without using recursion, and matches the sample solution's approach for computing the edit distance.

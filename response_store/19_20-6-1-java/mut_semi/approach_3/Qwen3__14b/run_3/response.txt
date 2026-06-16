@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D table of size (m+1) x (n+1) is correctly allocated, and nested loops iterate i from 1 to m and j from 1 to n to fill it bottom-up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Neither the first row nor the first column is initialised; the base case remains at default 0 values, making the DP table incorrect for any non-empty string.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if a[i-1] == b[j-1] and sets edDis[i][j] to edDis[i-1][j-1] when characters match.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly applies 1 + Math.min of the three possible operations (insert, delete, replace) using the correct table indices.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns incorrect values for most inputs due to missing base case initialisation, which causes the DP table to start with all-zero values instead of the required costs for deletions and insertions.

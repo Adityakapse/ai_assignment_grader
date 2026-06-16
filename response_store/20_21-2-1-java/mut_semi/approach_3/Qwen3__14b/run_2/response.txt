@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The counting array `C` is correctly allocated with size `B.length + 1` and initialized to 0, ensuring it can hold frequencies for all possible values in `A`.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The frequency loop increments `C[i]++` using the loop index `i` instead of `C[A[i]]++`, which incorrectly counts frequencies based on array positions rather than element values.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at `i = 1` instead of `i = 0`, skipping the first element of `B` and producing a string of length `m-1` instead of `m`.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The comparison appends `'1'` when `C[i] > B[i]` instead of `'0'`, inverting the intended logic for the binary string's values.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code avoids forbidden substrings and runs in O(n + m) time, but it produces incorrect results for edge cases due to the off-by-one error and incorrect frequency counting.

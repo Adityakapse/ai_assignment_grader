@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution fails to handle the case where the node to delete has two children, as it does not find a successor using tree_minimum and incorrectly assumes the node always has at most one child.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution does not implement the required tree_minimum helper function, which is necessary for correctly handling the two-child case in the delete operation.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly identifies x as the non-null child of the node to delete (using delete.left if available, else delete.right), which matches the required approach for finding the child to promote.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly updates the parent pointer of the child node (x.parent = delete.parent) and adjusts the parent's child pointer (delete.parent.left/right = x) when removing a node with zero or one child, fulfilling the splicing requirements described in the rubric.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution does not include the key-copying step where delete.key is updated to y.key when y is the in-order successor, which is required to correctly handle the two-child deletion case.
+
+POINT_ID: 6
+MARKS: 0
+FEEDBACK: The solution incorrectly handles only leaf and one-child nodes, completely omitting the two-child case which requires finding a successor using TREE-MINIMUM as in the sample solution. The code also fails to handle root deletion properly.

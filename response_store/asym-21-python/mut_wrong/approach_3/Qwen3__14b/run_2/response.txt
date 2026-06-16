@@ -1,0 +1,39 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions f and g but does not reference specific line numbers. They refer to "f walks the list" and "g also walks the whole list" without explicitly identifying code segments or line numbers.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions "simple and constant" operations for g but does not explicitly state that initializations (like s and p in f, or c and q in g) are Theta(1). They also fail to mention these parts for f entirely.
+
+POINT_3: f(): Loop iterations
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims f is O(N) but does not justify why the loop runs N times. They do not mention that p advances by p.next each iteration, which is critical for establishing Theta(N) iterations.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims that g's operations are "simple and constant" (Theta(1)) instead of recognizing that g() itself has Theta(N) cost per iteration due to scanning the entire list.
+
+POINT_5: f(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student concludes f is O(N) without combining the Theta(N) iterations with the Theta(N) per-iteration cost. They completely miss the Theta(N²) result.
+
+POINT_6: g(): Loop iterations
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies that g traverses the whole list but does not explicitly justify this by mentioning that q starts at h and advances until null, which would be required for a "Correct" bucket.
+
+POINT_7: g(): Cost per iteration
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly claims g's iterations are constant but does not explicitly list the operations (field access, +=, pointer advance, null check) that justify Theta(1) per iteration.
+
+POINT_8: g(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims g is O(1) instead of recognizing that Theta(N) iterations x Theta(1) per iteration equals Theta(N).
+
+POINT_9: Overall worst-case runtime of g
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student concludes g is O(1), which contradicts their earlier (but incomplete) analysis of g's loop and fails to sum the Theta(1) parts with the Theta(N) loop.
+
+POINT_10: Overall worst-case runtime of f
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student concludes f is O(N), ignoring the Theta(N²) result that would follow from Theta(N) iterations x Theta(N) per-iteration cost.

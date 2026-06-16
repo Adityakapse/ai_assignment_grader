@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly allocated with size n+1, but initialized to 0 instead of -1 as required, which can lead to incorrect cache checks for subproblems with zero profit.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The base case for n == 0 is present, but the n == 1 case is missing, which would cause incorrect results when the input has length 2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses != 0 instead of != -1, which incorrectly treats zero profit entries as cached and skips recomputation for them.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence correctly computes max(W[n] + opt_helper(n-2, ...) vs opt_helper(n-1, ...)) and stores the result in memo[n] before returning.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle the n == 1 base case, leading to incorrect results for inputs with length 2, and the memo initialization to 0 may cause incorrect cache behavior for zero-profit entries.

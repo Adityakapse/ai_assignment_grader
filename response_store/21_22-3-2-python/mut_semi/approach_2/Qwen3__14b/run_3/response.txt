@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution does not add a virtual source node 0 with edges to all other nodes, and starts DFS from node 1 instead of node 0 as required by the sample solution.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array is correctly initialized to -1 for all nodes, and the dfs function checks memo[node] != -1 to return cached values immediately, matching the required memoization setup.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly returns 0 when a node has no outgoing edges, properly handling the base case for leaf nodes in the DFS as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence incorrectly computes sol = max(sol, dfs(child, graph, memo)) without adding 1 for each edge, unlike the sample solution which uses dfs(child, graph, memo) + 1 to account for the edge length.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution lacks a virtual source node connecting to all other nodes and omits the +1 adjustment when updating the maximum path length, leading to incorrect results for graphs where the longest path does not start at node 1.

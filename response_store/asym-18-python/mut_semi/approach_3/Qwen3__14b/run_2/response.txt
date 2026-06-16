@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student separates f and g but does not reference any line numbers. They mention "setup statements" and "loop in f" without specifying which lines they refer to.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student correctly identifies setup statements as constant for f but does not explicitly mention the returns in g or other non-loop parts, leaving some constant-time segments unaddressed.
+
+POINT_3: f(): Nested loop iterations
+BUCKET: Semi
+FEEDBACK: The student notes that the outer loop runs N iterations but does not explicitly state that the inner loop is fixed (5 iterations), which is critical for justifying Theta(N) total iterations.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that each iteration involves an array read and addition, which are Theta(1) operations.
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly states that the loop work is Theta(N), matching the analysis of iterations (N) multiplied by per-iteration cost (Theta(1)).
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student mentions that the call to g adds cost but does not explicitly state that g is Theta(N) or that the addition/return is Theta(1), leaving the reasoning incomplete.
+
+POINT_7: g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that the for loop in g runs Theta(N) times, as i iterates from 0 to N-1.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly notes that each iteration involves an array read and addition, which are Theta(1) operations.
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly combines Theta(N) iterations with Theta(1) per-iteration cost to conclude Theta(N) total loop cost.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student correctly states that g is Theta(N) but does not explicitly sum the constant parts (initialization and return) with the loop cost, leaving the reasoning incomplete.
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The student correctly concludes that f is Theta(N) but does not break down the sum of Theta(1) (setup), Theta(N) (loop), and Theta(N) (call to g) to justify the final result.

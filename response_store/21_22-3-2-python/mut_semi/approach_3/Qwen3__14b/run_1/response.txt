@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is built correctly from A, but the virtual source node 0 is missing. The DFS starts from node 1 instead of node 0, so the algorithm can only find paths starting from node 1 rather than considering all nodes.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is correctly initialised to -1 for all nodes, and the cache check returns memo[node] immediately when it is not -1, ensuring each node is computed at most once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 when graph[node] is empty, representing a path of length 0 from a leaf node.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence correctly iterates over children and takes the max, but fails to add +1 to dfs(child) results. This omits counting edges, leading to incorrect path lengths.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code returns the DFS result from node 1 without the virtual source adjustment, leading to incorrect path lengths for DAGs with multiple disconnected components or longer paths starting elsewhere.

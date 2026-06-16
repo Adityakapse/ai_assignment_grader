@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code correctly iterates through all tokens in the input list and distinguishes between numbers (pushed to stack) and operators (processed with arithmetic operations).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are correctly converted to integers using int(i) and pushed onto the stack in the else clause.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, exactly two values are popped from the stack, the correct arithmetic operation is applied (e.g., subtraction uses '-', division uses '/'), and the result is pushed back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: For subtraction and division, the operand order is reversed (n1 - n2 instead of n2 - n1 and n1 / n2 instead of n2 / n1), which violates RPN semantics.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method produces correct results for expressions with addition and multiplication but fails for subtraction and division due to incorrect operand order, leading to incorrect results for non-symmetric operations.

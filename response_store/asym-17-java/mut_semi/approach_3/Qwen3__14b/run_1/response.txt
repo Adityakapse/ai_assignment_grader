@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student mentions f and g but does not reference specific line numbers (e.g., "loop in f" instead of "line 6-8"). The sample solution explicitly references line numbers and separates components clearly.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Correct
+FEEDBACK: The student correctly identifies setup statements as constant time, and implicitly includes returns (e.g., "setup statements are constant" and "return t - constant time" in the sample solution is not explicitly mentioned but the analysis aligns with Theta(1)).
+
+POINT_3: f(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student states the loop "runs about N iterations" but does not explicitly justify why this is Theta(N) (e.g., "i runs from 0 to N-1" as in the sample solution).
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly states that each iteration involves a matrix access and an addition, which are Theta(1) operations.
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies Theta(N) iterations by Theta(1) cost per iteration to get Theta(N) for the loop.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student mentions that the call to g "adds some more cost" but does not explicitly state that the cost is Theta(N^2) (as required for a complete analysis).
+
+POINT_7: g(): Nested loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly notes that the nested loops iterate over every cell of the N x N matrix, resulting in Theta(N^2) iterations.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that each iteration involves a matrix access and an addition, which are Theta(1) operations.
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies Theta(N^2) iterations by Theta(1) cost per iteration to get Theta(N^2) for the loop.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student states the runtime is Theta(N^2) but does not explicitly sum the constant-time parts (as in the sample solution: "Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2)").
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The student concludes "g is Theta(N^2) and f is Theta(N^2)" but does not explicitly sum the components (e.g., "Theta(1) + Theta(N) + Theta(N^2)" as required for full credit). The conclusion is correct, but the reasoning is incomplete.

@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student mentions f and g separately but does not reference specific line numbers. They refer to "loop over a" and "binary search on b" without citing line numbers, which is less detailed than required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student does not mention any non-loop code (e.g., initializations of variables like `n`, `c`, `l`, `r`) and does not state that these are Theta(1). The analysis entirely omits constant-time components.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly states that f's loop runs O(N) times but does not explicitly justify this by referencing the loop's iteration range (e.g., "i runs from 0 to N-1") as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student incorrectly claims that the operations inside the loop are "simple and constant," ignoring that the call to g(b, a[i]) contributes Theta(log N) time per iteration. This is a critical error in the analysis.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student fails to compute the total loop cost by multiplying the number of iterations (O(N)) with the per-iteration cost (Theta(log N)), instead incorrectly concluding that f is O(N).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student claims g is O(N), which is incorrect. They do not justify the Theta(log N) iteration count for the binary search, nor do they mention the halving of the search interval.
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: The student does not analyze the cost per iteration of g's loop. They do not mention that operations like midpoint computation, array access, and comparisons are Theta(1) per iteration.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student does not compute the total cost of g's loop by multiplying iterations (Theta(log N)) with per-iteration cost (Theta(1)). Instead, they incorrectly claim g is O(N).
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: The student concludes g is O(N), which contradicts the correct Theta(log N) result. They do not sum the constant-time parts with the loop cost as required.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: The student concludes f is O(N), which ignores the Theta(N log N) cost derived from the loop's Theta(N) iterations multiplied by the Theta(log N) per-iteration cost of g.

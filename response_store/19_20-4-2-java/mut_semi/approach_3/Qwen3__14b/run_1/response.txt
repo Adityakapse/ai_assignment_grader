@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's code skips selecting y entirely, directly assigning x to delete.left or delete.right without checking if delete has two children. The code fails to handle the two-child case by not using treeMinimum on the right subtree.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The treeMinimum helper function is completely absent from the student's code, which is required to find the in-order successor for nodes with two children.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code incorrectly assigns x based on delete.left/delete.right instead of y's children. Since y is not defined in the student's code, x is not properly identified as the child of y to promote.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code skips updating x.parent to y.parent (since y is not defined) and directly modifies delete.parent's child pointers without properly handling the splicing logic present in the sample solution.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code contains no logic for copying delete.key to y.key when y is the successor. The key copy operation is entirely missing, leaving the deleted node's key in the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code works for leaf and one-child deletions but fails for two-child deletions (no successor handling) and does not copy the successor's key. The root replacement case is partially handled but lacks the full logic from the sample solution.

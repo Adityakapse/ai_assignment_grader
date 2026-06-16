@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly uses exponentiation by squaring for 2^n but forgets to subtract 1, returning 2^n mod c instead of (2^n - 1) mod c as required by the closed-form solution.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 1 when b == 0, matching the sample solution's implementation for the exponentiation function.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case returns expo(a, b-1, c) % c without multiplying by a, violating the required formula (a * expo(...)) % c and leading to incorrect results.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) once and returns (tmp * tmp) % c, achieving O(log n) performance as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The final result is missing the -1 adjustment required by the closed-form solution, and the odd case omits a critical multiplication by a, leading to incorrect outputs for all n > 0.

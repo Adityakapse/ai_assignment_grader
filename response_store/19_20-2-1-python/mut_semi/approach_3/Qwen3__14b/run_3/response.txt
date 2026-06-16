@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class is defined with a list-based internal storage (self.lst) that can hold elements in FIFO order, matching the sample solution's structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty() method correctly checks if the queue is empty by comparing the length of self.lst to zero, identical to the sample solution's implementation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns self.lst[0] without modifying the queue, correctly accessing the front element when it exists (though it would raise an error for empty queues, which is not explicitly required by the rubric).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue() method appends elements to the end of self.lst, correctly maintaining the back of the queue and updating internal state as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns self.lst[0] but does not remove the element from the list, failing to update internal state and violating the FIFO behavior required by the rubric.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue() method's failure to remove elements breaks FIFO behavior, and the head() method may raise errors for empty queues, making the overall implementation incorrect for all required operations.

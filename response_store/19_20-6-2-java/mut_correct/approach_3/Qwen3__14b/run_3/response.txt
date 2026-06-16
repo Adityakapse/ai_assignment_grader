@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) using double[n + 1][capacity + 1], matching the required size and initialisation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The nested loops iterate over all items (from n-1 to 0) and all capacities (from 0 to capacity), covering all required subproblems in the correct order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition "if (volumes[i] <= j)" correctly checks whether the current item can fit into the remaining capacity, allowing inclusion of items that exactly match the capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation uses Math.max(values[i] + Result[i+1][j - volumes[i]], Result[i+1][j]) when the item fits, correctly referencing the previous row (i+1) and handling both inclusion and exclusion cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns Result[0][capacity], which is the correct cell for the backward iteration approach, ensuring the maximum value is retrieved for the full capacity.

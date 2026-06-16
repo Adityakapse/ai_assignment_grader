@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student mentions f has nested loops and calls g but does not reference specific line numbers as required. The analysis lacks explicit line number references for code parts.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student notes setup statements are constant but does not explicitly identify all non-loop regions (like returns in f and g) as Theta(1), leaving some parts unanalysed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student states the nested loop runs about N² iterations but does not justify this with the summation N + (N-1) + ... +1, as required for a complete explanation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that each iteration of the inner loop involves an array read and addition, which are Theta(1) operations.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies the iteration count (Theta(N²)) by the per-iteration cost (Theta(1)) to get Theta(N²) total loop cost.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student mentions the call to g adds some cost but does not explicitly state that it is Theta(log N) due to binary search, leaving the justification incomplete.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student states the binary search runs Theta(log N) times but does not explain that the interval halves each iteration, which is needed for full justification.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that each iteration of g involves Theta(1) operations (midpoint computation, array accesses, comparisons).
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student correctly combines Theta(log N) iterations with Theta(1) per-iteration cost to get Theta(log N) total loop cost for g.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: The student states the overall runtime for g is Theta(log N) but does not explicitly sum the constant-time parts (initialization and return) with the loop cost as in the sample solution.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: The student correctly combines Theta(N²) (nested loop) and Theta(log N) (call to g) to conclude the overall runtime of f is Theta(N²), absorbing the lower-order term.

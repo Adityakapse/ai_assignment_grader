@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code does not handle the case where the node to delete has two children, and never sets y to the successor node using treeMinimum; it incorrectly assumes all nodes have at most one child.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not include a treeMinimum helper function at all, leaving the two-child deletion case unhandled and violating the requirement to use the TREE-MINIMUM method from the lecture.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code incorrectly assigns x based on delete's children rather than y's, failing to handle the case where y is not delete (e.g., when the node has two children and requires a successor).
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly updates x.parent to y.parent (delete.parent) and adjusts y.parent's child pointer (or root) to x, handling the root replacement case when y.parent is null.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's solution does not include any code to copy the key from the successor node to the delete node, leaving delete.key unchanged when a successor is used, which leaves the original node's key in the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code correctly handles leaf and single-child deletions but completely omits handling the two-children case, which is required for full correctness. The code also fails to handle the case where the node to delete is the root with two children.

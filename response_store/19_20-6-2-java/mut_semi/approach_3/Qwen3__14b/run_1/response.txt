@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocated a 2D array with dimensions (n+1) x (capacity+1) and initialized all cells to 0 by default.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all items from n-1 to 0, and the inner loop covers all capacities from 0 to capacity inclusive, matching the required structure.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if volumes[i] <= j before attempting to include the item, correctly allowing inclusion when the item exactly fits or fits with room to spare.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence relation incorrectly assigns Result[i][j] = values[i] + Result[i+1][j - volumes[i]] without using Math.max to compare including/excluding the item, leading to incorrect decisions.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm will always include items that fit (even when suboptimal) due to the missing max comparison, resulting in incorrect maximum values for inputs requiring item exclusion.

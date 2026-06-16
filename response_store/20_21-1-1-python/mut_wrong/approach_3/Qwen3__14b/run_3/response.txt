@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function returns 1 % c unconditionally for all inputs, not just when b == 0, which fails to handle the base case correctly and produces incorrect results for all non-zero b.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parity check (b % 2) is present; the code does not distinguish between odd and even b, so all inputs are treated identically.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case is completely absent; the code does not handle the recursive reduction of b by 1 or multiply by a for odd exponents.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case is completely absent; the code does not halve b or square the recursive result for even exponents.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns 1 % c for all inputs, producing incorrect results for all non-zero b; 'import' and '**' are absent, but the logic is completely broken.

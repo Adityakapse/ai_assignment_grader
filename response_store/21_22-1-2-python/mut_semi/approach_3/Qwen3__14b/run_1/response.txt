@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The upper bound is set to 10^9 instead of 10^18, which will fail for N > 10^9, violating the problem constraints.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The while loop runs with condition l <= r, and midpoint is computed correctly as (l + r) // 2, ensuring proper binary search progression.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: When f(m) == 1, the code incorrectly updates l = m + 1 instead of r = m - 1, and when f(m) == 0, updates r = m - 1 instead of l = m + 1, reversing the search direction.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code returns m unconditionally without checking f(m) after the loop, which may return m instead of m + 1 when the loop exits with f(m) == 0, causing an off-by-one error.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for N > 10^9 due to incorrect upper bound and returns incorrect values in some cases due to missing final f(m) check, but does not use forbidden keywords.

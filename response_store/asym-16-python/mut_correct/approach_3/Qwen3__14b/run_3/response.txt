@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Correct (5 marks)
+FEEDBACK: The student clearly separated f and g, identified loops vs non-loops, and referenced line numbers consistently (e.g., "initialisations of n, s and k" in f, "for loop" in g). This matches the rubric's "Correct" criteria.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Correct (5 marks)
+FEEDBACK: The student explicitly stated all non-loop regions (initialisations and returns in f and g) as Theta(1), with no omissions or errors. This fully satisfies the "Correct" bucket.
+
+POINT_3: f(): Nested loop iterations
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly justified Theta(N log N) iterations: outer loop runs Theta(log N) times (k doubles until exceeding N), inner loop runs N times each. This matches the sample solution exactly.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct (12 marks)
+FEEDBACK: The student explicitly stated the cost per iteration as Theta(1), citing "one array read and one += assignment" in the inner loop. This is identical to the sample solution's reasoning.
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly multiplied Theta(N log N) iterations by Theta(1) per iteration to arrive at Theta(N log N) total cost for the nested loops. This matches the sample solution's analysis.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Correct (6 marks)
+FEEDBACK: The student properly accounted for the call to g as Theta(N) and the addition/return as Theta(1), stating "Total cost of Part C: Theta(N)" without error.
+
+POINT_7: g(): Loop iterations
+BUCKET: Correct (10 marks)
+FEEDBACK: The student correctly justified Theta(N) iterations for the for loop in g, noting that "i runs from 0 to N-1" which gives exactly N iterations. This is fully aligned with the sample solution.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct (8 marks)
+FEEDBACK: The student explicitly stated the cost per iteration as Theta(1), citing "one array read and one += assignment" in the loop body. This matches the sample solution's reasoning.
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct (6 marks)
+FEEDBACK: The student correctly multiplied Theta(N) iterations by Theta(1) per iteration to arrive at Theta(N) total cost for the loop in g. This matches the sample solution exactly.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly summed all parts: "Theta(1) + Theta(N) + Theta(1) = Theta(N)", absorbing lower-order terms. This matches the sample solution's conclusion.
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Correct (16 marks)
+FEEDBACK: The student correctly combined all parts: "Theta(1) + Theta(N log N) + Theta(N) = Theta(N log N)", properly absorbing the lower-order Theta(N) term. This matches the sample solution's analysis.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) DP table and uses nested loops iterating i from 1 to m and j from 1 to n, matching the required bottom-up approach.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's code fails to initialize the base cases (edDis[i][0] and edDis[0][j]) with their correct values (i and j respectively), leaving these positions at default zero values which produce incorrect results.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly sets edDis[i][j] to edDis[i-1][j-1] when a[i-1] == b[j-1], properly handling the character match case as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters using 1 + min of the three neighboring cells (left, above, and diagonal), matching the sample solution's logic.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution fails to initialize the base cases (first row and column) with the correct values (i and j), leaving them as 0 instead. This causes incorrect calculations for all edit distances since the dynamic programming table relies on these initial values.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution does not create a virtual source node 0 with edges to all other nodes, which is required to ensure the DFS covers all possible paths in the DAG.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the memo array with -1 for all nodes and checks memo[node] != -1 to return cached values, matching the required memoization setup in the sample solution.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly returns 0 for leaf nodes (when graph.get(node).size() == 0), matching the sample solution's base case handling.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence incorrectly computes Math.max(sol, dfs(child)) without adding 1 for each edge, leading to an undercount of the path length compared to the sample solution's correct +1 adjustment.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution fails to add 1 for each edge in the path and omits the virtual source node 0, leading to incorrect path length calculations and missed paths starting from nodes other than 1.

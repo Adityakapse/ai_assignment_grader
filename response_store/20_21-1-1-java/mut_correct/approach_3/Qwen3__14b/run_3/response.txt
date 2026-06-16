@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 1 % c when b == 0, ensuring termination and handling the edge case where c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The parity check correctly distinguishes between odd and even b using b % 2 != 0 and b % 2 == 0, leading to different recursive branches.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case correctly reduces b by 1, multiplies by a, and applies modulo c to the result: (a * expo(a, b-1, c)) % c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) % c and returns (tmp * tmp) % c, achieving O(log b) time complexity.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly computes a^b mod c for all valid inputs without using 'import' or '**', and applies modulo at each step to prevent overflow.

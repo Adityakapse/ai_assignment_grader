@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The adjacency list is constructed correctly from the input array A, and a virtual source node 0 with edges to all other nodes is added, enabling a single DFS to find the longest path across the entire graph.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is properly initialized to -1 for all nodes, and the code checks memo[node] != -1 before returning cached values, ensuring each node is computed only once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 when a node has no outgoing edges, accurately representing a path of length 0 from a leaf node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates through all children, computes the maximum path length as dfs(child) + 1, and stores the result in memo[node], correctly implementing the recurrence relation for the longest path.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The calc function returns dfs(0, ...) - 1, which correctly adjusts for the virtual source node, ensuring the longest path length is computed accurately for all valid DAGs in O(N+M) time.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) and initializes all cells to 0 using double[n + 1][capacity + 1].
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The nested loops iterate over all items (from n-1 to 0) and all capacities (from 0 to capacity), covering all required subproblems as specified in the rubric.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if volumes[i] <= j before attempting to include the item, ensuring feasibility for each capacity j.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence relation lacks the critical max comparison; it unconditionally adds values[i] + Result[i+1][j - volumes[i]] when the item fits, which fails to consider the option of excluding the item.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm will always include items when possible due to the missing max comparison, leading to incorrect results like selecting both items in the sample input when only one should be chosen.

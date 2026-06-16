@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) DP table and uses nested loops with i and j iterating from 1 to m and n respectively, matching the required bottom-up structure. However, the base case initialization is missing, which is a separate issue.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution completely omits initializing the base cases (edDis[i][0] and edDis[0][j]) which are critical for the dynamic programming approach, leaving these values at their default zero instead of setting them to i and j respectively.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly implements the character match case by setting edDis[i][j] to edDis[i-1][j-1] when a.charAt(i-1) equals b.charAt(j-1), matching the sample solution's logic.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters, using 1 + min of the three neighboring cells (edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) as required by the rubric point.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code fails to initialize the base cases (first row and column of the DP table) which are critical for correct edit distance calculation, leading to incorrect results for all inputs.

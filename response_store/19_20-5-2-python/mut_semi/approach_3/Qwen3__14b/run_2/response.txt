@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is pushed to the stack before the loop, and the loop runs while the stack is not empty, but the safety counter introduces an arbitrary termination condition that does not rely solely on the stack being empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `stack.pop()` to remove the last element from the stack, ensuring depth-first traversal as required by the algorithm.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code appends nodes to the visited list immediately after popping them, but does not check if the node is already in visited before processing, leading to potential revisits and infinite loops on cyclic graphs.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `reversed(graph[nxt])` to push neighbors in reverse order, ensuring that they are visited in the original adjacency list order during traversal.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code returns all reachable nodes but introduces a safety counter limiting iterations to 1000, which could prematurely terminate traversal on large or deeply nested graphs, failing the correctness requirement for all valid inputs.

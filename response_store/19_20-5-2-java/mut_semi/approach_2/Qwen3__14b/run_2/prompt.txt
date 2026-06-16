@@ -1,0 +1,262 @@
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+// DFS structure but no visited check - infinite loop on cycles
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    int safety = 0;
+    while (!stack.isEmpty() && safety++ < 1000) {
+        int next = stack.pop();
+        visited.add(next);
+        for (int i = graph[next].length - 1; i >= 0; --i) {
+            stack.push(graph[next][i]);
+        }
+    }
+    return visited;
+}
+
+
+RUBRIC POINT:
+Point 1 — DFS loop structure and initialisation (valid range: 0–20)
+  The start node is pushed onto the stack before the loop, and a while loop processes nodes until the stack is empty.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+// DFS structure but no visited check - infinite loop on cycles
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    int safety = 0;
+    while (!stack.isEmpty() && safety++ < 1000) {
+        int next = stack.pop();
+        visited.add(next);
+        for (int i = graph[next].length - 1; i >= 0; --i) {
+            stack.push(graph[next][i]);
+        }
+    }
+    return visited;
+}
+
+
+RUBRIC POINT:
+Point 2 — LIFO pop: removing from the top (valid range: 0–20)
+  The current node is always removed from the top (back) of the stack, ensuring depth-first traversal.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+// DFS structure but no visited check - infinite loop on cycles
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    int safety = 0;
+    while (!stack.isEmpty() && safety++ < 1000) {
+        int next = stack.pop();
+        visited.add(next);
+        for (int i = graph[next].length - 1; i >= 0; --i) {
+            stack.push(graph[next][i]);
+        }
+    }
+    return visited;
+}
+
+
+RUBRIC POINT:
+Point 3 — Visited tracking: check and mark (valid range: 0–20)
+  Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+// DFS structure but no visited check - infinite loop on cycles
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    int safety = 0;
+    while (!stack.isEmpty() && safety++ < 1000) {
+        int next = stack.pop();
+        visited.add(next);
+        for (int i = graph[next].length - 1; i >= 0; --i) {
+            stack.push(graph[next][i]);
+        }
+    }
+    return visited;
+}
+
+
+RUBRIC POINT:
+Point 4 — Neighbour push (valid range: 0–20)
+  All unvisited neighbours from graph[current] are pushed onto the stack. For iterative implementations, neighbours are pushed in reverse adjacency list order so that they are popped and visited in forward order.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+// DFS structure but no visited check - infinite loop on cycles
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+    int safety = 0;
+    while (!stack.isEmpty() && safety++ < 1000) {
+        int next = stack.pop();
+        visited.add(next);
+        for (int i = graph[next].length - 1; i >= 0; --i) {
+            stack.push(graph[next][i]);
+        }
+    }
+    return visited;
+}
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns all reachable nodes from start in correct DFS order for all valid directed graphs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The memo array is initialized with default 0 values instead of -1 as required, and the code uses !=0 to check for cached entries, which is incorrect for the specified memoization approach.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution lacks a base case for n == 1, which is required to correctly handle the scenario where only two locations are available, leading to incorrect calculations for this specific input size.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The memoization array is initialized to 0 instead of -1, and the cache check uses !=0 instead of !=-1, which fails to correctly identify precomputed values in the memo array.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)) and stores the result in memo[n] before returning, matching the required logic.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The solution fails to handle the n=1 base case, leading to invalid recursive calls when n=1, and uses a memoization check (0 vs -1) that may not correctly handle all scenarios despite the problem constraints.

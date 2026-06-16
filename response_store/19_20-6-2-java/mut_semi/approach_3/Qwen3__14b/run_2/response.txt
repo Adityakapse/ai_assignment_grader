@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) and initializes it with double values, matching the sample solution's structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The nested loops iterate over all items (from n-1 to 0) and all capacities (from 0 to capacity), covering all required subproblems in the same way as the sample solution.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition "if (volumes[i] <= j)" correctly checks whether the current item can fit into the remaining capacity before attempting to include it, matching the sample's logic.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence relation incorrectly assigns Result[i][j] = values[i] + Result[i+1][j - volumes[i]] without using Math.max to compare with the case where the item is not included, leading to incorrect selection of items.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to compute the maximum value correctly because it always adds the item's value when it fits, rather than choosing between including/excluding the item, resulting in incorrect outputs for cases requiring optimal selection.

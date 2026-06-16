@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 % c unconditionally, but the base case should only trigger when b == 0, not for all inputs.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parity check is implemented; the function returns 1 % c immediately without distinguishing between even and odd b.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case is completely absent; the function contains no logic for reducing b by 1 or multiplying by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case is missing entirely; there is no halving of b or squaring of recursive results.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function always returns 1 % c regardless of input values, producing incorrect results for all b ≠ 0 and failing to implement any recursive exponentiation logic.

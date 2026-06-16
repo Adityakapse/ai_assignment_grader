@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The GCD function has the correct signature with two parameters and uses a recursive structure with a base case and reduction step.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly checks if b == 0 and returns a, which terminates the recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step uses GCD(b, a % b), which correctly reduces the problem toward the base case with each recursive call.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The LCM function is defined and references GCD, but it incorrectly returns a * b without dividing by GCD(a, b), violating the required formula structure.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The GCD function correctly returns the greatest common divisor for test cases like GCD(8, 4) = 4 and handles edge cases like GCD(0, 5) = 5.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The LCM function returns a * b instead of (a * b) / GCD(a, b), producing incorrect results like LCM(4, 6) = 24 instead of the correct 12.

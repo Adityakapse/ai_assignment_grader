@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails when c == 1 (e.g., 1 % 1 = 0, but the function returns 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly checks if b is odd using b % 2 != 0 and even using b % 2 == 0, leading to distinct recursive branches.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case returns expo(a, b-1, c) % c but omits the required multiplication by a, leading to incorrect results for odd exponents.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) % c and returns (tmp * tmp) % c, achieving O(log b) depth and proper squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for inputs where c == 1 due to the base case missing % c and the odd case not multiplying by a, though it avoids 'import' and '**' as required.

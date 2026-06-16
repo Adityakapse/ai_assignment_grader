@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly constructed by iterating over all edges and adding them to the graph, but the virtual source node 0 with edges to all other nodes is missing, limiting the solution to only paths starting from specific nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used at all; the function simply returns 0 immediately without any DFS traversal or caching, leading to incorrect results and exponential runtime on large DAGs.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No base case is implemented for leaf nodes; the function unconditionally returns 0 regardless of whether the node has outgoing edges, which would cause incorrect path length calculations.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence logic is implemented; the function returns 0 immediately without iterating over children or computing max path lengths through recursive calls.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function always returns 0 regardless of input, which is incorrect for any graph with edges and fails to compute the longest path length for all valid DAGs.

@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions f's triple nested loops and g's single loop but does not reference specific line numbers as required. They also do not clearly separate f and g components with line numbers.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Semi (3 marks)
+FEEDBACK: The student vaguely refers to "setup statements" as constant but does not explicitly identify initializations and returns in f and g as Theta(1), as required.
+
+POINT_3: f(): Nested loop iterations
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly states the loops run N^3 times but does not explicitly justify that the three loops are independent and each run N times, as required for full marks.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Semi (6 marks)
+FEEDBACK: The student mentions "a few array reads and additions" but does not explicitly list the three array reads, two additions, and one += assignment required for a complete Theta(1) justification.
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly multiplies Theta(N^3) iterations by Theta(1) cost per iteration to get Theta(N^3) total loop cost.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions g adds "some more cost" but does not explicitly state that the call to g is Theta(N) and the addition/return are Theta(1), as required.
+
+POINT_7: g(): Loop iterations
+BUCKET: Semi (5 marks)
+FEEDBACK: The student states the loop runs Theta(N) times but does not explicitly justify that i runs from 0 to N-1, as required for full marks.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly identifies each iteration as Theta(1) with one array read and one += assignment.
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct (6 marks)
+FEEDBACK: The student correctly multiplies Theta(N) iterations by Theta(1) cost per iteration to get Theta(N) total loop cost.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Semi (6 marks)
+FEEDBACK: The student states g is Theta(N) but does not explicitly show the sum of Theta(1) (initialization + return) + Theta(N) (loop) = Theta(N).
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Correct (16 marks)
+FEEDBACK: The student correctly combines Theta(1) (non-loop parts) + Theta(N^3) (loops) + Theta(N) (g call) into Theta(N^3), absorbing lower-order terms as required.

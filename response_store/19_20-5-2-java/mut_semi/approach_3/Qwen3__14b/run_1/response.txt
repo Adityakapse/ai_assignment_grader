@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The start node is pushed onto the stack before the loop, and the while loop continues processing until the stack is empty, matching the correct structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses stack.pop() to remove nodes from the top of the stack, ensuring the correct LIFO order for depth-first traversal.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code adds nodes to the visited list immediately upon popping from the stack without checking if they've been visited before, leading to potential infinite loops on cyclic graphs.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates through all neighbors and pushes them in reverse order (correct for iterative DFS), but fails to check if they are unvisited before pushing, which could result in revisiting nodes.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns all reachable nodes from the start, but the traversal order is incorrect due to revisiting nodes (e.g., cycles cause nodes to be added multiple times to the visited list).

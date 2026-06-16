@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code does not handle the case where the node to delete has two children, and thus y is always set to delete regardless of the number of children, violating the rubric's requirements.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement the treeMinimum helper function at all, which is required for correctly handling the two-child deletion case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly identifies x as the non-null child of y (delete) by assigning x = delete.left if not null else delete.right, which matches the rubric's requirement for identifying the child to promote.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly updates x.parent to y.parent (delete.parent) and adjusts the parent's child pointers, including handling the root replacement case when y.parent is None.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's solution completely omits the key-copying logic (delete.key = y.key) that is required when y is the in-order successor (y != delete), leading to incorrect key retention in the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The solution works for leaf and single-child deletions but fails for two-child deletions (no successor handling) and may have issues with root deletion, as the code does not implement the full deletion logic from the lecture.

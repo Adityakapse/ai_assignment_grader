@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The counting array C is correctly allocated with size 10^6 + 1 and initialized to 0, matching the requirements for handling all possible values in A.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The frequency counting loop increments C[i] using the loop index i instead of the element value A[i], leading to incorrect frequency counts for each category.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at index 1 and ends at len(B)-1, skipping the first element (index 0) and producing a string of length m-1 instead of m.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The comparison checks if C[i] > B[i] and appends '1' when this condition is true, which inverts the required logic of appending '1' when C[i] <= B[i].
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm contains multiple errors (incorrect frequency counting, off-by-one loop bounds, reversed comparison) that would produce incorrect outputs for most inputs, despite avoiding forbidden substrings.

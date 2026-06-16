@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the closed form $a_n = 2^n - 1$ and implements it as `expo(2, n, 10^9+7) - 1`, matching the sample solution.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if b == 0: return 1 % c` is correctly implemented, ensuring the recursion terminates properly for $b = 0$.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case correctly reduces $b$ by 1 and multiplies by $a$, returning `(a * expo(a, b-1, c)) % c` as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes `tmp = expo(a, b//2, c)` once and returns `(tmp * tmp) % c`, achieving the required $O(\log b)$ efficiency.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly computes $(2^n - 1) \mod (10^9+7)$ for all valid inputs, avoids forbidden keywords, and applies modulo at each step.

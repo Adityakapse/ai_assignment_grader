@@ -1,0 +1,43 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student mentions f and g and their components but does not reference any line numbers. They refer to "the loop in f" and "call to g" without specifying line numbers as required.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student notes "setup statements are constant" but does not explicitly identify all non-loop regions (e.g., returns in f and g) as Theta(1), missing some components.
+
+POINT_3: f(): Nested loop iterations
+BUCKET: Semi
+FEEDBACK: The student correctly states the outer loop runs Theta(N log N) iterations but does not explicitly justify why the outer loop runs Theta(log N) times (doubling until exceeding N).
+
+POINT_4: f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly identifies that each iteration involves "array read and an addition" and states this is Theta(1), matching the sample solution.
+
+POINT_5: f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies Theta(N log N) iterations by Theta(1) per iteration to arrive at Theta(N log N) for the nested loops.
+
+POINT_6: f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student notes "adds some more cost" but does not explicitly state that the call to g contributes Theta(N) and the addition/return are Theta(1), leaving the reasoning incomplete.
+
+POINT_7: g(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student correctly states the loop runs Theta(N) times but does not explain why (i runs from 0 to N-1), as required by the rubric.
+
+POINT_8: g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student explicitly states "array read and one += assignment" per iteration, correctly identifying this as Theta(1).
+
+POINT_9: g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student correctly multiplies Theta(N) iterations by Theta(1) per iteration to arrive at Theta(N) for the loop in g.
+
+POINT_10: Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student states the runtime is Theta(N) but does not explicitly sum the constant-time parts (initializations and return) with the loop cost, as required.
+
+POINT_11: Overall worst-case runtime of f
+BUCKET: Correct
+FEEDBACK: The student correctly states the overall runtime is Theta(N log N) and implicitly acknowledges absorbing the lower-order Theta(N) term from the call to g.

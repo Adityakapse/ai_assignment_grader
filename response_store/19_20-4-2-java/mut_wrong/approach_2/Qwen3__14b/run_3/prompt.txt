@@ -1,0 +1,441 @@
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}
+
+STUDENT SOLUTION:
+// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 1 — Selecting y: which node to physically remove (valid range: 0–20)
+  y is set to delete when delete has at most one child; y is set to treeMinimum(delete.right) when delete has two children.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}
+
+STUDENT SOLUTION:
+// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 2 — treeMinimum helper (valid range: 0–15)
+  treeMinimum walks left from its input node until reaching a node with no left child, and returns that node.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}
+
+STUDENT SOLUTION:
+// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 3 — Finding x: the child of y to promote (valid range: 0–15)
+  x is identified as y's non-null child (y.left if non-null, otherwise y.right), which may be null if y is a leaf.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}
+
+STUDENT SOLUTION:
+// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 4 — Splicing y out of the tree (valid range: 0–20)
+  y is removed by updating x.parent to y.parent (when x is non-null), and updating y.parent's child pointer (or root) to x.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}
+
+STUDENT SOLUTION:
+// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 5 — Copying the key when y is the successor (valid range: 0–10)
+  When y is the in-order successor (y != delete), delete.key is updated to y.key so that the logical node is removed while the physical successor node is spliced out.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+public class Node {
+    public int key;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y = null; //y: node to delete (after swap)
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    } else {
+        y = treeMinimum(delete.right);
+    }
+    Node x = null; // non-null child of y
+    if (y.left != null) {
+        x = y.left;
+    } else {
+        x = y.right;
+    }
+    // now delete y
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null) {
+        root = x;
+    } else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        } else {
+            y.parent.right = x;
+        }
+    }
+    // Copy data
+    if (y != delete) {
+        delete.key = y.key;
+    }
+    // y should have no reference and should be deleted by the java gc
+    return root;
+}
+// Helper function
+public Node treeMinimum(Node n) {
+    while (n.left != null) {
+        n = n.left;
+    }
+    return n;
+}
+
+STUDENT SOLUTION:
+// Does nothing - returns the tree unchanged
+public Node delete(Node root, Node delete) {
+    return root;
+}
+
+
+RUBRIC POINT:
+Point 6 — Overall correctness (valid range: 0–20)
+  The method returns a valid BST after deletion for all cases: leaf, one child, two children, and root deletion.

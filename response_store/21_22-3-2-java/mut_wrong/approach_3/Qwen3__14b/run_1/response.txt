@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly constructed from the input edges, but the virtual source node 0 is not added with edges to all nodes 1-N, so the DFS cannot consider all possible starting points.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used at all; the function simply returns 0 without any recursive computation or caching, leading to incorrect results and exponential runtime.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No base case is implemented for leaf nodes; the function returns 0 unconditionally without checking if the node has outgoing edges, which would incorrectly treat all nodes as leaves.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence logic is present; the function returns 0 immediately without iterating through children or computing max path lengths, so the algorithm fails to calculate any path lengths.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function always returns 0 regardless of input, which is incorrect for all non-empty DAGs, and completely ignores the graph structure and edges provided in A.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's code completely omits the logic for selecting y, assuming y is always delete regardless of whether it has two children. There is no condition to handle the two-child case with treeMinimum.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not include a treeMinimum helper function at all, which is required for handling the two-child deletion case as per the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code assigns x to delete.left or delete.right directly without any reference to y, which violates the rubric's requirement that x must be identified as y's non-null child (y is never set in the student's code).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code fails to handle the case where y is the successor (treeMinimum is missing), leading to incorrect splicing. The logic for updating x.parent and y.parent's pointers is incomplete for two-child deletions.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code contains no key copying logic, so delete.key is never updated when y is the successor, leaving the logical node's key unchanged and violating BST correctness.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code works for leaf and one-child deletions but fails for two-child deletions (no successor logic) and root deletions (incomplete handling). The BST property is not preserved in all cases.

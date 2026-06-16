@@ -1,0 +1,39 @@
+POINT_1: Splitting code into parts + referencing line numbers
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions both functions f and g but does not reference specific line numbers. They refer to "the doubling loop" and "loops once over the array" without explicitly citing line numbers for the loops or other components.
+
+POINT_2: Constant-time non-loop parts
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions "simple and constant" operations in f and g but does not explicitly state that all non-loop code (e.g., initializations, return statements) is Theta(1). The analysis lacks clarity on which parts are constant-time.
+
+POINT_3: f(): Loop iterations
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims f is O(N) and does not address the number of iterations of the while loop in f. They fail to recognize that the loop runs Theta(log N) times due to the doubling of k.
+
+POINT_4: f(): Cost per iteration
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims that the cost per iteration of f's loop is constant ("simple and constant"), ignoring the fact that g(a) itself is Theta(N) due to its linear scan of the array.
+
+POINT_5: f(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student concludes f is O(N) without multiplying the number of iterations (Theta(log N)) by the per-iteration cost (Theta(N)), leading to an incorrect final complexity.
+
+POINT_6: g(): Loop iterations
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies that g's for loop runs Theta(N) times but does not explicitly justify this by noting that i runs from 0 to N-1, as required by the rubric.
+
+POINT_7: g(): Cost per iteration
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly describes the per-iteration cost of g as "simple constant work" but does not explicitly state that this is Theta(1), as required for full credit.
+
+POINT_8: g(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims g is O(1), which contradicts their earlier statement that g loops once over the array. They fail to multiply Theta(N) iterations by Theta(1) per iteration to get Theta(N).
+
+POINT_9: Overall worst-case runtime of g
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student concludes g is O(1), which is incompatible with their earlier analysis that g's loop is Theta(N). They do not sum the constant-time parts and the loop cost to arrive at Theta(N).
+
+POINT_10: Overall worst-case runtime of f
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student concludes f is O(N) without justifying this with the correct Theta(N log N) derived from Theta(log N) iterations multiplied by Theta(N) per iteration.

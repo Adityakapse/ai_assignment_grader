@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates an array `c` of size `n` and initializes `c[0]` to `a[0]` as required by the rubric.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The prefix sum loop assigns `c[i] = a[i]` without adding `c[i-1]`, failing to accumulate the cumulative sum. This results in `c` containing only the original values from `a`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output array `d` is correctly allocated with size `n`, and a loop iterates over all `n` queries in `b` to compute results.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The range sum computation uses `c[b[i][0] - 1]` unconditionally, which would access `c[-1]` when `b[i][0] == 0`, causing an index error. The edge case for `l == 0` is not handled.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The prefix sum array is constructed incorrectly and the edge case for `l == 0` is not handled, leading to incorrect results for queries with `l == 0` and potential runtime errors.

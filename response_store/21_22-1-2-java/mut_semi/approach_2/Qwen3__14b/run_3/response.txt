@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The search bounds are initialised with r = 1e9 instead of 1e18, which is insufficient to cover all possible values of N as specified in the problem constraints.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly implements a while loop with condition l <= r and computes the midpoint m as (l + r)/2 at each iteration, aligning with the requirements for the binary search loop and midpoint calculation.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code incorrectly sets l = m + 1 when f_N(m) == 1 (should set r = m - 1) and sets r = m - 1 when f_N(m) == 0 (should set l = m + 1), reversing the required narrowing direction for both cases.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code returns m unconditionally after the loop without checking f_N(m), which is required to determine whether N is m or m+1 as specified in the sample solution.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The solution incorrectly sets the upper bound to 1e9 instead of 1e18, and reverses the binary search direction (increasing l when f_N(m) is 1, which should decrease r). It also returns m unconditionally without final validation, leading to incorrect results for many inputs.

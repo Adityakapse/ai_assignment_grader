@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (capacity+1) and initializes all elements to 0 using the default double initialization.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates over all n items, but the inner loop starts at j=1 instead of j=0, missing the zero-capacity column required for handling zero-weight items.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The feasibility check uses strict inequality (volumes[i] < j) which incorrectly excludes items that exactly fill the remaining capacity and fails to handle zero-weight items at j=0.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence relation references Result[i][j - volumes[i]] instead of Result[i+1][j - volumes[i]], allowing the same item to be reused multiple times and violating the 0/1 knapsack constraint.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm fails to handle zero-weight items correctly due to the inner loop starting at j=1 and the recurrence allowing item reuse, leading to incorrect results for some valid inputs.
