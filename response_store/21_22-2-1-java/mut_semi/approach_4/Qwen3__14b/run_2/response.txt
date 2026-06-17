@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a counting array `C` of size `B.length + 1` and initializes it to 0 using `new int[B.length + 1]`, which satisfies the requirement for handling all possible values in `A` given the problem constraints.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code increments C[i] for each index i in A instead of C[A[i]] as required, leading to incorrect frequency counts for each category.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at i=1 and iterates while i < B.length, producing a string of length m-1 instead of m due to the off-by-one error.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code compares C[i] > B[i] and appends '1' when the condition is true, which inverts the required logic of appending '1' when C[i] <= B[i].
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The code incorrectly increments C[i] based on array index rather than A[i] values, skips the first B element (i=0), and reverses the comparison direction (appends '1' when count exceeds B[i]). These errors cause incorrect output for all inputs.

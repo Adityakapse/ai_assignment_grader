@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly identified f and g as separate functions but failed to reference any line numbers in their analysis, making the separation of code components incomplete and ambiguous.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student correctly identified that the loops in f and g have constant-time operations inside, but omitted any mention of the initializations (n = len(a), s = 0, t = 0) and return statements, which are non-loop code segments that should be explicitly stated as Theta(1).
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly states that f runs in O(N²), treating both loops as contributing Theta(N) iterations, but the inner loop actually runs a fixed 5 times per outer iteration.
+
+POINT_ID: 4
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly identified that the inner loop's cost per iteration is constant, noting "array read and an addition, which are simple constant operations," aligning with the sample solution's justification.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claims f has O(N²) time complexity by multiplying N (outer loop) with 5 (inner loop), but fails to recognize that the inner loop's fixed 5 iterations make the total iterations 5N, not N². They also incorrectly state g is O(log N) instead of O(N), but the rubric point specifically targets the multiplication of iteration count and per-iteration cost for f's loops.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly notes that the cost of g is linear (O(N)), but fails to explicitly state that the call to g contributes Theta(N) and the addition/return contribute Theta(1) to f's Part C analysis.
+
+POINT_ID: 7
+BUCKET: Semi (5 marks)
+FEEDBACK: The student correctly identifies that function g's loop runs in linear time but fails to explicitly justify this by stating that the loop variable i runs from 0 to N-1, which is required for full credit under this rubric point.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly identified that each iteration of g's loop involves "simple constant operations," which justifies a Theta(1) per-iteration cost as required by the rubric.
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims g has O(log N) complexity, failing to recognize that the loop runs N times with O(1) operations per iteration, which should combine to O(N).
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims g has a runtime of O(log N), whereas the correct analysis shows it is Theta(N) due to a single linear pass over the array.
+
+POINT_ID: 11
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims f is O(N²) by misanalyzing the nested loops (ignoring the inner loop's fixed 5 iterations), and states g is O(log N) instead of the correct Theta(N).

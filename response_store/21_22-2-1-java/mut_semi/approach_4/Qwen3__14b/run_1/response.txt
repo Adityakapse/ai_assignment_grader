@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a counting array C of size B.length + 1, which satisfies the requirement since max(A) ≤ |B| - 1, ensuring all categories in A can be indexed without overflow.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code increments C[i] using the loop index instead of C[A[i]] which would count frequencies based on the actual values in A.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at i=1 and ends at i < B.length, omitting the 0th index and producing a string of length m-1 instead of m.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code appends '1' when C[i] > B[i] and '0' otherwise, which inverts the required condition for determining if a category fits in one pass.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code increments C[i] based on array index rather than A[i] values, leading to incorrect frequency counts, and appends '1' when C[i] > B[i] instead of '0', producing an incorrect output string.

@@ -1,0 +1,32 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is correctly added to the stack before the loop, but the loop terminates when safety reaches 1000 rather than when the stack is empty, which is an incorrect termination condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly uses stack.pop() to remove nodes from the top of the stack, ensuring depth-first traversal as required by the LIFO principle.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution adds nodes to the visited list immediately upon popping from the stack without checking if they're already present, allowing duplicate entries in visited and potentially revisiting nodes due to missing pre-processing checks.
+
+POINT_ID: 4
+The student's code **does not check for unvisited neighbors**, which is a **critical requirement** of the rubric point. Despite iterating the graph and pushing in reversed order (which would be correct if unvisited were being pushed), the **absence of the unvisited check** disqualifies the code from being in the "Semi" or "Correct" buckets.
+
+### Key Analysis:
+- **"Wrong" bucket**: Requires that neighbors are **not pushed** or the graph is **not iterated**. The student's code **does** iterate the graph and **does** push neighbors (all of them), even though they are not unvisited. Thus, the code is **not** in the "Wrong" bucket.
+- **"Semi" bucket**: Requires that **unvisited neighbors are pushed** in **forward order**. The student's code **does not** check for unvisited, and pushes in **reversed order**, which is **not** aligned with the "Semi" bucket.
+- **"Correct" bucket**: Requires that **unvisited neighbors are pushed** in **reversed order**. The student's code **does not** check for unvisited, so it fails this criterion as well.
+
+### Conclusion:
+Although the student's code **iterates the graph** and **pushes in reversed order**, the **lack of the unvisited check** renders the code **non-compliant** with the rubric's criteria. Since the code is neither in "Wrong" (due to iteration and pushing) nor in "Semi" or "Correct" (due to lack of unvisited check), it does not align with any bucket **perfectly**. However, the most **accurate** bucket, based on the rubric's focus on **unvisited neighbors**, is **"Wrong"** — not because the code fails to iterate or push, but because it **fails to meet the core requirement of the rubric point** (checking for unvisited).
+
+---
+
+### Final Answer:
+**Bucket**: **"Wrong"**  
+**Reason**: The code **does not check for unvisited neighbors**, which is a **critical part of the rubric point**, even though it iterates and pushes in reversed order.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code lacks a visited check, leading to infinite loops on cycles and incorrect traversal order due to repeated node processing, failing to return all reachable nodes properly.

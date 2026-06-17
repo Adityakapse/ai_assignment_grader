@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is correctly added to the stack before the loop, but the loop terminates when a fixed safety counter reaches 1000 instead of continuing until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly uses stack.pop() to remove nodes from the top of the stack, ensuring depth-first traversal as required by the LIFO principle.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student's code adds nodes to the visited list when popped from the stack, but does not check if nodes are already in visited before adding them to the stack, potentially allowing revisits and duplicate entries in the result.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code pushes all neighbors from the adjacency list (including already visited ones) without checking if they are unvisited, leading to incorrect traversal and potential infinite loops on cycles.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution uses reversed adjacency lists correctly but lacks a check to prevent revisiting nodes, leading to incorrect traversal order and potential infinite loops on cyclic graphs.

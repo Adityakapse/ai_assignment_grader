@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (m+1) x (n+1) and uses nested loops with i and j starting from 1 to m and n respectively, matching the required bottom-up DP structure.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's code initializes the entire DP table with zeros and skips initializing the base cases (edDis[i][0] and edDis[0][j]), leaving the first row and column as zero instead of setting them to their respective indices.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if a[i-1] == b[j-1] and sets edDis[i][j] to edDis[i-1][j-1] when characters match, as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters using 1 + min of the three neighboring cells (edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code initializes the entire matrix with zeros instead of setting base cases where one string is empty, leading to incorrect results for all inputs where either string has length > 0.

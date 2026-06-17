@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The upper bound is set to 1e9 instead of 1e18, which will fail for N values exceeding this limit, but the lower bound is correctly initialised to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements a while loop with the termination condition l <= r and computes the midpoint as (l + r) / 2 at each iteration, meeting the requirements for the binary search structure.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student incorrectly sets l = m + 1 when f_N(m) == 1 (should set r = m - 1) and r = m - 1 when f_N(m) == 0 (should set l = m + 1), reversing the search direction for both cases.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code returns m unconditionally after the loop without checking f_N(m) again, which would fail when the loop exits with f_N(m) == 0.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The upper bound is set to 1e9 instead of 1e18, which fails for large N, and the return statement unconditionally returns m without verifying f_N(m) to correct for potential off-by-one errors.

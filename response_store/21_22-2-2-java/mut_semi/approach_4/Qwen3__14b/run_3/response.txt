@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates an array `c` of size `n` and initializes `c[0]` to `a[0]` as required by the rubric point.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student implemented a loop for the prefix sum array but incorrectly set c[i] = a[i] instead of accumulating with c[i-1], resulting in a non-cumulative array where each element equals the original array's value.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The student allocates an output array `d` of size `n` and iterates over all `n` queries in `B`, correctly computing each query result using the prefix sum array.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code uses the formula c[r] - c[l-1] for all queries, but does not handle the l=0 case, leading to an invalid array index access when l=0.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The prefix sum array 'c' is not properly accumulated (each element is set to a[i] instead of adding to previous sum), leading to incorrect range sums for all queries, and the code crashes when l=0 due to accessing c[-1].

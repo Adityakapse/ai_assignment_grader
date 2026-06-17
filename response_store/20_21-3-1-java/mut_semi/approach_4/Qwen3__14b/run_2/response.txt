@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D array with dimensions (n+1) x (capacity+1) and properly initialized all elements to 0 via Java's default array initialization.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the zero-capacity subproblem needed for items with weight 0, and the loop condition uses strict < instead of <= for feasibility checks.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses a strict inequality (volumes[i] < j) for feasibility checks, which incorrectly excludes items that exactly fill the remaining capacity (e.g., when volumes[i] == j), leading to suboptimal solutions.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence uses Result[i][j - volumes[i]] (current row) instead of Result[i+1][j - volumes[i]] (previous row), allowing items to be reused multiple times and violating the 0-1 knapsack constraint.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j=1 instead of j=0, causing incorrect results for capacity=0, and the recurrence uses Result[i][...] instead of Result[i+1][...], allowing items to be reused and failing for zero-volume items.

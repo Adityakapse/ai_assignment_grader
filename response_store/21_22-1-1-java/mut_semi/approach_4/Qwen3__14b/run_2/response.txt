@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly implements exponentiation by squaring for 2^n but forgets to subtract 1, returning expo(2, n, c) instead of expo(2, n, c) - 1 as required by the closed-form solution a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The expo function correctly returns 1 when b == 0, properly terminating the recursion with the correct base case value.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case in expo reduces b by 1 and recurses, but forgets to multiply the result by a as required by the rubric point.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes a = expo(a, b/2, c) once and returns (a * a) % c, achieving O(log b) depth as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution correctly implements exponentiation by squaring but fails to subtract 1 from the result, leading to incorrect outputs (2^n mod 1e9+7 instead of (2^n - 1) mod 1e9+7).

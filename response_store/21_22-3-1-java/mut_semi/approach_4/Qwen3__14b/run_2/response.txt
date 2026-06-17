@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly sized to n+1 but initialized to 0 instead of -1, making it impossible to distinguish between uncached entries and valid zero-profit subproblems.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code handles the n == 0 base case but misses the n == 1 case, leading to incorrect recursion for n = 1 (e.g., opt_helper(-1, ...) would be called) and wrong results when W has length 2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses != 0 instead of the correct != -1 sentinel value, which would cause incorrect recomputation skipping for subproblems with zero profit.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)) and stores the computed value in memo[n] before returning it.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code misses the n == 1 base case, leading to incorrect recursion for n=1 and invalid array index access when calculating W[1] + opt_helper(-1, ...).

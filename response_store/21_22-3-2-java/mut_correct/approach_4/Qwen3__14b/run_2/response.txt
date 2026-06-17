@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly constructs an adjacency list from the input edges and adds a virtual source node 0 with edges to all nodes 1-N, ensuring the DFS from node 0 can explore all possible paths in the DAG.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly initializes the memo array to -1 for all nodes and checks if memo[node] != -1 to return the cached value immediately, ensuring each node is computed at most once.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The DFS function correctly returns 0 when a node has no outgoing edges, as implemented by the condition "if (graph.get(node).size() == 0) return 0;" which properly handles leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly computes the maximum path length by iterating over all children, applying `dfs(child) + 1` for each edge, and storing the result in `memo[node]` before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the virtual source node (node 0) with edges to all other nodes, uses memoization for O(N+M) time complexity, and applies the -1 adjustment to exclude the virtual source from the final path length.

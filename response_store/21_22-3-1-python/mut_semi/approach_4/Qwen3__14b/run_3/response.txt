@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly sized to n+1 but initialized to 0 instead of -1, which fails to distinguish between uncomputed entries and valid zero-profit subproblems.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code includes the n == 0 base case but lacks the n == 1 base case, leading to incorrect recursion when n=1 as the code would attempt to access invalid indices (e.g., n-2 = -1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code checks if memo[n] != 0 instead of the correct sentinel value -1, which may cause incorrect recomputation or skipping of subproblems if any W[i] is zero (though the problem states W[i] > 0).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence correctly computes max(W[n] + opt_helper(n-2), opt_helper(n-1)), but the base case for n=1 is missing, leading to invalid recursive calls when n=1.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code lacks the base case for n=1, leading to incorrect recursion for inputs where n=1, and invalid index access when n-2 becomes -1.

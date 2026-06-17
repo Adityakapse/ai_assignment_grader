@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails when c == 1 as noted in the comment, but correctly handles the b == 0 termination condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses 'b % 2' to correctly distinguish between odd and even values of b, with the 'elif' branch handling odd cases and the 'else' branch handling even cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case correctly reduces b by 1 and recurses, but forgets to multiply the result by a before applying modulo c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly uses integer division (b//2), computes the half-power recursively, and returns (tmp * tmp) % c by squaring the result of the recursive call.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The base case returns 1 instead of 1%c, and the odd case omits multiplying by a, leading to incorrect results for inputs like b=1 or c=1.

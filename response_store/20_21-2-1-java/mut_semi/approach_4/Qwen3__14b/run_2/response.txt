@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a counting array C of size B.length + 1 (which satisfies the required size ≥ max(A)+1 due to the problem constraint) and initializes it to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student increments C[i] based on the loop index rather than C[A[i]] as required, leading to incorrect frequency counts for each category in A.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at i=1 and ends at i < B.length, missing the 0th index and producing a string one character shorter than required (length m-1 instead of m).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code compares C[i] and B[i] but appends '1' when C[i] > B[i] and '0' otherwise, which reverses the required condition for the output character.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code incorrectly increments C[i] based on array index rather than A[i] values, reverses the comparison logic (appends '1' when count exceeds B[i]), and skips the first element (i=0) in the output loop, leading to incorrect results for most inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code implements a divide-and-conquer structure with recursive quicksort calls, but the partition function only checks the first element and performs a single swap, failing to properly partition the array into subproblems.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The quick function uses "if l < r:" which correctly terminates recursion when subarray length is 0 or 1, preventing infinite recursion as required.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition function only checks the first element and swaps it with the pivot if needed, failing to properly partition the array around the pivot as required for correct quicksort behavior.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's solution uses a fixed last-element pivot in quicksort without any randomization, and the partition function only swaps the first element if it exceeds the pivot, leading to incorrect sorting and no worst-case time guarantee.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The partition function only compares the first element to the pivot and swaps it if larger, leaving the rest of the array unpartitioned, which results in incorrect sorting for most inputs.

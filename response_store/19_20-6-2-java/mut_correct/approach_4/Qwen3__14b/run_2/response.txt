@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) using double[n + 1][capacity + 1], and relies on Java's default array initialization to 0.0, which satisfies the rubric's requirements.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all items (from n-1 to 0) and the inner loop covers all capacities from 0 to capacity, matching the required structure for dynamic programming subproblem processing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if volumes[i] <= j before considering including the item, ensuring that items are only considered when they fit exactly or with remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation using Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]) when the item fits, and correctly assigns Result[i+1][j] when it doesn't fit, properly referencing the previous row (i+1) in both cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly implements the 0/1 knapsack dynamic programming solution, with proper initialization, nested loops, and value calculation using Result[i][j] = Math.max(...), and returns the correct cell Result[0][capacity].

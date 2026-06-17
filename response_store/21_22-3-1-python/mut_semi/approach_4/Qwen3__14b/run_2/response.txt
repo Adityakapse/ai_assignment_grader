@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly sized to n+1 but initialized to 0 instead of -1, which risks misinterpreting subproblems with zero profit as already computed.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code correctly handles the n == 0 base case but lacks the n == 1 base case, leading to incorrect recursion for inputs of length 2 (e.g., W = [w0, w1]).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses !=0 instead of !=-1, which could incorrectly skip valid subproblems if a zero profit value were present (though the problem constraints ensure this isn't the case here).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence correctly computes max(W[n] + opt_helper(n-2, ...) vs opt_helper(n-1, ...) for n ≥ 2, but fails to handle the n=1 base case, leading to invalid index access when n=1.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code misses the base case for n == 1, leading to incorrect calculations and potential index errors when n=1, and the memo initialization with 0 may incorrectly treat valid zero-values as cached results.

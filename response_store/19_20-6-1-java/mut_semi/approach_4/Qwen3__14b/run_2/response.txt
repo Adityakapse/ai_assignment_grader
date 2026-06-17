@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (m+1) x (n+1) and uses nested loops with i and j starting from 1 and ending at m and n respectively, matching the required bottom-up DP structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code initializes the 2D array but leaves the first row and column uninitialised, leaving them as default 0 values instead of setting edDis[i][0] = i and edDis[0][j] = j as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if characters are equal using a.charAt(i-1) == b.charAt(j-1) and sets edDis[i][j] to edDis[i-1][j-1] when they match, as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters using 1 + Math.min of all three neighboring cells (insert, delete, replace), matching the expected formula.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code initializes the DP table with all zeros instead of setting the first row and column to represent the base cases (cost of inserting/deleting all characters), leading to incorrect results for most inputs.

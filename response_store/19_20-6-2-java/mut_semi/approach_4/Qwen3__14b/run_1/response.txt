@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) and relies on Java's default initialization of double arrays to 0.0, satisfying the requirement for zero-initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items (from n-1 to 0) and the inner loop covers all capacities from 0 to capacity inclusive, matching the required structure for solving subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if volumes[i] <= j before attempting to include an item, ensuring that items are only considered when they fit within the current capacity.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly references the previous row (i+1) and handles the fit/no-fit cases, but misses the critical max comparison between including and excluding the item, leading to incorrect recurrence logic.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution incorrectly always includes the current item when it fits, without comparing to the case where the item is excluded, leading to incorrect maximum values in scenarios requiring item exclusion for optimal results.

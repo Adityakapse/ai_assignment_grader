@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly implements exponentiation by squaring for 2^n but omits the necessary -1 adjustment in the final return statement of calc(), leading to an incorrect result.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function correctly returns 1 % c when b == 0, matching the sample solution's base case implementation.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case in expo reduces b by 1 and recurses, but forgets to multiply the result by a before applying modulo c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b//2, c) once and returns (tmp * tmp) % c, achieving O(log b) recursion depth.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution correctly implements exponentiation by squaring but misses the critical "-1" adjustment required by the closed-form formula (2^n - 1), leading to incorrect results for all inputs.

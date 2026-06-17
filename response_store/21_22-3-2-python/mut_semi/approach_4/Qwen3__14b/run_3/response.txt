@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is built correctly from A, but the virtual source node 0 is missing, and the DFS starts from node 1 instead of node 0, preventing consideration of all possible starting nodes for the longest path.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is correctly initialized to -1 for all nodes, and the DFS function checks memo[node] != -1 to return cached values immediately, ensuring each node is computed at most once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly returns 0 when a node has no outgoing edges, matching the sample solution's base case handling for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly takes the max over children but omits the "+1" when considering each child's path length, failing to account for the edge itself in the path count.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The solution fails to include a virtual source node and omits the +1 adjustment when computing path lengths, resulting in incorrect outputs even for simple linear graphs (e.g., returns 0 instead of 2 for a 3-node path).

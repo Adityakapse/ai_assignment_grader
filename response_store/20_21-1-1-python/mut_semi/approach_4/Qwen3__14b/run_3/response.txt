@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 without applying % c, which fails when c == 1 as noted in the comment, and does not handle the edge case correctly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses `b % 2` to distinguish between odd and even values of `b`, with the `elif` branch handling odd cases and the `else` branch handling even cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case correctly reduces b by 1 through recursion but forgets to multiply by a before taking modulo c, resulting in incorrect computation of a^b.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly uses integer division (b//2), computes the half-power recursively, squares the result, and applies modulo c to both the recursive call and the final product.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The base case returns 1 instead of 1 % c, causing errors when c=1, and the odd case omits multiplying by a, leading to incorrect results for odd exponents.

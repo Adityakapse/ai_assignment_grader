@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly sized (n+1) but initialised to 0 instead of -1, which fails to distinguish between uncached entries and valid zero-profit subproblems.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student implemented the n == 0 base case but omitted the n == 1 base case, leading to incorrect recursion for n = 1 where the code would access invalid indices (n-2 = -1) and produce wrong results.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `memo[n] != 0` instead of the correct sentinel value `-1`, which could incorrectly skip recomputation for subproblems where the maximum profit is zero (even though the problem states all weights are positive).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence correctly uses Math.max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)), but the code fails to handle the n=1 case, leading to an invalid recursive call to opt_helper(-1) when n=1.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code lacks a base case for n=1, leading to incorrect recursive calls that access invalid indices and produce incorrect results for small inputs like n=1.

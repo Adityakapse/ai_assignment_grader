@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution skips allocating a counting array entirely and unconditionally appends '1' for every position in B, ignoring the required frequency comparison between A and B.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution skips iterating over array A entirely and directly appends '1' for every position in B, failing to count frequencies of elements in A as required.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop uses range(len(B)) which correctly iterates from 0 to m-1 inclusive, producing a binary string of exactly length m as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution appends '1' for every position in B without comparing the counts from A to B[i], resulting in all '1's regardless of the actual values.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution always returns '1' for every position in B without checking if the count of each number in A is <= B[i], leading to incorrect results for all inputs where |A|_i exceeds B[i].

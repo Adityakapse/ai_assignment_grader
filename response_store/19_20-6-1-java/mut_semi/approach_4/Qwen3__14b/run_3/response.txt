@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D table of size (m+1)x(n+1) and used nested loops with i and j starting from 1 and ending at m and n respectively, matching the required bottom-up filling structure.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The code initializes the DP table with all zeros instead of setting edDis[i][0] = i and edDis[0][j] = j, leaving the first row and column uninitialized and incorrect.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if a[i-1] == b[j-1] and sets edDis[i][j] to edDis[i-1][j-1] when characters match, matching the required behavior for the character match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters using 1 + Math.min of all three neighboring cells (edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code initializes the 2D array but fails to set the base cases (first row and column) to their correct values (i and j), leading to incorrect results for inputs involving empty strings or requiring insertions/deletions.

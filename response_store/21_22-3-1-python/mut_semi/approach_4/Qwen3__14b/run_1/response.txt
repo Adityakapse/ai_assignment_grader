@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly sized as n+1, but it is initialized to 0 instead of -1, which could lead to incorrect cache checks if a subproblem's maximum profit is zero (though the problem constraints state all W[i] are positive, the rubric explicitly requires -1 as the sentinel).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code includes the n == 0 base case but lacks the n == 1 base case, leading to incorrect recursion for inputs with n = 1 (e.g., W of length 2) where the function would recursively call opt_helper with negative indices.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses a cache check with sentinel value 0 instead of -1, which may cause incorrect recomputation for subproblems with zero profit (though not applicable here due to positive weights).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence is present but incorrect for n=1: the code lacks a base case for n=1, leading to invalid recursion (n-2 = -1) and incorrect computation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code lacks a base case for n=1, leading to incorrect results for small inputs like n=1 due to invalid recursive calls and potential crashes.

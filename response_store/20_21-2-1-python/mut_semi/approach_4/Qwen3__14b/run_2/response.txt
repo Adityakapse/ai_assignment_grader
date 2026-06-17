@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a counting array C of size 10^6 + 1 and initialized it to 0, which satisfies the requirement of having a counting array of sufficient size (10^6 + 1 is larger than max(A) + 1 as per problem constraints).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student iterates over A but increments C[i] based on the loop index rather than the element value A[i], leading to incorrect frequency counts.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at index 1 instead of 0, causing the result to be one character shorter than required (missing the 0th position in B).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code compares C[i] > B[i] to append '1' instead of checking C[i] <= B[i], which reverses the intended logic for determining whether a category fits in one pass.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code increments frequency counts based on array indices (C[i] += 1) instead of element values, and uses reversed comparison logic (1 when C[i] > B[i]), producing incorrect results for all non-trivial inputs.

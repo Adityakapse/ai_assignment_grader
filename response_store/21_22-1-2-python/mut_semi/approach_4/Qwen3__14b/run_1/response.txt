@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The upper bound is initialised to 10^9 instead of 10^18, which will fail for N values exceeding 10^9.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop uses the correct termination condition (l <= r) and computes the midpoint as (l + r) // 2 at each iteration, meeting the criteria for the binary search loop structure.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly updates l and r based on f(m), but the direction is reversed: when f(m) == 1 (m >= N), the code searches the right half by setting l = m + 1 instead of narrowing to the left by setting r = m - 1, and vice versa for f(m) == 0.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code returns m unconditionally without checking f(m) after the loop, which may return an incorrect value when the loop exits with f(m) == 0.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Uses an upper bound of 1e9 instead of 1e18 and returns m unconditionally without final f(m) check, leading to incorrect results for N > 1e9 or when the final m is not the correct N.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The memo array is correctly sized (n+1) but initialized to 0 instead of -1, which could incorrectly treat uncomputed entries as having zero profit.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code handles the n == 0 base case but lacks the n == 1 base case, leading to invalid recursive calls with negative indices (e.g., n - 2 when n = 1) and incorrect results for input arrays of length 2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `!= 0` instead of the required `!= -1`, which would incorrectly skip recomputation for subproblems with zero profit (though the problem states all weights are positive, this is still a sentinel value error).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the recurrence relation (choosing between taking the current value plus the result two steps back or skipping the current value) and stores the computed result in memo[n] before returning, ensuring proper memoization.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code misses the n == 1 base case, leading to incorrect recursive calls for n ≥ 1 (e.g., opt_helper(-1) and invalid memo indexing) and fails to handle valid inputs correctly.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly initializes a 2D list with dimensions (n+1) x (capacity+1) using a list comprehension, and all entries are initialized to 0 as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items in reverse order, and the inner loop covers all capacities from 0 to capacity inclusive using range(capacity + 1).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if volume[i] <= j before attempting to include the item, ensuring that items only fit when they exactly fill or fit with room to spare.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly references the previous row (i+1) but lacks the max comparison when the item fits, instead unconditionally adding the item's value to the subproblem solution.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code always adds the item's value when it fits, but lacks the max comparison between including/excluding the item, leading to incorrect results when excluding items is necessary (e.g., when multiple items must be skipped for optimal value).

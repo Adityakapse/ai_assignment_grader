@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly constructs an adjacency list from the input edges and adds a virtual source node 0 with edges to all nodes 1 through N, ensuring the DFS starts from node 0 and considers all possible paths.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is correctly initialized to -1 for all nodes, and the DFS function checks memo[node] != -1 to return cached values immediately, ensuring each node is computed once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly returns 0 when a node has no outgoing edges, as implemented by the condition `if (graph.get(node).size() == 0) return 0;`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly iterates over all children of a node, computes the maximum path length as `max(sol, dfs(child) + 1)` for each child, and stores the result in `memo[node]` before returning, ensuring proper memoization and edge counting.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly constructs the graph with a virtual source node 0 connected to all other nodes, uses memoization in the DFS to ensure O(N+M) time complexity, and subtracts 1 from the final result to convert edge count to node count as required.

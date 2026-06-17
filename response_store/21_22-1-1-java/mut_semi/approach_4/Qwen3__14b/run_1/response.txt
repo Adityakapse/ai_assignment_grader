@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly implements exponentiation by squaring for 2^n but omits the required "-1" adjustment in the closed-form formula a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function correctly returns 1 when b == 0, properly handling the base case for exponentiation.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case in expo reduces b by 1 and recurses, but forgets to multiply the result by a before applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly calls expo(a, b/2, c) once, stores the result in 'a', then returns (a*a) % c, achieving O(log b) depth.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student's code returns 2^n mod 1e9+7 instead of (2^n - 1) mod 1e9+7, missing the critical -1 adjustment required by the closed-form formula. Additionally, the expo function's odd case incorrectly returns the result of the recursive call without multiplying by 'a' as required.

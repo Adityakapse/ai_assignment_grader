@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D array with dimensions (n+1) x (capacity+1) using double[n + 1][capacity + 1], and Java's default initialization ensures all cells are 0.0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all items from n-1 to 0, and the inner loop covers all capacities from 0 to capacity inclusive, matching the required structure.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if volumes[i] <= j before attempting to include the item, ensuring that items are only considered when they fit within the current capacity.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution uses a recurrence that adds the item's value to the previous subproblem's result without comparing it to the case where the item is not taken, missing the critical max operation that defines the correct knapsack recurrence.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to use Math.max() when comparing including/excluding items, leading to incorrect results for multi-item cases where excluding an item is optimal. For example, when two items must be compared, the solution would always include the current item even if it's not optimal.

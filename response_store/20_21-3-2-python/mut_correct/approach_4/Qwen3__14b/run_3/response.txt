@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly constructs an adjacency list from the input edges and adds a virtual source node 0 with edges to all nodes 1 to N, enabling a single DFS call to compute the longest path.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly initializes the memo array with -1 for all nodes and checks memo[node] != -1 to return cached values immediately, ensuring each node is computed only once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS function correctly returns 0 when a node has no outgoing edges, as implemented by the condition `if len(graph[node]) == 0: return 0`, which properly handles leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly iterates through all children of a node, computes the maximum path length via `dfs(child) + 1`, and stores the result in `memo[node]` before returning, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution exactly matches the sample, correctly implementing memoization and the virtual source node adjustment (dfs(0) - 1) to compute the longest path length in a DAG.

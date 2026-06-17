@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The upper bound is initialised to 1e9 instead of 1e18, which will fail for N values exceeding 1e9 but is otherwise correctly using l=0 as the lower bound.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements a while loop with the termination condition l <= r and computes the midpoint m = (l + r) // 2 at each iteration, meeting the requirements for the binary search loop structure.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code updates l and r in reversed directions compared to the correct approach - when f(m) is 1 (m ≥ N), it moves l = m + 1 (should search left), and when f(m) is 0 (m < N), it moves r = m - 1 (should search right).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student returns m unconditionally without checking f(m) after the loop, which fails when the loop exits with f(m) == 0 (e.g., when N is exactly m).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code uses an upper bound of 1e9 instead of 1e18, which fails for N > 1e9, and returns m unconditionally without checking f(m) after the loop, leading to potential off-by-one errors.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails when c == 1 as the modulo operation is missing.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses "b % 2 != 0" to correctly identify odd exponents and handles even exponents in the else clause, properly distinguishing between the two cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case reduces b by 1 and recurses correctly, but forgets to multiply by a (returns expo(a, b-1, c) % c instead of a * expo(a, b-1, c) % c).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) once, then returns (tmp * tmp) % c, achieving O(log b) depth and proper squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1%c, which fails when c=1, and the odd case omits multiplying by a, leading to incorrect results for odd exponents.

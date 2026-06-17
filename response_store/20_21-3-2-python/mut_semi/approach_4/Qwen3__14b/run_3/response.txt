@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly constructed from the input edges, but the virtual source node 0 (which connects to all nodes 1 to N) is missing, causing the DFS to start only from node 1 instead of considering all possible starting nodes.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is properly initialized to -1 for all nodes, and the DFS checks memo[node] != -1 before returning cached values, ensuring each node is computed at most once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly returns 0 when a node has no outgoing edges, as implemented by the condition `if len(graph[node]) == 0: return 0`.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly takes the max over children but forgets to add +1 to the child's dfs result (dfs(child) + 1), leading to uncounted edges in the path length calculation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution omits the virtual source node 0 and starts DFS from node 1, failing to consider paths starting from other nodes, and does not subtract 1 to convert edge count to vertex count, leading to incorrect results for most inputs.

@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student did not reference any line numbers and incorrectly claimed g is O(1) instead of O(N), failing to clearly separate f and g's components as required.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student did not analyze the non-loop parts (e.g., variable initializations) in either function, incorrectly claiming g is O(1) instead of stating all non-loop code is Theta(1) as required.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly identifies the loop runs N times but provides a weak justification by only stating "loops over the characters" without explicitly mentioning the loop's bounds (i=0 to N-1) as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims that each iteration of f's loop has constant cost, ignoring that the call to g(s, s.charAt(i)) itself has a linear cost in N, as g scans the entire string.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims f is O(N), failing to multiply the Theta(N) loop iterations by the Theta(N) cost per iteration (from g's scan), and mistakenly assumes g's operations are constant rather than linear in N.
+
+POINT_ID: 6
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly notes that the loop in g scans the whole string, implying Theta(N) iterations, which justifies the required bucket.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly suggests that each iteration of g has constant time but fails to explicitly justify this with the specific operations (character access, comparison, increment) that make the cost Theta(1) as required by the rubric.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that g has Theta(N) iterations and Theta(1) per iteration, but does not explicitly state the multiplication (Theta(N) x Theta(1) = Theta(N)) required by the rubric point.
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims g is O(1), ignoring the Theta(N) loop that scans the entire string, which dominates the runtime. The analysis fails to account for the actual iterations in g's for-loop.
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student incorrectly claims f is O(N), ignoring that each of the N iterations calls g which itself takes O(N) time, leading to a total of O(N²). They also misstate g's complexity as O(1) instead of O(N).

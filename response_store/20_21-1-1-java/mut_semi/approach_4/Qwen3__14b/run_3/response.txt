@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails to handle the edge case when c == 1 (e.g., 1 mod 1 should be 0 but returns 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses b % 2 != 0 to detect odd b and handles even b in the else clause, leading to distinct recursive branches for odd and even cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case reduces b by 1 and recurses correctly, but fails to multiply the result by a before applying modulo c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) using integer division (via b/2 in C++), then returns (tmp * tmp) % c, achieving O(log b) depth and proper squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1%c (fails when c=1) and the odd case omits multiplying by a, leading to incorrect results for odd exponents.

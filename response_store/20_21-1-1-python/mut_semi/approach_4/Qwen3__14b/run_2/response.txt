@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, which fails to handle the edge case when c == 1 as noted in the comment.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses 'b % 2' to distinguish odd (elif branch) and even (else branch) cases, leading to different recursive paths as required.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The odd case correctly reduces b by 1 and recurses, but forgets to multiply the result by a before applying modulo c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly uses integer division (b//2) and squares the result of the recursive call (tmp * tmp) with modulo c applied appropriately.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The base case returns 1 instead of 1%c, and the odd case omits multiplying by a, leading to incorrect results for inputs like (a=2, b=1, c=3) which should return 2 but would return 1.

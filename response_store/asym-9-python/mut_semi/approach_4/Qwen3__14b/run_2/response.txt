@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi (3 marks)
+FEEDBACK: The student separated f and g and identified loops, but did not reference specific line numbers as required. They mentioned "halving while loop" and "call to g inside f's loop" without citing line numbers from the code.
+
+POINT_ID: 2
+BUCKET: Correct (5 marks)
+FEEDBACK: The student correctly identified that all non-loop code in both functions is constant-time, noting "setup is constant" for f and "initialisations" as Theta(1) for g, matching the sample solution's analysis of non-loop parts.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student correctly states that the outer loop in f() runs Theta(log N) times but does not explicitly explain that this is because k starts at N and is halved each iteration, as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly identifies that each iteration of f's loop has a cost dominated by g, which is Theta(log N) due to its halving loop. They justify this by noting that in the worst case, g runs Theta(log N) times, implicitly linking it to the first iteration of f where m=N.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly multiplies the number of iterations (log N) by the per-iteration cost (log N from g), explicitly stating the result is (log N)^2, with justification through reference to g's Theta(log N) complexity.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly states that g runs Theta(log N) times in the worst case but does not explicitly mention that the iteration count depends on m (Theta(log m)) and only refers to the worst case starting at N, not fully justifying the connection between m and the iteration count.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student correctly identifies that each iteration of g is Theta(1) but only explicitly mentions three operations (array read, addition, division) instead of all four required (including the comparison in the loop condition).
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly states that g's loop has Theta(log N) iterations and Theta(1) per-iteration cost, explicitly multiplying them to get Theta(log N) with justification about constant operations.
+
+POINT_ID: 9
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly identifies that g's runtime is Theta(log N) by accounting for the loop's Theta(log N) iterations, constant per-iteration cost, and constant setup/return costs, implicitly summing them as required.
+
+POINT_ID: 10
+BUCKET: Correct (14 marks)
+FEEDBACK: The student correctly identified that f's outer loop runs log N times and each iteration's cost is dominated by g's Theta(log N) time, leading to a total of Theta((log N)^2). They explicitly accounted for constant-time setup and return operations, aligning with the required breakdown.
