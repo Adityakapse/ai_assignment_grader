@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `int[] C = new int[B.length + 1];`, which provides a counting array of size at least max(A)+1 and is automatically zero‑initialized.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop uses the index i (C[i]++) instead of the array value A[i] (C[A[i]]++), so it never correctly counts the occurrences of each category.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The output loop starts at i = 1 instead of 0, so it skips the first category and produces a string one character short of the required length.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code appends '1' when C[i] > B[i] and '0' otherwise, which is the opposite of the required rule that '1' should be added when C[i] ≤ B[i].
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code counts frequencies using the loop index instead of A[i], starts the output loop at 1 (missing the first digit), and reverses the comparison, so it does not produce the correct binary string.

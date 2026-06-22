@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code correctly builds an adjacency list from A, but it never adds a virtual source node 0 with edges to all vertices and starts the DFS from node 1 instead of node 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution creates `memo = [-1] * (N + 1)` and correctly returns `memo[node]` when `memo[node] != -1`, ensuring cached results are used.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's dfs includes `if len(graph[node]) == 0: return 0`, correctly returning 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The loop iterates over all children and stores the memoized value, but it uses `sol = max(sol, dfs(child, graph, memo))` without adding +1, so the edge length isn’t counted.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dfs omits the “+1” per edge and starts at node 1 without the virtual source, so even a simple linear graph (e.g., 1→2) returns 0 instead of the correct longest‑path length.

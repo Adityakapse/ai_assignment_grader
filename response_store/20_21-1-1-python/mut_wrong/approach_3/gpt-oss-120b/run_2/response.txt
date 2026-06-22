@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Wrong
+FEEDBACK: The function returns 1 % c unconditionally and never checks whether b equals 0, so there is no proper base‑case test.
+
+POINT ID: 2
+BUCKET: Wrong
+FEEDBACK: No parity test (b % 2) appears in the code; the implementation treats odd and even exponents identically.
+
+POINT ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd‑exponent case is missing; the code does not reduce b by 1 nor multiply by a.
+
+POINT ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑exponent case is absent; the solution never halves b or squares a recursive result.
+
+POINT ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the function always returns 1 % c, it yields the correct modular power only for the trivial case b = 0; it fails for virtually all other valid inputs.

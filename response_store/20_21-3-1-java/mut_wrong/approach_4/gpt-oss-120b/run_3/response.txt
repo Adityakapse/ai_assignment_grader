@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2D DP table; it only uses a single scalar variable to sum values, so no (n+1) × (capacity+1) array is allocated or initialized.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code contains only one loop over the items and never iterates over capacities, so it does not have the required nested loops covering j = 0 .. capacity.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code only checks `volumes[i] <= capacity` once and sums all fitting items, instead of performing a per‑capacity (`j`) feasibility check for each sub‑capacity as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution just sums values of items whose volume ≤ capacity and never uses a DP table or a max‑based recurrence referencing previous subproblems, so the required recurrence relation is absent.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method simply adds the values of every item whose volume ≤ capacity, so it returns the sum of all fitting items instead of the optimal subset value, producing incorrect results for most inputs.

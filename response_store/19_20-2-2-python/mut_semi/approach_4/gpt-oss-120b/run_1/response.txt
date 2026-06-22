@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution loops over every element in `inputarray` with `for i in inputarray` and uses `if/elif` to separate operators from numbers (handled in the `else` branch).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution converts each non‑operator token with int(i) and pushes it onto the stack, correctly handling numeric inputs.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code pops two values and pushes a result for each operator, but for '-' and '/' it uses the wrong operand order (e.g., `n1 - n2` instead of `n2 - n1`), leading to incorrect computations.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code computes subtraction as `n1 - n2` and division as `n1 / n2`, reversing the required operand order and using floating-point division instead of integer floor division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code computes subtraction as `n1 - n2` and division as `n1 / n2`, reversing the required operand order, so results are wrong for expressions involving '-' or '/' (e.g., it would give 1‑2 = -1 instead of 2‑1 = 1).

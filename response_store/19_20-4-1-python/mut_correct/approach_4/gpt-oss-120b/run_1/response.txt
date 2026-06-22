@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑loop walks from the root, moving left when insert.key < x.key and right otherwise, and stops when x becomes None, correctly finding the insertion point.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes `y = None` and updates `y = x` on every iteration of the while loop, ensuring that after the loop `y` holds the correct parent for the new node.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After traversal the code uses `if insert.key < y.key: y.left = insert else: y.right = insert`, correctly attaching the new node as left or right child based on the key comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code assigns `insert.parent = y`, correctly using the tracked parent variable from the traversal.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function correctly traverses the tree, sets the new node’s parent, handles the empty‑tree case by returning the inserted node as root, and returns the original root for non‑empty trees, preserving the BST property.

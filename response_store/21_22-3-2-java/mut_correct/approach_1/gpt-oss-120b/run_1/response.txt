@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds an adjacency list from A and adds a virtual source node 0 with edges to every node 1…N using the loop that adds i to graph.get(0) when i ≠ 0.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array is created with size N+1, initialized to -1 for all indices, and the DFS checks memo[node] != -1 to return a cached value.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS base case correctly returns 0 when graph.get(node).size() == 0, handling leaf nodes.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each child the code updates sol with Math.max(sol, dfs(child)+1) and stores the result in memo[node] before returning it.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: By calling dfs(0, graph, memo) and subtracting 1, calc returns the exact length of the longest directed path for any DAG within the required O(N+M) time.
+
+TOTAL: 100

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (m+1)×(n+1) table with a list comprehension and uses nested loops i=1..m, j=1..n to fill it bottom‑up.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It correctly initialises edDis[i][0]=i for all i and edDis[0][j]=j for all j, handling deletions and insertions.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When a[i‑1] equals b[j‑1] the implementation sets edDis[i][j] to edDis[i‑1][j‑1] as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters it computes edDis[i][j] = 1 + min(edDis[i][j‑1], edDis[i‑1][j], edDis[i‑1][j‑1]), covering insert, delete and replace.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for any input strings and contains no recursive calls.
+
+TOTAL: 100

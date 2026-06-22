@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The code correctly treats the node itself as y when it has at most one child, but it never selects the in‑order successor (treeMinimum(delete.right)) for the two‑child case, so that part of the requirement is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submission does not include a treeMinimum helper that walks left to find the minimum node, so this requirement is not met.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code selects x as `delete.left` if it exists, otherwise `delete.right`, which correctly follows the rule for choosing y’s non‑null child.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The implementation correctly sets x.parent to delete.parent and updates the parent’s left/right child (or root) to x, which matches the required splicing behavior.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never handles the two‑child case or copy the successor’s key into the deleted node, so the required key‑copying step is missing.
+
+POINT_ID: 6
+MARKS: 6
+FEEDBACK: The code correctly handles leaf, one‑child, and root deletions, but it never finds or uses a successor for nodes with two children, so the BST is not valid in that case.

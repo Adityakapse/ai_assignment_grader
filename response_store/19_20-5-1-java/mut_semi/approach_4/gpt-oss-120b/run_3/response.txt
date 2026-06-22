@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution adds the start node to `queue` before the loop and uses `while (!queue.isEmpty())` to iterate until the queue is empty, satisfying the required initialization and loop structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code removes the next node with `queue.remove(queue.size() - 1)`, which takes elements from the back of the list, turning the structure into a stack (DFS) instead of a FIFO queue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution checks `if (!visited.contains(next))` before processing each node and adds it to `visited` only then, also preventing already‑visited neighbors from being queued.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution loops through all entries in graph[next] and, for each vertex not already in visited, calls queue.add(vertex) to place it at the back of the list.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code removes elements from the end of the list (`queue.remove(queue.size() - 1)`), turning the structure into a stack and producing a depth‑first traversal rather than the required breadth‑first order.

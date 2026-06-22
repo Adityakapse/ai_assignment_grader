@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: Your code correctly handles the case where the node has at most one child (effectively using the node itself as y), but it never selects the tree minimum of the right subtree for a node with two children, so the y‑selection is incomplete.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submitted code does not define a treeMinimum (or tree_minimum) helper that walks left to find the minimum node, so this requirement is not met.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code sets x to delete.left if it exists, otherwise delete.right, correctly identifying the non‑null child (or None) as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The function correctly sets x.parent to delete.parent and updates the parent’s left/right pointer (or root) to x, implementing the required splicing step.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never copies the successor's key into the deleted node, and it lacks any handling of the two‑child case where y would be the in‑order successor.
+
+POINT_ID: 6
+MARKS: 4
+FEEDBACK: The delete function only handles leaf and single‑child deletions and lacks the successor logic for nodes with two children, so it does not always return a valid BST.

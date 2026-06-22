@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `memo = [-1] * (n + 1)`, correctly allocating an array of size n+1 and initializing all entries to -1 as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student’s opt_helper correctly returns W[0] for n = 0 and max(W[0], W[1]) for n = 1, matching the required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The helper function includes `if memo[n] != -1: return memo[n]` before any recursive work, correctly returning the cached value and avoiding recomputation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation uses the exact recurrence `memo[n] = max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and stores the computed value in `memo[n]` before returning, matching the required approach.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation mirrors the reference solution, correctly memoizes sub‑problems and computes the optimal profit in linear time for all valid inputs.

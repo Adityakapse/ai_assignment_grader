@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Correct
+FEEDBACK: The code adds the start node to `queue` before the `while (!queue.isEmpty())` loop and continues processing until the queue is empty.
+
+POINT ID: 2
+BUCKET: Wrong
+FEEDBACK: Nodes are removed with `queue.remove(queue.size() - 1)`, which takes from the back of the list (LIFO) instead of the front, violating FIFO dequeue.
+
+POINT ID: 3
+BUCKET: Correct
+FEEDBACK: Each dequeued node is checked with `!visited.contains(next)` before processing, then added to `visited`, and neighbours are only enqueued if they are not already visited.
+
+POINT ID: 4
+BUCKET: Correct
+FEEDBACK: The algorithm iterates `for (int vertex : graph[next])` and enqueues each unvisited neighbour using `queue.add(vertex)`, adding them to the back of the queue.
+
+POINT ID: 5
+BUCKET: Semi
+FEEDBACK: Due to the LIFO removal, the traversal order is depth‑first; it may appear correct on simple linear graphs but produces the wrong order for graphs with branches or multiple levels.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates `c` with length n and correctly initializes `c[0]` to `a[0]`, meeting the prefix‑sum array allocation requirement.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop copies a[i] into c[i] without adding c[i‑1], so the prefix sum array is not constructed as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution allocates `d` with `new int[n]` and correctly uses a `for (int i = 0; i < n; i++)` loop to process each of the n queries.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The implementation always uses `c[r] - c[l-1]` and never checks for `l == 0`, causing an out‑of‑bounds access for queries with a zero left endpoint.
+
+POINT_ID: 5
+MARKS: 3
+FEEDBACK: The code builds `c` without accumulating a prefix sum and then subtracts `c[b[i][0]-1]` even when `b[i][0]` is 0, causing incorrect results and an out‑of‑bounds access.

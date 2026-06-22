@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Closed form derivation
+BUCKET: Correct
+FEEDBACK: The solution computes `expo(a, b, c) - 1` with `a = 2`, correctly implementing the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: Point 2 — Expo base case: b == 0
+BUCKET: Correct
+FEEDBACK: The expo function includes `if (b == 0) return 1;`, which properly returns 1 for the exponent zero.
+
+POINT_ID: Point 3 — Expo odd case: reduce by 1 and multiply
+BUCKET: Correct
+FEEDBACK: When `b % 2 == 1` the code returns `(a * expo(a, b - 1, c)) % c;`, correctly reducing the exponent by one and multiplying by the base.
+
+POINT_ID: Point 4 — Expo even case: halve and square
+BUCKET: Correct
+FEEDBACK: For even `b` the code does `a = expo(a, b / 2, c); return (a * a) % c;`, calling expo once, halving the exponent, and squaring the result modulo c.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Correct
+FEEDBACK: `calc(n)` returns `expo(2, n, 1000000007) - 1`, yielding (2ⁿ − 1) mod 10⁹+7 for all valid inputs, with modulo applied at each step and no forbidden keywords used.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution computes a_n by looping n times with a = (2*a+1) % c, never using the closed‑form 2^n‑1 or exponentiation by squaring, thus failing to apply the required O(log n) closed form.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function at all, so there is no base case handling b == 0; the required base case is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution lacks any expo function and therefore does not implement the required odd‑case logic of reducing b by 1 and multiplying by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function at all, so there is no even‑case handling that halves b and squares the recursive result.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly computes (2^n - 1) mod 10^9+7 for small n, but it uses a linear loop (O(n)) instead of the required O(log n), so it will time out for large inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code sets l = 0 but uses r = 1000000000L, which is far smaller than the required 10^18 upper bound, so it may miss values of N larger than 1e9.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The implementation includes a while (l <= r) loop and computes the midpoint with m = (l + r) / 2 at each iteration, matching the expected binary‑search pattern.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The update logic is reversed: when f_N(m) != 0 (i.e., f_N(m) == 1) it moves l = m + 1 instead of narrowing the left half, and vice‑versa for the else branch.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: After the loop the function returns m unconditionally without checking f_N(m), which can be off by one compared to the correct return of l or a conditional check.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because of the too‑small upper bound and the reversed narrowing direction, the algorithm only works for limited cases and fails for many valid N, though it avoids forbidden keywords.

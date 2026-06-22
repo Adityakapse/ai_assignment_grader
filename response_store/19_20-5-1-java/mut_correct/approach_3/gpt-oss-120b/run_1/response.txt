@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code adds the start node to `queue` before the `while (!queue.isEmpty())` loop, and the loop continues until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `queue.remove(0)`, which dequeues from the front of the list, preserving FIFO order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The node `next` is checked with `!visited.contains(next)` before processing, and if not visited it is added to `visited`, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop `for (int vertex : graph[next])` iterates all neighbours and enqueues each unvisited neighbour with `queue.add(vertex)`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the `visited` list, which contains all reachable nodes from `start` in proper BFS order for any directed graph, matching the expected behavior.

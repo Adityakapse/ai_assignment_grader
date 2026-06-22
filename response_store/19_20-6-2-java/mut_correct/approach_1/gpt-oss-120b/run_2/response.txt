@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates Result with new double[n + 1][capacity + 1]; Java initializes all entries to 0, satisfying the required (n+1)×(capacity+1) zero‑filled table.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop for (int i = n - 1; i >= 0; --i) iterates over every item, and the inner loop for (int j = 0; j <= capacity; ++j) iterates j from 0 to capacity inclusive, covering all subproblems.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition if (volumes[i] <= j) correctly checks capacity feasibility before attempting to include the item.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, Result[i][j] is assigned Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j]); otherwise it copies Result[i + 1][j], which implements the required recurrence relation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns Result[0][capacity], which after filling the DP table yields the correct maximum value for any valid input.
+
+TOTAL: 100

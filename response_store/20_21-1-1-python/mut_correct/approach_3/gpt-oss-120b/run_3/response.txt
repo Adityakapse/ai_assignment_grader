@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function includes `if b == 0: return 1 % c`, which correctly handles the base case and the edge case when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `elif b % 2:` line correctly distinguishes odd exponents (non‑zero remainder) from even ones.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the code returns `(a * expo(a, b - 1, c)) % c`, properly reducing the exponent by 1, multiplying by a, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even branch computes `a = expo(a, b // 2, c) % c` once and then returns `(a * a) % c`, correctly halving b, squaring the recursive result, and taking the modulo.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation produces the correct `a^b mod c` for all valid inputs, avoids using `import` or `**`, and applies `% c` at each step to keep intermediate values bounded.

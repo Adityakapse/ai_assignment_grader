@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution builds an adjacency list from A but never adds a virtual source node 0 with edges to all nodes, and it starts the DFS from node 1 instead of a unified source.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It initializes `memo = [-1] * (N + 1)` and correctly returns the cached value when `memo[node] != -1`, ensuring each node is computed at most once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case `if len(graph[node]) == 0: return 0` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence uses `sol = max(sol, dfs(child, graph, memo))` without the required `+ 1`, so edge lengths are not counted even though the result is stored in `memo[node]`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because it starts DFS from node 1 and omits the +1 increment, the function returns an incorrect longest‑path length for most DAGs.

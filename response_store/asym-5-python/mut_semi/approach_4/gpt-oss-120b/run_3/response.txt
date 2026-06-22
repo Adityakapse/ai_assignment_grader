@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly distinguished the two functions and identified the loops, but you did not reference any specific line numbers from the code.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer never mentions the initialization statements (e.g., s = 0, p = h, c = 0, q = start) or the return statements, so the constant‑time non‑loop parts are not analyzed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly states that the outer loop runs Θ(N) times and justifies it by noting that p advances with p = p.next through the N‑node list.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You note that each f‑iteration calls g(p) which traverses the remaining list, but you do not explicitly state that this gives a Θ(N) cost per iteration, only describing it as “some traversal cost.”
+
+POINT_ID: 5
+BUCKET: Semi (4 marks)
+FEEDBACK: The student notes N iterations and multiplies by g’s Θ(N) cost to get Θ(N²), but the per‑iteration cost isn’t explicitly justified for each iteration, making the reasoning a bit vague.
+
+POINT_ID: 6
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly states that g’s loop iterates Θ(N) times in the worst case (when start = h) and explains that it “goes through the linked list,” effectively justifying the traversal by q.next until null.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student notes each iteration does constant work (reading q.v and following q.next) and calls it Θ(1), but does not explicitly list all constant‑time operations (e.g., the += assignment and null check) required for a full justification.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly identified Θ(N) iterations and Θ(1) work per iteration for g’s loop and combined them to state the total cost as Θ(N) × Θ(1) = Θ(N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: You correctly concluded that g runs in Θ(N) and explained the loop cost, but you did not mention the constant‑time initialization and return steps required for a complete Θ(1)+Θ(N)+Θ(1) analysis.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly identified the overall runtime of f as Θ(N²), but you did not account for the constant‑time non‑loop parts (the initializations and return) in your analysis.

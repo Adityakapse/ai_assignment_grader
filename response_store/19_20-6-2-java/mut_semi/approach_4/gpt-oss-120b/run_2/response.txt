@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates a double[][] Result of size (n+1) × (capacity+1); Java initializes all entries to 0, meeting the required table allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses a nested loop where the outer loop runs i from n‑1 down to 0 (covering all items) and the inner loop runs j from 0 to capacity inclusive, thus iterating over every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The implementation includes `if (volumes[i] <= j)` before adding an item, correctly checking capacity feasibility.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code uses Result[i][j] = values[i] + Result[i+1][j‑volumes[i]] when the item fits, but it never takes the max with the option of skipping the item.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation always adds the item when it fits (no max comparison with the skip case), so it returns incorrect values for most inputs beyond trivial single‑item scenarios.

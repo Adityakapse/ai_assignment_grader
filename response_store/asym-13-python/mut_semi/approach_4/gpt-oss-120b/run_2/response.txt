@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly separated the analysis of f and g and identified the loops versus constant‑time parts, but you never referenced specific line numbers as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You correctly noted that f’s setup is constant time, but you did not explicitly state that g’s initializations (n and count) are Θ(1), so not all non‑loop parts were identified.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student states the loop runs about N times (Θ(N) iterations) but only gives a vague justification, not explicitly linking it to i ranging from 0 to N‑1.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You note that each iteration of f calls g and therefore “costs about as much as g,” but you do not explicitly state that this cost is Θ(N) per iteration or justify it by referencing g’s linear scan.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly state that the outer loop has Θ(N) iterations and that each iteration costs as much as g (Θ(N)), and you multiply these to conclude a total cost of Θ(N²) for f.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: You correctly state that g’s loop runs Θ(N) times and justify it by noting the loop scans the entire string regardless of x.
+
+POINT_ID: 7
+BUCKET: Correct
+FEEDBACK: The student explicitly notes that each iteration does a character access and a comparison, calling it Θ(1), providing the required constant‑time justification.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly identified Θ(N) iterations and Θ(1) work per iteration for g’s loop and combined them to state the total cost as Θ(N) × Θ(1) = Θ(N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(N) and explain the loop’s cost, but you omit mentioning the constant‑time initialization and return steps required for the full Θ(1)+Θ(N)+Θ(1) reasoning.
+
+POINT_ID: 10
+BUCKET: Correct
+FEEDBACK: You correctly identified that the outer loop runs Θ(N) times, each iteration costs Θ(N) due to g, and noted the constant‑time setup, leading to an overall Θ(N²) runtime for f.

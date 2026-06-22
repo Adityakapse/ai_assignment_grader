@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates c as a list of length n and correctly sets c[0] = a[0] before the subsequent loop, meeting the prefix‑sum allocation criterion.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop sets c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so the cumulative sum array is never constructed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code creates `d = [0] * n` and uses `for i in range(n):` to process each query, correctly allocating an output array of size n and looping over all indices.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code always computes d[i] = c[r] - c[l‑1] without a special case for l == 0, so when l is 0 it accesses c[-1] instead of returning c[r].
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code stores only the original values in c instead of a prefix sum and always computes c[r]‑c[l‑1], which for l = 0 accesses c[-1]; thus it returns incorrect sums for the queries.

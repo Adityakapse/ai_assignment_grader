@@ -1,0 +1,43 @@
+POINT ID: Point 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student clearly separates f and g into parts (A–F) and distinguishes loops from non‑loop code, but never cites the actual line numbers from the source.
+
+POINT ID: Point 2 — Constant-time non-loop parts
+BUCKET: Correct
+FEEDBACK: The analysis explicitly states that the initialisations in f (Part A) and the return in Part C, as well as the initialisations and return in g (Parts D and F), are Θ(1).
+
+POINT ID: Point 3 — f(): Nested loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly derives Θ(N²) by summing N + (N‑1) + … + 1 = N(N+1)/2 for the nested loops.
+
+POINT ID: Point 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The per‑iteration cost is identified as Θ(1), with the justification “one array read and one += assignment.”
+
+POINT ID: Point 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The total cost is computed as Θ(N²) × Θ(1) = Θ(N²), matching the earlier iteration and per‑iteration analysis.
+
+POINT ID: Point 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Correct
+FEEDBACK: The student accounts for the binary‑search call as Θ(log N) and the addition/return as Θ(1), giving Part C a total of Θ(log N).
+
+POINT ID: Point 7 — g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The iteration count is justified as Θ(log N) because each iteration halves the search interval [l, r].
+
+POINT ID: Point 8 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: Each iteration is described as Θ(1), listing the constant‑time operations (midpoint, array accesses, comparisons, update).
+
+POINT ID: Point 9 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The total loop cost is correctly combined as Θ(log N) × Θ(1) = Θ(log N).
+
+POINT ID: Point 10 — Overall worst-case runtime of g
+BUCKET: Correct
+FEEDBACK: The overall runtime is summed as Θ(1) + Θ(log N) + Θ(1) = Θ(log N), consistent with the component analysis.
+
+POINT ID: Point 11 — Overall worst-case runtime of f
+BUCKET: Correct
+FEEDBACK: The final runtime is given as Θ(1) + Θ(N²) + Θ(log N) = Θ(N²), correctly absorbing the lower‑order log term.

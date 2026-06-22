@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates C with `new int[B.length + 1]`, which meets the required size (at least max(A)+1) and Java initializes the array to zero, fulfilling the allocation requirement.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code increments C[i] with the loop index instead of using C[A[i]], so it does not correctly count the occurrences of each category.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The output loop starts at 1 instead of 0, so it generates only B.length‑1 characters and misses the first position, violating the required 0‑to‑|B|‑1 iteration.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code appends '1' when C[i] > B[i] and '0' otherwise, which reverses the required comparison (and also starts at index 1, missing the first position).
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code counts frequencies using the loop index (C[i]++) instead of the values in A, starts the output loop at 1 (omitting the first category), and reverses the comparison, so it never produces the correct binary string of length m.

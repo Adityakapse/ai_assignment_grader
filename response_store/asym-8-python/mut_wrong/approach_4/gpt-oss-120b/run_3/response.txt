@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The analysis does not split the code into separate parts for f and g nor reference any line numbers, providing only a vague overall description.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer does not identify or discuss the constant‑time initializations and return statements in either function, so the non‑loop code is not analyzed as Θ(1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You noted that “f loops over a, so it is O(N),” which indicates the loop runs on N elements, but you did not explicitly justify that i increments from 0 to N‑1, providing only a weak justification for the Θ(N) iteration count.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student claims each iteration of f does only constant work and treats the call to g as constant, ignoring that g performs a binary search costing Θ(log N) per iteration.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N) and treated the call to g as constant‑time, without multiplying the N loop iterations by the Θ(log N) cost of the binary search, so the total loop cost is incorrect.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student only says g “looks logarithmic” without stating Θ(log N) iterations or explaining that the interval halves each step.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You note that g does “simple constant work” per iteration, indicating a constant cost, but you do not explicitly state Θ(1) or detail the operations (midpoint, array accesses, comparisons, update) to justify it.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N) and did not explicitly combine the Θ(log N) iteration count with the Θ(1) per‑iteration cost, so the total loop cost is not correctly derived.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N) and gave no detailed justification, which contradicts the expected Θ(log N) overall runtime.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N) and did not account for the logarithmic cost of the binary‑search call g, so the overall runtime is missing the required Θ(N log N) term.

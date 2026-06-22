@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution loops over every element in inputarray and uses a try/except to treat tokens that can be cast to int as numbers while silently skipping operator tokens.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never uses `stack.push` for numeric tokens—instead it sums them in a local variable, so numbers are not pushed onto the stack at all.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution never performs any stack.pop or stack.push when encountering operators; it just sums numeric tokens and ignores operator handling entirely.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution skips all operators and only sums numbers, so it never handles subtraction or division and thus does not apply the required operand order for non‑commutative operations.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution simply adds all numeric tokens and skips operators, so it never performs the required arithmetic and returns incorrect results for any non‑trivial RPN expression.

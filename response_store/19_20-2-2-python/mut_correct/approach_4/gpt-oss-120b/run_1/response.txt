@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over the entire input list with `for i in inputarray` and uses `if/elif` checks to handle each operator, pushing `int(i)` for non‑operator tokens, thus correctly distinguishing numbers from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution converts each numeric token with int(i) and pushes it onto the stack in the else clause, handling numbers correctly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the solution pops two values (n1 and n2), computes the appropriate operation (addition, subtraction, multiplication, division) and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses the correct operand order (n2 - n1), but the division uses '/' which yields a floating‑point result instead of the required integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator handles addition, subtraction, and multiplication correctly, but uses `/` which produces a float instead of integer floor division, so division results are incorrect for expressions requiring rounded‑down integer results.

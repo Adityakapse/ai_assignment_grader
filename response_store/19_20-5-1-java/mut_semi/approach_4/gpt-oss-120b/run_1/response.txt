@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution adds the start node to the queue before the loop and uses `while (!queue.isEmpty())` to keep processing until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code removes the next node with `queue.remove(queue.size() - 1)`, which takes elements from the back of the list, resulting in a LIFO order rather than the required FIFO dequeue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (!visited.contains(next))` before processing each node and adds it to `visited` inside that block, ensuring nodes are only processed once.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `graph[next]` and adds each unvisited `vertex` with `queue.add(vertex)`, which appends them to the back of the queue as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code removes elements from the end of the list (`queue.remove(queue.size() - 1)`), turning the structure into a stack and yielding a DFS traversal order rather than the required BFS level‑by‑level order.

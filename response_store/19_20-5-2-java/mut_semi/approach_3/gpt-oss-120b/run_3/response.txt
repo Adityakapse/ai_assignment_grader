@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code pushes the start node onto the stack before the loop, but the while condition also checks a safety counter (`safety++ < 1000`), so termination is not solely based on the stack being empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `stack.pop()`, correctly implementing LIFO removal.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: Nodes are added to `visited` without any `contains` check, so duplicate entries and infinite loops on cyclic graphs are possible.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The neighbours are iterated in reverse order and pushed onto the stack, but they are pushed without checking whether they have already been visited.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because visited checking is missing, the method can fail on graphs with cycles (the safety limit stops early) and does not reliably return the correct DFS traversal for all inputs.

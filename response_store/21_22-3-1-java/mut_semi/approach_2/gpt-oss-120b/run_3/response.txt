@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The solution creates a memo array of the correct size, but it relies on the default 0 values and a `!= 0` check instead of initializing the entries to -1 as the specification requires.
+
+POINT_ID: 2
+MARKS: 5
+FEEDBACK: The code correctly handles the n = 0 case by returning W[0], but it lacks the required base case for n = 1, so opt(1) does not return max(W[0], W[1]) as specified.
+
+POINT_ID: 3
+MARKS: 5
+FEEDBACK: The code does perform a cache check, but it uses `memo[n] != 0` as the sentinel instead of the required `-1`, which does not match the specification.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly computes memo[n] using the max of W[n]+opt_helper(n‑2) and opt_helper(n‑1) and stores this value in memo[n] before returning.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution lacks a base case for n = 1, causing calls to opt_helper with negative indices (e.g., n‑2 when n = 1), which leads to runtime errors and incorrect results for most inputs.

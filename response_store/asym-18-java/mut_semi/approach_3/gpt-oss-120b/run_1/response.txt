@@ -1,0 +1,43 @@
+POINT 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student separates f and g and mentions the outer loop and the call to g, but never cites specific line numbers.
+
+POINT 2 — Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student notes that “the setup statements are constant,” yet does not explicitly identify all non‑loop initializations and returns in both f and g.
+
+POINT 3 — f(): Nested loop iterations
+BUCKET: Wrong
+FEEDBACK: The student claims the loop in f runs “about N iterations” and does not explain that the inner loop executes a fixed 5 times, missing the correct 5N iteration count.
+
+POINT 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The analysis correctly states each iteration does an array read and an addition, giving Θ(1) per iteration with appropriate justification.
+
+POINT 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: By combining the (implicitly) Θ(N) total iterations with Θ(1) per iteration, the student correctly concludes the loop cost is Θ(N).
+
+POINT 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student mentions that the call to g “adds some more cost” but does not quantify it as Θ(N) plus Θ(1) constant work.
+
+POINT 7 — g(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student states the g loop runs Θ(N) times but provides no explanation of why i runs from 0 to N‑1.
+
+POINT 8 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly identifies each g iteration as Θ(1), citing an array read and an addition.
+
+POINT 9 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The analysis multiplies Θ(N) iterations by Θ(1) per iteration and correctly arrives at Θ(N).
+
+POINT 10 — Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student concludes “g is Θ(N)” but does not detail the contribution of the constant‑time parts.
+
+POINT 11 — Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The final statement “f is Θ(N)” lacks the breakdown of constant parts, the nested loop, and the cost of the call to g.

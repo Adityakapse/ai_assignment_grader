@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never allocates a counting array C; it jumps straight to building the output string without creating or initializing any frequency array.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No loop over A is present, so frequencies are never accumulated; the solution does not increment any C[a] values.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for i in range(len(B))`, iterating from 0 to m‑1 and thus produces a binary string of exactly length |B|.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function does not perform the required comparison between C[i] and B[i]; it appends '1' for every position regardless of the actual counts.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Since the function always returns a string of all '1's, it fails to produce the correct result for most inputs, making the overall solution incorrect.

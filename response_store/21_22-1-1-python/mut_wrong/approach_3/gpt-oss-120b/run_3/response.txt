@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code iterates the recurrence with a loop instead of using the closed form a_n = 2^n - 1, so no closed‑form expression is employed.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No expo function is defined, therefore there is no base case for b == 0.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: Because expo is absent, the required odd‑exponent handling (a * expo(a, b‑1, c)) % c is not present.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑exponent case (halving b and squaring the recursive result) is missing since no expo function exists.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: calc(n) produces the correct result for small n but runs in O(n) time, which will not finish for the maximum input size, so it only partially meets the overall correctness requirement.

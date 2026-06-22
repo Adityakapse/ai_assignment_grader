@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates `double[][] Result = new double[n + 1][capacity + 1];`, creating a (n+1) × (capacity+1) table that Java initializes to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; i--)` iterates over all n items, and the inner loop `for (int j = 0; j <= capacity; j++)` covers every capacity from 0 to the given limit.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i] <= j)` correctly checks capacity feasibility and also works for zero‑weight items because the test is true when `volumes[i]` is 0.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the code uses `Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j])`; otherwise it assigns `Result[i + 1][j]`, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `Result[0][capacity]`, which yields the correct maximum value for all inputs, including cases with items of volume 0.
+
+TOTAL: 100

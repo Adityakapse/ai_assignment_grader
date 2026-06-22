@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `int[] C = new int[B.length + 1];`, which is at least `max(A)+1` given the problem constraints, so the counting array size is correct.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The frequency loop uses `C[i]++` instead of `C[A[i]]++`, so it does not count occurrences of the values in `A` and may even index out of bounds.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The output loop starts at `i = 1` and runs while `i < B.length`, missing index 0 and producing a string of length `B.length‑1` instead of `B.length`.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The condition appends `'1'` when `C[i] > B[i]` and `'0'` otherwise, which is the opposite of the required logic (`'1'` when `C[i] <= B[i]`).
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because of the incorrect counting, off‑by‑one output loop, and reversed comparison, the method does not return the correct binary string for the given inputs.
+
+TOTAL: 20

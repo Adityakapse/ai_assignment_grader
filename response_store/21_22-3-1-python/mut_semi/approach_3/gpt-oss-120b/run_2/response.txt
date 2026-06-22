@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates `memo = [0] * (n + 1)`, which has the correct size but initializes entries to 0 instead of -1, so the sentinel cannot distinguish cached from uncached values.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Only the `n == 0` base case is present; the required `n == 1` case returning `max(W[0], W[1])` is missing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `if memo[n] != 0:`; because the sentinel should be -1, this check is incorrect and may treat uncached entries as cached.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...))` is correctly applied and the result is stored in `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the missing `n == 1` base case and the wrong sentinel, the function can access negative indices and returns incorrect results for many inputs, so it does not reliably compute the maximum profit.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `long[] memo = new long[n + 1];` and initializes every entry to -1 in the loop, matching the required sentinel and size.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are implemented: `if (n == 0) return W[0];` and `if (n == 1) return Math.max(W[0], W[1]);`, exactly as specified.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper begins with `if (memo[n] != -1) return memo[n];`, correctly checking the -1 sentinel before recomputing a subproblem.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));` is used and the result is stored in `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the optimal billboard profit for any valid input and, thanks to memoization, runs in linear O(n) time.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code sets `r = 1000000000` instead of the required `10**18`, so the search space may not contain the true N for large inputs.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The implementation uses `while l <= r:` and computes `m = (l + r) // 2` correctly at each iteration.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The updates are reversed: when `f(m)` is true the code does `l = m + 1` (should set `r = m - 1`), and when false it does `r = m - 1` (should set `l = m + 1`).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: After the loop the function returns `m` unconditionally, without checking `f(m)` or adjusting by one, which can give an off‑by‑one result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because of the too‑small upper bound and the reversed narrowing logic, the function fails to return the correct N for most inputs.

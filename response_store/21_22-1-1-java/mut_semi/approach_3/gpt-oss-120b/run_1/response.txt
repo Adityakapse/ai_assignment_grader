@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses expo(2, n, c) but does not subtract 1, so the closed form 2^n − 1 is not implemented.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if (b == 0) return 1;`, correctly handling the base case.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd case the code returns `expo(a, b - 1, c) % c` without multiplying by `a`, so the required `(a * expo(...)) % c` is missing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case calls `expo(a, b/2, c)` once, stores the result, and returns `(a * a) % c`, correctly implementing halving and squaring.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the -1 adjustment is omitted and the odd case lacks multiplication by `a`, `calc(n)` does not produce (2^n − 1) mod 10^9+7 for general inputs.

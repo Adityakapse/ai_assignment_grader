@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a double[][] Result with dimensions (n+1) by (capacity+1); Java initializes all entries to 0, satisfying the required allocation and zero‑initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses a nested loop where the outer loop runs i from n‑1 down to 0 (covering all items) and the inner loop runs j from 0 to capacity inclusive, correctly iterating over every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code includes `if (volumes[i] <= j)` before considering the item, correctly handling items that exactly fit the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses the exact recurrence Result[i][j] = max(values[i] + Result[i+1][j‑volumes[i]], Result[i+1][j]) when the item fits and Result[i][j] = Result[i+1][j] otherwise, referencing the previous row consistently.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference DP algorithm, correctly fills the Result table backward and returns Result[0][capacity], yielding the optimal value for all valid inputs.

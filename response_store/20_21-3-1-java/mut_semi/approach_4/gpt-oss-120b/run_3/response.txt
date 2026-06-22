@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1) × (capacity+1) table and Java initializes all entries to 0.0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so the zero‑capacity subproblem (needed for weight‑0 items) is never computed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The implementation uses `if (volumes[i] < j)` and begins the loop at j = 1, so it applies a strict inequality and never checks the zero‑capacity case, incorrectly excluding items that fit exactly or have zero weight.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code uses a max‑based recurrence but references Result[i][…] (the current row) instead of the previous row, and the else branch also uses the wrong row, so items can be reused and the recurrence is incorrect.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation uses `Result[i][j - volumes[i]]` instead of the previous row and starts the inner loop at j = 1, causing items to be reused and giving incorrect maximum values for typical 0‑1 knapsack inputs.

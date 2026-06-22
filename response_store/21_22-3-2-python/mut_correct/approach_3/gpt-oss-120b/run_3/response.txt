@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `graph = [[] for _ in range(N + 1)]`, fills it from each edge in `A`, and adds `graph[0] = [x for x in range(1, N + 1)]`, providing the required virtual source node.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `memo` is initialised as `[-1] * (N + 1)` and the DFS begins with `elif memo[node] != -1: return memo[node]`, correctly using -1 as the sentinel and returning cached results.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case `if len(graph[node]) == 0: return 0` returns 0 for leaf nodes, matching the definition of a path length from a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child the code computes `sol = max(sol, dfs(child, graph, memo) + 1)`, stores `memo[node] = sol`, and returns it, correctly implementing the recurrence and memoisation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `calc` returns `dfs(0, graph, memo) - 1`, which adjusts for the virtual source and yields the correct longest directed path length for any DAG in O(N+M) time.

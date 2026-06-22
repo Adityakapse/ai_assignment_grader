@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code defines a quicksort‑like recursive function with calls on both sub‑arrays, but the partition routine is incomplete, so the divide‑and‑conquer structure is only partially realized.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when l < r is false, which correctly handles sub‑arrays of length 0 or 1 and prevents infinite recursion.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition method only swaps the first element with the pivot if it is larger, leaving the rest of the elements untouched; thus the core partitioning step does not correctly reorder elements around the pivot.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The implementation always uses the last element as pivot and never employs the random library, providing no randomisation to avoid worst‑case behavior.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the partition step is incorrect, the returned array is not sorted for general inputs, even though the code avoids the prohibited substrings.

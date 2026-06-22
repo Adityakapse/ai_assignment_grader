@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[][] edDis = new int[m + 1][n + 1];` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the DP table, matching the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes edDis[i][0] = i for all i and edDis[0][j] = j for all j, correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks `a.charAt(i - 1) == b.charAt(j - 1)` and sets `edDis[i][j]` to `edDis[i - 1][j - 1]` on a match.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The else clause computes `1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1])`, correctly using all three neighboring cells for the mismatch case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a DP table iteratively, handles base cases, and computes the distance with the standard recurrence, returning edDis[m][n] without any recursion, which yields the correct edit distance for all inputs.

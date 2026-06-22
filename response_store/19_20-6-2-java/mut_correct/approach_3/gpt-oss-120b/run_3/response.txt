@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — DP table allocation
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, allocating a table of size (n+1) × (capacity+1) that is automatically initialised to 0.
+
+POINT_ID: Point 2 — Loop structure: iterating items and capacities
+BUCKET: Correct
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; --i)` processes every item, and the inner loop `for (int j = 0; j <= capacity; ++j)` iterates over all capacities from 0 through the given capacity.
+
+POINT_ID: Point 3 — Capacity feasibility check
+BUCKET: Correct
+FEEDBACK: The condition `if (volumes[i] <= j)` correctly checks that an item can be placed in the remaining capacity before attempting to include it.
+
+POINT_ID: Point 4 — Recurrence relation
+BUCKET: Correct
+FEEDBACK: When the item fits, the assignment `Result[i][j] = Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j]);` and the else‑branch `Result[i][j] = Result[i + 1][j];` implement the required max‑based recurrence using the previous row.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Correct
+FEEDBACK: The method returns `Result[0][capacity]`, which after the DP fill yields the optimal maximum value for any valid knapsack instance.

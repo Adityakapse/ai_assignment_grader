@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code iterates over every token and uses a try/except to separate numbers from operators, but it does not perform any distinct action for operators, merely ignoring them.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Numeric tokens are converted to int and added to a local variable, but they are never pushed onto the provided stack as required.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: When an operator token is encountered the code does nothing (the except block is empty), so no values are popped, no computation is performed, and nothing is pushed back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Because operators are ignored, the required operand order for subtraction and division is never applied, resulting in incorrect handling.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns the sum of all numbers in the input, which is not the correct result for RPN expressions that involve any operators, so it fails for most test cases.

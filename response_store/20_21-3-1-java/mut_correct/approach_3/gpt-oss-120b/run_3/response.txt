@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] Result = new double[n + 1][capacity + 1];` which creates a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates `i` from `n-1` down to `0` covering all n items, and the inner loop runs `j` from `0` to `capacity` inclusive.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `if (volumes[i] <= j)` correctly checks feasibility, allowing exact fits and zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence uses `Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j])` when the item fits and copies `Result[i+1][j]` otherwise, referencing the previous row as required.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `Result[0][capacity]`, yielding the correct maximum value for all inputs, including cases with zero‑volume items.

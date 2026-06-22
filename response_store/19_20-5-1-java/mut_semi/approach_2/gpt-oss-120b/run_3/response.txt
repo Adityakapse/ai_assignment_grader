@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node to the queue before the loop and uses a while‑loop that runs until the queue is empty, satisfying the required initialization and loop structure.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The implementation calls queue.remove(queue.size() - 1) to pop from the end, which makes it LIFO (DFS) rather than removing from the front (FIFO) as required for BFS.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The solution correctly checks `visited.contains(next)` before processing a node, adds it to `visited` when processed, and also checks `visited` before enqueuing neighbors, preventing duplicate entries.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code iterates over each neighbor of the current node and, if unvisited, adds it with queue.add(vertex), which correctly enqueues neighbors at the back of the list.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The method removes elements from the end of the list, producing a depth‑first traversal rather than the required breadth‑first order, so it does not return nodes in correct BFS level order.

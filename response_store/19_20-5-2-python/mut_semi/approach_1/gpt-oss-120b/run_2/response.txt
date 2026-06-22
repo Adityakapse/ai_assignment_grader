@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code initializes `stack = [start]` and uses `while stack` (with an extra safety condition) to process nodes, matching the required loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Nodes are removed with `stack.pop()`, which correctly implements a LIFO pop from the top of the stack.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The implementation never checks whether `nxt` is already in `visited` before processing; it always appends to `visited`, allowing duplicate entries and risking infinite loops.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: Neighbours are pushed onto the stack with `stack.append(vertex)` for every vertex in `reversed(graph[nxt])` without testing if they have been visited, violating the requirement to push only unvisited neighbours.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Missing visited checks cause the function to fail on graphs with cycles (the safety limit is an ad‑hoc fix), so it does not reliably return the correct DFS order for all valid graphs.
+
+TOTAL: 40

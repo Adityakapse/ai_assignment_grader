@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses `for i in inputarray:` to iterate over every token and distinguishes operators with `if i == '+'` etc., handling numbers in the final `else` clause.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `else` branch the code calls `int(i)` and pushes the resulting integer onto the stack with `stack.push(int(i))`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (`n1 = stack.pop(); n2 = stack.pop()`), applies the appropriate arithmetic (`n2 + n1`, `n2 - n1`, `n2 * n1`, `n2 / n1`) and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses the correct order (`n2 - n1`), but division uses `/` which yields a floating‑point result instead of the required integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator works for addition, subtraction, and multiplication, but because division returns a float rather than an integer, it fails to produce the correct integer result for expressions that include `/`.

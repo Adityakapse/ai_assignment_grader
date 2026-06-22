@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `c` of size n and correctly initializes `c[0]` to `a[0]` before the loop, meeting the prefix‑sum array allocation requirement.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop sets c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so the cumulative sum array is never constructed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution creates `int[] d = new int[n];` and uses `for (int i = 0; i < n; i++)` to compute each entry, correctly allocating the output array and looping over all queries.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code always computes d[i] = c[r] - c[l‑1] without checking for l == 0, so it will try to access c[-1] when a query starts at index 0.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The prefix array `c` is filled with the original values (`c[i] = a[i]`) instead of cumulative sums, and the query loop always accesses `c[b[i][0] - 1]`, which crashes for `l == 0`. Consequently the function returns incorrect (or throws) results for most queries.

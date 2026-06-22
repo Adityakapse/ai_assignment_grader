@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution initializes l = 0 correctly but sets r = 1 000 000 000L, which is far below the required 10^18 upper bound, so it fails for N > 1e9.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution implements a `while (l <= r)` loop and calculates `m = (l + r) / 2` on each iteration, correctly following the binary search loop and midpoint requirements.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code updates l when f_N(m) == 1 and r when f_N(m) == 0, which reverses the required search direction and consistently searches the wrong half.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution returns `m` directly after the loop without a final `f_N(m)` check, which can produce an off‑by‑one error when the loop ends with `f_N(m) == 0`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code uses an upper bound of 1 billion instead of 10¹⁸, reverses the binary‑search direction (moves l when f_N(m)≠0), and returns m without a final check, so it fails to return the correct N for most inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution does not allocate a prefix‑sum array C nor initialize C[0] to A[0]; it only creates a result list d filled with zeros.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The function never constructs a prefix‑sum array; it only creates a zero‑filled list `d` and returns it, so there is no loop computing `C[i] = A[i] + C[i-1]`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution allocates `d` with length n and iterates `for i in range(n):`, covering all queries as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function only returns a list of zeros and never computes or uses a prefix‑sum array, so it does not implement D[i] = C[r]‑C[l‑1] or handle the l = 0 edge case at all.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function always returns a list of zeros instead of computing the required range sums, so it fails to produce correct results for the queries.

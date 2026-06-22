@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates an int[] c of size n and correctly sets c[0] = a[0] before the loop.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: In the construction loop it assigns c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so the prefix sum array is not accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array d of size n is allocated and a loop runs for i = 0 to n‑1, covering all queries.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code always computes d[i] = c[r] - c[l‑1] without a special case for l == 0, which will cause an index‑out‑of‑bounds error when l is zero.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the prefix sums are incorrect and the l == 0 edge case is not handled, the function returns wrong results or crashes, failing overall correctness.

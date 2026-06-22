@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You clearly separate the analysis of f and g and identify loop versus non‑loop code, but you never refer to specific line numbers as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You correctly noted that the setup statements outside the loops are constant-time, but you did not explicitly identify all non-loop parts (e.g., the addition s + t and the return) as Θ(1), making the description somewhat incomplete.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly state that the nested loops run Θ(N²) overall, but your justification only says it’s “essentially a double loop on an N×N matrix” without referencing the j = i lower bound or summing the series N + (N‑1) + … + 1.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: You correctly state that each inner iteration of f runs in Θ(1) time, noting it reads a matrix entry and performs an addition, which matches the required justification.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: You correctly state that the nested loops have Θ(N²) iterations, each costing Θ(1), and multiply them to conclude a total loop cost of Θ(N²).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The answer mentions that f calls g and that this adds cost, but it does not state the cost as Θ(N) (or separate the Θ(1) addition/return), leaving the Part C cost unclear.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly state that g’s diagonal loop runs Θ(N) times, but you only note it “runs Θ(N) times (along the diagonal)” without explicitly explaining that i increments from 0 to N‑1.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: You correctly state that each iteration of g’s loop is Θ(1) and justify it by noting it reads a single matrix entry and performs an addition.
+
+POINT_ID: 9
+BUCKET: Correct (6 marks)
+FEEDBACK: You correctly state that g’s loop runs Θ(N) iterations and each iteration costs Θ(1), and you combine them to conclude the total loop cost is Θ(N).
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(N) and explain the loop’s Θ(N) iterations with Θ(1) work per iteration, but you omit the constant‑time initialization and return steps required for a full Θ(1)+Θ(N)+Θ(1) justification.
+
+POINT_ID: 11
+BUCKET: Semi
+FEEDBACK: The student correctly states that f runs in Θ(N^2) and explains the nested loops, but does not explicitly combine the Θ(N) cost of the g call with the Θ(N^2) term to show the lower‑order term is absorbed.

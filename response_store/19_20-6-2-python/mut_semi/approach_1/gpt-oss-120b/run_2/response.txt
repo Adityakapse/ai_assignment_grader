@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The DP table is allocated with `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, creating a (n+1)×(capacity+1) matrix initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop `for i in range(n - 1, -1, -1):` iterates over all items and the inner loop `for j in range(capacity + 1):` covers every capacity from 0 to the given limit.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code checks feasibility with `if volume[i] <= j:` before attempting to include an item, satisfying the capacity check requirement.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: When an item fits, the assignment `Result[i][j] = value[i] + Result[i + 1][j - volume[i]]` omits the required `max` comparison with `Result[i+1][j]`, violating the recurrence specification.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to the missing max operation, the algorithm can return non‑optimal values, so it does not reliably produce the correct maximum value for all inputs.
+
+TOTAL: 55

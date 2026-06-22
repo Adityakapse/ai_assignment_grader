@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The analysis does not separate f and g into distinct parts or identify loops versus non‑loop code, and it never references any line numbers.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student never identified the initialization and return statements in f and g as Θ(1) operations, and instead gave an incorrect overall complexity for g, showing a lack of analysis of the non‑loop code.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly state that the loop in f executes Θ(N) times, but you do not explain that p starts at h and advances by p.next each iteration to visit all N nodes.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: You claimed that each iteration of f does only constant work and treated the call to g() as a simple constant operation, ignoring that g() scans the whole list.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N) and did not combine the Θ(N) loop iterations with the Θ(N) cost of each g() call, so the total loop cost is missing the required Θ(N^2) analysis.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: You correctly state that g’s loop runs Θ(N) because it walks the whole list, but you do not justify that q starts at h and advances by q.next until null to visit all N nodes.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You note that each iteration of g() does “simple constant work,” indicating a Θ(1) cost, but you do not provide the explicit justification (field access, +=, pointer advance, null check) required for full credit.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The student notes that g walks the whole list with constant work per node but never explicitly combines the Θ(N) iteration count with the Θ(1) per‑iteration cost to state the total loop cost.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(1), but g traverses the entire list, giving it a linear runtime; the correct overall runtime for g is Θ(N).
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N) (and even claimed g is O(1)) without analyzing the nested loop effect, so the overall runtime for f is incorrect and lacks any derivation from the loop structure.

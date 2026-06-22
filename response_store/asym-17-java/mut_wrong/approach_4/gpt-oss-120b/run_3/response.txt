@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly distinguished the two methods and noted the loops, but you did not reference specific line numbers or clearly separate the non‑loop parts of each function.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer never mentions the initializations (e.g., `int n = mat.length; int s = 0;`) or the return statements, so the constant‑time non‑loop parts are not analyzed as Θ(1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly identified that the loop runs in O(N) over the first column, but you did not explicitly justify that i iterates from 0 to N‑1, so the justification for Θ(N) iterations is incomplete.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: You correctly noted that each iteration of f’s loop performs a matrix access and an addition, describing these as simple constant‑time operations, which matches the required Θ(1) per‑iteration cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly identified Θ(N) iterations and constant‑time work per iteration, and concluded the loop’s total cost is Θ(N).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N) and did not account for the cost of the call to g, which should be Θ(N²) plus Θ(1) for the addition/return.
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: You did not state the correct Θ(N²) iteration count for g; instead you claimed g runs in O(N) and provided no justification of the two N‑sized loops.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: The student notes that g’s inner work consists of “simple constant operations,” indicating a constant‑time cost, but they do not explicitly state Θ(1) per iteration or cite the matrix access and += assignment as justification.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N) and did not express the total cost as Θ(N²) iterations times Θ(1) per iteration, so the required multiplication of loop count and per‑iteration cost is missing.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N), which contradicts the correct quadratic runtime; the analysis should conclude Θ(N^2) for g.
+
+POINT_ID: 11
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N) (and even gave g as O(N)), which is incorrect; the overall runtime of f should be Θ(N²) because the call to g dominates, and you did not provide the required reasoning.

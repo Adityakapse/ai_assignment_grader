@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates an adjacency list from A and correctly adds a virtual source node 0 with edges to every node 1..N, enabling a single DFS from node 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes `memo = [-1] * (N + 1)` and immediately returns `memo[node]` when `memo[node] != -1`, correctly using -1 as the uncached sentinel.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function checks `if len(graph[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The dfs implementation loops over every child, updates sol with dfs(child, graph, memo) + 1, and assigns memo[node] = sol before returning, correctly applying memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation matches the reference solution, builds a virtual source, uses memoized DFS, and returns `dfs(0, graph, memo) - 1`, correctly computing the longest path for all DAGs in O(N+M).

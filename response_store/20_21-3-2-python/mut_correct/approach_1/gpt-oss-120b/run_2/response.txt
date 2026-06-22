@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds `graph = [[] for _ in range(N + 1)]` and then sets `graph[0] = [x for x in range(1, N + 1)]`, correctly creating an adjacency list and a virtual source node that connects to every vertex.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: `memo = [-1] * (N + 1)` initializes the memo array, and the test `elif memo[node] != -1:` returns the cached value, satisfying the memoization requirement.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The base case `if len(graph[node]) == 0: return 0` correctly returns 0 for leaf nodes with no outgoing edges.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Inside the loop, `sol = max(sol, dfs(child, graph, memo) + 1)` computes the longest path over children and `memo[node] = sol` stores the result before returning, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: `calc` invokes `dfs(0, graph, memo) - 1`, which, together with the virtual source, yields the correct length of the longest directed path for all valid DAG inputs.
+
+TOTAL: 100

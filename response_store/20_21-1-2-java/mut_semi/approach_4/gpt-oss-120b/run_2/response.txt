@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution includes a quicksort‑style recursive structure with calls on both sub‑arrays, but the partition function only swaps the first element with the pivot and always returns the left index, so the divide‑and‑conquer step is incomplete.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The quick function uses `if (l < r)` to stop recursion, which correctly prevents further calls on subarrays of length 0 or 1.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition routine only checks and possibly swaps the first element with the pivot, then returns the left index, so most elements are never compared to the pivot and the pivot isn’t placed in its final sorted position.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution implements quicksort with a fixed last-element pivot and never uses the random library, providing no randomisation or worst‑case O(n log n) guarantee.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The partition function only swaps the first element with the pivot and returns the left index, so the recursive quicksort never correctly partitions the array and the output remains unsorted for most inputs.

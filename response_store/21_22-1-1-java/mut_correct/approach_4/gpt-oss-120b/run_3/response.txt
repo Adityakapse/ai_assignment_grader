@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The implementation returns expo(2, n, 1000000007) - 1, correctly applying the closed‑form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if (b == 0) return 1;`, correctly handling the base case by returning 1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd case the code uses `else if (b % 2 == 1) return (a * expo(a, b - 1, c)) % c;`, correctly reducing b by 1, recursing, multiplying by a, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even case you call expo(a, b/2, c) once, store the result in a, and return (a * a) % c, correctly halving b and squaring the recursive result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code computes expo(2, n, 1e9+7) with modulo at each recursive step and returns expo‑1, correctly yielding (2ⁿ − 1) mod 10⁹+7 for all inputs without using any forbidden keywords.

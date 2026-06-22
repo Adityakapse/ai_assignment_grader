@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code pushes the start node onto the stack before the loop and uses a while loop that continues while the stack is not empty (the extra safety counter does not affect this requirement).
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Each iteration removes the current node with `stack.pop()`, correctly implementing LIFO behavior.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The implementation never checks whether a node has already been visited before processing it, leading to potential infinite loops on cyclic graphs.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: Neighbours are pushed onto the stack in reverse adjacency order, but the code pushes them without checking if they have been visited, violating the unvisited‑neighbour requirement.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because visited nodes are not checked, the method can produce duplicate entries and fails on graphs with cycles, so it does not reliably return the correct DFS order.
+
+TOTAL: 50

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates an int[][] of size (m+1) by (n+1) and uses nested loops with i from 1 to m and j from 1 to n, matching the required table allocation and iteration pattern.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not initialise edDis[i][0] or edDis[0][j]; both the first column and first row remain at the default zero, so the required base cases are missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly compares a.charAt(i‑1) with b.charAt(j‑1) and, when they match, sets edDis[i][j] to edDis[i‑1][j‑1] as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch the student uses `edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);`, correctly applying the 1 + min of the three neighboring cells for mismatched characters.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never initializes the first row and column of the DP table, so distances are computed from all‑zero base cases, yielding incorrect results for virtually all non‑trivial inputs.

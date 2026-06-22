@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `memo = [-1] * (n + 1)`, giving an array of size n+1 initialized to -1, exactly as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code includes both required base cases, returning W[0] for n = 0 and max(W[0], W[1]) for n = 1, matching the specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper starts with `if memo[n] != -1: return memo[n]`, correctly checking the cache before any further computation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper uses the max‑based recurrence `max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and assigns the result to `memo[n]` before returning, preserving memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your code mirrors the reference solution, correctly using memoization and the max‑of‑take/skip recurrence, so it returns the optimal profit in O(n) for all valid inputs.

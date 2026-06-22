@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code includes a single for‑loop that compares adjacent elements, but it lacks an outer/flag loop to repeat passes, so it only performs one pass and may leave the list unsorted.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution calls `listToSort.Larger(i - 1, i)` with the correct adjacent indices to detect when two elements are out of order, satisfying the comparison requirement.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution calls `listToSort.Swap(i - 1, i)` only when `listToSort.Larger(i - 1, i)` is true, and it passes the exact same pair of indices used in the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The only loop in the code iterates with `for i in range(1, listToSort.Length()):`, correctly using Length() to bound the loop for any list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code performs only a single left‑to‑right pass, swapping adjacent out‑of‑order items, which may sort very short lists but leaves longer lists partially unsorted.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which correctly allocates a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 8
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so the zero‑capacity subproblem column is never processed.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code checks `volumes[i] < j` and starts j at 1, so it never tests the required `volumes[i] <= j` condition for zero capacity, failing the feasibility check.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code uses Result[i] instead of the previous row Result[i+1] and checks volumes[i] < j (missing the equal case) while also starting j at 1, so the recurrence does not match the required formulation.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation skips the zero‑capacity column, uses `<` instead of `<=` for feasibility, and references the current row in the recurrence (Result[i][…]) rather than the previous row, which both miss exact fits and allow items to be reused, so it does not return the correct maximum value.

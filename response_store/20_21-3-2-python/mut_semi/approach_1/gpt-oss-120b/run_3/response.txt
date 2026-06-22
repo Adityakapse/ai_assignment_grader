@@ -1,0 +1,21 @@
+POINT_ID: Point 1
+MARKS: 0
+FEEDBACK: The code builds `graph` but never creates a virtual source node 0 nor adds edges from 0 to all vertices, so the required virtual source is missing.
+
+POINT_ID: Point 2
+MARKS: 20
+FEEDBACK: The memo array is initialised with -1 and the function returns `memo[node]` when it is not -1, matching the memoization requirement.
+
+POINT_ID: Point 3
+MARKS: 15
+FEEDBACK: The base case correctly returns 0 when `len(graph[node]) == 0`, handling leaf nodes as specified.
+
+POINT_ID: Point 4
+MARKS: 0
+FEEDBACK: The recurrence computes `sol = max(sol, dfs(child, graph, memo))` without adding 1 for the traversed edge, so it does not calculate the longest path length correctly.
+
+POINT_ID: Point 5
+MARKS: 0
+FEEDBACK: Because the virtual source is missing and the recurrence lacks the +1 increment, `calc` does not return the correct longest directed path length for general inputs.
+
+TOTAL: 35

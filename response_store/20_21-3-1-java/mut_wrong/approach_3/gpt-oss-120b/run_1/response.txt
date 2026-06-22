@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution does not allocate any 2‑D table; it only uses a scalar `total` variable and never creates a DP matrix.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Only a single loop over the items is present; there is no nested loop iterating over capacities from 0 to `capacity`.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code checks `volumes[i] <= capacity` once per item instead of checking `volumes[i] <= j` for each sub‑capacity, so the required feasibility test per subproblem is missing.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence relation is used; the algorithm merely adds values of items that fit, rather than computing `Result[i][j] = max(values[i] + Result[i+1][j‑volumes[i]], Result[i+1][j])`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because it sums all individually fitting items, the method returns incorrect maximum values for many cases (e.g., when the combined volume exceeds the knapsack), so overall correctness is not achieved.

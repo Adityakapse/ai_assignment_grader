@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code builds the adjacency list from A, but it never creates the virtual source node 0 or adds edges from 0 to every node, so the required single‑DFS covering all nodes is missing.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array is correctly initialised to -1 for all indices and the check `if (memo[node] != -1) return memo[node];` is present, satisfying the memoization requirement.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The base case `if (graph.get(node).size() == 0) return 0;` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+MARKS: 5
+FEEDBACK: The recurrence computes `sol = Math.max(sol, dfs(child, …))` but omits the required `+ 1` for the edge length, so the longest‑path calculation is incomplete.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: Because the DFS starts at node 1 (no virtual source) and the recurrence lacks the edge increment, the returned value is incorrect for many DAGs, leading to low overall correctness.
+
+TOTAL: 55

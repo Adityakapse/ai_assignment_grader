@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses `for i in inputarray:` to walk through every token from left to right and distinguishes operators with `if/elif` clauses, handling numbers in the final `else`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `else` branch the code executes `stack.push(int(i))`, correctly converting each numeric string to an integer before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (`n1 = stack.pop(); n2 = stack.pop()`) and pushes a result back onto the stack (e.g., `stack.push(n2 + n1)`, `stack.push(n1 - n2)`, etc.).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The subtraction and division branches compute `n1 - n2` and `n1 / n2`, reversing the required operand order and using floating‑point division instead of integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator works for addition and multiplication but yields incorrect results for any expression that includes subtraction or division due to the wrong operand order, so it fails on more complex test cases.

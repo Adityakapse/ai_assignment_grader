@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, allocating a (n+1) × (capacity+1) table fully initialized to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses a nested loop where the outer loop iterates over all items (i from n‑1 down to 0) and the inner loop iterates j from 0 to capacity inclusive, covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if volume[i] <= j:` before attempting to add the item, correctly ensuring the item fits the current capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]], Result[i + 1][j])` when the item fits and `Result[i][j] = Result[i + 1][j]` otherwise, correctly referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds the DP table backwards and returns Result[0][capacity]; it correctly handles all cases, matching the expected DP logic.

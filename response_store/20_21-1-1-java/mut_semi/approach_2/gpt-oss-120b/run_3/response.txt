@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The base case returns 1 instead of 1 % c, so it does not handle the edge case when c equals 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `b % 2 != 0` to separate the odd and even cases, correctly detecting parity.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case you return `expo(a, b - 1, c) % c` and never multiply by `a`, so the required `(a * expo(...)) % c` is missing.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The even branch correctly computes `expo(a, b/2, c) % c` (stored in `a`) and returns `(a * a) % c`, matching the required halve‑and‑square behavior.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function returns 1 instead of 1 % c for b = 0 and, in the odd‑b branch, it omits the required multiplication by a, so it fails for many valid inputs.

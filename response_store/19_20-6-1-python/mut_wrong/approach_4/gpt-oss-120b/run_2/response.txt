@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function just returns abs(len(a) - len(b)) and never creates a 2‑D table or uses nested loops to fill one.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The function does not create a DP table or set edDis[i][0] or edDis[0][j]; it simply returns the length difference, so no base cases are initialized.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution never compares characters; it simply returns the absolute length difference, so the required match case handling is absent.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function just returns `abs(len(a) - len(b))` and does not implement any recurrence, so it never uses the required `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])` for mismatches.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function simply returns the absolute length difference of the two strings, which does not compute the true edit distance for most inputs.

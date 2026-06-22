@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You identified f and g and noted the halving loops, but you did not break the code into distinct parts (e.g., initializations vs loops) nor reference any line numbers.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not explicitly identify the initializations and return statements in f and g as Θ(1) constant‑time operations, so the non‑loop code is not analyzed as required.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: You claimed f runs in O(N) and did not state the loop has Θ(log N) iterations, missing the required justification about halving k.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: You claimed each iteration of f does only constant work and ignored the cost of calling g, which actually costs Θ(log N) per iteration.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student claims f runs in O(N) and treats the inner work as constant, missing the Θ(log N) iterations multiplied by Θ(log N) per‑iteration cost needed for Θ((log N)^2).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: You claimed g runs in O(N) and did not state that its loop executes Θ(log N) iterations, nor did you explain that j is halved each time starting from m (worst case m = N).
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You note that g does “simple constant work” each iteration, indicating a constant per‑iteration cost, but you do not explicitly state Θ(1) or justify it with the specific operations (array read, +=, division, comparison).
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: The analysis for g() only states it is O(N) and mentions “simple constant work” without counting the halving iterations or multiplying the iteration count by the per‑iteration cost, so it fails to show Θ(log N) × Θ(1).
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: You stated that g runs in O(N), which contradicts the correct Θ(log N) runtime and provides no appropriate justification.
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: You concluded that f runs in O(N) without analyzing the halving loop or its interaction with g, which is incorrect; the correct overall runtime is Θ((log N)²).

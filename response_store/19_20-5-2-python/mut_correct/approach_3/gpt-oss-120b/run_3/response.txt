@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution initializes `stack = [start]` before the `while stack:` loop, ensuring the start node is on the stack and the loop runs until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration uses `nxt = stack.pop()`, which removes the node from the top of the list, providing the required LIFO behavior for DFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Before processing a node, the code checks `if nxt not in visited:` and then appends it to `visited`, preventing duplicate visits and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The neighbours are iterated with `for vertex in reversed(graph[nxt]):` and unvisited ones are appended to `stack`, correctly pushing them in reverse adjacency order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `visited`, which contains all reachable nodes from `start` in the proper DFS order matching the adjacency list ordering.

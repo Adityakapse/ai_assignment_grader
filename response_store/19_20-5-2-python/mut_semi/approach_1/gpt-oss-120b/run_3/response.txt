@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function initializes `stack = [start]` and uses a `while stack` loop (with an extra safety limit) to process nodes, satisfying the required loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Nodes are removed with `stack.pop()`, which correctly implements LIFO (top‑of‑stack) removal for depth‑first traversal.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code appends each popped node to `visited` without first checking whether it is already in `visited`, so duplicate visits and infinite loops on cycles are possible.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: All neighbours are pushed onto the stack unconditionally; there is no `if vertex not in visited` test, violating the requirement to push only unvisited neighbours.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because visited checks are missing, the function can loop indefinitely on cyclic graphs and does not reliably return the correct DFS order for all valid directed graphs.
+
+TOTAL: 40

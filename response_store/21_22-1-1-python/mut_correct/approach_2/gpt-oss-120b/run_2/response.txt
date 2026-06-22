@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The solution computes 2^n via expo and returns that value minus 1, correctly reflecting the closed‑form a_n = 2^n − 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function includes the correct base case `if b == 0: return 1 % c`, returning 1 modulo c as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The odd branch correctly implements the required reduction by one and multiplication, returning (a * expo(a, b‑1, c)) % c.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: In the even branch you call `expo(a, b // 2, c)` once, store its result in `a`, and return `(a * a) % c`, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your calc function correctly computes (2^n - 1) mod 10^9+7 using the recursive expo helper, matching the reference solution and avoiding all prohibited keywords.

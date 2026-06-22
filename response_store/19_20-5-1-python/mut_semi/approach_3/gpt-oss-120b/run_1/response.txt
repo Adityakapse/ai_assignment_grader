@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The start node is placed in `queue` before the `while queue:` loop, and the loop continues until the queue is empty, matching the required initialization and termination.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code uses `queue.pop()` which removes the last element (LIFO), turning the structure into a stack and producing a depth‑first order instead of FIFO.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each node `nxt` is checked against `visited` before processing and is added to `visited` only if it has not been seen, preventing duplicate visits.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The algorithm iterates over `graph[nxt]` and appends each unvisited neighbour to `queue`, correctly enqueuing all unvisited neighbours.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because nodes are popped from the back of the queue, the traversal follows a DFS pattern, so the method does not return the correct BFS order for general graphs.

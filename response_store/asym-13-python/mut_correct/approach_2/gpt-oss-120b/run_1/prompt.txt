@@ -1,0 +1,967 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 1 — Splitting code into parts + referencing line numbers (valid range: 0–5)
+  Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+  All non-loop code in f and g is Theta(1).
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 3 — f(): Loop iterations (valid range: 0–12)
+  Theta(N) iterations of the for loop over the characters of s.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 4 — f(): Cost per iteration (valid range: 0–12)
+  Theta(N) per iteration, dominated by the call to g(s, s.charAt(i)).
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(N^2) from Theta(N) iterations x Theta(N) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 6 — g(): Loop iterations (valid range: 0–12)
+  Theta(N) iterations of the for loop over s regardless of x.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 7 — g(): Cost per iteration (valid range: 0–12)
+  Theta(1) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 8 — g(): Total loop cost (valid range: 0–8)
+  Theta(N) = Theta(N) iterations x Theta(1) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 9 — Overall worst-case runtime of g (valid range: 0–12)
+  T_g(N) = Theta(N), summing constant parts and the loop.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input string `s`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(s):
+    n = len(s)
+    total = 0
+    for i in range(n):
+        total += g(s, s[i])
+    return total
+
+def g(s, x):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == x:
+            count += 1
+    return count
+
+SAMPLE SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+STUDENT SOLUTION:
+Let N be the length of string s.
+
+Method f
+Part A: the initialisations of n and total - constant time.
+Part B (for loop): runs over i = 0..N-1.
+Part C: return total - constant time.
+
+Parts A and C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: dominated by g(s, s[i]); g scans the whole string and costs Theta(N) (see g below). The character access is Theta(1). Per iteration: Theta(N).
+- Total cost of Part B: Theta(N) x Theta(N) = Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Method g
+Part D: the initialisations of n and count - constant time.
+Part E (for loop): scans the whole string counting matches of x.
+Part F: return count - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: i runs from 0 to N-1, giving Theta(N) iterations regardless of x.
+- Cost per iteration: Theta(1) - one character access, one comparison, possibly one increment.
+- Total cost of Part E: Theta(N) x Theta(1) = Theta(N).
+
+Overall running time of g:
+Theta(1) + Theta(N) + Theta(1) = Theta(N).
+
+RUBRIC POINT:
+Point 10 — Overall worst-case runtime of f (valid range: 0–14)
+  T_f(N) = Theta(N^2), accounting for non-loop parts + loop.

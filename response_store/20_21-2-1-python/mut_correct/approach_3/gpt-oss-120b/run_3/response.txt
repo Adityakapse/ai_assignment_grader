@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates C = [0] * (10**6 + 1), which is zero‑initialized but may be too small when |B| exceeds 10^6+1, leading to possible index‑out‑of‑bounds errors.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It correctly iterates over A and increments C[a] by 1 for each element, accurately accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for i in range(len(B))`, iterating from 0 to m‑1 inclusive, producing a string of the required length.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if C[i] <= B[i]` appends '1' otherwise '0', which matches the problem’s comparison rule.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm runs in O(n+m) and contains no forbidden substrings, but it can fail for cases where m > 10^6+1, so it is not correct for all valid inputs.

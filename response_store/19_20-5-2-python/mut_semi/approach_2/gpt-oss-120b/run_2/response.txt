@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 18
+FEEDBACK: The code pushes the start node onto the stack before the loop and uses a while‑stack loop, but adds an extra safety limit that could stop the loop before the stack is empty.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses `stack.pop()` which removes the current node from the top of the stack, correctly implementing LIFO behavior for DFS.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code adds nodes to visited but never checks whether a node has already been visited before processing or pushing it onto the stack, so duplicate entries and infinite loops can occur.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The code pushes neighbours in reverse order as required, but it does not check whether a neighbour has already been visited before pushing, so it may revisit nodes and cause infinite loops.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never checks whether a node has already been visited, so on graphs with cycles it repeats nodes and relies on an arbitrary safety limit, resulting in incorrect or incomplete DFS traversal.

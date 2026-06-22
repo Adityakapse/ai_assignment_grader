@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates a double[][] Result of size (n+1) × (capacity+1), and because Java zero‑initialises primitive arrays, all cells start at 0 as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of j = 0, so the zero‑capacity subproblem (needed for weight‑0 items) is never processed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses `if (volumes[i] < j)` and starts the inner loop at `j = 1`, so it applies a strict inequality and omits the zero‑capacity column, incorrectly excluding items that exactly match the remaining capacity or have zero weight.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code uses `Math.max(values[i] + Result[i][j - volumes[i]], Result[i][j])`, referencing the current row `Result[i]` instead of the previous row `Result[i+1]`, so the recurrence is incorrect and would allow unlimited reuse of items.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation uses the same DP row in the recurrence (`Result[i][j - volumes[i]]`) and starts the inner loop at j = 1, causing items to be reused and missing the zero‑capacity column, so it returns incorrect values for typical cases.

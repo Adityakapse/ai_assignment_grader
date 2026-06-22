@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution iterates the recurrence with a loop (O(n)) and never uses the closed form a_n = 2^n − 1 or exponentiation by squaring.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not define an expo function at all, so there is no base case handling b == 0, causing the required recursion to be missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not define an expo function at all, so there is no odd‑case handling that reduces b by 1 and multiplies by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not include an expo function or any handling of the even exponent case; it simply iterates the recurrence linearly, so the required halving‑and‑squaring logic is missing.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function correctly computes (2ⁿ − 1) mod 10⁹+7 for small n, but it uses a linear loop (O(n)) instead of the required O(log n) algorithm, so it will time out for large inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method adds the start node to `queue` before entering the `while (!queue.isEmpty())` loop, satisfying the required initialization and loop condition.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Nodes are removed with `queue.remove(queue.size() - 1)`, which takes from the back of the list, turning the structure into a stack (DFS) instead of a FIFO queue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Before processing each `next` node the code checks `!visited.contains(next)` and adds the node to `visited` only after this check, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop `for (int vertex : graph[next])` iterates all neighbours and enqueues each unvisited neighbour with `queue.add(vertex)`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because nodes are dequeued from the back, the traversal order follows depth‑first search, so the method does not return nodes in correct BFS (level‑by‑level) order.

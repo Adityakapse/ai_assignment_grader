@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution iterates the recurrence with a loop instead of using the closed form aₙ = 2ⁿ − 1, so no O(log n) closed‑form implementation is present.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No expo function is defined, therefore there is no base case for b == 0 and the recursion would never terminate.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: Because an expo function is absent, the required odd‑exponent case (return (a * expo(a,b‑1,c)) % c) is not implemented.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑exponent case (halving b and squaring the recursive result) is missing entirely as no expo function is provided.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The loop computes the correct value for small n, but its O(n) runtime will fail for large inputs up to 10⁹, violating the required O(log n) performance.

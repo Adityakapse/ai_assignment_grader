@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates `c` with length n (`c = [0] * n`) and correctly sets `c[0] = a[0]`, meeting the prefix‑sum array allocation requirement.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop assigns `c[i] = a[i]` rather than `c[i] = a[i] + c[i-1]`, so the prefix sum array is not built correctly.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution allocates `d = [0] * n` and uses `for i in range(n):` to process each query, satisfying the required output array allocation and full query loop.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code always computes d[i] = c[r] - c[l-1] without checking l == 0, so when l is 0 it accesses c[-1] instead of returning c[r].
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code copies a into c instead of building a prefix sum and also subtracts c[b[i][0]-1] even when b[i][0]==0, causing incorrect results (and an out‑of‑range access).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A correctly, but it never adds a virtual source node 0 with edges to every node 1…N, so the required single‑DFS starting point is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is created or used; the solution lacks any cache initialization or sentinel check.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, so no base case for leaf nodes is present.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution never iterates over a node’s children or computes sol = max(sol, dfs(child)+1); no recurrence is implemented.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: calc always returns 0 regardless of the graph, so it does not produce the correct longest‑path length for any non‑trivial input.

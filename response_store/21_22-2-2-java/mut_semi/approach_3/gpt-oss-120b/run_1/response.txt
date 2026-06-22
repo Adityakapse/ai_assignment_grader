@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates an array c of length n and correctly sets c[0] = a[0] before the loop.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: In the construction loop the code uses c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so the prefix sums are not accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array d of size n is allocated and a loop iterates from i = 0 to i < n to fill it for each query.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The range sum is computed as d[i] = c[r] - c[l‑1] for every query, without handling the case l == 0, which can cause an out‑of‑bounds access.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns correct sums only when l > 0; queries with l = 0 trigger an error, so overall correctness is partial.

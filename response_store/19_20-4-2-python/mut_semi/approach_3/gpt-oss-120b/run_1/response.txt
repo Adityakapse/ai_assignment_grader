@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function never selects a separate y; it always treats the node to delete as the node to remove, without checking the number of children.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No treeMinimum helper is defined or used; the code does not implement the required left‑most traversal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: x is assigned with `delete.left if delete.left is not None else delete.right`, correctly picking y’s (delete’s) non‑null child or null.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code updates `x.parent` and redirects either the root or `delete.parent`’s left/right pointer to x, properly splicing y out of the tree.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution never copies `delete.key` from a successor, so the key replacement step is missing.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Deletion works for leaf and one‑child cases (including root) but fails for nodes with two children, so the BST is not correctly maintained in all scenarios.

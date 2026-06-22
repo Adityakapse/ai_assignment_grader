@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never selects a successor; it always treats the node to delete as y, lacking the treeMinimum logic for the two‑child case.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No treeMinimum helper is defined or used; the solution omits the required left‑most traversal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: x is set to delete.left if present, otherwise delete.right, matching the specification for y’s non‑null child (or None for a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation updates x.parent when x exists, redirects the appropriate child pointer of delete.parent (or root) to x, correctly splicing y out.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never copies y.key into delete.key, so when a successor would be used the original key is not replaced.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Deletion works for leaf and single‑child nodes (including root with one child) but fails for nodes with two children, violating overall BST correctness.

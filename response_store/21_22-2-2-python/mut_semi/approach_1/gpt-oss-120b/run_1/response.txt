@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates list c of length n and correctly sets c[0] = a[0].
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop `for i in range(1, n): c[i] = a[i]` copies values instead of computing `c[i] = a[i] + c[i-1]`, so the prefix sums are not built.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: List d is allocated with size n and the subsequent `for i in range(n):` iterates over all queries as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The expression `c[b[i][1]] - c[b[i][0] - 1]` is used for every query, failing to treat the case l == 0 and causing an out‑of‑range negative index.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the prefix sums and the l = 0 edge case are incorrect, the function does not return the correct range‑sum list for general inputs.
+
+TOTAL: 35

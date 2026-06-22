@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code initializes the stack with the start node, but the while loop uses an extra `safety < 1000` condition, so it may stop before the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution consistently uses `stack.pop()` to remove the current node from the top of the stack, maintaining a proper LIFO order for depth‑first traversal.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The solution defines a visited list but never checks it before processing a node, so nodes are added repeatedly and cycles can cause infinite loops (the safety counter is a workaround).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over `reversed(graph[nxt])` and pushes each vertex onto the stack, but it does not check whether a neighbour has already been visited before pushing, so visited nodes are also added.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code never checks whether a node has already been visited, so on graphs with cycles it repeats nodes (mitigated only by an arbitrary safety limit) and does not guarantee the correct DFS order.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] c = new int[n];` and sets `c[0] = a[0];` before building the prefix sums.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 1; i < n; i++) { c[i] = a[i] + c[i - 1]; }` correctly computes each prefix sum as `C[i] = A[i] + C[i‑1]`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `int[] d = new int[n];` is allocated and the query loop `for (int i = 0; i < n; i++)` processes all `n` queries.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the query loop the code uses `d[i] = c[b[i][1]] - c[b[i][0] - 1];` when `l > 0` and `d[i] = c[b[i][1]];` when `l == 0`, handling the edge case properly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the correct list of range sums for all queries in overall O(n) time and contains no forbidden keywords.

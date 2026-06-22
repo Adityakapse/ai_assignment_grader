@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates C with `[0] * (10**6 + 1)`, allocating a zero‑initialized counting array of size 1,000,001, which satisfies the required size.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for a in A: C[a] = C[a] + 1` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for i in range(len(B))`, iterating from 0 to |B|‑1 and building a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the loop the condition `if C[i] <= B[i]: sol += "1"` else `"0"` matches the required comparison and output.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the algorithm is linear and avoids forbidden substrings, it assumes `len(B) ≤ 10**6+1`; for larger B it would index C out of bounds, so it fails on some valid edge cases.

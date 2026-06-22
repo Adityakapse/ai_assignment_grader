@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code builds an adjacency list from A and, in the initialization loop, adds edges from virtual node 0 to every node 1…N, enabling a single DFS from node 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes the memo array to -1 for every node and correctly checks `if (memo[node] != -1)` to return cached results, ensuring each subproblem is computed only once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS function includes `if (graph.get(node).size() == 0) return 0;`, correctly returning 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The dfs function iterates over all children, updates sol with Math.max(sol, dfs(child)+1) for each, stores the result in memo[node] and returns it, fulfilling the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a virtual source, uses memoized DFS, and returns dfs(0) – 1, matching the reference solution and correctly handling branching DAGs.

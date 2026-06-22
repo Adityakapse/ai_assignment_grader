@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, which is a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop `for i in range(n - 1, -1, -1):` iterates over all n items, and the inner loop `for j in range(capacity + 1):` covers every capacity from 0 to the given capacity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `if volume[i] <= j:` correctly checks that the current item fits in the remaining capacity before considering inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits, the assignment `Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]], Result[i + 1][j])` uses the proper recurrence referencing the next row; otherwise it copies `Result[i + 1][j]`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `Result[0][capacity]`, which yields the optimal maximum value for the knapsack for all valid inputs.

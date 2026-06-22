@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The calc function returns expo(2, n, c) without the required “‑1” adjustment, and the expo function’s odd‑exponent case omits multiplying by a, so the closed‑form implementation is incorrect.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if b == 0: return 1 % c`, correctly handling the base case for b = 0.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd branch you correctly call expo(a, b‑1, c) and apply % c, but you forget to multiply the result by a as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch you call `expo(a, b // 2, c)` once, store its result in `a`, and return `(a * a) % c`, correctly halving b and squaring the recursive result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns expo(a,b,c) without the required “‑1” and the odd‑exponent case omits the multiplication by a, so it produces 2ⁿ (or even lower) instead of (2ⁿ ‑ 1) mod 10⁹+7.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution never creates a 2D DP table; it simply iterates over the items and sums values, so the required (n+1)×(capacity+1) array is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Your code only has a single loop over the items and never iterates over capacities j, so it does not implement the required outer‑item/inner‑capacity loop structure.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code only checks `volumes[i] <= capacity` once per item and sums all fitting values, rather than performing a per‑item, per‑capacity (`j`) feasibility check as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The implementation just sums values of items whose volume ≤ capacity, never using the DP recurrence `Result[i][j] = max(values[i] + Result[prev][j‑volumes[i]], Result[prev][j])` (or the else case), so it does not follow the required recurrence relation.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The method simply adds the values of all items that individually fit, which does not compute the optimal 0/1 knapsack solution and fails on many valid inputs.

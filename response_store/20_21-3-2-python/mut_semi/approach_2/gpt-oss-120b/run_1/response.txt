@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code constructs the adjacency list from A correctly, but it does not add the required virtual source node 0 (and starts DFS from node 1), so the graph construction is incomplete.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes `memo` with -1 for every node and includes the `elif memo[node] != -1: return memo[node]` check, correctly using memoization to avoid recomputation.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs function correctly returns 0 for nodes with no outgoing edges, implementing the leaf base case as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The dfs loop uses `sol = max(sol, dfs(child, graph, memo))` without adding +1 for the edge, so the recurrence does not compute the longest path over children as required.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution starts DFS from node 1 and never adds +1 for each edge, so it returns 0 for a simple chain 1→2→3 instead of the correct length 2, and it also fails to handle graphs where the longest path does not start at vertex 1.

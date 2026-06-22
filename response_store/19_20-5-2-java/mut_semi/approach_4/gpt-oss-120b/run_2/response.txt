@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution pushes the start node onto the stack before the loop, but the while condition includes a safety limit (`safety++ < 1000`), causing the loop to potentially terminate before the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code consistently uses `int next = stack.pop();` to remove the current node from the top of the stack, ensuring LIFO behavior.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code adds every popped node to visited without first checking if it was already visited and pushes all neighbours unconditionally, so duplicate entries and potential infinite loops are possible.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over graph[current] and pushes neighbours onto the stack in reverse order, but it does not check whether a neighbour has already been visited before pushing it.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code adds every popped node to visited and never checks for already‑visited vertices, so on graphs with cycles it can loop indefinitely (mitigated only by an arbitrary safety limit) and may miss or duplicate nodes, violating correct DFS traversal.

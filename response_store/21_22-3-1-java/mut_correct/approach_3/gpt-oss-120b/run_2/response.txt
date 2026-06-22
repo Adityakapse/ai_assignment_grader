@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `long[] memo = new long[n + 1];` and initializes every entry to -1 with a for‑loop, providing the required sentinel for uncached subproblems.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are present: `if (n == 0) return W[0];` and `if (n == 1) return Math.max(W[0], W[1]);`, matching the specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The cache check `if (memo[n] != -1) return memo[n];` correctly returns a previously computed value before any further recursion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));` is implemented correctly and the result is stored in `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The overall algorithm returns the maximum billboard profit for all valid inputs and, thanks to memoization, runs in O(n) time.

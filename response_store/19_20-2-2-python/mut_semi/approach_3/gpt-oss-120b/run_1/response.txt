@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function iterates over `inputarray` with a `for` loop and uses `if/elif/else` to distinguish operators from numeric tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens fall into the `else` clause where they are converted with `int(i)` and pushed onto the stack.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: Each operator case pops two values and pushes a result, but the computation is incorrect for `-` and `/`.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: For subtraction and division the code uses `n1 - n2` and `n1 / n2`, reversing the required operand order and using non‑integer division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator produces correct results for addition and multiplication but fails for expressions involving subtraction or division, so it does not pass all test cases.

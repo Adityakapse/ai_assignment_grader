@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: Result is allocated as `new double[n + 1][capacity + 1]`, and Java initializes all entries to 0.0, satisfying the required (n+1)×(capacity+1) zero‑filled table.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; --i)` iterates over all n items, and the inner loop `for (int j = 0; j <= capacity; ++j)` iterates j from 0 to capacity inclusive, covering every subproblem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code checks `if (volumes[i] <= j)` before attempting to include an item, correctly implementing the capacity feasibility test.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the assignment `Result[i][j] = Math.max(values[i] + Result[i+1][j‑volumes[i]], Result[i+1][j]);` follows the required recurrence; otherwise it copies `Result[i+1][j]`, matching the specification.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `Result[0][capacity]`, which after the DP computation holds the optimal maximum value for the given capacity, so the implementation is correct for all valid inputs.
+
+TOTAL: 100

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution computes a_n by looping n times (a = (2*a+1) % c) instead of using the closed form a_n = 2^n − 1, so no exponentiation or closed‑form formula is applied.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not define an expo function at all, so there is no base case handling b == 0, and recursion never terminates.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: Your code never defines an expo function, so there is no odd‑case handling that reduces b by 1 and multiplies by a; the required (a * expo(a, b-1, c)) % c logic is missing.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The submitted code does not implement an expo function at all, so there is no handling of the even‑exponent case (halving and squaring) required by the rubric.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function computes the recurrence correctly using a loop, but it runs in O(n) time, so it will not handle the maximum input size efficiently.

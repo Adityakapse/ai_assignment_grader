@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function iterates over `inputarray` with `for i in inputarray:` and uses `if/elif` to distinguish operator tokens from numeric tokens, processing every token from left to right.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `else` branch the code executes `stack.push(int(i))`, correctly converting each numeric string to an integer before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (`n1 = stack.pop(); n2 = stack.pop()`) and pushes the computed result (`n2 + n1`, `n2 - n1`, `n2 * n1`, `n2 / n1`), handling all four operators.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses `n2 - n1` and division uses `n2 / n1`, so the operand order is correct, but division employs `/` which yields a floating‑point result instead of the required integer floor division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator produces correct integer results for expressions without division, but for any division it returns a float rather than the required rounded‑down integer, so it fails for full‑range RPN expressions.

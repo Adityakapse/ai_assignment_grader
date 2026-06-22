@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `memo = [-1] * (n + 1)`, giving an array of size n+1 with all entries set to –1, which correctly serves as the sentinel for uncached subproblems.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution includes both required base cases, returning W[0] for n == 0 and max(W[0], W[1]) for n == 1, matching the specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper function starts with `if memo[n] != -1: return memo[n]`, correctly checking the cache and returning the stored value before any further computation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper uses the max‑based recurrence `memo[n] = max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and stores the result in `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation matches the reference solution, using memoization and proper base cases, and thus returns the optimal profit in O(n) time for all valid inputs.

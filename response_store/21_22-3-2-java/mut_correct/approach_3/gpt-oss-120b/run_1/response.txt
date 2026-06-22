@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates an adjacency list from A and, inside the first loop, adds edges from virtual node 0 to every node 1…N, matching the required graph construction.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: An int[] memo is filled with -1 for all indices, and the DFS begins with `if (memo[node] != -1) return memo[node];`, correctly using the sentinel and cache.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS checks `if (graph.get(node).size() == 0) return 0;`, returning 0 for leaf nodes as specified.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child the code computes `sol = Math.max(sol, dfs(child, graph, memo) + 1);` and stores `memo[node] = sol;` before returning, implementing the proper recurrence and memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `calc` method returns `dfs(0, graph, memo) - 1;`, which adjusts for the virtual source and yields the correct longest path length for all DAGs.

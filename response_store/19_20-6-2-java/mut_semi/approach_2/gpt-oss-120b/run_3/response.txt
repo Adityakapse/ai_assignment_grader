@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which correctly allocates a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code uses an outer loop that visits each of the n items (i from n‑1 down to 0) and an inner loop that runs j from 0 to capacity inclusive, thus covering all subproblems as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code includes an `if (volumes[i] <= j)` condition before adding the item, correctly performing the capacity feasibility check for each item and capacity.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The implementation always adds values[i] when the item fits and never uses a max comparison with the skip‑item case, so the required recurrence relation is incorrect.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation always includes an item when it fits and never uses a max comparison, so it returns incorrect maximum values for many valid inputs.

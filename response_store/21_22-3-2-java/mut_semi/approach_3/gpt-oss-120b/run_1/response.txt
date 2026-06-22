@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A, but it never creates a virtual source node 0 nor adds edges from 0 to every node, so the DFS can only start from a specific node.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is filled with -1 and the DFS returns the cached value when memo[node] != -1, matching the required memoization pattern.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS correctly returns 0 when graph.get(node).size() == 0, handling leaf nodes as specified.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Inside the loop the code computes sol = Math.max(sol, dfs(child,…)) without adding +1, so edge lengths are not counted, though it does store memo[node] = sol.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the algorithm starts DFS at node 1 and omits the +1 increment, it may miss the true longest path and can be off by one, working only for limited cases.

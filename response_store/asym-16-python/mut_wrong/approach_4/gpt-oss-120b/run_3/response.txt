@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You identified the outer and inner loops of f and the single loop of g, but you did not reference specific line numbers or clearly separate the non‑loop initialization and return parts.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: You did not identify or discuss the constant‑time parts such as the variable initializations and return statements in either f or g, so the non‑loop code was not analyzed as Θ(1).
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N^2) and did not correctly identify the outer loop as Θ(log N) and the inner loop as Θ(N), so the iteration count is incorrect.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You correctly note that each inner iteration does only an array read and an addition, indicating constant‑time work, but you do not explicitly state Θ(1) or fully detail the operations as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N^2) and did not multiply the Θ(log N) outer iterations by the Θ(N) inner iterations, so the total loop cost does not match the required Θ(N log N).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The analysis does not address the cost of Part C at all; it fails to note that the call to g(a) costs Θ(N) and treats the addition/return as constant.
+
+POINT_ID: 7
+BUCKET: Wrong
+FEEDBACK: You noted that g loops once over the array but did not explicitly state the loop has Θ(N) iterations nor explain that i runs from 0 to N‑1, so the required justification is missing.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: You correctly identified that each iteration of g() performs constant‑time work, but you did not explicitly state the per‑iteration cost as Θ(1) with a concrete justification (e.g., “one array read and one += assignment”).
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student mentions that g loops over the array with constant‑time work but does not combine the Θ(N) iteration count and Θ(1) per‑iteration cost into a Θ(N) total cost.
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: You stated that g runs in O(log N) despite describing a single linear pass, which contradicts the correct Θ(N) runtime and provides no supporting reasoning.
+
+POINT_ID: 11
+BUCKET: Wrong (0 marks)
+FEEDBACK: You concluded that f runs in O(N^2), which is incorrect; the correct overall runtime is Θ(N log N), and you did not provide the required reasoning.

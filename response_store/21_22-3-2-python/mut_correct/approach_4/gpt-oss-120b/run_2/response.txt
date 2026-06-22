@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates an adjacency list from A and adds a virtual source node 0 with edges to every node 1 to N, enabling a single DFS from node 0 to cover all possible start points.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution creates `memo = [-1] * (N + 1)` and the DFS begins with `elif memo[node] != -1: return memo[node]`, correctly using -1 as the sentinel and returning cached values.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function checks `if len(graph[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The dfs implementation loops over every child, updates sol with dfs(child) + 1, and assigns memo[node] = sol before returning, correctly applying the recurrence and memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, using a virtual source (graph[0]) and memoized DFS, and returns `dfs(0, graph, memo) - 1`, correctly computing the longest path for any DAG.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a memo array of size n+1, but it relies on the default value 0 instead of initializing all entries to –1 as the uncached sentinel.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Only the base case n == 0 is handled; the required n == 1 case returning max(W[0], W[1]) is missing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `if (memo[n] != 0)` rather than the prescribed `!= -1`, so a computed value of 0 would be mistaken for “uncached”.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = max(W[n] + opt_helper(n‑2,…), opt_helper(n‑1,…))` is implemented correctly and the result is stored before returning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the n == 1 base case is absent, calls with n ≥ 1 eventually invoke opt_helper with negative indices, causing incorrect results or runtime errors for most inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code uses exponentiation by squaring on base 2 but returns expo(2, n, MOD) directly and the odd‑exponent branch omits the multiplication by a, so it fails to subtract the required 1 and gives incorrect results for odd n.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if (b == 0) return 1;`, correctly handling the base case for b = 0.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd case you correctly reduce b by 1 and apply % c, but you omitted the required multiplication by a, returning only expo(a, b‑1, c) % c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch the code calls expo(a, b/2, c) once, stores the result in a, and returns (a * a) % c, correctly halving and squaring with modulo.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution returns expo(2,n,mod) without the required “‑1” and the odd‑exponent case omits the multiplication by a, so it yields incorrect results for most inputs.

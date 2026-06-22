@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if delete.left is None or delete.right is None: y = delete` and otherwise sets `y = tree_minimum(delete.right)`, correctly handling the zero/one‑child and two‑child cases.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s `tree_minimum` function correctly loops with `while n.left is not None: n = n.left` and returns `n`, matching the required left‑ward traversal to find the minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets `x = y.left if y.left is not None else y.right`, correctly choosing the non‑null child or None when y is a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets x.parent to y.parent, updates y.parent.left or .right to x appropriately, and handles the root replacement when y.parent is None, fulfilling the splicing requirements.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution uses `if y is not delete: delete.key = y.key`, correctly copying the successor’s key only when y differs from the node being deleted.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The delete function mirrors the reference algorithm, handling leaf, single‑child, two‑children, and root deletions correctly and returns the proper new root.

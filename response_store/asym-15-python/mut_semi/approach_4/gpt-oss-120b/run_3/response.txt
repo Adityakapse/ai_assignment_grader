@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly separated the analysis of f and g and identified the loops versus the constant‑time setup, but you never referred to the specific line numbers in the code.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You noted that the setup statements are constant, but you did not explicitly identify all non‑loop parts (e.g., the return statements and each variable initialization) as Θ(1), leaving some constant‑time code unaddressed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student explicitly says the loop runs Θ(log N) and notes that each iteration includes a halving operation, thereby justifying the logarithmic iteration count.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: You correctly state that each iteration of f’s loop is Θ(1) and list array read, addition, and halving, but you omit the comparison operation, so the per‑iteration reasoning is incomplete.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: You correctly identified that the loop in f runs Θ(log N) iterations, each costing Θ(1), and you concluded the total loop cost is Θ(log N).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: You correctly noted that the cost of Part C comes from the call to g, but you did not explicitly state that this call contributes Θ(log N) (and you omitted the Θ(1) addition/return), making the explanation unclear.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student states that g’s loop runs Θ(log N) and notes it halves each iteration, but does not explicitly justify the count by explaining that j starts at N and is divided by 2 until it reaches 0.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: You correctly state that each g() loop iteration runs in Θ(1) time and list array read, addition, and halving, but you don’t explicitly mention the comparison (or give the full four‑operation justification).
+
+POINT_ID: 9
+BUCKET: Correct (6 marks)
+FEEDBACK: The student correctly notes that g’s loop executes Θ(log N) times and each iteration costs Θ(1), and combines them as Θ(log N) × Θ(1) = Θ(log N).
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(log N) and explain the loop cost, but you omit the constant‑time initialization and return steps required for a complete Θ(1)+Θ(log N)+Θ(1) justification.
+
+POINT_ID: 11
+BUCKET: Semi
+FEEDBACK: You correctly state that f’s overall runtime is Θ(log N) and note that the call to g adds extra cost, but you do not break down the constant‑time parts or explicitly explain that the two halving loops’ costs are summed rather than multiplied.

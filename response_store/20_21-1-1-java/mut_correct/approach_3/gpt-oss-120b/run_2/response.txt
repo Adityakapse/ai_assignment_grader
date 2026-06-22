@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code includes `if (b == 0) { return 1 % c; }`, correctly handling the base case and the edge case when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses `else if (b % 2 != 0)` for odd exponents and the `else` branch for even, properly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd case it returns `(a * expo(a, b - 1, c)) % c;`, matching the required reduction by 1 and multiplication by a.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case computes `a = expo(a, b / 2, c) % c;` then returns `(a * a) % c;`, halving b once and squaring the result correctly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation avoids `import` and `**`, applies `% c` at each step, and therefore produces the correct `a^b mod c` for all valid inputs.

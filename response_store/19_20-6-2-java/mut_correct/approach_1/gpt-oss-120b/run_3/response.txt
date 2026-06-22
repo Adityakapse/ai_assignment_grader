@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `double[][] Result = new double[n + 1][capacity + 1];`, which creates a (n+1) × (capacity+1) table initialized to 0 as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; --i)` iterates over all items, and the inner loop `for (int j = 0; j <= capacity; ++j)` iterates over every capacity value from 0 to the given capacity.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Inside the inner loop the condition `if (volumes[i] <= j)` correctly checks whether the current item fits into the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the assignment `Result[i][j] = Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j]);` implements the proper recurrence; otherwise `Result[i][j] = Result[i + 1][j];` is used.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `Result[0][capacity]`, which, given the correctly filled DP table, yields the maximum attainable value for any valid input.
+
+TOTAL: 100

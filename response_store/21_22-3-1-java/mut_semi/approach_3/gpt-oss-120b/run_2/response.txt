@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates `long[] memo = new long[n + 1];` but leaves it at the default 0 values instead of initializing each entry to -1, so the sentinel for “not yet computed” is incorrect.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Only the base case `if (n == 0) return W[0];` is present; there is no `n == 1` case, which causes out‑of‑bounds recursion for inputs of length 2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `if (memo[n] != 0) return memo[n];`, relying on 0 as the sentinel, which conflicts with the default initialization and can mis‑handle subproblems that legitimately have value 0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence correctly computes `Math.max(W[n] + opt_helper(n - 2, …), opt_helper(n - 1, …))` and stores the result in `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the missing `n == 1` base case and the wrong sentinel, the function crashes or returns incorrect results for small inputs and therefore does not reliably produce the maximum profit.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] Result of size (n+1) x (capacity+1), which Java initializes to 0, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates over all items, but the inner loop starts at j=1 and omits the j=0 column, so not all capacity subproblems are covered.
+
+POINT_ID: 3
+MARKS: 3
+FEEDBACK: The feasibility check uses `volumes[i] < j` instead of `<= j`, missing the case where an item’s volume exactly equals the current capacity and mishandling zero‑weight items.
+
+POINT_ID: 4
+MARKS: 2
+FEEDBACK: The recurrence references Result[i][…] (the current row) rather than Result[i+1][…], allowing reuse of the same item and deviating from the required relation.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: Because of the loop and recurrence errors, the method does not reliably return the correct maximum value for all valid inputs.
+
+TOTAL: 37

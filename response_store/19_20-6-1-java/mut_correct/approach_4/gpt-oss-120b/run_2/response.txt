@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[][] edDis = new int[m + 1][n + 1];` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the table, matching the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code includes both loops—`for (int i = 0; i <= m; ++i) edDis[i][0] = i;` and `for (int j = 0; j <= n; ++j) edDis[0][j] = j;`—so the first column and first row are properly initialized.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly compares a.charAt(i‑1) with b.charAt(j‑1) and, when they match, assigns edDis[i][j] = edDis[i‑1][j‑1].
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The else clause correctly computes `edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1])`, covering insert, delete, and replace.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation iteratively fills the DP table, handles base cases, and returns edDis[m][n]; it correctly computes edit distance for all inputs without recursion.

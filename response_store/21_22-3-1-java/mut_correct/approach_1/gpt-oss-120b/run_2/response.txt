@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: You allocate `long[] memo = new long[n + 1];` and initialise each element to -1 in a loop, satisfying the required sentinel initialization.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The base cases `if (n == 0) return W[0];` and `if (n == 1) return Math.max(W[0], W[1]);` are correctly implemented.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: You correctly perform the cache check with `if (memo[n] != -1) return memo[n];` before any further computation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence `memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));` stores the result in `memo[n]` before returning, matching the specification.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The overall algorithm returns the maximum billboard profit for all valid inputs and, thanks to memoisation, runs in O(n) time.
+
+TOTAL: 100

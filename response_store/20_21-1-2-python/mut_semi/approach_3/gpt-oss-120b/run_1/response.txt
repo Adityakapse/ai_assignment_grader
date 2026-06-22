@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a `quick` function with recursive calls on both sub‑arrays (`quick(A, l, p - 1)` and `quick(A, p + 1, r)`), matching the typical quicksort divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when `l < r` is false, which correctly prevents further calls on subarrays of length 0 or 1.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The `partition` function only swaps the first element with the pivot if it is larger, leaving the rest of the elements untouched, so the pivot is not placed with all smaller elements on the left and larger on the right.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No random library is imported and the pivot is always the last element, providing no randomisation to avoid worst‑case quicksort behavior.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the partition step does not correctly reorder elements, the returned array is not sorted for general inputs.

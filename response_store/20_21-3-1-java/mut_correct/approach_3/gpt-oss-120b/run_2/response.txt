@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];` which allocates a (n+1)×(capacity+1) table that Java initializes to 0.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; i--)` iterates over all n items and the inner loop `for (int j = 0; j <= capacity; j++)` covers j from 0 to capacity inclusive.
+
+POINT_ID: Point 3
+BUCKET: Correct
+FEEDBACK: The condition `if (volumes[i] <= j)` correctly checks feasibility, allowing inclusion when the item fits exactly or has zero volume.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: When the item fits the code uses `Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j])`, referencing the previous row (`i+1`) as required by the recurrence.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: The method returns `Result[0][capacity]`, which yields the optimal knapsack value for all inputs, including zero‑weight items and zero capacity.

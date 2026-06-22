@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses `for i in inputarray:` and distinguishes operators with `if/elif` clauses, handling numbers in the final `else`, thus processing all tokens left‑to‑right and classifying them correctly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `else` branch the code executes `stack.push(int(i))`, converting each numeric token to an integer before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (`n1 = stack.pop(); n2 = stack.pop()`) and pushes a computed result back onto the stack, covering all four operators.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The subtraction and division branches use `n1 - n2` and `n1 / n2`, reversing the required operand order and also performing floating‑point division instead of integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because subtraction and division are computed with the wrong operand order (and non‑integer division), the function returns incorrect results for any expression involving ‘‑’ or ‘/’, so overall it does not produce the correct integer result for all valid RPN expressions.

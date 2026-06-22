@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The solution correctly allocates a memo array of size n+1, but it leaves the array at its default zero values instead of initializing each entry to -1 as required for the uncached sentinel.
+
+POINT_ID: 2
+MARKS: 5
+FEEDBACK: The code correctly returns W[0] when n is 0, but it lacks a base case for n = 1, causing an invalid recursive call (e.g., opt_helper(-1)) instead of returning max(W[0], W[1]).
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code checks `memo[n] != 0` instead of the required `memo[n] != -1`, so it does not follow the specified cache‑check condition.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation correctly computes `memo[n] = max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and stores the result in `memo[n]` before returning.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution lacks a base case for n = 1, causing a recursive call with n = ‑1 and an array‑index error, so it fails to return the correct profit for all valid inputs.

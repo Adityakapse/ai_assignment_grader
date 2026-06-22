@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1)×(capacity+1) table initialized to 0.0 as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code correctly uses an outer loop that iterates over all n items (i from n‑1 down to 0) and an inner loop that runs j from 0 to capacity inclusive, thus covering every subproblem including the j = 0 case.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly checks `if (volumes[i] <= j)` before using the item, which works for both normal and zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses Result[i][j] = Math.max(values[i] + Result[i+1][j‑volumes[i]], Result[i+1][j]) when the item fits and Result[i][j] = Result[i+1][j] otherwise, correctly matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly builds the DP table, handles zero‑volume items by using the same sub‑problem for inclusion and exclusion, and returns Result[0][capacity] as the optimal value.

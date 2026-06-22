@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: The code pushes the start node before the loop, but the while condition also includes a safety counter (`safety++ < 1000`), which can terminate the loop before the stack is empty.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `stack.pop()`, correctly using LIFO order.
+
+POINT_ID: Point 3
+BUCKET: Wrong
+FEEDBACK: Nodes are added to `visited` without first checking whether they have already been visited, so duplicates and infinite loops on cyclic graphs are possible.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: The adjacency list is iterated from the end to the start and every neighbour is pushed onto the stack, satisfying the reverse‑order push requirement.
+
+POINT_ID: Point 5
+BUCKET: Semi
+FEEDBACK: Because visited nodes are not checked, the method fails on graphs with cycles (and may stop early due to the safety limit), so it does not reliably return the correct DFS order for all inputs.

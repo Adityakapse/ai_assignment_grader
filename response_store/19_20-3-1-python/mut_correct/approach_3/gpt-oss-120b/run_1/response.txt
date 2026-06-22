@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses a while‑changed outer loop and a for loop over `range(1, listToSort.Length())`, providing the required repeated passes and pairwise stepping of a bubble‑sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It calls `listToSort.Larger(i - 1, i)` to compare adjacent elements, correctly using the provided comparison API with proper indices.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the comparison indicates a disorder, the code executes `listToSort.Swap(i - 1, i)`, swapping exactly the same pair of indices used in the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The inner loop’s bound is `listToSort.Length()`, and no other loops require bounds, so the algorithm adapts to any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The repeated passes continue until no swaps occur, ensuring the returned list is sorted in ascending order for all valid inputs.

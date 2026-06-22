@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution uses expo(2, n, c) but never subtracts 1, and the odd case in expo returns expo(a, b‑1, c) % c without the required multiplication by a, so it does not correctly compute 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if b == 0: return 1 % c`, correctly handling the base case for b = 0.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd branch you correctly reduce b by 1 and apply % c, but you return expo(a, b‑1, c) without multiplying by a, so the required (a * expo(...)) % c is missing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even case the function calls expo(a, b//2, c) once, stores the result in a, and returns (a * a) % c, correctly halving b and squaring the recursive result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns expo(a,b,c) without the required “‑1” and the odd‑case recursion omits multiplying by a, so it produces 2ⁿ mod M instead of (2ⁿ‑1) mod M.

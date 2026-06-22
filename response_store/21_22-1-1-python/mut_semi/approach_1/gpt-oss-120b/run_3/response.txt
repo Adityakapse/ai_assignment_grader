@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The comment shows awareness of the -1 term, but the calc function returns expo(a,b,c) without subtracting 1, so the closed form is not correctly applied.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function correctly returns 1 % c when b == 0, matching the required base case.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd‑b branch the code returns expo(a, b‑1, c) % c without multiplying by a, violating the required (a * expo(...)) % c.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even‑b case computes a = expo(a, b//2, c) % c and returns (a * a) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because calc does not subtract 1 and the odd exponent case is wrong, the overall result is incorrect for many inputs.
+
+TOTAL: 45

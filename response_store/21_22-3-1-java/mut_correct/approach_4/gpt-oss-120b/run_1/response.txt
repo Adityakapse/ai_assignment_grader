@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates a `long[] memo` of length n+1 and initializes every entry to -1 before using it for caching.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code includes both base cases, returning W[0] for n = 0 and Math.max(W[0], W[1]) for n = 1, matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper function includes `if (memo[n] != -1) return memo[n];`, correctly using –1 as the sentinel to return cached results and avoid recomputation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper computes `Math.max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and assigns it to `memo[n]` before returning, correctly implementing the recurrence with memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, using memoization in opt_helper and correctly handling base cases and the max of taking or skipping the current billboard, thus delivering the optimal profit in O(n) time.

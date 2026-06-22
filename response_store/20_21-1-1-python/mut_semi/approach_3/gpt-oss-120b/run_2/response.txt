@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns `1` instead of `1 % c`, so it fails for the edge case when `c == 1`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The condition `elif b % 2:` correctly identifies odd values of `b` (non‑zero remainder) and separates them from even values.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd branch the function returns `expo(a, b - 1, c) % c` without multiplying by `a`, so it does not implement `(a * expo(...)) % c`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even branch computes `a = expo(a, b // 2, c) % c` and returns `(a * a) % c`, correctly halving the exponent, squaring the result, and applying the modulo.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the incorrect base case and missing multiplication in the odd case, the function produces wrong results for many inputs, so overall correctness is not achieved.

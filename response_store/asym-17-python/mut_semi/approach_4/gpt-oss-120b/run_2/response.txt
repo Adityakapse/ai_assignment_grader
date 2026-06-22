@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly distinguish f’s single loop and the call to g, and you identify g’s nested loops, but you never reference the actual line numbers in the code.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The answer notes that f’s setup statements are constant, but it does not explicitly state that the initializations and return statements in both f and g are Θ(1), leaving those constant‑time parts unaddressed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly state that the loop runs Θ(N) iterations, but you only say it runs “about N iterations” without explicitly noting that i runs from 0 to N‑1 and reads one cell mat[i][0] each time, so the justification is incomplete.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: You correctly state that each iteration of f’s loop costs Θ(1), noting a matrix access and an addition, which matches the required reasoning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You correctly identified Θ(N) iterations and Θ(1) work per iteration, but you did not explicitly multiply them (Θ(N) × Θ(1)) to show the total loop cost.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student correctly notes that Part C’s cost comes from the call to g and gives f a Θ(N²) overall runtime, but they do not explicitly state the constant‑time addition/return cost.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly state that g’s nested loops run Θ(N²) times, but you only mention “two nested loops over the cells” without explicitly noting that each loop iterates N times.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student explicitly states that each iteration of g does a matrix access and an addition, both Theta(1), providing the required justification.
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: You correctly state that g’s nested loops run Θ(N²) iterations and multiply this by the Θ(1) cost per iteration, resulting in Θ(N²).
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly state that g runs in Θ(N²) and explain the nested loops, but you omit the constant‑time initialization and return steps required for a full Θ(1)+Θ(N²)+Θ(1) analysis.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: You correctly identified the constant‑time setup, the Θ(N) work of f’s own loop, and the Θ(N²) cost of the call to g, and you concluded that f’s overall runtime is Θ(N²) with the higher‑order term dominating.

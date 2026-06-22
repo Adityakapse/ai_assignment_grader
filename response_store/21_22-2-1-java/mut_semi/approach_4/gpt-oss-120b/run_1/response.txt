@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length + 1];`, which provides a zero‑initialized counting array of size at least `max(A)+1`, satisfying the allocation requirement.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code loops over A but does `C[i]++` rather than `C[A[i]]++`, so it increments the wrong array positions and does not correctly count frequencies.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop begins at 1 and runs while i < B.length, so it omits index 0 and produces a binary string that is one character short of the required length |B|.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: In the output loop the code appends '1' when C[i] > B[i] and '0' otherwise, reversing the intended comparison of C[i] ≤ B[i].
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code counts frequencies with `C[i]++` instead of `C[A[i]]++`, starts the output loop at 1 (producing a string of length m‑1), and appends '1' when `C[i] > B[i]` (the opposite of the required condition), so it returns an incorrect binary string.

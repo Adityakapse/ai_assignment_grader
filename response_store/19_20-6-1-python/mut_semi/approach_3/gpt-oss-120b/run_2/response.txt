@@ -1,0 +1,15 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `edDis` as a (m+1) × (n+1) list of lists and uses nested loops `for i in range(1, m+1)` and `for j in range(1, n+1)` to fill the table bottom‑up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No base case rows or columns are initialized; the first row and column remain zero, so `edDis[i][0]` and `edDis[0][j]` are never set to i and j respectively.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `a[i-1] == b[j-1]` the code correctly copies `edDis[i-1][j-1]` into `edDis[i][j]`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatching characters the implementation uses `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])`, covering insert, delete

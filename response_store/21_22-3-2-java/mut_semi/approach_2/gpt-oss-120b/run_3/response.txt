@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code correctly builds the adjacency list from A, but it never creates the virtual source node 0 or adds edges from 0 to every node, and it starts DFS from node 1 instead of using the required source.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly sets every entry of the memo array to -1 and returns memo[node] immediately when it is not -1, implementing proper memoization initialization and cache checking.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs function correctly returns 0 when `graph.get(node).size() == 0`, handling leaf nodes as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence omits the “+ 1” for each edge (sol = Math.max(sol, dfs(child)) instead of dfs(child) + 1), so it does not correctly compute the longest path over children.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation never adds +1 for each edge and starts DFS from node 1 without a virtual source, so dfs always returns 0, yielding incorrect path lengths for any graph with edges.

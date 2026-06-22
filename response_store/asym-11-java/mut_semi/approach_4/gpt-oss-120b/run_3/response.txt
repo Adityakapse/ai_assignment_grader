@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The answer separates the analysis of f and g and identifies the nested loops and the binary‑search loop, but it never cites specific line numbers or breaks the code into labeled parts.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You noted that the “setup” in f and the loop work in g are constant‑time, but you didn’t explicitly identify all non‑loop statements (e.g., the initializations of n, c, l, r and the return statements) as Θ(1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You state that the outer loop runs about N² times, giving a Θ(N²) count, but you do not correctly justify that both the outer and inner loops each run N times.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: You correctly identified that each iteration’s dominant cost is the call to g, and you justified it by noting that g performs a binary search costing Θ(log N); this establishes the per‑iteration cost as Θ(log N).
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly identified Θ(N²) iterations and multiplied by the Θ(log N) cost of g per iteration, explicitly stating the resulting Θ(N² log N) total for f.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The student correctly states that g’s while loop runs Θ(log N) iterations and explains that the interval halves each iteration, providing the required justification.
+
+POINT_ID: 7
+BUCKET: Correct
+FEEDBACK: You correctly state that each iteration of g() does constant‑time work (midpoint computation, array accesses, comparisons) and explicitly label it Θ(1), matching the required justification.
+
+POINT_ID: 8
+BUCKET: Correct (8 marks)
+FEEDBACK: The student correctly notes that g’s loop runs Θ(log N) iterations with Θ(1) work per iteration and combines them to give a total cost of Θ(log N).
+
+POINT_ID: 9
+BUCKET: Semi
+FEEDBACK: The student correctly states Θ(log N) for g and explains the binary‑search loop, but does not mention the constant‑time initializations and return, so the reasoning is incomplete.
+
+POINT_ID: 10
+BUCKET: Semi
+FEEDBACK: You correctly state that f runs in Θ(N² log N) and note the nested loops and cost of g, but you do not explicitly break out the constant‑time initialisation and return steps as required.

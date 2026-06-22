@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code initializes `queue = [start]` before the `while queue:` loop, ensuring the start node is queued and the loop runs until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Nodes are removed with `queue.pop(0)`, which always dequeues the front element, preserving FIFO order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each dequeued node `nxt` is checked `if nxt not in visited:` before being added to `visited`, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop `for vertex in graph[nxt]:` enqueues each neighbour with `queue.append(vertex)` only if it is not already in `visited`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `visited`, which contains all reachable nodes from `start` in proper BFS (level‑by‑level) order for any directed graph.

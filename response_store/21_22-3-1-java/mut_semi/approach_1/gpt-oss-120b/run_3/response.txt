@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code allocates a memo array of size n+1 but does not initialise its entries to –1 as required.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution only handles the base case n = 0; it lacks the required n = 1 case returning max(W[0], W[1]).
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The cache check uses `memo[n] != 0` instead of the specified `memo[n] != -1`, so it does not follow the rubric.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence `memo[n] = max(W[n] + opt_helper(n‑2,…), opt_helper(n‑1,…))` is implemented correctly and stored before returning.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to the missing n = 1 base case and incorrect cache sentinel, the algorithm fails for valid inputs and does not guarantee O(n) correct results.
+
+TOTAL: 35

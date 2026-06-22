@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs an adjacency list from A, but it never adds a virtual source node 0 nor starts DFS from 0, so it can only find paths beginning at node 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes `memo` with -1 for every node and correctly returns `memo[node]` when `memo[node] != -1`, ensuring cached results are used.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function includes `if len(graph[node]) == 0: return 0`, correctly returning 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The dfs iterates over all children and stores memo[node], but it computes `sol = max(sol, dfs(child, graph, memo))` without adding +1, so the edge length isn’t counted.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The DFS omits the +1 increment for each edge and starts at node 1 without the virtual source, causing the function to return 0 (or an incorrect length) for most DAG inputs.

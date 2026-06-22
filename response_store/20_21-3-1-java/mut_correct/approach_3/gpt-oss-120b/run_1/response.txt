@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] Result = new double[n + 1][capacity + 1];`, creating a (n+1) × (capacity+1) table that is automatically initialized to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; i--)` iterates over all n items, and the inner loop `for (int j = 0; j <= capacity; j++)` iterates j from 0 through capacity inclusive, covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `if (volumes[i] <= j)` correctly allows inclusion when the item fits exactly or has zero volume, handling zero‑weight items properly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the assignment `Result[i][j] = Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j]);` uses the previous row (`i+1`) in the max recurrence, matching the required DP relation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `Result[0][capacity]`, which yields the optimal maximum value for all valid inputs, including cases with zero‑volume items and zero capacity.

@@ -1,0 +1,101 @@
+QUESTION:
+Input: $n_0 \in \mathbb{N}_0: \; 0 \leq n_0 \leq 10^{9}$ 
+
+Output: $a_{n_0} \; mod \; 10^9+7$ with
+$a_{n+1}=2 a_{n}+1 \; \; n \in \mathbb{N}_0, a_{0}=0$
+
+Calculate in $O(\: log \: n)$ the output for any input
+in the function "long calc(n)" with an integer parameter/long
+parameter . For the implementation you must not use the keyword
+"import", "**", "eval" , "checkCalc" or "expo".
+
+For easier debugging, you can divide your result in each calculation step by modulo $10^9+7$. For example:
+
+long calc(long a,long b,long c){
+
+    long res = (a+b) % 1000000007;
+
+    res = (res+c) % 1000000007;
+
+    return (res+1000) % 1000000007;
+
+}
+
+Hints:
+
+1. Find a closed form for the recurrence.
+
+2. Use integer divison and floats avoided.
+
+3. If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+long calc(long n){
+    long  a = 2, b = n, c = 1000000007;
+    return expo(a,b,c) - 1;
+}
+
+long expo(long a,long b,long c){
+    if (b == 0)
+        return 1;
+    else if (b % 2 == 1)
+        return (a * expo(a,b-1,c)) % c;
+    else{
+        a = expo(a,b / 2,c);
+        return (a*a) % c;
+    }
+}
+
+STUDENT SOLUTION:
+// Iterates the recurrence linearly; works only for small n.
+long calc(long n) {
+    long a = 0;
+    long c = 1000000007;
+    for (long i = 0; i < n; i++) {
+        a = (2 * a + 1) % c;
+    }
+    return a;
+}
+
+
+RUBRIC:
+Point 1 — Closed form derivation
+  The student identifies that a_n = 2^n - 1, so calc(n) = (2^n mod c) - 1 where c = 10^9 + 7.
+  Buckets:
+    - Wrong (0 marks): No closed form is used; the student attempts to iterate the recurrence n times (O(n)), or returns a constant unrelated to 2^n.
+    - Semi (12 marks): The student uses exponentiation by squaring on base 2 but with a wrong constant term (e.g., returns 2^n + 1 or 2^n without subtracting 1), or uses the wrong base (e.g., computes n^2 instead of 2^n).
+    - Correct (25 marks): The student correctly identifies a_n = 2^n - 1 and implements calc(n) as expo(2, n, 10^9+7) - 1 (or equivalent).
+
+Point 2 — Expo base case: b == 0
+  When the exponent b == 0, the expo function returns 1 (or 1 % c).
+  Buckets:
+    - Wrong (0 marks): No base case is present; the recursion never terminates or returns an incorrect constant for b == 0.
+    - Semi (8 marks): A base case is present but uses b == 1 instead of b == 0, causing an off-by-one and incorrect results for n = 0.
+    - Correct (15 marks): Returns 1 (or 1 % c) when b == 0, correctly terminating the recursion.
+
+Point 3 — Expo odd case: reduce by 1 and multiply
+  When b is odd, returns (a * expo(a, b-1, c)) % c.
+  Buckets:
+    - Wrong (0 marks): The odd case is absent, or does not reduce b by 1, or does not multiply by a.
+    - Semi (8 marks): Reduces b by 1 and recurses, but does not multiply by a, or does not apply % c.
+    - Correct (15 marks): Returns (a * expo(a, b-1, c)) % c when b is odd.
+
+Point 4 — Expo even case: halve and square
+  When b is even, computes tmp = expo(a, b//2, c) once and returns (tmp * tmp) % c.
+  Buckets:
+    - Wrong (0 marks): The even case is absent, or does not halve b, or does not square the recursive result.
+    - Semi (10 marks): Halves b and recurses, but squares incorrectly (e.g., calls expo twice with b//2 doubling the work to O(b)), or does not apply % c to the result.
+    - Correct (20 marks): Calls expo(a, b//2, c) exactly once, stores the result, then returns (tmp * tmp) % c, achieving O(log b) depth.
+
+Point 5 — Overall correctness
+  calc(n) returns (2^n - 1) mod (10^9+7) correctly for all valid inputs, without using forbidden keywords.
+  Buckets:
+    - Wrong (0 marks): Returns incorrect results for most inputs, or contains forbidden keywords ('import', '**', 'pow', etc.).
+    - Semi (12 marks): Returns correct results for small inputs but fails for large n (e.g., due to integer overflow from missing modulo steps, or O(n) iteration timing out), or the -1 adjustment is missing.
+    - Correct (25 marks): Returns (2^n - 1) mod (10^9+7) correctly for all valid inputs in O(log n); forbidden keywords are absent; modulo is applied at each recursive step.

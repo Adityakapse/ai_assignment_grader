@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code declares `double[][] Result = new double[n + 1][capacity + 1];`, creating a (n+1)×(capacity+1) table that is automatically initialised to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop `for (int i = n - 1; i >= 0; --i)` iterates over all n items and the inner loop `for (int j = 0; j <= capacity; ++j)` iterates over every capacity value, covering all sub‑problems.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i] <= j)` correctly checks whether the current item can fit into the current capacity before attempting to include it.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence omits the required `max` comparison; it always uses `values[i] + Result[i + 1][j - volumes[i]]` when the item fits, so the correct max‑of‑include‑or‑exclude logic is missing.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to the incorrect recurrence, the method does not return the optimal maximum value for general inputs.
+
+TOTAL: 55

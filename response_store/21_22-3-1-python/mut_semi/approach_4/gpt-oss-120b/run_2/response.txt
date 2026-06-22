@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code creates a memo list of length n+1, but it initializes all entries to 0 instead of the required sentinel value -1, so cached results cannot be distinguished from a legitimate zero profit.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The solution includes the n == 0 base case but omits the required n == 1 case, leading to incorrect recursion (e.g., calling opt_helper(-1) for n = 1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The solution uses `if memo[n] != 0` with memo initialized to zeros, so it checks the wrong sentinel value instead of `!= -1`, violating the specified cache‑check requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper computes `memo[n] = max(W[n] + opt_helper(n-2, …), opt_helper(n-1, …))` and returns `memo[n]`, correctly applying the max‑based recurrence and storing the result before returning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution lacks a base case for n = 1 and uses 0 as a cache sentinel, causing recursive calls with negative indices (e.g., opt_helper(-1)) and incorrect or runtime‑error results for typical inputs.

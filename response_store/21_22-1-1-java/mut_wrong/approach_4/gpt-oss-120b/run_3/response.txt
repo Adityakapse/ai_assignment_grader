@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution computes a_n by looping n times with a linear recurrence instead of using the closed form a_n = 2^n − 1, so no exponentiation or closed‑form formula is applied.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The submitted code never defines an expo function, so there is no base case handling b == 0; it simply iterates the recurrence instead.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not include an expo function at all, so there is no handling of the odd exponent case (reducing b by 1 and multiplying by a).
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution provides only an iterative loop for the recurrence and does not implement an expo function at all, so there is no even‑case handling that halves b and squares the recursive result.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function computes a = (2*a+1) % MOD in a loop, which yields correct results for small n but runs in O(n) time and will not finish for large inputs up to 10^9.

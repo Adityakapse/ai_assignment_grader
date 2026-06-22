@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a (m+1) × (n+1) table with `edDis = [[0] * (n + 1) for _ in range(m + 1)]` and uses nested loops `for i in range(1, m+1)` and `for j in range(1, n+1)` to fill it, satisfying the required allocation and iteration structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never initializes edDis[i][0] or edDis[0][j]; both the first column and first row stay at the default zero, so the DP base cases are missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if a[i - 1] == b[j - 1]:` and correctly sets `edDis[i][j] = edDis[i - 1][j - 1]` for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The else branch uses `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])`, correctly applying the three‑neighbor recurrence for mismatched characters.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation never sets the base cases for i = 0 or j = 0, so although simple cases may work, it gives incorrect edit distances for longer strings (e.g., "a" → "abc" returns 1 instead of 2).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, which creates a (n+1) × (capacity+1) table fully initialised to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses `for i in range(n - 1, -1, -1):` to iterate over all n items and `for j in range(capacity + 1):` to cover every capacity from 0 up to the given limit.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The check `if volume[i] <= j:` correctly ensures an item is only considered when its volume does not exceed the current capacity j.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: When the item fits, the code sets `Result[i][j] = value[i] + Result[i + 1][j - volume[i]]` but never compares this with the skip‑item option, so the max‑based recurrence is incomplete.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the max comparison is missing, the function returns the optimal value only for simple cases and gives incorrect results for inputs where the best solution requires skipping a fitting item.

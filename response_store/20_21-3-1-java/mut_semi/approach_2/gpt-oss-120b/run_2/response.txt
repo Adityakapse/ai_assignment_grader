@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1)×(capacity+1) table and Java initializes all entries to 0.0, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so the zero‑capacity column (and zero‑weight cases) is omitted.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code checks `volumes[i] < j` and starts the loop at j = 1, so it never evaluates the case `volumes[i] <= j` (including j = 0), causing incorrect feasibility handling.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code uses Result[i][j‑volumes[i]] and Result[i][j] in the max expression instead of the previous row Result[i+1][…], and also starts j at 1 with a strict < test, so the recurrence does not match the required formulation.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: The implementation uses a strict “<” check and references Result[i][...] instead of the previous row, which both mis‑handles items that exactly fit and allows reuse of items, so it fails to return the correct maximum value for many inputs.

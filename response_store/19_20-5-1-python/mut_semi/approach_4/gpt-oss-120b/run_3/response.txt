@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function initializes the queue with the start node (`queue = [start]`) and uses a `while queue:` loop that runs until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code uses `queue.pop()` which removes the last element, turning the structure into a stack (DFS) instead of dequeuing from the front as required for BFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if nxt not in visited` before processing each node, adds it to `visited` only then, and also avoids enqueuing already‑visited neighbors, thus preventing duplicate entries.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `graph[nxt]` and appends each vertex not yet in `visited` to the queue, correctly adding all unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function uses `queue.pop()` (removing from the end) which makes the traversal depth‑first, so while it may visit all reachable nodes, the order is not the required BFS level‑by‑level order.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] c` of length n and correctly initializes `c[0] = a[0]` before building the prefix sums.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 1; i < n; i++) { c[i] = a[i] + c[i - 1]; }` implements the required recurrence `C[i] = A[i] + C[i‑1]` for all i ≥ 1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `int[] d` of size n is created and the second loop iterates `i` from 0 to n‑1, handling each query in B.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The conditional `if (b[i][0] - 1 >= 0)` correctly applies `d[i] = c[r] - c[l‑1]` when l > 0 and `d[i] = c[r]` when l = 0, handling the edge case properly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the array `d` containing the correct range sums for all queries in overall O(n) time and does not use any forbidden keywords.

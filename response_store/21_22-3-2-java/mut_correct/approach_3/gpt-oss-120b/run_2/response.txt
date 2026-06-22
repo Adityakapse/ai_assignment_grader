@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code builds an adjacency list from A and adds a virtual source node 0 with edges to every node 1…N (see the loop adding to graph.get(0)).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is created, filled with -1, and the DFS returns the cached value when memo[node] != -1, matching the required sentinel logic.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS checks graph.get(node).size() == 0 and returns 0, correctly handling leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child the code computes sol = Math.max(sol, dfs(child) + 1) and stores the result in memo[node] before returning, implementing the proper recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The calc function returns dfs(0, graph, memo) - 1, yielding the correct longest path length for any DAG and runs in O(N+M).

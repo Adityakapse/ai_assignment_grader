@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function returns 1 % c unconditionally and does not test whether b == 0, so the required base‑case condition is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parity check (b % 2) is present; the code treats odd and even exponents identically.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd‑exponent case is absent; the function never reduces b by 1 or multiplies by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑exponent case is absent; the function never halves b or squares the recursive result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the function always returns 1 % c, it produces incorrect results for any b > 0, so overall correctness fails.

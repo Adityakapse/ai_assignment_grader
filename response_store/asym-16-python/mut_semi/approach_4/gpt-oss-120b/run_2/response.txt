@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You clearly separate the analysis of f and g and distinguish loop work from constant‑time setup, but you never refer to specific line numbers as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You noted that the setup statements in f are constant, but you did not explicitly identify the initializations and return statements in both f and g as Θ(1), leaving some non‑loop parts unaddressed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: You correctly identified that the outer loop doubles (Θ(log N) iterations) and the inner loop runs a full pass (Θ(N) each), concluding the total Θ(N log N) iterations.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: You correctly state that each inner iteration costs Θ(1), noting it involves an array read and an addition, which matches the required reasoning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly identifies Θ(N log N) total iterations and Θ(1) work per iteration, and concludes the loop cost is Θ(N log N).
+
+POINT_ID: 6
+BUCKET: Semi (3 marks)
+FEEDBACK: You correctly mention that f’s total includes the cost of calling g, but you do not quantify that cost as Θ(N) nor note the constant‑time addition/return, leaving the exact bound unclear.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly state that g’s loop has Θ(N) iterations, but you do not explain that this is because the index i runs from 0 to N‑1.
+
+POINT_ID: 8
+BUCKET: Correct
+FEEDBACK: The student states that each iteration of g does an array read and an addition, describing this as Θ(1) work per iteration.
+
+POINT_ID: 9
+BUCKET: Correct
+FEEDBACK: The student explicitly states that g’s loop runs Θ(N) iterations with Θ(1) work per iteration and combines them as Θ(N) × Θ(1) = Θ(N), satisfying the requirement.
+
+POINT_ID: 10
+BUCKET: Semi (6 marks)
+FEEDBACK: You correctly state that g runs in Θ(N) and explain the loop’s Θ(N) iterations with Θ(1) work per iteration, but you omit mentioning the constant‑time initialization and return steps required for the full Θ(1)+Θ(N)+Θ(1) analysis.
+
+POINT_ID: 11
+BUCKET: Semi
+FEEDBACK: You correctly state that f runs in Θ(N log N), but you do not explicitly break down the Θ(1) initialization and the Θ(N) cost of the g call or explain how the lower‑order term is absorbed.

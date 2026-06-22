@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, which correctly allocates a (n+1) × (capacity+1) table and initializes all entries to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses a nested loop where the outer loop iterates i from n‑1 down to 0 (covering all items) and the inner loop iterates j over range(capacity + 1), covering every capacity from 0 to the given capacity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if volume[i] <= j:` to guard inclusion, correctly checking feasibility for each capacity.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The implementation updates `Result[i][j]` with `value[i] + Result[i + 1][j - volume[i]]` when the item fits, but it never compares this to `Result[i + 1][j]`, so the required max‑based recurrence is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code always adds the item when it fits (no max comparison), so it returns incorrect values for many inputs, e.g., it cannot choose to exclude an item to achieve a higher total value.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function always returns 1 % c without testing whether b equals 0, so it lacks a proper base‑case check and always yields the same constant result.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The function contains no parity test for b; it ignores b entirely and always returns 1 % c, so odd and even cases are not distinguished.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The function always returns 1 % c and never checks or reduces an odd exponent, so the required (a * expo(a, b‑1, c)) % c step is missing.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function never implements the even case—it just returns 1 % c and does not halve b or square a recursive result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function always returns `1 % c` regardless of `a` or `b`, so it only gives the correct result for the base case `b = 0` and fails for all other inputs.

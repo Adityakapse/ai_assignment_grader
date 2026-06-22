@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates `int[][] edDis = new int[m + 1][n + 1];` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the table, matching the required structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The base cases are correctly initialized with `edDis[i][0] = i` for all `i` and `edDis[0][j] = j` for all `j`, covering the full ranges from 0 to `m` and `n`.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match, the code sets `edDis[i][j] = edDis[i - 1][j - 1];`, which follows the specification exactly.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters the implementation uses `1 + Math.min(Math.min(edDis[i][j - 1], edDis[i - 1][j]), edDis[i - 1][j - 1])`, correctly applying the three‑neighbour recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `edDis[m][n]` without any recursion, providing the correct edit distance for all valid inputs.
+
+TOTAL: 100

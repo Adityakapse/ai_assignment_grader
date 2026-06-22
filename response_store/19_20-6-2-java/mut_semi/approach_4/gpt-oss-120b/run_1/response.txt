@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a double[][] Result with dimensions (n+1) by (capacity+1), which Java initializes to zero, satisfying the required table allocation and initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses a nested loop where the outer loop iterates i from n‑1 down to 0 (covering all items) and the inner loop runs j from 0 through capacity inclusive, thus covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (volumes[i] <= j)` to ensure an item is only considered when it fits in the remaining capacity, satisfying the feasibility check requirement.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: When an item fits, the code assigns `Result[i][j] = values[i] + Result[i + 1][j - volumes[i]]` without taking the `max` with `Result[i+1][j]`, so the required max‑based recurrence is incomplete.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code always adds the item when it fits (Result[i][j] = values[i] + Result[i+1][j‑volumes[i]]) and never compares with the option of skipping it, so it returns incorrect maximum values for most inputs.

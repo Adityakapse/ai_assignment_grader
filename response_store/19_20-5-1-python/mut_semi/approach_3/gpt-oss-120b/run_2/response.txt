@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code initializes `queue` with `[start]` and uses `while queue:` to process nodes until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Nodes are removed with `queue.pop()`, which takes the element from the end (LIFO) instead of the front, resulting in depth‑first behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each dequeued node `nxt` is checked against `visited` and added to `visited` before its neighbours are explored, preventing repeats.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop iterates over `graph[nxt]` and appends each unvisited neighbour to `queue` with `queue.append(vertex)`, adding them to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns all reachable nodes, but because it uses a LIFO dequeue it produces a DFS ordering rather than the required BFS level‑by‑level order.

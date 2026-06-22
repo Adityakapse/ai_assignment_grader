@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length + 1];`, which creates a zero‑initialized counting array of sufficient size to hold frequencies for all possible values in A.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over A, but it increments C[i] rather than C[A[i]], so it updates the wrong indices and does not correctly accumulate the category frequencies.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at i = 1 and runs while i < B.length, so it skips index 0 and produces a string one character short of the required length.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The loop uses `if (C[i] > B[i]) sol.append('1'); else sol.append('0');`, which outputs '1' when the count exceeds capacity, reversing the intended comparison.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution increments C[i] rather than C[A[i]], begins the output loop at 1 (missing index 0) and flips the comparison, resulting in an incorrect binary string for virtually all inputs.

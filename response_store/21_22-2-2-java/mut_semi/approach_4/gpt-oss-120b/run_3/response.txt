@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates an int[] c of size n and correctly assigns c[0] = a[0] before entering the loop, meeting the allocation and initialization requirement.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop sets c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so c does not become a cumulative sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution creates `d` as a new int[n] array and uses a `for (int i = 0; i < n; i++)` loop, correctly iterating over every query index.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code always computes d[i] = c[r] - c[l‑1] without checking for l == 0, so it will access c[-1] for queries starting at index 0, failing to handle the edge case.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code copies the array into c instead of building a prefix sum and then always computes c[r] - c[l‑1]; this yields wrong results for most queries and crashes when l = 0 due to the c[-1] access.

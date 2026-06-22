@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution only creates a zero‑filled list `d` and never allocates a prefix‑sum array or sets `C[0] = A[0]`, so it does not meet the prefix sum allocation requirement.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The function never builds a prefix‑sum array; it only creates a zero‑filled list `d` and returns it, so no cumulative sums are computed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code creates an output list `d` of length n and includes a `for i in range(n):` loop that iterates over every index, satisfying the allocation and full‑range query loop requirement.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function simply creates a list of zeros and returns it without computing any prefix sums or applying the D[i] = C[r] - C[l‑1] / C[r] logic, so it never calculates the requested range sums.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation returns a list of zeros for every query and never computes any prefix sums, so it fails to produce the correct range sums.

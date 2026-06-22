@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never selects a successor; it always treats the node to delete as the one to remove and lacks any logic for the two‑child case.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The submitted code does not include a treeMinimum helper function at all, so it never finds the in‑order successor for nodes with two children.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets `x = delete.left if delete.left is not None else delete.right`, correctly choosing the non‑null child (or None) as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets `x.parent = delete.parent` when `x` exists, updates the appropriate child pointer of `delete.parent` (or replaces `root` when `delete.parent` is `None`), correctly handling the splicing of the node.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution never computes a successor node or copies its key into delete.key, so when a two‑child deletion would require using the in‑order successor, the key is not updated.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The function only reassigns the child of the node to be deleted and never finds a successor, so it works for leaf or single‑child deletions but fails for nodes with two children (and thus for many root deletions).

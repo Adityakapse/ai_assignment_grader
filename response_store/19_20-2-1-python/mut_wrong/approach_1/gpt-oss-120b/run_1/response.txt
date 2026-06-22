@@ -1,0 +1,25 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The class is defined and uses a single attribute `self.last` for storage, but this single‑element storage cannot maintain multiple items in FIFO order as required.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: `isEmpty` correctly returns `True` when `self.last` is `None` and `False` otherwise, matching the emptiness check specification.
+
+POINT_ID: 3
+MARKS: 4
+FEEDBACK: `head` returns `self.last` without altering the queue, which works for a one‑element queue but does not return the true front element when multiple items are present.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: `enqueue` overwrites `self.last` instead of adding the new element to the back of a collection, so it does not correctly implement enqueue behavior.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: `dequeue` returns and clears `self.last`; it does not remove the front element of a multi‑element queue and thus fails to meet the dequeue specification.
+
+POINT_ID: 6
+MARKS: 0
+FEEDBACK: Because the implementation cannot store more than one element, it does not preserve FIFO order across multiple enqueues and dequeues, and therefore the overall queue behavior is incorrect.
+
+TOTAL: 24

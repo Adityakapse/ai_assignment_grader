@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `int[][] edDis = new int[m + 1][n + 1]` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the DP table, matching the required structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly sets edDis[i][0] = i for all i and edDis[0][j] = j for all j, properly initializing the base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly assigns edDis[i][j] = edDis[i-1][j-1] in the branch where a.charAt(i-1) == b.charAt(j-1), handling the character match case as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly applies the recurrence `edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])` in the else branch.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation follows the standard DP algorithm, correctly initializes base cases, avoids recursion, and returns the proper edit distance for all inputs.

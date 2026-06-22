@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 without applying % c, which is incorrect for the edge case c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `elif b % 2:` to detect odd b and the `else` branch for even b, correctly separating the two cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd case you correctly call expo(a, b‑1, c) and apply %c, but you omitted the required multiplication by a before taking the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch you compute `a = expo(a, b // 2, c) % c` and then return `(a * a) % c`, correctly halving b, recursing once, squaring the result and applying the modulo.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns 1 instead of 1 % c for b = 0 and, in the odd‑b branch, it omits the multiplication by a, so it produces incorrect results for many inputs (e.g., when c = 1 or b is odd).

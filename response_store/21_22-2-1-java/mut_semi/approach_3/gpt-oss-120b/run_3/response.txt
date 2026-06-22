@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length + 1];`, which creates a zero‑initialized counting array large enough for all possible categories.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The frequency loop uses `C[i]++` instead of `C[A[i]]++`, so it counts the loop index rather than the actual values in array A.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at `i = 1` and runs while `i < B.length`, omitting index 0 and producing a string one character short of the required length.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The comparison appends `'1'` when `C[i] > B[i]` and `'0'` otherwise, which is the opposite of the required logic (`'1'` should be for `C[i] <= B[i]`).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because of the incorrect counting, off‑by‑one output loop, and reversed comparison, the method returns an incorrect binary string for most inputs.

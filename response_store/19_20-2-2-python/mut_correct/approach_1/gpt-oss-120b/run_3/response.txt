@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution uses `for i in inputarray:` to iterate left‑to‑right and classifies tokens with `if/elif/else`, correctly separating numbers from operators.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Numeric tokens fall into the `else` branch where `int(i)` is pushed onto the stack with `stack.push(int(i))`.
+
+POINT_ID: 3
+MARKS: 25
+FEEDBACK: Each operator branch pops two values (`n1 = stack.pop(); n2 = stack.pop()`), applies the operation, and pushes the result back onto the stack.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For `-` and `/` the code uses `n2 - n1` and `n2 / n1`, preserving the correct left‑operand/right‑operand order for RPN.
+
+POINT_ID: 5
+MARKS: 6
+FEEDBACK: While addition, subtraction, and multiplication work, division uses `/` (floating‑point division) instead of integer floor division, so results are not always the required integer value.
+
+TOTAL: 91

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a memo array of size n+1, but initializes it with zeros and uses `memo[n] != 0` as the cache check, which fails to distinguish uncached entries from a zero‑profit subproblem.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The solution includes the n == 0 base case but omits the required n == 1 case, which can lead to incorrect results for inputs of length 2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The solution checks `if memo[n] != 0:` after initializing memo with zeros, which uses the wrong sentinel value and can mis-handle subproblems with zero profit.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper uses the correct max‑based recurrence `max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and assigns it to `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution lacks a base case for n = 1, causing calls with negative indices (e.g., opt_helper(-1)) that index the memo list incorrectly and produce wrong results for most inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `edDis` as a (m+1) × (n+1) 2D list and correctly uses nested loops `for i in range(1, m+1): for j in range(1, n+1):` to fill the table bottom‑up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes the first column with `edDis[i][0] = i` and the first row with `edDis[0][j] = j`, correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks `if a[i - 1] == b[j - 1]` and sets `edDis[i][j] = edDis[i - 1][j - 1]` for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch you compute `edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])`, correctly applying the full three‑neighbour recurrence for mismatches.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds an iterative DP table, handles base cases, and returns edDis[m][n]; it correctly computes edit distance for all inputs without recursion.

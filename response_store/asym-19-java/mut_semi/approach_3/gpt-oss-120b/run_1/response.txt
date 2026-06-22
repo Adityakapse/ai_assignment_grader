@@ -1,0 +1,43 @@
+POINT 1 — Splitting code into parts + referencing line numbers
+BUCKET: Wrong
+FEEDBACK: The answer mentions f and g but never references specific line numbers or clearly labels separate parts of each method.
+
+POINT 2 — Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student notes that the “setup statements are constant,” but does not explicitly identify all non‑loop statements (e.g., the initialisations in g and the return statements) as Θ(1).
+
+POINT 3 — f(): Nested loop iterations
+BUCKET: Semi
+FEEDBACK: The analysis states that the loops run “about N^2 iterations” but provides no justification such as summing N + (N‑1) + … + 1 or referencing the j = i lower bound.
+
+POINT 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly describes each iteration as performing an array read and an addition, and labels this work Θ(1).
+
+POINT 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: By combining the Θ(N^2) iteration count with the Θ(1) per‑iteration cost, the answer concludes a total loop cost of Θ(N^2).
+
+POINT 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The answer mentions that the call to g “adds some more cost” but does not quantify it as Θ(log N) plus Θ(1) constant work.
+
+POINT 7 — g(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student correctly states that the binary‑search loop runs Θ(log N) times but does not explain that the interval is halved each iteration.
+
+POINT 8 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The description of each iteration (midpoint computation, array accesses, comparisons) is accurate and labeled Θ(1).
+
+POINT 9 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The answer multiplies the Θ(log N) iteration count by the Θ(1) per‑iteration cost to obtain Θ(log N).
+
+POINT 10 — Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The final runtime is given as Θ(log N), which is correct, but the answer does not explicitly combine the constant‑time parts with the loop cost.
+
+POINT 11 — Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The student concludes that f is Θ(N^2), which is correct, yet the justification for absorbing the lower‑order Θ(log N) term from the call to g is missing.

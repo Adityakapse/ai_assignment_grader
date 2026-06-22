@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code allocates `memo = new long[n+1]` correctly, but it never initialises the entries to -1 as required, leaving the default 0 values.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Only the base case `if (n == 0) return W[0];` is present; the required `opt(1)` case returning `max(W[0], W[1])` is missing.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The cache check uses `if (memo[n] != 0)` instead of the specified sentinel `!= -1`, so cached values are not detected correctly.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence `memo[n] = Math.max(W[n] + opt_helper(n-2, …), opt_helper(n-1, …));` is implemented exactly as described and the result is stored before returning.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the base case for n==1 is missing and the cache sentinel is wrong, the algorithm can produce incorrect results or runtime errors, so overall correctness is not achieved.
+
+TOTAL: 35

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `edDis = [[0] * (n + 1) for _ in range(m + 1)]` and iterates with `for i in range(1, m + 1):` and `for j in range(1, n + 1):`, correctly creating a (m+1)×(n+1) table and filling it bottom‑up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No statements set `edDis[i][0] = i` or `edDis[0][j] = j`; the first row and column stay at their default zero values, so the base cases are missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The match case uses `if a[i - 1] == b[j - 1]: edDis[i][j] = edDis[i - 1][j - 1]`, correctly copying the diagonal cell when characters are equal.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches the code computes `edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])`, correctly applying the three‑operation recurrence.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the base cases are not initialized, the DP table yields incorrect distances for non‑empty strings (e.g., empty‑string cases return 0 instead of the required length), so the overall result is wrong.

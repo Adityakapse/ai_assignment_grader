@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a function `GCD(a, b)` with the proper two‑parameter signature and includes a recursive call, meeting the structural requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if b == 0: return a` correctly terminates the recursion for the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step `return GCD(b, a % b)` correctly advances toward the base case using the modulo operation.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The `LCM` function returns `a * b` and never uses `GCD`, so it does not implement the required `(a * b) / GCD(a, b)` formula.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The GCD implementation produces the correct greatest common divisor for all non‑negative integer inputs, including edge cases like `gcd(0, n)` and `gcd(n, n)`.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: Because `LCM` simply returns the product, it gives incorrect results for many inputs (e.g., `LCM(4, 6)` yields 24 instead of the correct 12).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1)×(capacity+1) table initialized to 0.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code uses an outer loop that iterates i from n‑1 down to 0, covering all n items, and an inner loop that runs j from 0 to capacity inclusive, correctly iterating over every sub‑capacity.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code includes an `if (volumes[i] <= j)` test before adding the item, correctly performing the capacity feasibility check.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The implementation always adds the item's value when it fits (`values[i] + Result[i+1][j‑volumes[i]]`) and never compares it with `Result[i+1][j]`, so the required max operation is missing.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation always adds the item when it fits and never compares with the option of skipping it, so it fails to return the correct maximum value for many inputs.

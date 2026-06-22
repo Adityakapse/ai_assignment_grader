@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a memo array of size n+1, but it leaves the entries at their default value 0 and checks `memo[n] != 0` as the sentinel, rather than initializing the array to –1 as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The solution includes a base case for n = 0 but omits the required n = 1 case, so calls like opt_helper(1) will recurse incorrectly and may access invalid indices.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The helper checks `if (memo[n] != 0) return memo[n];` instead of the required `!= -1`, so the sentinel value is incorrect.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper uses `Math.max(W[n] + opt_helper(n-2, …), opt_helper(n-1, …))` and stores the result in `memo[n]` before returning, correctly applying the recurrence and memoization.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution omits the n = 1 base case, leading to recursive calls with negative indices (e.g., opt_helper(-1,…)) and thus fails to produce correct results for most inputs.

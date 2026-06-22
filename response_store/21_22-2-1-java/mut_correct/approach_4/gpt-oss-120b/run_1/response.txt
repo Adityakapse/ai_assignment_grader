@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length + 1];`, which is at least `max(A)+1` in size and Java initializes it to zero, satisfying the counting array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over A and correctly increments C[A[i]] for each element, properly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < B.length; i++)` correctly iterates from 0 to `|B|-1`, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if (C[i] > B[i]) sol.append('0'); else sol.append('1');`, correctly appending '1' when the count does not exceed capacity and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method correctly counts occurrences, builds the binary string in O(n+m) time, and avoids any forbidden substrings, handling edge cases such as zero counts and B[i] = 0.

@@ -1,0 +1,43 @@
+POINT 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student separates the analysis of f and g and mentions loops versus non‑loop code, but never cites specific line numbers.
+
+POINT 2 — Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student notes that the setup statements in f are constant, but does not explicitly mention all non‑loop parts (e.g., the return statements) as Θ(1).
+
+POINT 3 — f(): Nested loop iterations
+BUCKET: Wrong
+FEEDBACK: The student claims the loop in f runs “about N iterations in total” and does not explain that the inner loop runs a fixed 5 times, missing the 5N iteration count.
+
+POINT 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly states that each iteration does an array read and an addition, i.e., Θ(1) work.
+
+POINT 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student multiplies the (mis‑stated) iteration count by Θ(1) and concludes the loop cost is Θ(N), which matches the expected total.
+
+POINT 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Semi
+FEEDBACK: The student mentions that the call to g adds “some more cost” but does not quantify it as Θ(N) nor separate the constant‑time addition/return.
+
+POINT 7 — g(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student states that g’s loop runs Θ(N) times but provides no justification based on the loop bounds.
+
+POINT 8 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The student correctly describes each iteration of g as performing an array read and an addition, i.e., Θ(1).
+
+POINT 9 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student explicitly multiplies Θ(N) iterations by Θ(1) per iteration to obtain Θ(N) total cost.
+
+POINT 10 — Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The student concludes that g is Θ(N) but does not detail the combination of constant‑time parts with the loop cost.
+
+POINT 11 — Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The student states that f is Θ(N) overall, yet provides no explicit reasoning that combines the constant parts, the nested loop, and the cost of calling g.

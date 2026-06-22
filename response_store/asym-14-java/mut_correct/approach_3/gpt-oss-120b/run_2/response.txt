@@ -1,0 +1,39 @@
+POINT 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student clearly separates f and g and identifies loop versus non‑loop code, but does not reference specific line numbers in the source.
+
+POINT 2 — Constant-time non-loop parts
+BUCKET: Correct
+FEEDBACK: The analysis states that the initializations and return statements in both f and g are Θ(1), covering all non‑loop sections.
+
+POINT 3 — f(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly justifies Θ(log N) iterations by noting that k starts at 1 and is doubled each time until it exceeds N.
+
+POINT 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The cost per iteration is identified as Θ(N) because each iteration calls g(a), which performs a full linear scan, while the other operations are Θ(1).
+
+POINT 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The total loop cost is correctly computed as Θ(log N) × Θ(N) = Θ(N log N) with appropriate justification.
+
+POINT 6 — g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The student explains that the for‑loop runs from i = 0 to N‑1, giving Θ(N) iterations.
+
+POINT 7 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: Each iteration is correctly described as Θ(1), citing one array read and one += operation.
+
+POINT 8 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The total cost is properly derived as Θ(N) × Θ(1) = Θ(N).
+
+POINT 9 — Overall worst-case runtime of g
+BUCKET: Correct
+FEEDBACK: The overall runtime is summed as Θ(1) + Θ(N) + Θ(1) = Θ(N), matching the earlier component analysis.
+
+POINT 10 — Overall worst-case runtime of f
+BUCKET: Correct
+FEEDBACK: The final runtime is correctly given as Θ(1) + Θ(N log N) + Θ(1) = Θ(N log N).

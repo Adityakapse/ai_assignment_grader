@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — DP table allocation and loop structure
+BUCKET: Wrong
+FEEDBACK: The submitted function does not allocate a 2D table nor contain any nested loops to fill a DP matrix.
+
+POINT_ID: Point 2 — Base case initialisation
+BUCKET: Wrong
+FEEDBACK: No base cases (edDis[i][0] or edDis[0][j]) are initialized because the DP table is never created.
+
+POINT_ID: Point 3 — Character match case
+BUCKET: Wrong
+FEEDBACK: The code never compares characters of the two strings, so the match case is absent.
+
+POINT_ID: Point 4 — Mismatch recurrence: 1 + min of three neighbours
+BUCKET: Wrong
+FEEDBACK: There is no recurrence for mismatched characters; the function simply returns the length difference.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Wrong
+FEEDBACK: Returning abs(len(a)‑len(b)) is not the edit distance for most inputs, so the method is incorrect.

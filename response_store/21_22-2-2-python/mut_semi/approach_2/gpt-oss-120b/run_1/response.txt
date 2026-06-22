@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates c as a list of length n and correctly initializes c[0] to a[0], meeting the allocation requirement.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop sets `c[i] = a[i]` rather than `c[i] = a[i] + c[i-1]`, so the cumulative prefix sum array is not constructed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution allocates `d = [0] * n` for the output array and uses `for i in range(n):` to process each of the n queries, meeting the allocation and loop criteria.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code always computes `c[r] - c[l-1]` without a special case for `l == 0`, so it accesses `c[-1]` on queries starting at 0, failing the required edge‑case handling.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The prefix array `c` is not accumulated (it just copies `a[i]`), and the subtraction `c[b[i][0] - 1]` is used even when `b[i][0]` is 0, causing an out‑of‑range index and incorrect sums.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] c = new int[n];` and sets `c[0] = a[0];` before the cumulative loop, satisfying the prefix‑sum allocation requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes c[0] with a[0] and correctly loops from i = 1 to n‑1 setting c[i] = a[i] + c[i‑1], building the proper cumulative sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code allocates an output array d of length n and iterates with for (int i = 0; i < n; i++) to compute each query result, satisfying the required loop and array size.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if (b[i][0] - 1 >= 0)` and uses `c[b[i][1]] - c[b[i][0] - 1]` for l>0, otherwise returns `c[b[i][1]]` for l==0, correctly handling the edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a prefix‑sum array `c` and uses it to compute each query in constant time, correctly handling the `l == 0` case and runs in O(n) without any forbidden keywords.

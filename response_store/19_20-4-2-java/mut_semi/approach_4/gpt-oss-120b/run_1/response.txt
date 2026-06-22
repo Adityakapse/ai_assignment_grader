@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never selects a node y or uses treeMinimum for the two‑child case; it only handles leaf or single‑child deletions and ignores the required successor logic.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The submitted code does not define a treeMinimum helper at all, so it never walks left to find the in‑order minimum as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets x to delete.left when it exists, otherwise to delete.right (and null when both are absent), which matches the required logic for selecting y’s non‑null child.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets x.parent to delete.parent, updates the parent’s left/right pointer (or root) to x, and handles the root‑replacement case, fulfilling the splicing requirements.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation never copies a successor’s key into the deleted node, so when a node with two children would require a key replacement, the code leaves delete.key unchanged.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code correctly reassigns pointers for leaf and single‑child deletions (including root), but it never finds a successor for nodes with two children, so those cases are not handled.

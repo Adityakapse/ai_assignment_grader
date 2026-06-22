@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The calc function returns expo(a,b,c) without the required “-1”, and the comment admits the missing adjustment, so the closed form a_n = 2^n − 1 is not correctly applied.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function correctly returns 1 when b == 0, satisfying the base case.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd‑b branch the code returns expo(a, b‑1, c) % c without multiplying by a, which does not match the required (a * expo(...)) % c.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For even b the implementation calls expo(a, b/2, c) once, stores it in a, and returns (a * a) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because calc omits the “‑1” adjustment and the odd exponent case is wrong, the function does not reliably produce (2^n − 1) mod 1,000,000,007 for all inputs.
+
+TOTAL: 35

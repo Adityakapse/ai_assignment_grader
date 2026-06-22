@@ -1,0 +1,43 @@
+POINT 1 — Splitting code into parts + referencing line numbers
+BUCKET: Wrong
+FEEDBACK: The student mentions f and g but never separates the code into distinct parts or cites any line numbers.
+
+POINT 2 — Constant-time non-loop parts
+BUCKET: Wrong
+FEEDBACK: No analysis of the initializations or return statements is provided, so non‑loop code is not identified as Θ(1).
+
+POINT 3 — f(): Nested loop iterations
+BUCKET: Wrong
+FEEDBACK: The student claims the triple loop runs in O(N^2) instead of the correct Θ(N^3).
+
+POINT 4 — f(): Cost per iteration
+BUCKET: Semi
+FEEDBACK: The answer states the body does “a few array reads and additions” and calls this constant, but it lacks a detailed Θ(1) justification.
+
+POINT 5 — f(): Total loop cost
+BUCKET: Wrong
+FEEDBACK: The student does not multiply the iteration count by the per‑iteration cost and simply reports O(N^2).
+
+POINT 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Wrong
+FEEDBACK: No discussion of the cost of the call to g or the surrounding constant‑time work is given.
+
+POINT 7 — g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly notes that g “loops once over the array,” indicating Θ(N) iterations.
+
+POINT 8 — g(): Cost per iteration
+BUCKET: Semi
+FEEDBACK: The answer mentions “simple constant operations” per iteration but does not explicitly state Θ(1) or enumerate the operations.
+
+POINT 9 — g(): Total loop cost
+BUCKET: Wrong
+FEEDBACK: The student does not combine the iteration count with the per‑iteration cost; they only state the overall behavior is linear.
+
+POINT 10 — Overall worst-case runtime of g
+BUCKET: Wrong
+FEEDBACK: The final runtime is given as O(log N), which contradicts the correct Θ(N) result.
+
+POINT 11 — Overall worst-case runtime of f
+BUCKET: Wrong
+FEEDBACK: The student concludes f = O(N^2), which is incorrect; the correct overall runtime is Θ(N^3).

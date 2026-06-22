@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never selects a successor node; it always treats the node to delete as y (using only its child x) and does not handle the two‑child case with treeMinimum(delete.right).
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The submitted code does not define a treeMinimum helper at all, so the required left‑ward traversal to find the in‑order minimum is missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution sets `x` using `(delete.left != null) ? delete.left : delete.right;`, which correctly chooses the non‑null child or null if the node is a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution sets `x.parent = delete.parent` when `x` is non‑null, updates the appropriate child pointer of `delete.parent` (or replaces the root when `delete.parent == null`), thus correctly splicing the node out of the tree.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never finds the in‑order successor or copies its key into the deleted node, so delete.key is never updated when a successor should be used.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Your delete method only handles the leaf and single‑child cases (it picks a direct child as x), but it never finds a successor for nodes with two children, so two‑child deletions (including root with two children) will break the BST.

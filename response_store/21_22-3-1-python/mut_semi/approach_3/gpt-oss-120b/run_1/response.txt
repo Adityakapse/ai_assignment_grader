@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: The code allocates `memo = [0] * (n + 1)`, which is the correct size but initializes entries to 0 instead of the required -1 sentinel.
+
+POINT_ID: Point 2
+BUCKET: Semi
+FEEDBACK: Only the base case `if n == 0: return W[0]` is provided; the required `n == 1` case returning `max(W[0], W[1])` is missing.
+
+POINT_ID: Point 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `if memo[n] != 0:` rather than the specified sentinel `!= -1`, so zero‑profit subproblems would be mis‑handled.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...))` is implemented correctly and the result is stored before returning.
+
+POINT_ID: Point 5
+BUCKET: Wrong
+FEEDBACK: Because the `n == 1` base case is absent, calls with `n = 1` trigger recursive calls with negative indices, leading to incorrect results or runtime errors for most inputs.

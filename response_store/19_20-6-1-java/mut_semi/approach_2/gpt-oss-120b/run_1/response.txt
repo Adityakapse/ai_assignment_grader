@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code correctly allocates a (m+1)×(n+1) array and uses nested loops with i from 1 to m and j from 1 to n to fill the table.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never sets edDis[i][0] = i or edDis[0][j] = j, leaving the first row and column at the default zero values, which violates the required base case initialization.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The implementation correctly sets edDis[i][j] to edDis[i‑1][j‑1] when a.charAt(i‑1) equals b.charAt(j‑1).
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation correctly applies `1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1])` when the characters differ.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: The code runs without recursion but fails to initialise the first row and column of the DP table, so it returns wrong edit distances for most non‑empty inputs.

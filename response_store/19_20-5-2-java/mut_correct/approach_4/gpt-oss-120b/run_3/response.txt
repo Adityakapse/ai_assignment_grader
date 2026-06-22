@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes the start node onto the stack before entering the loop and uses `while (!stack.isEmpty())` to process nodes until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution consistently uses `stack.pop()` to remove nodes from the top of the stack, guaranteeing LIFO order for depth‑first traversal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (!visited.contains(next))` before processing each popped node, adds it to `visited` inside that block, and only pushes unvisited neighbors, preventing duplicates and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop iterates `graph[next]` from the last index down to zero and pushes each unvisited neighbour onto the stack, correctly using reverse order for an iterative DFS.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, using a stack and iterating neighbors in reverse to preserve adjacency‑list order, thus returning all reachable nodes in correct DFS order.

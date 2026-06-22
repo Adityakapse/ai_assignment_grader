@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function correctly initializes `queue` with the start node (`[start]`) and uses a `while queue:` loop to process nodes until the queue is empty.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Nodes are removed with `queue.pop()`, which takes the element from the end of the list, not the front (index 0), so the FIFO property required for BFS is not satisfied.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Before processing each node the code checks `if nxt not in visited:` and adds the node to `visited` with `visited.append(nxt)`, correctly tracking visited nodes.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each current node the code iterates `for vertex in graph[nxt]:` and appends unvisited neighbours using `queue.append(vertex)`, correctly adding them to the back of the queue.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because nodes are popped from the end of the list, the traversal order is depth‑first, so the method does not return nodes in proper BFS (level‑by‑level) order.
+
+TOTAL: 60

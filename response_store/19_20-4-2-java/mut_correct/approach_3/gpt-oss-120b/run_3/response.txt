@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if (delete.left == null || delete.right == null) y = delete; else y = treeMinimum(delete.right);` which correctly selects `y` as the node to delete or its in‑order successor.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `treeMinimum` method iterates `while (n.left != null) n = n.left;` and returns `n`, properly finding the left‑most node.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The assignment `if (y.left != null) x = y.left; else x = y.right;` correctly picks `y`’s non‑null child (or null if `y` is a leaf) as `x`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The splice updates `x.parent = y.parent` when `x` is non‑null, handles the root case with `if (y.parent == null) root = x;`, and redirects the appropriate child pointer of `y.parent`, matching the required procedure.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The statement `if (y != delete) delete.key = y.key;` copies the successor’s key only when `y` differs from the node to delete, as specified.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The method returns the updated `root` after correctly handling leaf, single‑child, two‑child, and root deletions, preserving the BST property in all cases.

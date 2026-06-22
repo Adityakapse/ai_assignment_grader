@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function loops over every element in inputarray with for i in inputarray and uses if/elif checks for '+', '-', '*', '/' while handling all other strings as numbers via the else clause.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution converts each numeric token with int(i) in the else clause and pushes the resulting integer onto the stack.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code pops two values and pushes a result for each operator, but for '-' and '/' it computes `n1 - n2` and `n1 / n2` instead of using the correct operand order, yielding wrong results for those operators.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code computes subtraction as `n1 - n2` and division as `n1 / n2`, reversing the required operand order and also using floating‑point division instead of integer floor division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code swaps the operand order for subtraction and division (using n1 - n2 and n1 / n2), so results are wrong whenever these operators appear.

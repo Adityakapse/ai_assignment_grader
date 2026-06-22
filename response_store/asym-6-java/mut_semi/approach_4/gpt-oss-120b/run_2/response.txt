@@ -1,0 +1,43 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You correctly separated the analysis of f and g and identified the loops versus the non‑loop code, but you never referenced the specific line numbers from the source.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You noted that the setup statements in f are constant and described the loop costs, but you omitted or only vaguely referenced other constant‑time parts such as the initializations in g and the final return statements, so not all non‑loop regions were explicitly marked Θ(1).
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly state that the for‑loop executes Θ(N) iterations, but your justification (“runs about N iterations”) is vague and does not explicitly reference i running from 0 to N‑1.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly states that each iteration of f’s loop performs an array read and an addition, both Θ(1), providing appropriate reasoning for the constant‑time cost.
+
+POINT_ID: 5
+BUCKET: Correct (8 marks)
+FEEDBACK: You correctly noted that the for‑loop executes Θ(N) iterations, each costing Θ(1), and you concluded the total loop cost is Θ(N), matching the required analysis.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The analysis mentions the g call but does not state its cost as Θ(log N) (or combine it with the constant addition), so the cost of Part C is missing or incorrect.
+
+POINT_ID: 7
+BUCKET: Correct
+FEEDBACK: You correctly state that the while loop in g runs Θ(log N) iterations and you explain this by noting that k is halved each iteration.
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: You correctly state that each g() iteration runs in Θ(1) and list an array read, an addition, and a halving of k, but you omit the loop‑condition comparison, so the justification is incomplete.
+
+POINT_ID: 9
+BUCKET: Correct (6 marks)
+FEEDBACK: You correctly state that g’s while loop runs Θ(log N) iterations and each iteration costs Θ(1), explicitly multiplying them to get Θ(log N).
+
+POINT_ID: 10
+BUCKET: Semi (6 marks)
+FEEDBACK: You correctly state that g runs in Θ(log N) and explain the loop’s cost, but you do not mention the constant‑time initializations and return, which the rubric expects for a full “Correct” answer.
+
+POINT_ID: 11
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the constant setup, the Θ(N) for‑loop, and the Θ(log N) cost of g, and concludes that f runs in Θ(N), effectively absorbing the lower‑order term.

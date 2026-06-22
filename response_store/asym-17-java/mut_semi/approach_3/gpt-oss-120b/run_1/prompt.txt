@@ -1,0 +1,159 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ17 {
+    // `mat` is N x N. Your analysis should be based on N.
+    public static int f(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            s += mat[i][0];
+        }
+        int t = g(mat);
+        return s + t;
+    }
+
+    private static int g(int[][] mat) {
+        int n = mat.length;
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                t += mat[i][j];
+            }
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+f has a single loop over the first column of mat and then calls g. The setup statements are constant.
+
+The loop in f runs about N iterations in total (N is the side length of mat). Each pass does a matrix access and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N).
+
+The call to g afterwards adds some more cost on top.
+
+g uses two nested loops over the cells of mat that runs Theta(N^2) times. Every iteration does a matrix access and an addition, all Theta(1), so the loop is Theta(N^2) x Theta(1) = Theta(N^2).
+
+Putting it together, g is Theta(N^2) and f is Theta(N^2).
+
+RUBRIC:
+Point 1 — Splitting code into parts + referencing line numbers
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+  Buckets:
+    - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+    - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+    - Correct (5 marks): Clear separation of f's linear loop and the call to g; line numbers referenced consistently.
+
+Point 2 — Constant-time non-loop parts
+  All non-loop code in f and g is Theta(1).
+  Buckets:
+    - Wrong (0 marks): Non-loop code not analysed or incorrectly claimed to be non-constant.
+    - Semi (3 marks): Some constant-time segments identified but others missing or vaguely stated.
+    - Correct (5 marks): All non-loop regions (initialisations and returns in f and g) stated as Theta(1).
+
+Point 3 — f(): Loop iterations
+  Theta(N) iterations of the for loop reading the first column of mat.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(N).
+    - Semi (6 marks): States Theta(N) but with weak or incomplete justification.
+    - Correct (12 marks): Justifies Theta(N) because i runs from 0 to N-1, reading one cell mat[i][0] each time.
+
+Point 4 — f(): Cost per iteration
+  Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Claims non-constant per-iteration cost, or does not clearly state it.
+    - Semi (6 marks): Suggests constant time but with incomplete reasoning.
+    - Correct (12 marks): States Theta(1): one matrix access and one += assignment.
+
+Point 5 — f(): Total loop cost
+  Theta(N) from Theta(N) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): No multiplication of iteration count x per-iteration cost, or total does not match own analysis.
+    - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+    - Correct (8 marks): Theta(N) x Theta(1) = Theta(N).
+
+Point 6 — f(): Cost of Part C (call to g + constant work)
+  Theta(N^2), accounting for the cost of g plus the constant-time addition and return.
+  Buckets:
+    - Wrong (0 marks): Cost of Part C missing or incorrect (e.g. claims Theta(N)).
+    - Semi (3 marks): Notes that cost comes from g but unclear about Theta(N^2).
+    - Correct (6 marks): Accounts for the call to g as Theta(N^2) and the addition / return as Theta(1).
+
+Point 7 — g(): Nested loop iterations
+  Theta(N^2) combined iterations over every cell of the N x N matrix.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(N^2) (e.g. claims Theta(N)).
+    - Semi (5 marks): States Theta(N^2) but with weak justification (does not note both loops run N times).
+    - Correct (10 marks): Justifies Theta(N^2): the outer and inner loops each run N times, so the body runs N x N times.
+
+Point 8 — g(): Cost per iteration
+  Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Claims non-constant per-iteration cost, or does not clearly state cost per iteration.
+    - Semi (4 marks): Suggests constant time but lacks explicit Theta(1) justification.
+    - Correct (8 marks): Each iteration Theta(1): one matrix access and one += assignment.
+
+Point 9 — g(): Total loop cost
+  Theta(N^2) = Theta(N^2) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Does not combine iteration count x per-iteration cost.
+    - Semi (3 marks): Attempts multiplication using own values but unclear or incorrect.
+    - Correct (6 marks): Theta(N^2) x Theta(1) = Theta(N^2).
+
+Point 10 — Overall worst-case runtime of g
+  T_g(N) = Theta(N^2), summing constant parts and the nested loop.
+  Buckets:
+    - Wrong (0 marks): Runtime absent or incompatible with earlier analysis.
+    - Semi (6 marks): States Theta(N^2) but with missing reasoning.
+    - Correct (12 marks): Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+Point 11 — Overall worst-case runtime of f
+  T_f(N) = Theta(N^2), accounting for non-loop parts + loop + Part C.
+  Buckets:
+    - Wrong (0 marks): Final complexity missing/incorrect.
+    - Semi (8 marks): States Theta(N^2) but with missing reasoning.
+    - Correct (16 marks): Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2); g dominates so the Theta(N) term is absorbed.

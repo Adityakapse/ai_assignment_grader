@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `c` with length n and correctly initializes `c[0] = a[0]`.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop `for (int i = 1; i < n; i++) { c[i] = a[i]; }` copies values without adding `c[i‑1]`, so the prefix sum is not constructed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output array `d` is allocated with size n and the `for (int i = 0; i < n; i++)` loop iterates over all queries.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The computation `d[i] = c[b[i][1]] - c[b[i][0] - 1];` does not handle the case `l == 0` and will access `c[-1]`.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to the incorrect prefix sums and missing edge‑case handling, the method does not return correct range sums for the queries.
+
+TOTAL: 35

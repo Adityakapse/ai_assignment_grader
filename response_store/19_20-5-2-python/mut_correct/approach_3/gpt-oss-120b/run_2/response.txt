@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code initializes `stack = [start]` before the `while stack:` loop, correctly pushing the start node onto the stack and looping until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It removes the current node with `nxt = stack.pop()`, which always pops from the top of the list, ensuring LIFO (depth‑first) behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each popped node is checked with `if nxt not in visited:` before being added to `visited`, so nodes are marked only after being processed and duplicates are avoided.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Neighbours are iterated via `for vertex in reversed(graph[nxt]):` and unvisited ones are appended to `stack`, correctly pushing them in reverse adjacency order for proper DFS traversal.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the `visited` list, which contains all reachable nodes from `start` in the correct DFS order for the given adjacency lists.

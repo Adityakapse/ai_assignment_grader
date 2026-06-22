@@ -1,0 +1,297 @@
+QUESTION:
+Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+"import" , "globals" or "eval". Calculate the output
+in $O(log \: n)$ in the function "calc(f)".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?
+
+SAMPLE SOLUTION:
+def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+
+STUDENT SOLUTION:
+# Does not use f; runs an empty narrowing loop and returns l.
+def calc(f):
+    l = 0
+    r = 1000000000
+    while l < r:
+        m = (l + r) // 2
+        l = m + 1
+    return l
+
+
+RUBRIC POINT:
+Point 1 — Search bounds initialisation
+  l = 0 and r = 10^18 (or Long.MAX_VALUE), correctly bounding the search space for all valid N.
+  Buckets:
+    - Wrong (0 marks): No bounds are set; the algorithm does not initialise a search space, or uses a constant unrelated to the input range.
+    - Semi (8 marks): Bounds are initialised but the upper bound is too small (e.g., 10^6 or 10^9), causing the algorithm to fail for N > that bound.
+    - Correct (15 marks): l = 0 and r = 10^18 (or equivalent large constant covering all valid N), correctly enclosing the entire search space.
+
+========================================
+
+QUESTION:
+Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+"import" , "globals" or "eval". Calculate the output
+in $O(log \: n)$ in the function "calc(f)".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?
+
+SAMPLE SOLUTION:
+def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+
+STUDENT SOLUTION:
+# Does not use f; runs an empty narrowing loop and returns l.
+def calc(f):
+    l = 0
+    r = 1000000000
+    while l < r:
+        m = (l + r) // 2
+        l = m + 1
+    return l
+
+
+RUBRIC POINT:
+Point 2 — Binary search loop and midpoint
+  A while loop runs while l <= r, computing midpoint m = (l + r) // 2 at each iteration.
+  Buckets:
+    - Wrong (0 marks): No loop is present; f is evaluated only once or a fixed number of times regardless of the search space.
+    - Semi (10 marks): A loop is present but the termination condition is wrong (e.g., l < r instead of l <= r, missing the case where l == r), or the midpoint is computed incorrectly (e.g., integer overflow from (l+r) without guarding, or uses l or r directly instead of the midpoint).
+    - Correct (20 marks): while l <= r runs the loop until the search space is empty; m = (l + r) // 2 (or equivalent) correctly computes the midpoint at each step.
+
+========================================
+
+QUESTION:
+Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+"import" , "globals" or "eval". Calculate the output
+in $O(log \: n)$ in the function "calc(f)".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?
+
+SAMPLE SOLUTION:
+def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+
+STUDENT SOLUTION:
+# Does not use f; runs an empty narrowing loop and returns l.
+def calc(f):
+    l = 0
+    r = 1000000000
+    while l < r:
+        m = (l + r) // 2
+        l = m + 1
+    return l
+
+
+RUBRIC POINT:
+Point 3 — Narrowing: updating l and r based on f(m)
+  If f(m) == 1 (m >= N), search the left half: r = m - 1. If f(m) == 0 (m < N), search the right half: l = m + 1.
+  Buckets:
+    - Wrong (0 marks): l and r are not updated based on f(m); the loop does not narrow the search space and runs indefinitely or always returns the same value.
+    - Semi (15 marks): l and r are updated, but the direction is reversed (f(m)==1 sets l=m+1 instead of r=m-1, and vice versa), consistently searching the wrong half.
+    - Correct (30 marks): When f(m) == 1: r = m - 1 (N is at or before m, search left). When f(m) == 0: l = m + 1 (N is after m, search right). This correctly converges to N.
+
+========================================
+
+QUESTION:
+Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+"import" , "globals" or "eval". Calculate the output
+in $O(log \: n)$ in the function "calc(f)".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?
+
+SAMPLE SOLUTION:
+def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+
+STUDENT SOLUTION:
+# Does not use f; runs an empty narrowing loop and returns l.
+def calc(f):
+    l = 0
+    r = 1000000000
+    while l < r:
+        m = (l + r) // 2
+        l = m + 1
+    return l
+
+
+RUBRIC POINT:
+Point 4 — Post-loop return value
+  After the loop, the correct N is returned: if f(m) == 1 return m, else return m + 1 (or equivalently, return l).
+  Buckets:
+    - Wrong (0 marks): The return value is unrelated to the search result (e.g., always returns m or l without checking f), or returns the wrong boundary (e.g., always returns r).
+    - Semi (8 marks): The return is close but off by one: for example, returns m unconditionally without the final f(m) check, which fails when the loop exits with f(m) == 0.
+    - Correct (15 marks): Returns m if f(m) == 1, otherwise m + 1; or equivalently returns l (which equals the first position where f is 1 after the loop exits).
+
+========================================
+
+QUESTION:
+Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+"import" , "globals" or "eval". Calculate the output
+in $O(log \: n)$ in the function "calc(f)".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?
+
+SAMPLE SOLUTION:
+def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+
+STUDENT SOLUTION:
+# Does not use f; runs an empty narrowing loop and returns l.
+def calc(f):
+    l = 0
+    r = 1000000000
+    while l < r:
+        m = (l + r) // 2
+        l = m + 1
+    return l
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness
+  calc correctly returns N for all valid inputs in O(log n), without forbidden keywords.
+  Buckets:
+    - Wrong (0 marks): Returns incorrect N for most inputs, or contains forbidden keywords ('import', 'eval', 'globals').
+    - Semi (10 marks): Returns correct N for simple cases (e.g., N near 0 or N = 1) but fails for large N due to insufficient upper bound or off-by-one in the return value.
+    - Correct (20 marks): Returns the correct N for all valid inputs (0 <= N <= 10^18) in O(log n); forbidden keywords are absent.

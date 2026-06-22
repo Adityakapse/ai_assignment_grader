@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The analysis does not separate f and g into distinct parts nor reference any line numbers, providing only a brief overall description.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: You did not explicitly identify the non-loop parts (the variable initializations and return statements) as Θ(1); instead you only gave overall complexities without analyzing those constant‑time segments.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly identified that the loop in f executes Θ(N) times, but your justification (“loops over the characters”) is brief and does not explicitly explain that i runs from 0 to N‑1.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student claims each iteration of f does constant work and treats the call to g as O(1), ignoring that g scans the whole string and costs Θ(N) per iteration.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N) and treated the call to g as constant work, without multiplying the N loop iterations by the Θ(N) cost of g, so the total loop cost for f is incorrect.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student never states that the loop in g runs Θ(N) times; they only say it “scans the whole string” and incorrectly conclude g is O(1).
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You note that g does “simple constant work” per iteration, indicating a constant‑time cost, but you do not explicitly state Θ(1) or justify it with the character access, comparison, and possible increment.
+
+POINT_ID: 8
+BUCKET: Wrong (0 marks)
+FEEDBACK: The answer claims g runs in O(1) and never combines the Θ(N) loop iterations with the Θ(1) per‑iteration work, so it does not provide the required total loop cost calculation.
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(1), which contradicts the correct Θ(N) runtime and provides no appropriate reasoning for its loop.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N) (and even claimed g is O(1)), which contradicts the required Θ(N²) analysis and ignores the cost of calling g inside the loop.

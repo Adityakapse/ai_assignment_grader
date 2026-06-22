@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution does not allocate a prefix‑sum array C nor initialise C[0] with A[0]; it only creates array d and fills it with zeros.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never constructs a prefix‑sum array; it simply fills the result with zeros and returns it, missing the required C[i] = A[i] + C[i‑1] computation.
+
+POINT_ID: 3
+MARKS: 8
+FEEDBACK: The code correctly allocates an output array D of size n and includes a loop that runs n times, but the loop never accesses the query list B, so it does not actually iterate over the queries as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The function only returns an array of zeros and never computes prefix sums or applies the D[i] = C[r] - C[l‑1] (or C[r] when l = 0) logic, so the edge case for l = 0 is not handled at all.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation never computes any range sums—it simply fills the result array with zeros, so it does not return the correct sums for the queries.

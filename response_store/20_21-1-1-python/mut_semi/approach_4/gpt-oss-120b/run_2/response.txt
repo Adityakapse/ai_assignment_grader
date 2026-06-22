@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns plain 1 rather than 1 % c, which gives wrong results for the edge case c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `elif b % 2:` for the odd case and the `else` branch for even b, correctly distinguishing between odd and even exponents.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd branch you correctly call expo(a, b-1, c) but you return expo(a, b-1, c) % c without multiplying by a, so the required (a * …) % c is missing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch the code calls expo with b//2 once, stores the result, squares it with (a * a) % c, which matches the required halve‑and‑square behavior.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The base case returns 1 instead of 1 % c and the odd‑b branch omits the multiplication by a, so the function fails for cases like c = 1 or any odd exponent.

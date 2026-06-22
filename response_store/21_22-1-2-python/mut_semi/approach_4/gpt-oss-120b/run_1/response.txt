@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution correctly sets l = 0, but uses r = 1 000 000 000 instead of the required 10^18, so the search space does not cover all possible N values.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution implements a while l <= r loop and correctly calculates the midpoint with m = (l + r) // 2 on each iteration.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code updates l and r but reverses the search direction—when f(m) is true it moves l up instead of moving r down, and vice versa.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution returns m unconditionally after the binary search, without a final f(m) check, so it may be off by one when the loop exits with f(m) == 0.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution sets r = 1 000 000 000 (too small for N up to 10¹⁸), reverses the binary‑search update direction, and returns m without a final f‑check, causing incorrect results for most inputs.

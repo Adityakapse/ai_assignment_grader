@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 12
+FEEDBACK: The code computes 2^n via expo but fails to subtract the required “-1”, indicating the closed‑form a_n = 2^n − 1 was not correctly applied.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function correctly handles the base case `b == 0` by returning `1 % c`, satisfying the requirement.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd branch you return `expo(a, b - 1, c) % c` without multiplying by `a`, so the required `(a * expo(...)) % c` is not implemented.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: In the even case the function calls expo(a, b//2, c) once, stores the result in a, and returns (a * a) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function returns expo(a,b,c) without subtracting 1, and the odd‑exponent branch in expo omits the multiplication by a, so it does not compute (2ⁿ − 1) mod 10⁹+7 correctly.

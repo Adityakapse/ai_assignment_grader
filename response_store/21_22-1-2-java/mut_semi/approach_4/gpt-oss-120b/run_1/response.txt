@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code initializes l = 0 correctly but sets r = 1 000 000 000L, which is far below the required upper bound of 10¹⁸, so it may fail for larger N.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses a while (l <= r) loop and computes the midpoint each iteration with m = (l + r) / 2, satisfying the binary search loop and midpoint requirement.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code updates the bounds in the opposite direction—when f_N(m) == 1 it sets l = m + 1 instead of r = m - 1, and vice versa, so it searches the wrong half.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code returns m unconditionally after the loop, without the required final check of f_N(m) to adjust for the off‑by‑one case.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution limits the search to 1 × 10⁹, reverses the binary‑search direction (updates l when f_N(m)=1) and returns m without a final f_N check, so it does not compute the correct N for most inputs.

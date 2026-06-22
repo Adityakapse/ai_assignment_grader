@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code sets `r = 1000000000L`, which is far smaller than the required upper bound of 10^18, so the search space may not contain the true N.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The implementation uses `while (l <= r)` and computes `m = (l + r) / 2` each iteration, matching the required binary‑search loop and midpoint calculation.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The update logic is reversed – when `f_N(m) != 0` (i.e., m ≥ N) it moves `l` forward instead of moving `r` left, so the search proceeds in the wrong direction.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: After the loop the function returns `m` unconditionally, without checking `f_N(m)` or using `l`, which can produce an off‑by‑one result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because of the too‑small upper bound and the reversed narrowing logic, the algorithm does not reliably find N for the full input range and therefore is incorrect.

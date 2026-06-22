@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution computes 2^n modulo 10^9+7 with exponentiation by squaring and returns that value minus 1, correctly using the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes a base case `if b == 0: return 1 % c`, which correctly returns 1 for exponent zero and terminates recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case is handled with `elif b % 2:` and returns `(a * expo(a, b - 1, c)) % c`, correctly reducing b by 1 and multiplying by a.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you call expo once with b//2, store it in a, and return (a*a)%c, which follows the required halve‑and‑square pattern.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution defines `calc` that returns `expo(a, b, c) - 1` and implements `expo` with recursive modular exponentiation, avoiding forbidden keywords and applying `% c` at each step, thus correctly computing (2^n - 1) mod 10^9+7 in O(log n).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `c = [0] * n` (size n) and correctly initializes `c[0] = a[0]` before building the prefix sums.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(1, n): c[i] = a[i] + c[i - 1]` implements the required recurrence, producing a proper cumulative‑sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `d = [0] * n` is created and the loop `for i in range(n):` iterates over all queries, computing each result.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The conditional `if b[i][0] - 1 >= 0:` handles the l = 0 edge case by using `d[i] = c[b[i][1]]`; otherwise it computes `c[r] - c[l-1]`, matching the correct formula.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct list of range sums for all queries in O(n) time and does not contain the forbidden keywords.

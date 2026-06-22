@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The analysis does not separate the code into distinct parts for f and g nor reference any line numbers, making the structure unclear.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The answer does not list the individual non-loop statements (e.g., initializations of n, c, l, r and the return statements) as Θ(1), so the constant‑time parts are not properly analyzed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly state that f has Θ(N²) total iterations, but you only say it “loops over every cell” without explicitly noting that both the outer and inner loops each run N times.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: You stated that each iteration of f does only constant work and ignored the cost of the g call, which actually contributes a Θ(log N) factor per iteration.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N^2) and treated the call to g as constant work, failing to multiply the N^2 iterations by the Θ(log N) cost of g.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student states that g runs in O(N) and provides no justification that the search interval halves each iteration, so the required Θ(log N) iteration count is missing.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You correctly identified that each iteration of g does constant‑time work, but you did not explicitly justify it with the required details (midpoint computation, array accesses, comparisons, update).
+
+POINT_ID: 8
+BUCKET: Semi
+FEEDBACK: You noted that g performs a binary search with constant‑time work per step and that its overall cost is logarithmic, but you did not explicitly state the Θ(log N) iteration count and multiply it by the Θ(1) per‑iteration cost.
+
+POINT_ID: 9
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student claimed g runs in O(N) rather than Θ(log N), giving an incompatible overall runtime for g.
+
+POINT_ID: 10
+BUCKET: Wrong (0 marks)
+FEEDBACK: You concluded that f runs in O(N^2) and omitted the logarithmic factor from the binary‑search call, so the overall runtime does not match the required Θ(N^2 log N).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[][] edDis = new int[m + 1][n + 1];` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the table bottom‑up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No base case rows or columns are initialized; the comment notes “base case NOT initialised” and the first row and column remain at their default value 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `a.charAt(i - 1) == b.charAt(j - 1)` the code correctly assigns `edDis[i][j] = edDis[i - 1][j - 1];`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatching characters the implementation uses `1 + Math.min(Math.min(edDis[i][j - 1], edDis[i - 1][j]), edDis[i - 1][j - 1])`, covering insert, delete, and replace.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the base cases are missing, the DP table is incorrect for non‑empty inputs, causing the method to return wrong edit distances for most strings.

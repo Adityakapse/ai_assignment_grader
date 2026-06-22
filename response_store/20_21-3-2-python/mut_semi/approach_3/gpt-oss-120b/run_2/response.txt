@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A but does not add a virtual source node 0 nor start DFS from it, so it can only find paths that begin at node 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: memo is initialized to -1 for all nodes and the check `if memo[node] != -1` returns the cached value, correctly implementing memoization.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case returns 0 when `graph[node]` is empty, correctly handling leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence iterates over children but uses `dfs(child, …)` without adding +1, so edge lengths are not counted, and the result is stored in memo correctly.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Starting DFS at node 1 and omitting the +1 causes the function to return incorrect (often zero) path lengths, so the overall answer is wrong.

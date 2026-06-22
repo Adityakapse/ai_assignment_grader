@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates a double[][] Result with dimensions (n+1) by (capacity+1), and Java initializes all entries to 0, satisfying the required DP table allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses a nested loop where the outer loop iterates i from n‑1 down to 0 (covering all n items) and the inner loop runs j from 0 to capacity inclusive, handling the zero‑capacity subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (volumes[i] <= j)` to guard inclusion, correctly handling items that exactly fill the capacity and zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `Result[i][j] = Math.max(values[i] + Result[i + 1][j - volumes[i]], Result[i + 1][j])` when the item fits and `Result[i][j] = Result[i + 1][j]` otherwise, correctly referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly fills the DP table from i = n‑1 down to 0 and j = 0 up to capacity, handling zero‑volume items and zero capacity, and returns Result[0][capacity] as required.

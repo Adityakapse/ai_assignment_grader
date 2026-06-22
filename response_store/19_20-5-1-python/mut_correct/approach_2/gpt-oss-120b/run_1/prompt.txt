@@ -1,0 +1,292 @@
+QUESTION:
+This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+SAMPLE SOLUTION:
+def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop(0)
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+
+RUBRIC POINT:
+Point 1 — BFS loop structure and initialisation (valid range: 0–20)
+  The start node is added to the queue before the loop, and a while loop processes nodes until the queue is empty.
+
+========================================
+
+QUESTION:
+This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+SAMPLE SOLUTION:
+def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop(0)
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+
+RUBRIC POINT:
+Point 2 — FIFO dequeue: removing from the front (valid range: 0–20)
+  The current node is always removed from the front of the queue (index 0), ensuring breadth-first (level-by-level) traversal.
+
+========================================
+
+QUESTION:
+This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+SAMPLE SOLUTION:
+def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop(0)
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+
+RUBRIC POINT:
+Point 3 — Visited tracking: check and mark (valid range: 0–20)
+  Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.
+
+========================================
+
+QUESTION:
+This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+SAMPLE SOLUTION:
+def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop(0)
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+
+RUBRIC POINT:
+Point 4 — Neighbour enqueue (valid range: 0–20)
+  All unvisited neighbours from graph[current] are iterated and added to the back of the queue.
+
+========================================
+
+QUESTION:
+This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+graph = [
+    [1, 2],
+    [0],
+    [1]
+]
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+SAMPLE SOLUTION:
+def bfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop(0)
+        if next not in visited:
+            visited.append(next)
+            for vertex in graph[next]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+def bfs(graph, start):
+    visited, queue = [], [start]
+    while queue:
+        nxt = queue.pop(0)
+        if nxt not in visited:
+            visited.append(nxt)
+            for vertex in graph[nxt]:
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns all reachable nodes from start in correct BFS (level-by-level) order for all valid directed graphs.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution creates `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, correctly allocating a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It uses `for i in range(n - 1, -1, -1):` and `for j in range(capacity + 1):`, iterating over every item and every capacity value inclusive.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Inside the inner loop the condition `if volume[i] <= j:` properly checks capacity feasibility before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the code assigns `Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]], Result[i + 1][j])`; otherwise it copies `Result[i + 1][j]`, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `Result[0][capacity]`, which yields the correct maximum value for the given inputs as demonstrated by the DP logic.
+
+TOTAL: 100

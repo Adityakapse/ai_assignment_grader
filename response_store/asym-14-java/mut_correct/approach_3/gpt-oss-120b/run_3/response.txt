@@ -1,0 +1,39 @@
+POINT_ID: Point 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi (3 marks)
+FEEDBACK: The student separates f and g into distinct parts and identifies loop versus non‑loop code, but never cites specific line numbers, so the requirement is only partially met.
+
+POINT_ID: Point 2 — Constant-time non-loop parts
+BUCKET: Correct (5 marks)
+FEEDBACK: The analysis explicitly labels Parts A, C (in f) and D, F (in g) as Θ(1), covering all non‑loop sections.
+
+POINT_ID: Point 3 — f(): Loop iterations
+BUCKET: Correct (12 marks)
+FEEDBACK: The student correctly states that k starts at 1 and is multiplied by 2 each time, justifying Θ(log N) iterations.
+
+POINT_ID: Point 4 — f(): Cost per iteration
+BUCKET: Correct (12 marks)
+FEEDBACK: The answer notes that each iteration calls g, a linear scan Θ(N), while the doubling and addition are Θ(1), establishing Θ(N) per iteration.
+
+POINT_ID: Point 5 — f(): Total loop cost
+BUCKET: Correct (8 marks)
+FEEDBACK: The student multiplies the Θ(log N) iteration count by the Θ(N) per‑iteration cost and arrives at Θ(N log N) with clear reasoning.
+
+POINT_ID: Point 6 — g(): Loop iterations
+BUCKET: Correct (12 marks)
+FEEDBACK: The analysis explains that i runs from 0 to N‑1, giving Θ(N) iterations, with appropriate justification.
+
+POINT_ID: Point 7 — g(): Cost per iteration
+BUCKET: Correct (12 marks)
+FEEDBACK: Each iteration is described as one array read and one += assignment, correctly identified as Θ(1).
+
+POINT_ID: Point 8 — g(): Total loop cost
+BUCKET: Correct (8 marks)
+FEEDBACK: The student combines Θ(N) iterations with Θ(1) per‑iteration cost to conclude Θ(N).
+
+POINT_ID: Point 9 — Overall worst-case runtime of g
+BUCKET: Correct (12 marks)
+FEEDBACK: By adding the constant‑time parts to the Θ(N) loop cost, the answer correctly states T_g(N) = Θ(N).
+
+POINT_ID: Point 10 — Overall worst-case runtime of f
+BUCKET: Correct (14 marks)
+FEEDBACK: The final runtime is derived as Θ(1) + Θ(N log N) + Θ(1) = Θ(N log N), matching the required justification.

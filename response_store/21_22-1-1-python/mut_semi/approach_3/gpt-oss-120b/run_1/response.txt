@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Closed form derivation
+BUCKET: Semi
+FEEDBACK: The function calc returns expo(2, n, c) without subtracting 1, so it computes 2^n instead of the required 2^n − 1.
+
+POINT_ID: Point 2 — Expo base case: b == 0
+BUCKET: Correct
+FEEDBACK: The expo function correctly returns 1 % c when b == 0, providing a proper base case.
+
+POINT_ID: Point 3 — Expo odd case: reduce by 1 and multiply
+BUCKET: Semi
+FEEDBACK: In the odd branch the code calls expo(a, b‑1, c) % c but does not multiply the result by a, missing the required (a * expo(...)) % c.
+
+POINT_ID: Point 4 — Expo even case: halve and square
+BUCKET: Correct
+FEEDBACK: The even branch calls expo(a, b//2, c) once, stores the result, and returns (a * a) % c, correctly implementing halving and squaring.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Wrong
+FEEDBACK: Because calc omits the final “‑1” and the odd case lacks multiplication, the function does not return (2^n − 1) mod 10^9+7 for general inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length + 1];`, which provides a zero‑initialized counting array of sufficient size (at least max(A)+1).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code loops over A, but it does `C[i]++` instead of `C[A[i]]++`, so it updates the wrong indices and does not correctly count each category’s occurrences.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at 1 and runs while i < B.length, so it skips index 0 and produces a string that is one character short of the required length.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code appends '1' when C[i] > B[i] and '0' otherwise, reversing the intended comparison direction.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code increments C[i] instead of C[A[i]], starts the output loop at 1 and omits the first category, and appends '1' when C[i] > B[i] (reversing the required condition), so it produces an incorrect binary string for typical inputs.

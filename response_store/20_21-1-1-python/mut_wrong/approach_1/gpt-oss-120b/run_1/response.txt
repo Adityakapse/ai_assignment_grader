@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function always returns 1 % c, which for the case b == 0 correctly provides the required base‑case result.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never checks b % 2 or any equivalent, so it does not detect odd versus even exponents.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: No branch handles the odd case; the function does not perform (a * expo(a, b‑1, c)) % c or recurse when b is odd.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The even case is absent; the function never halves b or squares a recursive result.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the function ignores b and always returns 1 % c, it fails to compute a^b mod c for any b > 0, so overall correctness is not achieved.
+
+TOTAL: 20

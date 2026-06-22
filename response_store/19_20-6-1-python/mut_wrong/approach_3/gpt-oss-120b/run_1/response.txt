@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function does not allocate a 2D DP table nor contain any nested loops; it simply returns a computed value.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Since no table is created, there is no initialization of edDis[i][0] or edDis[0][j] base cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code never performs a character comparison (a[i-1] == b[j-1]) or handles the match case.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: There is no recurrence for mismatched characters; the implementation does not compute 1 + min of neighboring cells.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Returning abs(len(a) - len(b)) does not yield the correct edit distance for general strings, so the overall result is incorrect.

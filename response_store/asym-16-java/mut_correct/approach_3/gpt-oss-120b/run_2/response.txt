@@ -1,0 +1,43 @@
+POINT 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi
+FEEDBACK: The student clearly separates f and g into parts (A–F) and distinguishes loops from non‑loop code, but does not cite specific line numbers from the source.
+
+POINT 2 — Constant-time non-loop parts
+BUCKET: Correct
+FEEDBACK: The analysis explicitly states that the initialisations and return statements in both f (Parts A and C) and g (Parts D and F) are Θ(1).
+
+POINT 3 — f(): Nested loop iterations
+BUCKET: Correct
+FEEDBACK: The student correctly justifies that the outer loop runs Θ(log N) times and the inner loop runs N times each, giving Θ(N log N) total iterations.
+
+POINT 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The per‑iteration cost is identified as Θ(1), citing one array read and one += assignment.
+
+POINT 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The total cost of the nested loops is computed as Θ(N log N) by multiplying the iteration count Θ(N log N) by the per‑iteration Θ(1).
+
+POINT 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Correct
+FEEDBACK: The student accounts for the call to g as Θ(N) and the addition/return as Θ(1), concluding Part C costs Θ(N).
+
+POINT 7 — g(): Loop iterations
+BUCKET: Correct
+FEEDBACK: The analysis correctly notes that i runs from 0 to N‑1, yielding Θ(N) iterations.
+
+POINT 8 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: Each iteration of g’s loop is described as Θ(1), with one array read and one += assignment.
+
+POINT 9 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The total loop cost is derived as Θ(N) × Θ(1) = Θ(N), matching the earlier iteration and per‑iteration counts.
+
+POINT 10 — Overall worst-case runtime of g
+BUCKET: Correct
+FEEDBACK: The overall runtime is summed as Θ(1) + Θ(N) + Θ(1) = Θ(N), correctly absorbing the constant terms.
+
+POINT 11 — Overall worst-case runtime of f
+BUCKET: Correct
+FEEDBACK: The final runtime is presented as Θ(1) + Θ(N log N) + Θ(N) = Θ(N log N), correctly dropping the lower‑order Θ(N) term.

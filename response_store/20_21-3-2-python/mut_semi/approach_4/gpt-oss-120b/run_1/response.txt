@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution builds the adjacency list from A correctly, but it never adds a virtual source node 0 with edges to all vertices and starts the DFS from node 1, so it cannot capture the longest path starting anywhere.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes `memo` with -1 for every node and checks `if memo[node] != -1` to return a cached value, correctly implementing the required memoization pattern.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function includes `if len(graph[node]) == 0: return 0`, correctly returning 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The dfs iterates over all children and stores the result in memo, but it fails to add +1 for each edge (uses `sol = max(sol, dfs(child, …))` instead of `dfs(child, …) + 1`), so the path length is counted incorrectly.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution starts DFS at node 1 and never adds +1 for each edge, so dfs always returns 0, yielding an incorrect path length for essentially all inputs.

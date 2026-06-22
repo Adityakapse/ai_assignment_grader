@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code pushes the start node before the loop and uses while (!stack.isEmpty()), but also adds a safety counter that may stop the loop before the stack is empty, deviating from the required termination condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is removed with stack.pop(), which correctly implements LIFO removal.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The implementation adds each popped node to visited without checking if it was already visited, so duplicate entries and infinite loops on cyclic graphs are possible.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over graph[next] in reverse order and pushes each neighbour, but it does not check whether a neighbour has already been visited before pushing, violating the unvisited‑only requirement.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: For acyclic graphs the traversal order matches DFS, yet the missing visited check and the safety limit cause incorrect or incomplete results on graphs with cycles, so overall correctness is not achieved.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implements calc as expo(2, n, 1000000007) - 1, correctly using the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes a base case `if b == 0: return 1 % c`, which correctly returns 1 modulo c.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For odd exponents the code executes `return (a * expo(a, b - 1, c)) % c`, properly reducing b by 1, multiplying by a, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even case the function calls `expo(a, b // 2, c)` once, stores the result, and returns `(a * a) % c`, correctly halving b and squaring the recursive result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc(n) returns `(2**n % 1000000007) - 1`, which yields (2ⁿ − 1) mod 10⁹+7 for all valid inputs, uses no forbidden keywords, and runs in O(log n).

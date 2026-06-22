@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution does not allocate any 2D table nor contain nested loops; it simply returns the absolute length difference.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The function never creates a DP table or sets edDis[i][0] or edDis[0][j]; it simply returns the length difference, so no base cases are initialized.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The function never compares characters of the strings; it simply returns the absolute length difference, so the required match case (a[i-1] == b[j-1] → edDis[i][j] = edDis[i-1][j-1]) is missing.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function simply returns the absolute length difference of the strings and never computes the 1 + min(edDis[i][j‑1], edDis[i‑1][j], edDis[i‑1][j‑1]) recurrence for mismatched characters.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function simply returns the absolute difference in string lengths, which does not compute the true edit distance for most inputs.

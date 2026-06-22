@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student builds an adjacency list from A, but does not add a virtual source node 0 with edges to all nodes and starts DFS from node 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is initialised to -1 for every node and the code returns memo[node] when it is not -1, correctly implementing memoization.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS function returns 0 when a node has no outgoing edges, providing the proper base case for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence computes the maximum over children but omits the required +1 for the traversed edge, so path lengths are not incremented.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the virtual source is missing and edges are not counted, the algorithm returns 0 or an incorrect length for most DAGs, failing to produce the correct longest‑path length.

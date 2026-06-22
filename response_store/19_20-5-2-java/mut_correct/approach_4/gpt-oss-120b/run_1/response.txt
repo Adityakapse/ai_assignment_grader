@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes the start node onto the stack before entering the loop and uses `while (!stack.isEmpty())` to process nodes until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution consistently uses `int next = stack.pop();` to remove nodes from the top of the stack, guaranteeing LIFO behavior for DFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `visited.contains(next)` before processing each node, adds the node to `visited` only once, and only pushes unvisited neighbors, preventing duplicates and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop iterates `graph[next]` from the last index down to 0 and pushes each unvisited neighbour onto the stack, correctly using reverse order to preserve adjacency list visitation order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation matches the reference solution, using a stack with a visited check and iterating neighbors in reverse order so they are visited in adjacency‑list order, correctly returning all reachable nodes in DFS order.

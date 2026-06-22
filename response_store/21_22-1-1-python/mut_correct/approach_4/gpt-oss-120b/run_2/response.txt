@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution computes expo(2, n, 1000000007) − 1, correctly using the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if b == 0: return 1 % c`, correctly handling the base case for b = 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd case (`elif b % 2:`) the function returns `(a * expo(a, b - 1, c)) % c`, correctly reducing b by 1, recursing, multiplying by a, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you call `expo(a, b // 2, c)` once, store its result in `a`, and return `(a * a) % c`, correctly halving and squaring.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution defines calc(n) returning expo(2,n,10^9+7)-1 and implements expo with recursive modular exponentiation, avoiding forbidden keywords and correctly handling all inputs.

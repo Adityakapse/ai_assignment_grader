@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code pushes the start node onto the stack before the loop and uses a while loop that checks `!stack.isEmpty()` (with an additional safety counter) to process nodes.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The solution calls `stack.pop()` to remove the current node from the top of the stack, correctly using LIFO order for the traversal.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The implementation never checks visited before processing a node and pushes all neighbors unconditionally, leading to duplicate visits and potential infinite loops (the safety counter is a workaround, not proper visited tracking).
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The code iterates the adjacency list in reverse order, so the push order is correct, but it pushes every neighbour without checking if it has already been visited, violating the requirement to push only unvisited neighbours.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never checks whether a node has already been visited, causing repeated pushes and potential infinite loops on cyclic graphs (mitigated only by an arbitrary safety limit), so it does not reliably return all reachable nodes in correct DFS order.

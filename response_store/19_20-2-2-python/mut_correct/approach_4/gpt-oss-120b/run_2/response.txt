@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code iterates over the entire input list with a for‑loop and uses if/elif checks to treat '+', '-', '*', '/' as operators while pushing int(i) for numeric tokens, correctly distinguishing the two types.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `int(i)` in the else clause to convert each numeric token before calling `stack.push`, correctly handling number conversion and pushing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and pushes the result for '+', '-', and '*', but for '/' it uses regular division (n2 / n1) instead of integer floor division as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses the correct operand order (n2 - n1), but the division also uses n2 / n1 which yields a float instead of performing integer (floor) division as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator handles addition, subtraction, and multiplication correctly, but uses `/` for division, which produces a float and does not perform the required floor (rounded‑down) integer division.

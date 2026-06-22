@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates C = [0] * (10**6 + 1), a zero‑initialized array of sufficient size to count frequencies.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop iterates over A’s indices, but it increments C[i] instead of using the element value C[A[i]], so the frequency counts are recorded at the wrong positions.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop uses `range(1, len(B))`, so it starts at index 1 and omits index 0, producing a string that is one character short of the required length m.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution compares C[i] and B[i] but appends "1" when C[i] > B[i] and "0" otherwise, which inverts the intended condition.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution increments C[i] rather than C[A[i]], starts the output loop at 1 (missing the first category) and uses the reversed comparison (C[i] > B[i] instead of ≤), so it returns an incorrect binary string for most inputs.

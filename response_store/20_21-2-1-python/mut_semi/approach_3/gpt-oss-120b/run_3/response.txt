@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `C = [0] * (10**6 + 1)`, which creates a zero‑initialized counting array of the required size.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop `for i in range(len(A)): C[i] = C[i] + 1` increments `C[i]` using the loop index instead of the element value `A[i]`, so frequencies are counted incorrectly.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop `for i in range(1, len(B))` starts at 1 and thus omits index 0, producing a string that is one character short of length m.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The condition `if C[i] > B[i]: sol += "1"` outputs “1” when the count exceeds capacity, reversing the required logic (`C[i] <= B[i]` should yield “1”).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because of the incorrect counting, off‑by‑one output loop, and reversed comparison, the function returns an incorrect binary string for most inputs and does not meet the specification.

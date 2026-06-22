@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `Result` with `new double[n + 1][capacity + 1]`, which correctly allocates a (n+1)×(capacity+1) table initialized to 0.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses an outer loop that iterates i from n‑1 down to 0 (covering all n items) and an inner loop that runs j from 0 to capacity inclusive, thus handling every subproblem as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code includes an `if (volumes[i] <= j)` condition before considering the item, correctly implementing the capacity feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses the exact recurrence `Result[i][j] = max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j])` when the item fits and `Result[i][j] = Result[i+1][j]` otherwise, matching the rubric specification.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your DP table is correctly initialized and filled, and the method returns the optimal knapsack value for all valid inputs, matching the reference solution's behavior.

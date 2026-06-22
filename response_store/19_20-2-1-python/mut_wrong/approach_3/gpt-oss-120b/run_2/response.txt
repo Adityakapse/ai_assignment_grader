@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The class defines a Queue with a single field `self.last`, which provides some internal storage but is insufficient to maintain multiple elements in FIFO order.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `isEmpty` returns `True` exactly when `self.last` is `None`, correctly reflecting the empty state of the queue as implemented.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `head` simply returns `self.last` without altering any state, so it reads the current element without modification.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: `enqueue` overwrites `self.last` with the new value, discarding any previously stored element instead of adding to the back of a queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `dequeue` returns the value in `self.last` and then sets it to `None`, correctly removing and returning the stored element.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The implementation fails to preserve FIFO order when more than one element is enqueued, so it only works for trivial single‑element cases.

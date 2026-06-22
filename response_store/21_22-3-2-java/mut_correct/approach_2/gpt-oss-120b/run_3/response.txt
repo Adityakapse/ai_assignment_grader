@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates an adjacency list of size N+1, adds edges from node 0 to every node 1…N, and then inserts the given edges from A, correctly implementing the required graph construction and virtual source.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The solution correctly initializes the memo array to -1 for every node and includes the `if (memo[node] != -1) return memo[node];` check, ensuring cached values are used.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs implementation correctly returns 0 when `graph.get(node).size() == 0`, handling leaf nodes as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your dfs correctly iterates over each child, updates sol with Math.max(sol, dfs(child)+1), stores the result in memo[node] and returns it, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your implementation mirrors the reference solution exactly, correctly building the auxiliary source node, using memoized DFS, and returning `dfs(0,…)-1`, which yields the correct longest path length for all valid DAG inputs.

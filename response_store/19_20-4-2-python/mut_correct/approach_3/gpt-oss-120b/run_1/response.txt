@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if delete.left is None or delete.right is None: y = delete else: y = tree_minimum(delete.right)`, correctly selecting y based on the number of children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `tree_minimum` iterates `while n.left is not None: n = n.left` and returns the leftmost node, matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `x` is assigned with `y.left if y.left is not None else y.right`, correctly choosing y’s non‑null child (or None if y is a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation updates `x.parent = y.parent` when x exists, handles the root case with `if y.parent is None: root = x`, and redirects the appropriate child pointer of `y.parent` based on `y is y.parent.left`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The key copy is performed only when `y is not delete` via `delete.key = y.key`, correctly handling the successor case.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The function returns the updated `root` after performing all splicing steps, correctly handling leaf, single‑child, two‑child, and root deletions while preserving BST properties.

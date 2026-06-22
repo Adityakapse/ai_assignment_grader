@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The base case returns 1 instead of 1 % c, so it does not handle the required modulo (e.g., fails when c = 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution uses `b % 2 != 0` to handle odd b and the else clause for even b, correctly distinguishing parity.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd‑b branch you return `expo(a, b-1, c) % c` and never multiply by `a`, so the required `(a * expo(...)) % c` is missing.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: In the even case the function calls expo(a, b/2, c), assigns the result (mod c) to a, and returns (a*a) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: The function returns 1 instead of 1 % c for b = 0 and, in the odd‑exponent branch, it only takes expo(a,b‑1,c) % c without multiplying by a, so the result is incorrect for many valid inputs.

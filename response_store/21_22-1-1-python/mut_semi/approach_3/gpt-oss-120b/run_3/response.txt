@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses expo(2, n, c) to compute 2^n but does not subtract 1, as noted in the comment, so the closed form is missing the “‑1” term.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if b == 0: return 1 % c`, correctly handling the base case.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd case the code `return expo(a, b - 1, c) % c` reduces the exponent but fails to multiply by `a`, omitting the required factor.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For even b the function calls `expo(a, b // 2, c)` once, stores the result, and returns `(a * a) % c`, correctly implementing halving and squaring.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the -1 adjustment is missing and the odd case does not multiply by a, `calc(n)` returns incorrect values (e.g., 2^n instead of 2^n‑1 for even n and 2^{n‑1} for odd n), so overall correctness fails.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The line `Result = [[0] * (capacity + 1) for _ in range(n + 1)]` creates a (n+1) × (capacity+1) table and initializes every cell to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop `for i in range(n - 1, -1, -1):` visits all n items and the inner loop `for j in range(capacity + 1):` iterates j from 0 through capacity, covering every sub‑problem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if volume[i] <= j:` to test whether the current item fits in the remaining capacity before considering it.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits, `Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]], Result[i + 1][j])`; otherwise `Result[i][j] = Result[i + 1][j]`, correctly implementing the DP recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `Result[0][capacity]`, which yields the maximum achievable value for the given capacity on all valid inputs.

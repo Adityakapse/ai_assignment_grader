@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a Queue class with a self.lst list as internal storage, providing the necessary state for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty method returns `len(self.lst) == 0`, which accurately reports true only when the queue has no elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns self.lst[0], correctly giving the front element without changing the queue’s internal state.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method uses `self.lst.append(x)` to add elements to the end of the list, correctly updating the queue’s internal state for subsequent operations.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns the first element (self.lst[0]) but never removes it from the internal list, leaving the queue unchanged.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue method only returns the front element without removing it, so repeated enqueues and dequeues do not preserve FIFO behavior (and head also lacks an empty‑check).

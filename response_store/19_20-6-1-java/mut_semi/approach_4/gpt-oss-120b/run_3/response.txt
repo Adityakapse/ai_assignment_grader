@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates a 2D array of size (m+1) × (n+1) and correctly uses nested loops from 1 to m and 1 to n to fill the table.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never sets edDis[i][0] or edDis[0][j]; both the first row and column stay at the default zero, so the DP base cases are missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks `a.charAt(i - 1) == b.charAt(j - 1)` and sets `edDis[i][j]` to `edDis[i - 1][j - 1]` when the characters match.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else clause the student computes `edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1])`, correctly using the three‑neighbor recurrence for mismatched characters.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code omits initializing the first row and column of the DP table, so while it may give correct results for trivial cases (e.g., empty or single‑character strings), it returns wrong distances for longer inputs.

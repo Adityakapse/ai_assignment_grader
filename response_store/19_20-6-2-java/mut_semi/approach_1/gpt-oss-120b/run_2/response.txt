@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates Result with `new double[n + 1][capacity + 1]`, which creates a (n+1)×(capacity+1) table initialized to 0 as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The outer loop iterates `i` from `n‑1` down to `0` and the inner loop iterates `j` from `0` to `capacity`, covering every item and capacity subproblem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code includes the check `if (volumes[i] <= j)` before attempting to add the item, satisfying the feasibility test.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: When an item fits, the implementation assigns `Result[i][j] = values[i] + Result[i + 1][j - volumes[i]]` without taking the `max` with `Result[i+1][j]`, violating the required recurrence relation.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the recurrence lacks the max comparison, the method can return a sub‑optimal value, so it is not correct for all valid inputs.
+
+TOTAL: 55

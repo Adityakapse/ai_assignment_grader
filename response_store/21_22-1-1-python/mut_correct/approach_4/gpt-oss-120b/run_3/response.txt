@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code defines calc to return expo(2, n, 10**9+7) - 1, correctly using exponentiation by squaring and subtracting 1, which matches the closed form aₙ = 2ⁿ - 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if b == 0: return 1 % c`, correctly returning 1 for the base case and terminating recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch (`elif b % 2:`) the code returns `(a * expo(a, b - 1, c)) % c`, correctly reducing b by 1 and multiplying by a.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you call `expo(a, b // 2, c)` once, store its result in `a`, and return `(a * a) % c`, correctly halving and squaring with the modulo.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution defines calc that calls expo to compute 2^n mod 10^9+7 and subtracts 1, uses recursion with modulo at each step, runs in O(log n), and contains no forbidden keywords.

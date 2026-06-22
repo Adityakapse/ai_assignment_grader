@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates a long[] memo of size n+1 and correctly initializes every entry to -1 as the sentinel for uncached values.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The solution correctly returns W[0] for n = 0 and max(W[0], W[1]) for n = 1, matching the required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The helper function includes `if (memo[n] != -1) return memo[n];` which correctly returns cached results before recomputation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation uses the exact recurrence `memo[n] = Math.max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and stores the computed value in `memo[n]` before returning.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation mirrors the reference solution, correctly uses memoization to compute the optimal profit in linear time for all valid inputs.

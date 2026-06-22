@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2‑dimensional DP table; it only uses a single scalar variable `total` to accumulate values.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses only a single loop over the items and never iterates over capacities, so it lacks the required nested loops covering all subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (volumes[i] <= capacity)` before adding each item's value, using the correct `<=` condition and handling zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement any recurrence or DP table; it just sums values of items that individually fit, using the values array directly without referencing previously computed subproblems.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method simply adds the values of every item whose volume is ≤ capacity, so it returns the sum of all fitting items instead of the optimal subset value, producing incorrect results for most inputs.

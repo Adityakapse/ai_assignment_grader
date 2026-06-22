@@ -1,0 +1,39 @@
+POINT ID: Point 1 — Splitting code into parts + referencing line numbers
+BUCKET: Semi (3 marks)
+FEEDBACK: The student mentions both f and g and notes that f calls g, but they never reference specific line numbers or clearly delineate the non‑loop and loop sections.
+
+POINT ID: Point 2 — Constant-time non-loop parts
+BUCKET: Wrong (0 marks)
+FEEDBACK: The analysis does not identify the initializations or return statements as Θ(1); it only gives a high‑level O(N) claim.
+
+POINT ID: Point 3 — f(): Loop iterations
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student states that f’s loop is O(N) instead of explaining that k is halved each time, which would give Θ(log N) iterations.
+
+POINT ID: Point 4 — f(): Cost per iteration
+BUCKET: Wrong (0 marks)
+FEEDBACK: The answer claims the per‑iteration work is constant and ignores the cost of the call to g, contrary to the required Θ(log N) per iteration.
+
+POINT ID: Point 5 — f(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: No combination of iteration count and per‑iteration cost is provided; the student simply concludes O(N) for f.
+
+POINT ID: Point 6 — g(): Loop iterations
+BUCKET: Wrong (0 marks)
+FEEDBACK: Although the student notes that g halves its counter, they do not state the iteration count as Θ(log N) nor justify it with the halving argument.
+
+POINT ID: Point 7 — g(): Cost per iteration
+BUCKET: Semi (6 marks)
+FEEDBACK: The student says the work in g’s loop is “simple constant work,” indicating constant‑time per iteration, but provides no explicit Θ(1) justification.
+
+POINT ID: Point 8 — g(): Total loop cost
+BUCKET: Wrong (0 marks)
+FEEDBACK: The analysis does not multiply the iteration count by the per‑iteration cost; it incorrectly concludes O(N) for g.
+
+POINT ID: Point 9 — Overall worst-case runtime of g
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student reports g = O(N), which contradicts the correct Θ(log N) worst‑case runtime and lacks supporting reasoning.
+
+POINT ID: Point 10 — Overall worst-case runtime of f
+BUCKET: Wrong (0 marks)
+FEEDBACK: The final answer f = O(N) is incorrect and is not derived from any loop‑analysis; the correct result should be Θ((log N)²).

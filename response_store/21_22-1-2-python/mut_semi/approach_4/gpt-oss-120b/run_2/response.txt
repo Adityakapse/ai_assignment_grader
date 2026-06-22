@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution initializes l = 0 correctly but sets r = 1 000 000 000, which is far below the required 10^18 upper bound, so it may miss valid N values larger than 1e9.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution implements a while l <= r loop and calculates m as (l + r)//2 on each iteration, correctly following the binary‑search loop and midpoint pattern.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code updates l and r opposite to the required logic—when f(m) is true it moves l up instead of moving r down, and vice versa, so it searches the wrong half.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution ends with `return m` unconditionally, without checking `f(m)` after the loop, so it may return the wrong boundary (off by one) instead of returning `m` or `m+1` based on the final `f` result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation caps the search at 1 e9, reverses the binary‑search updates (moving l when f(m) is true), and returns m without a final check, causing incorrect results for most inputs.

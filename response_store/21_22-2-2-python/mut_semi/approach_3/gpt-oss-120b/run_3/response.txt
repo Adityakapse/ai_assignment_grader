@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates c as a list of length n and correctly sets c[0] = a[0] before the loop.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The construction loop assigns c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so the prefix sums are never accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output list d of size n is allocated and a loop for i in range(n) processes every query in b.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The formula d[i] = c[b[i][1]] - c[b[i][0] - 1] is applied unconditionally, so when l == 0 the code accesses c[-1] instead of handling the edge case.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns correct sums only for queries with l > 0; it fails or produces wrong results for queries where l == 0, so overall correctness is partial.

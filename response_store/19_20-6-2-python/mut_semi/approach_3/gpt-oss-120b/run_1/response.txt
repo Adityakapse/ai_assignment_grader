@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The line `Result = [[0] * (capacity + 1) for _ in range(n + 1)]` creates a (n+1) × (capacity+1) table and initializes every cell to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop `for i in range(n - 1, -1, -1):` iterates over all n items, and the inner loop `for j in range(capacity + 1):` iterates j from 0 through capacity, covering every sub‑problem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if volume[i] <= j:` which correctly checks that the current item fits in the remaining capacity before attempting to include it.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: When an item fits, the assignment `Result[i][j] = value[i] + Result[i + 1][j - volume[i]]` omits the `max` comparison with the “skip‑item” option, so the recurrence does not consider the better of taking or not taking the item.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the algorithm always adds a fitting item, it produces incorrect results for inputs where the optimal solution skips a fitting item (e.g., capacity 5 in the example), so overall correctness is only partial.

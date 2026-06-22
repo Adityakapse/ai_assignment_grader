@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a (m+1) × (n+1) 2‑D list and uses nested loops with i ranging from 1 to m and j from 1 to n, correctly filling the table bottom‑up.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never sets edDis[i][0] = i or edDis[0][j] = j, leaving the first row and column at zero and breaking the DP base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if a[i - 1] == b[j - 1]:` and correctly sets `edDis[i][j] = edDis[i - 1][j - 1]` for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The else branch uses `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])`, correctly applying the three‑neighbor recurrence for mismatched characters.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never initializes the first row and column of the DP table, so cases like empty strings return 0 instead of the correct distance, leading to incorrect results for most inputs.

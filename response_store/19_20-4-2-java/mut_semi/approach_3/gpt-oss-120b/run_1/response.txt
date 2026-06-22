@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never selects a successor; it always treats the node to delete as the one to remove, ignoring the two‑child case.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No treeMinimum helper is defined; the code does not attempt to find the in‑order minimum of the right subtree.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The child to promote is set with `Node x = (delete.left != null) ? delete.left : delete.right;`, correctly choosing the non‑null child or null if leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code updates `x.parent` and rewires the parent’s left/right pointer (or root) to `x`, properly splicing the node out.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The key of the deleted node is never copied from a successor, so when a successor would be used the original key remains unchanged.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Deletion works for leaf, one‑child, and root cases, but the two‑child case is not handled, resulting in an incorrect BST for those inputs.

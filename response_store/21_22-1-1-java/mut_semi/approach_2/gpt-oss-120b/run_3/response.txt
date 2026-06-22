@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The student’s code uses expo(2, n, c) directly, omitting the required “‑1” from the closed form a_n = 2^n − 1, so the closed‑form derivation is incomplete.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function correctly returns 1 for the b == 0 case, meeting the base‑case requirement.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case you return `expo(a, b-1, c) % c` but omit the required multiplication by `a`, so the expression does not match `(a * expo(a, b-1, c)) % c`.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even branch correctly calls expo(a, b/2, c) once, stores the result, and returns (result * result) % c, implementing the halve‑and‑square step as required.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function returns expo without the required “‑1” and the odd‑case in expo omits the multiplication by a, so it yields 2ⁿ (or 2ⁿ⁻¹ for odd n) instead of (2ⁿ ‑ 1) mod 10⁹+7.

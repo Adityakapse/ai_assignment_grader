@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The code builds an adjacency list from A and adds a virtual source node 0 with edges to every node 1…N, enabling a single DFS to cover all possible start nodes.
+
+POINT_ID: Point 2
+BUCKET: Correct (20 marks)
+FEEDBACK: A memo array is initialised to -1 for all nodes and the DFS returns the cached value immediately when memo[node] != -1, preventing recomputation.
+
+POINT_ID: Point 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The DFS correctly returns 0 when graph[node] is empty, handling leaf nodes as base cases.
+
+POINT_ID: Point 4
+BUCKET: Correct (20 marks)
+FEEDBACK: For each child the code computes sol = max(sol, dfs(child, …) + 1), stores the result in memo[node], and returns it, correctly implementing the recurrence with memoization.
+
+POINT_ID: Point 5
+BUCKET: Correct (25 marks)
+FEEDBACK: calc returns dfs(0, graph, memo) - 1, which yields the exact length of the longest directed path for any DAG and runs in O(N+M) time.

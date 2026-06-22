@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never selects a successor; it always treats the node to delete as y, without checking whether it has two children.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No treeMinimum helper is defined; the solution does not perform any left‑ward traversal to find the in‑order minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The variable x is set to delete.left if present, otherwise delete.right, correctly identifying y’s (delete’s) non‑null child or null.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation updates x.parent, adjusts the parent’s left/right pointer or root reference, and thus correctly splices y (delete) out of the tree.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never copies y’s key into delete, so when a successor would be used the original key is not replaced.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Deletion works for leaf and single‑child nodes (including root), but the two‑child case is not handled, leading to incorrect behavior for many inputs.

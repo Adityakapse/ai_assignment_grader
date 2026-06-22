@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The base case returns 1 without applying %c, so it does not correctly handle the edge case when c = 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `elif b % 2:` for the odd case and the `else` branch for even, correctly distinguishing parity.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case you return `expo(a, b - 1, c) % c` instead of `(a * expo(a, b-1, c)) % c`, so the multiplication by a is missing.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The even branch correctly calls expo with b//2, stores the result (mod c) in a temporary variable, and returns (a * a) % c, implementing the halve‑and‑square step as required.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function omits the modulo in the base case and fails to multiply by a in the odd‑exponent branch, producing incorrect results for many valid inputs (e.g., when c = 1 or b is odd).

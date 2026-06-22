@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is placed on the stack before the loop, and the loop runs while `stack` is non‑empty, but it also stops when the `safety` counter reaches 1000, which deviates from the required “until the stack is empty” condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The current node is removed with `stack.pop()`, correctly implementing a LIFO pop for depth‑first traversal.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code never checks whether a node is already in `visited` before processing it, so nodes can be revisited indefinitely and the algorithm relies on an artificial safety limit to avoid an infinite loop.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: All neighbours are iterated in `reversed(graph[nxt])` and appended to the stack, satisfying the requirement to push unvisited neighbours in reverse adjacency order for an iterative DFS.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns reachable nodes but may contain duplicates or terminate early on graphs with cycles because visited checking is missing, so it does not reliably produce the correct DFS order for all valid directed graphs.

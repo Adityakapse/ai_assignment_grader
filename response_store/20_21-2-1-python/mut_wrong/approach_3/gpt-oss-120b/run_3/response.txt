@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function does not allocate any counting array C; it directly builds the output string without creating a frequency table.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No loop over A is present, so the code never increments C[a]; frequencies of categories are never counted.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for i in range(len(B))` iterates over B from 0 to m‑1, producing a string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code always appends `'1'` and never compares a count to B[i]; the required conditional logic is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Since it never counts categories or performs the comparison, the returned binary string is incorrect for virtually all inputs, failing overall correctness.

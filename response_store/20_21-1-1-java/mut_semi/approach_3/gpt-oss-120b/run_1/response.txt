@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, so it fails when c equals 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses b % 2 != 0 to detect odd exponents and the else branch for even, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd branch the function returns expo(a, b‑1, c) % c but does not multiply the result by a, violating the required formula.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case halves b, recurses once, stores the result in a, and returns (a * a) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the odd case omits the multiplication by a (and the base case omits % c), the function produces incorrect results for many inputs, especially when b is odd or c = 1.

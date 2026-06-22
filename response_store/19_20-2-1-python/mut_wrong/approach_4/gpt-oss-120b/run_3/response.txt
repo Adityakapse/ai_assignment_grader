@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The class defines a Queue with a single attribute `last` that only holds the most recent element, so it lacks the necessary storage to maintain FIFO order for multiple items.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty method returns `self.last is None`, which correctly reports true only when the queue holds no element according to the class’s internal state.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The head() method returns self.last, which is the most recently enqueued item (the back of the queue) rather than the front element, and thus does not correctly return the queue’s front without modification.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The enqueue method simply assigns the new value to self.last, overwriting any previous element instead of adding it to the back of a queue structure.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `dequeue` method returns the stored element and then sets `self.last` to `None`, effectively removing it and updating the internal state.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The implementation overwrites the previous element on each enqueue, so earlier items are lost and FIFO order is not maintained; it does not behave as a proper queue.

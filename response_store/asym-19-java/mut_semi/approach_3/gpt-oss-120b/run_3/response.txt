@@ -1,0 +1,43 @@
+POINT_ID: Point 1 — Splitting code into parts + referencing line numbers
+BUCKET: Wrong
+FEEDBACK: The student mentions f and g but never cites specific line numbers or clearly separates the code into distinct parts such as initializations, loops, and the call to g.
+
+POINT_ID: Point 2 — Constant-time non-loop parts
+BUCKET: Semi
+FEEDBACK: The student notes that the setup statements are constant, but does not identify all non‑loop sections (e.g., the return statement in f or the initializations in g) as Θ(1).
+
+POINT_ID: Point 3 — f(): Nested loop iterations
+BUCKET: Semi
+FEEDBACK: The student states that the loops run about N² iterations, but provides no justification based on the j = i lower bound or the summation N + (N‑1) + … + 1.
+
+POINT_ID: Point 4 — f(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The analysis correctly says each iteration does an array read and an addition, describing this as Θ(1) work.
+
+POINT_ID: Point 5 — f(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student combines the iteration count and per‑iteration cost to conclude the loop’s total work is Θ(N²).
+
+POINT_ID: Point 6 — f(): Cost of Part C (call to g + constant work)
+BUCKET: Wrong
+FEEDBACK: The cost of the call to g is mentioned only as “some more cost” without quantifying it as Θ(log N) plus Θ(1) for the addition/return.
+
+POINT_ID: Point 7 — g(): Loop iterations
+BUCKET: Semi
+FEEDBACK: The student correctly claims Θ(log N) iterations but does not explain that the interval is halved each time.
+
+POINT_ID: Point 8 — g(): Cost per iteration
+BUCKET: Correct
+FEEDBACK: The description of each iteration (midpoint computation, array accesses, comparisons) is correctly identified as Θ(1).
+
+POINT_ID: Point 9 — g(): Total loop cost
+BUCKET: Correct
+FEEDBACK: The student multiplies the Θ(log N) iteration count by Θ(1) per‑iteration cost and states the total as Θ(log N).
+
+POINT_ID: Point 10 — Overall worst-case runtime of g
+BUCKET: Semi
+FEEDBACK: The overall runtime is given as Θ(log N), but the student does not explicitly combine the constant‑time parts with the loop cost.
+
+POINT_ID: Point 11 — Overall worst-case runtime of f
+BUCKET: Semi
+FEEDBACK: The final result Θ(N²) is stated, yet the analysis lacks the explicit reasoning that Θ(log N) from the g call is lower‑order and can be absorbed.

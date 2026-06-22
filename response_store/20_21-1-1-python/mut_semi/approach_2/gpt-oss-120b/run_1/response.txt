@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The base case returns 1 instead of 1 % c, so it fails for cases like c = 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution uses `elif b % 2:` for the odd case and the `else` branch for even, correctly distinguishing parity.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd branch you return `expo(a, b - 1, c) % c` without multiplying by `a`, so the required `(a * expo(...)) % c` is not implemented.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: In the even branch you correctly call expo(a, b//2, c), take the result modulo c, and return (result * result) % c, matching the required halve‑and‑square behavior.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function returns 1 instead of 1 % c for b = 0 (fails when c = 1) and the odd‑b branch omits the multiplication by a, so it does not compute a^b mod c correctly.

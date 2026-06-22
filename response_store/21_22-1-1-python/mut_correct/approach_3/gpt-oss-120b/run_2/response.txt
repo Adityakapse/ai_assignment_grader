@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements `calc` as `expo(2, n, c) - 1`, correctly using the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `expo` function includes `if b == 0: return 1 % c`, providing the proper base case for exponent 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `b` is odd, the code returns `(a * expo(a, b - 1, c)) % c`, correctly reducing the exponent by 1 and multiplying by the base.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For even `b`, it computes `a = expo(a, b // 2, c) % c` once and returns `(a * a) % c`, implementing exponentiation‑by‑squaring with a single recursive call.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `calc(n)` returns `(2^n - 1) mod 1000000007` for all valid inputs, runs in O(log n), and contains no forbidden keywords.

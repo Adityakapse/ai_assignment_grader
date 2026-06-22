@@ -1,0 +1,317 @@
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+def editDistance(a, b):
+    """This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly"""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]
+
+STUDENT SOLUTION:
+def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        edDis[i][0] = i
+    for j in range(n + 1):
+        edDis[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+
+
+RUBRIC POINT:
+Point 1 — DP table allocation and loop structure
+  A 2D table of size (m+1) x (n+1) is allocated, and nested loops iterate i from 1 to m and j from 1 to n to fill it bottom-up.
+  Buckets:
+    - Wrong (0 marks): No 2D table is allocated, or only a 1D array is used; no nested loops are present to fill the table.
+    - Semi (10 marks): A 2D table and nested loops are present, but the table size is wrong (e.g., m x n instead of (m+1) x (n+1)), or the loop bounds are off (e.g., starting from 0 instead of 1, or not reaching m or n).
+    - Correct (20 marks): A 2D table of size (m+1) x (n+1) is allocated and nested loops correctly iterate i from 1 to m (inclusive) and j from 1 to n (inclusive) to fill it bottom-up.
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+def editDistance(a, b):
+    """This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly"""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]
+
+STUDENT SOLUTION:
+def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        edDis[i][0] = i
+    for j in range(n + 1):
+        edDis[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+
+
+RUBRIC POINT:
+Point 2 — Base case initialisation
+  edDis[i][0] = i for all i from 0 to m (cost of deleting i characters), and edDis[0][j] = j for all j from 0 to n (cost of inserting j characters).
+  Buckets:
+    - Wrong (0 marks): Neither base case is initialised; the first row and column remain 0, making the DP table incorrect for any non-empty string.
+    - Semi (10 marks): Only one of the two base cases is correctly initialised (first row or first column), while the other is missing or set to a wrong value.
+    - Correct (20 marks): Both base cases are correctly initialised: edDis[i][0] = i for all i from 0 to m, and edDis[0][j] = j for all j from 0 to n.
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+def editDistance(a, b):
+    """This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly"""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]
+
+STUDENT SOLUTION:
+def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        edDis[i][0] = i
+    for j in range(n + 1):
+        edDis[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+
+
+RUBRIC POINT:
+Point 3 — Character match case
+  When a[i-1] == b[j-1], edDis[i][j] is set to edDis[i-1][j-1] (no edit needed).
+  Buckets:
+    - Wrong (0 marks): No character comparison is performed, or the match case is absent and the mismatch formula is applied unconditionally.
+    - Semi (8 marks): A character comparison is present but uses wrong indices (e.g., a[i] == b[j] instead of a[i-1] == b[j-1]), or on a match the wrong cell is copied (e.g., copies edDis[i][j-1] instead of edDis[i-1][j-1]).
+    - Correct (15 marks): When a[i-1] == b[j-1], edDis[i][j] is correctly set to edDis[i-1][j-1].
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+def editDistance(a, b):
+    """This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly"""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]
+
+STUDENT SOLUTION:
+def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        edDis[i][0] = i
+    for j in range(n + 1):
+        edDis[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+
+
+RUBRIC POINT:
+Point 4 — Mismatch recurrence: 1 + min of three neighbours
+  When a[i-1] != b[j-1], edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]), representing insert, delete, and replace respectively.
+  Buckets:
+    - Wrong (0 marks): No recurrence is applied for the mismatch case, or a constant value is used instead of referencing the table.
+    - Semi (12 marks): A min-based recurrence is present but incomplete or incorrect: for example, only two of the three neighbours are taken, the +1 cost is missing, or the wrong cells are referenced.
+    - Correct (25 marks): edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) is applied correctly when characters differ, covering all three edit operations.
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+def editDistance(a, b):
+    """This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly"""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]
+
+STUDENT SOLUTION:
+def editDistance(a, b):
+    m, n = len(a), len(b)
+    edDis = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        edDis[i][0] = i
+    for j in range(n + 1):
+        edDis[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if a[i - 1] == b[j - 1]:
+                edDis[i][j] = edDis[i - 1][j - 1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j - 1], edDis[i - 1][j], edDis[i - 1][j - 1])
+    return edDis[m][n]
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness
+  The method returns the correct edit distance for all valid string inputs without using recursion.
+  Buckets:
+    - Wrong (0 marks): Method returns 0 or an incorrect value for most inputs, or uses recursion (which is explicitly forbidden).
+    - Semi (10 marks): Returns correct results for simple cases (e.g., empty string, identical strings, single character) but fails for longer or more complex inputs.
+    - Correct (20 marks): Returns the correct edit distance for all valid string inputs using an iterative (non-recursive) implementation.

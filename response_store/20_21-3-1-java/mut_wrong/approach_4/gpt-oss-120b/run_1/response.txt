@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2‑dimensional DP array; it only uses a single scalar total variable and thus lacks the required (n+1) × (capacity+1) table.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses only a single loop over the items and never iterates over capacities from 0 to the knapsack limit, so it lacks the required nested loops.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses `if (volumes[i] <= capacity)` to ensure an item fits before adding its value, correctly applying the `<=` feasibility check.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement any DP recurrence; it just sums values of items that individually fit the capacity, never referencing previously computed subproblem results.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method simply adds the values of all items whose individual volume is ≤ capacity, which fails to compute the optimal subset (e.g., it would incorrectly sum multiple items that together exceed the capacity).

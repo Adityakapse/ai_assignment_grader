@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student creates an adjacency list from A and, inside the same loop, adds edges from the virtual source node 0 to every node 1…N ( if (i != 0) graph.get(0).add(i); ), enabling a single DFS from node 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is allocated with size N+1, filled with -1, and the DFS begins with if (memo[node] != -1) return memo[node]; so cached results are reused correctly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS base case checks graph.get(node).size() == 0 and returns 0, correctly representing a leaf node’s path length.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child the code computes sol = Math.max(sol, dfs(child, graph, memo) + 1); stores the result in memo[node] before returning, implementing the proper recurrence and memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The calc function returns dfs(0, graph, memo) - 1, which yields the exact length of the longest directed path for any DAG, matching the required O(N+M) solution.

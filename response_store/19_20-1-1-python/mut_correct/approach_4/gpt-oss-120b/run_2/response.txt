@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a GCD function with two parameters, includes the swap, computes the remainder, has a base case returning b when r == 0, and makes a recursive call GCD(r, b), satisfying the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The GCD function checks `if r == 0: return b`, correctly terminating recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After swapping to ensure a ≥ b, the function computes r = a % b and recurses with GCD(r, b), which correctly reduces the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The LCM function returns `a * b // GCD(a, b)`, correctly implementing the (a * b) / gcd(a,b) formula using integer division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The GCD function correctly computes the divisor for positive inputs, but it fails (raises a ZeroDivisionError) when either argument is zero, so edge cases like gcd(0, n) are not handled.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The LCM function returns `a * b // GCD(a, b)`, which correctly computes the least common multiple for all positive integer inputs using the provided GCD implementation.

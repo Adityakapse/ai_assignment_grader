@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds an adjacency list from A and adds a virtual source node 0 with edges to every node 1…N, enabling a single DFS to cover all possible start points.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes `memo` with -1 for all nodes and correctly returns the cached value when `memo[node] != -1`, ensuring each subproblem is computed only once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function checks `if len(graph[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The dfs function correctly loops over every child, uses sol = max(sol, dfs(child, …) + 1) to count edges, and stores memo[node] = sol before returning, implementing the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, correctly adds a virtual source, uses memoization, and returns dfs(0) - 1, yielding the proper longest path length for all DAGs.

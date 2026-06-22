@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length + 1];` which is at least the size of |B| and Java initializes it to zero, satisfying the counting‑array requirement.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The frequency loop uses `C[i]++` instead of `C[A[i]]++`, so it increments the wrong indices and never records the actual counts of the categories in A.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at `i = 1` and runs while `i < B.length`, omitting index 0 and producing a string one character shorter than required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The comparison appends `'1'` when `C[i] > B[i]` and `'0'` otherwise, which is the opposite of the specified rule (`'1'` should be for `C[i] <= B[i]`).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because of the incorrect counting, off‑by‑one output loop, and reversed comparison, the method does not return the correct binary string for general inputs, though it avoids forbidden substrings.

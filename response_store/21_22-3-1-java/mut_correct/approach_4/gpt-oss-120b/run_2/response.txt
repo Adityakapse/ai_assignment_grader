@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates a `long[] memo = new long[n + 1];` and fills every entry with `-1` in the loop, matching the required sentinel initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code includes both required base cases, returning W[0] for n = 0 and max(W[0], W[1]) for n = 1, matching the specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper function includes `if (memo[n] != -1) return memo[n];`, correctly using -1 as the sentinel to return cached results.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper computes `memo[n] = Math.max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and returns `memo[n]`, correctly applying the recurrence and memoizing the result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student’s implementation mirrors the reference solution, using memoization and recursive choices to compute the optimal profit in linear time for all input sizes.

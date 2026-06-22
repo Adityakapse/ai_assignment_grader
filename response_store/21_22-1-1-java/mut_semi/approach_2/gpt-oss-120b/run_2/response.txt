@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student computes 2^n mod c but fails to include the required “‑1” in the closed‑form aₙ = 2ⁿ − 1, so the derivation is incomplete.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function correctly returns 1 when b == 0, satisfying the required base case.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case you return `expo(a, b - 1, c) % c` but omit the multiplication by `a`, so the required `(a * expo(...)) % c` is missing.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: In the even branch you correctly call expo(a, b/2, c) once, store the result, and return (result * result) % c, matching the required halve‑and‑square behavior.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution returns expo(a,b,c) without the required “‑1”, the exponentiation routine is wrong (odd case never multiplies by a) and even uses the forbidden name “expo”, so it never yields (2ⁿ‑1) mod 10⁹+7.

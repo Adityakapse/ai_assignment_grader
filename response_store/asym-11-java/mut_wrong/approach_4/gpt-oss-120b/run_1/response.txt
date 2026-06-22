@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You identified the two methods and noted that f contains a nested loop and calls g, but you did not break the code into distinct parts (e.g., initializations, loop body, return) nor reference specific line numbers, making the separation incomplete.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: You noted that some operations are “simple and constant,” but you did not explicitly identify all non‑loop parts (e.g., the initializations of n, c, l, r and the return statements) as Θ(1).
+
+POINT_ID: 3
+BUCKET: Semi (6 marks)
+FEEDBACK: The student correctly identifies Θ(N²) iterations for f, but their justification is weak, merely noting it “loops over every cell” without explicitly stating that both the outer and inner loops run N times.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: You state that the operations inside the nested loops are “simple and constant,” effectively treating the call to g as Θ(1) per iteration, which ignores the Θ(log N) cost of the binary search.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N^2) and treated the call to g as constant work, never multiplying the N^2 iterations by the Θ(log N) cost of g, so the total loop cost is incorrect.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The student states that g runs in O(log N) but only mentions it “looks logarithmic” without explicitly justifying that each iteration halves the interval.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: The student notes that g does “simple constant work” per iteration, indicating a constant cost, but does not provide the explicit Theta(1) justification required.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: You noted that g runs in logarithmic time but did not explicitly combine the Θ(log N) iteration count with the Θ(1) per‑iteration cost, so the total loop cost was not derived as Θ(log N) × Θ(1).
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N) rather than the correct Θ(log N) and did not provide the required breakdown of constant‑time parts plus the loop cost.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N^2) and omitted the logarithmic factor from the binary‑search call, resulting in an incorrect overall runtime.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student returns expo(2, n, c) - 1, which implements the closed form a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes `if b == 0: return 1 % c`, correctly handling the base case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When b is odd, the code executes `return (a * expo(a, b - 1, c)) % c`, properly reducing by 1 and multiplying.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For even b, the code calls `expo(a, b // 2, c)` once, stores it in `a`, and returns `(a * a) % c`, correctly halving and squaring.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc(n) returns (2^n - 1) mod 1,000,000,007 for all valid inputs, uses no forbidden keywords, and runs in O(log n).

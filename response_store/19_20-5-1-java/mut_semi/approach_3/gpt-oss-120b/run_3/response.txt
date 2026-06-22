@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code adds the start node to the queue before entering the while loop and continues looping while the queue is not empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Nodes are removed with `queue.remove(queue.size() - 1)`, which takes from the back of the list (LIFO) instead of the front, turning the traversal into DFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Before processing a node, the code checks `!visited.contains(next)` and adds the node to `visited` only after this check, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The algorithm iterates over `graph[next]` and enqueues each neighbor that is not already visited using `queue.add(vertex)`.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While all reachable nodes are eventually returned, the order follows a depth‑first pattern due to the LIFO dequeue, so the BFS level‑by‑level ordering is not achieved.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates `int[] C = new int[B.length + 1];`, providing a counting array of at least the needed size, and Java automatically initializes all entries to zero.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop increments C[i] using the index i instead of C[A[i]], so the frequencies of categories in A are not counted correctly.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The output loop starts at 1 instead of 0, so it omits the first category and generates a string that is one character shorter than required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The output loop starts at index 1 and appends '1' when C[i] > B[i] instead of when C[i] ≤ B[i], so the comparison logic and resulting characters are incorrect.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code counts frequencies using the loop index instead of the value (C[i]++), starts the output loop at 1 (missing the first category), and reverses the comparison, so it never produces the correct binary string.

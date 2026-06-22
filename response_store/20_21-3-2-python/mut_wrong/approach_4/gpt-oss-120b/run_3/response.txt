@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution builds the adjacency list from A correctly, but it never adds the virtual source node 0 with edges to all nodes and simply returns 0, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution builds an adjacency list but never creates a memo array or performs any DFS, so there is no memoization or cache check at all.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not implement a DFS at all, so there is no base case for leaf nodes; it simply returns 0 without handling nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution only builds the adjacency list and then returns 0, never iterating over a node’s children or computing a max with dfs(child)+1, so the required recurrence is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function builds the adjacency list but never traverses it and always returns 0, so it fails to compute the longest path for any non‑trivial graph.

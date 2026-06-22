@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code defines a quick() method that recursively calls itself on the two sub‑arrays returned by partition, providing a recognizable quicksort divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when the condition `if (l < r)` is false, which correctly handles subarrays of length 0 or 1 and prevents infinite recursion.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The partition function only swaps the first element with the pivot if it is larger and then returns the index `i` without moving other elements, so it does not correctly partition the array around the pivot.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The pivot is always the last element and no random library is used, so there is no randomisation to guard against worst‑case O(n²) inputs.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the partition step does not reorder elements properly, the returned array is not sorted for general inputs.

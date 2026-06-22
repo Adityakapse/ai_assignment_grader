@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a memo array of length n+1 but fills it with 0 and uses `memo[n] != 0` as the cache check, instead of initializing entries to -1 as the required sentinel.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code includes a base case for n == 0 but omits the required n == 1 case, so it can produce wrong results or index errors when the array has only two elements.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses `if memo[n] != 0` as the cache check, but the memo array is initialized with 0, so the sentinel is wrong (should be `!= -1`), leading to incorrect caching behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The helper uses the proper max‑based recurrence `max(W[n] + opt_helper(n-2,…), opt_helper(n-1,…))` and assigns the result to `memo[n]` before returning it.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation omits the n == 1 base case, causing calls like opt_helper(1) to recurse indefinitely (or hit negative indices), so it fails for small inputs and does not reliably return the correct maximum profit.

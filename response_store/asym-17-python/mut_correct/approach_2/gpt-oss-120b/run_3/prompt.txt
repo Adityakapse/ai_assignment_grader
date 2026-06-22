@@ -1,0 +1,1163 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 1 — Splitting code into parts + referencing line numbers (valid range: 0–5)
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 2 — Constant-time non-loop parts (valid range: 0–5)
+  All non-loop code in f and g is Theta(1).
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 3 — f(): Loop iterations (valid range: 0–12)
+  Theta(N) iterations of the for loop reading the first column of mat.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 4 — f(): Cost per iteration (valid range: 0–12)
+  Theta(1) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 5 — f(): Total loop cost (valid range: 0–8)
+  Theta(N) from Theta(N) iterations x Theta(1) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 6 — f(): Cost of Part C (call to g + constant work) (valid range: 0–6)
+  Theta(N^2), accounting for the cost of g plus the constant-time addition and return.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 7 — g(): Nested loop iterations (valid range: 0–10)
+  Theta(N^2) combined iterations over every cell of the N x N matrix.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 8 — g(): Cost per iteration (valid range: 0–8)
+  Theta(1) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 9 — g(): Total loop cost (valid range: 0–6)
+  Theta(N^2) = Theta(N^2) iterations x Theta(1) per iteration.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 10 — Overall worst-case runtime of g (valid range: 0–12)
+  T_g(N) = Theta(N^2), summing constant parts and the nested loop.
+
+========================================
+
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the side length N of the input matrix `mat` (which is N x N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(mat):
+    n = len(mat)
+    s = 0
+    for i in range(n):
+        s += mat[i][0]
+    t = g(mat)
+    return s + t
+
+def g(mat):
+    n = len(mat)
+    t = 0
+    for i in range(n):
+        for j in range(n):
+            t += mat[i][j]
+    return t
+
+SAMPLE SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+STUDENT SOLUTION:
+Let N be the side length of the matrix mat (mat is N x N).
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (for loop): a single loop reading the first column of mat.
+Part C: t = g(mat); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(mat) costs Theta(N^2) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(N^2).
+
+Overall running time of f:
+Theta(1) + Theta(N) (Part B) + Theta(N^2) (Part C) = Theta(N^2). Here the helper g dominates f's own loop, so the lower-order Theta(N) term is absorbed.
+
+Method g
+Part D: the initialisations of n and t - constant time.
+Part E (nested loops over i, j): visits every cell of the N x N matrix.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: the outer and inner loops each run N times, so the body runs N x N = Theta(N^2) times.
+- Cost per iteration: Theta(1) - one matrix access and one += assignment.
+- Total cost of Part E: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Overall running time of g:
+Theta(1) + Theta(N^2) + Theta(1) = Theta(N^2).
+
+RUBRIC POINT:
+Point 11 — Overall worst-case runtime of f (valid range: 0–16)
+  T_f(N) = Theta(N^2), accounting for non-loop parts + loop + Part C.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (m+1) × (n+1) table and uses nested loops with i from 1 to m and j from 1 to n, satisfying the required table allocation and loop structure.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The base cases edDis[i][0] = i and edDis[0][j] = j are never set; the table entries remain zero, which is incorrect.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When a[i‑1] == b[j‑1] the implementation assigns edDis[i][j] = edDis[i‑1][j‑1], correctly handling the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters the code uses 1 + min(edDis[i][j‑1], edDis[i‑1][j], edDis[i‑1][j‑1]), correctly implementing the recurrence.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Missing base‑case initialization leads to incorrect results for many inputs, so the overall method does not reliably return the correct edit distance.
+
+TOTAL: 60

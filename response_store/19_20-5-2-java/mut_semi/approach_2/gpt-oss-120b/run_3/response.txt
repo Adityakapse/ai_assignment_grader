@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 12
+FEEDBACK: You correctly push the start node onto the stack before the loop and check !stack.isEmpty(), but the added safety counter alters the loop condition, so the traversal may stop before the stack is empty.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses `stack.pop()` to remove the current node from the top of the stack each iteration, correctly implementing LIFO behavior.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution adds every popped node to visited without first checking if it was already visited, and pushes all neighbors unconditionally, so duplicate entries and infinite loops are not prevented.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The code iterates neighbours in reverse order, but it pushes every neighbour onto the stack without checking if it has already been visited, violating the “push only unvisited neighbours” requirement.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never checks whether a node has already been visited, so on graphs with cycles it either loops indefinitely (mitigated only by an arbitrary safety limit) and does not guarantee correct DFS order or completeness.

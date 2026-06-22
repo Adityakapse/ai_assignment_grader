@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function only contains a single for‑loop and never repeats passes, so it lacks the outer loop required for a complete sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code calls `listToSort.Larger(i - 1, i)` with adjacent indices, correctly detecting out‑of‑order pairs.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `listToSort.Swap(i - 1, i)` is executed only when the Larger comparison is true and uses the same indices as the comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop bound uses `listToSort.Length()` to iterate over the list, ensuring the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because only one pass is performed, the list is only partially sorted; it works for very short or already‑nearly‑sorted inputs but fails on general cases requiring multiple passes.

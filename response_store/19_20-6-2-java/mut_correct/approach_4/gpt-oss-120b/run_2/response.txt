@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates a double[][] of size (n+1) × (capacity+1) and, as Java initializes numeric arrays to 0, all cells start at zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses an outer loop that iterates i from n‑1 down to 0 (all n items) and an inner loop that runs j from 0 through capacity inclusive, thus covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code includes `if (volumes[i] <= j)` before considering inclusion, correctly handling items that exactly fit the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j])` when the item fits and `Result[i][j] = Result[i+1][j]` otherwise, correctly referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference DP logic, fills the table correctly, and returns Result[0][capacity], yielding the correct maximum value for all valid inputs.

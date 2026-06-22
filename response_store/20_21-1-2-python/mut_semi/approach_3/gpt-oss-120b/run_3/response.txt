@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution defines `quick` with recursive calls on both `l..p-1` and `p+1..r`, showing a recognizable quicksort divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `quick` stops recursion with the condition `if l < r:`, which correctly prevents further calls on subarrays of length 0 or 1.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The `partition` function only swaps the element at index `l` with the pivot when it is larger and never moves the other elements, so the pivot is not placed with all smaller elements to its left and larger to its right.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code never imports or uses the `random` module; it always uses the last element as pivot, so no randomisation is performed.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the partition step does not correctly reorder elements, `solution` returns the original (or only partially swapped) array unsorted for typical inputs.

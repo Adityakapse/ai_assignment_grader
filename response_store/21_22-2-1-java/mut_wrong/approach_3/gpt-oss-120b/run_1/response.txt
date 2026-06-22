@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never allocates a counting array C; it proceeds directly to building the output string.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There is no loop over array A to increment any counts, so frequencies are never accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for (int i = 0; i < B.length; i++)`, correctly iterating from 0 to |B|‑1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No comparison between a count and B[i] is performed; the method appends '1' for every position regardless of capacity.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because it always returns a string of all '1's, the method fails to produce the correct binary string for inputs where some categories exceed their capacities.

@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `c = [0] * n` and correctly sets `c[0] = a[0]` before any further processing.
+
+POINT ID: 2
+BUCKET: Semi
+FEEDBACK: The loop `for i in range(1, n): c[i] = a[i]` copies values without adding the previous prefix, so `c[i]` is not `a[i] + c[i-1]`.
+
+POINT ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `d` of size n is created and the loop `for i in range(n):` iterates over all queries, satisfying the allocation and iteration requirement.
+
+POINT ID: 4
+BUCKET: Semi
+FEEDBACK: The statement `d[i] = c[b[i][1]] - c[b[i][0] - 1]` is used unconditionally, causing an incorrect access (`c[-1]`) when `l == 0` and not handling that edge case.
+
+POINT ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the faulty prefix‑sum construction and missing `l == 0` handling, the function returns incorrect range sums for many queries.

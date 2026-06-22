@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code allocates a memo array of the correct size but initializes it with zeros instead of the required -1 sentinel, so the caching check does not follow the specification.
+
+POINT_ID: 2
+MARKS: 8
+FEEDBACK: The code correctly handles the n = 0 case, but it lacks a specific base case for n = 1, causing incorrect or undefined behavior when opt(1) is requested.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: You do perform a cache check, but you test `memo[n] != 0` after initializing the table with zeros instead of the required `memo[n] != -1` sentinel used in the specification.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation assigns memo[n] = max(W[n] + opt_helper(n‑2,…), opt_helper(n‑1,…)) and returns memo[n], correctly following the required recurrence and memo‑store pattern.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation lacks the base case for n = 1 and recurses into negative indices, causing errors for many valid inputs, so it does not reliably return the correct maximum profit.

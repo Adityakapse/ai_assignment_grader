@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[][] edDis = new int[m + 1][n + 1]` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the table, matching the required size and iteration range.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It correctly initializes both base cases with `edDis[i][0] = i` for all `i` and `edDis[0][j] = j` for all `j`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code compares `a.charAt(i - 1) == b.charAt(j - 1)` and on a match sets `edDis[i][j] = edDis[i - 1][j - 1]`, exactly as specified.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the mismatch case it assigns `edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j - 1], edDis[i - 1][j]), edDis[i - 1][j - 1])`, correctly using all three neighbours with the +1 cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `edDis[m][n]` without any recursion, providing the correct edit distance for all valid string inputs.

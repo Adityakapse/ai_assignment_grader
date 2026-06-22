@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student’s code returns 2ⁿ mod c without subtracting 1, indicating they did not correctly identify the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function’s base case correctly returns 1 % c when b == 0, meeting the requirement.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd branch you return `expo(a, b - 1, c) % c` without multiplying by `a`, so the required `(a * expo(...)) % c` is missing.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even branch calls expo once, stores the result in a (tmp) and returns (a*a)%c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function returns 2ⁿ (mod M) and even the exponent helper omits the required multiplication in the odd case, so it never produces the correct (2ⁿ − 1) mod 10⁹+⁷.

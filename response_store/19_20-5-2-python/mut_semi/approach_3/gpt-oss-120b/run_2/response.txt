@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code initializes the stack with the start node and uses a while loop, but the loop condition also checks `safety < 1000`, so it may stop before the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Nodes are removed with `stack.pop()`, which always takes the top element, satisfying the LIFO requirement.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The implementation appends each popped node to `visited` without first checking whether it has already been visited, allowing duplicates and potential infinite loops.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: While the code iterates over `reversed(graph[nxt])` and pushes each neighbour onto the stack, it does not filter out already‑visited neighbours, violating the “push only unvisited neighbours” rule.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because visited nodes are not checked and the safety counter can cut the traversal short, the function does not reliably return all reachable nodes in correct DFS order, especially on cyclic graphs.

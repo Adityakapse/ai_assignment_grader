@@ -1,0 +1,157 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as functions of the length N of array `a` and the length N of the sorted array `b` (both of length N).
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+def f(a, b):
+    n = len(a)
+    s = 0
+    for i in range(n):
+        for j in range(i, n):
+            s += a[j]
+    t = g(b, a[0])
+    return s + t
+
+def g(b, x):
+    l = 0
+    r = len(b) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if b[mid] == x:
+            return mid
+        if b[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1
+
+SAMPLE SOLUTION:
+Let N be the length of arrays a and b.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (nested loops over i, j): inner loop runs from j = i to N-1.
+Part C: t = g(b, a[0]); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (nested loops):
+- Iterations: for each i the inner loop runs N - i times. Total = N + (N-1) + ... + 1 = N(N+1)/2 = Theta(N^2).
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N^2) x Theta(1) = Theta(N^2).
+
+Part C:
+- The call g(b, a[0]) is a binary search costing Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N^2) (Part B) + Theta(log N) (Part C) = Theta(N^2), absorbing the lower-order Theta(log N) term.
+
+Method g
+Part D: the initialisations of l and r - constant time.
+Part E (while loop): standard binary search.
+Part F: return -1 - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: each iteration either returns or halves the interval [l, r], so the loop runs Theta(log N) times.
+- Cost per iteration: Theta(1) - one midpoint computation, two array accesses, two comparisons, one update.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+
+STUDENT SOLUTION:
+f has two nested loops over a where the inner starts at i and then calls g. The setup statements are constant.
+
+The loop in f runs about N^2 iterations in total (N is the length of a and b). Each pass does an array read and an addition, all Theta(1) simple operations, so f's own loop work is Theta(N^2).
+
+The call to g afterwards adds some more cost on top.
+
+g uses a binary search while loop that runs Theta(log N) times. Every iteration does a midpoint, a couple of array accesses and comparisons, all Theta(1), so the loop is Theta(log N) x Theta(1) = Theta(log N).
+
+Putting it together, g is Theta(log N) and f is Theta(N^2).
+
+RUBRIC:
+Point 1 — Splitting code into parts + referencing line numbers
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+  Buckets:
+    - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+    - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+    - Correct (5 marks): Clear separation of f's nested loop and the call to g; line numbers referenced consistently.
+
+Point 2 — Constant-time non-loop parts
+  All non-loop code in f and g is Theta(1).
+  Buckets:
+    - Wrong (0 marks): Non-loop code not analysed or incorrectly claimed to be non-constant.
+    - Semi (3 marks): Some constant-time segments identified but others missing or vaguely stated.
+    - Correct (5 marks): All non-loop regions (initialisations and returns in f and g) stated as Theta(1).
+
+Point 3 — f(): Nested loop iterations
+  Theta(N^2) combined iterations of the triangular nested loops (inner runs j = i..N-1).
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(N^2) (e.g. claims Theta(N)).
+    - Semi (6 marks): States Theta(N^2) but with weak justification (does not reference the j = i lower bound).
+    - Correct (12 marks): Justifies Theta(N^2) by summing N + (N-1) + ... + 1 = N(N+1)/2, or by stating outer Theta(N) x average inner Theta(N).
+
+Point 4 — f(): Cost per iteration
+  Theta(1) per inner iteration.
+  Buckets:
+    - Wrong (0 marks): Claims non-constant per-iteration cost, or does not clearly state it.
+    - Semi (6 marks): Suggests constant time but with incomplete reasoning.
+    - Correct (12 marks): States Theta(1): one array read and one += assignment.
+
+Point 5 — f(): Total loop cost
+  Theta(N^2) from Theta(N^2) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): No multiplication of iteration count x per-iteration cost, or total does not match own analysis.
+    - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+    - Correct (8 marks): Theta(N^2) x Theta(1) = Theta(N^2).
+
+Point 6 — f(): Cost of Part C (call to g + constant work)
+  Theta(log N), accounting for the cost of the binary-search call g plus the constant-time addition and return.
+  Buckets:
+    - Wrong (0 marks): Cost of Part C missing or incorrect (e.g. claims Theta(N)).
+    - Semi (3 marks): Notes that cost comes from g but unclear about Theta(log N).
+    - Correct (6 marks): Accounts for the call g(b, a[0]) as Theta(log N) (a binary search) and the addition / return as Theta(1).
+
+Point 7 — g(): Loop iterations
+  Theta(log N) iterations because the search interval halves each iteration.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(log N) (e.g. claims Theta(N)).
+    - Semi (5 marks): States Theta(log N) but does not justify the halving of the interval.
+    - Correct (10 marks): Justifies Theta(log N) by explaining that each iteration either returns or shrinks [l, r] by half.
+
+Point 8 — g(): Cost per iteration
+  Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Incorrect non-constant per-iteration cost claimed.
+    - Semi (4 marks): Suggests operations are constant but lacks explicit Theta(1) justification.
+    - Correct (8 marks): Each iteration Theta(1): midpoint computation, two array accesses, two comparisons, one update.
+
+Point 9 — g(): Total loop cost
+  Theta(log N) = Theta(log N) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Does not combine iteration count x per-iteration cost.
+    - Semi (3 marks): Attempts multiplication using own values but unclear or partially derived.
+    - Correct (6 marks): Theta(log N) x Theta(1) = Theta(log N).
+
+Point 10 — Overall worst-case runtime of g
+  T_g(N) = Theta(log N), summing the constant-time parts and the loop.
+  Buckets:
+    - Wrong (0 marks): Runtime absent or incompatible with earlier analysis.
+    - Semi (6 marks): States Theta(log N) but with missing reasoning.
+    - Correct (12 marks): Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+
+Point 11 — Overall worst-case runtime of f
+  T_f(N) = Theta(N^2), accounting for non-loop parts + nested loop + Part C.
+  Buckets:
+    - Wrong (0 marks): Final complexity missing/incorrect.
+    - Semi (8 marks): States Theta(N^2) but with missing reasoning.
+    - Correct (16 marks): Theta(1) + Theta(N^2) + Theta(log N) = Theta(N^2), correctly absorbing the lower-order log N term.

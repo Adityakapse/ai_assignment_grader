@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student adds the start node to `queue` before the loop (`queue = [start]`) and processes nodes while `queue` is non‑empty, satisfying the required initialization and loop structure.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code uses `queue.pop()` which removes the last element, implementing a LIFO stack rather than the required FIFO removal from the front (`pop(0)`).
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Each node is checked with `if nxt not in visited` before processing and then appended to `visited`, correctly preventing duplicate processing.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Unvisited neighbours are iterated with `for vertex in graph[nxt]:` and added via `queue.append(vertex)`, correctly enqueuing them at the back of the list.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the dequeue operation is LIFO, the returned order is depth‑first, not breadth‑first; thus the method does not produce correct BFS traversal.
+
+TOTAL: 60

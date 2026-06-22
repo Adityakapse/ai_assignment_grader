@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `c` with length n and correctly assigns `c[0] = a[0]` before the subsequent loop, meeting the prefix‑sum array allocation criterion.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop `for i in range(1, n): c[i] = a[i]` only copies elements of A into C instead of accumulating `c[i-1]`, so the prefix sum array is constructed incorrectly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution creates `d = [0] * n` and uses `for i in range(n):` to process every query, satisfying the required output array allocation and full query loop.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution creates `c` as a simple copy of `a` (no prefix accumulation) and always uses `d[i] = c[r] - c[l-1]`, which also triggers an out‑of‑bounds access when `l == 0`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution builds c as a copy of a instead of a prefix sum and always computes c[b[i][0]-1], which fails for l = 0 and yields incorrect range sums.

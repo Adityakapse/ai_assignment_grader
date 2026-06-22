@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code correctly pushes the start node onto the stack before the loop and uses a while loop that runs while the stack is non‑empty (the added safety counter does not affect this requirement).
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses `stack.pop()` to remove the current node from the end of the list, correctly implementing LIFO behavior for depth‑first traversal.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The implementation never checks the visited list before processing a node or before pushing its neighbors, causing duplicate entries and potential infinite loops (mitigated only by an artificial safety counter).
+
+POINT_ID: 4
+MARKS: 8
+FEEDBACK: The code pushes neighbours in reversed order, but it does not check whether a neighbour has already been visited before pushing, so visited nodes are added to the stack.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The function never checks whether a vertex has already been visited, so on graphs with cycles it repeats nodes and relies on an arbitrary safety limit, resulting in incorrect or incomplete DFS traversal.

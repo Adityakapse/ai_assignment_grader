@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds an adjacency list from A and adds a virtual source node 0 with edges to every node 1..N via `graph[0] = [x for x in range(1, N + 1)]`.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: A memo array is initialised with -1 (`memo = [-1] * (N + 1)`) and the cache is checked early (`elif memo[node] != -1: return memo[node]`), with results stored back into `memo[node]`.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS base case correctly returns 0 when a node has no outgoing edges (`if len(graph[node]) == 0: return 0`).
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The recurrence iterates over children, updating `sol = max(sol, dfs(child, graph, memo) + 1)` and stores the result in `memo[node]` before returning.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: `calc` returns `dfs(0, graph, memo) - 1`, which yields the correct length of the longest directed path for any DAG within the given constraints.
+
+TOTAL: 100

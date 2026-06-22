@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `memo = [-1] * (n + 1)`, creating an array of size n+1 and initializing every entry to -1 as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are present: `if n == 0: return W[0]` and `if n == 1: return max(W[0], W[1])`, matching the specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper begins with `if memo[n] != -1: return memo[n]`, correctly checking the -1 sentinel before recomputing a subproblem.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...))` is implemented and the result is stored in `memo[n]` before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Consequently, `opt` returns the maximum billboard profit for any valid input and runs in O(n) time thanks to proper memoization.

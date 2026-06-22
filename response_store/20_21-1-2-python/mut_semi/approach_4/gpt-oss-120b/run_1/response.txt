@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code defines a quicksort‑style recursion, but the partition function only swaps the first element with the pivot and returns the left index, causing the algorithm to recurse only on the right side and never fully divide the array.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The quick function uses `if l < r:` to stop recursion, correctly handling subarrays of length 0 or 1 and preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition function only swaps the first element with the pivot when needed and returns the original index, failing to move all smaller elements left of the pivot and larger elements right, so the partitioning is only partially implemented.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a fixed last-element pivot and never imports or applies the random library, providing no randomisation and no guarantee against worst‑case O(n²) behavior.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The partition routine only swaps the first element with the pivot and returns l, so the recursive quicksort never properly partitions the list, leaving the array unsorted for most inputs.

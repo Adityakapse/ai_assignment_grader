@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs the adjacency list from A correctly, but it never adds a virtual source node 0 with edges to all nodes and starts the DFS from node 1, so it cannot find the globally longest path.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student initializes the memo array to -1 for all nodes and correctly returns memo[node] when it is not -1, ensuring cached results are used.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs implementation includes `if (graph.get(node).size() == 0) return 0;`, which correctly returns 0 when a node has no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The dfs iterates over all children and takes the maximum, but it omits the required “+ 1” for each edge, so the path length isn’t counted (memoization is correctly applied).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dfs function never adds +1 for each traversed edge and starts from node 1 without the virtual source, causing every memo entry to stay 0 and calc to return 0 for essentially all DAGs.

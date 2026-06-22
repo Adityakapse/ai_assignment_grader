@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds an adjacency list of size N+1 and adds edges from node 0 to every node 1..N, correctly creating the virtual source as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array is initialised to –1 for all indices and the DFS returns memo[node] immediately when it is not –1, satisfying the memoisation requirement.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS base case returns 0 when graph.get(node).size() == 0, correctly handling leaf nodes.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each child the code updates sol with Math.max(sol, dfs(child) + 1) and stores the result in memo[node] before returning, implementing the recurrence properly.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: calc calls dfs from the virtual source and subtracts 1, producing the correct longest directed path length for any DAG and runs in O(N+M).
+
+TOTAL: 100

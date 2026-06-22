@@ -1,0 +1,39 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You identified f and g separately and noted that f loops over every cell and calls g, but you did not break the code into distinct parts (e.g., initializations, loop body, return) nor reference specific line numbers.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student never explicitly identifies the initializations and return statements as Θ(1) constant‑time code, so the non‑loop parts are not properly analyzed.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: You correctly identified that the nested loops iterate Θ(N²) overall, but your justification only says “loops over every cell” without explicitly noting that both the outer and inner loops each run N times.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: You stated that each iteration of f’s inner loop does only constant‑time work and ignored the logarithmic cost of the call to g, which is required for a correct per‑iteration analysis.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: You stated that f runs in O(N^2) and did not multiply the N^2 iterations by the Θ(log N) cost of g, so the required Θ(N^2 log N) total loop cost is missing.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The student states g runs in O(N) and does not explicitly claim Θ(log N) nor explain that the search interval is halved each iteration.
+
+POINT_ID: 7
+BUCKET: Semi
+FEEDBACK: You note that each iteration of g does “simple constant work,” indicating a Θ(1) cost, but you do not explicitly justify this by enumerating the operations performed per loop iteration.
+
+POINT_ID: 8
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N) and only mentioned it “does simple constant work, so it looks logarithmic” without explicitly multiplying the Θ(log N) iteration count by the Θ(1) per‑iteration cost to derive Θ(log N).
+
+POINT_ID: 9
+BUCKET: Wrong
+FEEDBACK: You stated that g runs in O(N) time, which contradicts the expected Θ(log N) runtime and provides no correct justification for the binary‑search loop.
+
+POINT_ID: 10
+BUCKET: Wrong
+FEEDBACK: You concluded that f runs in O(N^2) and omitted the logarithmic factor from the binary search, so the overall runtime does not match the required Θ(N^2 log N).

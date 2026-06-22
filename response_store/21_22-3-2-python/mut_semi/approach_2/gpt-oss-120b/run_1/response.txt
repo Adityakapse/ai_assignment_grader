@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code builds the adjacency list but does not add the required virtual source node 0 (and starts DFS from node 1), so the graph construction fails to meet the rubric’s specification.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The solution correctly creates a memo list filled with -1 and returns memo[node] when it is not -1, thus implementing proper memoization initialization and cache checking.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs function correctly returns 0 when a node has no outgoing edges, satisfying the leaf‑node base case.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The DFS recurrence omits the “+ 1” when combining child results (`sol = max(sol, dfs(child, …))`), so it does not correctly compute the longest path over the children.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution starts DFS at node 1, omits the +1 for each edge in the recursion, and never adds a virtual source, so it returns 0 for simple chains and fails for graphs not reachable from node 1.

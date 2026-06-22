@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student uses `if delete.left is None or delete.right is None: y = delete` and otherwise sets `y = tree_minimum(delete.right)`, correctly handling the one‑child and two‑child cases.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s `tree_minimum` function correctly iterates left while `n.left` exists and returns the leftmost node, matching the required in-order minimum behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets x to y.left when it exists, otherwise to y.right (which may be None), correctly identifying the child to promote.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates `x.parent = y.parent` when `x` exists, correctly handles the root case with `if y.parent is None: root = x`, and redirects the appropriate child pointer of `y.parent` to `x`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code includes `if y is not delete: delete.key = y.key`, ensuring the key is copied only when y is the in-order successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The delete function correctly handles leaf, single‑child, two‑children, and root deletions by selecting y, reassigning x, updating parent links, and copying the key when needed, returning the proper root.

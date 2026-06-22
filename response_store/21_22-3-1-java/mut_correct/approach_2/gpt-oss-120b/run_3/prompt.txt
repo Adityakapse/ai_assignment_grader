@@ -1,0 +1,332 @@
+QUESTION:
+(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.
+
+SAMPLE SOLUTION:
+long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+STUDENT SOLUTION:
+long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    for (int i = 0; i < n + 1; i++) memo[i] = -1;
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (n == 1) return Math.max(W[0], W[1]);
+    if (memo[n] != -1) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+
+RUBRIC POINT:
+Point 1 — Memo array allocation and initialisation (valid range: 0–20)
+  A memo array of size n+1 is allocated and initialised to -1 as the sentinel for uncached entries.
+
+========================================
+
+QUESTION:
+(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.
+
+SAMPLE SOLUTION:
+long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+STUDENT SOLUTION:
+long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    for (int i = 0; i < n + 1; i++) memo[i] = -1;
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (n == 1) return Math.max(W[0], W[1]);
+    if (memo[n] != -1) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+
+RUBRIC POINT:
+Point 2 — Base cases (valid range: 0–20)
+  opt(0) returns W[0]; opt(1) returns max(W[0], W[1]).
+
+========================================
+
+QUESTION:
+(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.
+
+SAMPLE SOLUTION:
+long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+STUDENT SOLUTION:
+long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    for (int i = 0; i < n + 1; i++) memo[i] = -1;
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (n == 1) return Math.max(W[0], W[1]);
+    if (memo[n] != -1) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+
+RUBRIC POINT:
+Point 3 — Cache check (valid range: 0–15)
+  At the start of each helper call, if memo[n] != -1, return memo[n] immediately without recomputation.
+
+========================================
+
+QUESTION:
+(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.
+
+SAMPLE SOLUTION:
+long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+STUDENT SOLUTION:
+long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    for (int i = 0; i < n + 1; i++) memo[i] = -1;
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (n == 1) return Math.max(W[0], W[1]);
+    if (memo[n] != -1) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+
+RUBRIC POINT:
+Point 4 — Recurrence and memo store (valid range: 0–25)
+  memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)); the result is stored in memo[n] before returning.
+
+========================================
+
+QUESTION:
+(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.
+
+SAMPLE SOLUTION:
+long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+STUDENT SOLUTION:
+long opt(long[] W) {
+    int n = W.length - 1;
+    long[] memo = new long[n + 1];
+    for (int i = 0; i < n + 1; i++) memo[i] = -1;
+    return opt_helper(n, W, memo);
+}
+
+long opt_helper(int n, long[] W, long[] memo) {
+    if (n == 0) return W[0];
+    if (n == 1) return Math.max(W[0], W[1]);
+    if (memo[n] != -1) return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  opt returns the maximum billboard profit for all valid inputs in O(n) time.

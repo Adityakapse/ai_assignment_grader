@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, which allocates a (n+1) × (capacity+1) table fully initialized to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses a nested loop where the outer loop iterates backward over all n items and the inner loop runs j from 0 to capacity inclusive, covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly uses `if volume[i] <= j:` to ensure an item is only considered when it fits within the current capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation uses the correct max‑based recurrence, referencing Result[i+1][j‑volume[i]] and Result[i+1][j] when the item fits and Result[i+1][j] when it does not, exactly as specified.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds the DP table correctly with backward iteration and returns Result[0][capacity], yielding the optimal value for all valid inputs.

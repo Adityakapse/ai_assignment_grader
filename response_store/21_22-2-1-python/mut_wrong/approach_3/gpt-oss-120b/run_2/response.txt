@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function never creates a counting array C; it directly builds the output string without allocating or initializing any array.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There is no loop over A and no statement like C[a] += 1, so frequencies of categories are never counted.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for i in range(len(B))`, which iterates from 0 to |B|-1 and produces a string of length m.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code does not compare C[i] with B[i]; it appends `'1'` for every index regardless of any counts or capacities.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because it always returns a string of all ‘1’s, the result is incorrect for most inputs, failing the problem’s specification.

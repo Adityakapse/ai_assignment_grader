@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function never checks `b == 0`; it simply returns `1 % c` for all inputs, so the required base case is missing/incorrect.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parity check using `b % 2` (or equivalent) appears in the code; odd and even exponents are not distinguished.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd‑exponent case is absent—there is no reduction of `b` by 1 nor multiplication by `a`.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑exponent case is absent—`b` is never halved and the recursive result is never squared.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the function always returns `1 % c`, it fails to compute `a**b mod c` for any non‑zero exponent, so overall correctness is not achieved.

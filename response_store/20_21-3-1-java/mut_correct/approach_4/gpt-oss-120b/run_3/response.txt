@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1) × (capacity+1) table and Java initializes all entries to 0.0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses an outer loop that iterates over every item (i from n‑1 down to 0) and an inner loop that runs j from 0 through capacity, thus covering all subproblems including the zero‑capacity case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (volumes[i] <= j)` to guard inclusion, correctly handling items that exactly fill the capacity and zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `Result[i][j] = Math.max(values[i] + Result[i+1][j - volumes[i]], Result[i+1][j])` when the item fits and `Result[i][j] = Result[i+1][j]` otherwise, correctly referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly fills the DP table from i = n‑1 down to 0 and j = 0 to capacity, handling zero‑volume items and zero capacity, and returns Result[0][capacity] as required.

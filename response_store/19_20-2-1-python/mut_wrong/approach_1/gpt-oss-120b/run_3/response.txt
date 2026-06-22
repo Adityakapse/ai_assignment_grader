@@ -1,0 +1,25 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The class defines only a single attribute `last`, which cannot store more than one element, so it cannot maintain FIFO order.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: `isEmpty` correctly checks `self.last is None` and returns True only when the queue is empty.
+
+POINT_ID: 3
+MARKS: 6
+FEEDBACK: `head` returns `self.last` without modifying state, which works for the single stored element but does not represent the front of a multi‑element queue.
+
+POINT_ID: 4
+MARKS: 4
+FEEDBACK: `enqueue` overwrites `self.last` instead of adding a new element to the back, causing earlier elements to be lost.
+
+POINT_ID: 5
+MARKS: 6
+FEEDBACK: `dequeue` returns the stored element and clears `self.last`; it does not correctly remove the front element of a queue that holds multiple items.
+
+POINT_ID: 6
+MARKS: 0
+FEEDBACK: The methods do not work together to preserve FIFO order; repeated enqueues and dequeues lose previous elements.
+
+TOTAL: 31

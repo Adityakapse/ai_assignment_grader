@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates a (m+1)×(n+1) table with a list comprehension and uses nested loops `for i in range(1, m+1)` and `for j in range(1, n+1)` as required.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: No base‑case values are set; the first row and column remain zero instead of being initialized to `i` and `j`.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When `a[i-1] == b[j-1]` the code correctly assigns `edDis[i][j] = edDis[i-1][j-1]`.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatching characters the implementation uses `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])`, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because the base cases are not initialized, the function returns incorrect edit distances for most inputs.
+
+TOTAL: 60

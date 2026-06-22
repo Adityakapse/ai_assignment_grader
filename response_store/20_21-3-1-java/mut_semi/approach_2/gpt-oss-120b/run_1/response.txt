@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1) × (capacity+1) table that Java initializes to 0.0, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so it omits the zero‑capacity column and fails to handle subproblems with j = 0.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code checks `volumes[i] < j` and starts the inner loop at j = 1, so it never handles the case j = volumes[i] (or zero‑weight items at capacity 0), violating the required ≤ feasibility test.
+
+POINT_ID: 4
+MARKS: 5
+FEEDBACK: The code uses the current row (Result[i][…]) and a strict “<” test, so the recurrence for a fitting item is incorrect and allows reuse of items, deviating from the required formula.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: The implementation uses `volumes[i] < j` and references `Result[i][j‑volumes[i]]` (the same row), which both allow reusing an item and miss the case where an item exactly fits, and it also starts the inner loop at j=1, so capacity 0 and zero‑volume items are not handled correctly.

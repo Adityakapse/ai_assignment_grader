@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi (10 marks)
+FEEDBACK: The student builds `graph = [[] for _ in range(N + 1)]` from A but never adds a virtual source node 0 with edges to all vertices, and `calc` starts DFS from node 1 instead of node 0.
+
+POINT_ID: 2
+BUCKET: Correct (20 marks)
+FEEDBACK: The code initializes `memo = [-1] * (N + 1)` and correctly returns the cached value when `memo[node] != -1`.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The DFS base case `if len(graph[node]) == 0: return 0` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Semi (10 marks)
+FEEDBACK: In the recurrence the student computes `sol = max(sol, dfs(child, graph, memo))` without adding +1 for the edge, and although `memo[node] = sol` is stored, the path length is underestimated.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: Because the virtual source is missing and edges are not counted, `calc` returns an incorrect length (often 0) for most DAGs.

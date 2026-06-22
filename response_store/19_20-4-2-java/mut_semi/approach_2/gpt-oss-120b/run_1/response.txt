@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: Your code correctly handles the leaf and one‑child cases (effectively using the node to delete as y), but it never selects the successor with treeMinimum for nodes that have two children, so the y selection is incomplete.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submitted code does not implement a treeMinimum helper at all, so it fails to provide the required left‑walk functionality.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code selects x with `delete.left != null ? delete.left : delete.right`, correctly identifying y’s (here delete’s) non‑null child or null if it’s a leaf.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The code correctly updates x.parent and the parent’s child pointer for the simple leaf/one‑child case, but it never handles the two‑child case where y should be the inorder successor, so the splicing is incomplete.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never handles the two‑child case or copy the successor’s key (no `if (y != delete) delete.key = y.key;`), so the required key‑copy step is missing.
+
+POINT_ID: 6
+MARKS: 4
+FEEDBACK: The method correctly handles leaf and single‑child deletions (including root when it has at most one child) but fails to handle the two‑child case, so it does not always return a valid BST after deletion.

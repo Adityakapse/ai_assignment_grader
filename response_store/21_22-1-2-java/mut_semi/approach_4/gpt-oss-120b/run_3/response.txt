@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution initializes l = 0 correctly but sets r = 1 000 000 000L, which is far too small compared to the required 10^18 upper bound, so it won’t handle N larger than 1e9.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses a while (l <= r) loop and computes m as (l + r) / 2 each iteration, matching the required binary‑search loop and midpoint calculation.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code updates l and r, but when f_N(m) == 1 it moves l = m + 1 instead of r = m - 1, and when f_N(m) == 0 it moves r = m - 1 instead of l = m + 1, reversing the search direction.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution returns `m` unconditionally after the loop, without checking `f_N(m)`, which can produce an off‑by‑one error when the final `m` still maps to 0.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code uses an upper bound of 1e9 instead of 1e18 and reverses the binary‑search direction, then returns m without a final check, so it fails to return the correct N for most inputs.

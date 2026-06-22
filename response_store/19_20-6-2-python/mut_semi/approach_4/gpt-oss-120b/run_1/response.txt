@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `Result = [[0] * (capacity + 1) for _ in range(n + 1)]`, which allocates a (n+1) × (capacity+1) table and initializes every entry to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses a nested loop where the outer loop iterates backward over all n items (`range(n-1, -1, -1)`) and the inner loop iterates `j` from 0 to `capacity` inclusive (`range(capacity + 1)`), covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The implementation uses `if volume[i] <= j:` to verify that an item fits before adding its value, correctly handling the capacity feasibility check.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The implementation adds `value[i] + Result[i+1][j-volume[i]]` when the item fits but never compares it with `Result[i+1][j]`, so the required max‑based recurrence is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code always adds the item's value when it fits (no max comparison), so it returns incorrect totals for most multi‑item cases rather than the optimal knapsack value.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates C = [0] * (10**6 + 1), which allocates a counting array of the required size and initializes it to zero.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The loop `for i in range(len(A)): C[i] = C[i] + 1` increments C at the loop index instead of using the element value `A[i]`, so frequencies are not counted correctly.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The output loop `for i in range(1, len(B))` starts at 1 and therefore omits index 0, producing a string of length |B|‑1 instead of |B|.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The condition `if C[i] > B[i]: sol += "1"` reverses the required logic; it should append "1" when `C[i] <= B[i]`.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because of the counting, loop‑bound, and comparison errors, the function does not return the correct binary string for general inputs.
+
+TOTAL: 20

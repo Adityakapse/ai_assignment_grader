@@ -1,0 +1,92 @@
+QUESTION:
+The Knapsack problem is an optimization problem. Which items
+from an existing selection should be packed into a limited
+backpack(Knapsack) in order to maximize the value to be transported?
+This problem is in generall NP-complete and therefore
+probably not efficiently solvable. Assuming that the
+volumes of the objects are integers, we can find an algorithm
+that solves this problem using dynamic programming. We are looking for
+the implementation of an algorithm, which for a given list of objects and a
+list of items and a maximum backpack volume outputs the value
+that can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values.
+values. So the input ([0.5, 0.3], [2, 5], 3 ) gives two items,
+the first with volume 2 and value 0.5, the second with volume 5 and value 0.3.
+The last value indicates the volume of the Knapsack, in this case
+the correct output of the algorithm would be 0.5 because only
+the 1st item fits into the backpack at all. With a larger volume
+of 7, the correct output would be 0.8. It is important to note that the solution
+is NOT 1.5, so it is not possible to use the same object more than once.
+
+SAMPLE SOLUTION:
+def knapSack(value, volume, capacity):
+    """This function calculates and returns the max
+    value in knapsack with the capacity "capacity" wich is filled
+    with stuff of volume "volume" and the value "value"."""
+
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    n = len(value)
+
+    Result = [0] * (n+1)
+    for i in range(n+1):
+        Result[i] = [0] * (capacity + 1)
+
+    for i in range(n+1):
+        for j in range(capacity + 1):
+            Result[i][j] = 0
+
+    for i in range(n-1,-1,-1):
+        for j in range(1, capacity + 1):
+            if volume[i] <= j:
+                Result[i][j] = max(value[i] + Result[i + 1][j - volume[i]],
+                                   Result[i+1][j])
+            else:
+                Result[i][j] = Result[i+1][j]
+
+    return Result[0][capacity]
+
+STUDENT SOLUTION:
+# Trivially wrong - returns 0
+def knapSack(value, volume, capacity):
+    return 0
+
+
+RUBRIC:
+Point 1 — DP table allocation
+  A 2D table of size (n+1) x (capacity+1) is allocated and initialised to 0.
+  Buckets:
+    - Wrong (0 marks): No 2D table is allocated; only a 1D array or no data structure is used to store subproblem results.
+    - Semi (10 marks): A 2D table is present but has wrong dimensions (e.g., n x capacity instead of (n+1) x (capacity+1)), or the table is not initialised to 0 when required.
+    - Correct (20 marks): A 2D table of size (n+1) x (capacity+1) is allocated and all cells are initialised to 0.
+
+Point 2 — Loop structure: iterating items and capacities
+  An outer loop iterates over all n items and an inner loop iterates j from 0 to capacity inclusive, covering all subproblems.
+  Buckets:
+    - Wrong (0 marks): No nested loops are present; only a single loop or no loop is used.
+    - Semi (10 marks): Nested loops are present but the inner loop does not cover all capacities from 0 to capacity (e.g., starts from 1 skipping j=0, or stops before capacity), or the outer loop does not process all n items.
+    - Correct (20 marks): Outer loop iterates over all n items (forward or backward) and inner loop iterates j from 0 (or 1) to capacity inclusive, covering all required subproblems.
+
+Point 3 — Capacity feasibility check
+  For each item i and capacity j, the algorithm checks whether volumes[i] <= j before deciding to include the item.
+  Buckets:
+    - Wrong (0 marks): No feasibility check is present; the algorithm attempts to include items regardless of whether they fit, potentially causing index errors or always taking items.
+    - Semi (8 marks): A feasibility check is present but uses the wrong comparison (e.g., volumes[i] < j instead of volumes[i] <= j, incorrectly excluding items that exactly fill the remaining capacity).
+    - Correct (15 marks): volumes[i] <= j is checked before attempting to include item i, correctly allowing inclusion when the item exactly fits or fits with room to spare.
+
+Point 4 — Recurrence relation
+  When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j]. Here prev is i+1 (backward) or i-1 (forward).
+  Buckets:
+    - Wrong (0 marks): No recurrence is applied; cells are set to a constant or the values array is returned directly without referencing previously computed subproblems.
+    - Semi (12 marks): A max-based recurrence is present but incorrect: for example, only one branch (fit or no-fit) is handled, the wrong row is referenced (same row instead of previous, enabling unlimited use of items), or values[i] + Result[prev][j-volumes[i]] is missing the subtraction of volumes[i].
+    - Correct (25 marks): When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j]. The previous row (i+1 for backward, i-1 for forward) is referenced consistently.
+
+Point 5 — Overall correctness
+  The method returns the correct maximum value that fits within the given capacity for all valid inputs.
+  Buckets:
+    - Wrong (0 marks): Method returns 0 or an incorrect value for most inputs.
+    - Semi (10 marks): Returns correct results for simple cases (e.g., single item, zero capacity) but fails for multi-item inputs or when items must be excluded due to capacity constraints.
+    - Correct (20 marks): Returns the correct maximum value for all valid inputs; result is read from the correct cell of the DP table (Result[0][capacity] for backward, Result[n][capacity] for forward).

@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Search bounds initialisation
+BUCKET: Semi
+FEEDBACK: The code initializes r = 1000000000, which is far smaller than the required 10**18, so N values above 1 billion are not covered.
+
+POINT_ID: Point 2 — Binary search loop and midpoint
+BUCKET: Correct
+FEEDBACK: It correctly uses a while l <= r loop and computes the midpoint with m = (l + r) // 2 each iteration.
+
+POINT_ID: Point 3 — Narrowing: updating l and r based on f(m)
+BUCKET: Semi
+FEEDBACK: The updates are reversed: when f(m) is true the code sets l = m + 1 instead of r = m - 1, searching the wrong half.
+
+POINT_ID: Point 4 — Post-loop return value
+BUCKET: Semi
+FEEDBACK: After the loop the function returns m unconditionally, without the final f(m) check, which can be off by one.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Semi
+FEEDBACK: Due to the too‑small upper bound and the reversed narrowing logic, the implementation fails for many valid N, even though it runs in O(log n) and avoids forbidden keywords.

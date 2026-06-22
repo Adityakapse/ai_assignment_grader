@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1) × (capacity+1) table that Java initializes to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates over all items (`for (int i = n - 1; i >= 0; i--)`), but the inner loop starts at `j = 1` and never processes `j = 0`, so the zero‑capacity subproblem is omitted.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The feasibility test uses `if (volumes[i] < j)`; this strict inequality excludes items that exactly match the remaining capacity and also prevents inclusion of zero‑volume items at capacity 0.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The recurrence computes `Result[i][j] = Math.max(values[i] + Result[i][j - volumes[i]], Result[i][j]);`, referencing the current row `Result[i]` instead of the previous row, which allows unlimited reuse of the same item and deviates from the correct DP formula.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because of the missing j = 0 iteration, the strict feasibility check, and the incorrect row reference, the method returns wrong maximum values for many valid inputs, including cases with exact fits or zero‑volume items.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function iterates over every token, but it does not distinguish operators from numbers beyond silently ignoring them; no separate handling for operators is implemented.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Numeric tokens are converted to integers but are added to a local variable instead of being pushed onto the provided stack.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: When an operator token is encountered the code simply passes; it never pops values, computes, or pushes a result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The implementation does not perform any subtraction or division, so operand order for non‑commutative operators is never handled.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns the sum of all numbers in the input, which is incorrect for RPN expressions that require stack‑based evaluation of operators.

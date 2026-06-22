@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1)×(capacity+1) table that Java initializes to 0.0, satisfying the requirement.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses an outer loop that iterates from n‑1 down to 0, covering all n items, and an inner loop that runs j from 0 to capacity inclusive, correctly addressing every subproblem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code includes the required `if (volumes[i] <= j)` test before considering inclusion, satisfying the capacity feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation correctly applies the recurrence Result[i][j] = max(values[i] + Result[i+1][j‑volumes[i]], Result[i+1][j]) when the item fits and Result[i+1][j] when it does not, exactly as specified.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly follows the dynamic‑programming recurrence, initializes the DP table, and returns the optimal value for any valid input, matching the reference solution.

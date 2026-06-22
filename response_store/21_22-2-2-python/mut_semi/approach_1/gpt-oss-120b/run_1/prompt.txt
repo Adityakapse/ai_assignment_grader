@@ -1,0 +1,84 @@
+QUESTION:
+In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+The string "check_calc" or "eval" must not appear in your solution.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Here the string "check_calc" or "eval" must not appear in your solution
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$
+
+SAMPLE SOLUTION:
+def calc(a,b):
+    n = len(a)
+    c = [0] * n
+    d = [0] * n
+    c[0] = a[0]
+    for i in range(1,n):
+        c[i] += a[i] + c[i-1]
+    for i in range(n):
+        if b[i][0] - 1 >= 0:
+            d[i] = c[b[i][1]]- c[b[i][0] - 1]
+        else:
+            d[i] = c[b[i][1]]
+    return d
+
+STUDENT SOLUTION:
+# Prefix loop copies a[i] without accumulating c[i-1];
+# range sum doesn't handle the l==0 edge case (accesses c[-1] when b[i][0] == 0).
+def calc(a, b):
+    n = len(a)
+    c = [0] * n
+    d = [0] * n
+    c[0] = a[0]
+    for i in range(1, n):
+        c[i] = a[i]
+    for i in range(n):
+        d[i] = c[b[i][1]] - c[b[i][0] - 1]
+    return d
+
+
+RUBRIC:
+Point 1 — Prefix sum array allocation (valid range: 0–20)
+  An array C of size n is allocated and C[0] is initialised to A[0].
+
+Point 2 — Prefix sum construction (valid range: 0–25)
+  C[i] = A[i] + C[i-1] for i from 1 to n-1, building the cumulative sum array.
+
+Point 3 — Output array allocation and query loop (valid range: 0–15)
+  An output array D of size n is allocated and a loop iterates over all n queries in B.
+
+Point 4 — Range sum computation with l=0 edge case (valid range: 0–20)
+  For each query (l, r): D[i] = C[r] - C[l-1] when l > 0; D[i] = C[r] when l == 0.
+
+Point 5 — Overall correctness (valid range: 0–20)
+  calc returns the correct list of range sums for all queries in O(n) time, without forbidden keywords.

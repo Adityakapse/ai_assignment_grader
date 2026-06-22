@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds an adjacency list from A and, in the initialization loop, adds edges from node 0 to every node 1 through N (`if (i != 0) graph.get(0).add(i);`), satisfying the required virtual source.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution creates a memo array, sets every entry to –1, and returns memo[node] immediately when memo[node] != –1, correctly implementing memoization.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function includes `if (graph.get(node).size() == 0) return 0;`, correctly returning 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The dfs function iterates over all children, updates sol with Math.max(sol, dfs(child) + 1) for each, stores the result in memo[node], and returns it, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The calc method builds a virtual source, uses memoized DFS, and returns dfs(0)‑1, matching the required O(N+M) solution and producing the correct longest path length for all DAGs.

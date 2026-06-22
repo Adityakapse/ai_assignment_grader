@@ -1,0 +1,151 @@
+QUESTION:
+Calculate the asymptotic worst case running time of the functions below, as a function of the length N of the input array `a`.
+
+- You must write your answer in the text field provided.
+- Your answer should include a detailed analysis of both functions.
+- You can use the Theta notation or the big-O notation with tight bounds.
+- Your analysis should refer to line numbers.
+- For every loop you need to specify the number of iterations and the cost per iteration.
+- Each step of the analysis should be justified with one or two sentences.
+
+public final class AsymQ6 {
+    // `a` has length N. Your analysis should be based on N.
+    public static int f(int[] a) {
+        int n = a.length;
+        int s = 0;
+        for (int i = 0; i < n; i++) {
+            s += a[i];
+        }
+        int t = g(a);
+        return s + t;
+    }
+
+    private static int g(int[] a) {
+        int n = a.length;
+        int t = 0;
+        int k = n;
+        while (k > 0) {
+            t += a[k - 1];
+            k = k / 2;
+        }
+        return t;
+    }
+}
+
+SAMPLE SOLUTION:
+Let N be the length of array a.
+
+Method f
+Part A: the initialisations of n and s - constant time.
+Part B (single for loop over i): sums the array.
+Part C: t = g(a); return s + t - one call to g plus a constant-time return.
+
+Parts A and the return in Part C are Theta(1).
+
+Part B (loop):
+- Iterations: i runs from 0 to N-1, so Theta(N) iterations.
+- Cost per iteration: Theta(1) - one array read and one += assignment.
+- Total cost of Part B: Theta(N) x Theta(1) = Theta(N).
+
+Part C:
+- The call g(a) costs Theta(log N) (see g below); the addition and return are Theta(1).
+- Total cost of Part C: Theta(log N).
+
+Overall running time of f:
+Theta(1) + Theta(N) + Theta(log N) = Theta(N), because log N is dominated by N.
+
+Method g
+Part D: the initialisations of n, t and k - constant time.
+Part E (while loop): each iteration reads a[k-1] and halves k.
+Part F: return t - constant time.
+
+Parts D and F are Theta(1).
+
+Part E:
+- Iterations: k starts at N and is replaced by k/2 each iteration, so the loop runs Theta(log N) times until k becomes 0.
+- Cost per iteration: Theta(1) - one array read, one += assignment, one integer division, one comparison.
+- Total cost of Part E: Theta(log N) x Theta(1) = Theta(log N).
+
+Overall running time of g:
+Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+
+STUDENT SOLUTION:
+f has a single for loop over a, so it runs in O(N^2). Inside the loop it only does an array read and an addition, which are simple constant operations. The g function halves k each step with simple constant operations inside, and seems small. So the answer is f = O(N^2) and g = O(N).
+
+RUBRIC:
+Point 1 — Splitting code into parts + referencing line numbers
+  Clear separation of f and g; loops vs non-loop code identified; line numbers referenced consistently.
+  Buckets:
+    - Wrong (0 marks): Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing.
+    - Semi (3 marks): Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous.
+    - Correct (5 marks): Clear separation of f and g; f's linear loop and the call to g are identified; line numbers referenced consistently.
+
+Point 2 — Constant-time non-loop parts
+  All non-loop code in f and g is Theta(1).
+  Buckets:
+    - Wrong (0 marks): Non-loop code not analysed or incorrectly claimed to be non-constant.
+    - Semi (3 marks): Some constant-time segments identified but others missing or vaguely stated.
+    - Correct (5 marks): All non-loop regions (initialisations and returns in f and g) stated as Theta(1).
+
+Point 3 — f(): Loop iterations
+  Theta(N) iterations of the for loop over a.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(N).
+    - Semi (6 marks): States Theta(N) but with weak or incomplete justification.
+    - Correct (12 marks): Justifies Theta(N) because i runs from 0 to N-1.
+
+Point 4 — f(): Cost per iteration
+  Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Claims non-constant per-iteration cost, or does not clearly state it.
+    - Semi (6 marks): Suggests constant time but with incomplete reasoning.
+    - Correct (12 marks): States Theta(1): one array read and one += assignment.
+
+Point 5 — f(): Total loop cost
+  Theta(N) from Theta(N) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): No multiplication of iteration count x per-iteration cost, or total complexity that does not match own analysis.
+    - Semi (4 marks): Multiplies own values but final simplification or reasoning is unclear or incorrect.
+    - Correct (8 marks): Theta(N) x Theta(1) = Theta(N).
+
+Point 6 — f(): Cost of Part C (call to g + constant work)
+  Theta(log N), accounting for the cost of the g call plus the constant-time addition and return.
+  Buckets:
+    - Wrong (0 marks): Cost of Part C missing or incorrect (e.g. claims Theta(1) or Theta(N)).
+    - Semi (3 marks): Notes that cost comes from g but unclear about Theta(log N).
+    - Correct (6 marks): Accounts for the call to g as Theta(log N) and the addition / return as Theta(1).
+
+Point 7 — g(): Loop iterations
+  Theta(log N) iterations because k is halved each iteration.
+  Buckets:
+    - Wrong (0 marks): Iteration count missing or not Theta(log N) (e.g. claims Theta(N)).
+    - Semi (5 marks): States Theta(log N) but does not explain the halving (k = k / 2 each iteration).
+    - Correct (10 marks): Justifies Theta(log N) because k starts at N and is divided by 2 each iteration until it reaches 0.
+
+Point 8 — g(): Cost per iteration
+  Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Claims non-constant per-iteration cost, or does not clearly state cost per iteration.
+    - Semi (4 marks): Suggests constant time but lacks explicit Theta(1) justification.
+    - Correct (8 marks): Each iteration Theta(1): one array read, one += assignment, one division, one comparison.
+
+Point 9 — g(): Total loop cost
+  Theta(log N) = Theta(log N) iterations x Theta(1) per iteration.
+  Buckets:
+    - Wrong (0 marks): Does not combine iteration count x per-iteration cost.
+    - Semi (3 marks): Attempts multiplication using own values but unclear or incorrect.
+    - Correct (6 marks): Theta(log N) x Theta(1) = Theta(log N).
+
+Point 10 — Overall worst-case runtime of g
+  T_g(N) = Theta(log N), summing constant parts and the loop.
+  Buckets:
+    - Wrong (0 marks): Runtime absent or incompatible with earlier analysis.
+    - Semi (6 marks): States Theta(log N) but with missing reasoning.
+    - Correct (12 marks): Theta(1) + Theta(log N) + Theta(1) = Theta(log N).
+
+Point 11 — Overall worst-case runtime of f
+  T_f(N) = Theta(N), accounting for non-loop parts + loop + Part C.
+  Buckets:
+    - Wrong (0 marks): Final complexity missing/incorrect.
+    - Semi (8 marks): States Theta(N) but with missing reasoning.
+    - Correct (16 marks): Theta(1) + Theta(N) + Theta(log N) = Theta(N), correctly absorbing the lower-order log N term.

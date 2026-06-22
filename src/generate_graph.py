@@ -9,9 +9,9 @@ from scipy.stats import spearmanr
 
 PALETTE = sns.color_palette("tab10")
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
-# PRIMARY_MODEL = "gemma4:26b"
-# PRIMARY_MODEL = "devstral-small-2"
-PRIMARY_MODEL = "nemotron-3-super-120b-a12b"
+
+PRIMARY_MODEL = "Qwen3:14b"
+# PRIMARY_MODEL = "gpt-oss-120b"
 
 
 DPI = 150

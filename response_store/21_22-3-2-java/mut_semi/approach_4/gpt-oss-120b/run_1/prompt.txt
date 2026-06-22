@@ -1,0 +1,577 @@
+QUESTION:
+The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem "overlapping subproblems") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.
+
+SAMPLE SOLUTION:
+int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}
+
+STUDENT SOLUTION:
+// Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+// per edge; starts DFS from node 1 without the -1 adjustment.
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo));
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(1, graph, memo);
+}
+
+
+RUBRIC POINT:
+Point 1 — Graph construction and virtual source
+  An adjacency list is built from A, and a virtual source node 0 is added with edges to all nodes 1 to N so that a single DFS covers all nodes.
+  Buckets:
+    - Wrong (0 marks): No adjacency list is built from A; the algorithm operates directly on the edge array or returns 0 without constructing a graph.
+    - Semi (10 marks): An adjacency list is built from A correctly, but the virtual source node 0 (connecting to all nodes 1 to N) is missing, so the algorithm can only find paths starting from a specific node rather than the globally longest path.
+    - Correct (20 marks): Adjacency list is built from A, and node 0 is added with directed edges to every node from 1 to N, enabling a single DFS from node 0 to consider all nodes as potential starting points.
+
+========================================
+
+QUESTION:
+The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem "overlapping subproblems") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.
+
+SAMPLE SOLUTION:
+int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}
+
+STUDENT SOLUTION:
+// Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+// per edge; starts DFS from node 1 without the -1 adjustment.
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo));
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(1, graph, memo);
+}
+
+
+RUBRIC POINT:
+Point 2 — Memoization: initialisation and cache check
+  A memo array is initialised to -1 for all nodes, and if memo[node] != -1 the cached value is returned immediately without recomputation.
+  Buckets:
+    - Wrong (0 marks): No memo array is used; the DFS recomputes all subproblems on every call, leading to exponential runtime on large DAGs.
+    - Semi (10 marks): A memo array is present but initialised to 0 instead of -1, making it impossible to distinguish an uncached node from one whose longest path is 0; or the cache check is present but uses the wrong sentinel value.
+    - Correct (20 marks): memo is initialised to -1 for all nodes; at the start of each DFS call, if memo[node] != -1 the cached result is returned immediately, ensuring each node is computed at most once.
+
+========================================
+
+QUESTION:
+The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem "overlapping subproblems") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.
+
+SAMPLE SOLUTION:
+int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}
+
+STUDENT SOLUTION:
+// Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+// per edge; starts DFS from node 1 without the -1 adjustment.
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo));
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(1, graph, memo);
+}
+
+
+RUBRIC POINT:
+Point 3 — DFS base case: leaf node
+  When a node has no outgoing edges (leaf), the function returns 0.
+  Buckets:
+    - Wrong (0 marks): No base case is present; the function crashes or loops indefinitely on nodes with no outgoing edges.
+    - Semi (8 marks): A base case is present but returns the wrong value (e.g., returns 1 instead of 0 for leaf nodes), causing an off-by-one error in all computed path lengths.
+    - Correct (15 marks): When graph[node] is empty (no outgoing edges), the function returns 0, correctly representing a path of length 0 from a leaf.
+
+========================================
+
+QUESTION:
+The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem "overlapping subproblems") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.
+
+SAMPLE SOLUTION:
+int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}
+
+STUDENT SOLUTION:
+// Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+// per edge; starts DFS from node 1 without the -1 adjustment.
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo));
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(1, graph, memo);
+}
+
+
+RUBRIC POINT:
+Point 4 — Recurrence: longest path over children
+  For each child of node, sol = max(sol, dfs(child) + 1) is computed; the result is stored in memo[node] before returning.
+  Buckets:
+    - Wrong (0 marks): Children are not iterated, or no max is taken; the function returns a constant or only considers one child.
+    - Semi (10 marks): Max over children is attempted but dfs(child) is not incremented by +1 (edge not counted), or the result is not stored in memo[node] before returning (breaking memoization for this node's callers).
+    - Correct (20 marks): sol = max(sol, dfs(child) + 1) is applied for every child; memo[node] is set to sol before returning, so subsequent calls to dfs(node) use the cached result.
+
+========================================
+
+QUESTION:
+The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem "overlapping subproblems") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.
+
+SAMPLE SOLUTION:
+int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}
+
+STUDENT SOLUTION:
+// Adjacency list built but no virtual source node 0; recurrence forgets to add +1
+// per edge; starts DFS from node 1 without the -1 adjustment.
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (graph.get(node).size() == 0) return 0;
+    else if (memo[node] != -1) return memo[node];
+    else {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol, dfs(graph.get(node).get(i), graph, memo));
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A) {
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N + 1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        graph.get(A[i][0]).add(A[i][1]);
+    }
+    int[] memo = new int[N + 1];
+    for (int i = 0; i <= N; i++) memo[i] = -1;
+    return dfs(1, graph, memo);
+}
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness
+  calc returns the correct length of the longest directed path in the DAG for all valid inputs.
+  Buckets:
+    - Wrong (0 marks): Returns 0 or an incorrect length for most inputs.
+    - Semi (12 marks): Returns correct results for simple linear graphs but fails for branching DAGs, or the -1 adjustment for the virtual source is missing (returning a result one too large), or the algorithm times out due to missing memoization.
+    - Correct (25 marks): Returns the correct longest path length for all valid DAGs in O(N + M) time; the virtual source adjustment (dfs(0) - 1) is applied correctly.

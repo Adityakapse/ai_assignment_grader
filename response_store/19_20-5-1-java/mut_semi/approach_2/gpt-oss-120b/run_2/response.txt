@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution adds the start node to the queue before the loop and uses a while (!queue.isEmpty()) loop to process nodes, meeting the required BFS initialization and loop structure.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code removes the next node with `queue.remove(queue.size() - 1)`, which dequeues from the end (LIFO) instead of the front (index 0) required for BFS.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The code correctly checks `visited.contains(next)` before processing a node and adds it to `visited` only once, and also checks `visited` before enqueuing neighbors, thus preventing duplicate entries.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code iterates over each neighbor in graph[next] and, if not yet visited, adds it with queue.add(vertex), correctly enqueuing unvisited neighbors at the back of the list.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code removes elements from the end of the list (`queue.remove(queue.size() - 1)`), turning the structure into a stack and producing a depth‑first traversal order rather than the required breadth‑first order.

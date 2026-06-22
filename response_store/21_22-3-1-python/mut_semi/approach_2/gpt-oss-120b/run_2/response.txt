@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code creates a memo list of length n+1, but it initializes entries to 0 and checks `!= 0` instead of using –1 as the sentinel required.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The function correctly returns W[0] when n is 0, but it lacks the required base case for n = 1, so calling opt(1) fails to return max(W[0], W[1]) and can cause incorrect recursion.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution checks `memo[n] != 0` rather than the required `memo[n] != -1`, so the cache‑check does not match the specification.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The function correctly computes memo[n] using the max of the two recursive calls and stores the result in memo[n] before returning it.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution lacks a base case for n = 1 and does not handle n‑2 < 0, causing incorrect results or runtime errors for small inputs.

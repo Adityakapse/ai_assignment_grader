@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code builds `graph` as an adjacency list from A and adds `graph[0] = [x for x in range(1, N + 1)]`, providing the required virtual source node.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It initializes `memo` with -1 for all nodes and uses `if memo[node] != -1: return memo[node]` to return cached results, satisfying the memoization criteria.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS base case `if len(graph[node]) == 0: return 0` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop computes `sol = max(sol, dfs(child, graph, memo) + 1)` for each child, stores `memo[node] = sol`, and returns it, implementing the proper recurrence with memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `calc` returns `dfs(0, graph, memo) - 1`, which yields the exact length of the longest directed path for any valid DAG, meeting overall correctness.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a (m+1)×(n+1) table with a list comprehension and correctly uses nested loops over i = 1..m and j = 1..n to fill it.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never sets edDis[i][0] = i or edDis[0][j] = j, leaving the first row and column at zero, so the base cases are missing.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly handles the match case by assigning `edDis[i][j] = edDis[i-1][j-1]` when `a[i-1] == b[j-1]`.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The else clause correctly implements the required recurrence `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])` for mismatched characters.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never initializes the base cases (first row and column), so edit distances for non‑empty prefixes are computed incorrectly, causing wrong results for most inputs.

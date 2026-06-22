@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution pushes the start node onto the stack before the loop and checks `!stack.isEmpty()`, but it also includes a `safety++ < 1000` condition that can terminate the loop early, so the termination condition is not solely based on the stack being empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `int next = stack.pop();` to always remove the current node from the top of the stack, ensuring LIFO behavior.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code adds every popped node to visited without checking if it was already visited, and never skips already‑seen nodes, so duplicates and infinite loops can occur on cyclic graphs.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code iterates over graph[current] and pushes every neighbour onto the stack, but it never checks whether a neighbour has already been visited before pushing, violating the requirement to push only unvisited neighbours.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code never checks whether a node was already visited, so on graphs with cycles it relies on a safety counter and may stop early or repeat nodes, causing incorrect traversal for cyclic graphs.

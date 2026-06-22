@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `def GCD(a, b):` with two parameters, includes a recursive call `return GCD(r, b)`, and returns a value, satisfying the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if r == 0: return b` correctly terminates recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After swapping to ensure `a >= b`, the code computes `r = a % b` and recurses with `GCD(r, b)`, which properly reduces the problem each step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `LCM` function is defined as `return a * b // GCD(a, b)`, using the correct formula with integer division and calling the GCD function.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the GCD works for positive inputs, it raises a division‑by‑zero error when either argument is zero (e.g., `GCD(0, n)`), so it fails for some valid non‑negative edge cases.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Assuming positive integer inputs, `LCM(a, b)` correctly computes the least common multiple using the proper formula and the (mostly correct) GCD implementation.

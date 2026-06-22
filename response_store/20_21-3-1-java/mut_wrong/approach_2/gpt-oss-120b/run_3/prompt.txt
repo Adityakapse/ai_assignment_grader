@@ -1,0 +1,347 @@
+QUESTION:
+The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!
+
+SAMPLE SOLUTION:
+/* This function calculates and returns the max
+ * value in knapsack with the capacity "capacity" wich is filled
+ * with stuff of volume "volumes" and the value "values".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+
+STUDENT SOLUTION:
+// Greedy single-pass: sums values of any item that individually fits in the full capacity.
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    double total = 0;
+    for (int i = 0; i < values.length; i++) {
+        if (volumes[i] <= capacity) total += values[i];
+    }
+    return total;
+}
+
+
+RUBRIC POINT:
+Point 1 — DP table allocation (valid range: 0–20)
+  A 2D table of size (n+1) x (capacity+1) is allocated and initialised to 0.
+
+========================================
+
+QUESTION:
+The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!
+
+SAMPLE SOLUTION:
+/* This function calculates and returns the max
+ * value in knapsack with the capacity "capacity" wich is filled
+ * with stuff of volume "volumes" and the value "values".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+
+STUDENT SOLUTION:
+// Greedy single-pass: sums values of any item that individually fits in the full capacity.
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    double total = 0;
+    for (int i = 0; i < values.length; i++) {
+        if (volumes[i] <= capacity) total += values[i];
+    }
+    return total;
+}
+
+
+RUBRIC POINT:
+Point 2 — Loop structure: iterating items and capacities (valid range: 0–20)
+  An outer loop iterates over all n items and an inner loop iterates j from 0 to capacity inclusive, covering all subproblems including zero-weight items at j = 0.
+
+========================================
+
+QUESTION:
+The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!
+
+SAMPLE SOLUTION:
+/* This function calculates and returns the max
+ * value in knapsack with the capacity "capacity" wich is filled
+ * with stuff of volume "volumes" and the value "values".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+
+STUDENT SOLUTION:
+// Greedy single-pass: sums values of any item that individually fits in the full capacity.
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    double total = 0;
+    for (int i = 0; i < values.length; i++) {
+        if (volumes[i] <= capacity) total += values[i];
+    }
+    return total;
+}
+
+
+RUBRIC POINT:
+Point 3 — Capacity feasibility check (valid range: 0–15)
+  For each item i and capacity j, volumes[i] <= j is checked before deciding to include the item. This correctly handles both regular items and zero-weight items.
+
+========================================
+
+QUESTION:
+The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!
+
+SAMPLE SOLUTION:
+/* This function calculates and returns the max
+ * value in knapsack with the capacity "capacity" wich is filled
+ * with stuff of volume "volumes" and the value "values".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+
+STUDENT SOLUTION:
+// Greedy single-pass: sums values of any item that individually fits in the full capacity.
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    double total = 0;
+    for (int i = 0; i < values.length; i++) {
+        if (volumes[i] <= capacity) total += values[i];
+    }
+    return total;
+}
+
+
+RUBRIC POINT:
+Point 4 — Recurrence relation (valid range: 0–25)
+  When item fits: Result[i][j] = max(values[i] + Result[prev][j - volumes[i]], Result[prev][j]). When item does not fit: Result[i][j] = Result[prev][j].
+
+========================================
+
+QUESTION:
+The Knapsack problem is an optimization problem. Which items from an existing
+selection should be packed into a limited backpack(Knapsack) in order
+to maximize the value to be transported? This problem is in general NP-complete
+and therefore probably not efficiently solvable. Assuming that the volumes
+of the objects are integers, we can find an algorithm that solves this problem
+using dynamic programming. We are looking for an implementation of an algorithm,
+which for a given list of objects and a list of items and a maximum backpack
+volume outputs the value which can be transported at most. The list of items
+consists of two lists, one contains the volumes and one the values. So the
+input ([0.5, 0.3], [2, 5], 3 ) gives two items, the first with volume 2 and
+value 0.5, the second with volume 5 and value 0.3. The last value indicates
+the volume of the Knapsack, in this case the correct output of the algorithm
+would be 0.5, because only the 1st item fits into the backpack at all. With a
+larger volume of 7, the correct output would be 0.8. It is important to note
+that the solution is NOT 1.5, so it is not possible to use the same object
+more than once.
+
+Your algorithm must have a run time of $O(n^2)$, where $n$ is the number of items.
+
+Time: 1 CPU second
+
+NOTE:
+
+Items can also have a weight of 0!
+
+SAMPLE SOLUTION:
+/* This function calculates and returns the max
+ * value in knapsack with the capacity "capacity" wich is filled
+ * with stuff of volume "volumes" and the value "values".
+ */
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    int n = values.length;
+    double[][] Result = new double[n+1][];
+
+    for(int i = 0; i < n+1; ++i) {
+        Result[i] = new double[capacity+1];
+    }
+
+    for(int i = n-1; i > -1; --i) {
+        for(int j = 0; j < capacity+1; ++j) {
+            if (volumes[i] <= j) {
+                Result[i][j] = Math.max(values[i] + Result[i+1][j-volumes[i]], Result[i+1][j]);
+            } else {
+                Result[i][j] = Result[i+1][j];
+            }
+        }
+    }
+    return Result[0][capacity];
+}
+
+STUDENT SOLUTION:
+// Greedy single-pass: sums values of any item that individually fits in the full capacity.
+public double knapSack(double[] values, int[] volumes, int capacity) {
+    double total = 0;
+    for (int i = 0; i < values.length; i++) {
+        if (volumes[i] <= capacity) total += values[i];
+    }
+    return total;
+}
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns the correct maximum value for all valid inputs, including items with volume 0.

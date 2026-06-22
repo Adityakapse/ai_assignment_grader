@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 7
+FEEDBACK: The code creates the adjacency list from A, but it never adds a virtual source node 0 nor starts the DFS from that source, violating the required graph construction.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes `memo = [-1] * (N + 1)` and correctly checks `elif memo[node] != -1: return memo[node]` to use cached results.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs implementation correctly uses `if len(graph[node]) == 0: return 0` to handle leaf nodes.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: In the dfs function the recurrence uses `sol = max(sol, dfs(child, graph, memo))` instead of adding 1 for the edge, so the longest‑path calculation over children is incorrect.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The implementation starts DFS from node 1, omits the virtual source and fails to add +1 for each edge, so it does not compute the correct longest path length for general DAGs.

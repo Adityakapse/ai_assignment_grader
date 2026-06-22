@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds `graph` from `A` but never adds the virtual source node 0 with edges to every vertex, so the required global start point is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No `memo` array is created and there is no cache‑check (`memo[node] != -1`), so memoization is not implemented at all.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not define a DFS function, therefore there is no base case handling for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Because no DFS is present, children are never iterated and the recurrence `sol = max(sol, dfs(child) + 1)` is never applied nor stored in a memo table.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: `calc` always returns 0, which is only correct for an empty graph, so it fails to produce the longest directed path length for general inputs.

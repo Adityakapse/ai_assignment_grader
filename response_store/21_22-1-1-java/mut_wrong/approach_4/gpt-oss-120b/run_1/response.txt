@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution iterates the recurrence with a loop (O(n)) and never uses the closed‑form aₙ = 2ⁿ − 1 or exponentiation by squaring.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function at all, so there is no base case for b == 0 and the recursion never terminates.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function at all, so there is no handling of the odd exponent case that reduces b by 1 and multiplies by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not include an expo function at all, so there is no handling of the even exponent case with halving and squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly computes (2^n - 1) mod 10^9+7 for small n, but it does so with a linear loop, which will time‑out for the allowed range of n (up to 10^9), failing the O(log n) requirement.

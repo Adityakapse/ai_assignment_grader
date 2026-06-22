@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a `long[] memo = new long[n + 1]` and fills every entry with `-1`, correctly matching the required allocation and sentinel initialization.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The opt_helper method correctly returns W[0] for n = 0 and Math.max(W[0], W[1]) for n = 1, matching the required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The helper correctly returns memo[n] when it is not -1, avoiding recomputation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly computes memo[n] using the recurrence max(W[n] + opt_helper(n‑2,…), opt_helper(n‑1,…)) and stores the result in memo[n] before returning.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation mirrors the reference solution, correctly handles the base cases and uses memoized recursion to achieve O(n) time, thus returning the optimal profit for all valid inputs.

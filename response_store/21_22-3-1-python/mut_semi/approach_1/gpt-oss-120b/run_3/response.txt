@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code allocates a memo list of length n+1, but it initializes the entries to 0 instead of the required sentinel -1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution provides a base case for n == 0 but omits the required base case for n == 1 (max of W[0] and W[1]).
+
+POINT_ID: 3
+MARKS: 7
+FEEDBACK: A cache‑check is performed, but it tests memo[n] != 0 instead of the specified memo[n] != -1, so the sentinel does not match the rubric.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence correctly computes max(W[n] + opt_helper(n‑2,…), opt_helper(n‑1,…)) and stores the result in memo[n] before returning.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because of the missing n == 1 base case and the mismatched sentinel, the function can produce incorrect results or runtime errors, so overall correctness is not achieved.
+
+TOTAL: 42

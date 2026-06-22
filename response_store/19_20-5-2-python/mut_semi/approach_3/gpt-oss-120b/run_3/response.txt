@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is placed on the stack and a while loop is used, but the loop also checks `safety < 1000`, so it may terminate before the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `stack.pop()`, which correctly implements LIFO removal.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code never checks whether `nxt` is already in `visited` before appending it, allowing repeated processing and potential infinite loops on cyclic graphs.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Neighbours are iterated in reverse order and all are pushed onto the stack, but the push does not filter out already‑visited vertices.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because visited nodes are not checked, the function can revisit nodes endlessly (only limited by the safety counter) and does not reliably return a correct DFS traversal for graphs with cycles.

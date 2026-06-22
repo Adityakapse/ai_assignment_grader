@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 instead of 1 % c, so it fails when c equals 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `b % 2 != 0` to detect odd exponents and the `else` branch for even exponents, correctly distinguishing the two cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd case you reduce b by 1 and return expo(a, b‑1, c) % c, but you fail to multiply the recursive result by a, so the required (a * expo(...)) % c is missing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you halve b with b/2, recurse once, store the result in a, then return (a * a) % c, correctly squaring the half‑power and applying the modulo.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns 1 instead of 1 % c for b = 0 and, in the odd‑b branch, it omits multiplying by a, so it yields incorrect results for many inputs.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a Queue class with an __init__ method that creates a list self.lst for internal storage, satisfying the requirement for internal FIFO tracking.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty method returns `len(self.lst) == 0`, which correctly reports True only when the queue has no elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method simply returns self.lst[0], correctly providing the front element without altering the queue’s internal list.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method uses `self.lst.append(x)` to add elements to the end of the internal list, correctly updating the queue’s state for later operations.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The dequeue() method returns self.lst[0] but never removes that element from the list, so the queue’s internal state is not updated.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue method only returns the front element without removing it, so repeated enqueue/dequeue calls do not preserve FIFO behavior.

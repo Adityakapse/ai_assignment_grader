@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function initializes `stack = [start]` and uses `while stack` (with an extra safety limit) to process nodes, satisfying the required loop structure and initialization.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Nodes are removed with `stack.pop()`, which takes the element from the top of the list, correctly implementing LIFO behavior.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code appends every popped node to `visited` without first checking `if nxt not in visited`, so duplicate processing and potential infinite loops are not prevented.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: All neighbours are pushed onto the stack with `stack.append(vertex)` regardless of whether they have been visited, violating the requirement to push only unvisited neighbours.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because visited checks are missing, the algorithm can revisit nodes indefinitely (mitigated only by an arbitrary safety limit) and does not reliably return the correct DFS order for all graphs.
+
+TOTAL: 40

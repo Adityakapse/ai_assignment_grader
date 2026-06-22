@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code iterates over the entire input list with a for‑loop and uses a try/except to separate numeric tokens (converted to int) from operator tokens, correctly distinguishing the two types.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never calls `stack.push` for numeric tokens; it just sums them in a local variable instead of converting and pushing onto the stack.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution never performs any stack pops or pushes when encountering an operator—it just sums numeric tokens and ignores operators entirely.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution ignores '-' and '/' entirely, just summing numbers, so it never applies the required second‑popped op first‑popped order for subtraction or division.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution only adds numeric tokens and skips all operators, so it returns the sum of the numbers instead of correctly evaluating RPN expressions with +, -, *, and /.

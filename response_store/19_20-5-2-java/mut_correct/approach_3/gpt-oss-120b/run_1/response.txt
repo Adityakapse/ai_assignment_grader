@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes `start` onto `stack` before the `while (!stack.isEmpty())` loop, satisfying the required initialization and loop condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is removed with `stack.pop()`, consistently using LIFO order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each popped node is checked with `if (!visited.contains(next))` and added to `visited` only once, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The neighbour loop iterates from `graph[next].length-1` down to `0` and pushes unvisited neighbours, ensuring reverse‑order pushes for correct adjacency‑list visitation order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the `visited` list, which contains all reachable nodes from `start` in the proper DFS order for any directed graph.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `C = [0] * (10**6 + 1)`, correctly creating a zero‑initialized counting array of the required size.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code loops over A but updates C[i] instead of C[A[i]], so it increments the wrong positions and does not correctly count each category’s frequency.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at 1 instead of 0, so it skips the first category and produces a string that is one character short of the required length.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution outputs "1" when C[i] > B[i] and "0" otherwise, reversing the required comparison (it should output "1" when C[i] <= B[i]).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution counts frequencies with the loop index (C[i] += 1) instead of using A[i], starts the output loop at 1 (omitting the first digit), and reverses the comparison, resulting in an incorrect binary string.

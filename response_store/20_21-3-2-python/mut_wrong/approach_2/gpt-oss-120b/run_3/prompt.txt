@@ -1,0 +1,342 @@
+QUESTION:
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.
+
+SAMPLE SOLUTION:
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+
+STUDENT SOLUTION:
+# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+
+
+RUBRIC POINT:
+Point 1 — Graph construction and virtual source (valid range: 0–20)
+  An adjacency list is built from A, and a virtual source node 0 is added with edges to all nodes 1 to N so that a single DFS covers all nodes.
+
+========================================
+
+QUESTION:
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.
+
+SAMPLE SOLUTION:
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+
+STUDENT SOLUTION:
+# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+
+
+RUBRIC POINT:
+Point 2 — Memoization: initialisation and cache check (valid range: 0–20)
+  A memo array is initialised to -1 for all nodes, and if memo[node] != -1 the cached value is returned immediately without recomputation.
+
+========================================
+
+QUESTION:
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.
+
+SAMPLE SOLUTION:
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+
+STUDENT SOLUTION:
+# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+
+
+RUBRIC POINT:
+Point 3 — DFS base case: leaf node (valid range: 0–15)
+  When a node has no outgoing edges (leaf), the function returns 0.
+
+========================================
+
+QUESTION:
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.
+
+SAMPLE SOLUTION:
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+
+STUDENT SOLUTION:
+# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+
+
+RUBRIC POINT:
+Point 4 — Recurrence: longest path over children (valid range: 0–20)
+  For each child of node, sol = max(sol, dfs(child) + 1) is computed; the result is stored in memo[node] before returning.
+
+========================================
+
+QUESTION:
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+vertices the graph $G$ has, and a two-dimensional array $A$ of size
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$ which is
+encodes the set of edges of $G$.  If $[a,b] \in A$, then there is a
+directed edge from the vertex $a$ to the vertex $b$. You may assume
+that there are no directed cycles in $G$. For example: Let $N = 3$
+and $A = [[1,2],[2,3]]$ then the following graph is obtained:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm has to compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to
+prevent hardcoding of the solutions.
+
+SAMPLE SOLUTION:
+def dfs(node, graph, memo):
+    if len(graph[node]) == 0:
+        return 0
+    elif memo[node] != -1:
+        return memo[node]
+    else:
+        sol = 0
+        for child in graph[node]:
+            sol = max(sol, dfs(child, graph, memo) + 1)
+        memo[node] = sol
+        return memo[node]
+
+
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    memo = [-1] * (N + 1)
+    graph[0] = [x for x in range(1, N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return dfs(0, graph, memo) - 1
+
+STUDENT SOLUTION:
+# Builds an adjacency list but never traverses it; returns 0.
+def calc(N, A):
+    graph = [[] for _ in range(N + 1)]
+    for edge in A:
+        start, end = edge
+        graph[start].append(end)
+    return 0
+
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–25)
+  calc returns the correct length of the longest directed path in the DAG for all valid inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements a quicksort‑style routine with recursive calls on both the left and right sub‑arrays, which matches a recognizable divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion uses the condition `if (l < r)` so it stops when the subarray has length 0 or 1, preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The `partition` method only swaps the element at index l with the pivot if it is larger and never moves the remaining elements, so the pivot is not correctly positioned and the array is not properly partitioned.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The implementation always selects the last element as pivot and does not import or use the random library, providing no randomisation guarantee.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to sort the array for general inputs (it only performs a single swap) and the comment contains the substring “sort”, violating the prohibition.

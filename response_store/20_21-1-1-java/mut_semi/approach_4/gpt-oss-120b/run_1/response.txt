@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case returns 1 rather than 1 % c, so it fails for the edge case c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution includes `else if (b % 2 != 0)` for the odd case and an else branch for even, correctly distinguishing parity of b.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd branch the code returns `expo(a, b - 1, c) % c` but fails to multiply the recursive result by `a`, so it does not implement the required `(a * expo(...)) % c`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch the code calls expo(a, b/2, c) once, stores the result (mod c) in a, and returns (a * a) % c, correctly halving and squaring the recursive result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The base case returns 1 instead of 1 % c and the odd‑b case omits the multiplication by a, so the function produces incorrect results for many inputs (e.g., when c = 1 or b is odd).

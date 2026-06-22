@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — DP table allocation
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] Result = new double[n + 1][capacity + 1];`, which allocates a (n+1) × (capacity+1) table that Java initializes to 0.
+
+POINT_ID: Point 2 — Loop structure: iterating items and capacities
+BUCKET: Semi
+FEEDBACK: The outer loop iterates over all items, but the inner loop starts at `j = 1` (`for (int j = 1; j <= capacity; j++)`) and never processes the zero‑capacity column, missing subproblems for weight‑0 items.
+
+POINT_ID: Point 3 — Capacity feasibility check
+BUCKET: Semi
+FEEDBACK: The feasibility test uses `if (volumes[i] < j)` instead of `<=`, so items that exactly fill the remaining capacity (or zero‑weight items at j = 0) are incorrectly excluded.
+
+POINT_ID: Point 4 — Recurrence relation
+BUCKET: Semi
+FEEDBACK: The recurrence references `Result[i][...]` (the current row) rather than the previous row (`Result[i+1][...]`), e.g., `values[i] + Result[i][j - volumes[i]]`, which allows unlimited reuse of the same item and deviates from the correct DP formula.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Wrong
+FEEDBACK: Because of the off‑by‑one loop start, strict feasibility check, and wrong row references, the method returns incorrect maximum values for many valid inputs, including cases where an item fits exactly or has volume 0.

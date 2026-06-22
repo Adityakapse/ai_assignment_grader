@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: The code builds `graph` from `A` but never adds a virtual source node 0 with edges to all vertices, and starts DFS from node 1 instead of a unified source.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: `memo` is initialised to -1 and the check `if memo[node] != -1` returns the cached value, correctly implementing memoization.
+
+POINT_ID: Point 3
+BUCKET: Correct
+FEEDBACK: When `graph[node]` is empty the function returns 0, which correctly handles leaf nodes.
+
+POINT_ID: Point 4
+BUCKET: Semi
+FEEDBACK: The loop uses `sol = max(sol, dfs(child, graph, memo))` without the required `+1` for the edge, so path lengths are not counted, though the result is stored in `memo[node]`.
+
+POINT_ID: Point 5
+BUCKET: Wrong
+FEEDBACK: Because the DFS starts at node 1 and omits the `+1` per edge, the function returns 0 for most inputs, yielding an incorrect longest‑path length.

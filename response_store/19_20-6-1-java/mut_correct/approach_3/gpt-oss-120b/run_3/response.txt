@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[][] edDis = new int[m + 1][n + 1];` and uses nested loops `for (int i = 1; i <= m; ++i)` and `for (int j = 1; j <= n; ++j)` to fill the table.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It initializes the first column with `edDis[i][0] = i` for all i and the first row with `edDis[0][j] = j` for all j, correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `a.charAt(i - 1) == b.charAt(j - 1)`, the code assigns `edDis[i][j] = edDis[i - 1][j - 1];`, matching the required behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatched characters it computes `edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j - 1], edDis[i - 1][j]), edDis[i - 1][j - 1]);`, correctly applying the 1 + min of the three neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `edDis[m][n]` after the iterative DP, providing the correct edit distance for all inputs without recursion.

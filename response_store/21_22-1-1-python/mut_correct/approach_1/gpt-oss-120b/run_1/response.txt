@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The implementation uses `expo(a, b, c) - 1` with `a = 2`, directly applying the closed‑form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The base case `if b == 0: return 1 % c` correctly returns 1 (mod c) when the exponent is zero.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The odd‑exponent branch `elif b % 2: return (a * expo(a, b - 1, c)) % c` correctly reduces the problem by one and multiplies.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even‑exponent branch computes `a = expo(a, b // 2, c) % c` once and returns `(a * a) % c`, correctly halving and squaring.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: `calc(n)` returns `expo(a, b, c) - 1`, which yields (2ⁿ − 1) mod 1 000 000 007 for all valid inputs and does not use any forbidden keywords.
+
+TOTAL: 100

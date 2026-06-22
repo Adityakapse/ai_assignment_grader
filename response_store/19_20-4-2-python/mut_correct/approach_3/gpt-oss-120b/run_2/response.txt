@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if delete.left is None or delete.right is None: y = delete` else `y = tree_minimum(delete.right)`, correctly selecting y when the node has at most one child and the inorder successor otherwise.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `tree_minimum` function iterates `while n.left is not None: n = n.left` and returns `n`, properly walking left to find the minimum node.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `x` is set with `y.left if y.left is not None else y.right`, correctly identifying y’s non‑null child (or None if y is a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The splice updates `x.parent = y.parent` when `x` exists, handles the root case with `if y.parent is None: root = x`, and otherwise redirects `y.parent.left` or `y.parent.right` to `x`, correctly removing y from the tree.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The key is copied only when `y is not delete` via `delete.key = y.key`, correctly replacing the logical node’s key with the successor’s key.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The function correctly handles leaf, single‑child, two‑children, and root deletions and returns the updated root, preserving the BST property in all cases.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `c` with size n and correctly initializes `c[0] = a[0]` before the loop, satisfying the prefix‑sum array allocation requirement.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code includes a loop for C, but it assigns c[i] = a[i] rather than c[i] = a[i] + c[i‑1], so the cumulative sum is not correctly built.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution allocates `d` with length n and includes a loop `for (int i = 0; i < n; i++)` that processes each of the n queries.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The implementation always uses `d[i] = c[b[i][1]] - c[b[i][0] - 1]` and never handles the case `l == 0`, which would cause an out‑of‑bounds access to `c[-1]`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code builds `c` without accumulating (it copies `a[i]` directly) and then computes `d[i] = c[b[i][1]] - c[b[i][0] - 1]`, which both yields wrong sums and throws an out‑of‑bounds error when `l == 0`.

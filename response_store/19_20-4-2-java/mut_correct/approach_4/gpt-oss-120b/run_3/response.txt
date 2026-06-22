@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if (delete.left == null || delete.right == null) y = delete; else y = treeMinimum(delete.right);`, correctly selecting `y` as the node to delete when it has zero or one child and the successor when it has two children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum method correctly iterates with `while (n.left != null) n = n.left;` and returns the leftmost node, matching the required in-order minimum behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution assigns `x` to `y.left` if it’s non‑null and otherwise to `y.right`, correctly handling the case where `y` may be a leaf (resulting in `x` being null).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates `x.parent = y.parent` when `x` is non‑null, correctly redirects `y.parent`'s left or right pointer to `x`, and handles the root replacement case with `if (y.parent == null) root = x;`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution uses `if (y != delete) delete.key = y.key;`, correctly copying the key only when y is the in‑order successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference algorithm, correctly handling leaf, single‑child, two‑children, and root deletions, and returns the updated root.

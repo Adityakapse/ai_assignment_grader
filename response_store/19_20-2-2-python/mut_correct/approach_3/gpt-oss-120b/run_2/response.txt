@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function iterates with `for i in inputarray` and uses `if/elif` to distinguish operator tokens from numeric tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens fall into the `else` clause where `int(i)` is called and the integer is pushed onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values, applies the appropriate arithmetic, and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Subtraction uses the correct order (`n2 - n1`), but division uses `n2 / n1`, producing a float instead of the required integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator yields correct results for +, -, and *, but returns a floating‑point value for '/' expressions, so it does not always produce the correct integer result.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never distinguishes the two‑child case or compute a successor; it always treats the node to delete as the one to remove, setting x directly to a left or right child.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The submitted code does not define a treeMinimum helper at all, so it never finds the in‑order successor as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets x to delete.left when it exists, otherwise to delete.right (which may be null), correctly identifying the child to promote.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets x.parent to delete.parent, updates the appropriate child pointer of delete.parent (or root when parent is null), correctly handling the splicing of the node.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution never handles the two‑child case or compute a successor, and it never copies y.key into delete.key, so the key is never updated when a successor should be used.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code only reassigns the left or right child (or null) and updates the parent, handling leaf and one‑child deletions, but it never finds a successor for nodes with two children, so those deletions produce an invalid BST.

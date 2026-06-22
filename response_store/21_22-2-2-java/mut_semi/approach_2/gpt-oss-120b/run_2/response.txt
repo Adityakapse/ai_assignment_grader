@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates `c` with `new int[n]` and correctly initializes `c[0]` to `a[0]`.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The prefix‑sum loop only copies a[i] into c[i] and never adds c[i‑1], so the cumulative array C is not constructed as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution allocates the output array d with size n and uses a for‑loop (i = 0; i < n; i++) that iterates over every query in B, satisfying the allocation and loop requirement.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The implementation always uses `c[b[i][0] - 1]` for the subtraction and never checks for `b[i][0] == 0`, so the l = 0 edge case is not handled and would cause an out‑of‑bounds error.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The prefix sum array `c` is built incorrectly (it just copies `a[i]` instead of accumulating) and the range calculation always accesses `c[b[i][0]-1]`, which fails for queries where `l = 0`. Consequently the function does not return the correct sums.

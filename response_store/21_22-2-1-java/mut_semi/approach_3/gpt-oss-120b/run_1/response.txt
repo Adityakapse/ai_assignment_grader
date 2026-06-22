@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length + 1];`, which is sized at least `max(A)+1` and is automatically zero‑initialized, meeting the counting‑array requirement.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The frequency loop `for (int i = 0; i < A.length; i++) C[i]++;` increments `C[i]` using the loop index instead of `C[A[i]]`, so counts are recorded for the wrong categories.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The output loop starts at `i = 1` and runs while `i < B.length`, skipping index 0 and producing a string that is one character shorter than required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The comparison `if (C[i] > B[i]) sol.append('1'); else sol.append('0');` reverses the intended logic, outputting '1' when the count exceeds capacity.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the incorrect counting, off‑by‑one output loop, and reversed comparison, the method returns an incorrect binary string for most valid inputs.

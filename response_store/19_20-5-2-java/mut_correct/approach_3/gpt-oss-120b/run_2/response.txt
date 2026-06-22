@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes `start` onto `stack` before entering `while (!stack.isEmpty())`, and the loop runs until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `stack.pop()`, which always takes the top element of the stack (LIFO).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Before processing, the node is checked with `!visited.contains(next)`, and when not visited it is added to `visited`, preventing duplicates.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The neighbour loop iterates from `graph[next].length-1` down to `0` and pushes each unvisited neighbour onto the stack, preserving adjacency‑list order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the `visited` list, which contains all nodes reachable from `start` in the proper DFS order for any directed graph.

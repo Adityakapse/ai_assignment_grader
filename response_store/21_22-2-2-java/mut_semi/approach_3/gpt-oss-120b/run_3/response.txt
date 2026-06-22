@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates an array c of length n and sets c[0] = a[0] as required.
+
+POINT ID: 2
+BUCKET: Wrong
+FEEDBACK: The construction loop assigns c[i] = a[i] instead of c[i] = a[i] + c[i‑1], so c does not become a cumulative sum array.
+
+POINT ID: 3
+BUCKET: Correct
+FEEDBACK: An output array d of size n is allocated and a loop runs for (int i = 0; i < n; i++) to process every query.
+
+POINT ID: 4
+BUCKET: Semi
+FEEDBACK: The range computation always uses c[b[i][0] - 1] without checking l == 0, which will cause an out‑of‑bounds access when a query’s left index is 0.
+
+POINT ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the prefix sums are built incorrectly and the l = 0 case is not handled, the method returns wrong results (and may crash) for the given queries.

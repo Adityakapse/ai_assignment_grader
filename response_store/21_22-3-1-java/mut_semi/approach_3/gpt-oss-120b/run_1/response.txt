@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a memo array of size n+1, but it relies on the default value 0 as the sentinel instead of initializing all entries to –1.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Only the base case for n == 0 is implemented; the required base case for n == 1 (returning max(W[0], W[1])) is missing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The cache check uses `if (memo[n] != 0)` which treats 0 as the sentinel, contrary to the specification that –1 should be used.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `memo[n] = Math.max(W[n] + opt_helper(n-2, …), opt_helper(n-1, …))` is correctly implemented and the result is stored before returning.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the missing n==1 base case leads to calls with negative indices (e.g., opt_helper(-1)), the function throws an exception for inputs larger than size 2 and does not reliably return the maximum profit.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The calc function returns expo(a,b,c) without the required “- 1”, and the comment even admits the missing adjustment, so the closed form a_n = 2^n − 1 is not implemented.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The expo function correctly returns 1 % c when b == 0, matching the base‑case requirement.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd‑b branch the code returns expo(a, b‑1, c) % c but fails to multiply by a, so it does not follow the required (a * expo(...)) % c pattern.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even‑b branch computes a = expo(a, b//2, c) % c and returns (a * a) % c, correctly halving the exponent and squaring the result.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Because calc does not subtract 1 and the odd exponent case is incorrect, the overall function does not produce (2^n − 1) % (10^9+7) for all inputs.
+
+TOTAL: 35

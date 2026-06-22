@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The calc function returns expo(2, n, c) without the required “‑1”, and the expo function’s odd‑case omits the multiplication by a, so it computes 2ⁿ rather than 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The expo function includes a base case `if (b == 0) return 1;`, which correctly returns 1 for exponent zero.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: In the odd case you correctly reduce b by 1 and apply `% c`, but you omit the multiplication by a, so the expression is not `(a * expo(a, b-1, c)) % c`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even case the function calls expo(a, b/2, c) once, stores the result, and returns (a * a) % c, correctly halving b and squaring the recursive result.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns expo(a,b,c) without the required “‑1” and the odd‑exponent case omits multiplying by a, so it produces 2ⁿ mod M instead of (2ⁿ‑1) mod M.

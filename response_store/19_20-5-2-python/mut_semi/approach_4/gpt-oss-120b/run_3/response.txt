@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code initializes the stack with the start node, but the while condition adds a safety counter (`safety < 1000`) instead of looping solely until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code consistently uses `stack.pop()` to remove the current node from the top of the stack, ensuring a LIFO order for traversal.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code maintains a visited list but never checks whether a node has already been visited before processing it, so nodes can be added repeatedly and the algorithm can loop indefinitely.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The loop iterates over neighbours and pushes them onto the stack, but it never checks if a neighbour has already been visited, so visited nodes are added, violating the requirement to push only unvisited neighbours.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code appends every popped node to visited without checking if it was already visited, causing repeated visits and incorrect traversal order, and it only stops via an artificial safety limit rather than handling cycles correctly.

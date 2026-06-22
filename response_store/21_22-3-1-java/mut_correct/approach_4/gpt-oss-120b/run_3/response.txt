@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates a `long[] memo` of length n+1 and fills every element with -1 before using it for caching.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution includes both base cases—`if (n == 0) return W[0];` and `if (n == 1) return Math.max(W[0], W[1]);`—matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The helper begins with `if (memo[n] != -1) return memo[n];`, correctly using –1 as the sentinel to return cached results before recomputation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation computes `memo[n] = Math.max(W[n] + opt_helper(n-2, …), opt_helper(n-1, …))` and returns `memo[n]`, correctly applying the max‑based recurrence and storing the result for memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, using memoization in opt_helper and correctly handling base cases, thus returning the optimal profit in O(n) time for all inputs.
