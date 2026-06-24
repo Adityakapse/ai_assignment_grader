@@ -67,8 +67,19 @@ def render_rubric_table(rubric):
             "Correct": marks.get("Correct", ""),
             "Semi": marks.get("Semi", ""),
             "Wrong": marks.get("Wrong", ""),
+            "Assessing": _point_target(point),
         })
     st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+
+
+def _point_target(point):
+    # Describes what the rubric point assesses: its target if set, else the full-credit criterion.
+    if point.get("target"):
+        return point["target"]
+    for bucket in point["buckets"]:
+        if bucket["label"] == "Correct":
+            return bucket["description"]
+    return ""
 
 
 def cell_detail(cell_row):
@@ -79,20 +90,6 @@ def cell_detail(cell_row):
         "buckets": da.parse_json_col(cell_row.get("buckets_per_point")),
         "feedback": da.parse_json_col(cell_row.get("feedback_per_point")),
     }
-
-
-def render_single_approach(cell_row, rubric):
-    # Shows one approach in full: total plus every rubric point's bucket, marks, and feedback inline.
-    detail = cell_detail(cell_row)
-    st.metric("Median total", f"{detail['score']:.0f} / 100")
-    for point in rubric["rubric_points"]:
-        pid = str(point["id"])
-        bucket = detail["buckets"].get(pid, "—")
-        marks = detail["scores"].get(pid, "—")
-        st.markdown(f"**Point {pid} · {point['name']}** — `{bucket}` · {marks} marks")
-        feedback = detail["feedback"].get(pid)
-        if feedback:
-            st.caption(feedback)
 
 
 def render_approach_columns(cells_by_approach, rubric, gt_row=None):

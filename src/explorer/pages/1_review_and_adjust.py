@@ -83,16 +83,12 @@ def _solution_text(student_id, question_id):
     return solutions.loc[key, "solution"]
 
 
-def render_view(cells, rubric, gt_row, approach):
-    # Shows the sidebar-selected approach in full, or all approaches side-by-side when comparing.
-    if st.checkbox("Compare approaches", value=False):
-        ui.render_approach_columns(cells, rubric, gt_row)
-        _render_feedback_expanders(cells, rubric)
+def render_view(cells, rubric, gt_row):
+    # Optionally lays all approaches side-by-side; the single approach is shown by the editor below.
+    if not st.checkbox("Compare approaches", value=False):
         return
-    chosen = approach if approach in cells else next(iter(cells))
-    if approach not in cells:
-        st.info(f"{ui.APPROACH_LABELS[approach]} did not grade this submission; showing {chosen}.")
-    ui.render_single_approach(cells[chosen], rubric)
+    ui.render_approach_columns(cells, rubric, gt_row)
+    _render_feedback_expanders(cells, rubric)
 
 
 def _render_feedback_expanders(cells, rubric):
@@ -248,7 +244,7 @@ def main():
         st.warning("This model did not grade this submission.")
         return
     gt_row = ground_truth_row(question_id, student_id)
-    render_view(cells, rubric, gt_row, approach)
+    render_view(cells, rubric, gt_row)
     st.divider()
     render_editor(question_id, student_id, rubric, cells, gt_row, approach)
 
