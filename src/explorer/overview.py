@@ -111,7 +111,7 @@ def _save_all(table, approach):
     # Bulk-accepts every not-yet-reviewed submission in the current view as the approach's grade.
     pending = table[~table["reviewed"]]
     count = len(pending)
-    label = f"💾 Save all {count} pending as {ui.APPROACH_LABELS[approach]}"
+    label = f"Save all {count} pending as {ui.APPROACH_LABELS[approach]}"
     if st.button(label, type="primary", disabled=count == 0):
         records = [_record_from_cell(row, approach) for _, row in pending.iterrows()]
         written = da.bulk_upsert_final_grades(records)
@@ -120,9 +120,9 @@ def _save_all(table, approach):
 
 
 def main():
-    st.set_page_config(page_title="Overview", page_icon="📊", layout="wide")
+    st.set_page_config(page_title="Overview", layout="wide")
     model, approach, scope = ui.sidebar_controls()
-    st.title("📊 Overview & Outliers")
+    st.title("Overview & Outliers")
     st.caption(f"Scores shown for **{ui.APPROACH_LABELS[approach]}** · model **{model}**")
     render_table(model, approach, scope)
 

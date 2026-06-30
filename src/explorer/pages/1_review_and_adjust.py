@@ -187,7 +187,7 @@ def render_editor(question_id, student_id, rubric, cells, gt_row, approach):
     saved = da.get_final_grade(question_id, student_id)
     if saved is not None:
         st.success(
-            f"✓ Already finalized at {int(float(saved['final_total']))}/100 "
+            f"Already finalized at {int(float(saved['final_total']))}/100 "
             f"on {saved.get('updated_at', '')}. Editing below will update it."
         )
     ensure_editor_state(question_id, student_id, rubric, cells, approach)
@@ -198,7 +198,7 @@ def render_editor(question_id, student_id, rubric, cells, gt_row, approach):
     override = st.checkbox("Override total manually")
     final_total = st.number_input("Final total", 0, 100, summed, 1) if override else summed
     note = st.text_area("Adjustment note (optional)", key="adjust_note")
-    if st.button("💾 Save final grade", type="primary"):
+    if st.button("Save final grade", type="primary"):
         _save(question_id, student_id, rubric, final_total, note)
 
 
@@ -228,9 +228,9 @@ def _save(question_id, student_id, rubric, final_total, note):
 
 
 def main():
-    st.set_page_config(page_title="Review & Adjust", page_icon="📝", layout="wide")
+    st.set_page_config(page_title="Review & Adjust", layout="wide")
     model, approach, _ = ui.sidebar_controls()
-    st.title("📝 Review & Adjust")
+    st.title("Review & Adjust")
     apply_deep_link()
     question_id, student_id = pick_submission(model)
     rubric = da.load_rubric(question_id)

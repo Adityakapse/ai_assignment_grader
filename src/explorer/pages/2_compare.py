@@ -81,9 +81,9 @@ def _read_pngs(directory):
 
 
 def main():
-    st.set_page_config(page_title="Graphs", page_icon="📐", layout="wide")
+    st.set_page_config(page_title="Graphs", layout="wide")
     model, _approach, scope = ui.sidebar_controls()
-    st.title("📐 Graphs")
+    st.title("Graphs")
     st.caption(f"Model **{model}** · scope **{scope}** (multi-model charts use both production models)")
     images = build_images(scope, model)
     if not images:

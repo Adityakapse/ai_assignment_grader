@@ -3,6 +3,75 @@ import streamlit as st
 
 import data_access as da
 
+THEME_CSS = """
+<style>
+:root {
+  --bg: #ffffff;
+  --fg: #09090b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --accent: #18181b;
+  --subtle: #fafafa;
+}
+html, body, [class*="css"] { -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { letter-spacing: -0.01em; font-weight: 650; }
+.block-container { padding-top: 2.5rem; max-width: 1200px; }
+
+/* Buttons — solid black primary, outlined secondary (shadcn style) */
+.stButton > button, .stDownloadButton > button {
+  border-radius: 0.55rem;
+  border: 1px solid var(--border);
+  font-weight: 550;
+  transition: all 0.12s ease;
+}
+.stButton > button[kind="primary"] {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.stButton > button[kind="primary"]:hover { background: #000; border-color: #000; }
+.stButton > button[kind="secondary"] { background: #fff; color: var(--fg); }
+.stButton > button[kind="secondary"]:hover { background: var(--subtle); border-color: #d4d4d8; }
+
+/* Metric cards — bordered tiles */
+[data-testid="stMetric"] {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.1rem;
+}
+[data-testid="stMetricValue"] { font-weight: 650; letter-spacing: -0.02em; }
+[data-testid="stMetricLabel"] { color: var(--muted); }
+
+/* Expanders & containers — clean hairline borders */
+[data-testid="stExpander"] details {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+[data-testid="stExpander"] summary:hover { color: var(--accent); }
+
+/* Inputs — neutral focus ring */
+[data-baseweb="input"], [data-baseweb="select"] > div, .stTextArea textarea {
+  border-radius: 0.55rem !important;
+}
+
+/* Tables */
+[data-testid="stDataFrame"] { border: 1px solid var(--border); border-radius: 0.75rem; }
+
+/* Sidebar — slightly inset, hairline divider */
+[data-testid="stSidebar"] { background: var(--subtle); border-right: 1px solid var(--border); }
+
+/* Tabs & radios — muted unselected, black selected */
+[data-baseweb="tab-highlight"] { background: var(--accent) !important; }
+
+hr { border-color: var(--border); }
+</style>
+"""
+
+
+def apply_theme():
+    # Injects the shared monochrome (shadcn-style) CSS; call once at the top of every page.
+    st.markdown(THEME_CSS, unsafe_allow_html=True)
+
+
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 APPROACH_LABELS = {
     "approach_1": "A1 · whole rubric, free marks",
@@ -14,6 +83,7 @@ APPROACH_LABELS = {
 
 def sidebar_controls():
     # Renders the shared model, approach, and question-scope selectors and returns the choices.
+    apply_theme()
     st.sidebar.title("Grading review")
     models = list(da.PRODUCTION_MODELS.keys())
     model = st.sidebar.radio(
