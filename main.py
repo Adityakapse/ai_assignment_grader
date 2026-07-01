@@ -62,9 +62,10 @@ def parse_args():
 def resolve_paths(args):
     # Redirects every store to a per-assignment subfolder; the default run (no --assignment) is unchanged.
     if args.assignment:
-        args.datastore_dir    = os.path.join(args.datastore_dir, args.assignment)
-        args.result_store_dir = os.path.join(args.result_store_dir, args.assignment)
-        args.graph_store_dir  = os.path.join(args.graph_store_dir, args.assignment)
+        args.datastore_dir       = os.path.join(args.datastore_dir, args.assignment)
+        args.response_store_dir  = os.path.join(args.response_store_dir, args.assignment)
+        args.result_store_dir    = os.path.join(args.result_store_dir, args.assignment)
+        args.graph_store_dir     = os.path.join(args.graph_store_dir, args.assignment)
     if args.ground_truth is None:
         args.ground_truth = os.path.join(args.datastore_dir, "ground_truth.csv")
 

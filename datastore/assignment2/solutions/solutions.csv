@@ -1,0 +1,21 @@
+student_id,question_id,solution
+mut_correct,19_20-2-1-java,"public class Queue {
+    private int start = 0;
+    private int end = 0;
+    private String[] buffer = new String[100];
+
+    public boolean emptyqueue() { return start == end; }
+    public String head() { return buffer[start]; }
+    public void enqueue(String s) {
+        buffer[end] = s;
+        end++;
+        if (end == 100) end = 0;
+    }
+    public String dequeue() {
+        String s = buffer[start];
+        start++;
+        if (start == 100) start = 0;
+        return s;
+    }
+}
+"

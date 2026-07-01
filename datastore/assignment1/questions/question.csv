@@ -1,0 +1,31 @@
+question_id,question_title,question_desc,sample_solution,question_type
+19_20-1-1-java,LCM -- Least Common Multiple (Java),"Similar to the already known ""Greatest Common Divisor"" (GCD),
+the Least Common Multiple (LCM) is also used in elementary mathematical
+applications, for example in the multiplication of heterogeneous fractions. This
+has applications ranging from the adaptation of cooking recipes to other
+portion quantities to the calculation of planetary orbits.
+
+The LCM is defined as follows:
+$lcm(n_1, n_2)=\frac{n_1 \cdot n_2}{gcd(n_1,n_2)}$.
+
+Implement a function that calculates the LCM of two given values.
+It may be based on the GCD implementation from the lecture.
+
+Note: The use of ""import"" is not allowed.","int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+        int r = a % b;
+    if (r == 0) {
+        return b;
+    }
+    else {
+        return gcd(r, b);
+    }
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}",implementation
