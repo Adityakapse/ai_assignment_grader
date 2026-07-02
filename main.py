@@ -3,6 +3,8 @@ import os
 import subprocess
 import sys
 
+from dotenv import load_dotenv
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
 import generate_graph
@@ -19,13 +21,16 @@ APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 # OLLAMA_MODELS = ["Qwen3:14b"]
 OLLAMA_MODELS = []
 # NIM_MODELS    = ["nvidia/nemotron-3-super-120b-a12b","openai/gpt-oss-120b"]
-NIM_MODELS    = ["openai/gpt-oss-120b"]
+# Default empty: pass --nim_models / --other_models per run. For the dissertation run use
+#   python main.py --nim_models openai/gpt-oss-120b
+NIM_MODELS    = []
 
 # ALL_MODELS    = NIM_MODELS
 ALL_MODELS    = OLLAMA_MODELS + NIM_MODELS
 
 
-NIM_API_KEY = os.environ.get("NIM_API_KEY", "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")
+load_dotenv()
+NIM_API_KEY = os.environ.get("NIM_API_KEY", "")
 
 
 
@@ -49,6 +54,12 @@ def parse_args():
                         help="Override the Ollama model list for this run")
     parser.add_argument("--nim_models",           nargs="+", default=None,
                         help="Override the NIM model list for this run")
+    parser.add_argument("--other_models",         nargs="+", default=None,
+                        help="Models for a generic OpenAI-compatible provider (needs --base_url and --api_key_env)")
+    parser.add_argument("--base_url",             default="",
+                        help="OpenAI-compatible endpoint for --other_models (e.g. a Gemini/Claude/Groq openai URL)")
+    parser.add_argument("--api_key_env",          default="",
+                        help="Name of the .env variable holding the API key for --other_models")
     parser.add_argument("--runs",                 type=int, default=3)
     parser.add_argument("--question_id",          default=None,
                         help="Restrict grading and processing to one question_id")
@@ -75,7 +86,8 @@ def resolve_models(args):
     approaches    = args.approaches if args.approaches else APPROACHES
     ollama_models = args.ollama_models if args.ollama_models is not None else OLLAMA_MODELS
     nim_models    = args.nim_models if args.nim_models is not None else NIM_MODELS
-    return approaches, ollama_models, nim_models
+    other_models  = args.other_models if args.other_models is not None else []
+    return approaches, ollama_models, nim_models, other_models
 
 
 def _run(label, cmd):
@@ -101,7 +113,7 @@ def step_validation(args):
     validation.main(args.datastore_dir)
 
 
-def _grade_model_list(args, models, backend, api_key, n_start, total, approaches):
+def _grade_model_list(args, models, backend, api_key, n_start, total, approaches, base_url=""):
     n = n_start
     for approach in approaches:
         for model in models:
@@ -116,17 +128,22 @@ def _grade_model_list(args, models, backend, api_key, n_start, total, approaches
                 "--backend",             backend,
                 "--api_key",             api_key,
             ]
+            if base_url:
+                cmd += ["--base_url", base_url]
             if args.question_id:
                 cmd += ["--question_id", args.question_id]
             _run(f"Step 3 — Grading [{n}/{total}] {approach} / {model}", cmd)
     return n
 
 
-def step_grading(args, approaches, ollama_models, nim_models):
+def step_grading(args, approaches, ollama_models, nim_models, other_models):
     # Step 3: runs grade.py for every approach × model combination via subprocess.
-    total = len(approaches) * len(ollama_models + nim_models)
+    total = len(approaches) * len(ollama_models + nim_models + other_models)
     n = _grade_model_list(args, ollama_models, "ollama", "",          0,     total, approaches)
-    _grade_model_list(args, nim_models,    "nim",    NIM_API_KEY,  n,     total, approaches)
+    n = _grade_model_list(args, nim_models,    "nim",    NIM_API_KEY,  n,     total, approaches)
+    if other_models:
+        other_key = os.environ.get(args.api_key_env, "")
+        _grade_model_list(args, other_models, "other", other_key, n, total, approaches, args.base_url)
 
 
 def step_processing(args):
@@ -163,8 +180,8 @@ def step_graphs(args, all_models):
 def main():
     args = parse_args()
     resolve_paths(args)
-    approaches, ollama_models, nim_models = resolve_models(args)
-    all_models = ollama_models + nim_models
+    approaches, ollama_models, nim_models, other_models = resolve_models(args)
+    all_models = ollama_models + nim_models + other_models
 
     if not args.skip_preprocessing:
         step_preprocessing(args)
@@ -172,7 +189,7 @@ def main():
     step_validation(args)
 
     if not args.skip_grading:
-        step_grading(args, approaches, ollama_models, nim_models)
+        step_grading(args, approaches, ollama_models, nim_models, other_models)
 
     if not args.skip_processing:
         step_processing(args)

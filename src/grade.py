@@ -36,8 +36,9 @@ def parse_args():
     parser.add_argument("--runs", type=int, default=3)
     parser.add_argument("--response_file", default="response.txt")
     parser.add_argument("--prompt_file", default="prompt.txt")
-    parser.add_argument("--backend", default="ollama", choices=["ollama", "nim"])
+    parser.add_argument("--backend", default="ollama", choices=["ollama", "nim", "other"])
     parser.add_argument("--api_key", default="")
+    parser.add_argument("--base_url", default="")
     args = parser.parse_args()
     if not os.path.isdir(args.datastore_dir):
         print(f"Error: datastore_dir does not exist: {args.datastore_dir}")
@@ -211,7 +212,35 @@ def call_nim(prompt, model, system_prompt, api_key, retries=3, timeout=300):
     return ""
 
 
-def call_model(prompt, model, system_prompt, backend, api_key=""):
+def call_openai_compatible(prompt, model, system_prompt, api_key, base_url, retries=3, timeout=300):
+    # Generic OpenAI-compatible caller for any provider (Gemini, Claude, Groq, ...) via its openai endpoint.
+    client = OpenAI(base_url=base_url, api_key=api_key)
+    for attempt in range(1, retries + 1):
+        try:
+            completion = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user",   "content": prompt},
+                ],
+                temperature=0.2,
+                max_tokens=8192,
+                stream=False,
+                timeout=timeout,
+            )
+            result = completion.choices[0].message.content or ""
+            if result.strip():
+                return result
+            if attempt < retries:
+                print(f"  [warn] Empty response (attempt {attempt}/{retries}), retrying...")
+        except Exception as e:
+            print(f"  [warn] Provider error (attempt {attempt}/{retries}): {e}, retrying..." if attempt < retries else f"  [warn] Provider failed after {retries} attempts: {e}")
+    return ""
+
+
+def call_model(prompt, model, system_prompt, backend, api_key="", base_url=""):
+    if backend == "other":
+        return call_openai_compatible(prompt, model, system_prompt, api_key, base_url)
     if backend == "nim":
         return call_nim(prompt, model, system_prompt, api_key)
     return call_ollama(prompt, model, system_prompt)
@@ -250,20 +279,20 @@ def save_run(response_store_dir, question_id, student_id, approach, model, run_n
         f.write(f"{elapsed_seconds:.4f}")
 
 
-def _grade_whole_rubric(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key):
+def _grade_whole_rubric(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url):
     # Grades by sending all rubric points in one prompt; returns (response, prompt).
     prompt = build_prompt_whole(question, solution_text, rubric, free_marks)
-    response = call_model(prompt, model, system_prompt, backend, api_key)
+    response = call_model(prompt, model, system_prompt, backend, api_key, base_url)
     return response, prompt
 
 
-def _grade_per_point(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key):
+def _grade_per_point(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url):
     # Grades by calling the LLM once per rubric point and assembling the responses.
     point_results = []
     prompts = []
     for point in rubric["rubric_points"]:
         prompt = build_prompt_point(question, solution_text, point, free_marks)
-        response = call_model(prompt, model, system_prompt, backend, api_key)
+        response = call_model(prompt, model, system_prompt, backend, api_key, base_url)
         point_results.append({"point_id": point["id"], "response": response})
         prompts.append(prompt)
     assembled = assemble_per_point_response(point_results)
@@ -271,20 +300,20 @@ def _grade_per_point(question, solution_text, rubric, system_prompt, model, free
     return assembled, separator.join(prompts)
 
 
-def grade_one_run(question, solution_text, rubric, system_prompt, model, whole_rubric, free_marks, backend, api_key):
+def grade_one_run(question, solution_text, rubric, system_prompt, model, whole_rubric, free_marks, backend, api_key, base_url):
     # Dispatches to whole-rubric or per-point grading; also measures total wall-clock seconds.
     start = time.perf_counter()
     if whole_rubric:
-        response, prompt = _grade_whole_rubric(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key)
+        response, prompt = _grade_whole_rubric(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url)
     else:
-        response, prompt = _grade_per_point(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key)
+        response, prompt = _grade_per_point(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url)
     elapsed = time.perf_counter() - start
     return response, prompt, elapsed
 
 
 def grade_question(question_id, question, solutions, rubric, system_prompt,
                    model, approach, whole_rubric, free_marks, runs,
-                   response_store_dir, response_file, prompt_file, backend, api_key):
+                   response_store_dir, response_file, prompt_file, backend, api_key, base_url):
     # Iterates over all students and runs, skipping any run that already has a saved response.
     for sol in solutions:
         student_id = sol["student_id"]
@@ -296,7 +325,7 @@ def grade_question(question_id, question, solutions, rubric, system_prompt,
                 continue
             response, prompt_text, elapsed = grade_one_run(
                 question, solution_text, rubric, system_prompt,
-                model, whole_rubric, free_marks, backend, api_key
+                model, whole_rubric, free_marks, backend, api_key, base_url
             )
             save_run(
                 response_store_dir, question_id, student_id, approach, model, run_n,
@@ -333,7 +362,7 @@ def main():
             question_id, question, solutions, rubric, system_prompt,
             args.model, args.approach, whole_rubric, free_marks, args.runs,
             args.response_store_dir, args.response_file, args.prompt_file,
-            args.backend, args.api_key,
+            args.backend, args.api_key, args.base_url,
         )
 
 
