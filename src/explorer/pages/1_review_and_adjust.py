@@ -12,9 +12,9 @@ import data_access as da
 BUCKETS = ["Correct", "Semi", "Wrong"]
 
 
-def model_cells(model, question_id, student_id):
+def model_cells(assignment, model, question_id, student_id):
     # Returns {approach: collapsed_row} for one submission graded by one model.
-    collapsed = da.collapse_to_median(da.load_results())
+    collapsed = da.collapse_to_median(da.load_results(assignment))
     sel = collapsed[
         (collapsed["model"] == model)
         & (collapsed["question_id"] == question_id)
@@ -23,9 +23,9 @@ def model_cells(model, question_id, student_id):
     return {row["approach"]: row for _, row in sel.iterrows()}
 
 
-def ground_truth_row(question_id, student_id):
+def ground_truth_row(assignment, question_id, student_id):
     # Returns the human ground-truth row for a submission, or None when absent.
-    gt = da.load_ground_truth()
+    gt = da.load_ground_truth(assignment)
     match = gt[(gt["question_id"] == question_id) & (gt["student_id"] == student_id)]
     return None if match.empty else match.iloc[0]
 
@@ -39,9 +39,9 @@ def apply_deep_link():
         st.query_params.clear()
 
 
-def pick_submission(model):
+def pick_submission(assignment, model):
     # Renders the question/student selectors, defaulting to any selection handed over from Overview.
-    collapsed = da.collapse_to_median(da.load_results())
+    collapsed = da.collapse_to_median(da.load_results(assignment))
     collapsed = collapsed[collapsed["model"] == model]
     questions = sorted(collapsed["question_id"].unique())
     q_default = _default_index(questions, st.session_state.get("selected_question"))
@@ -57,16 +57,16 @@ def _default_index(options, value):
     return options.index(value) if value in options else 0
 
 
-def render_context(question_id, student_id, rubric):
+def render_context(assignment, question_id, student_id, rubric):
     # Shows the question, the student solution, the sample solution, and the rubric reference.
-    question = da.load_questions().loc[question_id]
+    question = da.load_questions(assignment).loc[question_id]
     st.markdown(f"### {question['question_title']}")
     with st.expander("Question description"):
         st.markdown(str(question["question_desc"]))
     left, right = st.columns(2)
     with left:
         st.markdown("**Student submission**")
-        ui.render_code(_solution_text(student_id, question_id), question_id)
+        ui.render_code(_solution_text(assignment, student_id, question_id), question_id)
     with right:
         st.markdown("**Sample solution**")
         ui.render_code(question["sample_solution"], question_id)
@@ -74,9 +74,9 @@ def render_context(question_id, student_id, rubric):
         ui.render_rubric_table(rubric)
 
 
-def _solution_text(student_id, question_id):
+def _solution_text(assignment, student_id, question_id):
     # Looks up the student's submitted code, tolerating missing entries.
-    solutions = da.load_solutions()
+    solutions = da.load_solutions(assignment)
     key = (student_id, question_id)
     if key not in solutions.index:
         return "(submission not found)"
@@ -102,9 +102,9 @@ def _render_feedback_expanders(cells, rubric):
                 st.markdown(f"*{ui.APPROACH_LABELS[approach]}*: {feedback}")
 
 
-def _editor_seed(question_id, student_id, rubric, cells, approach):
+def _editor_seed(assignment, question_id, student_id, rubric, cells, approach):
     # Builds the initial editor values from an existing final grade, else from the selected approach.
-    saved = da.get_final_grade(question_id, student_id)
+    saved = da.get_final_grade(assignment, question_id, student_id)
     if saved is not None:
         return (da.parse_json_col(saved["final_buckets_per_point"]),
                 da.parse_json_col(saved["final_scores_per_point"]),
@@ -114,12 +114,12 @@ def _editor_seed(question_id, student_id, rubric, cells, approach):
     return {k: str(v) for k, v in detail["buckets"].items()}, detail["scores"], detail["feedback"]
 
 
-def ensure_editor_state(question_id, student_id, rubric, cells, approach):
+def ensure_editor_state(assignment, question_id, student_id, rubric, cells, approach):
     # Initialises per-point widget state once per submission so edits persist across reruns.
-    token = f"{question_id}|{student_id}"
+    token = f"{assignment}|{question_id}|{student_id}"
     if st.session_state.get("edit_for") == token:
         return
-    buckets, scores, feedback = _editor_seed(question_id, student_id, rubric, cells, approach)
+    buckets, scores, feedback = _editor_seed(assignment, question_id, student_id, rubric, cells, approach)
     for point in rubric["rubric_points"]:
         pid = str(point["id"])
         label = buckets.get(pid) if buckets.get(pid) in BUCKETS else "Wrong"
@@ -181,16 +181,16 @@ def render_point_editors(rubric):
     return total
 
 
-def render_editor(question_id, student_id, rubric, cells, gt_row, approach):
+def render_editor(assignment, question_id, student_id, rubric, cells, gt_row, approach):
     # Renders the full final-grade editor and persists the decision on save.
     st.subheader("Final grade")
-    saved = da.get_final_grade(question_id, student_id)
+    saved = da.get_final_grade(assignment, question_id, student_id)
     if saved is not None:
         st.success(
             f"Already finalized at {int(float(saved['final_total']))}/100 "
             f"on {saved.get('updated_at', '')}. Editing below will update it."
         )
-    ensure_editor_state(question_id, student_id, rubric, cells, approach)
+    ensure_editor_state(assignment, question_id, student_id, rubric, cells, approach)
     _prefill_controls(cells, rubric, gt_row)
     summed = render_point_editors(rubric)
 
@@ -199,7 +199,7 @@ def render_editor(question_id, student_id, rubric, cells, gt_row, approach):
     final_total = st.number_input("Final total", 0, 100, summed, 1) if override else summed
     note = st.text_area("Adjustment note (optional)", key="adjust_note")
     if st.button("Save final grade", type="primary"):
-        _save(question_id, student_id, rubric, final_total, note)
+        _save(assignment, question_id, student_id, rubric, final_total, note)
 
 
 def _collect_point_values(rubric):
@@ -213,10 +213,10 @@ def _collect_point_values(rubric):
     return buckets, scores, feedback
 
 
-def _save(question_id, student_id, rubric, final_total, note):
+def _save(assignment, question_id, student_id, rubric, final_total, note):
     # Writes the upserted final-grade row and confirms the persisted values.
     buckets, scores, feedback = _collect_point_values(rubric)
-    da.upsert_final_grade({
+    da.upsert_final_grade(assignment, {
         "question_id": question_id, "student_id": student_id,
         "final_total": int(final_total),
         "final_scores_per_point": json.dumps(scores),
@@ -229,24 +229,24 @@ def _save(question_id, student_id, rubric, final_total, note):
 
 def main():
     st.set_page_config(page_title="Review & Adjust", layout="wide")
-    model, approach, _ = ui.sidebar_controls()
+    assignment, model, approach, _ = ui.sidebar_controls()
     st.title("Review & Adjust")
     apply_deep_link()
-    question_id, student_id = pick_submission(model)
-    rubric = da.load_rubric(question_id)
+    question_id, student_id = pick_submission(assignment, model)
+    rubric = da.load_rubric(assignment, question_id)
     if rubric is None:
         st.error("No rubric found for this question.")
         return
-    render_context(question_id, student_id, rubric)
+    render_context(assignment, question_id, student_id, rubric)
     st.divider()
-    cells = model_cells(model, question_id, student_id)
+    cells = model_cells(assignment, model, question_id, student_id)
     if not cells:
         st.warning("This model did not grade this submission.")
         return
-    gt_row = ground_truth_row(question_id, student_id)
+    gt_row = ground_truth_row(assignment, question_id, student_id)
     render_view(cells, rubric, gt_row)
     st.divider()
-    render_editor(question_id, student_id, rubric, cells, gt_row, approach)
+    render_editor(assignment, question_id, student_id, rubric, cells, gt_row, approach)
 
 
 main()

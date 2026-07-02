@@ -7,6 +7,8 @@ _EXPLORER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _EXPLORER)
 sys.path.insert(0, os.path.dirname(_EXPLORER))
 
+import altair as alt
+import pandas as pd
 import streamlit as st
 
 import components as ui
@@ -30,35 +32,35 @@ PLOTS = [
 
 
 @st.cache_data(show_spinner="Loading data…")
-def scoped_inputs(scope):
+def scoped_inputs(assignment, scope):
     # Loads the raw result and ground-truth frames, restricted to the two models and the scope.
-    result_store = os.path.dirname(da.paths()["result_csv"])
+    result_store = os.path.dirname(da.paths(assignment)["result_csv"])
     df = gg.load_results(result_store)
     df = ui.scope_filter(df[df["model"].isin(da.PRODUCTION_MODELS)], scope)
-    gt = gg.load_ground_truth(da.paths()["ground_truth_csv"])
+    gt = gg.load_ground_truth(da.paths(assignment)["ground_truth_csv"])
     gt = ui.scope_filter(gt, scope) if gt is not None else None
     return df, gt
 
 
-def _call_args(spec, df, gt, model, out):
+def _call_args(spec, df, gt, model, out, assignment):
     # Maps a plot function's argument spec to concrete values for the current selection.
     values = {
         "df": df, "gt": gt, "out": out, "model": model,
         "models": list(da.PRODUCTION_MODELS.keys()),
-        "datastore": da.paths()["datastore"],
+        "datastore": da.paths(assignment)["datastore"],
         "impl_q": gg.IMPL_QUESTION, "asym_q": gg.ASYM_QUESTION,
     }
     return [values[name] for name in spec]
 
 
 @st.cache_data(show_spinner="Generating graphs…")
-def build_images(scope, model):
+def build_images(assignment, scope, model):
     # Runs every plot function and returns the rendered PNGs as (clean_title, bytes) pairs.
-    df, gt = scoped_inputs(scope)
+    df, gt = scoped_inputs(assignment, scope)
     out = tempfile.mkdtemp()
     for func_name, spec in PLOTS:
         try:
-            getattr(gg, func_name)(*_call_args(spec, df, gt, model, out))
+            getattr(gg, func_name)(*_call_args(spec, df, gt, model, out, assignment))
         except Exception:
             continue
     return _read_pngs(out)
@@ -80,12 +82,74 @@ def _read_pngs(directory):
     return images
 
 
+def _point_max(point):
+    # The maximum marks for a rubric point: its max_marks, else the Correct bucket value.
+    if point.get("max_marks") is not None:
+        return float(point["max_marks"])
+    for bucket in point["buckets"]:
+        if bucket["label"] == "Correct":
+            return float(bucket["marks"])
+    return 0.0
+
+
+def point_difficulty(question_cells, rubric):
+    # Average % of each rubric point's max marks earned across the question's submissions.
+    stats = {str(p["id"]): {"name": p["name"], "max": _point_max(p), "pcts": []}
+             for p in rubric["rubric_points"]}
+    for _, row in question_cells.iterrows():
+        scores = da.parse_json_col(row.get("scores_per_point"))
+        for pid, s in stats.items():
+            if pid in scores and s["max"]:
+                s["pcts"].append(100 * float(scores[pid]) / s["max"])
+    rows = [{"point": f"P{pid}", "name": s["name"],
+             "avg_pct": round(sum(s["pcts"]) / len(s["pcts"]), 1) if s["pcts"] else 0.0}
+            for pid, s in stats.items()]
+    return pd.DataFrame(rows)
+
+
+def _difficulty_cells(assignment, model, approach):
+    # Median-collapsed rows for one model and approach — the basis for per-point difficulty.
+    collapsed = da.collapse_to_median(da.load_results(assignment))
+    return collapsed[(collapsed["model"] == model) & (collapsed["approach"] == approach)]
+
+
+def render_point_difficulty(assignment, model, approach):
+    # Bar chart of average % earned per rubric point for a chosen question (lowest bar = hardest).
+    st.subheader("Rubric point difficulty")
+    cells = _difficulty_cells(assignment, model, approach)
+    questions = sorted(cells["question_id"].unique())
+    if not questions:
+        st.info("No graded submissions for this selection.")
+        return
+    qid = st.selectbox("Question", questions, key="difficulty_q")
+    rubric = da.load_rubric(assignment, qid)
+    if rubric is None:
+        st.info("No rubric found for this question.")
+        return
+    data = point_difficulty(cells[cells["question_id"] == qid], rubric)
+    hardest = data.loc[data["avg_pct"].idxmin()]
+    st.caption(f"Each bar = average % of the point's max marks earned across all students. "
+               f"Lower = harder. Hardest: **{hardest['point']} · {hardest['name']}** ({hardest['avg_pct']:.0f}%).")
+    chart = (
+        alt.Chart(data, height=260)
+        .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3, color="#18181b")
+        .encode(
+            x=alt.X("point:N", sort=list(data["point"]), title="Rubric point"),
+            y=alt.Y("avg_pct:Q", title="Avg % of max earned", scale=alt.Scale(domain=[0, 100])),
+            tooltip=["point", "name", "avg_pct"],
+        )
+    )
+    st.altair_chart(chart, use_container_width=True)
+
+
 def main():
     st.set_page_config(page_title="Graphs", layout="wide")
-    model, _approach, scope = ui.sidebar_controls()
+    assignment, model, approach, scope = ui.sidebar_controls()
     st.title("Graphs")
+    render_point_difficulty(assignment, model, approach)
+    st.divider()
     st.caption(f"Model **{model}** · scope **{scope}** (multi-model charts use both production models)")
-    images = build_images(scope, model)
+    images = build_images(assignment, scope, model)
     if not images:
         st.info("No graphs available for this selection.")
         return

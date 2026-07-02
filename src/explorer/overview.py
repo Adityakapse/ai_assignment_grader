@@ -14,9 +14,9 @@ import data_access as da
 BIN_SIZES = [5, 10, 20, 25, 50]
 
 
-def approach_cells(model, approach, scope):
+def approach_cells(assignment, model, approach, scope):
     # Returns the full run-collapsed rows for the selected model and approach within scope.
-    collapsed = da.collapse_to_median(ui.scope_filter(da.load_results(), scope))
+    collapsed = da.collapse_to_median(ui.scope_filter(da.load_results(assignment), scope))
     sel = collapsed[(collapsed["model"] == model) & (collapsed["approach"] == approach)]
     return sel.reset_index(drop=True)
 
@@ -30,10 +30,10 @@ def range_status(score, boundary, margin):
     return "borderline"
 
 
-def annotate(cells):
+def annotate(cells, assignment):
     # Adds the reviewed flag and saved final score for each submission (independent of the boundary).
     cells = cells.copy()
-    finals = da.load_final_grades()
+    finals = da.load_final_grades(assignment)
     if finals.empty:
         cells["final_score"] = pd.NA
     else:
@@ -142,9 +142,9 @@ def render_filters(locked):
     return choice, boundary, margin
 
 
-def render_table(model, approach, scope):
+def render_table(assignment, model, approach, scope):
     # Renders KPIs, the histogram, the filters, then the submission table and bulk save-all action.
-    cells = annotate(approach_cells(model, approach, scope))
+    cells = annotate(approach_cells(assignment, model, approach, scope), assignment)
     render_kpis(cells)
     binned, selected = render_histogram(cells)
     st.caption("Click a bar to list only its submissions (overrides the Show filter); click it again or an empty area to clear.")
@@ -158,7 +158,7 @@ def render_table(model, approach, scope):
     if table.empty:
         st.info("No submissions match the current selection.")
         return
-    _save_all(table, approach)
+    _save_all(table, approach, assignment)
     _show_grid(table)
 
 
@@ -195,24 +195,24 @@ def _record_from_cell(row, approach):
     }
 
 
-def _save_all(table, approach):
+def _save_all(table, approach, assignment):
     # Bulk-accepts every not-yet-reviewed submission in the current view as the approach's grade.
     pending = table[~table["reviewed"]]
     count = len(pending)
     label = f"Save all {count} pending as {ui.APPROACH_LABELS[approach]}"
     if st.button(label, type="primary", disabled=count == 0):
         records = [_record_from_cell(row, approach) for _, row in pending.iterrows()]
-        written = da.bulk_upsert_final_grades(records)
+        written = da.bulk_upsert_final_grades(assignment, records)
         st.success(f"Finalized {written} submissions. Open one to fine-tune if needed.")
         st.rerun()
 
 
 def main():
     st.set_page_config(page_title="Overview", layout="wide")
-    model, approach, scope = ui.sidebar_controls()
+    assignment, model, approach, scope = ui.sidebar_controls()
     st.title("Overview & Outliers")
     st.caption(f"Scores shown for **{ui.APPROACH_LABELS[approach]}** · model **{model}**")
-    render_table(model, approach, scope)
+    render_table(assignment, model, approach, scope)
 
 
 main()

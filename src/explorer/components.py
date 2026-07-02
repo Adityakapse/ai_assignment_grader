@@ -81,30 +81,58 @@ APPROACH_LABELS = {
 }
 
 
+def _assignment_selector():
+    # Renders the dataset picker; None is the dissertation root, otherwise a result_store subfolder.
+    options = da.list_assignments()
+    if not options:
+        st.sidebar.warning("No datasets found under result_store/.")
+        return None
+    return st.sidebar.selectbox(
+        "Assignment", options,
+        format_func=lambda a: "Main (dissertation)" if a is None else a,
+        key="assignment",
+    )
+
+
+def _available_options(assignment):
+    # Restricts the model and approach choices to what the selected dataset actually contains.
+    try:
+        df = da.load_results(assignment)
+    except Exception:
+        df = None
+    if df is None or df.empty:
+        return list(da.PRODUCTION_MODELS.keys()), APPROACHES
+    models = [m for m in da.PRODUCTION_MODELS if m in set(df["model"])]
+    approaches = [a for a in APPROACHES if a in set(df["approach"])]
+    return models or list(da.PRODUCTION_MODELS.keys()), approaches or APPROACHES
+
+
 def sidebar_controls():
-    # Renders the shared model, approach, and question-scope selectors and returns the choices.
+    # Renders the assignment, model, approach, and question-scope selectors and returns the choices.
     apply_theme()
     st.sidebar.title("Grading review")
-    models = list(da.PRODUCTION_MODELS.keys())
+    assignment = _assignment_selector()
+    models, approaches = _available_options(assignment)
     model = st.sidebar.radio(
         "Grader model",
         models,
         format_func=lambda m: f"{m} ({da.PRODUCTION_MODELS[m]})",
-        key="model",
+        key=f"model_{assignment}",
     )
+    default_ap = approaches.index("approach_4") if "approach_4" in approaches else 0
     approach = st.sidebar.radio(
         "Approach",
-        APPROACHES,
-        index=3,
+        approaches,
+        index=default_ap,
         format_func=lambda a: APPROACH_LABELS[a],
-        key="approach",
+        key=f"approach_{assignment}",
     )
     scope = st.sidebar.radio(
         "Question scope",
         ["all", "implementation", "asymptotic"],
         key="scope",
     )
-    return model, approach, scope
+    return assignment, model, approach, scope
 
 
 def scope_filter(df, scope):

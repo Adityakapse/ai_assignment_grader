@@ -22,20 +22,38 @@ def project_root():
     return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 
-def paths():
-    # Returns the absolute paths of every store the explorer reads from or writes to.
+def paths(assignment=None):
+    # Returns the absolute store paths for the dissertation root (assignment=None) or an assignment subfolder.
     root = project_root()
-    datastore = os.path.join(root, "datastore")
+    if assignment:
+        datastore = os.path.join(root, "datastore", assignment)
+        result_store = os.path.join(root, "result_store", assignment)
+    else:
+        datastore = os.path.join(root, "datastore")
+        result_store = os.path.join(root, "result_store")
     return {
         "root": root,
         "datastore": datastore,
-        "result_csv": os.path.join(root, "result_store", "result.csv"),
-        "final_grades_csv": os.path.join(root, "result_store", "final_grades.csv"),
+        "result_csv": os.path.join(result_store, "result.csv"),
+        "final_grades_csv": os.path.join(result_store, "final_grades.csv"),
         "ground_truth_csv": os.path.join(datastore, "ground_truth.csv"),
         "questions_csv": os.path.join(datastore, "questions", "question.csv"),
         "solutions_csv": os.path.join(datastore, "solutions", "solutions.csv"),
         "rubrics_dir": os.path.join(datastore, "rubrics"),
     }
+
+
+def list_assignments():
+    # Lists selectable datasets: the dissertation root (None) first, then each result_store subfolder with results.
+    result_store = os.path.join(project_root(), "result_store")
+    assignments = []
+    if os.path.isfile(os.path.join(result_store, "result.csv")):
+        assignments.append(None)
+    if os.path.isdir(result_store):
+        for name in sorted(os.listdir(result_store)):
+            if os.path.isfile(os.path.join(result_store, name, "result.csv")):
+                assignments.append(name)
+    return assignments
 
 
 def task_id_from_question_id(question_id):
@@ -57,9 +75,9 @@ def parse_json_col(value):
 
 
 @st.cache_data
-def load_results():
+def load_results(assignment=None):
     # Reads result.csv and keeps only the two fully-covered production models.
-    df = pd.read_csv(paths()["result_csv"])
+    df = pd.read_csv(paths(assignment)["result_csv"])
     df = df[df["model"].isin(PRODUCTION_MODELS)].copy()
     df["total"] = df["total"].astype(float)
     df["median"] = df["median"].astype(float)
@@ -84,32 +102,32 @@ def collapse_to_median(df):
 
 
 @st.cache_data
-def load_ground_truth():
+def load_ground_truth(assignment=None):
     # Loads the human reference grades keyed by (question_id, student_id); empty frame if absent.
-    path = paths()["ground_truth_csv"]
+    path = paths(assignment)["ground_truth_csv"]
     if not os.path.isfile(path):
         return pd.DataFrame(columns=["question_id", "student_id", "human_total", "buckets_per_point"])
     return pd.read_csv(path)
 
 
 @st.cache_data
-def load_questions():
+def load_questions(assignment=None):
     # Loads question metadata indexed by question_id for fast title/description/solution lookup.
-    return pd.read_csv(paths()["questions_csv"]).set_index("question_id")
+    return pd.read_csv(paths(assignment)["questions_csv"]).set_index("question_id")
 
 
 @st.cache_data
-def load_solutions():
+def load_solutions(assignment=None):
     # Loads student submissions indexed by (student_id, question_id).
-    df = pd.read_csv(paths()["solutions_csv"])
+    df = pd.read_csv(paths(assignment)["solutions_csv"])
     return df.set_index(["student_id", "question_id"])
 
 
 @st.cache_data
-def load_rubric(question_id):
+def load_rubric(assignment, question_id):
     # Reads the rubric.json for a question's task, returning None when no rubric exists.
     task_id = task_id_from_question_id(question_id)
-    path = os.path.join(paths()["rubrics_dir"], task_id, "rubric.json")
+    path = os.path.join(paths(assignment)["rubrics_dir"], task_id, "rubric.json")
     if not os.path.isfile(path):
         return None
     with open(path, encoding="utf-8") as f:
@@ -126,47 +144,47 @@ def bucket_marks(rubric, point_id, label):
     return 0
 
 
-def load_final_grades():
+def load_final_grades(assignment=None):
     # Reads final_grades.csv into a DataFrame, returning an empty typed frame before the first save.
-    path = paths()["final_grades_csv"]
+    path = paths(assignment)["final_grades_csv"]
     if not os.path.isfile(path):
         return pd.DataFrame(columns=FINAL_GRADE_COLUMNS)
     return pd.read_csv(path, dtype={"question_id": str, "student_id": str})
 
 
-def get_final_grade(question_id, student_id):
+def get_final_grade(assignment, question_id, student_id):
     # Returns the saved final grade for one submission as a dict, or None if not yet finalized.
-    df = load_final_grades()
+    df = load_final_grades(assignment)
     match = df[(df["question_id"] == question_id) & (df["student_id"] == student_id)]
     if match.empty:
         return None
     return match.iloc[0].to_dict()
 
 
-def upsert_final_grade(record):
+def upsert_final_grade(assignment, record):
     # Inserts or replaces the single final-grade row for a (question_id, student_id) pair.
-    bulk_upsert_final_grades([record])
+    bulk_upsert_final_grades(assignment, [record])
 
 
-def finalized_keys():
+def finalized_keys(assignment=None):
     # Returns the set of (question_id, student_id) pairs that already have a saved final grade.
-    df = load_final_grades()
+    df = load_final_grades(assignment)
     if df.empty:
         return set()
     return set(zip(df["question_id"], df["student_id"]))
 
 
-def bulk_upsert_final_grades(records):
+def bulk_upsert_final_grades(assignment, records):
     # Inserts or replaces many final-grade rows in a single read/write, returning the count written.
     if not records:
         return 0
-    path = paths()["final_grades_csv"]
+    path = paths(assignment)["final_grades_csv"]
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     for record in records:
         record["updated_at"] = now
     new_rows = pd.DataFrame(records)
     keys = set(zip(new_rows["question_id"], new_rows["student_id"]))
-    df = load_final_grades()
+    df = load_final_grades(assignment)
     if not df.empty:
         df = df[~df.apply(lambda r: (r["question_id"], r["student_id"]) in keys, axis=1)]
     df = pd.concat([df, new_rows], ignore_index=True)
