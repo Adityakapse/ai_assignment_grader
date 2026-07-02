@@ -1,0 +1,257 @@
+{
+  "task_id": "asym-9",
+  "title": "Asymptotic Analysis Q9 - Halving Loop with Halving Helper",
+  "rubric_type": "marks",
+  "total_marks": 100,
+  "general_notes": [
+    "No double deduction (except in points 9 and 10).",
+    "Students can use Theta or big-O notation with tight bounds.",
+    "Intended answers: T_f(N) = Theta((log N)^2) and T_g(N) = Theta(log N) in the worst case (when m = N).",
+    "Both Theta(log N) x Theta(log N) = Theta((log N)^2) and an explicit sum of the per-iteration log costs are acceptable for f's total."
+  ],
+  "rubric_points": [
+    {
+      "id": 1,
+      "name": "Splitting code into parts + referencing line numbers",
+      "tag": "structure",
+      "max_marks": 5,
+      "target": "Clear separation of f and g; loop vs non-loop code identified; line numbers referenced consistently.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Analysis does not clearly separate f vs g, or loops vs non-loops, and line numbers are unclear or missing."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Some attempt to separate components or refer to line numbers, but structure is incomplete or ambiguous."
+        },
+        {
+          "label": "Correct",
+          "marks": 5,
+          "description": "Clear separation of f and g and identification of the call to g inside f's loop; line numbers referenced consistently."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Constant-time non-loop parts",
+      "tag": "const-time",
+      "max_marks": 5,
+      "target": "All non-loop code in f and g is Theta(1).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Non-loop code not analysed or incorrectly claimed to be non-constant."
+        },
+        {
+          "label": "Semi",
+          "marks": 3,
+          "description": "Some constant-time segments identified but others missing."
+        },
+        {
+          "label": "Correct",
+          "marks": 5,
+          "description": "All non-loop regions stated as Theta(1)."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "f(): Loop iterations",
+      "tag": "f-iters",
+      "max_marks": 12,
+      "target": "Theta(log N) iterations because k is halved each iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Iteration count missing or not Theta(log N) (e.g. claims Theta(N))."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(log N) but does not explain the halving of k."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Justifies Theta(log N) because k starts at N and is divided by 2 each iteration until it reaches 0."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "f(): Cost per iteration",
+      "tag": "f-per-iter",
+      "max_marks": 12,
+      "target": "Theta(log N) per iteration in the worst case, dominated by the call to g(a, k).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Claims Theta(1) per iteration or ignores the cost of g."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "Recognises the call to g but does not establish Theta(log N) per iteration."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "States Theta(log N) per iteration in the worst case (first iteration m = N), justified by g being a halving loop; the halving and += are Theta(1)."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "f(): Total loop cost",
+      "tag": "f-total-loop",
+      "max_marks": 8,
+      "target": "Theta((log N)^2) from Theta(log N) iterations x Theta(log N) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "No combination of iteration count and per-iteration cost, or unrelated complexity (e.g. claims Theta(log N) or Theta(N))."
+        },
+        {
+          "label": "Semi",
+          "marks": 4,
+          "description": "Multiplies own values but final simplification or reasoning is unclear or incorrect."
+        },
+        {
+          "label": "Correct",
+          "marks": 8,
+          "description": "Theta(log N) x Theta(log N) = Theta((log N)^2), with justification."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "g(): Loop iterations",
+      "tag": "g-iters",
+      "max_marks": 12,
+      "target": "Theta(log N) iterations in the worst case because j is halved each iteration (j starts at m, worst case m = N).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Iteration count missing or not Theta(log N)."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(log N) but does not explain the halving of j or the worst case m = N."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Justifies Theta(log m) iterations (worst case m = N gives Theta(log N)) because j starts at m and is divided by 2 each iteration."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "g(): Cost per iteration",
+      "tag": "g-per-iter",
+      "max_marks": 12,
+      "target": "Theta(1) per iteration.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Claims non-constant per-iteration cost, or does not clearly state cost per iteration."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "Suggests constant time but lacks explicit Theta(1) justification."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Each iteration Theta(1): one array read, one += assignment, one division, one comparison."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "g(): Total loop cost",
+      "tag": "g-total-loop",
+      "max_marks": 8,
+      "target": "Theta(log N) = Theta(log N) iterations x Theta(1) per iteration (worst case m = N).",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Does not combine iteration count x per-iteration cost."
+        },
+        {
+          "label": "Semi",
+          "marks": 4,
+          "description": "Attempts multiplication using own values but unclear or partially derived."
+        },
+        {
+          "label": "Correct",
+          "marks": 8,
+          "description": "Theta(log N) x Theta(1) = Theta(log N), with justification."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Overall worst-case runtime of g",
+      "tag": "overall-g",
+      "max_marks": 12,
+      "target": "T_g(N) = Theta(log N) in the worst case (m = N), summing the constant parts and the loop.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Runtime absent or incompatible with earlier analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 6,
+          "description": "States Theta(log N) but with missing reasoning."
+        },
+        {
+          "label": "Correct",
+          "marks": 12,
+          "description": "Theta(1) + Theta(log N) + Theta(1) = Theta(log N)."
+        }
+      ],
+      "note": "Double deduction applies here."
+    },
+    {
+      "id": 10,
+      "name": "Overall worst-case runtime of f",
+      "tag": "overall-f",
+      "max_marks": 14,
+      "target": "T_f(N) = Theta((log N)^2), accounting for non-loop parts + loop.",
+      "buckets": [
+        {
+          "label": "Wrong",
+          "marks": 0,
+          "description": "Final complexity missing/incorrect and not derived from loop analysis."
+        },
+        {
+          "label": "Semi",
+          "marks": 7,
+          "description": "States Theta((log N)^2) but with missing reasoning."
+        },
+        {
+          "label": "Correct",
+          "marks": 14,
+          "description": "Theta(1) + Theta((log N)^2) + Theta(1) = Theta((log N)^2)."
+        }
+      ],
+      "note": "Double deduction applies here."
+    }
+  ],
+  "total_mark_template": "TOTAL MARK: SUM/100"
+}

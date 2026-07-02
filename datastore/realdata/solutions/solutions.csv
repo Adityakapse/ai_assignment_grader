@@ -1,0 +1,2896 @@
+student_id,question_id,solution
+2SBCAEOV,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/(gcd(a, b));
+}
+
+int gcd(int a, int b) {
+    if (a < b) return gcd(b, a);
+    int r = a % b;
+    if (r == 0) return b;
+    else return gcd(r, b);
+}"
+4Z32EUQP,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+int r = a % b;
+if (r == 0) {
+    return b;
+    } else {
+    return gcd(r, b);
+    }
+}"
+5D73SALH,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int gcd(int a, int b){
+    if( a < b ){
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if(r == 0){
+        return b;
+    } else {
+        return gcd(r, b);
+    }
+}"
+3QDYQU4I,19_20-1-1-python,"def GCD(a, b):
+# GCD-Implementation der Vorlesung
+    if a < b:
+        a, b = b, a
+    r = a % b
+    if r != 0:
+        return GCD(b, r)
+    else:
+        return b
+
+def LCM(a, b):
+    return a * b / GCD(a, b)"
+4PPDVAQT,19_20-1-1-python,"def GGT(a, b):    
+    if a < b:        
+        a, b = b, a    
+    r = a % b    
+    if r > 0:        
+        return GGT(b, r)    
+    else:        
+        return b
+def LCM(a, b):
+    return a * b / GGT (a, b)"
+5SQ7WPEA,19_20-1-1-python,"def LCM(a, b):
+    mult = a * b
+    return mult/GCD(a, b)
+
+def GCD(x, y):
+    if x < y:
+        x, y = y, x
+
+    r = x % y
+    if r != 0:
+        return GCD(y, r)
+    else:
+        return y"
+2SBCAEOV,19_20-2-1-java,"public class Queue {
+    private String[] list = new String[100];
+    private int head = 1;
+    private int end = 1;
+    private int MAXE = 100;
+
+    public boolean emptyqueue() {
+        return (head == end);
+    }
+
+    public String head() {
+        return list[head];
+    }
+
+    public void enqueue(String s) {
+        if ((end + 1) % MAXE == head) {
+            //System.out.println(""Overflow"");
+        } else {
+            list[end] = s;
+            end = (end + 1) % MAXE;
+        }
+    }
+
+    public String dequeue() {
+        if (head == end) return """";
+        else {
+            String x = list[head];
+            head = (head + 1) % MAXE;
+            return x;
+        }
+    }
+}"
+4PPDVAQT,19_20-2-1-java,"public class Queue {
+    
+    private String[] array = new String[150];
+    
+    private int length = 0;
+    
+    public boolean emptyqueue() {
+        return length == 0;
+    }
+    
+    public String head() {
+        return array[0];
+    }
+    
+    public void enqueue(String s) {
+        array[length]=s;
+        length++;
+    }
+    
+    public String dequeue() {
+        String first = head();
+        for(int i = 0; i<length; i++){
+            array[i]=array[i+1];
+        }
+        length--;
+        return first;
+    }
+}"
+4Z32EUQP,19_20-2-1-java,"public class Queue {
+    
+    private final int max = 100;
+    String[] qu = new String[max];
+    private int Qhead = 0;
+    private int Qrear = 0;
+    
+    public boolean emptyqueue() {
+        return Qhead == Qrear;
+    }
+    
+    public String head() {
+        return qu[Qhead];
+    }
+    
+    public void enqueue(String s) {
+        
+        if( (Qrear +1) % max != Qhead ) {
+            qu[Qrear] = s;
+            Qrear = (Qrear + 1) % max;
+        }
+        
+    }
+    
+    public String dequeue() {
+        
+        if( !this.emptyqueue() ) 
+        {
+            String x = qu[Qhead];
+            Qhead = (Qhead + 1) % max;
+            return x;
+        }else{
+        return ""error"";
+        }
+    }
+}"
+3QDYQU4I,19_20-2-1-python,"class Queue:
+    """"""Klasse, die eine selbstgebaute Queue darstellt.
+    """"""
+    
+    def __init__(self):
+        self.queue = []
+
+    def isEmpty(self):
+        """"""Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """"""
+        return len(self.queue)==0
+
+    def head(self):
+        """"""Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """"""
+        return self.queue[0]
+
+    def enqueue(self, x):
+        """"""Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """"""
+        self.queue.append(x)
+
+    def dequeue(self):
+        """"""Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """"""
+        return self.queue.pop(0)"
+5TRPAFPX,19_20-2-1-python,"class Queue:
+    """"""Klasse, die eine selbstgebaute Queue darstellt.
+    """"""
+
+    def __init__(self):
+        self.list = []
+        self.firstElement = 0
+        self.firstEmpty = 0
+        self.maxLength = 150
+
+    def isEmpty(self):
+        """"""Prueft, ob die Queue leer ist.
+        :return: True, wenn die Queue leer ist;
+            False, sonst
+        """"""
+        return self.firstElement == self.firstEmpty
+
+    def isFull(self):
+        x = self.__loopIndex(self.firstEmpty + 1)
+        return x == self.firstElement
+
+    def head(self):
+        """"""Gibt den Wert des ersten Elements in der Queue
+            zurueck.
+        :return: Den Wert des ersten Elementes in der Queue
+        """"""
+        if not self.isEmpty():
+            return self.list[self.firstElement]
+        else:
+            print(""The Queue is empty."")
+
+    def enqueue(self, x):
+        """"""Haengt ein Element an die Queue an.
+        :param x: Anzuhaengendes Element
+        """"""
+        if not self.isFull():
+            if len(self.list) < self.maxLength + 1:
+                self.list.append(x)
+                self.firstEmpty += 1
+            else:
+                self.list[self.firstEmpty] = x
+                self.firstEmpty += 1
+            
+            self.firstEmpty = self.__loopIndex(self.firstEmpty)
+        else:
+            print(""Cannot enqueue to a full Queue."")
+
+    def dequeue(self):
+        """"""Entfernt das erste Element aus der Queue
+        :return: Erstes Element
+        """"""
+        if not self.isEmpty():
+            x = self.list[self.firstElement]
+            self.firstElement += 1
+            self.firstElement = self.__loopIndex(self.firstElement)
+            return x
+        else:
+            print(""Cannot dequeue from an empty Queue."")
+
+    def __loopIndex(self, i):
+        if i == self.maxLength + 1:
+            i = 0
+        return i"
+5XRZQT3Q,19_20-2-1-python,"class Queue:
+ def __init__(self):
+  self.array = []
+ def isEmpty(self):
+  return len(self.array) == 0
+ def head(self):
+  return self.array[0]
+ def enqueue(self, x):
+  self.array.append(x)
+ def dequeue(self):
+  return self.array.pop(0)"
+2SBCAEOV,19_20-2-2-java,"public int Calculator(String[] input, IntegerStack s) {
+    for (int i = 0; i < input.length; i++) {
+        try {
+            int num = Integer.parseInt(input[i]);
+            s.push(num);
+        } catch (NumberFormatException e){
+            String operator = input[i];
+            int k = s.pop();
+            int m = s.pop();
+            
+            switch (operator){
+                case ""+"":
+                    s.push(m+k);
+                    break;
+                case ""-"":
+                    s.push(m-k);
+                    break;
+                case ""*"":
+                    s.push(m*k);
+                    break;
+                case ""/"":
+                    s.push(m/k);
+                    break;
+             }
+        }
+    }
+    
+    
+    return s.pop();
+}"
+4PPDVAQT,19_20-2-2-java,"public int Calculator(String[] input, IntegerStack s) {
+    for(int i = 0; i<input.length; i++){
+        int val=0;
+        try{
+            val = Integer.parseInt(input[i]);
+        }catch( NumberFormatException e) {
+            int b= s.pop();
+            int a=s.pop();
+            switch(input[i]){
+                case ""+"":
+                    val=a+b;
+                    break;
+                case ""-"":
+                    val=a-b;
+                    break;
+                case ""*"":
+                    val=a*b;
+                    break;
+                case ""/"":
+                    val=a/b;
+                    break;
+            }
+        }
+        s.push(val);
+    }
+    
+    return s.pop();
+}"
+4Z32EUQP,19_20-2-2-java,"public int Calculator(String[] input, IntegerStack s) {
+   for (int i =0; i < input.length; i++){
+       if(input[i]== ""+""){
+           int zahl1 = s.pop();
+           int zahl2 = s.pop();
+           s.push(zahl1 + zahl2);
+       }
+       else if(input[i]== ""-""){
+           int zahl1 = s.pop();
+           int zahl2 = s.pop();
+           s.push(zahl2 - zahl1);
+       }
+        else if(input[i]== ""*""){
+           int zahl1 = s.pop();
+           int zahl2 = s.pop();
+           s.push(zahl1 * zahl2);
+       }
+        else if(input[i]== ""/""){
+           int zahl1 = s.pop();
+           int zahl2 = s.pop();
+           s.push(zahl2 / zahl1);
+       }
+       else
+       {
+           s.push(Integer.parseInt(input[i]));
+       }
+        
+   }
+   
+    return s.head();
+}"
+3QDYQU4I,19_20-2-2-python,"def Calculator(inputarray, stack):
+    
+    a = inputarray
+    
+    for i in range(0,len(a)):
+        try:
+            stack.push(int(a[i]))
+        except ValueError:
+            y = stack.pop()
+            x = stack.pop()
+            if a[i] == ""+"":
+                stack.push(x+y)
+            elif a[i] == ""-"":
+                stack.push(x-y)
+            elif a[i] == ""*"":
+                stack.push(x*y)
+            elif a[i] == ""/"":
+                stack.push(x/y)
+            else: 
+                raise ValueError(""Invalid string in inputarray."")
+                
+    result = str(stack.pop())
+    
+    if not stack.emptystack():
+        raise ValueError(""Incomplete calculation in inputarray."")
+        
+    return result"
+5TRPAFPX,19_20-2-2-python,"def Calculator(inputarray, stack):
+    for n in inputarray:
+        if n == ""+"":
+            y = int(stack.pop())
+            x = int(stack.pop())
+            stack.push(x+y)
+        elif n == ""-"":
+            y = int(stack.pop())
+            x = int(stack.pop())
+            stack.push(x-y)
+        elif n == ""*"":
+            y = int(stack.pop())
+            x = int(stack.pop())
+            stack.push(x*y)
+        elif n == ""/"":
+            y = int(stack.pop())
+            x = int(stack.pop())
+            stack.push(x/y)
+        else:
+            stack.push(int(n))
+    return int(stack.pop())"
+5XRZQT3Q,19_20-2-2-python,"def Calculator(inputarray, stack):
+    for x in inputarray:
+        try:
+            c=int(x)
+        except:
+            b = stack.pop()
+            a = stack.pop()
+            if x == ""+"":
+                c = a + b
+            elif x == ""-"":
+                c = a - b
+            elif x == ""*"":
+                c = a * b
+            elif x == ""/"":
+                c = a / b
+        stack.push(c)
+    return stack.pop()"
+2SBCAEOV,19_20-3-1-java,"public ListToSort Sort(ListToSort list) {
+    for (int i = 0; i < list.Length()-1; i++) {
+        int min = i;
+        for (int j = i+1; j < list.Length(); j++){
+            if(list.Smaller(j,min)) min = j;
+        }
+        list.Swap(min, i);
+    }
+    return list;
+}"
+4Z32EUQP,19_20-3-1-java,"public ListToSort Sort(ListToSort list) {
+    
+    for(int j = 0; j <= list.Length() - 1; j++){
+        
+        int minIndex = j; 
+        for(int i = j +1; i <= list.Length() -1; i++){
+            if (list.Larger(minIndex, i)){
+                minIndex = i;
+            }
+        }
+        list.Swap(j, minIndex);
+        
+    }
+    return list;
+}"
+5D73SALH,19_20-3-1-java,"public ListToSort Sort(ListToSort list) {
+    QuickSort.quicksort(list, 0, list.Length()-1);
+    return list;
+}
+
+public static class QuickSort{
+    
+    public static void quicksort(ListToSort A, int l, int r){
+        if(l < r){
+            int q = partitionHoare(A, l, r);
+            quicksort(A, l, q-1);
+            quicksort(A, q+1, r);
+        }
+    }
+    private static int partitionHoare(ListToSort A, int l, int r ) {
+        int i = l-1;
+        int j = r;
+        while(i < j){
+            do {
+                i++;
+                
+            } while (i < r && (A.Smaller(i, r) || A.Equal(i,r))); //[i] <= A[r]
+           do {
+               j--;
+           } while(l <= j && (A.Larger(j, r) || A.Equal(j, r))); //A[j] >= A[r]
+            if(i < j) {
+                A.Swap(i, j);
+            }
+        }
+        A.Swap(i, r);
+        return i;
+    }
+}"
+3QDYQU4I,19_20-3-1-python,"def listSorter(listToSort: ListToSort) -> ListToSort:
+    
+    # selection sort
+    
+    # laziness
+    l = listToSort
+    
+    # why can't ListToSort just work with len() and why is .Length() capitalized?
+    for i in range (0,l.Length()):
+        
+        # find minimum in l[i,]
+        mini = i
+        for j in range(i+1, l.Length()):
+            if l.Smaller(j,mini):
+                mini = j
+                
+        # swap minimum to the left
+        l.Swap(mini, i)
+    
+    return l"
+4PPDVAQT,19_20-3-1-python,"def listSorter(listToSort: ListToSort) -> ListToSort:
+    for i in range(0, listToSort.Length()-1):
+        min = i
+        for j in range(i, listToSort.Length()):
+            if(listToSort.Larger(min,j)):
+                min = j
+        listToSort.Swap(min, i)
+    return listToSort"
+5TRPAFPX,19_20-3-1-python,"def listSorter(listToSort: ListToSort) -> ListToSort:
+    return myQuicksort(listToSort, 0, listToSort.Length()-1)
+    
+def myQuicksort(listToSort, l, r):
+    if r-l > 0:
+        p = partition(listToSort, l, r)
+        myQuicksort(listToSort, l, p-1)
+        myQuicksort(listToSort, p, r)
+    return listToSort
+    
+def partition(listToSort, l, r):
+    p = r
+    while l < r:
+        while listToSort.Smaller(l, p) or (listToSort.Equal(l, p) and l < r):
+            l = l+1
+        while listToSort.Larger(r, p) or (listToSort.Equal(r, p) and l < r):
+            r = r-1
+            if r < 0:
+                break
+        if l < r:
+            listToSort.Swap(l, r)
+    listToSort.Swap(l, p)
+    return l"
+2SBCAEOV,19_20-4-1-java,"// Node in parameter represents root of tree
+public Node insert(Node root, Node node) {
+        Node r = root;
+        Node parent = null;
+        while (r != null) {
+            parent = r;
+            if (node.key < r.key) {
+                r = r.left;
+            } else {
+                r = r.right;
+            }
+        }
+
+        // Einfügen
+        node.parent = parent;
+        if (parent == null) { // t war leer => neue Wurzel
+            root = node;
+        } else if (node.key < parent.key) { // richtige Seite ...
+            parent.left = node;
+        } else {
+            parent.right = node;
+        }
+        return root;
+}"
+4Z32EUQP,19_20-4-1-java,"// Node in parameter represents root of tree
+public Node insert(Node root, Node insert) {
+    
+    Node x = root;
+    Node y = null;
+    while( x != null){
+        y = x;
+        if(insert.key < x.key){
+            x = x.left;
+        }
+        else{
+            x = x.right;
+        }
+    }
+        
+        insert.parent = y;
+        if( y == null ) {
+            root = insert;
+        }
+        else if( insert.key < y.key ) {
+            y.left = insert; 
+            }
+        else {
+            y.right = insert;
+        }
+    
+
+    return root;
+}"
+5D73SALH,19_20-4-1-java,"// Node in parameter represents root of tree
+public Node insert(Node root, Node insert) {
+    Node x = root;
+    Node y = null;
+    while(x != null) {
+        y = x;
+        if(insert.key < x.key) {
+            x = x.left;
+        } else {
+            x = x.right;
+        }
+    }
+    insert.parent = y;
+    if(y == null) {
+        root = insert;
+    } else if(insert.key < y.key) {
+        y.left = insert;
+    } else {
+        y.right = insert;
+    }
+    return root;
+}"
+3QDYQU4I,19_20-4-1-python,"# Node in parameter represents root of tree
+def insert(root, target):
+    if root is None:
+        return target
+    # start traversing at the root to find the place to append insert
+    x = root
+    while True:
+        # choose left or right subtree to insert
+        # if the chosen subtree is empty, insert there
+        if target.key < x.key:
+            if x.left is not None:
+                x = x.left
+            else:
+                x.left = target
+                target.parent = x
+                break
+        else:
+            if x.right is not None:
+                x = x.right
+            else:
+                x.right = target
+                target.parent = x
+                break
+    return root"
+4PPDVAQT,19_20-4-1-python,"# Node in parameter represents root of tree
+def insert(x, z):
+    if z == None:
+        return x
+    elif x == None:
+        return z
+    else:
+        if z.key < x.key:
+            if x.left != None:
+                x.left = insert(x.left, z) 
+            else:
+                z.parent = x
+                x.left = z 
+        elif x.right != None:
+            x.right = insert(x.right, z)
+        else:
+            z.parent = x 
+            x.right = z 
+        return x"
+5TRPAFPX,19_20-4-1-python,"# Node in parameter represents root of tree
+def insert(root, insertNode):
+    if root is None and insertNode is None:
+        return None
+    elif root is None:
+        return insertNode
+    elif insertNode is None:
+        return root
+
+    if root.key > insertNode.key:
+        if root.left is None:
+            root.left = insertNode
+            insertNode.parent = root
+        else:
+            insert(root.left, insertNode)
+    else:
+        if root.right is None:
+            root.right = insertNode
+            insertNode.parent = root
+        else:
+            insert(root.right, insertNode)
+    return root"
+4Z32EUQP,19_20-4-2-java,"// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    Node y;
+    Node x;
+    
+    if(delete.left == null || delete.right == null){
+        y = delete;
+    }
+    else{
+        y = treeMinimum( delete.right );
+    }
+    if (y.left != null){
+        x = y.left;
+    }
+    else{
+        x = y.right;
+    }
+    
+    if (x != null) {
+        x.parent = y.parent;
+    }
+    if (y.parent == null){
+        root = x;
+    }
+    else {
+        if (y == y.parent.left ){
+            y.parent.left = x;
+        }
+        else {
+            y.parent.right = x;
+        }
+    }
+    if (y != delete){
+        delete.key = y.key;
+    }
+    return root;
+}
+
+public Node treeMinimum(Node x){
+    while (x.left != null){
+        x = x.left;
+    }
+    return x;
+}"
+5D73SALH,19_20-4-2-java,"// Node in parameter represents root of tree
+public static Node delete(Node root, Node delete) {
+        Node y = null;
+        if(delete.left == null || delete.right == null) {
+            y = delete;
+        } else {
+            y = treeMinimum(delete.right);
+        }
+        Node x = (y.left != null) ? y.left : y.right;
+        if(x != null) x.parent = y.parent;
+        if(y.parent == null) {
+            root = x;
+        } else {
+            if(y == y.parent.left) {
+                y.parent.left = x;
+            } else {
+                y.parent.right = x;
+            }
+        }
+        if(y != delete) {
+            delete.key = y.key;
+        }
+        y = null;
+        return root;
+    }
+
+    public static Node treeMinimum(Node node){
+        while(node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }"
+5QF4JQUT,19_20-4-2-java,"// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) {
+    
+    Node toBeDeleted = (delete.left == null || delete.right == null) ? delete : treeMinimum(delete.right);
+    
+    Node notNullChildOfToBeDeleted = (toBeDeleted.left != null) ? toBeDeleted.left : toBeDeleted.right;
+    
+    if (notNullChildOfToBeDeleted != null)
+    {
+        notNullChildOfToBeDeleted.parent = toBeDeleted.parent;
+    }
+    
+    if (toBeDeleted.parent == null)
+    {
+        root = notNullChildOfToBeDeleted;
+    }
+    else
+    {
+        if (toBeDeleted.equals(toBeDeleted.parent.left))
+        {
+            toBeDeleted.parent.left = notNullChildOfToBeDeleted;
+        }
+        else
+        {
+            toBeDeleted.parent.right = notNullChildOfToBeDeleted;
+        }
+    }
+    
+    if (toBeDeleted != delete)
+    {
+        delete.key = toBeDeleted.key;
+    }
+    
+    return root;
+}
+
+public Node treeMinimum(Node root) {
+    while (root.left != null)
+    {
+        root = root.left;
+    }
+    
+    return root;
+}"
+3QDYQU4I,19_20-4-2-python,"def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root"
+4PPDVAQT,19_20-4-2-python,"def minimum(x):  
+# Aufruf mit TREE-MINIMUM(T.root) 
+    while x.left != None :
+        x = x.left 
+    return x  
+
+
+# Node in parameter represents root of tree
+def delete(root, z):
+    # y: der (nach Tausch) zu löschende Knoten 
+    if z.left == None or z.right == None:
+        y = z 
+    else:
+        y = minimum( z.right ) # Cormen: TR
+    # x: Kind von y, das nicht NIL ist 
+    if y.left != None:
+        x = y.left 
+    else:
+        x = y.right 
+    # entferne y aus der Baumstruktur 
+    if x != None:
+        x.parent = y.parent
+    if y.parent == None:
+        root = x 
+    elif y == y.parent.left:
+        y.parent.left = x 
+    else:
+        y.parent.right = x 
+    # kopiere Daten von y nach z 
+    if y != z:
+        z.key = y.key 
+    return root"
+5TRPAFPX,19_20-4-2-python,"# Node in parameter represents root of tree
+def delete(root, deleteNode):
+    # Sonderfall: None
+    if (root is None) or (deleteNode is None):
+        return root
+
+    # Fall 1: deleteNode hat keine Kinder.
+    if (deleteNode.left is None) and (deleteNode.right is None):
+        newNode = None
+        # Sonderfall: Einelementiger Baum
+        if deleteNode is root:
+            return None
+
+    # Fall 2: deleteNode hat ein Kind.
+    elif deleteNode.left is None:
+        newNode = deleteNode.right
+    elif deleteNode.right is None:
+        newNode = deleteNode.left
+
+    # Fall 3: delteNode hat 2 Kinder.
+    else:
+        # Finde das kleinste Element des linken Teilbaums von deleteNode und mache es zum newNode.
+        newNode = treeMinimum(deleteNode.right)
+        # Falls newNode das direkte Kind von deleteNode ist, ist er bereits mit dem korrekten rechten Teilbaum verbunden.
+        # Ansonsten:
+        if newNode is not deleteNode.right:
+            # Entferne newNode von seiner alten Position im Baum.
+            if newNode.right is None:
+                if newNode is newNode.parent.left:
+                    newNode.parent.left = None
+                else:
+                    newNode.parent.right = None
+            else:
+                newNode.right.parent = newNode.parent
+                if newNode is newNode.parent.left:
+                    newNode.parent.left = newNode.right
+                else:
+                    newNode.parent.right = newNode.right
+            # Hänge deleteNodes rechten Teilbaum an newNode
+            deleteNode.right.parent = newNode
+            newNode.right = deleteNode.right
+        # Hänge deleteNodes linken Teilbaum an newNode
+        deleteNode.left.parent = newNode
+        newNode.left = deleteNode.left
+
+    # Entferne deleteNode von seinem Parent und verbinde stattdessen newNode.
+    if deleteNode.parent is not None:
+        if deleteNode is deleteNode.parent.left:
+            deleteNode.parent.left = newNode
+        else:
+            deleteNode.parent.right = newNode
+
+    # Verbinde newNode mit seinem neuen Parent Teil 2.
+    if newNode is not None:
+        newNode.parent = deleteNode.parent
+        if deleteNode is root:
+            root = newNode
+
+    return root
+
+def treeMinimum(root):
+    if root is None:
+        return None
+
+    if root.left is None:
+        return root
+    else:
+        return treeMinimum(root.left)"
+2SBCAEOV,19_20-5-1-java,"public List<Integer> bfs(int[][] graph, int start) {
+        List<Integer> result = new ArrayList<Integer>();
+        List<Node> graf = new ArrayList<Node>();
+        for (int i = 0; i < graph.length; i++) {
+            ArrayList<Integer> adj = new ArrayList<Integer>();
+            for (int j : graph[i]) adj.add(j);
+            Node n = new Node(i, adj);
+            if (start == i) n.farbe = Farbe.GRAU;
+            else n.farbe = Farbe.WEIß;
+            graf.add(n);
+        }
+
+        for (Node n : graf) n.convertIntToNode(graf);
+        //for (Node n : graf) System.out.println(n);
+
+        List<Node> q = new ArrayList<Node>();
+        for (Node n : graf) {
+            if (n.farbe.equals(Farbe.GRAU)) {
+                q.add(n);
+                result.add(n.val);
+                break;
+            }
+        }
+        while (!q.isEmpty()) {
+            Node u = q.get(0); q.remove(0);
+            for (Node v : u.adj) {
+                if (v.farbe.equals(Farbe.WEIß)){
+                    v.farbe = Farbe.GRAU;
+                    result.add(v.val);
+                    q.add(v);
+                }
+            }
+            u.farbe = Farbe.SCHWARZ;
+        }
+        //System.out.println(""result: "" + result);
+        return result;
+}
+enum Farbe {
+    WEIß, SCHWARZ, GRAU
+}
+
+class Node {
+    public Farbe farbe;
+    public int val;
+    public List<Node> adj;
+    public ArrayList<Integer> adjIntList;
+
+    public Node(int val, ArrayList<Integer> adj) {
+        this.val = val;
+        this.adj = new ArrayList<Node>();
+        this.adjIntList = adj;
+    }
+
+    public void convertIntToNode(List<Node> nodes) {
+        this.adj = new ArrayList<Node>();
+        for (int i : adjIntList) {
+            for (Node n : nodes) {
+                if (n.val == i) {
+                    this.adj.add(n);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return ""Node{"" +
+                ""farbe="" + farbe +
+                "", val="" + val +
+                "", adjIntList="" + adjIntList +
+                '}';
+    }
+}"
+4Z32EUQP,19_20-5-1-java,"public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> result = new ArrayList<Integer>();
+    int [][] color = new int [graph.length][4];
+    List<Integer> myQ = new ArrayList<>();
+    
+     for(int i = 0; graph.length > i; i++){
+       color[i][0] = i; //element
+       color[i][1] = 0; //farbe
+      // color[i][2] = -1; //distanz
+      // color[i][3] = -1;//vorgänger
+       }
+       
+    color[start][1] = 1;
+    myQ.add(start);
+   // result.add(myQ.get(0));
+    
+    
+    while(!myQ.isEmpty()){
+        int u = myQ.get(0);
+        myQ.remove(0);
+        
+        for(int v = 0; graph[u].length > v; v++){
+            if(color[graph[u][v]][1]==0){
+                color[graph[u][v]][1]= 1;
+                myQ.add(color[graph[u][v]][0]);
+            }
+        }
+        color[u][1]=2;
+        result.add(u);
+        
+        
+    }
+    
+    return result;
+}"
+5D73SALH,19_20-5-1-java,"public static List<Integer> bfs(int[][] graph, int start) {
+        final int graphLength = graph.length;
+        ArrayList<String> colorList = new ArrayList<String>(graphLength);
+        ArrayList<Integer> pathLength = new ArrayList<Integer>(graphLength);
+        Stack<Integer> queue = new Stack<Integer>();
+        List<Integer> results = new ArrayList<Integer>(graphLength);
+
+        for(int i = 0; i < graphLength; i++){
+            colorList.add(""WHITE"");
+            pathLength.add(null);
+        }
+        colorList.set(start, ""GRAY"");
+        pathLength.set(start, 0);
+        queue.push(start);
+        results.add(start);
+
+        while(!queue.isEmpty()){
+            int predecessor = queue.get(0);
+            queue.remove(0);
+            int[] knot = graph[predecessor];
+            for(int i = 0; i < knot.length; i++){
+                if(colorList.get(knot[i]) == ""WHITE""){
+                    results.add(knot[i]);
+                    colorList.set(knot[i], ""GRAY"");
+                    pathLength.set(knot[i], (pathLength.get(predecessor)) + 1);
+                    queue.push(knot[i]);
+                }
+            }
+            colorList.set(predecessor, ""BLACK"");
+        }
+        return results;
+    }"
+3QDYQU4I,19_20-5-1-python,"def bfs_help(graph, queue, visited):
+    
+    # if we have no nodes left to visit, return the result
+    if len(queue) == 0:
+        return visited
+    
+    # otherwise the queue has nodes left. 
+    # add the first of these to the visited nodes and queue its 
+    # neighbours that are not already visited or queued
+    node = queue.pop(0)
+    visited.append(node)
+    for neighbour in graph[node]:
+        if neighbour not in visited and neighbour not in queue:
+            queue.append(neighbour)
+        
+    return bfs_help(graph, queue, visited)
+
+def bfs(graph, start):
+    return bfs_help(graph, [start], [])"
+5TRPAFPX,19_20-5-1-python,"#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten in gefunden, die for noch nicht durchlaufen hat sind grau.
+#Knoten in gefunden, die for schon durchlaufen hat sind schwarz.
+def bfs(graph, start):
+    gefunden = [start]
+    for knoten in gefunden:
+        for zielknoten in graph[knoten]:
+            if not zielknoten in gefunden:
+                gefunden.append(zielknoten)
+    return gefunden"
+7H5QQ662,19_20-5-1-python,"def bfs(graph, start):
+    result: list = list()
+
+    result.append(start)
+
+    for element in result:
+        for vertex in graph[element]:
+            if not vertex in result:
+                result.append(vertex)
+
+    return result"
+2SBCAEOV,19_20-5-2-java,"public List<Integer> dfs(int[][] graph, int start) {
+        List<Integer> result = new ArrayList<Integer>();
+        List<Node> graf = new ArrayList<Node>();
+        Node s = null;
+        for (int i = 0; i < graph.length; i++) {
+            ArrayList<Integer> adj = new ArrayList<Integer>();
+            for (int j : graph[i]) adj.add(j);
+            Node n = new Node(i, adj);
+            n.farbe = Farbe.WEIß;
+            graf.add(n);
+            if (i==start) s = n;
+        }
+
+        for (Node n : graf) n.convertIntToNode(graf);
+        dfsvisit(s, result);
+        //System.out.println(""result: "" + result);
+        return result;
+}
+
+public void dfsvisit(Node u, List<Integer> result) {
+    u.farbe = Farbe.GRAU; result.add(u.val);
+    for (Node v : u.adj) {
+        if (v.farbe.equals(Farbe.WEIß)) {
+            dfsvisit(v, result);
+        }
+    }
+    u.farbe = Farbe.SCHWARZ;
+}
+
+enum Farbe {
+    WEIß, SCHWARZ, GRAU
+}
+
+class Node {
+    public Farbe farbe;
+    public int val;
+    public List<Node> adj;
+    public ArrayList<Integer> adjIntList;
+
+    public Node(int val, ArrayList<Integer> adj) {
+        this.val = val;
+        this.adj = new ArrayList<Node>();
+        this.adjIntList = adj;
+    }
+
+    public void convertIntToNode(List<Node> nodes) {
+        this.adj = new ArrayList<Node>();
+        for (int i : adjIntList) {
+            for (Node n : nodes) {
+                if (n.val == i) {
+                    this.adj.add(n);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return ""Node{"" +
+                ""farbe="" + farbe +
+                "", val="" + val +
+                "", adjIntList="" + adjIntList +
+                '}';
+    }
+}"
+4Z32EUQP,19_20-5-2-java,"public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> result = new ArrayList<Integer>();
+    Stack<Integer> s = new Stack<Integer>();
+    s.push(start);
+    while(!s.isEmpty()) {
+        start = s.pop();
+        if(!result.contains(start)) {
+            result.add(start);
+            for(int i = graph[start].length-1; i >= 0; i--) {
+                s.push(graph[start][i]);
+            }
+        }
+    }
+    return result;
+}"
+5QF4JQUT,19_20-5-2-java,"public List<Integer> dfs(int[][] graph, int start) {
+    boolean visited[] = new boolean[200];
+    ArrayList<Integer> result = new ArrayList<>();
+    dfsVisit(start, graph, visited, result);
+    return result;
+  }
+  private void dfsVisit(int node, int[][] graph, boolean visited[], ArrayList<Integer> result) {
+    if (!visited[node]) {
+      visited[node] = true;
+      result.add(node);
+      for (int i = 0; i < graph[node].length; i++) {
+        int currentNode = graph[node][i];
+        if (!visited[currentNode]) {
+          dfsVisit(currentNode, graph, visited, result);
+        }
+      }
+    }
+  }"
+3QDYQU4I,19_20-5-2-python,"def dfs_help(graph, stack, visited):
+    
+    # if we have no nodes left to visit, return the result
+    if len(stack) == 0:
+        return visited
+    
+    # otherwise the stack has nodes left. 
+    # add the top-most of these to the visited nodes and stack 
+    # its neighbours that are not already visited. If they are
+    # already stacked, move them to the top
+    node = stack.pop()
+    visited.append(node)
+    for neighbour in reversed(graph[node]):
+        if neighbour not in visited:
+            if neighbour not in stack:
+                stack.append(neighbour)
+            else:
+                stack.remove(neighbour)
+                stack.append(neighbour)
+        
+    return dfs_help(graph, stack, visited)
+
+def dfs(graph, start):
+    return dfs_help(graph, [start], [])"
+5TRPAFPX,19_20-5-2-python,"#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten, deren dfs_rek-Aufruf noch läuft sind grau.
+#Knoten, deren dfs_rek-Aufruf abgeschlossen ist sind schwarz.
+def dfs(graph, start):
+    gefunden = []
+    dfs_rek(graph, start, gefunden)
+    return gefunden
+
+def dfs_rek(graph, knoten, gefunden):
+    gefunden.append(knoten)
+    for zielknoten in graph[knoten]:
+        if not zielknoten in gefunden:
+            dfs_rek(graph, zielknoten, gefunden)"
+7H5QQ662,19_20-5-2-python,"def dfs(graph, start):
+    results: list = list()
+
+    results.append(start)
+    results = dfs_visit(start, results, graph)
+
+    return results
+
+
+def dfs_visit(u, results, graph):
+
+    for vertex in graph[u]:
+        if not vertex in results:
+            results.append(vertex)
+            dfs_visit(vertex, results, graph)
+
+    return results"
+2SBCAEOV,19_20-6-1-java,"public int editDistance(String word1, String word2) {
+int len1 = word1.length();
+	int len2 = word2.length();
+ 
+	// len1+1, len2+1, because finally return dp[len1][len2]
+	int[][] dp = new int[len1 + 1][len2 + 1];
+ 
+	for (int i = 0; i <= len1; i++) {
+		dp[i][0] = i;
+	}
+ 
+	for (int j = 0; j <= len2; j++) {
+		dp[0][j] = j;
+	}
+ 
+	//iterate though, and check last char
+	for (int i = 0; i < len1; i++) {
+		char c1 = word1.charAt(i);
+		for (int j = 0; j < len2; j++) {
+			char c2 = word2.charAt(j);
+ 
+			//if last two chars equal
+			if (c1 == c2) {
+				//update dp value for +1 length
+				dp[i + 1][j + 1] = dp[i][j];
+			} else {
+				int replace = dp[i][j] + 1;
+				int insert = dp[i][j + 1] + 1;
+				int delete = dp[i + 1][j] + 1;
+ 
+				int min = replace > insert ? insert : replace;
+				min = delete > min ? min : delete;
+				dp[i + 1][j + 1] = min;
+			}
+		}
+	}
+ 
+	return dp[len1][len2];}"
+5D73SALH,19_20-6-1-java,"public int editDistance(String a, String b) {
+    int aLength = a.length();
+        int bLength = b.length();
+
+        int matrix[][] = new int[aLength+1][bLength+1];
+
+        for(int i = 0; i <= aLength; i++) {
+            for(int j = 0; j <= bLength; j++ ) {
+                if(i == 0) {
+                    matrix[i][j] = j;
+                }
+                else if(j == 0) {
+                    matrix[i][j] = i;
+                }
+                else if(a.charAt(i-1) == b.charAt(j-1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } 
+                else {
+                    int ins = matrix[i][j - 1];
+                    int rem = matrix[i - 1][j];
+                    int rep = matrix[i - 1][j - 1];
+                    matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));
+                }
+            }
+        }        
+        return matrix[aLength][bLength];
+}"
+6Q23JRTB,19_20-6-1-java,"public int editDistance(String aS, String bS) //Pseudo from Wikipedi
+{
+	int aL = aS.length();
+	int bL = bS.length();
+	
+	int[][] matrix = new int[aL + 1][bL + 1];
+	
+	for(int a = 1; a <= aL; a++)
+	{
+		matrix[a][0] = a;
+	}
+	
+	for(int b = 1; b <= bL; b++)
+	{
+		matrix[0][b] = b;
+	}
+	
+	for(int b = 1; b <= bL; b++)
+	{
+		for(int a = 1; a <= aL; a++)
+		{
+			int cost = aS.charAt(a - 1) == bS.charAt(b - 1) ? 0 : 1;
+			matrix[a][b] = Math.min(
+					matrix[a - 1][b] + 1, //Deleteion
+					Math.min(
+							matrix[a][b - 1] + 1, //Insertion
+							matrix[a - 1][b - 1] + cost //Substitution
+					));
+		}
+	}
+	
+	return matrix[aL][bL];
+}"
+4PPDVAQT,19_20-6-1-python,"def editDistance(pre, after):
+    if len(pre) > len(after):
+        pre, after = after, pre
+
+    result = range(len(pre) + 1)
+    for i, b in enumerate(after):
+        tmp = [i+1]
+        for j, a in enumerate(pre):
+            if a != b:
+                tmp.append(1 + min((result[j], result[j + 1], tmp[-1])))
+            else:
+                tmp.append(result[j])
+        result = tmp
+    return result[-1]"
+5XRZQT3Q,19_20-6-1-python,"def editDistance(a, b):
+    if len(a) > len(b):
+        a, b = b, a
+
+    total = range(len(a) + 1)
+    for i_b, s_b in enumerate(b):
+        tmpdist = [i_b+1]
+        for i_a, s_a in enumerate(a):
+            if s_a == s_b:
+                tmpdist.append(total[i_a])
+            else:
+                tmpdist.append(1 + min((total[i_a], total[i_a + 1], tmpdist[-1])))
+        total = tmpdist
+    return total[-1]"
+BVAP5NM4,19_20-6-1-python,"def editDistance(a, b):
+    m = len(a)
+    n = len(b)
+    edit_matrix = [[0]*(n+1) for _ in range(m+1)]
+    for i in range(1, m+1):
+        edit_matrix[i][0] = edit_matrix[i-1][0] + 1
+    for j in range(1, n+1):
+        edit_matrix[0][j] = edit_matrix[0][j-1] + 1
+        for i in range(1, m+1):
+
+            insert = edit_matrix[i][j-1] + 1
+            delete = edit_matrix[i-1][j] + 1
+
+            
+            if a[i-1] == b[j-1]:
+                replace = edit_matrix[i-1][j-1]
+            else:
+                replace = edit_matrix[i-1][j-1] + 1
+
+            edit_matrix[i][j] = min(insert, delete, replace)
+    return edit_matrix[m][n]"
+2SBCAEOV,19_20-6-2-java,"// Returns the maximum value that can be put in a knapsack 
+    // of capacity W 
+    public static double knapSack(double[] val, int[] wt, int W) {
+     
+                int n = val.length; 
+        int i, w; 
+        double K[][] = new double[n + 1][W + 1]; 
+  
+        // Build table K[][] in bottom up manner 
+        for (i = 0; i<= n; i++) { 
+            for (w = 0; w<= W; w++) { 
+                if (i == 0 || w == 0) 
+                    K[i][w] = 0; 
+                else if (wt[i - 1]<= w) 
+                    K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]); 
+                else
+                    K[i][w] = K[i - 1][w]; 
+            } 
+        } 
+  
+        return K[n][W]; 
+    } 
+    
+static double max(double a, double b)  
+{ 
+    return (a > b) ? a : b;
+    }"
+6Q23JRTB,19_20-6-2-java,"public double knapSack(double[] values, int[] weights, int capacity)
+{
+	assert values.length == weights.length;
+	
+	int amount = values.length;
+	
+	double[][] matrix = new double[amount + 1][capacity + 1];
+	for(int i = 0; i < matrix.length; i++)
+	{
+		for(int j = 0; j < matrix[0].length; j++)
+		{
+			matrix[i][j] = -1D;
+		}
+	}
+	
+	return setAndGet(amount, capacity, matrix, values, weights);
+}
+
+public double setAndGet(int amount, int capacity, double[][] matrix, double[] values, int[] weights)
+{
+	if(amount == 0 || capacity <= 0)
+	{
+		return 0D;
+	}
+	
+	if(matrix[amount - 1][capacity] == -1)
+	{
+		matrix[amount - 1][capacity] = setAndGet(
+				amount - 1,
+				capacity,
+				matrix, values, weights);
+	}
+	
+	if(weights[amount - 1] > capacity)
+	{
+		matrix[amount][capacity] = matrix[amount - 1][capacity];
+	}
+	else
+	{
+		if(matrix[amount - 1][capacity - weights[amount - 1]] == -1)
+		{
+			matrix[amount - 1][capacity - weights[amount - 1]] = setAndGet(
+					amount - 1,
+					capacity - weights[amount - 1],
+					matrix, values, weights);
+		}
+		
+		matrix[amount][capacity] = Math.max(
+				matrix[amount - 1][capacity],
+				matrix[amount - 1][capacity - weights[amount - 1]] + values[amount - 1]
+		);
+	}
+	
+	return matrix[amount][capacity];
+}"
+VJM7JEP4,19_20-6-2-java,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] rucksack = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            rucksack[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) { 
+                if (volumes[i - 1] > j) {
+                    rucksack[i][j] = rucksack[i - 1][j];
+                } else {
+                    rucksack[i][j] = Math.max(
+                    rucksack[i - 1][j],
+                    rucksack[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return rucksack[n][capacity];
+}"
+4PPDVAQT,19_20-6-2-python,"def knapSack(val, vol, cap):
+    assert len(val) == len(vol)
+
+    for x in vol:
+        assert x == round(x)
+    matrix = [[0 for x in range(cap + 1)] for x in range(len(val) + 1)] 
+    for j in range(cap + 1): 
+        for i in range(len(val) + 1): 
+            if i == 0 or j == 0: 
+                matrix[i][j] = 0
+            elif vol[i-1] <= j: 
+                matrix[i][j] = max(val[i-1] + matrix[i-1][j-vol[i-1]],  matrix[i-1][j]) 
+            else: 
+                matrix[i][j] = matrix[i-1][j] 
+  
+    return matrix[len(val)][cap]"
+5XRZQT3Q,19_20-6-2-python,"def knapSack(value, volume, capacity):
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+    table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)] 
+  
+    # Build table table[][] in bottom up manner 
+    for i in range(len(value) + 1): 
+        for w in range(capacity + 1): 
+            if i == 0 or w == 0: 
+                table[i][w] = 0
+            elif volume[i-1] <= w: 
+                table[i][w] = max(value[i-1] + table[i-1][w-volume[i-1]],  table[i-1][w]) 
+            else: 
+                table[i][w] = table[i-1][w] 
+  
+    return table[len(value)][capacity]"
+C36JD6CE,19_20-6-2-python,"def knapSack(value, volume, capacity):
+    assert len(value) == len(volume)
+
+    for x in volume:
+        assert x == round(x)
+
+    ratio = []
+    i = 0
+    for item in volume:
+        if volume[i]>0:
+            ratio.append([value[i] / volume[i], value[i], volume[i]])
+        else:
+            ratio.append([10000000, value[i], volume[i]])  # yes this is cheating, i know
+        i = i + 1
+    
+    # sorts the items primarily by its ratio and secondly by their value
+    ratio = sorted(ratio, key = lambda x:(-x[0],-x[1]))
+
+
+    
+    i = 0
+    sack = []
+    volumeSum = 0
+    valueSum = 0
+    # adding the items to the knapsack from the best to the worst ration until full:
+    for item in ratio:
+        if volumeSum + item[2] <= capacity:
+            sack.append(i)
+            volumeSum = volumeSum + item[2]
+            valueSum = valueSum + item[1]
+        i = i + 1
+
+    return valueSum"
+2BBW3WNW,20_21-1-1-java,"long expo(long a,long b,long c){
+    long result;
+    long bhalb;
+        if(b == 0)
+            return result = 1 % c;
+        if(b % 2 == 0)
+        {
+            bhalb = b/2;
+            long zwResult = expo(a, bhalb, c);
+            
+            result = (zwResult * zwResult) % c;
+        }
+        else if(b % 2 != 0 && b !=1)
+        {
+            long zwResult = expo(a,(b-1),c);
+            result = (zwResult * a) % c;
+        }
+        else{
+            result = (a % c);
+        }
+
+        return result;
+}"
+2FXPE3DD,20_21-1-1-java,"public static long expo(long a, long b, long c) {
+    long res = 1;
+    a = a % c;
+
+    if (a == 0) return 0;
+
+    while (b > 0) {
+      if ((b & 1) == 1)  
+        res = (res * a) % c;
+      
+      b = b >> 1;
+      a = (a * a) % c;
+    }
+    return res;
+  }"
+3MFTY3YK,20_21-1-1-java,"long expo(long a,long b,long c) {
+    if (b > 1) {
+        if (b % 2 == 0) {
+            long res = expo(a, b / 2, c);
+            return ((res * res) % c);
+        } else {
+            return ((expo(a, b - 1, c) * a) % c);
+        }
+    }
+    else if (b == 1) {
+        return (a);
+    } else {
+        return (1);
+    }
+}"
+2BBW3WNW,20_21-1-1-python,"def expo(a,b,c):
+    return pow(a, b, c)
+
+
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''"
+2V5AQFDC,20_21-1-1-python,"def expo(a,b,c):
+    i=1
+    ergebnis = 1
+    a=a%c
+    while(b>0):
+        if((b&1)==1):
+            ergebnis = (ergebnis*a)%c
+        b = b >> 1    
+        a = (a*a)%c
+        i += 1
+    return ergebnis    
+
+
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''"
+2Y5M6RZI,20_21-1-1-python,"def expo(a, b, c):
+    j=b
+    res=1
+    res1=a%c
+    
+    while j>0:
+        if j%2!=0:
+            res=(res1*res)%c
+            j-=1
+        res1=(res1*res1)%c
+        j=j/2
+
+    return res
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''"
+2BBW3WNW,20_21-1-2-java,"int [] solution(int a[]) {
+    if (a.length > 1) {
+           int mitte = (int)(a.length / 2);
+           int[] l = new int[mitte];
+           for (int i = 0; i <= mitte - 1; i++) {
+               l[i] = a[i];
+
+           }
+
+           int[] r = new int[a.length - mitte];
+           for (int i = mitte; i <= a.length - 1; i++) {
+               r[i - mitte] = a[i];
+           }
+           l = solution(l);
+           r = solution(r);
+           return verschmelze(l, r);
+       }
+       else
+       {
+           return a;
+       }
+}
+private static int[] verschmelze(int[] l, int[] r)
+    {
+        int[] neul = new int[l.length + r.length];
+        int indexl = 0;
+        int indexr = 0;
+        int indexergebnis = 0;
+        while (indexl < l.length && indexr < r.length) {
+            if (l[indexl] < r[indexr]) {
+                neul[indexergebnis] = l[indexl];
+                indexl += 1;
+            } else {
+                neul[indexergebnis] = r[indexr];
+                indexr += 1;
+            }
+            indexergebnis += 1;
+        }
+        while (indexl < l.length) {
+            neul[indexergebnis] = l[indexl];
+            indexl += 1;
+            indexergebnis += 1;
+        }
+        while (indexr < r.length) {
+            neul[indexergebnis] = r[indexr];
+            indexr += 1;
+            indexergebnis += 1;
+        }
+        return neul;
+    }"
+2FXPE3DD,20_21-1-2-java,"int [] solution(int a[]) {
+    b(a);
+  for(int i=a.length-1;i>0;i--) {
+    t(a, i, 0);v(a, 0, i);
+  }
+  return a;
+}
+
+void b(int[] a) {
+  for(int i = (a.length / 2) - 1; i >= 0; i--)
+    v(a, i, a.length);
+}
+
+void v(int[] a, int i, int j) {
+
+while(i <= (j / 2) - 1) {
+    int n = ((i+1) * 2) - 1;
+    if(n + 1 <= j -1) {
+      if(a[n] < a[n+1]) {
+        n++;
+      }
+    }
+    if(a[i] < a[n]) {
+      t(a,i,n);
+      i = n;
+    } else break;
+  }
+}
+
+void t(int[] a, int i, int n) {
+  int k = a[i];
+  a[i] = a[n];
+  a[n] = k;
+}"
+3MFTY3YK,20_21-1-2-java,"int [] solution(int arr[]) {
+    if (arr.length > 1){
+        int mitte = (int) (arr.length / 2);
+
+        int[] links = new int[mitte];
+        for (int i = 0; i <= mitte - 1; i++){
+            links[i] = arr[i];
+        }
+
+        int[] rechts = new int[arr.length - mitte];
+        for (int i = mitte; i <= arr.length - 1; i++){
+            rechts[i - mitte] = arr[i];
+        }
+
+        links = solution(links);
+        rechts = solution(rechts);
+
+        return merge(links, rechts);
+    } else {
+        return arr;
+    }
+}
+
+int[] merge(int[] links, int[] rechts) {
+    int[] neueArray = new int[links.length + rechts.length];
+    int indexLinks = 0;
+    int indexRechts = 0;
+    int indexErgebnis = 0;
+
+    while (indexLinks < links.length && indexRechts < rechts.length){
+        if (links[indexLinks] < rechts[indexRechts]){
+            neueArray[indexErgebnis] = links[indexLinks];
+            indexLinks += 1;
+        } else {
+            neueArray[indexErgebnis] = rechts[indexRechts];
+            indexRechts += 1;
+        }
+        indexErgebnis += 1;
+    }
+
+    while (indexLinks < links.length) {
+        neueArray[indexErgebnis] = links[indexLinks];
+        indexLinks += 1;
+        indexErgebnis += 1;
+    }
+
+    while (indexRechts < rechts.length) {
+        neueArray[indexErgebnis] = rechts[indexRechts];
+        indexRechts += 1;
+        indexErgebnis += 1;
+    }
+
+    return neueArray;
+}"
+2V5AQFDC,20_21-1-2-python,"def solution(A):
+    if len(A) < 2:
+        return A
+    fertig = []
+    mid = int(len(A) / 2)
+    rechts = solution(A[:mid])
+    links = solution(A[mid:])
+    while (len(rechts) > 0) and (len(links) > 0):
+        if rechts[0] > links[0]:
+            fertig.append(links[0])
+            links.pop(0)
+        else:
+            fertig.append(rechts[0])
+            rechts.pop(0)
+    fertig += rechts
+    fertig += links
+    return fertig"
+2Y5M6RZI,20_21-1-2-python,"def Merge(l, r, A):
+    
+    l.append(10**6)
+    r.append(10**6)
+    
+    i=0
+    j=0
+    
+    for k in range(len(A)):
+        if l[i] <= r[j]:
+            A[k]=l[i]
+            i+=1
+        else:
+            A[k]=r[j]
+            j+=1
+
+def solution(A):
+    
+    if len(A)>1:
+        mid=len(A)//2
+        L=A[:mid]
+        R=A[mid:]
+        
+        solution(L)
+        solution(R)
+        Merge(L, R, A)
+    return(A)"
+32TQUOSC,20_21-1-2-python,"import math
+
+def solution(A):
+    r = len(A)
+    if 1 < r :
+        p = math.floor((r)/2)
+        A1 = A[0:p]
+        A2 = A[p:r]
+        A1 = solution(A1)
+        A2 = solution(A2)
+        A = A1 + A2
+        merge(A,p,r)
+    return A
+def merge(A,p,r):
+    n1 = p 
+    n2 = r - p 
+    L = list()
+    R = list()
+    for i in range(0, n1):
+        L.append(A[i])
+    for j in range(0,n2):
+        R.append(A[p + j])
+    L.append(3000000)
+    R.append(3000000)
+    i = 0; j = 0
+    for  k in range(0,r):
+        if L[i] <= R[j]:
+            A[k] = L[i]
+            i = i + 1
+        else:
+            A[k] = R[j]
+            j = j + 1
+    return A"
+2BBW3WNW,20_21-2-1-java,"String calc(int A[], int B[]){
+    int l = B.length;
+        int [] bucketList = new int[l];
+        StringBuilder s = new StringBuilder();
+
+        for(int i = 0;i < A.length; i++)
+        {
+            bucketList[A[i]]++;
+        }
+        for(int i = 0; i <l; i++)
+        {
+            if(bucketList[i] <= B[i]) {
+                s.append(""1"");
+            }
+            else
+            {
+                s.append(""0"");
+            }
+        }
+        String res = s.toString();
+        return res;
+}"
+2DXKHJJW,20_21-2-1-java,"String calc(int A[], int B[]){
+    int C[] = new int[B.length];
+    for (int i : A) {
+        C[i] ++;
+    }
+    StringBuilder s = new StringBuilder(B.length);
+    for (int i = 0; i < B.length; i++)  {
+        if (C[i] <= B[i]) {
+            s.append('1');
+        }
+        else {
+            s.append('0');
+        }
+    }
+    return s.toString();
+}"
+2FXPE3DD,20_21-2-1-java,"String calc(int A[], int B[]){
+    int c[] = new int[B.length];
+    for (int i = 0; i < A.length; i++)
+        c[A[i]]++;
+    char res[] = new char[B.length];
+    for (int i = 0; i < B.length; i++)
+        res[i] = B[i] >= c[i] ? '1' : '0';
+    return new String(res);
+}"
+2Y5M6RZI,20_21-2-1-python,"def calc(A,B):
+    m=len(A)
+    n=len(B)
+    C=[0]*n
+    fit_list=list()
+    
+    for i in range(m):
+        C[A[i]]+=1
+        
+    for i in range(n):
+        if C[i]>B[i]:
+            fit_list.append(0)
+        else:
+            fit_list.append(1)
+            
+    result=''.join(map(str, fit_list))
+    return result"
+32TQUOSC,20_21-2-1-python,"def calc(A,B):
+    C = [0]*len(B)
+    s = list()
+    for i in range(len(A)):
+        C[A[i]] += 1
+    for ii in range(len(B)):
+        if C[ii] <= B[ii]:
+                s.append('1')
+        else: 
+            s.append('0')
+    s = ''.join(s)
+    return s"
+3VWSD24O,20_21-2-1-python,"def calc(A,B):
+    categ = dict()
+    for a in A:
+        if not (a in categ):
+            categ[a] = 0
+        categ[a] += 1
+        
+    s = ''
+    
+    for i in range(len(B)):
+        if not (i in categ):
+            s += '1' 
+        elif categ[i] > B[i]:
+            s += '0'
+        else:
+            s += '1'
+    return s"
+2BBW3WNW,20_21-3-1-java,"public double knapSack(double[] value, int[] weight, int capacity) {
+    assert value.length == weight.length;
+    int nItem = weight.length;
+    
+    
+    if(nItem <= 0 || capacity <= 0)
+            {
+                return 0;
+            }
+            double[][] dynTab = new double[nItem+1][capacity+1];
+            for(int x = 0; x <= capacity; x++)
+            {
+                dynTab[0][x] = 0;
+            }
+
+            for(int i = 1; i<= nItem; i++)
+            {
+                for (int j = 1; j<= capacity; j++)
+                {
+                    if (weight[i-1] > j)
+                    {
+                        dynTab[i][j] = dynTab[i-1][j];
+                    }
+                    else
+                    {
+                        dynTab[i][j] = Math.max(
+                                dynTab[i-1][j],
+                                dynTab[i-1][j - weight[i-1]] + value[i-1]);
+                    }
+                }
+            }
+            return dynTab[nItem][capacity];
+}"
+2V5AQFDC,20_21-3-1-java,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] table = new double[n + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        table[0][j] = 0;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= capacity; j++) { 
+            if (volumes[i - 1] > j) {
+                table[i][j] = table[i - 1][j];
+            } else {
+                table[i][j] = Math.max(
+                  table[i - 1][j], 
+                  table[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return table[n][capacity];
+}"
+3CJMUUPS,20_21-3-1-java,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+            if (capacity > 1000) capacity++;
+
+        double[][] table = new double[volumes.length + 1][capacity + 1];
+
+        for (int i = 1; i <= volumes.length; i++) {
+            for (int j = 1; j <= capacity; j++) {
+                if (volumes[i - 1] > j) {
+                    table[i][j] = table[i - 1][j];
+                } else {
+                    table[i][j] = Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+
+        return table[volumes.length][capacity];
+}"
+2DXKHJJW,20_21-3-2-python,"def calc(N,A):
+    Lengths = []
+    Connections = []
+
+    for i in range(N):
+        Lengths += [0]
+        Connections += [[]]
+
+    for e in A:
+        assert e[0] < e[1]
+        Connections[e[0]-1] += [e[1]-1]
+
+    for e in range(len(Connections)):
+        for u in Connections[e]:
+            Lengths[u] = max(Lengths[e] + 1, Lengths[u])
+
+    return max(Lengths)"
+2FXPE3DD,20_21-3-2-python,"def calc(N, A):
+  def DFS(v, graph, heap, seen):
+    seen[v] = True
+    for i in range(len(graph[v])):
+      if not seen[graph[v][i]]:
+        DFS(graph[v][i], graph, heap, seen)
+      heap[v] = max(heap[v], 1 + heap[graph[v][i]])
+  graph = [[] for i in range(N + 1)]
+  for e in A:
+    graph[e[0]].append(e[1])
+  heap = [0] * (N + 1)
+  seen = [False] * (N + 1)
+  for v in range(1, N + 1):
+    if not seen[v]:
+      DFS(v, graph, heap, seen)
+  return max(heap)"
+2Y5M6RZI,20_21-3-2-python,"def dfs(node, ll, nodes_mp, min):
+    if len(ll[node]) == 0:
+        return 0
+    elif nodes_mp[node] != min:
+        return nodes_mp[node]
+    else:
+        bs = 0
+        for child in ll[node]:
+            bs = max(bs , dfs(child, ll, nodes_mp , min) + 1)
+        nodes_mp[node] = bs
+        return nodes_mp[node]
+
+def calc(N,A):
+    min=-10000
+    ll = [[] for i in range(N + 1)]
+    nodes_mp = [min] * (N + 1)
+    ll[0] = [x for x in range(1, N + 1)]
+    
+    for edge in A:
+        start=edge[0]
+        end=edge[1]
+        ll[start].append(end)
+        
+    return dfs(0, ll, nodes_mp, min) - 1"
+22RVWBZ6,21_22-1-1-java,"long calc(long n){
+    return exp(2, n, 1000000007)-1;
+}
+
+long exp(long b, long e, long m){
+    if (e==0)
+        return 1 % m;
+    else if (e==1)
+        return b % m;
+    else if (e%2==0){
+        long x = exp(b, e/2, m);
+        return (x*x) % m;
+    }
+    else
+        return (exp(b, e-1, m)*b) % m;
+}"
+255OJ5MB,21_22-1-1-java,"long calc(long n){
+    if (n < 1)
+        {
+            return 0;
+        }
+        if (n == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            if (n % 2 == 0)
+            {
+                long u = (calc(n / 2) + 1);
+                return (u * u - 1) % 1000000007L;
+            }
+            else
+            {
+                return ((calc(n - 1) + 1) * 2 - 1) % 1000000007L;
+            }
+        }
+}"
+27JLEQ4N,21_22-1-1-java,"long calc(long n){
+    long res = 1;
+    long base = 2;
+    while (n>0){
+        if (n%2 ==1)
+            res = res*base % 1000000007;
+        base = base*base % 1000000007;
+        n = n/2;
+    }
+    return res-1;
+}"
+22RVWBZ6,21_22-1-1-python,"def exp(n):
+    if (n==1):
+        return 2
+    elif (n/2 % 2==0):
+        j = exp(n/2)
+        return j*j % 1000000007
+    else:
+        return exp(n-1)*2 % 1000000007
+
+def calc(n):
+    if (n==0):
+        return 0
+    return (exp(n)-1) % 1000000007"
+255OJ5MB,21_22-1-1-python,"def calc(n):
+    if (n < 1):
+        return 0
+    if (n == 1):
+        return 1
+    if (n % 2 == 0):
+        u = (calc(n/2) + 1)
+        return (u*u - 1) % 1000000007
+    else: 
+        return ((calc(n-1)+1)*2 -1) % 1000000007"
+2HRKTEF5,21_22-1-1-python,"def calc(n):
+    if n == 0:
+        return 0
+    else:
+        if n%2 == 0:
+            n = (n//2)%1000000007
+            res = (calc(n))%1000000007
+            res = (res+1)%1000000007
+            res = (res*res)%1000000007
+            return (res-1)%1000000007
+        else:
+            n = (n-1)%1000000007
+            res = calc(n)%1000000007
+            res = (res*2)%1000000007
+            return res+1"
+22RVWBZ6,21_22-1-2-java,"long calc(){
+    long l = 0;
+    long r = (long)1.0E18;
+    long pivot = (l+r)/2;
+    
+    while (l != r){
+        if (f_N(pivot) == 0)
+            l = pivot+1;
+        if (f_N(pivot) == 1)
+            r = pivot;
+        
+        pivot = (l+r)/2;
+    }
+    return pivot;
+}"
+255OJ5MB,21_22-1-2-java,"long calc(){
+    long upper, lower, mid;
+    mid = -1;
+    lower = 1; 
+    upper = 1000000000000000000L;
+    
+    while (upper - lower > 1){
+        mid = (upper + lower) / 2;
+        if (f_N(mid) == 1){
+            upper = mid;
+        } else {
+            lower = mid;
+        }
+    }
+    return f_N(lower) == 1 ? lower : upper;
+}"
+27JLEQ4N,21_22-1-2-java,"long calc(){
+    long l = 1;
+    long r = 1000000000000000000L;
+    long b = r - l + 1;
+    return binarySearch(l, r, b);
+}
+private long binarySearch(long l, long r, long b){
+    if (b==1){
+        return l;
+    }
+    long x = l + b/2 - 1;
+    if (f_N(x)==1){
+        r = x;
+    }
+    else {
+        l = x + 1;
+    }
+    b = r - l + 1;
+    return binarySearch(l, r, b);
+}"
+22RVWBZ6,21_22-1-2-python,"def calc(f):
+    j = 0
+    lim1 = 0
+    lim2 = int(1e+18)
+    while j == 0:
+        pivo = (lim1+lim2)//2
+        if f(pivo):
+            lim2 = pivo
+            if lim1 == lim2:
+                j = 1
+        else:
+            lim1 = pivo+1
+            if lim1 == lim2:
+                j = 1
+    return lim1"
+255OJ5MB,21_22-1-2-python,"def calc(f):
+    mid = -1
+    lower = 1
+    upper = 1000000000000000000
+    
+    while(upper - lower > 1):
+        mid = (upper + lower) // 2
+        if (f(mid) == 1):
+            upper = mid
+        else:
+            lower = mid
+    if (f(lower) == 1):
+        return lower
+    return upper"
+2HRKTEF5,21_22-1-2-python,"def calc(f):
+    u = 1
+    o = 10**18
+    while o-u>=2:
+        t = (u+o)//2
+        if f(t):
+            o = t
+        else:
+            u = t+1
+    while not f(u):
+        u = u+1
+    return u"
+255OJ5MB,21_22-2-1-java,"String calc(int A[], int B[]){
+    int M[] = new int[B.length];
+    
+    for(int i: A){
+        M[i]++;
+    }
+    StringBuilder sb = new StringBuilder();
+    for(int i = 0; i < B.length; i++){
+        if(M[i] <= B[i]){
+            sb.append(""1"");
+        }
+        else {
+            sb.append(""0"");
+        }
+    }
+    
+    return sb.toString();
+}"
+2MTBKTC7,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] C = new int[B.length];
+    for (int i = 0; i < A.length; i++) { 
+        C[A[i]]++; 
+    }
+    StringBuilder s = new StringBuilder();
+    for (int j = 0; j < C.length; j++) { 
+        if (C[j] <= B[j]) {
+            s.append(""1"");
+        }
+        else
+            s.append(""0"");
+    }
+    return s.toString();
+}"
+4YXPHSC6,21_22-2-1-java,"String calc(int A[], int B[]){
+    int [] c = B.clone();
+    int x;
+    StringBuilder s = new StringBuilder();
+    for(int i=0;i<A.length;++i)
+    {
+        x= A[i];
+        c[x] = c[x]-1;
+    }
+    for(int j = 0; j<c.length;++j)
+    {
+        if(c[j]>=0)
+        {
+            s.append(1);
+        }
+        else
+        {
+            s.append(0);
+        }
+    }
+    return s.toString();
+}"
+22RVWBZ6,21_22-2-1-python,"def calc(A,B):
+    res = []
+    c = B.copy()
+    for i in range(len(A)):
+        c[A[i]] -= 1 
+    for i in range(len(B)):
+        if c[i] >= 0:
+            res.append(str(1))
+        else:
+            res.append(str(0))
+    return """".join(res)"
+2HRKTEF5,21_22-2-1-python,"def calc(A,B):
+    output = """"
+    C = []
+    C = [0 for i in range(len(B))]
+    for i in A: C[i] +=1
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            output = output + ""1""
+        else:
+            output = output + ""0""
+    return output"
+2ZFCVB6S,21_22-2-1-python,"def calc(A,B):
+    m = len(B)
+    n = len(A)
+    C = {kategorie:0 for kategorie in range(m)}
+    for i in range(n):
+        C[A[i]] += 1
+    s = [""1"" if C[i] <= B[i] else ""0"" for i in range(m)]
+    return """".join(s)"
+255OJ5MB,21_22-2-2-java,"int [] calc(int []a, int[][]b){
+    int n = a.length;
+    int [] d = new int[n];
+    int [] output = new int[n];
+    
+    int last = 0;
+    
+    for (int i = 0; i < n; i++){
+        last += a[i];
+        d[i] = last;
+    }
+   
+    for (int i = 0; i < n; i++){
+        output[i] = d[b[i][1]];
+        if (b[i][0] > 0){
+            output[i] -= d[b[i][0] - 1];
+        }
+    }
+   
+   
+    return output;   
+}"
+2MTBKTC7,21_22-2-2-java,"int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] d = new int[n];
+    
+    for(int i = 0; i < b.length; i++) {
+        int links = b[i][0];
+        int rechts = b[i][1];
+        
+        if(links == rechts) {
+            d[i] = a[links];
+        }
+        else {
+            if(links >= 1) {
+                int sum1 = summe1(a, rechts);
+                int sum2 = summe2(a, links);
+                int result = sum1 - sum2;
+                d[i] = result;
+            }
+            else {
+                int sum1 = summe1(a, rechts);
+                d[i] = sum1;
+            }
+        }
+    }
+    return d;   
+}
+
+int summe1(int[] a, int rechts) {
+    int sum1 = 0;
+    for(int i = 0; i <= rechts; i++) {
+        sum1 = sum1 + a[i];
+    }
+    return sum1;
+}
+
+int summe2(int []a, int links) {
+    int sum2 = 0;
+    for(int i = 0; i <= links-1; i++) {
+        sum2 = sum2 + a[i];
+    }
+    return sum2;
+}"
+4YXPHSC6,21_22-2-2-java,"int [] calc(int []a, int[][]b){
+   int l;
+   int r;
+    int n = a.length;
+    int [] d = new int[n];
+    int [] intervalle = new int[n];
+    intervalle[0]=a[0];
+    for(int i=1;i<=n-1; i++)
+    {
+        intervalle[i]= a[i] + intervalle[i-1];
+    }
+    for(int j=0;j<=b.length-1; j++)
+    {
+        r=intervalle[b[j][1]];
+        l= b[j][0]-1;
+        if(l>=0)
+        {
+        d[j]=r-intervalle[l];    
+        }
+        else{
+            d[j]=r;
+        }
+    }
+   
+   
+    return d;   
+}"
+22RVWBZ6,21_22-2-2-python,"def calc(A,B):
+    c = A.copy()
+    res = []
+    for i in range(1,len(A)):
+        c[i] = c[i-1]+c[i]
+    for i in range(len(B)):
+        if B[i][0] == 0:
+            res.append(c[B[i][1]])
+        else:
+            res.append(c[B[i][1]]-c[B[i][0]-1])
+    return res"
+2HRKTEF5,21_22-2-2-python,"def calc(a,b):
+    for i in range(1, len(a)): a[i] += a[i-1]
+    return [a[r] if l == 0 else a[r]-a[l-1] for l,r in b]"
+2ZFCVB6S,21_22-2-2-python,"def calc(A,B):
+    sums = []
+    s = 0
+    for transporte in A:
+        start_end = [s]
+        s += transporte
+        start_end.append(s)
+        sums.append(start_end)
+    return [sums[r][1]-sums[l][0] for l,r in B]"
+27JLEQ4N,21_22-3-1-java,"long opt(long W[]){
+long A[] = new long[W.length];
+A[0] = W[0];
+if (W[0] <=W[1])
+{
+    A[1]= W[1];
+}
+else
+{
+      A[1]= W[0];
+}
+
+    for (int i = 2; i < W.length; i++)
+{
+    if (W[i] + A[i -2] <= A[i - 1])
+    {
+        A[i] = A[i - 1];
+    }
+    else
+    {
+       
+        A[i] = W[i] + A[i - 2];
+    }
+}
+
+return A[W.length-1];
+}"
+52CCJZCZ,21_22-3-1-java,"long opt(long[] W){
+    long a = 0;
+    long b = 0;
+    for(int i=0; i<W.length; i++) {
+        if(i%2 == 0) {
+            if(a+W[i]>b) {
+                a=a+W[i];
+            } else {
+                a=b;
+            }
+        } else {
+            if(b+W[i]>a) {
+                b=b+W[i];
+            } else {
+                b=a;
+            }
+        }
+    }
+    if(a>b) {
+        return a;
+    }
+    return b;
+}"
+5HQFS7V7,21_22-3-1-java,"static long opt(long[] W)
+    {
+        int n = W.length;
+        long[] m = new long[n+1];
+        m[0] = 0;
+        m[1] = W[0];    //m[0] ist null und negativen gewinn haben wir nicht (so ist die for-schleife eleganter)
+        for(int i = 2; i<=n;i++)
+        {
+            m[i] = Math.max(W[i-1]+m[i-2], m[i-1]); //unsere schilder haben immer eine länge von 2 (intervallscheduling)
+        }
+        return m[m.length-1];
+    }"
+2HRKTEF5,21_22-3-1-python,"def opt(W):
+    P = [W[0], max(W[0], W[1])]
+    for i in range(2, len(W)):
+        P.append(max(P[i-2]+W[i],P[i-1]))
+    return P[len(P)-1]"
+2ZFCVB6S,21_22-3-1-python,"def opt(W):
+    n = len(W)
+    win = [[0,0] for _ in range(n)] 
+    # Liste zum Speichern des max Gewinns bis einschl. W_i
+    # an [0] bei nicht-Verwendung, an [1] bei Verwendung von W_i
+    for i, w in enumerate(W):
+        if i == 0:   # Fall w = erstes Element
+            win[0][0], win[0][1] = 0, w
+        elif i == 1:   #Fall w = zweites Element
+            win[1][0], win[1][1] = win[0][1], w if w > W[i-1] else W[i-1]
+        else:
+            win[i][0] = max(win[i-1])
+            win[i][1] = max(win[i-1][1], win[i-2][1]+w)
+    return max(win[-1])"
+3QD4AKHA,21_22-3-1-python,"def maximum(a,b):
+    if a>b : return a
+    else   : return b
+
+
+def opt(W):
+    M = [W[0]]
+    n = len(W)
+    if W[0] < W[1]:
+        M.append(W[1])
+    else:
+        M.append(W[0])
+    for i in range(2, n):
+        M.append(maximum(M[i-1],W[i]+M[i-2]))
+    
+    return M[n-1]"
+52CCJZCZ,21_22-3-2-java,"int calc(int N, int[][] A){
+    
+    // Erstellen der Adjazenzliste des Graphen
+    ArrayList<ArrayList<Integer>> adj 
+        = new ArrayList<ArrayList<Integer>>(N);
+    for(int i=0; i<N; i++) {
+        adj.add(i,new ArrayList<Integer>(N));
+    }
+    for(int i=0; i<A.length; i++) {
+        adj.get(A[i][0]-1).add(A[i][1]-1);
+    }
+    
+    // Erstellt topologisch sortierten Array der Knoten
+    int[] topoList = topoSort(adj);
+    
+    // in[x] speichert den längsten Pfad, der im
+    // Knoten x endet
+    int[] in = new int[N];
+    
+    // Geht alle Knoten in der topologischen Reihenfolge 
+    // durch und aktualisiert den in-Wert von allen Knoten
+    // die in dessen Adjazenzliste sind
+    for(int j=0; j<N; j++) {
+        int a = topoList[j];
+        ArrayList<Integer> it = adj.get(a);
+        for(int k=0; k<it.size();k++) {
+            int i = it.get(k);
+            if(in[a]+1>in[i]) {
+                in[i] = in[a]+1;
+            }
+        }
+    }
+    
+    // Sucht den größten Wert aus dem Array ""in""
+    int maxPfad = 0;
+    for(int i=0;i<N;i++) {
+        if(in[i]>maxPfad){
+            maxPfad=in[i];
+        }
+    }
+    
+    return maxPfad;
+}
+
+// Hilfsmethode von topoSort
+// Zuerst wird
+void topoSortUtil(int v, boolean visited[],
+        ArrayList<Integer> list, 
+        ArrayList<ArrayList<Integer>> adj) {
+    visited[v] = true;
+    Integer i;
+    ArrayList<Integer> it = adj.get(v);
+    for(int j=0; j<it.size();j++) {
+        i = it.get(j);
+        if(!visited[i]) {
+            topoSortUtil(i,visited,list,adj);
+        }
+    }
+    list.add(new Integer(v));
+}
+
+// Erstellt aus der Adjazenzliste adj einen
+// topologisch sortierten Array der Knoten
+int[] topoSort(ArrayList<ArrayList<Integer>> adj) {
+    int n = adj.size();
+    ArrayList<Integer> list = new ArrayList<Integer>(n);
+    boolean visited[] = new boolean[n];
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            topoSortUtil(i, visited, list, adj);
+        }
+    }
+    
+    int[] topoList = new int[n];
+    for(int i=0; i<n;i++) {
+        topoList[i] = list.get(n-i-1);
+    }
+    return topoList;
+}"
+5HQFS7V7,21_22-3-2-java,"int calc(int N, int[][] A) {
+        int[] gewicht = new int[N];
+        gewicht[0] = 0;
+        ArrayList<ArrayList<Integer>> vorgaenger = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            vorgaenger.add(new ArrayList<>());
+        }
+        for (int[] a : A) {
+            vorgaenger.get(a[1] - 1).add(a[0]);
+        }
+        for (int i = 1; i < N; i++) {
+            int endgewicht = 0;
+            for (int j = 0; j < vorgaenger.get(i).size(); j++) {
+                endgewicht = Math.max(gewicht[vorgaenger.get(i).get(j) - 1] + 1, endgewicht);
+            }
+            gewicht[i] = endgewicht;
+        }
+        int maxGewicht = 0;
+        for (int i : gewicht) {
+            maxGewicht = Math.max(maxGewicht, i);
+        }
+        return maxGewicht;
+    }"
+5WLNH2EE,21_22-3-2-java,"int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> nachbarn = new ArrayList<ArrayList<Integer>>(N);
+    for (int i=0; i<=N; i++){
+        nachbarn.add(new ArrayList<Integer>());
+    }
+    for (int i=0; i<A.length; i++){
+        int ersteZahl = A[i][0];
+        int zweiteZahl = A[i][1];
+        
+        nachbarn.get(ersteZahl).add(zweiteZahl);
+    }
+    
+    int[] längsteEntfernung = new int [N+1];
+    boolean[] besucht = new boolean[N+1];
+    
+    for(int i= 0; i<=N; i++){
+        if (!besucht[i]){
+            tiefensuche(nachbarn, längsteEntfernung, besucht, i);
+        }
+    }
+    int max= 0;
+    for(int i = 0; i<=N; i++){
+        max = Math.max(längsteEntfernung[i], max);
+    }
+    return max;
+}
+
+void tiefensuche(ArrayList<ArrayList<Integer>> nachbarn, int [] längsteEntfernung, boolean [] besucht, int i){
+    if(besucht[i]){
+        return;
+    }
+    
+    besucht[i] = true;
+    
+    for( int j = 0; j < nachbarn.get(i).size(); j++){
+        int nachbar = nachbarn.get(i).get(j);
+        if(!besucht[nachbar]){
+            tiefensuche(nachbarn, längsteEntfernung, besucht, nachbar);
+        }
+        längsteEntfernung[i]= Math.max(längsteEntfernung[i], längsteEntfernung[nachbar]+1);
+    }
+}"
+2HRKTEF5,21_22-3-2-python,"def calc(N,A):
+    F = []
+    P = []
+    F.append(0)
+    P.append(0)
+    for n in range(1,N+1):
+        F.append([])
+        P.append([])
+    for e in A:
+        F[e[0]].append(e[1])
+        P[e[1]].append(e[0])
+    S = []
+    AP = []
+    AP.append(0)
+    for i in range(1,len(P)):
+        AP.append(len(P[i]))
+        if AP[i] == 0:
+            S.append(i)
+    L = []
+    L.append(S)
+    i = 0
+    while not len(L[i]) == 0:
+        i+=1
+        L.append([])
+        for l in L[i-1]:
+            for j in F[l]:
+                AP[j]-=1
+                if AP[j]==0:
+                    L[i].append(j)
+    return i-1"
+3QD4AKHA,21_22-3-2-python,"def tiefenSuche(node, Adj, M):
+    if len(Adj[node]) == 0:
+        return 0
+    elif M[node] != -1:
+        return M[node]
+    else:
+        retVal = 0
+        for i in range(0,len(Adj[node])):
+            retVal =  max(retVal, tiefenSuche(Adj[node][i],Adj,M)+1)
+        M[node] = retVal
+        return M[node]
+
+def calc(N,A):
+    Adj = []
+    for i in range(0,N+1):
+        Adj.append([])
+    Adj[0]=range(1,N+1)
+    for j in A:
+        Adj[j[0]].append(j[1])
+    M = []
+    for i in range(0,N+1):
+        M.append(-1)
+    return tiefenSuche(0,Adj,M)-1"
+5UQSXBL3,21_22-3-2-python,"class KnotenImKopf:
+    def __init__(self, wert: int):
+        self.wert = wert
+        self.farbe = ""w""
+        # self.vater = None
+        # self.d = None
+        # self.f = None
+        self.adj = []
+
+    def append_to_adj(self, wert: int) -> None:
+        self.adj.append(wert)
+
+
+def dfs(knoten: list) -> list:
+    # global zeit
+    # zeit = 0
+    endzeit_list = []
+
+    for u in knoten[1:]:  # s. Init. von knoten
+        if u.farbe == ""w"":
+            dfs_visit(knoten, u, endzeit_list)
+    return endzeit_list
+
+
+def dfs_visit(knoten: list, u: KnotenImKopf, endzeit_list: list) -> None:
+    # global zeit
+    # zeit += 1
+    # u.d = zeit
+    u.farbe = ""g""
+    for v_value in u.adj:
+        v = knoten[v_value]
+        if v.farbe == ""w"":
+            # v.vater = u.wert
+            dfs_visit(knoten, v, endzeit_list)
+    # u.farbe = ""s""
+    # zeit += 1
+    # u.f = zeit
+    endzeit_list.append(u.wert)
+
+
+def calc(n: int, a: list) -> int:
+    knoten = [KnotenImKopf(i) for i in range(n + 1)]  # 0-ter Knoten ist PLatzhalter
+    for e in a:
+        knoten[e[0]].append_to_adj(e[1])
+    e_list = dfs(knoten)
+    longest_path = [0] * (n + 1)
+
+    for value in e_list:
+        u = knoten[value]
+        for v in u.adj:
+            longest_path[value] = max(longest_path[value], longest_path[v] + 1)
+
+    return max(longest_path)"
