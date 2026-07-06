@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is constructed correctly from the input edges, but the virtual source node 0 is missing. The algorithm initiates DFS from each node individually instead of using a single virtual source node connected to all other nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution uses a 'heap' array initialized to 0 and a 'seen' array for traversal, but lacks a memoization array initialized to -1. The code does not check a memoization cache before recomputing values, leading to potential recomputation of subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly returns 0 for leaf nodes because the loop over graph[v] does not execute, leaving heap[v] initialized to 0, which matches the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly computes the maximum path length by taking the max over all children and adding 1 for each edge, and stores the result in the `heap` array during post-order traversal, ensuring memoization is achieved.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code uses a DFS that marks nodes as visited and does not reprocess them, leading to incorrect heap values when longer paths to a node are discovered later. For example, a node with multiple parents may not have its maximum path length updated properly.

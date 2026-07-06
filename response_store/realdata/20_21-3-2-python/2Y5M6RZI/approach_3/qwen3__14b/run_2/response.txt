@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The adjacency list is correctly built from A and node 0 is added with edges to all nodes 1 to N, enabling a single DFS from node 0 to consider all potential starting points.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The memo array is initialized to -10000 instead of -1, and the cache check uses 'nodes_mp[node] != min' where min is -10000, which deviates from the required -1 sentinel value in the rubric.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 for nodes with no outgoing edges, accurately representing a path of length 0 from a leaf node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly computes the maximum path length by taking the max over all children with '+1' and stores the result in memo[node] before returning.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm returns the correct value with the virtual source adjustment (dfs(0) - 1), but the memoization uses an incorrect sentinel value (-10000 instead of -1), which could lead to incorrect results in some edge cases.

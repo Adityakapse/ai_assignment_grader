@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student constructs a predecessor list (incoming edges) instead of an adjacency list (outgoing edges) and does not add a virtual source node 0, leading to incorrect graph representation and inability to find the globally longest path.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative dynamic programming approach with a weight array initialized to 0, not a memo array initialized to -1 as required. There is no cache check for a sentinel value in the memoization structure.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement a DFS-based approach and instead uses a dynamic programming method with predecessors, so there is no base case for leaf nodes in a DFS function as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student's code attempts to compute the maximum path length by iterating over predecessors and taking the max of their weights +1, but it does not use a recursive DFS approach with memoization as required by the rubric.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student's code initializes weights for nodes starting from index 1 but lacks topological sorting, leading to incorrect path length calculations for non-linear DAGs. The virtual source adjustment is also missing, which could cause errors in graphs with disconnected components.

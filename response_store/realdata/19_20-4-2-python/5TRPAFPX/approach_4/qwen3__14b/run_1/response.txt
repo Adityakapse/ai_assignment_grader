@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly sets newNode (equivalent to y) to deleteNode when it has zero or one child, and uses treeMinimum(deleteNode.right) when it has two children, matching the required selection logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's treeMinimum function correctly implements the leftward traversal using recursion, returning the leftmost node as required by the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's code does not explicitly identify x as y's non-null child. Instead, it directly manipulates the subtree structure without determining which child (if any) of y should take its place, violating the rubric's requirement for correctly identifying x.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code fails to update y.parent's child pointer to x (newNode) in all cases, leaving the original node still linked in the tree through parent references. For example, when handling the two-child case, the code modifies the parent's pointer to newNode's right child rather than directly to newNode.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's solution does not copy the key from the successor node to the delete node, leaving deleteNode.key unchanged even when a successor is used, which fails to logically remove the original node's key from the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code handles leaf and single-child deletions correctly but fails in the two-children case by incorrectly restructuring subtrees instead of using the standard copy-and-delete approach, leading to invalid BST structures. Root deletion also has edge cases where parent pointers are not properly updated.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) and initializes the first row to 0, which aligns with the required DP table structure for the knapsack problem.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The inner loop iterates from j = 1 to capacity instead of starting at j = 0, which fails to process the base case where the knapsack capacity is zero, violating the required loop structure.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: The solution checks if weight[i-1] <= j by comparing against j > weight[i-1], but the inner loop starts at j=1, which skips j=0. This may fail to handle zero-capacity cases where items have zero weight.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation by choosing the maximum between including the current item (value plus previous state's value for remaining capacity) or excluding it (previous state's value), matching the logic described in the rubric.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The solution correctly implements the 0/1 knapsack dynamic programming algorithm, properly handling items with zero volume by comparing both taking and not taking the item in all cases, and returning the optimal value for the given capacity.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates a 2D table of size (n+1) x (capacity+1) and initializes all cells to 0 via explicit initialization of the first row and Java's default array initialization for the rest.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j=1 instead of j=0, missing the zero-capacity subproblem required for handling items with weight 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if weight[i-1] > j before considering inclusion, which is equivalent to checking weight[i-1] <= j, correctly allowing items that exactly fill the capacity and properly handling zero-weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the recurrence relation by comparing taking the current item (value[i-1] + dynTab[i-1][j - weight[i-1]]) or not taking it (dynTab[i-1][j]), and references the previous row (i-1) consistently with the loop direction.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle items with volume 0 correctly because the inner loop starts at j=1, so when capacity is 0, items with weight 0 are not considered, leading to incorrect results for zero-weight items and zero capacity.

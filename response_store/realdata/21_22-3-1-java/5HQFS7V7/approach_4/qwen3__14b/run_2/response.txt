@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student allocated a memo array of size n+1 (correct size) but initialized m[0] to 0 and m[1] to W[0], using 0 as the initial value instead of the required -1 sentinel for uncached entries.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's code incorrectly initializes m[0] = 0 (should be W[0]) and m[1] = W[0] (should be max(W[0], W[1])), failing both base cases required by the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution uses an iterative dynamic programming approach without a memoization array or cache check; there is no conditional check to return stored values from a memo array, violating the requirement to avoid recomputation via cache checks.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence correctly computes m[i] as max(W[i-1] + m[i-2], m[i-1]) and stores the result in the memo array (m) before returning, matching the required memoization pattern.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution uses dynamic programming with an iterative approach that correctly handles the constraints and computes the maximum profit in O(n) time for all valid inputs.

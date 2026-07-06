@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented quicksort with recursive calls for partitioning and a partition function that uses nested loops to compare and swap elements, fulfilling the requirement for an outer and inner loop structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's code correctly uses Larger(), Smaller(), and Equal() with appropriate index arguments (l and p, r and p) during the partitioning step of quicksort to compare elements against the pivot.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code calls Swap(l, r) conditionally based on comparisons between l/p and r/p, but the indices passed to Swap (l and r) differ from the comparison indices (l/p and r/p), violating the rubric's requirement for matching indices.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The initial call to myQuicksort uses Length() to set the upper bound, but the partition function's loop bounds rely on parameters passed from myQuicksort rather than directly using Length(), leaving some loop bounds ungeneralized.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The quicksort implementation has a critical flaw in the partitioning logic, leading to infinite recursion on certain inputs (e.g., when the pivot is moved to the left end without properly splitting the array).

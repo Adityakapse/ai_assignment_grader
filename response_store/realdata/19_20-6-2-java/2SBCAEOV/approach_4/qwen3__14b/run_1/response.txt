@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (W+1) and initializes all cells to 0 using the base case condition (i == 0 || w == 0).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's solution uses nested loops where the outer loop iterates over all n+1 items (from 0 to n) and the inner loop iterates over all capacities from 0 to W inclusive, correctly covering all required subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if wt[i - 1] <= w before considering including the item, ensuring that items fitting exactly or with room to spare are properly evaluated.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation using max(val[i-1] + K[i-1][w - wt[i-1]], K[i-1][w]) when the item fits, and K[i][w] = K[i-1][w] when it doesn't, properly referencing the previous row (i-1) for the forward approach.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the 0/1 knapsack dynamic programming approach, properly initializing the DP table and returning the correct value from K[n][W], which matches the expected behavior for both the sample input and the capacity 7 test case.

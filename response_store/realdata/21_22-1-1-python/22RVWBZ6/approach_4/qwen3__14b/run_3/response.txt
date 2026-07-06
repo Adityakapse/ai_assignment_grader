@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly implements the closed-form $a_n = 2^n - 1$, returning $2^n \mod 10^9+7 - 1$ in the `calc` function, which aligns with the required formula.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's exp function lacks a base case for when the exponent is 0, leading to infinite recursion. The function only handles n == 1, which is unrelated to the required base case for exponent 0.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The student's code correctly handles the odd case by reducing the exponent by 1 and multiplying by 2, matching the required behavior of returning (a * expo(a, b-1, c)) % c when b is odd.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes exp(n/2) once and returns (result * result) % 1000000007, achieving the required squaring step.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student's code uses floating-point division (n/2) instead of integer division (//), which risks precision errors for large n, causing incorrect results for inputs where n exceeds the precision of Python's float type.

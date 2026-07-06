@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is constructed correctly with F storing outgoing edges, but the virtual source node 0 is not connected to all other nodes (F[0] is initialized as [0] instead of containing all nodes 1..N).
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use a memo array for caching results; instead, it employs a topological sorting approach with AP and L lists, which does not involve memoization initialization or cache checks as required by the rubric point.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use DFS or a memoization-based approach, and there is no base case handling for leaf nodes in the DFS function as required by the rubric point.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's solution uses topological sorting and layer-based processing instead of recursively computing max(dfs(child) + 1) for each child and storing results in memo[node], which is required by the rubric point.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution attempts topological sorting but incorrectly computes the longest path length as the number of layers processed, which fails for DAGs with branching paths where the longest path isn't aligned with layer counts.

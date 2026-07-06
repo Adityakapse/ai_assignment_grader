@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a for loop iterating over a list that is modified during iteration, which does not process nodes in the correct order or fully traverse the graph. No while loop is present to process the queue until empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a list and iterates through it directly without dequeuing from the front, leading to incorrect traversal order that does not follow BFS level-by-level processing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student uses a list called 'gefunden' to track visited nodes, but adds nodes to this list immediately upon discovery rather than when they are processed, which can lead to incorrect traversal order and missed nodes.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over graph[current] and appends unvisited neighbors to the list, but uses a for loop over the list itself rather than a queue, leading to incorrect traversal order and missed nodes.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's solution uses a list and appends new nodes during iteration, leading to a depth-first traversal order rather than level-by-level BFS. For example, in a graph where node 0 connects to 1 and 2, and node 1 connects to 3, the code returns [0,1,2] instead of the correct BFS order [0,1,2,3].

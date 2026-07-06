@@ -1,0 +1,65 @@
+POINT_ID: 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The code processes each token in the input list sequentially, correctly distinguishing between operators (+, -, *, /) and numeric strings using if-elif-else logic, and applying the appropriate stack operations for each case.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The code correctly converts numeric tokens to integers using int(n) and pushes them onto the stack in the else clause, handling all valid numeric inputs properly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, exactly two values are popped from the stack, the correct arithmetic operation is applied (addition, subtraction, multiplication, division), and the result is pushed back onto the stack. All four operators are handled properly.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly uses the order second_popped op first_popped for both subtraction and division, but uses regular division (/) instead of integer division (//), leading to potential floating-point results instead of rounded-down integers.
+
+POINT_ID: 5
+The provided code contains a critical flaw in the order of operands for subtraction and division operations, leading to incorrect results for those operations. Here's a breakdown of the issue:
+
+---
+
+### **Problem: Reversed Operand Order**
+
+In Reverse Polish Notation (RPN), the order of operations is such that the first popped element from the stack is the second operand, and the second popped element is the first operand. For example, if the stack contains `[a, b]` and the operator is `-`, the correct computation is `a - b`. However, the code is currently performing `b - a`, which is the **reverse** of the correct order.
+
+This flaw is present in both **subtraction** and **division** operations, and it is **not** present in **addition** and **multiplication** (since those operations are commutative, the order of operands does not affect the result).
+
+---
+
+### **Example: Subtraction**
+
+Input: `["3", "2", "-"]`  
+Expected Result: `3 - 2 = 1`  
+Code's Computation:  
+- `x = 2` (first pop)  
+- `y = 3` (second pop)  
+- `result = x - y = 2 - 3 = -1`  
+**Result: -1 (incorrect)**
+
+---
+
+### **Example: Division**
+
+Input: `["6", "3", "/"]`  
+Expected Result: `6 / 3 = 2`  
+Code's Computation:  
+- `x = 3` (first pop)  
+- `y = 6` (second pop)  
+- `result = x / y = 3 / 6 = 0.5`  
+- Final conversion to `int` yields `0` (incorrect)  
+**Result: 0 (incorrect)**
+
+---
+
+### **Impact on Overall Correctness**
+
+The code is **only correct** for **addition** and **multiplication**, due to their commutative nature. However, it is **incorrect** for **subtraction** and **division**, which are critical operations. Therefore, the code does **not** meet the requirement of being correct for **all four operators**.
+
+This flaw would cause the code to **fail** test cases involving subtraction and division, even though the input is guaranteed to be a valid expression.
+
+---
+
+### **Conclusion**
+
+The code is **not correct** in terms of overall functionality, as it fails to handle subtraction and division properly due to the reversed operand order. This is a **major issue** that prevents the code from being correct for all operations as required.

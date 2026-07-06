@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The base case for b == 0 is not explicitly handled, and the function returns 1 instead of 1 % c, which fails when c == 1 or other edge cases.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code correctly detects odd/even b using j % 2 != 0, fulfilling the parity detection requirement.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The odd case is handled by multiplying res (the accumulated result) with res1 (the current power of a), which correctly reduces the exponent by 1 and maintains correctness.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The even case correctly squares res1 and halves j using integer division (though the code uses / instead of //, this is addressed in Point 5).
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code uses floating-point division (/) instead of integer division (//), causing infinite loops and incorrect behavior for j > 1. It also fails the base case (b == 0) by returning 1 instead of 1 % c.
+
+TOTAL: 60

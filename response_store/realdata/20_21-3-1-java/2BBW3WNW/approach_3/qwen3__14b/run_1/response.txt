@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D array of size (nItem+1) x (capacity+1) and initializes the first row to 0, matching the required DP table structure.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates over all items, but the inner loop starts at j=1 instead of j=0, potentially missing zero-capacity subproblems required for handling items with weight 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if weight[i-1] > j before considering inclusion, which correctly allows items that exactly fill the capacity and handles zero-weight items when j=0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly uses Math.max between excluding the item (dynTab[i-1][j]) and including it (dynTab[i-1][j - weight[i-1]] + value[i-1]), referencing the previous row as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to process j=0 in the inner loop, which could cause incorrect results for items with weight 0 when the capacity is 0, even though the DP table is correctly initialized for the zero-capacity case.

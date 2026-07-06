@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly constructs an adjacency list from the input edges and adds a virtual source node 0 with edges to all nodes 1 through N, ensuring a single DFS can explore all paths.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The memoization array is initialized with a sentinel value of -10000 instead of -1, which could cause confusion if the actual path lengths ever reach that value, though the logic for checking cached results is correct.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 when a node has no outgoing edges, accurately representing the length of a path ending at a leaf node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly computes the maximum path length by iterating over all children, taking the max of (dfs(child) + 1), and stores the result in the memoization array before returning.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The final result correctly subtracts 1 from the DFS result starting at the virtual source node, ensuring the longest path length is returned for all valid DAG inputs.

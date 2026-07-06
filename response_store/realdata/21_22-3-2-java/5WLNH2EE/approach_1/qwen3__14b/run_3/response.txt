@@ -1,0 +1,59 @@
+### Summary of Evaluation
+
+The evaluation of the student's code is based on the correctness of its implementation of an algorithm to find the **longest path in a Directed Acyclic Graph (DAG)**. Here's a breakdown of the key aspects of the code and their implications:
+
+---
+
+### **1. Graph Construction (Point 1: 0/100)**  
+**Issue:** The student's code **does not include a virtual source node** (like node `0` in the sample solution), which is crucial for ensuring that **all nodes are reachable** from a single starting point. This can be a problem in **disconnected DAGs**, where the longest path may exist in a component that is not reachable from others. However, the student's code **uses a loop over all nodes** and processes each node individually, which **does** ensure that even **isolated nodes** are considered.  
+**Conclusion:** While the code **does not add a virtual source**, it **still processes all nodes**, so the **graph construction is not incorrect in terms of output**. However, the **absence of a virtual source** is a **deviation from the sample solution** and may **not be optimal** for some DAG structures.  
+**Score:** **0/100** — The virtual source is a **standard design choice** for such algorithms, and its absence may **raise concerns** about robustness and correctness in **non-fully connected graphs**.
+
+---
+
+### **2. Memoization (Point 2: 0/100)**  
+**Issue:** The student's code **does not use memoization** to cache the longest path length for each node. Instead, it uses a **post-order DFS** traversal and updates the `längsteEntfernung` array as it goes. While this approach may **work in some cases**, it **does not guarantee** that each node is processed once and that the longest path is calculated correctly for **all dependencies**.  
+**Conclusion:** The **lack of memoization** may lead to **redundant calculations** and is **not the recommended approach** for this problem.  
+**Score:** **0/10点** — The code **does not implement memoization**, which is a **key aspect** of the sample solution.
+
+---
+
+### **3. Base Case for Leaf Nodes (Point 3: 0/100)**  
+**Issue:** The code **does not explicitly check for leaf nodes** (nodes with no outgoing edges). Instead, it assumes that if a node has no children, the loop in `tiefensuche` will not execute, and the node’s value will remain **unchanged**. This is **not sufficient** to ensure that the base case is handled properly.  
+**Conclusion:** The **base case is not explicitly implemented**, which can lead to **incorrect results** in cases where the node has no children.  
+**Score:** **0/100** — The **base case is not handled** explicitly.
+
+---
+
+### **4. Recurrence for Longest Path (Point 4: 100/100)**  
+**Issue:** The student's code **correctly implements the recurrence** for computing the longest path. It iterates through each child, updates the current node’s longest path length based on the child’s value, and ensures that the **maximum value is computed**.  
+**Conclusion:** This part of the code is **fully correct** and **matches the logic** of the sample solution.  
+**Score:** **100/100** — The **recurrence is implemented correctly**.
+
+---
+
+### **5. Overall Correctness (Point 5: 50/100)**  
+**Issue:** The code may **work** in many cases due to its **post-order traversal** and processing of all nodes. However, **it lacks a virtual source node**, which could lead to **issues in disconnected graphs**. Additionally, the **absence of memoization** may lead to **redundant computations**, though not necessarily incorrect results.  
+**Conclusion:** The code **may be functionally correct** for many DAGs, but it **does not follow best practices** or the **design of the sample solution**. It **lacks robustness** and **may not scale well**.  
+**Score:** **50/100** — The code **may work** in practice but is **not fully aligned with standard algorithms** for this problem.
+
+---
+
+### **Final Score Summary**
+
+| Point | Description | Score |
+|------|-------------|-------|
+| **1. Graph Construction** | Virtual source node missing | **0/100** |
+| **2. Memoization** | No memoization used | **0/100** |
+| **3. Base Case** | Not handled explicitly | **0/100** |
+| **4. Recurrence** | Implemented correctly | **100/100** |
+| **5. Overall Correctness** | May work but lacks robustness | **50/100** |
+
+---
+
+### **Recommendation**
+- **Add a virtual source node** to ensure all nodes are reachable.
+- **Implement memoization** to improve efficiency and correctness.
+- **Handle the base case explicitly** for leaf nodes.
+
+These changes would align the code more closely with the **standard solution** and ensure **robustness** in all DAG configurations.

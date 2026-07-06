@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly identifies y as delete when it has zero or one child, and uses successor(delete) which effectively finds the minimum of the right subtree when delete has two children, matching the required logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's tree_min function correctly traverses left until reaching a node with no left child, then returns that node, matching the required behavior for treeMinimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly identifies x as the non-null child of y (or None if y is a leaf) by passing delete.right or delete.left directly to the transplant function, which mirrors the logic of setting x to y.left if non-null, otherwise y.right.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's solution correctly handles splicing y out of the tree by using the transplant function, which updates x.parent to y.parent and adjusts y.parent's child pointer to x, including handling the root replacement case when y has no parent.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code does not copy the key from the successor to the delete node, leaving delete.key unchanged even when a successor is used, which leaves the original node's key in the tree.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The successor function contains a critical typo using 'Node' (undefined) instead of 'node', causing runtime errors when the node has no right child, leading to invalid BST behavior.

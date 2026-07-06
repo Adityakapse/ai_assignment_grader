@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D DP table with dimensions (n+1) x (capacity+1) and initializes the first row to 0, with the rest of the array implicitly initialized to 0 by Java's default array construction.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The student's code uses an outer loop over items correctly but the inner loop starts at j=1 instead of j=0, missing subproblems where capacity is zero and failing to handle zero-weight items properly.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's solution correctly checks if the item's weight is less than or equal to the current capacity (using `weight[i-1] > j` as the inverse condition) before considering including the item, which properly handles both regular items and zero-weight items as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation by choosing the maximum between excluding the current item (dynTab[i-1][j]) and including it (dynTab[i-1][j - weight[i-1]] + value[i-1]) when the item fits, matching the sample solution's logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the 0/1 knapsack algorithm with dynamic programming, properly handling items with volume 0 by using the standard recurrence relation and initializing the DP table with zero values for the base case. The code also correctly returns 0 for invalid inputs and matches the expected outputs for the given examples.

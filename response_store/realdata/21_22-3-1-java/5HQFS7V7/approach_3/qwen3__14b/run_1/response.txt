@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses a memo array of size n+1, but initializes m[0] to 0 and m[1] to W[0] instead of initializing all entries to -1, making it impossible to distinguish between uncomputed entries and zero-profit cases.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code does not explicitly handle base cases for n=0 and n=1; instead, it initializes m[1] to W[0] (incorrect for n=1) and relies on the loop for i >= 2, which fails to capture the correct max(W[0], W[1]) scenario.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution uses an iterative dynamic programming approach with no recursive helper function or cache check; the memo array is never read from, only written to, violating the memoization requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation `Math.max(W[i-1] + m[i-2], m[i-1])` is implemented correctly in the loop, and the memo array (m) is updated in-place for each subproblem, ensuring optimal substructure is preserved.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly computes the maximum profit for all valid inputs (1 ≤ n ≤ 1000) in O(n) time using an iterative DP approach, and returns the final value from the memo array without errors.

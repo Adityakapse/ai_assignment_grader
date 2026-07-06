@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly sets y to delete when it has at most one child, and to treeMinimum(delete.right) when it has two children, matching the logic in the sample solution.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum method correctly traverses left from the input node until reaching a node with no left child, then returns that node, matching the expected behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly identifies x as the non-null child of y using a ternary operator that prioritizes y.left when non-null, and defaults to y.right otherwise, matching the required logic for handling leaf nodes where x would be null.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly updates x.parent to y.parent (when x is non-null) and adjusts y.parent's left/right pointer to x, including handling the root replacement case when y.parent is null.
+
+POINT_ID: 5
+BUCKET: Correct (10 marks)
+FEEDBACK: The student correctly checks if toBeDeleted != delete before copying the key, ensuring the key is only updated when y is the successor (not the direct deletion case).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code uses .equals() to compare nodes with their parent's children, which may fail if nodes are not reference-equal (e.g., when nodes are re-used or cloned), leading to incorrect tree restructuring in cases where the node to delete has two children or is the root.

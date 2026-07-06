@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution does not create a virtual source node (node 0) with edges to all other nodes as required. Instead, it processes edges directly without adding this critical component for the single DFS traversal.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student solution uses a dynamic programming array initialized to 0 and updates values iteratively, but does not implement a memoization array with -1 initialization or check for cached results as required by the rubric point.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution correctly initializes the length of all nodes to 0, which serves as the base case for leaf nodes (nodes with no outgoing edges) since their length remains 0 when no updates are applied.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's solution correctly applies the recurrence by updating each node's maximum path length using the maximum value from its predecessors, similar to the sample solution's approach of taking max(sol, dfs(child) + 1) for each child.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code incorrectly assumes all edges satisfy e[0] < e[1] with an assert statement, which will fail for valid inputs with edges like [2,1], causing the solution to be incorrect for general DAGs.

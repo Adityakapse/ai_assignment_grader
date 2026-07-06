@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student uses a for loop iterating over the result list instead of a while loop processing a queue, leading to incorrect traversal order and missing nodes. The code adds nodes directly to the result list without maintaining a separate queue, violating BFS's fundamental structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code uses a list and appends new nodes to the end, then iterates through the list without removing elements from the front, which violates the FIFO principle required for BFS. No dequeue operation is present.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's solution checks if a vertex is in the 'result' list before adding it, ensuring each node is processed only once and preventing infinite loops, which aligns with the correct visited tracking approach.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a list as both the traversal result and processing queue, but processes nodes in a depth-first manner by appending neighbors directly to the list during iteration, violating BFS's queue-based FIFO ordering.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code appends nodes to the result list in the order they are encountered, which processes nodes in a depth-first manner rather than level-by-level. For example, with graph [[1,2], [3], [3], []], the student's code returns [0,1,3,2,3] instead of the correct BFS order [0,1,2,3].

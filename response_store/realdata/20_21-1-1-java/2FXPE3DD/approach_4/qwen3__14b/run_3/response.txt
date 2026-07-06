@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's solution lacks an explicit base case for b == 0; it returns 1 (not 1 % c) when b is 0, which fails the edge case where c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses (b & 1) == 1 to check for odd b, which correctly distinguishes odd from even cases, leading to different computational paths in the loop.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative approach with bit manipulation rather than recursively reducing the exponent by 1 when b is odd, which fails to implement the required recursive structure for the odd case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly handles the even case by halving b via right shift (b >> 1) and squaring the base (a = (a * a) % c), achieving O(log b) time complexity without recursion.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements modular exponentiation using bitwise operations and applies the modulo at each step to prevent overflow, handling all valid inputs as required.

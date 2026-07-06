@@ -1,0 +1,41 @@
+The student's implementation of the modular exponentiation function is evaluated based on several key aspects of the problem. Here's a detailed breakdown:
+
+### **Point 1: Base Case Handling (20 points)**
+- **Analysis**: The code correctly handles the base case when $ b = 0 $. In this scenario, the loop is not entered, and the function returns `res`, which is initialized to 1. This is the correct value of $ a^0 \mod c = 1 \mod c $, since 1 mod any $ c \geq 1 $ is 1. Even though the code includes an unnecessary check for $ a == 0 $, this does not affect the correctness of the base case, as the problem constraints ensure $ a \geq 1 $.
+- **Score**: **20/20**
+
+---
+
+### **Point 2: Parity Detection (15 points)**
+- **Analysis**: The code uses a bitwise AND operation (`b & 1 == 1`) to determine if $ b $ is odd. This is an efficient and correct method for parity detection.
+- **Score**: **15/15**
+
+---
+
+### **Point 3: Odd Case Handling (20 points)**
+- **Analysis**: The rubric explicitly requires that for odd $ b $, the function should reduce the exponent by 1 and multiply the result recursively. However, the student's code uses an **iterative** approach, updating `res` by multiplying with `a` when $ b $ is odd. While this is a valid and efficient method for exponentiation by squaring, it does not match the recursive approach described in the rubric.
+- **Score**: **0/20**
+
+---
+
+### **Point 4: Even Case Handling (20 points)**
+- **Analysis**: The rubric specifies that for even $ b $, the function should recursively compute $ a^{b/2} \mod c $ and square the result. The student's code, however, uses an iterative approach, squaring the base `a` instead of recursively computing the exponent. While this is functionally equivalent in the iterative method, it does not conform to the recursive approach outlined in the rubric.
+- **Score**: **0/20**
+
+---
+
+### **Point 5: Overall Correctness (20 points)**
+- **Analysis**: The code correctly implements the iterative version of exponentiation by squaring, which is a valid and efficient method for computing $ a^b \mod c $. The function avoids the use of `import` or `**`, adheres to the problem constraints, and correctly handles all valid inputs, including the base case. The only minor issue is the unnecessary check for $ a == 0 $, which is redundant under the problem's constraints but does not affect correctness.
+- **Score**: **20/20**
+
+---
+
+### **Final Score Summary**
+- **Point 1**: 20/20  
+- **Point 2**: 15/15  
+- **Point 3**: 0/20  
+- **Point 4**: 0/20  
+- **Point 5**: 20/20  
+- **Total**: **55/100**  
+
+The student's code is correct in its implementation and adheres to the problem constraints, but it diverges from the recursive approach described in the rubric, resulting in lower scores for points 3 and 4.

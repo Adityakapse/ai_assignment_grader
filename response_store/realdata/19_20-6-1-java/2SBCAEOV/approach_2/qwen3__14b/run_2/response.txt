@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D DP table of size (len1+1)x(len2+1) and uses nested loops with i and j iterating through the full range of string indices, properly updating the table bottom-up with the correct conditions for character comparison and operations.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the base cases with dp[i][0] = i for all i and dp[0][j] = j for all j, matching the sample solution's approach for the first row and column initialization.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly sets dp[i+1][j+1] = dp[i][j] when characters match, equivalent to the sample's edDis[i][j] = edDis[i-1][j-1] logic for no edit needed.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student incorrectly uses dp[i][j+1] and dp[i+1][j] for insert/delete operations instead of the correct previous values dp[i][j-1] and dp[i-1][j], leading to an invalid recurrence relation for mismatched characters.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance, initializing the DP table properly and handling all three operations (insert, delete, replace) with equivalent logic to the sample solution.

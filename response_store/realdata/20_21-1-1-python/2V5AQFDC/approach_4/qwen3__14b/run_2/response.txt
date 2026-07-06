@@ -1,0 +1,27 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function lacks a base case for b == 0; it returns 1 instead of 1 % c, leading to incorrect results when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly detects parity using (b & 1) == 1 to check if b is odd, and processes odd and even cases differently through bitwise operations and exponentiation by squaring.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code handles the odd case by multiplying the result by a, but it reduces b using bitwise shift (b >> 1) instead of decrementing by 1, which does not meet the rubric's requirement to reduce by 1.
+
+POINT_ID: 4
+The student's code correctly handles the even case by halving and squaring, but it does **not** follow the recursive approach outlined in the sample solution. According to the rubric's criteria, the "Correct" bucket requires the code to compute `tmp = expo(a, b//2, c)` once and return `(tmp * tmp) % c`. Since the student's code uses an iterative approach instead of recursion, it does not meet this specific requirement.
+
+However, the code is still functionally correct in terms of algorithm efficiency and correctness. The rubric's criteria are **specific to the sample solution's approach**, and the student's code, although different in implementation, is not incorrect in its logic. Therefore, it is **not** in the "Wrong" bucket because the even case is properly handled.
+
+Despite this, the rubric's point is about **the even case in the function**, and the sample solution's method is recursive. Since the student's code uses an iterative method, it does **not** align with the rubric's "Correct" bucket definition.
+
+Thus, the most accurate placement, based on the rubric's wording, is the **"Semi"** bucket, even though the code does not recurse. The rubric's "Semi" bucket includes cases where the code "halves b and recurses but squares incorrectly," but the student's code does not recurse. However, the code is still not in the "Correct" bucket, and this ambiguity makes it a borderline case.
+
+### Final Answer:
+**Semi**
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements modular exponentiation using an iterative approach with bit shifting, applying modulo at each step to prevent overflow and ensure correctness for all valid inputs.

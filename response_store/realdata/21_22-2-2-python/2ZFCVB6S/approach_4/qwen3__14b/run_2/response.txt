@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student solution creates a list of lists (sums) where each element stores a pair of cumulative sums, but does not allocate a single prefix sum array of size n as required. The code uses a different data structure that doesn't match the rubric's criterion.
+
+POINT_ID: 2
+BUCKET: Correct (25 marks)
+FEEDBACK: The student constructs a prefix sum array by accumulating the running total 's' correctly for each element in A, ensuring that sums[i][1] holds the cumulative sum up to index i, which matches the required prefix sum logic.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student creates a list of prefix sums and uses a list comprehension to process all queries in B, generating an output list of the correct size by subtracting appropriate prefix sums for each query.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly computes prefix sums where each element stores the cumulative sum up to that index, and for queries, subtracts sums[l][0] (prefix up to l-1) from sums[r][1] (prefix up to r), handling l=0 by using sums[0][0] = 0 as the implicit prefix[-1].
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly constructs a prefix sum array where each element stores cumulative sums before and after adding the current value, enabling O(1) query resolution. The code handles all cases including l=0 and avoids forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a list of KnotenImKopf objects with adjacency lists, and node 0 is initialized with edges to all nodes 1 to N, enabling a single DFS traversal from the virtual source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used; the code performs a standard DFS and then processes end times in a separate loop, leading to exponential runtime on large DAGs due to recomputation.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code lacks a base case for leaf nodes; the dfs_visit function does not check for empty adjacency lists and does not return 0 for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code does not compute the max over children with +1; instead, it processes end times in a separate loop and updates longest_path[v] + 1 without proper recurrence logic.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code returns max(longest_path) but this approach incorrectly computes path lengths by not properly tracking the longest path through memoization, leading to incorrect results for most inputs.

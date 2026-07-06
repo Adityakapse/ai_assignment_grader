@@ -1,0 +1,100 @@
+The provided code for computing $ a^b \mod c $ using an iterative approach has several **critical flaws** that make it **incorrect** for the intended purpose. Below is a detailed analysis of the errors and their implications.
+
+---
+
+### 🔍 **1. Incorrect Handling of Base Case (b = 0)**
+
+- **Problem**: The code assumes that when $ b = 0 $, the result is simply `1`, regardless of the value of $ c $. However, the correct result should be $ 1 \mod c $, which is not always `1`. For example:
+  - If $ c = 5 $, $ 1 \mod 5 = 1 $ → correct.
+  - If $ c = 1 $, $ 1 \mod 1 = 0 $ → **code returns 1**, which is **incorrect**.
+
+- **Implication**: The code fails in edge cases where $ c = 1 $ and $ b = 0 $, returning an incorrect result.
+
+---
+
+### 🔍 **2. Division Using Floating-Point Arithmetic (`/` Instead of `//`)**
+
+- **Problem**: The code uses `j = j / 2` instead of `j = j // 2`. This results in `j` becoming a `float` even for integer values of `j`, leading to:
+  - **Infinite loops** for large values of $ b $ due to floating-point precision.
+  - **Incorrect handling** of the exponentiation process, as the algorithm is designed to work with integer divisions.
+
+- **Example**: If $ b = 3 $, then `j = 3` becomes `1.5`, and the loop continues indefinitely due to the floating-point division.
+
+- **Implication**: The code is **not guaranteed to terminate** for all inputs, and the results may be incorrect.
+
+---
+
+### 🔍 **3. Logic Flaw in the Loop**
+
+- **Problem**: The code uses the following logic:
+  ```python
+  while j > 0:
+      if j % 2 != 0:
+          res = (res1 * res) % c
+          j -= 1
+      res1 = (res1 * res1) % c
+      j = j / 2
+  ```
+  - The `j -= 1` line is only applied when $ j $ is odd. However, this is not the correct way to handle exponents in the exponentiation by squaring algorithm.
+
+- **Implication**: This logic is **not aligned with the standard exponentiation by squaring** method, leading to **incorrect results** for many inputs.
+
+---
+
+### 🔍 **4. Incorrect Handling of Edge Cases**
+
+- **Example**: $ a = 2, b = 0, c = 1 $
+  - Expected result: $ 1 \mod 1 = 0 $
+  - Code returns: `1`
+
+- **Example**: $ a = 2, b = 3, c = 5 $
+  - Expected result: $ 8 \mod 5 = 3 $
+  - Code returns: `3` (correct in this case)
+
+- **Implication**: While some test cases might pass, the code is **not robust** and fails for critical edge cases.
+
+---
+
+### ✅ **Correct Approach**
+
+To fix the code, the following changes are required:
+
+1. **Handle the base case correctly**:
+   - If $ b = 0 $, return $ 1 \mod c $, which can be computed as `1 % c`.
+
+2. **Use integer division (`//`)**:
+   - Replace `j = j / 2` with `j = j // 2` to ensure that `j` remains an integer.
+
+3. **Use the correct exponentiation by squaring algorithm**:
+   - The loop should process the exponent correctly, ensuring that the algorithm works for all values of $ b $.
+
+---
+
+### ✅ **Corrected Code**
+
+```python
+def mod_pow(a, b, c):
+    if b == 0:
+        return 1 % c  # Correct handling of the base case
+    res = 1
+    res1 = a % c
+    j = b
+    while j > 0:
+        if j % 2 != 0:
+            res = (res * res1) % c
+            j -= 1
+        res1 = (res1 * res1) % c
+        j = j // 2  # Integer division
+    return res
+```
+
+---
+
+### 📌 **Conclusion**
+
+The original code is **not correct** due to:
+- Incorrect handling of the base case $ b = 0 $.
+- Use of floating-point division instead of integer division.
+- Flawed logic in the exponentiation by squaring algorithm.
+
+These issues lead to **incorrect results** and **infinite loops** in some cases. The corrected code above addresses these problems and ensures **correct behavior** for all valid inputs.

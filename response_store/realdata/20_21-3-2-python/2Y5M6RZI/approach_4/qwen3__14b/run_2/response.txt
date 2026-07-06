@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly constructs an adjacency list from the input edges and adds a virtual source node 0 with edges to all nodes 1 through N, matching the sample solution's approach.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The memo array is initialized with -10000 instead of -1, and the cache check uses the variable 'min' (which holds -10000) rather than checking against -1, leading to incorrect memoization sentinel values.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly returns 0 when a node has no outgoing edges (len(ll[node]) == 0), matching the required base case behavior for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly computes the maximum path length by iterating over all children and taking the max(dfs(child) + 1) for each, then stores the result in nodes_mp[node] before returning, matching the required recurrence logic.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student uses a min value of -10000 for memoization instead of -1, leading to incorrect memoization checks that may cause the algorithm to fail for certain DAG structures despite correctly applying the virtual source adjustment.

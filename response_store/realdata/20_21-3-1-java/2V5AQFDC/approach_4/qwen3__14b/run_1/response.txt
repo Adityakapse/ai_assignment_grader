@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D table with dimensions (n+1) x (capacity+1) and initialized all entries to 0.0, either explicitly for the first row or implicitly by Java's default array initialization.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all n items, but the inner loop starts at j=1 instead of j=0, missing the zero-capacity subproblem needed for weight-0 items.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code checks if volumes[i - 1] > j before excluding the item, which is logically equivalent to checking volumes[i] <= j. This correctly allows items that exactly fill the capacity and properly handles zero-weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the recurrence relation using Math.max with the previous row's value (table[i-1][j]) when the item doesn't fit, and the previous row's value minus the item's volume plus the item's value when it does fit.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle items with volume 0 when capacity is 0, as the inner loop starts at j=1 and does not process j=0, leading to incorrect results for such cases.

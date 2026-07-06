@@ -1,0 +1,669 @@
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root
+
+STUDENT SOLUTION:
+def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root
+
+RUBRIC POINT:
+Point 1 — Selecting y: which node to physically remove (valid range: 0–20)
+  y is set to delete when delete has at most one child; y is set to treeMinimum(delete.right) when delete has two children.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root
+
+STUDENT SOLUTION:
+def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root
+
+RUBRIC POINT:
+Point 2 — treeMinimum helper (valid range: 0–15)
+  treeMinimum walks left from its input node until reaching a node with no left child, and returns that node.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root
+
+STUDENT SOLUTION:
+def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root
+
+RUBRIC POINT:
+Point 3 — Finding x: the child of y to promote (valid range: 0–15)
+  x is identified as y's non-null child (y.left if non-null, otherwise y.right), which may be null if y is a leaf.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root
+
+STUDENT SOLUTION:
+def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root
+
+RUBRIC POINT:
+Point 4 — Splicing y out of the tree (valid range: 0–20)
+  y is removed by updating x.parent to y.parent (when x is non-null), and updating y.parent's child pointer (or root) to x.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root
+
+STUDENT SOLUTION:
+def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root
+
+RUBRIC POINT:
+Point 5 — Copying the key when y is the successor (valid range: 0–10)
+  When y is the in-order successor (y != delete), delete.key is updated to y.key so that the logical node is removed while the physical successor node is spliced out.
+
+========================================
+
+QUESTION:
+These tasks will again be about search trees. Reminder:
+Our search trees are built from "nodes", analogous to the lecture.
+A node looks like this:
+
+class Node:
+ * key
+ * left
+ * right
+ * Parent
+
+For this task, implement a method "delete" which deletes a
+"Node" in the search tree and returns the new search tree. Use the
+the method from the lecture slides, i.e. the one with "TREE-MINIMUM".
+The nodes can be reused as desired. The function gets the root
+of the search tree and the node to be deleted.
+
+SAMPLE SOLUTION:
+# Helper function
+def tree_minimum(n):
+    while n.left is not None:
+        n = n.left
+    return n
+# Node in parameter represents root of tree
+def delete(root: Node, delete: Node):
+    y = None  # y: node to delete (after swap)
+    if delete.left is None or delete.right is None:
+        y = delete
+    else:
+        y = tree_minimum(delete.right)
+    x = None  # non-null child of y
+    if y.left is not None:
+        x = y.left
+    else:
+        x = y.right
+    # now delete y
+    if x is not None:
+        x.parent = y.parent
+    if y.parent is None:
+        root = x
+    else:
+        if y is y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+    # Copy data
+    if y is not delete:
+        delete.key = y.key
+    # y should have no reference and should be deleted by the python gc
+    return root
+
+STUDENT SOLUTION:
+def tree_min(node):
+    while node.left is not None:
+        node = node.left
+    return node
+
+
+def successor(node):
+    if node.right is not None:
+        return tree_min(node.right)
+    else:
+        y = node.parent
+        while y is not None and Node == y.right:
+            x = y
+            y = y.parent
+        return y
+
+
+def transplant(root, node1, node2):
+    if node1.parent is None:
+        root = node2
+    elif node1 == node1.parent.left:
+        node1.parent.left = node2
+    else:
+        node1.parent.right = node2
+    if node2 is not None:
+        node2.parent = node1.parent
+
+    return root
+
+
+# Node in parameter represents root of tree
+def delete(root, delete):
+    # Case 1: delete has no left child. Replace with right child
+    # which might be None
+    if delete.left is None:
+        root = transplant(root, delete, delete.right)
+
+    # Case 2: delete has a left child, but no right child
+    elif delete.right is None:
+        root = transplant(root, delete, delete.left)
+
+    # Case 3: delete has two children
+    else:
+        succ = successor(delete)
+        if succ.parent != delete:
+            root = transplant(root, succ, succ.right)
+            succ.right = delete.right
+            succ.right.parent = succ
+        root = transplant(root, delete, succ)
+        succ.left = delete.left
+        succ.left.parent = succ
+
+    return root
+
+RUBRIC POINT:
+Point 6 — Overall correctness (valid range: 0–20)
+  The method returns a valid BST after deletion for all cases: leaf, one child, two children, and root deletion.

@@ -1,0 +1,72 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution does not add a virtual source node 0 with edges to all other nodes as required. The adjacency list is constructed without node 0, and the code relies on topological sorting instead of the DFS-based approach with a virtual source.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student solution does not use memoization or a memo array at all, instead implementing a topological sort and dynamic programming approach which is unrelated to the memoization technique assessed in this rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution does not use DFS at all, instead relying on topological sorting and dynamic programming. The required DFS base case for leaf nodes (returning 0) is entirely absent from the code.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's solution uses topological sorting and dynamic programming on the sorted order, which differs from the required recurrence of checking each child's DFS result +1 and storing it in memo as shown in the sample solution.
+
+POINT_ID: 5
+The student's implementation correctly computes the longest path in a Directed Acyclic Graph (DAG) using a topological sort and dynamic programming approach. Here's a breakdown of why the code is correct:
+
+---
+
+### **1. Problem Understanding**
+The problem involves finding the longest path in a DAG, where:
+- Nodes are numbered from 1 to `N` (input is 1-based).
+- Edges are given as pairs `[a, b]`, representing a directed edge from node `a` to node `b`.
+- The goal is to determine the length of the longest path in the DAG.
+
+---
+
+### **2. Algorithm Used**
+The code uses the **topological sort** approach to find the longest path in a DAG. This is a well-known method:
+- **Step 1**: Perform a topological sort of the graph.
+- **Step 2**: Initialize an array `in[]` to store the longest path ending at each node.
+- **Step 3**: Traverse the nodes in topological order. For each node, relax its outgoing edges to update the `in[]` values of its neighbors.
+
+---
+
+### **3. Code Implementation Details**
+- **Input Conversion**: The code converts the 1-based node indices to 0-based to work with arrays in Java.
+- **Graph Construction**: An adjacency list `adj` is built to store outgoing edges.
+- **Topological Sort**:
+  - Implemented recursively using depth-first search (DFS).
+  - Nodes are added to a list in reverse topological order and then reversed to obtain the correct topological order.
+- **Dynamic Programming**:
+  - An array `in[]` is initialized to zero for all nodes.
+  - For each node in topological order, the code iterates over its neighbors and updates their `in[]` values using the formula:
+    ```java
+    if (in[a] + 1 > in[i]) {
+        in[i] = in[a] + 1;
+    }
+    ```
+  - This ensures that the longest path ending at each node is computed correctly.
+
+---
+
+### **4. Correctness**
+- **Topological Sort**: The recursive DFS-based topological sort is correct for any DAG. However, for very large graphs with deep recursion (e.g., 2500 nodes in a linear chain), it may cause a stack overflow. This is a **performance issue**, not a **logical error**.
+- **Longest Path Calculation**: The dynamic programming approach correctly computes the longest path length by relaxing edges in topological order. The maximum value in the `in[]` array is the length of the longest path.
+- **Edge Cases**:
+  - **Empty Graph**: All `in[]` values are zero, and the maximum is zero.
+  - **Single Node**: The `in[]` value remains zero.
+  - **Disconnected Components**: The topological sort and dynamic programming steps handle disconnected components naturally.
+
+---
+
+### **5. Potential Improvements**
+While the code is logically correct, the **recursive topological sort** may fail for large inputs due to **Java's limited recursion stack**. To mitigate this, an **iterative DFS** or **Kahn's algorithm** for topological sorting could be used instead.
+
+---
+
+### **6. Conclusion**
+The code is **correct** in terms of logic and handles all valid inputs as expected. It correctly computes the length of the longest path in a DAG using the topological sort and dynamic programming approach. The only limitation is the potential for stack overflow in very deep DAGs, which is a **performance issue**, not a correctness issue.

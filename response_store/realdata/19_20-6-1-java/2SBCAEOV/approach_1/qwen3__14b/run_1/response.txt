@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The 2D DP table is correctly allocated with dimensions (len1+1) x (len2+1), and the loops for initializing base cases are properly structured.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The base cases for the DP table (zero-length strings) are correctly initialized with zeros.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The character match condition is correctly implemented, setting dp[i+1][j+1] = dp[i][j] when the current characters match.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The recurrence for insert and delete operations is incorrectly implemented. The code uses dp[i][j+1] for insert and dp[i+1][j] for delete, which are out-of-bounds and logically incorrect. These should reference previous values (dp[i][j-1] and dp[i-1][j]).
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: Due to the incorrect recurrence in Point 4, the algorithm fails to compute the correct edit distance. The code does not use recursion, but the logic errors invalidate the overall correctness.

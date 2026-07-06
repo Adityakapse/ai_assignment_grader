@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student implemented a space-optimized 1D array approach instead of allocating a 2D table as required, and used a different loop structure that iterates over characters rather than indices.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution incorrectly initializes the first column of the edit distance table as i_b+1 instead of setting edDis[i][0] = i for all i, leading to incorrect base case values for deletions.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the character match case by setting tmpdist[i_a] to total[i_a], which corresponds to the diagonal value from the previous iteration (equivalent to edDis[i-1][j-1] in the standard DP table).
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code incorrectly uses `total[i_a + 1]` as the third term in the min function instead of the correct `total[i_a - 1]` (edDis[i-1][j-1]), leading to an invalid recurrence relation for the edit distance calculation.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code incorrectly computes the edit distance by using an invalid combination of values in the min() function (total[i_a], total[i_a+1], tmpdist[-1]) instead of the correct three options (insert, delete, replace), leading to incorrect distance calculations.

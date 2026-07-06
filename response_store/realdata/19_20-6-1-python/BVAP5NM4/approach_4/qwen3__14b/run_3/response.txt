@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D table of size (m+1) x (n+1) is correctly allocated using list comprehension, and nested loops (with j as the outer loop and i as the inner loop) properly iterate from 1 to m and 1 to n to fill the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised using nested loops: the first column is filled with incremental values starting from 0 (edit_matrix[i][0] = edit_matrix[i-1][0] + 1) and the first row is similarly initialised with edit_matrix[0][j] = edit_matrix[0][j-1] + 1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if a[i-1] == b[j-1] and sets replace to edit_matrix[i-1][j-1] when characters match, accurately reflecting no edit needed for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly applies the recurrence relation for mismatches by adding 1 to each of the three possible operations (insert, delete, replace) and taking their minimum, matching the required formula.
+
+POINT_ID: 5
+BUCKET: Correct (20 marks)
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance, initializing the matrix properly and calculating insert, delete, and replace operations iteratively without recursion. The nested loops ensure all cells are processed in the correct order.

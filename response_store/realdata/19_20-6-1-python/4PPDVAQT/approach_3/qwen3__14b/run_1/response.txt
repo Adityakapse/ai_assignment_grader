@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses a 1D list 'result' instead of a 2D table, and the nested loops do not correctly fill a 2D structure as required by the rubric.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The first row is initialized as range(len(pre)+1), correctly representing the base case for deletions, but the first column (insertions) is never initialized in the code.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: When characters match, the code uses result[j] (from the previous row) instead of correctly referencing the diagonal cell (edDis[i-1][j-1] in the 2D table), leading to incorrect value propagation.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The min operation uses result[j], result[j+1], and tmp[-1], which do not correspond to the three required neighbors (left, above, diagonal) in a 2D DP table, leading to incorrect recurrence calculation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code fails to correctly compute edit distance for most cases due to incorrect DP table structure, partial base case initialization, and flawed recurrence logic.

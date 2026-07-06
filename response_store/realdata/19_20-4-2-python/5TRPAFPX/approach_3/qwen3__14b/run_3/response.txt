@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code correctly sets y to deleteNode when it has zero or one child, and uses treeMinimum(deleteNode.right) when deleteNode has two children, matching the lecture's approach.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum function correctly traverses left until it finds the leftmost node, returning it as the minimum, which aligns with the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly identifies x as the non-null child of y (y.left if non-null, otherwise y.right), including handling the case where y is a leaf (x is null).
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code updates x.parent and y.parent's child pointers, but includes redundant logic when handling the case where newNode is not deleteNode.right. The root replacement is handled, but the implementation is more complex than necessary.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's solution does not include any code to copy y's key into deleteNode when y is the successor (i.e., no deleteNode.key = y.key line), which is required when deleting a node with two children.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code handles leaf and single-child deletions correctly but fails to preserve the BST property when deleting nodes with two children due to the missing key copy and potential incorrect subtree reattachment logic. Root deletion is partially handled but may have edge cases.

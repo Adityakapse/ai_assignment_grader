@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly constructs an adjacency list from the input edges but does not add a virtual source node (0) with edges to all other nodes, which is required to ensure the longest path algorithm considers all possible starting points in a single DFS traversal.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student solution uses topological sorting and dynamic programming instead of memoization, and there is no memo array or cache check present in the code.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use DFS at all; instead, it implements a topological sort approach. Since the rubric point specifically evaluates the DFS base case for leaf nodes, this criterion is not met as the code lacks any DFS function with a base case.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses topological sorting and dynamic programming instead of recursively computing max(dfs(child) + 1) for each child and storing results in memo. The required recurrence from the rubric is not implemented.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the topological sort and dynamic programming approach to compute the longest path in O(N+M) time, handling all DAG cases without relying on a virtual source node.

@@ -1,0 +1,28 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses recursion instead of an explicit stack and loop structure; no stack is initialized or used in the main method, and the loop condition is absent.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses recursion instead of explicitly managing a stack with pop operations, which fails to meet the rubric's requirement for LIFO stack-based node removal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student checks if a node is visited before processing it, marks it as visited immediately upon processing, and adds it to the result list, ensuring no revisits or infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student's recursive implementation correctly iterates through neighbors in forward order, which aligns with the requirement for recursive DFS to visit nodes in adjacency list order.
+
+POINT_ID: 5
+The student's code has a critical issue in the implementation of the visited array, which is declared as `new boolean[200]`. This size limitation prevents the code from correctly handling graphs with more than 200 nodes, which is a valid case as per the problem's requirements. As a result, the code fails to return all reachable nodes for such graphs, which directly violates the rubric's condition of working for **all valid directed graphs**.
+
+While the code's traversal order is correct (processing nodes in the order they appear in the adjacency list, as expected in a depth-first search), the inability to handle larger graphs renders the code **not fully correct** for the problem's specifications. This is a **correctness issue**, not a traversal order issue, and it affects the overall robustness of the solution.
+
+### Conclusion:
+The student's code is **not correct for all valid graphs** due to the fixed-size visited array. However, it **does return correct nodes in the right order for the graphs it can handle**. Since the rubric's "Correct" bucket explicitly requires **working for all valid graphs**, the code falls into the **"Wrong"** bucket, as it fails to meet the requirement for certain valid inputs.
+
+---
+
+**Final Answer:**
+The student's solution is **incorrect for all valid graphs** and thus falls into the **"Wrong"** bucket.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) using "volumes.length + 1" rows and "capacity + 1" columns, matching the required DP table structure.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The inner loop starts at j=1 instead of 0, which may miss handling subproblems with zero capacity and items with zero weight, unlike the sample solution that covers all j from 0 to capacity.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's solution correctly checks if the item's volume is less than or equal to the current capacity before considering inclusion, using volumes[i-1] <= j (via the inverse condition) which properly handles zero-weight items and avoids incorrect comparisons.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation where, when the item fits, the value is the maximum of including the item (previous row's value at j - volume plus current value) or excluding it (previous row's value at j), matching the rubric's specification.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution incorrectly allows taking items with volume 0 multiple times (as it compares table[i-1][j] vs table[i-1][j] + value[i-1]), violating the problem's constraint of using each item at most once. Additionally, the arbitrary capacity check (if (capacity > 1000) capacity++) introduces incorrect behavior for valid inputs.

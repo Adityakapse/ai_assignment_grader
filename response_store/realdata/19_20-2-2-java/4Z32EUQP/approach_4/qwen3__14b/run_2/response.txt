@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code processes all tokens in the input array from left to right, using a series of if-else conditions to correctly distinguish between operator tokens (+, -, *, /) and numeric tokens, applying the appropriate stack operations for each case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly uses Integer.parseInt(input[i]) in the else clause to convert numeric tokens to integers and push them onto the stack, matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, the student correctly pops two values from the stack, applies the corresponding arithmetic operation, and pushes the result back onto the stack. All four operators are handled properly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly uses the order second_popped - first_popped for subtraction and second_popped / first_popped for division, matching RPN semantics. Integer division is applied using the '/' operator.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code uses == for string comparisons (e.g., input[i]=="+") which is incorrect in Java; it should use .equals() instead. This will fail for any input where operator strings are not interned.

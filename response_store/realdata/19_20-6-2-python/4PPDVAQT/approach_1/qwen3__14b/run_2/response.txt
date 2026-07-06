@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D matrix with dimensions (len(val)+1) x (cap+1) and initializes it with zeros, matching the DP table structure in the sample solution.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The student's loop structure iterates over capacities first (outer loop) and items second (inner loop), which is the reverse of the sample's approach. The sample uses an outer loop over items and inner over capacities, which is the standard order for the knapsack problem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly checks if vol[i-1] <= j before considering including the item, which matches the capacity feasibility check in the sample solution.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence relation correctly calculates the maximum value by comparing taking the item (val[i-1] + matrix[i-1][j-vol[i-1]]) or not taking it (matrix[i-1][j]), identical to the sample's logic.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The code's loop order (capacity first, then items) may lead to incorrect DP updates, as the standard approach processes items first. This could cause the solution to fail for some cases, reducing overall correctness.
+
+TOTAL: 80

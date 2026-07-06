@@ -1,0 +1,86 @@
+### **Rubric Evaluation of Student Code**
+
+---
+
+#### **Point 1: Identification of Closed-Form Formula**
+
+- **Student Code Behavior**:  
+  The code uses a recursive approach that effectively computes $ a_n = 2^n - 1 $, even though it does not explicitly use the closed-form expression or the `expo` function. The recurrence correctly mirrors the mathematical derivation of $ 2^n - 1 $.
+
+- **Rubric Criteria for Correct**:  
+  The student must "identify $ a_n = 2^n - 1 $" and implement it as `expo(2, n, c) - 1`.
+
+- **Evaluation**:  
+  While the student’s code is mathematically equivalent to the closed-form solution, it does not explicitly use the closed-form formula or the `expo` function. Therefore, **this point is classified as "Semi"** because the implementation does not directly reflect the closed-form formula as required by the rubric.
+
+---
+
+#### **Point 2: Expo Function Base Case (b == 0)**
+
+- **Student Code Behavior**:  
+  The student’s code does not use the `expo` function at all. Instead, it uses a custom recursive approach.
+
+- **Rubric Criteria for Correct**:  
+  The `expo` function must have a base case when $ b == 0 $.
+
+- **Evaluation**:  
+  Since the `expo` function is not used, the base case for $ b == 0 $ is **absent** in the student’s code. Therefore, **this point is classified as "Wrong"**.
+
+---
+
+#### **Point 3: Expo Function Odd Case (Reduce by 1 and Multiply)**
+
+- **Student Code Behavior**:  
+  The student’s code does not use the `expo` function. Instead, it uses a custom recursive approach for odd $ n $, which involves `calc(n-1)`.
+
+- **Rubric Criteria for Correct**:  
+  The `expo` function must correctly handle the odd case by reducing $ b $ by 1 and multiplying the result.
+
+- **Evaluation**:  
+  The student’s code does not implement the `expo` function, so the odd-case logic is not present. Therefore, **this point is classified as "Wrong"**.
+
+---
+
+#### **Point 4: Expo Function Even Case (Halve and Square)**
+
+- **Student Code Behavior**:  
+  The student’s code does not use the `expo` function. Instead, it uses a recursive approach for even $ n $, which involves halving $ n $.
+
+- **Rubric Criteria for Correct**:  
+  The `expo` function must correctly handle the even case by halving $ b $ and squaring the result.
+
+- **Evaluation**:  
+  Since the `expo` function is not used, the even-case logic is not present. Therefore, **this point is classified as "Wrong"**.
+
+---
+
+#### **Point 5: Overall Correctness**
+
+- **Student Code Behavior**:  
+  The code correctly computes $ a_n = 2^n - 1 $ for all tested values of $ n $ (e.g., $ n = 0, 1, 2, 3 $). It applies modulo at each recursive step, avoids forbidden keywords, and has a time complexity of $ O(\log n) $ due to halving $ n $ in the even case.
+
+- **Rubric Criteria for Correct**:  
+  The code must return $ (2^n - 1) \mod (10^9 + 7) $ correctly for all valid inputs, avoid forbidden keywords, and apply modulo at each recursive step.
+
+- **Evaluation**:  
+  The student’s code meets all these criteria. Even though it does not use the `expo` function, it is mathematically equivalent and satisfies the requirements. Therefore, **this point is classified as "Correct"**.
+
+---
+
+### **Summary of Rubric Evaluation**
+
+| Rubric Point | Classification | Reason |
+|--------------|----------------|--------|
+| **Point 1** | **Semi**       | The code is mathematically correct but does not explicitly use the closed-form formula or the `expo` function. |
+| **Point 2** | **Wrong**      | The `expo` function and its base case are not implemented. |
+| **Point 3** | **Wrong**      | The `expo` function and its odd-case logic are not implemented. |
+| **Point 4** | **Wrong**      | The `expo` function and its even-case logic are not implemented. |
+| **Point 5** | **Correct**    | The code correctly computes $ (2^n - 1) \mod (10^9 + 7) $, avoids forbidden keywords, and applies modulo at each step. |
+
+---
+
+### **Final Notes**
+
+- The student’s code is **mathematically correct** and efficient, but it deviates from the expected implementation using the `expo` function.
+- To fully align with the rubric, the student should implement the `expo` function and use the closed-form formula explicitly.
+- Despite the deviations in Points 2–4, the code is **correct overall** in Point 5.

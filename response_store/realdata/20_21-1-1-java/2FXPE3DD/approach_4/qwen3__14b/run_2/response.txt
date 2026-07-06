@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function does not explicitly handle the b == 0 case, returning 1 instead of 1 % c, which fails when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly detects odd b using (b & 1) == 1, which is equivalent to b % 2 != 0, and handles even/odd cases through distinct branches in the loop.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly multiplies the result by `a` when `b` is odd (using bitwise AND) and reduces `b` by 1 through right shift, aligning with the required odd-case logic.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code uses bit shifting (b >> 1) to halve b and squares a (a = (a*a) % c) in each iteration, which correctly implements the even case logic equivalent to the recursive approach described in the rubric.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements modular exponentiation using bit manipulation and iterative squaring, applies modulo operations at each step to prevent overflow, and avoids forbidden constructs like 'import' and '**'.

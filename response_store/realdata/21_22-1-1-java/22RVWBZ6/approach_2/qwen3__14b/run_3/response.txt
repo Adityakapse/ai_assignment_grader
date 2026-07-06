@@ -1,0 +1,79 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The student correctly implements the closed-form formula $a_n = 2^n - 1$ by computing $2^n \mod 10^9+7$ using a recursive exponentiation function and subtracting 1, matching the required mathematical derivation.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student's exp function correctly returns 1 % m when the exponent e is 0, matching the sample solution's base case behavior of returning 1 for b == 0.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the odd case by recursively computing exp(b, e-1, m) and multiplying by b, mirroring the sample solution's approach of (a * expo(a, b-1, c)) % c.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly implements the even case by recursively computing exp(b, e/2, m) and squaring the result, matching the sample solution's approach of halving and squaring for even exponents.
+
+POINT_ID: 5
+The provided code correctly computes the closed-form expression $ a_n = 2^n - 1 $, but **fails to account for negative results** that may occur when $ 2^n \mod m = 0 $. This leads to incorrect outputs in such cases.
+
+---
+
+### 🔍 Problem with the Code
+
+The function:
+
+```java
+return exp(2, n, 1000000007) - 1;
+```
+
+returns a value of the form $ (2^n \mod m) - 1 $. However, this result can be **negative**, which violates the requirement that the final output must be $ a_n \mod m $, a value in the range $ [0, m-1] $.
+
+For example, when $ m = 2 $ and $ n = 1 $:
+
+- $ 2^1 \mod 2 = 0 $
+- $ 0 - 1 = -1 $, which is **not** a valid result modulo 2.
+
+The correct result should be:
+
+- $ a_1 = 2 \times a_0 + 1 = 1 $, and $ 1 \mod 2 = 1 $.
+
+However, the code returns **-1**, which is **incorrect**.
+
+---
+
+### ✅ Corrected Code
+
+To ensure the result is always in the correct range, the final value should be **modded again** after subtracting 1:
+
+```java
+return (exp(2, n, 1000000007) - 1 + 1000000007) % 1000000007;
+```
+
+Here, we **add the modulus** to the result before applying the modulo again. This ensures that even if $ 2^n \mod m = 0 $, the result is adjusted to be in the correct range.
+
+---
+
+### 🧠 Why This Works
+
+- $ (2^n \mod m) \in [0, m-1] $
+- $ (2^n \mod m) - 1 \in [-1, m-2] $
+- Adding $ m $ before taking $ \mod m $ ensures the result is in $ [0, m-1] $
+
+For example:
+- If $ (2^n \mod m) = 0 $, then $ 0 - 1 + m = m - 1 $, and $ (m - 1) \mod m = m - 1 $
+- If $ (2^n \mod m) = 1 $, then $ 1 - 1 + m = m $, and $ m \mod m = 0 $
+
+This guarantees correctness in all cases.
+
+---
+
+### ✅ Final Answer
+
+The code is **incorrect** because it does not apply the final modulo operation after subtracting 1. The correct implementation should be:
+
+```java
+return (exp(2, n, 1000000007) - 1 + 1000000007) % 1000000007;
+```
+
+This ensures the result is always in the range $ [0, 1000000006] $, as required by the problem.

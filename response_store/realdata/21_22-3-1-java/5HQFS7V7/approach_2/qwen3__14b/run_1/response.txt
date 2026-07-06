@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student initializes the memo array with m[0] = 0 and m[1] = W[0], but does not set all elements to -1 as required. The array is allocated with size n+1 but uses default 0 values for uninitialized entries instead of the sentinel value specified in the rubric.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The base case for n=1 returns W[0] instead of the correct maximum between W[0] and W[1], as the code initializes m[1] = W[0] and never updates it.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution uses an iterative dynamic programming approach without a memoization array or cache check, unlike the sample's recursive helper function which explicitly checks memo[n] before recomputation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation (choosing between taking W[i-1] + m[i-2] or m[i-1]) and stores results in the memoization array m, matching the logic in the sample solution's recursive approach.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The code incorrectly sets n = W.length instead of n = W.length - 1, leading to processing an extra element and incorrect results for all inputs with n ≥ 1.

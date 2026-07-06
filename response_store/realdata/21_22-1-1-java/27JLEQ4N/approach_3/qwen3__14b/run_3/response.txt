@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly derives the closed form $a_n = 2^n - 1$ and implements it using exponentiation by squaring in an iterative loop, then subtracts 1 to match the required formula.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case is handled implicitly when $n = 0$ (the loop does not execute, and `res` is initialized to 1), which corresponds to $2^0 = 1$.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When $n$ is odd (e.g., $n = 1$), the loop multiplies `res` by `base` and applies modulo $c$, correctly implementing the odd case of exponentiation by squaring.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When $n$ is even, the loop updates `base` to `base * base % c`, correctly implementing the even case of exponentiation by squaring.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code works for all valid inputs, applies modulo $c$ at each step to prevent overflow, and avoids forbidden keywords like `eval` or `exec`.

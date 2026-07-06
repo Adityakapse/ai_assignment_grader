@@ -1,0 +1,66 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution creates a list of nodes but does not add edges from the virtual source node 0 to all other nodes, which is required to ensure a single DFS covers all nodes in the graph.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution uses a topological sorting approach with DFS and edge relaxation rather than memoization, and contains no memo array or cache check as required by the rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution does not explicitly handle the base case for leaf nodes (nodes with no outgoing edges), as there is no check in dfs_visit() for empty adjacency lists, unlike the sample solution's explicit len(graph[node]) == 0 condition.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly implements the recurrence by iterating through each child and updating the longest path value with max(longest_path[value], longest_path[child] + 1), which matches the required logic of taking the maximum path length over children.
+
+POINT_ID: 5
+The provided code is **correct** and effectively computes the length of the longest path in a Directed Acyclic Graph (DAG) in terms of the number of **edges**. Here's a structured breakdown of why the code works:
+
+---
+
+### **1. Topological Sorting via Post-Order DFS**
+
+The code uses a **post-order DFS** to traverse the graph and generate a list (`endzeit_list`) of nodes in **post-order** (i.e., children are processed before their parents). This is equivalent to a **reverse topological order**.
+
+- **Why it works**: In a DAG, a post-order DFS ensures that all descendants of a node are processed before the node itself. This is crucial because, during the longest path computation, we need to process nodes in a topological order (or its reverse) to ensure that all children of a node have already been processed when the parent is considered.
+
+---
+
+### **2. Longest Path Computation**
+
+After obtaining the post-order list, the code computes the length of the longest path using a dynamic programming approach:
+
+```python
+for value in e_list:
+    u = knoten[value]
+    for v in u.adj:
+        longest_path[value] = max(longest_path[value], longest_path[v] + 1)
+```
+
+- **Explanation**:
+  - `longest_path` is initialized to `0` for all nodes.
+  - For each node (processed in post-order), the code iterates through its adjacent nodes (children) and updates the `longest_path` of the current node.
+  - The formula `longest_path[v] + 1` represents the length of the path starting from the current node and going through one of its children. The `max` ensures that the longest such path is selected.
+  - This is equivalent to computing the **maximum depth** of the DAG rooted at each node, i.e., the number of edges in the longest path starting from that node.
+
+---
+
+### **3. Correctness and Edge Cases**
+
+- **Leaf Nodes**: If a node has no children, `longest_path` remains `0`, which is correct (no edges in the path).
+- **Single Node**: A graph with one node has no edges, so the longest path length is `0`.
+- **Multiple Paths**: The code correctly handles cases where a node has multiple children by taking the `max` of all child paths.
+- **Correctness in Terms of Edges**: The code counts the **number of edges** in the longest path, which is standard in graph theory.
+
+---
+
+### **4. Comparison with Alternative Approaches**
+
+The sample solution uses **memoization during DFS**, which is also a valid approach. However, the code in question is **functionally equivalent** and uses a **topological sorting approach**, which is a well-established and efficient method for finding the longest path in a DAG.
+
+---
+
+### **Conclusion**
+
+The code is **correct** and efficiently computes the length of the longest path in a DAG using a **post-order DFS** and **dynamic programming**. It correctly handles all edge cases and adheres to standard graph theory principles. The output is the **number of edges** in the longest path, which aligns with the standard interpretation of the problem.

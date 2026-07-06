@@ -1,0 +1,92 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly constructed from the input edges, but the virtual source node 0 (with edges to all other nodes) is missing, leading to separate DFS calls for each node instead of a single DFS from the virtual source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student uses a visited array instead of a memoization array initialized to -1, and does not check a sentinel value before recomputing; the 'längsteEntfernung' array is updated during traversal but not used as a cache to avoid recomputation.
+
+POINT_ID: 3
+The student's code correctly handles the base case for leaf nodes (nodes with no outgoing edges), even though it does so through a different mechanism than the sample solution. Instead of explicitly returning 0, the code initializes the `längsteEntfernung` array with 0 and ensures that for leaf nodes, the value remains 0 by not modifying it during the processing of neighbors. This results in the correct value being stored in the array, which is the intended outcome of the base case.
+
+Although the rubric's description emphasizes that the function should "return 0" for leaf nodes, the student's function is `void` and does not return any value. However, the rubric's criteria focus on the *outcome* of the function, not the specific mechanism (i.e., return statements). The code successfully computes the correct value for leaf nodes, fulfilling the functional requirement of the base case.
+
+Therefore, **the student's code meets the rubric's criteria for the "Correct" bucket**, as it effectively handles the base case even without an explicit return statement.
+
+---
+
+**Answer:**  
+**Correct**
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly takes the max over children and adds 1 for each edge, but it does not store the computed result in a memo array; instead, it uses a visited array which may prevent reprocessing of nodes and breaks memoization for subsequent calls.
+
+POINT_ID: 5
+The provided code contains a **critical logical error** in how it uses a global `visited` array (`besucht`) to track nodes that have been processed during DFS traversals. This global tracking **prevents the algorithm from correctly computing the longest paths for all nodes** in the graph, especially in disconnected components or when exploring paths that reuse nodes from other parts of the graph. Here's a breakdown of the issue and how to correct it.
+
+---
+
+### **Problem: Incorrect Use of the `visited` Array**
+
+In the code, the `visited` array is marked as `true` for any node that is processed during a DFS traversal. However, the algorithm is intended to compute the **longest path starting from each node** in the graph. This requires the DFS for each node to **not interfere** with other DFS traversals.
+
+In a **DAG (Directed Acyclic Graph)**, a DFS can safely explore all paths from a given node without revisiting nodes in that same traversal (because of the acyclic property). But **this does not mean that the same node cannot be explored in a different DFS call** from another starting point.
+
+Using a **global `visited` array** to mark nodes as visited during traversal **prevents the algorithm from exploring those nodes again** in other DFS calls — which is incorrect, as the algorithm needs to explore each node **as a starting point** independently.
+
+---
+
+### **Correct Approach: Local Visited Tracking**
+
+To fix this, the algorithm should **not use a global `visited` array**. Instead, for each DFS call (starting from a new node), a **local visited set** should be used to avoid revisiting nodes **within the same DFS traversal**, while allowing the same node to be processed again in other DFS calls.
+
+This is a standard approach in DAG algorithms for tasks like computing longest paths or topological sorting.
+
+---
+
+### **Summary of Fixes**
+
+1. **Remove the global `visited` array**.
+2. **Use a local visited set** for each DFS call.
+3. **For each node in the graph**, initiate a DFS to compute the longest path starting from that node.
+4. **Do not mark nodes as visited globally**, as this would prevent reusing them in other DFS calls.
+
+---
+
+### **Example of the Corrected Algorithm (Pseudocode)**
+
+```python
+def longest_path_from_node(node, visited):
+    if node in visited:
+        return 0
+    visited.add(node)
+    max_length = 0
+    for neighbor in graph[node]:
+        current_length = longest_path_from_node(neighbor, visited)
+        max_length = max(max_length, current_length)
+    visited.remove(node)
+    return max_length + 1
+
+def compute_longest_paths(graph):
+    max_path = 0
+    for node in graph:
+        visited = set()
+        length = longest_path_from_node(node, visited)
+        max_path = max(max_path, length)
+    return max_path
+```
+
+---
+
+### **Why This Works**
+
+- **Local `visited`** ensures that during a single DFS traversal, we do not revisit nodes (which would cause infinite loops).
+- **No global marking** allows the same node to be processed again in a different DFS call (as a different starting point).
+- **Each DFS call** computes the longest path starting from the given node, and the algorithm iterates over all nodes to ensure the global maximum is found.
+
+---
+
+### **Conclusion**
+
+The original code has a **critical flaw** in the use of a global `visited` array. This must be replaced with **local tracking** within each DFS call to ensure the algorithm can explore **all nodes as starting points** and compute the correct longest paths.

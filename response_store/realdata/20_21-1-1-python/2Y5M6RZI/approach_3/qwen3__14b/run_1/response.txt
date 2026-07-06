@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's code lacks an explicit base case for b == 0. When b is 0, the loop does not execute, and the function returns 1 instead of 1 % c, which is incorrect for cases where c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly checks if j % 2 != 0 to identify odd exponents and uses j // 2 (though mistakenly written as j / 2) for even exponents, distinguishing between the two cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When j is odd, the code correctly updates res by multiplying it with res1 (which represents a^(2^k) mod c) and reduces j by 1, effectively factoring out one a from the exponent.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code attempts to halve j by using j / 2, which produces float values instead of integer division. This causes incorrect behavior when j becomes a non-integer, leading to potential infinite loops or incorrect results for certain inputs.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for b == 0 by returning 1 instead of 1 % c and uses floating-point division (j / 2) instead of integer division, leading to incorrect results for some inputs. However, it avoids 'import' and '**' as required.

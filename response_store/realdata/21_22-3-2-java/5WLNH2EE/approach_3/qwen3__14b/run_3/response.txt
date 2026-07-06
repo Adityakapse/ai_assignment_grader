@@ -1,0 +1,83 @@
+### **Rubric Point 1: Graph Construction and Virtual Source Node**  
+**Student's Code:**  
+- Initializes the adjacency list for `N+1` nodes (from `i=0` to `N`), but does **not** add a virtual source node `0` that connects to all other nodes.  
+- The virtual node `0` in the sample solution is critical for ensuring a single DFS traversal computes the longest path from any node.  
+
+**Analysis:**  
+- The adjacency list is built correctly, but the **virtual source node is missing**.  
+- The code processes all nodes individually, which may not find the longest path efficiently.  
+
+**Bucket:** **Semi**  
+**Reason:** The adjacency list is built correctly, but the virtual source node is missing, leading to an inefficient approach.  
+
+---
+
+### **Rubric Point 2: Memoization**  
+**Student's Code:**  
+- Uses a `boolean[] besucht` array to avoid revisiting nodes (preventing cycles).  
+- Uses `int[] längsteEntfernung` to store the longest path length for each node.  
+- **No memoization** is applied (no caching of computed results for reuse).  
+
+**Analysis:**  
+- The code lacks a memoization mechanism (e.g., a `memo[]` array).  
+- The `besucht` array is used for traversal, not for caching results.  
+
+**Bucket:** **Wrong**  
+**Reason:** No memoization is implemented, leading to recomputation and failure to meet the required time complexity (`O(N + M)`).  
+
+---
+
+### **Rubric Point 3: Base Case (Leaf Node)**  
+**Student's Code:**  
+- For leaf nodes (no children), the loop in `tiefensuche()` does not execute.  
+- The `längsteEntfernung` array is initialized to `0` and remains `0` for leaf nodes.  
+- **No explicit return statement** for the base case.  
+
+**Analysis:**  
+- The code **does not explicitly handle** the base case (returning `0` for leaf nodes).  
+- Relies on the initial value of `0` in `längsteEntfernung`, which may be correct but is not explicitly stated.  
+
+**Bucket:** **Wrong**  
+**Reason:** No explicit base case is implemented (returning `0` for leaf nodes), which may lead to incorrect behavior in some edge cases.  
+
+---
+
+### **Rubric Point 4: Recurrence (Longest Path Calculation)**  
+**Student's Code:**  
+- For each child, updates the current node’s longest path:  
+  ```java
+  längsteEntfernung[i] = Math.max(längsteEntfernung[i], längsteEntfernung[nachbar] + 1);
+  ```  
+- Correctly applies the `+1` to count the edge and computes the maximum over all children.  
+
+**Analysis:**  
+- The recurrence logic is **correct**.  
+
+**Bucket:** **Correct**  
+**Reason:** The code correctly computes the maximum path length for each node by iterating over children and adding `1` for the edge.  
+
+---
+
+### **Rubric Point 5: Overall Correctness**  
+**Student's Code:**  
+- **No virtual source node** is added, leading to multiple DFS traversals (inefficient).  
+- The code may return correct results for simple DAGs but **fails to meet the time complexity requirement** (`O(N + M)`).  
+- The final result is taken as the maximum value in `längsteEntfernung`, which may not account for the virtual source adjustment (as in the sample solution).  
+
+**Analysis:**  
+- The code may return correct results for small graphs but **fails for large DAGs** due to inefficiency.  
+- The **virtual source adjustment** (e.g., `dfs(0) - 1` in the sample) is **missing**, leading to potential inaccuracies.  
+
+**Bucket:** **Semi**  
+**Reason:** The code may work for simple cases but fails due to incorrect time complexity and missing virtual source adjustment.  
+
+---
+
+### **Final Summary**  
+| Rubric Point | Bucket   | Reason                                                                 |
+|--------------|----------|------------------------------------------------------------------------|
+| 1            | **Semi** | Virtual source node missing; adjacency list built correctly.         |
+| 2            | **Wrong**| No memoization implemented; uses `besucht` instead.                  |
+| 3            | **Wrong**| No explicit base case for leaf nodes.                                |
+| 4            | **Correct**| Recurrence logic correctly computes max path length.               |
+| 5            | **Semi** | May return correct results for small graphs but fails on time and virtual node. |

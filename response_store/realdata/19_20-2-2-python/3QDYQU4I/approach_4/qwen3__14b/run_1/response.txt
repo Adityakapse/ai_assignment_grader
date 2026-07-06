@@ -1,0 +1,30 @@
+POINT_ID: 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The code iterates through all tokens left to right using a for-loop, and correctly distinguishes numbers (pushed as integers) from operators (handled via try-except block with explicit conditional checks).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted to integers using int(a[i]) and pushed onto the stack in the try block, correctly handling all valid number strings.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly pops two values from the stack for each operator, applies the correct arithmetic operation (including division using /), and pushes the result back onto the stack for all four operators.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly uses second_popped - first_popped for subtraction and second_popped / first_popped for division, but uses regular floating-point division (x/y) instead of integer division with floor rounding as required.
+
+POINT_ID: 5
+The provided code has two critical issues that prevent it from meeting the problem's requirements:
+
+1. **Incorrect Return Type**:  
+   The code converts the final result to a string using `result = str(stack.pop())` and returns it with `return result`. However, the problem explicitly states that the method should return the correct result as an **integer**. Returning a string instead of an integer is a clear violation of the specification.
+
+2. **Incorrect Division Handling**:  
+   The code uses floating-point division (`x / y`) for the division operation. However, the problem specifies that division should be **rounded down** (i.e., floor division). In Python, this is achieved using the `//` operator. The current implementation would return a float (e.g., `5 / 2 = 2.5`) instead of the required integer result (e.g., `2`).
+
+### Summary of Issues:
+- **Return Type**: The result is returned as a string instead of an integer.
+- **Division Logic**: Floating-point division is used instead of floor division.
+
+These issues make the code **incorrect** in terms of both return type and division behavior, failing to meet the problem's requirements.

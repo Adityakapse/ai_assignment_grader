@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is constructed correctly with 0-based indexing, but no virtual source node 0 is added to connect to all nodes, limiting the algorithm to only consider paths starting from nodes with incoming edges.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used; the code relies on a Lengths array that is updated in a non-recursive, non-cached manner, leading to incorrect path length calculations for complex DAGs.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No explicit base case for leaf nodes is present in the code; the algorithm assumes nodes with no outgoing edges have length 0 but does not handle this condition explicitly in any function.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code applies a max over children (via the nested loops) but does not use a DFS function or memoization, and the recurrence is not structured as "sol = max(sol, dfs(child) + 1)" as required by the rubric.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to compute the correct longest path for many DAGs due to the absence of a virtual source node and incorrect handling of paths starting from arbitrary nodes, returning max(Lengths) instead of a properly computed value.

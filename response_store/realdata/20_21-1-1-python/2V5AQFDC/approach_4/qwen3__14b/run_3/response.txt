@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b == 0 (via the initial ergebnis = 1) but does not apply modulo c, failing to handle the edge case where c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly detects odd b using (b & 1) == 1, which is equivalent to b % 2 == 1, and handles even b by shifting and squaring without explicitly swapping cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code handles the odd case by checking the least significant bit and multiplying the result by a, but it reduces b by shifting right (equivalent to dividing by 2) instead of decrementing by 1 as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly halves b using bit shift (b >> 1) and squares the current value of a (a = (a*a) % c) when processing even exponents, achieving O(log b) time complexity through iterative exponentiation by squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles exponentiation by squaring for b > 0 but fails when b = 0, returning 1 instead of 1 % c, which is incorrect for cases like c = 1.

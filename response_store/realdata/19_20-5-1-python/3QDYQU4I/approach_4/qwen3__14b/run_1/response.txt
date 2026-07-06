@@ -1,0 +1,78 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's solution uses recursion with a helper function instead of a while loop, and the initial queue is correctly set up with the start node, but the absence of a while loop structure violates the rubric's requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's code uses queue.pop(0) to remove nodes from the front of the queue, ensuring FIFO order and maintaining proper breadth-first traversal as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student checks if a node is in visited before processing and adds it to visited when dequeued, ensuring each node is processed only once and preventing infinite loops. Neighbors are only enqueued if not already in visited or the queue.
+
+POINT_ID: 4
+### Analysis of the Code's Behavior
+
+The code in question iterates over all neighbors of the current node using:
+
+```python
+for neighbour in graph[node]:
+```
+
+This satisfies the first part of the rubric's "Correct" bucket requirement — **all neighbors are iterated**.
+
+However, the code checks whether the neighbor is unvisited **and** not already in the queue before adding it to the queue:
+
+```python
+if neighbour not in visited and neighbour not in queue:
+    queue.append(neighbour)
+```
+
+This **deviates** from the standard BFS approach, which only checks whether the neighbor is unvisited:
+
+```python
+if neighbour not in visited:
+    queue.append(neighbour)
+```
+
+By adding the check `neighbour not in queue`, the code **avoids adding neighbors that are already in the queue**, even if they are unvisited.
+
+---
+
+### Evaluation Against the Rubric
+
+The rubric defines the **"Correct"** bucket as:
+
+> All neighbors in `graph[current]` are iterated, and each unvisited neighbor is added to the back of the queue.
+
+The student's code **does not** add **all unvisited** neighbors — it only adds those that are **not already in the queue**. This is a **subset** of unvisited neighbors, which **violates** the "Correct" bucket's requirement.
+
+Hence, the student's code **does not fully meet** the "Correct" criterion.
+
+---
+
+### Comparison with the "Semi" Bucket
+
+The "Semi" bucket describes two scenarios:
+
+1. **All neighbors are enqueued regardless of visited status** (causing duplicates).
+2. **Only a subset of neighbors is enqueued** (e.g., only the first neighbor).
+
+In the student's code, **all neighbors are iterated**, but **not all unvisited neighbors are enqueued**. Instead, a subset (those not in the queue) is enqueued. This matches **the second condition** of the "Semi" bucket.
+
+---
+
+### Conclusion
+
+The student's code **does not fully meet** the "Correct" bucket's requirement, as it **does not add all unvisited neighbors** to the queue. However, it **does iterate all neighbors** and **only adds unvisited ones**, which is **not a full failure**. Therefore, the code fits the **"Semi"** bucket.
+
+---
+
+### Final Answer
+
+**Bucket: Semi**  
+**Reason**: The code iterates all neighbors in `graph[current]`, but only adds unvisited neighbors that are not already in the queue, thus not enqueuing all unvisited neighbors as required by the "Correct" bucket.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements BFS by processing nodes in the order of their adjacency lists and maintaining level-by-level traversal through recursive queue processing, ensuring all reachable nodes are visited in the correct order.

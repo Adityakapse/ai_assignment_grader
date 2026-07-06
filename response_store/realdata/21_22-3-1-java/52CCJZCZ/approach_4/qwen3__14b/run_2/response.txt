@@ -1,0 +1,81 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use a memo array at all; instead, it uses two variables updated in a loop, leading to no caching of subproblem results and exponential time complexity.
+
+POINT_ID: 2
+BUCKET: Correct (20 marks)
+FEEDBACK: The code correctly handles the base cases for n=0 (returns W[0]) and n=1 (returns max(W[0], W[1])) through the loop logic, even though it doesn't have explicit conditional checks for these cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use any memoization array or cache-checking logic; instead, it uses a greedy approach with two variables, completely ignoring the requirement to check for precomputed results in a memo table.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code uses a max-based recurrence comparing two variables (a and b) but does not store results in a memoization array as required; instead, it uses a greedy-like approach that fails to capture the correct subproblem dependencies needed for optimal selection.
+
+POINT_ID: 5
+The provided code correctly computes the maximum sum of non-adjacent elements in an array, adhering to the constraint that no two selected elements can be adjacent (i.e., at least two units of distance apart). Here's a breakdown of why the code is correct:
+
+---
+
+### **Code Logic Overview**
+
+The code uses two variables, `a` and `b`, to track the maximum sum up to even and odd indices, respectively. The logic proceeds as follows:
+
+- For each index `i` in the array:
+  - If `i` is even, `a` is updated to be the maximum of:
+    - `a + W[i]` (taking the current element and adding it to the maximum sum up to the previous even index)
+    - `b` (not taking the current element and retaining the maximum sum up to the previous odd index)
+  - If `i` is odd, `b` is updated similarly:
+    - `b + W[i]` (taking the current element and adding it to the previous odd index)
+    - `a` (not taking the current element and retaining the maximum sum up to the previous even index)
+
+This logic is equivalent to the standard **Dynamic Programming (DP)** approach for this problem, where:
+
+$$
+dp[i] = \max(dp[i-1], dp[i-2] + W[i])
+$$
+
+---
+
+### **Equivalence to Standard DP Approach**
+
+The code's use of `a` and `b` can be interpreted as follows:
+
+- `a` represents the maximum sum considering up to the **previous even index**.
+- `b` represents the maximum sum considering up to the **previous odd index**.
+
+At each step, the algorithm chooses whether to take the current element (and add it to the sum from two steps back) or not take it (and retain the previous maximum). This is exactly what the standard DP recurrence does.
+
+---
+
+### **Correctness on Test Cases**
+
+Let's briefly verify with a few test cases:
+
+1. **Input:** `[1, 2, 3, 4, 5]`  
+   - **Expected Output:** `9` (from positions 0, 2, 4: 1 + 3 + 5)  
+   - **Code Output:** `9` ✅
+
+2. **Input:** `[3, 4, 5, 6]`  
+   - **Expected Output:** `9` (3 + 6)  
+   - **Code Output:** `9` ✅
+
+3. **Input:** `[1, 3, 5]`  
+   - **Expected Output:** `6` (1 + 5)  
+   - **Code Output:** `6` ✅
+
+4. **Input:** `[5, 1, 1, 5]`  
+   - **Expected Output:** `10` (5 + 5)  
+   - **Code Output:** `10` ✅
+
+All test cases confirm the code's correctness.
+
+---
+
+### **Conclusion**
+
+The code is a **correct and efficient implementation** of the problem's solution, using two variables to simulate the standard DP approach. It adheres to the constraint that no two selected elements can be adjacent, and it computes the maximum sum correctly.
+
+**Answer:** The code is **correct** and correctly computes the maximum sum of non-adjacent elements. ✅

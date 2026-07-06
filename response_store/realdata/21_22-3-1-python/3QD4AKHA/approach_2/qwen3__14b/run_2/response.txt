@@ -1,0 +1,75 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution uses an iterative dynamic programming array M instead of allocating a memo array of size n+1 initialized with -1 as required by the rubric point.
+
+POINT_ID: 2
+### Evaluation of the Student's Code Against the Rubric Point
+
+---
+
+### **Rubric Point Summary**
+The rubric point explicitly requires that:
+- **`opt(0)` returns `W[0]`**
+- **`opt(1)` returns `max(W[0], W[1])`**
+
+This implies that the student's code **must** handle **both** base cases correctly to be fully compliant with the rubric point.
+
+---
+
+### **Student's Code Analysis**
+
+#### **Case 1: `opt(1)` (i.e., `W` of length 2)**
+- The student's code **correctly** handles this case.
+- The code initializes an array `M` with `[W[0]]`, then appends `max(W[0], W[1])` to it.
+- It returns `M[n-1]`, which is `M[1] = max(W[0], W[1])`.
+- **✅ This is correct and fully complies with the `opt(1)` requirement.**
+
+#### **Case 2: `opt(0)` (i.e., `W` of length 1)**
+- The student's code **does not handle this case**.
+- In this scenario, `n = len(W) = 1`.
+- The code then checks `W[0] < W[1]`, which is **invalid** (index out of bounds).
+- **❌ This results in a runtime error and fails to return `W[0]` as required.**
+
+---
+
+### **Conclusion**
+
+- The student's code **correctly** implements the `opt(1)` base case.
+- However, it **fails** to implement the `opt(0)` base case, which is **explicitly** required by the rubric point.
+- Since the rubric point evaluates both base cases **jointly**, and the student's code fails on **one of them**, the implementation is **partially correct**.
+
+---
+
+### **Final Mark Allocation**
+
+- **Total possible score for the rubric point:** 20
+- **Student's code correctness:**
+  - `opt(1)` implemented correctly ✅
+  - `opt(0)` not implemented ❌
+- **Score awarded:** **10/20**
+
+---
+
+### **Improvement Suggestion**
+To fully satisfy the rubric point, the student's code should:
+- Handle the case when `len(W) == 1` (i.e., `n == 0`) by directly returning `W[0]`.
+
+Example fix:
+```python
+if len(W) == 1:
+    return W[0]
+```
+
+This would ensure compliance with the rubric point's requirement for **both** base cases.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution uses a bottom-up DP array (M) but does not implement any memoization cache check, as required by the rubric point. The code directly computes values iteratively without checking for precomputed results.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation using a bottom-up dynamic programming approach, storing intermediate results in the M list analogous to the memo array in the sample solution.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements an iterative dynamic programming approach that computes the maximum profit while adhering to the two-kilometer constraint, matching the sample solution's logic and achieving O(n) time complexity.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong (0 marks)
+FEEDBACK: The solution uses recursion instead of a while loop to process the stack, violating the requirement for a loop structure that continues until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student uses stack.pop() to remove nodes from the top of the stack, ensuring LIFO behavior that guarantees depth-first traversal as required.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The visited list is updated after popping nodes from the stack, but no check is performed before processing to avoid duplicates; this could lead to revisiting nodes if they are pushed multiple times into the stack.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code iterates through reversed(graph[node]) and appends unvisited neighbors to the stack, ensuring they are processed in the original adjacency list order when popped, matching the required behavior.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student's code uses reversed adjacency lists but incorrectly manipulates the stack by moving existing nodes to the top, which can alter the DFS traversal order and fail to visit nodes in the correct adjacency list sequence.

@@ -1,0 +1,45 @@
+### **Point 1: Selecting y**  
+- **Assessment:** **Correct**  
+- **Reasoning:** The student's code correctly selects the node to be replaced (referred to as `newNode` in their code) based on the number of children. When the node has two children, they find the minimum in the right subtree (`treeMinimum(deleteNode.right)`), which aligns with the sample solution's logic of using `treeMinimum(delete.right)` for `y`. The absence of a `y` variable does not affect correctness, as the logic is equivalent.  
+
+---
+
+### **Point 2: treeMinimum helper**  
+- **Assessment:** **Correct**  
+- **Reasoning:** The student's `treeMinimum` function recursively traverses the leftmost node of the tree, matching the sample solution's implementation. This correctly identifies the minimum node in a subtree.  
+
+---
+
+### **Point 3: Finding x**  
+- **Assessment:** **Semi**  
+- **Reasoning:** The student's code does not explicitly define a variable `x` (as in the sample solution) to represent the non-null child of `y`. Instead, they directly manipulate the tree structure by attaching the right subtree of the deleted node to the successor (`newNode`). While the logic is functionally similar, the lack of an explicit `x` variable deviates from the rubric's requirement to "identify the non-null child of `y` to promote."  
+
+---
+
+### **Point 4: Splicing y out of the tree**  
+- **Assessment:** **Correct**  
+- **Reasoning:** The student's code updates parent pointers correctly. When the successor (`newNode`) is not the direct child of the deleted node, they adjust the parent's (`deleteNode`) left/right pointers to `newNode` and attach the right subtree. Additionally, they set `newNode.parent` to `deleteNode.parent`, ensuring proper splicing of the tree.  
+
+---
+
+### **Point 5: Copying the key when y is the successor**  
+- **Assessment:** **Wrong**  
+- **Reasoning:** The student's code contains a critical error. The line `if y is not delete: delete.key = y.key` uses an undefined variable `y`, which is not declared in their code. This leads to a runtime error and fails to copy the key from the successor (`newNode`) into the deleted node (`deleteNode`), violating the BST property.  
+
+---
+
+### **Point 6: Correctness of BST after deletion**  
+- **Assessment:** **Wrong**  
+- **Reasoning:** The absence of the key copy (due to the undefined `y` variable) means the deleted node's key remains unchanged, which is incorrect. Additionally, the code may fail to handle edge cases (e.g., deleting the root node with two children) due to improper handling of parent pointers in complex scenarios. The BST structure may not be preserved in all cases.  
+
+---
+
+### **Summary of Ratings**  
+| Point | Rating | Reason |
+|------|--------|--------|
+| 1 | **Correct** | Correctly selects the node to replace based on children count. |
+| 2 | **Correct** | `treeMinimum` function matches the sample solution. |
+| 3 | **Semi** | Lacks an explicit `x` variable but functionally handles promotion. |
+| 4 | **Correct** | Properly updates parent pointers during splicing. |
+| 5 | **Wrong** | Uses undefined `y` variable, leading to incorrect key copy. |
+| 6 | **Wrong** | BST property not preserved due to missing key copy and potential edge-case failures. |

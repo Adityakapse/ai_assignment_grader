@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code uses a recursive helper function with a stack initialized with [start], but it lacks an explicit while loop. Instead, recursion is used to process the stack, which doesn't fully align with the rubric's requirement for an explicit loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `stack.pop()` to remove nodes from the top of the stack, ensuring a last-in-first-out (LIFO) order that matches depth-first traversal requirements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each popped node is checked against the visited list before being added, and the node is appended to visited once processed, preventing revisits and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `reversed(graph[node])` and adds unvisited neighbors to the stack, ensuring that neighbors are processed in the original adjacency list order when popped.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The recursive approach with stack manipulation (e.g., removing and re-adding neighbors already in the stack) may alter the traversal order compared to the expected iterative DFS, leading to potential inconsistencies in node processing order.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly sets `toBeDeleted` to `delete` when it has at most one child, and to `treeMinimum(delete.right)` when `delete` has two children, matching the sample solution.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `treeMinimum` method correctly traverses left until reaching a node with no left child, using `root` as the parameter name instead of `n` but implementing the same logic as the sample.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly identifies `notNullChildOfToBeDeleted` as `toBeDeleted.left` if non-null, otherwise `toBeDeleted.right`, accurately finding the non-null child to promote.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student updates `notNullChildOfToBeDeleted.parent` to `toBeDeleted.parent` and adjusts the parent's left/right pointers, correctly splicing `toBeDeleted` out of the tree as in the sample.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student conditionally copies `toBeDeleted.key` to `delete.key` only when `toBeDeleted != delete`, ensuring the key is updated only when the successor is used.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation handles all deletion cases (leaf, single child, two children, root deletion) correctly, preserves the BST property, and returns the updated root, matching the sample solution's behavior.

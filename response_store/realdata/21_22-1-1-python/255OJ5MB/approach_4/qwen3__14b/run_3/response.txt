@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly derives the closed-form $a_n = 2^n - 1$ and implements a recursive exponentiation-by-squaring approach that computes $2^n \mod 10^9+7$ before subtracting 1, matching the required formula.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement an 'expo' function with a base case for b == 0, which is required by the rubric point. Instead, their recursive approach handles exponents through a different mechanism entirely.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement an exponentiation function or handle the odd case as required; instead, it directly computes the recurrence relation using recursive case splits on n's parity.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case uses division with '/' instead of integer division '//', leading to float inputs, and incorrectly computes (calc(n/2) + 1)^2 - 1 instead of correctly halving and squaring the exponent as in the sample solution.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code uses division with '/' instead of integer division '//', leading to floating-point numbers that break recursion and cause infinite loops for even inputs like n=2. Modulo is applied at each step, but the incorrect division operator invalidates the approach for most inputs.

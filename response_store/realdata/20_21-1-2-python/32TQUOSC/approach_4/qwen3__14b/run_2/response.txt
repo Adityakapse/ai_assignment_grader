@@ -1,0 +1,343 @@
+POINT_ID: 1
+The provided code correctly implements a **Merge Sort** algorithm, a classic divide-and-conquer sorting technique. Below is a detailed breakdown of the code structure, its correctness, and a brief explanation of its functionality.
+
+---
+
+### ✅ **Code Overview**
+
+```python
+def solution(A):
+    if len(A) <= 1:
+        return A
+    mid = len(A) // 2
+    A1 = A[:mid]
+    A2 = A[mid:]
+    A1 = solution(A1)
+    A2 = solution(A2)
+    A = A1 + A2
+    merge(A, mid, len(A))
+    return A
+```
+
+```python
+def merge(A, p, r):
+    n1 = p
+    n2 = r - p
+    L = []
+    R = []
+    for i in range(n1):
+        L.append(A[i])
+    for i in range(n2):
+        R.append(A[p + i])
+    L.append(float('inf'))
+    R.append(float('inf'))
+    i = j = k = 0
+    while k < r:
+        if L[i] <= R[j]:
+            A[k] = L[i]
+            i += 1
+        else:
+            A[k] = R[j]
+            j += 1
+        k += 1
+```
+
+---
+
+### 🧠 **Explanation of the Algorithm**
+
+#### **1. Base Case**
+- If the length of the array `A` is 0 or 1, it is already sorted. The function returns `A` immediately.
+
+#### **2. Divide Step**
+- The array is split into two halves: `A1` (first half) and `A2` (second half).
+- Each half is recursively sorted using the `solution` function.
+
+#### **3. Conquer Step**
+- The sorted halves `A1` and `A2` are concatenated into a new array `A = A1 + A2`.
+- The `merge` function is called to merge the two sorted halves into a single sorted array.
+
+#### **4. Merge Function**
+- The `merge` function takes the array `A`, the length of the first half (`p`), and the total length of the array (`r`).
+- It creates two temporary arrays `L` and `R` from the first and second halves respectively.
+- Sentinel values (`float('inf')`) are added to the end of both `L` and `R` to simplify the merge loop.
+- The arrays `L` and `R` are merged back into `A` by comparing elements from each and placing the smaller one at the current position in `A`.
+
+---
+
+### ✅ **Correctness of the Code**
+
+- **Divide and Conquer Strategy**: The code correctly divides the array into two halves and recursively sorts them.
+- **Merge Logic**: The `merge` function properly merges two sorted arrays into one, using a standard two-pointer technique.
+- **Sentinels**: The use of `float('inf')` as sentinels simplifies the merge process by avoiding the need to check for array boundaries in the loop.
+- **In-place Merge**: The merge is done in-place on the original array `A`, which is efficient and avoids unnecessary memory allocation.
+
+---
+
+### 📌 **Edge Cases Handled**
+
+- **Empty Array**: The base case returns the array as is.
+- **Single Element**: The base case also handles single-element arrays.
+- **Already Sorted Arrays**: The merge function works correctly even if the subarrays are already sorted.
+
+---
+
+### 📈 **Time Complexity**
+
+- **Time Complexity**: $ O(n \log n) $, where $ n $ is the number of elements in the array.
+  - Dividing the array takes $ O(\log n) $ steps.
+  - Merging at each level takes $ O(n) $ time.
+- **Space Complexity**: $ O(n) $, due to the temporary arrays used during the merge step.
+
+---
+
+### 🔄 **Alternative Improvements**
+
+While the code is correct and functional, a few improvements could be made for better performance or readability:
+
+1. **Avoid Reassigning `A`**: Instead of reassigning `A = A1 + A2`, pass the original array to the `merge` function by reference, and perform in-place sorting.
+
+2. **Avoid Recursion for Very Large Inputs**: For very large arrays, an iterative version of merge sort might be more memory-efficient.
+
+3. **Use of `itertools` or List Comprehensions**: For cleaner code, list comprehensions can be used to create `L` and `R`.
+
+---
+
+### 🧪 **Example Execution**
+
+Given input: `[3, 1, 4, 1, 5, 9, 2, 6]`
+
+- After splitting and sorting recursively:
+  - `A1 = [1, 3]`, `A2 = [1, 4]`
+  - Merged: `[1, 1, 3, 4]`
+  - Continue merging recursively until the full array is sorted.
+
+Final result: `[1, 1, 2, 3, 4, 5, 6, 9]`
+
+---
+
+### ✅ **Conclusion**
+
+The code is a **correct and well-structured implementation of the merge sort algorithm**. It handles all edge cases, is efficient, and uses a standard approach to merge two sorted arrays. The only minor improvements would be in terms of performance optimization or readability, not correctness.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The base case correctly checks if the subarray length is greater than 1 (using "1 < r") and returns immediately for arrays of size 0 or 1, preventing infinite recursion.
+
+POINT_ID: 3
+The code you've described appears to be a top-down merge sort implementation, and based on the logic provided, the merge function is **correctly implemented** in terms of algorithm design and merging logic. However, a few potential issues may be causing the code to behave unexpectedly. Below is a detailed breakdown and explanation of the key components, along with possible fixes:
+
+---
+
+### ✅ **Correct Aspects of the Code**
+
+1. **Merge Function Logic**:
+   - The merge function splits the array into two halves (`L` and `R`), appends a sentinel value (e.g., `float('inf')`) to both to avoid boundary checks, and merges them back into the original array in a standard **two-pointer** merge manner.
+   - This is a standard and correct approach in merge sort.
+
+2. **Handling of Indices**:
+   - The merge function uses the `p` and `r` parameters to correctly determine the current subarray being merged. This ensures that the merge is applied to the correct portion of the array.
+
+3. **In-place Modifications**:
+   - The merge function directly modifies the original array `A`, which is the expected behavior for an in-place merge sort.
+
+---
+
+### ❗ **Potential Issues & Fixes**
+
+#### 1. **Incorrect Splitting of the Array**
+   - **Issue**: If the code is not properly passing the `p` and `r` (start and end indices) to the recursive calls, the merge function may be merging incorrect parts of the array.
+   - **Fix**:
+     Ensure that the recursive calls are passing the correct indices to the `merge_sort` function. For example:
+
+     ```python
+     def merge_sort(A, l, r):
+         if l < r:
+             mid = (l + r) // 2
+             merge_sort(A, l, mid)
+             merge_sort(A, mid + 1, r)
+             merge(A, l, r)
+     ```
+
+     Here, `l` and `r` are the **start and end indices** of the subarray being sorted.
+
+---
+
+#### 2. **Incorrect Initial Call to `merge_sort`**
+   - **Issue**: If the initial call is not passing the correct indices (e.g., calling `merge_sort(A)` without parameters), the function may not work as intended.
+   - **Fix**:
+     Call the `merge_sort` function with the full range of the array:
+
+     ```python
+     merge_sort(A, 0, len(A) - 1)
+     ```
+
+---
+
+#### 3. **Incorrect Merge Function Parameters**
+   - **Issue**: If the `merge` function is being called with incorrect `p` and `r` values (e.g., using the entire length of the array instead of the current subarray), the merge may be applied to the wrong portion.
+   - **Fix**:
+     Ensure the `merge` function is called with the correct start and end indices of the current subarray. For example, in the recursive function above, the call to `merge(A, l, r)` ensures the correct indices are used.
+
+---
+
+#### 4. **Sentinels Not Properly Used**
+   - **Issue**: While the code appends a sentinel to both `L` and `R`, the code may not be using the correct sentinel value (e.g., using `float('inf')` instead of a value larger than all elements in the array).
+   - **Fix**:
+     Ensure that the sentinel is **larger than any possible value in the array**. If the array contains very large numbers, use a value like `float('inf')`.
+
+---
+
+### ✅ **Working Example of Merge Sort in Python**
+
+Here is a complete and working example of merge sort with a properly implemented `merge` function:
+
+```python
+def merge_sort(A, l, r):
+    if l < r:
+        mid = (l + r) // 2
+        merge_sort(A, l, mid)
+        merge_sort(A, mid + 1, r)
+        merge(A, l, mid, r)
+
+def merge(A, l, mid, r):
+    # Create temporary arrays
+    L = A[l:mid+1]
+    R = A[mid+1:r+1]
+    
+    # Add a sentinel to both subarrays
+    L.append(float('inf'))
+    R.append(float('inf'))
+    
+    i = j = 0
+    for k in range(l, r + 1):
+        if L[i] <= R[j]:
+            A[k] = L[i]
+            i += 1
+        else:
+            A[k] = R[j]
+            j += 1
+
+# Example usage
+A = [38, 27, 43, 3, 9, 82, 10]
+merge_sort(A, 0, len(A) - 1)
+print(A)  # Output: [3, 9, 10, 27, 38, 43, 82]
+```
+
+---
+
+### 🔍 **Summary**
+
+Your merge function is **logically correct**, but the issue likely lies in:
+- **Incorrect parameter passing** (e.g., missing `l` and `r` indices).
+- **Incorrect initial call** to `merge_sort`.
+- **Incorrect merge function parameters**.
+
+By ensuring the recursive function passes the correct indices and the `merge` function is called with the right subarray range, the code should work as expected.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implemented a merge sort algorithm with guaranteed O(n log n) worst-case time complexity, which meets the requirement without needing randomization.
+
+POINT_ID: 5
+The provided code correctly implements a merge sort algorithm to sort an array in **non-decreasing order**. Below is a detailed analysis of its correctness and behavior:
+
+---
+
+### **1. Overview of the Algorithm**
+
+The code uses a **divide-and-conquer** strategy, which is characteristic of **merge sort**:
+
+- **Divide**: The array is split into two halves.
+- **Conquer**: Each half is recursively sorted.
+- **Combine**: The two sorted halves are merged back into a single sorted array.
+
+This approach guarantees a time complexity of **O(n log n)**, which is efficient for large datasets.
+
+---
+
+### **2. Key Components of the Code**
+
+#### **a. Recursive `solution` Function**
+
+```python
+def solution(A):
+    r = len(A)
+    if 1 < r:
+        p = math.floor((r)/2)
+        A1 = A[0:p]
+        A2 = A[p:r]
+        A1 = solution(A1)
+        A2 = solution(A2)
+        A = A1 + A2
+        merge(A, p, r)
+    return A
+```
+
+- **Base Case**: If the array length is less than or equal to 1, it is already sorted.
+- **Splitting**: The array is divided into two parts: `A1` (first half) and `A2` (second half).
+- **Recursive Sorting**: `A1` and `A2` are sorted by recursively calling `solution`.
+- **Merging**: After sorting, the two halves are merged into one sorted array using the `merge` function.
+
+#### **b. `merge` Function**
+
+```python
+def merge(A, p, r):
+    n1 = p
+    n2 = r - p
+    L = list()
+    R = list()
+    for i in range(0, n1):
+        L.append(A[i])
+    for j in range(0, n2):
+        R.append(A[p + j])
+    L.append(3000000)
+    R.append(3000000)
+    i = j = k = 0
+    while i < n1 or j < n2:
+        if L[i] <= R[j]:
+            A[k] = L[i]
+            i += 1
+        else:
+            A[k] = R[j]
+            j += 1
+        k += 1
+```
+
+- **Initialization**: The function copies the first `p` elements into `L` and the remaining `n2 = r - p` elements into `R`.
+- **Sentinels**: The use of `3000000` as a sentinel (a very large number) simplifies the merge logic by ensuring that the comparison loop doesn't need to check for end-of-array conditions.
+- **Merge Loop**: The two sorted halves are merged in-place into the original array `A`.
+
+---
+
+### **3. Correctness of the Algorithm**
+
+#### **a. Correct Sorting**
+
+- The code correctly follows the merge sort algorithm.
+- It ensures that every recursive call sorts the subarrays, and the merge step combines them in sorted order.
+
+#### **b. Edge Cases**
+
+- **Empty Array or Single Element**: The base case returns the input array as is, which is already sorted.
+- **Already Sorted Array**: The code still performs the merge steps correctly, resulting in the same sorted array.
+- **Reverse Sorted Array**: The algorithm correctly sorts the array in ascending order.
+- **Negative Numbers**: The code handles negative numbers correctly since the sentinel (`3000000`) is larger than any possible negative number.
+
+#### **c. Sentinel Value Consideration**
+
+- The use of `3000000` as a sentinel is a **reasonable assumption** if the input is constrained to values less than `3000000`.
+- **Potential Issue**: If the input contains values greater than `3000000`, the code may fail. However, this is not a flaw of the algorithm itself, but a limitation of the specific implementation.
+- **Alternative**: A better approach would be to use `float('inf')` or a value that is guaranteed to be larger than any possible element in the array.
+
+---
+
+### **4. Conclusion**
+
+The code is a **correct implementation of merge sort**, assuming the input values are within a reasonable range (e.g., less than `3000000`). It sorts the array in **non-decreasing order** as intended and handles all standard edge cases effectively.
+
+---
+
+### **5. Final Answer**
+
+✅ **The code correctly sorts the array in non-decreasing order using a merge sort algorithm.**

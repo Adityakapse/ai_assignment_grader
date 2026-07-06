@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: No memo array is allocated; the student uses an iterative dynamic programming array P instead of a recursive memoization approach, which fails to meet the rubric's requirement for a memo array of size n+1 initialized to -1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The initial values of P correctly correspond to the base cases: P[0] = W[0] and P[1] = max(W[0], W[1]), which matches the required behavior for n=0 and n=1.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No cache check is present; the student's solution uses an iterative approach with a P array and does not perform any memoization checks, violating the rubric's requirement for immediate returns when memo[n] != -1.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation is correctly implemented: for each i ≥ 2, P[i] = max(P[i-2] + W[i], P[i-1]), which accurately captures the optimal substructure of the problem without requiring memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly computes the maximum profit for all valid inputs (1 ≤ n ≤ 1000) in O(n) time using an iterative dynamic programming approach, which passes all correctness criteria.

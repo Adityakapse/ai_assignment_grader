@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class is properly defined with a String array for storage and Qhead/Qrear variables to track positions, fulfilling the requirement for internal storage and state tracking.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method correctly returns whether Qhead equals Qrear, which accurately reflects when the queue contains no elements in the student's implementation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns qu[Qhead], which correctly accesses the front element of the queue without modifying any internal state or pointers.
+
+POINT_ID: 4
+BUCKET: Wrong (0 marks)
+FEEDBACK: The enqueue method incorrectly checks if (Qrear + 1) % max != Qhead before adding elements, preventing insertion when the queue is full (even though the problem allows up to 100 elements), and fails to handle wrap-around properly by not using modulo arithmetic when updating Qrear.
+
+POINT_ID: 5
+BUCKET: Correct (18 marks)
+FEEDBACK: The dequeue() method correctly returns the front element (qu[Qhead]), updates the Qhead index using modulo arithmetic to handle wrap-around, and ensures the queue state is properly updated for subsequent operations when the queue is not empty.
+
+POINT_ID: 6
+BUCKET: Wrong (0 marks)
+FEEDBACK: The enqueue method incorrectly prevents adding elements when the queue is full, and the dequeue method returns "error" instead of the correct element when the queue is empty, breaking FIFO behavior and violating method specifications.

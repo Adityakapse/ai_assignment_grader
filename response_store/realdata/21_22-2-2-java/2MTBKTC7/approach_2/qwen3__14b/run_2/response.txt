@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution does not allocate a prefix sum array and instead recalculates sums for each query using O(n) helper functions, failing to implement the required O(n) preprocessing step.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student solution does not construct a prefix sum array at all, instead recalculating sums for each query using nested loops in summe1 and summe2, which fails to build the required cumulative sum array described in the rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code allocates the output array correctly but uses `b.length` instead of `n` in the loop, which may not iterate over exactly `n` queries as required by the rubric point.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly computes the sum for queries where $ l_i = 0 $ by using `summe1` to calculate the cumulative sum from index 0 to $ r_i $, which aligns with the formula $ D[i] = C[r_i] $ when $ l_i = 0 $.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution recalculates prefix sums for each query using O(n) loops inside summe1 and summe2, leading to O(n^2) total time complexity instead of the required O(n) using a single prefix sum array as in the sample.

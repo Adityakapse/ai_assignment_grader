@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The base case for b == 0 is missing; the code returns 1 unconditionally instead of 1 % c, which fails when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses b % 2 == 0 to identify even b and handles odd b via the else clause, leading to distinct recursive branches for even and odd cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case correctly reduces b by 1 through expo(a, b-1, c) and multiplies the result by a before applying modulo c, fulfilling the required logic.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly halves b using integer division (b/2) and squares the recursive result (res * res) before applying modulo c, matching the required O(log b) approach.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to apply modulo c in base cases (when b=0 or b=1), returning 1 or a directly instead of (1%c) or (a%c), leading to incorrect results for inputs where a ≥ c or b=0.

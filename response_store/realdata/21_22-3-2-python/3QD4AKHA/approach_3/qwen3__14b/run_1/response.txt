@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The adjacency list is correctly built from A, and node 0 is added with edges to all nodes 1 to N, enabling a single DFS from node 0 to consider all possible starting points.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array is properly initialized to -1 for all nodes, and the cache check correctly returns memo[node] when it is not -1, ensuring each node is computed once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 when a node has no outgoing edges, accurately representing a path of length 0 from a leaf node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child, the code computes the maximum path length as dfs(child) + 1, and stores the result in memo[node], correctly implementing the recurrence relation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns dfs(0, ...) - 1, correctly adjusting for the virtual source node, and computes the longest path length for all valid DAGs in O(N + M) time.

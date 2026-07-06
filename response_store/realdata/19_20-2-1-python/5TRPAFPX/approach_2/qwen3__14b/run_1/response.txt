@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student implemented a Queue class with a list-based internal storage and additional state variables (firstElement, firstEmpty) to manage FIFO order, fulfilling the rubric's requirements for class structure and internal storage.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The isEmpty() method correctly checks if the queue is empty by comparing self.firstElement and self.firstEmpty, which are both initialized to 0 and only equal when no elements are present.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The head() method correctly returns the front element by accessing self.list[self.firstElement] without modifying any internal state or the queue's contents, fulfilling the requirement.
+
+POINT_ID: 4
+MARKS: 12
+FEEDBACK: The enqueue method uses a custom fixed-size array approach with firstEmpty and firstElement indices, but incorrectly handles capacity checks (uses maxLength=150 instead of 100) and relies on a flawed __loopIndex helper that doesn't properly manage index wrapping for queue operations.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: The dequeue() method correctly retrieves the front element using self.list[self.firstElement], increments the firstElement index (with loopIndex()), and returns the element, properly updating the internal state without modifying the underlying list.
+
+POINT_ID: 6
+MARKS: 10
+FEEDBACK: The student's implementation uses a fixed-size array with indices and a loopIndex method, but violates the maximum size requirement (150 instead of 100) and the head() method prints an error message instead of returning None when empty, deviating from the sample solution's behavior.

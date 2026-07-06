@@ -1,0 +1,132 @@
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+        List<Integer> result = new ArrayList<Integer>();
+        List<Node> graf = new ArrayList<Node>();
+        Node s = null;
+        for (int i = 0; i < graph.length; i++) {
+            ArrayList<Integer> adj = new ArrayList<Integer>();
+            for (int j : graph[i]) adj.add(j);
+            Node n = new Node(i, adj);
+            n.farbe = Farbe.WEIß;
+            graf.add(n);
+            if (i==start) s = n;
+        }
+
+        for (Node n : graf) n.convertIntToNode(graf);
+        dfsvisit(s, result);
+        //System.out.println("result: " + result);
+        return result;
+}
+
+public void dfsvisit(Node u, List<Integer> result) {
+    u.farbe = Farbe.GRAU; result.add(u.val);
+    for (Node v : u.adj) {
+        if (v.farbe.equals(Farbe.WEIß)) {
+            dfsvisit(v, result);
+        }
+    }
+    u.farbe = Farbe.SCHWARZ;
+}
+
+enum Farbe {
+    WEIß, SCHWARZ, GRAU
+}
+
+class Node {
+    public Farbe farbe;
+    public int val;
+    public List<Node> adj;
+    public ArrayList<Integer> adjIntList;
+
+    public Node(int val, ArrayList<Integer> adj) {
+        this.val = val;
+        this.adj = new ArrayList<Node>();
+        this.adjIntList = adj;
+    }
+
+    public void convertIntToNode(List<Node> nodes) {
+        this.adj = new ArrayList<Node>();
+        for (int i : adjIntList) {
+            for (Node n : nodes) {
+                if (n.val == i) {
+                    this.adj.add(n);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "farbe=" + farbe +
+                ", val=" + val +
+                ", adjIntList=" + adjIntList +
+                '}';
+    }
+}
+
+RUBRIC:
+Point 1 — DFS loop structure and initialisation
+  The start node is pushed onto the stack before the loop, and a while loop processes nodes until the stack is empty.
+  Buckets:
+    - Wrong (0 marks): No loop is present, or only the start node is processed without iterating further; the method returns without traversing the graph.
+    - Semi (10 marks): A loop is present but either the start node is not added to the stack before the loop begins, or the loop termination condition is incorrect (e.g., runs a fixed number of times rather than until the stack is empty).
+    - Correct (20 marks): The start node is pushed onto the stack before the loop, and a while loop continues processing until the stack is empty.
+
+Point 2 — LIFO pop: removing from the top
+  The current node is always removed from the top (back) of the stack, ensuring depth-first traversal.
+  Buckets:
+    - Wrong (0 marks): No pop operation is present, or nodes are removed from the front of the stack (FIFO), which produces breadth-first rather than depth-first traversal.
+    - Semi (10 marks): A remove operation is present but inconsistently applied (e.g., sometimes from front, sometimes from back), producing a traversal order that is neither pure DFS nor pure BFS.
+    - Correct (20 marks): The current node is always removed from the top/back of the stack (stack.pop() in Java Stack; list.pop() in Python), ensuring last-in-first-out (depth-first) traversal.
+
+Point 3 — Visited tracking: check and mark
+  Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.
+  Buckets:
+    - Wrong (0 marks): No visited tracking is present; nodes can be added to the result multiple times or the algorithm loops infinitely on graphs with cycles.
+    - Semi (10 marks): A visited structure exists but is used incorrectly: for example, nodes are marked visited before being popped rather than when processed, or the visited check is present but the update is missing, allowing revisits.
+    - Correct (20 marks): Each popped node is checked against visited before processing; if not already visited it is added to visited and its neighbours are explored. Already-visited nodes are skipped.
+
+Point 4 — Neighbour push
+  All unvisited neighbours from graph[current] are pushed onto the stack. For iterative implementations, neighbours are pushed in reverse adjacency list order so that they are popped and visited in forward order.
+  Buckets:
+    - Wrong (0 marks): Neighbours are not pushed; graph[current] is not iterated, so no nodes beyond the start are ever discovered.
+    - Semi (10 marks): graph[current] is iterated and unvisited neighbours are pushed, but in forward order (for iterative approach), causing neighbours to be visited in reversed adjacency list order. Recursive implementations that iterate neighbours in forward order receive full credit.
+    - Correct (20 marks): All unvisited neighbours in graph[current] are pushed onto the stack in reverse order (for iterative approach), so they are visited in the correct adjacency list order. Recursive implementations iterating in forward order are equally correct.
+
+Point 5 — Overall correctness
+  The method returns all reachable nodes from start in correct DFS order for all valid directed graphs.
+  Buckets:
+    - Wrong (0 marks): Method returns an empty list or produces an incorrect traversal for most inputs.
+    - Semi (10 marks): Returns correct nodes but in wrong order (e.g., BFS order or reversed DFS order), or fails on graphs with cycles or multiple branches.
+    - Correct (20 marks): Returns all reachable nodes from start in correct DFS order (neighbours visited in adjacency list order) for all valid directed graphs including those with cycles.

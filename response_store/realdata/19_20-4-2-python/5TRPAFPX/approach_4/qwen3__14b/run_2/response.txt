@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly sets newNode (equivalent to y) to deleteNode when it has zero or one child, and uses treeMinimum(deleteNode.right) when it has two children, matching the required logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum function correctly uses recursion to traverse left until reaching a node with no left child, then returns that node, matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's code does not explicitly identify x as y's non-null child (y.left or y.right) as required. Instead, it directly manipulates parent pointers of newNode without assigning x, leading to incorrect handling of the child promotion logic.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly updates newNode.parent to deleteNode.parent (y.parent) when x is non-null, adjusts the parent's left/right pointers to point to newNode, and handles the root replacement case when deleteNode is the root.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code does not copy the key from the successor node to the delete node, leaving deleteNode.key unchanged even when a successor is used, which leaves the original node's key in the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code correctly handles leaf and single-child deletions but fails in the two-children case when the minimum node is not a direct child of the deleteNode, as it incorrectly reattaches subtrees without ensuring proper parent-child links, potentially violating the BST property.

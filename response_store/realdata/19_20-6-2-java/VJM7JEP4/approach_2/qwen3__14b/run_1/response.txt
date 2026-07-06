@@ -1,0 +1,24 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (capacity+1) and initializes the first row to 0, leveraging Java's default array initialization for the remaining elements.
+
+POINT_ID: 2
+The student's code partially meets the requirements outlined in the rubric point. Specifically, the **outer loop** correctly iterates over all $ n $ items (from $ i = 1 $ to $ n $), which aligns with the rubric's requirement. However, the **inner loop** does **not** start at $ j = 0 $, as required by the rubric. Instead, it starts at $ j = 1 $ and iterates up to $ j = \text{capacity} $, leaving out the critical $ j = 0 $ case. This omission means the loop structure does **not** fully cover all subproblems as specified in the rubric.
+
+### **Mark: 10/20**
+- **10/20** is awarded because the **outer loop** is correct, and the **inner loop** is partially correct but fails to iterate from $ j = 0 $ to $ \text{capacity} $, which is explicitly required by the rubric point.
+
+### **Feedback**
+The student's code demonstrates a correct structure for the outer loop, iterating over all items. However, the inner loop does **not** start at $ j = 0 $, which is a critical part of the rubric's requirement to "cover all subproblems" by iterating from $ j = 0 $ to $ \text{capacity} $. This omission may lead to incomplete coverage of subproblems in the algorithm, even though the initial setup for $ i = 0 $ addresses $ j = 0 $. To fully meet the rubric's expectations, the inner loop should explicitly iterate from $ j = 0 $ to $ \text{capacity} $, ensuring all subproblems are considered.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly checks if the item's volume exceeds the current capacity (volumes[i-1] > j) before deciding to include it, ensuring the algorithm only considers feasible items for each capacity state.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation using a forward iteration approach, comparing the value of excluding the current item (rucksack[i-1][j]) with including it (rucksack[i-1][j - volumes[i-1]] + values[i-1]) when the item fits.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the 0-1 Knapsack dynamic programming algorithm, properly initializing the DP table, handling item inclusion/exclusion logic, and returning the correct maximum value for all valid inputs as demonstrated by the sample test cases.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses a 1D list 'result' instead of a 2D table and updates it with single loops, not nested loops as required for a proper DP table.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The initial 'result = range(len(pre)+1)' correctly initializes the first row, but the first column (for the 'after' string) is not explicitly initialized with the required values.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code checks for character matches but uses 'result[j]' instead of referencing the correct diagonal cell (edDis[i-1][j-1]) when characters match.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The mismatch recurrence uses 'min((result[j], result[j+1], tmp[-1]))' which references incorrect cells (edDis[i-1][j+1] and edDis[i][j-1]) instead of the required three neighbors.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code avoids recursion but fails for complex cases like "kitten" vs "sitting" due to incorrect index handling in the DP update logic.

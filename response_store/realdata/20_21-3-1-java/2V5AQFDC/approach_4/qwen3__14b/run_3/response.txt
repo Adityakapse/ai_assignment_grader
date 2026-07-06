@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D table with dimensions (n+1) x (capacity+1) and initialized all cells to 0 via Java's default array initialization, meeting the rubric's requirements.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the zero-capacity subproblem required to handle items with weight 0 correctly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's solution correctly checks if volumes[i - 1] > j before deciding to include an item, which is equivalent to checking volumes[i] <= j. This ensures items are only considered when they fit exactly or with room to spare, and zero-weight items are handled properly at j = 0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the recurrence relation by comparing the value of excluding the current item (table[i-1][j]) and including it (table[i-1][j - volumes[i-1]] + values[i-1]), consistently referencing the previous row for both branches.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly initializes the DP table, handles zero-weight items by allowing their inclusion without exceeding capacity, and returns the correct value from table[n][capacity], passing all edge cases including zero capacity and zero-volume items.

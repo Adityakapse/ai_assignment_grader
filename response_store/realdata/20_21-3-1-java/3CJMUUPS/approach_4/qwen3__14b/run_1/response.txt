@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) using `new double[volumes.length + 1][capacity + 1]`, and Java's default initialization ensures all cells are set to 0.0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student's code uses nested loops with the outer loop covering all items, but the inner loop starts at j=1 instead of j=0, missing the zero-capacity subproblem required for handling zero-weight items.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code checks if volumes[i-1] > j before considering including the item, which is equivalent to checking volumes[i] <= j, correctly allowing items that fit exactly or with room to spare, and properly handling zero-weight items at j = 0.
+
+POINT_ID: 4
+BUCKET: Correct (25 marks)
+FEEDBACK: The student correctly implements the recurrence relation using Math.max(table[i-1][j], table[i-1][j - volumes[i-1]] + values[i-1]) when the item fits, and table[i-1][j] when it doesn't, consistently referencing the previous row for both cases.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle zero-weight items when capacity is 0, as the inner loop starts at j=1 and does not process j=0, leading to incorrect results for such cases.

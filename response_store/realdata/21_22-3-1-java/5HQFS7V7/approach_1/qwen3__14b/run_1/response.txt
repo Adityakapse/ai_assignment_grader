@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The memo array is allocated with size n+1 but initialized with m[0] = 0 and m[1] = W[0], which does not match the required sentinel value of -1 for all entries.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The base cases are incorrectly initialized: m[0] is set to 0 instead of W[0], and m[1] is set to W[0] instead of max(W[0], W[1]).
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: There is no recursive helper function or cache check for memo[n] != -1, as the code uses an iterative approach without memoization checks.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence relation correctly computes m[i] = max(W[i-1] + m[i-2], m[i-1]), which captures the optimal choice of placing or skipping a billboard at position i-1.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The code correctly implements an O(n) dynamic programming solution, but the base cases are incorrect (m[0] = 0 and m[1] = W[0]), which may lead to wrong results for small n.
+
+TOTAL: 75

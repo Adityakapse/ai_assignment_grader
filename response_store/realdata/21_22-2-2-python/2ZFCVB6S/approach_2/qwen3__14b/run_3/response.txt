@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution creates a list of lists where each sublist contains cumulative sums up to that index, but does not allocate a single prefix sum array of size n with the first element initialized to A[0] as required by the rubric point.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The student correctly constructs a prefix sum array by accumulating the running total in 's' and storing both the pre- and post-transport sums in 'sums', which allows efficient query resolution using the same logic as the sample solution's prefix sum array.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution does not explicitly allocate an output array of size n as required, instead generating the result list directly via a list comprehension without pre-allocating storage for the output.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly handles the l=0 edge case by using prefix sums where sums[r][1] - sums[l][0] computes the sum from l to r, with sums[l][0] being 0 when l=0.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The solution correctly constructs a prefix sum array where each element stores the cumulative sum before and after adding the current value, then computes query results using the difference between appropriate prefix sums, achieving O(n) time complexity and correct results for all cases.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code uses a 1D list (result) instead of a 2D table, and the loop structure does not iterate through all i and j indices in a nested fashion as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The base case initialization correctly sets the first row and column values for insert/delete costs using range(len(pre)+1) and appending i+1 for each new row.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match, the code correctly appends result[j] (equivalent to edDis[i-1][j-1]) to tmp, maintaining the correct value from the diagonal cell.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The mismatch recurrence incorrectly uses min(result[j], result[j+1], tmp[-1]) instead of the required min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]) from the three neighboring cells.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The overall implementation is incorrect due to the flawed recurrence relation in the mismatch case, leading to incorrect edit distance calculations for most inputs.
+
+TOTAL: 35

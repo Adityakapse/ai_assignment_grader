@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly allocates a 2D table of size (m+1)x(n+1), but the loop structure initializes the first row and column within a single nested loop starting from i=0 and j=0, rather than using separate loops for initialization and then nested loops starting from i=1 and j=1 as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly initializes both base cases: the first row (matrix[i][j] = j when i == 0) and first column (matrix[i][j] = i when j == 0), matching the required initialization for edit distance calculation.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The student correctly checks if a[i-1] == b[j-1] and sets matrix[i][j] to matrix[i-1][j-1] when characters match, exactly as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters using 1 + Math.min of all three possible operations (insert, delete, replace) through nested Math.min calls, matching the expected formula.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance, initializing the matrix properly and handling all three operations (insert, delete, replace) with the correct recurrence relation, without using recursion.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution does not explicitly handle the case when b == 0, relying instead on the loop not executing and returning the initial value of res (1) rather than the correct 1 % c as required by the rubric point.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student correctly detects odd/even values of b using bitwise AND (b & 1) instead of modulo, which is functionally equivalent to b % 2 and meets the rubric requirement.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution uses an iterative approach with bit manipulation rather than recursively reducing the exponent by 1 for odd cases, which does not match the required method described in the rubric point.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's solution uses an iterative approach with bit shifting and squaring, rather than recursively handling the even case by computing expo(a, b/2, c) and squaring the result as required by the rubric point.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: The code correctly implements modular exponentiation using the iterative squaring method, but fails edge cases where a mod c is 0 and b=0 (e.g., a=1, b=0, c=1), returning 1 instead of the correct 0. This is due to the initial res=1 not being adjusted for cases where a mod c is 0 and b=0.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly constructs an adjacency list from the input edges and adds a virtual source node 0 with edges to all other nodes, ensuring the DFS starting from node 0 can explore all possible paths in the DAG.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The memo array is initialized with -10000 instead of -1, and the cache check compares against this incorrect sentinel value, making it impossible to distinguish between uncached nodes and those with a longest path of 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if a node has no outgoing edges (len(ll[node]) == 0) and returns 0, matching the required base case behavior for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly computes the maximum path length by iterating over all children, applying `max(bs, dfs(child) + 1)`, and storing the result in `nodes_mp[node]` before returning, fulfilling the recurrence requirement.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements memoization with a virtual source node (node 0) and applies the necessary -1 adjustment, ensuring the longest path length is computed accurately for all DAG inputs.

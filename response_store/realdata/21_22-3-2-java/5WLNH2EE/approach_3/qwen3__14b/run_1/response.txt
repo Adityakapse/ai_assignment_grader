@@ -1,0 +1,43 @@
+### **Point 1: Graph Construction and Virtual Source**  
+**Bucket:** **Semi (10 marks)**  
+- **Analysis:** The student correctly constructs the adjacency list for nodes 0 through N, but **fails to add the virtual source node (node 0) connected to all other nodes**. In the sample solution, this is explicitly handled with `graph.get(0).add(i)` for each node `i` from 1 to N. The absence of this step means the algorithm does not account for paths starting from any node (as the virtual node would have done), leading to incomplete graph traversal.  
+- **Conclusion:** While the adjacency list is built correctly, the **virtual source is missing**, resulting in a **Semi** score.  
+
+---
+
+### **Point 2: Memoization**  
+**Bucket:** **Wrong (0 marks)**  
+- **Analysis:** The student uses a `visited` array and a `längsteEntfernung` array to track results, but **does not use a memoization array initialized to -1** (as in the sample solution). Instead, the `visited` array is used for traversal control, not for caching results. This approach **does not prevent redundant computations** and **violates the memoization requirement**.  
+- **Conclusion:** The lack of a proper memoization array (with -1 initialization) renders the solution **non-compliant**, earning a **Wrong** score.  
+
+---
+
+### **Point 3: DFS Base Case**  
+**Bucket:** **Wrong (0 marks)**  
+- **Analysis:** The student's code **does not explicitly check for nodes with no outgoing edges**. While the logic implicitly returns 0 for such nodes (as the loop does not execute and the `längsteEntfernung` array is initialized to 0), the **absence of an explicit base case check** (e.g., `if (children.isEmpty()) return 0`) means the code **does not meet the rubric's criteria** for a valid base case.  
+- **Conclusion:** The **lack of an explicit base case check** leads to a **Wrong** score, despite the logic producing correct results.  
+
+---
+
+### **Point 4: Recurrence**  
+**Bucket:** **Correct (20 marks)**  
+- **Analysis:** The student's code correctly computes the maximum path length for each node by iterating over all children and updating `längsteEntfernung[i]` with `Math.max(längsteEntfernung[i], längsteEntfernung[nachbar] + 1)`. This matches the sample solution's recurrence logic (`sol = max(sol, dfs(child) + 1)`), ensuring **correct propagation of path lengths**.  
+- **Conclusion:** The **recurrence logic is fully implemented**, earning a **Correct** score.  
+
+---
+
+### **Point 5: Overall Correctness**  
+**Bucket:** **Wrong (0 marks)**  
+- **Analysis:** The student's code **fails to include the virtual source node**, which is critical for ensuring the algorithm considers all possible paths in the DAG. Additionally, the **absence of the -1 adjustment** (as in the sample solution's `dfs(0) - 1`) leads to **incorrect final results**. The code may also **incorrectly compute path lengths** in cases where the longest path does not start from a specific node.  
+- **Conclusion:** The **missing virtual source and adjustment**, combined with **incorrect traversal logic**, result in **Wrong** overall correctness.  
+
+---
+
+### **Summary**  
+| Rubric Point | Bucket       | Reason                                                                 |
+|--------------|--------------|------------------------------------------------------------------------|
+| Point 1      | **Semi**     | Virtual source node missing.                                           |
+| Point 2      | **Wrong**    | No memoization array with -1 initialization.                         |
+| Point 3      | **Wrong**    | No explicit base case check for leaf nodes.                          |
+| Point 4      | **Correct**  | Recurrence logic correctly implemented.                              |
+| Point 5      | **Wrong**    | Missing virtual source and adjustment lead to incorrect results.     |

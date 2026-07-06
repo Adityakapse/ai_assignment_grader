@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's code does not explicitly handle the base case when b == 0, and returns 1 even when c == 1, which incorrectly computes 1 % c as 1 instead of 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student uses bitwise AND ((b & 1) == 1) to detect odd b, which correctly distinguishes odd and even cases without relying on modulo operations.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When b is odd, the student multiplies the result (res) by a and applies modulo c, which correctly implements the equivalent of the sample solution's odd case logic.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student uses bit shifting (b >> 1) to halve b and squares a (a * a % c) in the even case, which correctly implements the equivalent of the sample solution's even case logic.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle the base case when b == 0 correctly, returning 1 instead of 1 % c, which causes incorrect results for inputs like c == 1. It also lacks explicit handling of edge cases like a == 0, though such cases are not in the input constraints.

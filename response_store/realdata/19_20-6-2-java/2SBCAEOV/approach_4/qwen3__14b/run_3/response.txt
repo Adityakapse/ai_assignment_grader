@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D array of size (n+1) x (W+1) and initialized all cells to 0 using the condition "if (i == 0 || w == 0)", matching the required DP table structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student implemented nested loops where the outer loop iterates over all n+1 items (from 0 to n) and the inner loop covers all capacities from 0 to W inclusive, matching the required structure for solving subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's solution correctly checks if wt[i - 1] <= w before considering including the item, ensuring that items only fit when their weight is less than or equal to the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation by taking the maximum of including the current item (val[i-1] + K[i-1][w - wt[i-1]]) and excluding it (K[i-1][w]) when the item fits, and directly using the previous row's value when it doesn't fit.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the 0/1 Knapsack dynamic programming approach, with the final result properly read from K[n][W], and handles the example cases correctly by selecting items based on capacity constraints.

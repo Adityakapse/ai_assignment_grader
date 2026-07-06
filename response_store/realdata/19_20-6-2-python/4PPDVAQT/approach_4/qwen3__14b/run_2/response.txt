@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D list with dimensions (len(val)+1) x (cap+1) and initializes all elements to 0 using a nested list comprehension.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses nested loops but the outer loop iterates over capacities (j) instead of items (i), and the inner loop processes items, violating the required structure of iterating items first.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if vol[i-1] <= j before considering including the item, ensuring items that exactly fit the remaining capacity are properly considered.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation using max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j]) when the item fits, and matrix[i-1][j] when it doesn't, referencing the previous row (i-1) consistently.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the 0/1 knapsack dynamic programming approach, with the final result correctly read from the bottom-right cell of the DP table (matrix[len(val)][cap]), and passes the sample test cases.

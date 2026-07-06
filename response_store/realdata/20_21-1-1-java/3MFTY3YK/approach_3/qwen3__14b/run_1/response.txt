@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function lacks a base case for b == 0, which results in returning 1 instead of 1 % c when b is 0, leading to incorrect results for this edge case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly checks if b is even or odd using b % 2 == 0 and b % 2 != 0, ensuring the correct recursive branches are taken for even and odd exponents.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For odd b, the code correctly reduces the exponent by 1, recursively computes the result, multiplies by a, and applies modulo c to the final product.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For even b, the code correctly halves the exponent using integer division (b / 2 in C++), computes the half-power recursively, squares it, and applies modulo c to the result.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle the case when b == 0, returning 1 instead of 1 % c, but otherwise correctly implements the modular exponentiation without using 'import' or '**'.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code lacks a base case for b == 0; it returns 1 instead of 1 % c, which fails when c == 1 (e.g., a=2, b=0, c=1 should return 0 but returns 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses (b & 1) == 1 to detect odd b, which is equivalent to checking b % 2 != 0 and correctly distinguishes odd/even cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When b is odd, the code multiplies res by a and applies modulo c, correctly factoring out one a from the exponentiation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses bit shifting (b >> 1) to halve b and squares a in each iteration, achieving O(log b) runtime by repeatedly squaring.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code works for most inputs but fails when b == 0 and c == 1 (returns 1 instead of 0) due to missing explicit base case handling for b == 0.

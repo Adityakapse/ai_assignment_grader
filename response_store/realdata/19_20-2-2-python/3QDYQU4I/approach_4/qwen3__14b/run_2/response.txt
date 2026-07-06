@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code processes all tokens in the input array sequentially, using a try-except block to distinguish numbers (pushed directly) from operators (which trigger popping and applying operations), fulfilling both requirements of left-to-right iteration and token classification.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The code correctly converts numeric tokens to integers using int(a[i]) and pushes them onto the stack within the try block, handling numbers properly without affecting operators.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, the student correctly pops two values from the stack, applies the corresponding arithmetic operation (including all four required operators), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly applies the operand order (second_popped op first_popped) for both subtraction and division, but uses regular division (/) instead of integer division with floor rounding as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles operator order for +, -, *, and /, but uses floating-point division (not integer division with rounding down) and returns a string instead of an integer, leading to incorrect results for division and invalid return type.

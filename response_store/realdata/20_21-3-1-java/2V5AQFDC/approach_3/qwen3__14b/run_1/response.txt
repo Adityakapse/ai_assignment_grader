@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D table with dimensions (n+1) x (capacity+1) and initialized all cells to 0, matching the correct approach described in the rubric.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates over all n items, but the inner loop starts at j = 1 instead of j = 0, which may cause issues with zero-weight items and capacity 0 subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if the item's volume is less than or equal to the current capacity (volumes[i-1] <= j), ensuring zero-weight items can be included when j = 0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly computes the maximum value by comparing the value of including the item (values[i-1] + table[i-1][j - volumes[i-1]]) or excluding it (table[i-1][j]), referencing the previous row as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle zero-weight items when the capacity is 0 because the inner loop starts at j = 1, leaving table[i][0] cells unprocessed for i > 0, leading to incorrect results in such cases.

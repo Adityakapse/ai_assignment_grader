@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution uses a 1D array instead of a 2D table for dynamic programming, and the loop structure iterates over characters rather than indices, deviating from the required allocation and loop structure described in the rubric.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the base case for the first row (insertions) using 'total = range(len(a) + 1)' and for the first column (deletions) by setting tmpdist[0] = i_b+1 during each iteration, matching the sample solution's initialization of edDis[i][0] = i and edDis[0][j] = j.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the character match case by setting tmpdist.append(total[i_a]) when characters are equal, which corresponds to the edDis[i-1][j-1] value from the previous iteration, matching the sample solution's logic.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation using 1 + min of the three neighboring values (left, up, and diagonal), matching the required formula for edit distance when characters differ.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code incorrectly computes the minimum of (total[i_a], total[i_a+1], tmpdist[-1]) instead of the correct (top, left, diagonal) values, leading to incorrect edit distance calculations for most inputs.

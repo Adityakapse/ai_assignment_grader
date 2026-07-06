@@ -1,0 +1,28 @@
+POINT_ID: 1
+The student's code initializes the lower bound to `1` instead of `0`, as required by the rubric's **Correct** bucket. However, the **upper bound** is correctly set to `1e18`. According to the rubric:
+
+- **Correct** requires both bounds to be initialized as `l=0` and `r=1e18`.
+- **Semi** applies when the **upper bound is too small**, which is not the case here.
+- **Wrong** would apply if bounds were not set or used unrelated constants, which is also not the case.
+
+Since the **lower bound is incorrect**, but the **upper bound is correct**, and the rubric does not provide a category for incorrect lower bounds, the most **accurate** classification is **'Semi'**, as the code is **not fully correct** despite meeting the upper bound requirement. This is a **limitation** of the rubric's wording, but based on the provided criteria, **'Semi'** is the best fit.
+
+---
+
+**Answer: 'Semi'**
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop uses a termination condition of upper - lower > 1 instead of the correct l <= r, which may miss the case where l == r, and the midpoint is computed correctly as (upper + lower)/2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: When f_N(mid) == 1 (mid >= N), the student sets upper = mid instead of moving the upper bound left (r = m - 1), and when f_N(mid) == 0, sets lower = mid instead of moving the lower bound right (l = m + 1), which reverses the correct search direction.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student returns 'lower' if f_N(lower) is 1, otherwise 'upper', which correctly identifies N as the first value where f_N transitions from 0 to 1.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code initializes lower to 1 instead of 0, causing it to fail for N=0, and the return statement may not correctly identify N when the loop exits with upper and lower adjacent.

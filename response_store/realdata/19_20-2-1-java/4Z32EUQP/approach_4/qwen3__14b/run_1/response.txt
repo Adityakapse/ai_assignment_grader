@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a Queue class with a String array for storage and Qhead/Qrear integers to track positions, providing complete internal storage and tracking state necessary for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method correctly returns true when Qhead equals Qrear, which accurately reflects an empty queue state regardless of the enqueue/dequeue logic.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method correctly returns qu[Qhead] without modifying any internal state or advancing pointers.
+
+POINT_ID: 4
+BUCKET: Wrong (0 marks)
+FEEDBACK: The enqueue method checks if (Qrear + 1) % max != Qhead before adding elements, which incorrectly prevents enqueuing when the queue is full (i.e., when Qrear is one position behind Qhead), violating the requirement to store up to 100 elements.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue() method correctly retrieves the element at Qhead, increments Qhead modulo max to remove it from the queue, and returns the value, maintaining consistent internal state when the queue is not empty.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The enqueue method incorrectly checks for fullness using (Qrear +1) % max != Qhead, which prevents adding elements when the queue is full (even though the problem allows up to 100 elements), and dequeue returns "error" instead of handling empty queue cases as expected.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D DP table of size (len1+1)x(len2+1) and uses nested loops to fill it bottom-up, with the inner loops iterating over all required indices through the use of i+1 and j+1 in the dp array accesses.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the base cases with dp[i][0] = i for all i and dp[0][j] = j for all j, matching the sample solution's approach for initializing deletion and insertion costs.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly sets dp[i+1][j+1] to dp[i][j] when characters match, equivalent to the sample's edDis[i][j] = edDis[i-1][j-1] logic.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student incorrectly computes insert and delete operations by using dp[i][j+1] for insert and dp[i+1][j] for delete, which are swapped compared to the correct recurrence that should take min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]).
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance, initializing the DP table properly and computing each cell based on the minimum of insert, delete, and replace operations, matching the sample solution's logic and avoiding recursion.

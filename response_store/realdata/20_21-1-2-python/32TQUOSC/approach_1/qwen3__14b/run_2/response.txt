@@ -1,0 +1,108 @@
+The provided code is an implementation of the **Merge Sort algorithm**. It is **functionally correct** and will **sort an input list in ascending order**. However, there are **some inefficiencies and potential issues** that could be addressed to improve clarity, performance, and correctness.
+
+---
+
+### ✅ **Correctness of the Algorithm**
+
+The code correctly implements the **divide-and-conquer** approach of Merge Sort:
+
+1. **Base Case**: If the length of the list is 1 or 0, it returns the list immediately.
+2. **Divide**: It splits the list into two halves.
+3. **Conquer**: Recursively sorts each half.
+4. **Combine**: Merges the two sorted halves into one sorted list.
+
+The **merge** function is also correctly implemented:
+- It uses **sentinels** (large values) to simplify the merge process.
+- It merges the two sorted subarrays in-place.
+
+---
+
+### ⚠️ **Potential Issues and Improvements**
+
+#### 1. **Unnecessary Use of `math.floor`**
+```python
+p = math.floor(r / 2)
+```
+- Python's integer division (`//`) is sufficient and avoids the need for `math.floor` when `r` is an integer.
+- **Improved line**:
+  ```python
+  p = r // 2
+  ```
+
+#### 2. **Inefficient Recursion with List Slicing**
+```python
+A1 = A[0:p]
+A2 = A[p:r]
+A1 = solution(A1)
+A2 = solution(A2)
+A = A1 + A2
+```
+- This approach creates **multiple copies** of the list at each recursive level, which is **inefficient** in terms of **memory** and **time**.
+- **Alternative**: Pass indices (`start`, `end`) to the recursive function, and **mutate the original list** in-place.
+
+#### 3. **Merge Function Parameters**
+The `merge` function is called with `p` and `r`:
+```python
+merge(A, p, r)
+```
+But the parameters are **not used consistently** within the function. The function uses `r` as the **length of the array**, which is **confusing**.
+
+---
+
+### 🛠️ **Improved Version of the Code**
+
+```python
+def solution(A):
+    def merge_sort(arr, start, end):
+        if start < end:
+            mid = (start + end) // 2
+            merge_sort(arr, start, mid)
+            merge_sort(arr, mid + 1, end)
+            merge(arr, start, mid, end)
+
+    def merge(arr, start, mid, end):
+        left = arr[start:mid+1]
+        right = arr[mid+1:end+1]
+        left.append(float('inf'))
+        right.append(float('inf'))
+        i = j = 0
+        for k in range(start, end + 1):
+            if left[i] <= right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+
+    merge_sort(A, 0, len(A) - 1)
+    return A
+```
+
+---
+
+### 📈 **Performance Considerations**
+
+- **Time Complexity**: $O(n \log n)$ — optimal for merge sort.
+- **Space Complexity**: $O(n)$ — due to the temporary arrays in the `merge` function.
+- **In-Place Merge Sort**: Not possible in general without $O(n)$ extra space.
+
+---
+
+### 🔍 **Summary of Changes**
+
+| Original Code | Issue | Fix |
+|---------------|-------|-----|
+| `math.floor(r / 2)` | Unnecessary use of `math.floor` | Use `r // 2` |
+| Recursion with list slicing | Creates multiple copies | Use index-based recursion |
+| Confusing parameter names | `p` and `r` in `merge` | Use `start`, `mid`, `end` |
+| Return value not used | `merge` returns `A` | `merge` is in-place, no need to return |
+
+---
+
+### ✅ **Final Notes**
+
+- The algorithm is **logically correct** and will **sort the input list**.
+- The **improved version** is **more efficient**, **easier to understand**, and **better aligned with Pythonic conventions**.
+- For large input sizes, the **index-based approach** is **strongly recommended** to avoid unnecessary memory allocations.
+
+Let me know if you'd like a version with **in-place merging** or **parallelization**!

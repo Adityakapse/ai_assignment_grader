@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (W+1) and initializes all cells to 0 using the nested loops.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items (0 to n) and the inner loop iterates over all capacities from 0 to W, covering all required subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `wt[i - 1] <= w` correctly checks if the item's weight fits into the current capacity, allowing inclusion when the item exactly fills the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly computes `max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w])` when the item fits, referencing the previous row (i-1) and subtracting the item's weight.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `K[n][W]`, which is the correct cell for the forward iteration, ensuring the maximum value is returned for all valid inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses recursion to traverse the tree, correctly moving left when z.key < x.key and right otherwise, ensuring the insertion point is found by recursively navigating to the appropriate null child position.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code does not maintain a separate parent pointer during traversal; instead, it sets the parent directly when inserting to the left or right, without tracking the parent node at each step of the recursive traversal.
+
+POINT_ID: 3
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly attaches the new node as left or right child based on key comparison (z.key < x.key → left, else → right) during insertion, ensuring proper BST placement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student sets z.parent to the current node x whenever inserting as a left or right child, correctly establishing the parent link during the recursive insertion process.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly handles insertion into both empty and non-empty trees, properly sets parent pointers, and maintains the BST property by comparing keys and updating left/right children recursively. The return value correctly preserves the original root for non-empty trees.

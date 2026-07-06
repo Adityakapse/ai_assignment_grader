@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class uses an array for storage and a length counter to track elements, providing sufficient state to implement FIFO behavior through enqueue and dequeue operations.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The emptyqueue() method correctly checks if the queue is empty by comparing the 'length' variable to zero, which accurately reflects the number of elements in the queue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method correctly returns array[0], which is the front element of the queue, without modifying any internal state or advancing pointers.
+
+POINT_ID: 4
+BUCKET: Correct (18 marks)
+FEEDBACK: The enqueue method correctly appends elements to the end of the array and increments the length variable, ensuring subsequent operations like dequeue and head() can properly track the queue's state.
+
+POINT_ID: 5
+BUCKET: Correct (18 marks)
+FEEDBACK: The dequeue() method correctly retrieves the front element using head(), shifts all remaining elements left to remove it, and decrements the length variable to update the internal state accurately.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The dequeue method shifts elements in the array, which works for simple cases but fails under repeated operations as it does not track a start index, leading to incorrect FIFO behavior when elements are dequeued multiple times.

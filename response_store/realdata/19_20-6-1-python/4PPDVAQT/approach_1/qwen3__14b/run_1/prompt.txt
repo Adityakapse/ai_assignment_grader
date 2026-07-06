@@ -1,0 +1,68 @@
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+def editDistance(a, b):
+    """This function calculates and returns the edit distance
+    beween tow given strings. this strings are given by the
+    parameters a and b. In the implementation the recursive
+    definition is implemented iterativly"""
+    
+    m = len(a)
+    n = len(b)
+
+    edDis = [0] * (m+1)
+    for i in range(m+1):
+        edDis[i] = [0] * (n+1)
+
+    for i in range(m+1):
+        edDis[i][0] = i
+        
+    for i in range(n+1):
+        edDis[0][i] = i
+
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if a[i-1]==b[j-1]:
+                edDis[i][j] = edDis[i-1][j-1]
+            else:
+                edDis[i][j] = 1 + min(edDis[i][j-1],
+                                      edDis[i-1][j],
+                                      edDis[i-1][j-1])
+
+    return edDis[len(a)][len(b)]
+
+STUDENT SOLUTION:
+def editDistance(pre, after):
+    if len(pre) > len(after):
+        pre, after = after, pre
+
+    result = range(len(pre) + 1)
+    for i, b in enumerate(after):
+        tmp = [i+1]
+        for j, a in enumerate(pre):
+            if a != b:
+                tmp.append(1 + min((result[j], result[j + 1], tmp[-1])))
+            else:
+                tmp.append(result[j])
+        result = tmp
+    return result[-1]
+
+RUBRIC:
+Point 1 — DP table allocation and loop structure (valid range: 0–20)
+  A 2D table of size (m+1) x (n+1) is allocated, and nested loops iterate i from 1 to m and j from 1 to n to fill it bottom-up.
+
+Point 2 — Base case initialisation (valid range: 0–20)
+  edDis[i][0] = i for all i from 0 to m (cost of deleting i characters), and edDis[0][j] = j for all j from 0 to n (cost of inserting j characters).
+
+Point 3 — Character match case (valid range: 0–15)
+  When a[i-1] == b[j-1], edDis[i][j] is set to edDis[i-1][j-1] (no edit needed).
+
+Point 4 — Mismatch recurrence: 1 + min of three neighbours (valid range: 0–25)
+  When a[i-1] != b[j-1], edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]), representing insert, delete, and replace respectively.
+
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns the correct edit distance for all valid string inputs without using recursion.

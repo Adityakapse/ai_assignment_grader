@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: A 2D table of size (m+1) x (n+1) is allocated, but the nested loops are structured incorrectly: the j loop contains an inner i loop, which deviates from the standard bottom-up filling order of i and j in separate nested loops.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are properly initialised: the first column is filled with i values (deletion cost) and the first row with j values (insertion cost) using correct indexing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the code correctly assigns edit_matrix[i][j] = edit_matrix[i-1][j-1], using the correct indices a[i-1] and b[j-1].
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches, the code applies the correct recurrence: 1 + min of insert (i,j-1), delete (i-1,j), and replace (i-1,j-1), with proper indexing and cost calculation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code avoids recursion, correctly implements the edit distance algorithm, and would return the right result for all valid inputs despite the non-standard loop nesting structure.

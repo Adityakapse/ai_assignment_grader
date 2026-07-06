@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student initialized the memo array with m[0] = 0 and m[1] = W[0] instead of allocating a size n+1 array initialized to -1 as required by the rubric point.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code initializes m[0] to 0 (should be W[0]) and m[1] to W[0] (should be max(W[0], W[1])), incorrectly handling both base cases required by the rubric.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution uses an iterative dynamic programming approach without any memoization array or cache check, whereas the rubric point specifically requires checking if a memoized value exists before recomputation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation (choosing between taking the current value plus two steps back or skipping it) and stores results in the memoization array `m`, mirroring the sample solution's approach.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The student's solution incorrectly uses W[i-1] instead of W[i] in the DP recurrence, leading to an off-by-one error that excludes the last element (W[n]) from consideration, which results in incorrect maximum profit calculations for inputs where the optimal selection includes the final position.

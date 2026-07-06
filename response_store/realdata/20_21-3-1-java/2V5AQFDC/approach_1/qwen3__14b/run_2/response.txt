@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: A 2D table of size (n+1) x (capacity+1) is correctly allocated and initialized to 0 with the line "table = new double[n + 1][capacity + 1];" and the initial loop for j=0 to capacity sets all table[0][j] to 0.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop correctly iterates over all items (i=1 to n), but the inner loop starts at j=1 instead of j=0, potentially missing subproblems where capacity is zero. This could affect handling of zero-weight items.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition "if (volumes[i - 1] > j)" correctly checks if the item fits in the current capacity, handling both regular and zero-weight items appropriately.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence relation is correctly implemented with "Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1])" when the item fits, matching the required dynamic programming approach.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The code may fail to handle zero-weight items correctly because the inner loop starts at j=1, potentially missing cases where j=0 and items have volume 0, leading to incorrect maximum value calculations in such scenarios.
+
+TOTAL: 90

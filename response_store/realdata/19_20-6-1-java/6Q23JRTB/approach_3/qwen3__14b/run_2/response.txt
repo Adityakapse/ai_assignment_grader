@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D matrix of size (aL+1) x (bL+1) is correctly allocated, and nested loops iterate from 1 to aL and 1 to bL to fill the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The first row and column are initialized correctly with the respective lengths of the strings, matching the base case requirements for insertions and deletions.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses a ternary operator to set cost to 0 for matches, but does not directly assign edDis[i][j] to edDis[i-1][j-1] as required by the rubric; instead, it includes this value as one of three options in a min calculation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches, the code correctly calculates 1 + min of the three possible operations (insert, delete, replace) using the appropriate matrix indices and adds the cost increment.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation returns matrix[aL][bL], correctly computes edit distance for all valid inputs, and uses an iterative approach without recursion as required.

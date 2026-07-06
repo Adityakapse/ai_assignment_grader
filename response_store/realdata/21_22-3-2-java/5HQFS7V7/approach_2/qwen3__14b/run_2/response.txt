@@ -1,0 +1,65 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student constructs a predecessor list instead of an adjacency list and does not add a virtual source node, failing to implement the required graph structure for the DFS-based solution.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution uses a weight array initialized to 0 instead of a memoization array initialized to -1, and lacks any explicit cache check to return precomputed values.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution does not implement a DFS base case for leaf nodes; instead, it uses a forward dynamic programming approach that initializes weights to 0 and updates them based on predecessors, which is unrelated to the DFS base case requirement.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's solution incorrectly processes predecessors instead of children and lacks topological ordering, leading to an invalid recurrence that does not compute the longest path correctly over the DAG's children as required.
+
+POINT_ID: 5
+To find the longest path in a **Directed Acyclic Graph (DAG)**, it's essential to process the nodes in **topological order**. This ensures that when we compute the longest path to a node, all its predecessors have already been processed, allowing us to correctly use their values.
+
+---
+
+### ✅ Correct Algorithm for Longest Path in a DAG
+
+1. **Topological Sort**:  
+   Perform a topological sort of the DAG. This is a linear ordering of the nodes such that for every directed edge `u → v`, node `u` comes before node `v` in the ordering.
+
+2. **Initialize a Distance Array**:  
+   Let `dist[]` be an array where `dist[v]` represents the length of the longest path ending at node `v`. Initialize all values in `dist[]` to 0.
+
+3. **Process Nodes in Topological Order**:  
+   For each node `u` in the topological order:
+   - For each neighbor `v` of `u`:
+     - If `dist[v] < dist[u] + 1`, update `dist[v] = dist[u] + 1`.
+
+4. **Result**:  
+   The maximum value in the `dist[]` array is the length of the longest path in the DAG.
+
+---
+
+### 🔁 Why Topological Order is Crucial
+
+Processing nodes in an arbitrary order (e.g., based on indices) may lead to incorrect results if predecessors of a node have not yet been processed. This is because the longest path to a node depends on its predecessors, and without topological ordering, the values for those predecessors may not be finalized.
+
+---
+
+### 📌 Example (Without Topological Sort)
+
+Consider a graph with nodes:  
+- `A → B → C`  
+- `A → D`  
+- `D → C`
+
+If we process nodes in the order: `C`, `B`, `D`, `A`, we may compute incorrect values for `C`, as its predecessors `B` and `D` haven't been processed yet.
+
+---
+
+### ✅ Conclusion
+
+To guarantee correctness in finding the longest path in a DAG, **always process nodes in topological order**. This ensures that all dependencies are resolved before computing the path length to a node.
+
+---
+
+### 🧠 Final Answer
+
+To correctly compute the longest path in a Directed Acyclic Graph (DAG), **process the nodes in topological order**. This ensures that when calculating the path length to a node, all its predecessors have already been processed, leading to accurate results.

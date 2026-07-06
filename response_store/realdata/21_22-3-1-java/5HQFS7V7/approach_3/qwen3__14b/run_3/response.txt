@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student's code allocates a memo array of size n+1 but initializes it with 0 and W[0] instead of -1 for all entries, making it impossible to distinguish between uncomputed values and zero-profit cases.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code lacks explicit base case checks for n=0 and n=1. Instead, it initializes m[1] = W[0], which incorrectly assumes the first position is always chosen when n=1.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code uses an iterative DP approach without any memoization cache check. The memo array is never read from, only written to, so no cache check is present.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation m[i] = max(W[i-1] + m[i-2], m[i-1]) in the loop, which captures the optimal choice of placing or skipping the billboard at position i-1.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code runs in O(n) time but fails for n=1 (returns W[0] instead of max(W[0], W[1])) and for cases where the optimal solution requires skipping the first element.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student constructs an adjacency list correctly by storing predecessors in vorgaenger, but fails to add a virtual source node 0 with edges to all nodes, limiting the algorithm to only paths starting from existing nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used; the solution uses a static gewicht array initialized to 0 and updated iteratively, which lacks the cache-checking mechanism required for O(N+M) performance.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No DFS function is implemented, and the base case for leaf nodes is absent since the code uses an iterative topological approach rather than recursive DFS with explicit base cases.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence is not implemented via DFS; instead, the code iteratively computes max(gewicht[predecessor] + 1) for each node, which is a topological approach but doesn't match the required DFS recurrence structure.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution fails to include a virtual source node, which may prevent correctly finding the longest path in DAGs with multiple disconnected components, and returns max(gewicht) without the -1 adjustment from the virtual source.

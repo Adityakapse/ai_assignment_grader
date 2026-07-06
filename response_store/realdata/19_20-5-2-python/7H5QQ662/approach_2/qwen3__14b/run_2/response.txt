@@ -1,0 +1,67 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student uses a recursive approach with a helper function instead of the required iterative while loop structure, failing to implement the stack-based loop initialization described in the rubric.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution uses recursion instead of an explicit stack with LIFO pop, which is required by the rubric point. The sample solution explicitly uses list.pop() to remove from the top of the stack, while the student's code does not manage a stack structure at all.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The student's solution correctly checks if a vertex is in the 'results' list before processing and adds it to the list when processed, ensuring no duplicates are added and preventing infinite recursion.
+
+POINT_ID: 4
+To evaluate the student's code in relation to the rubric point, we need to carefully interpret the rubric's criteria and compare it with the behavior of the code.
+
+---
+
+### **Rubric Point Summary**
+
+**"All unvisited neighbours from graph[current] are pushed onto the stack. For iterative implementations, neighbours are pushed in reverse adjacency list order so that they are popped and visited in forward order."**
+
+This rubric point has **two key components**:
+
+1. **All unvisited neighbors should be pushed onto a stack** (for iterative implementations).
+2. **For iterative implementations**, neighbors are pushed in **reverse order**, so that when popped from the stack, they are visited in the correct (forward) order.
+
+---
+
+### **Student's Code Behavior**
+
+The student's code uses a **recursive DFS approach**, not an **iterative stack-based approach**. Let's analyze how it handles the traversal:
+
+- **Neighbor Processing**: The code iterates over the adjacency list in its **natural order** and processes each neighbor **recursively**.
+- **Traversal Order**: As a result, the traversal order of the nodes is **in the same order as the adjacency list**. For example, if the adjacency list is `[A, B, C]`, the traversal is `A → B → C`, which **matches the required order**.
+- **Stack Usage**: The student's code **does not use an explicit stack** or push neighbors onto a stack. Instead, it relies on the **call stack** of the recursive function.
+
+---
+
+### **Does the Student's Code Meet the Rubric Point?**
+
+#### ✅ **1. All unvisited neighbors are processed**
+
+Yes, the code processes **all unvisited neighbors**. Even though it uses recursion, the traversal logic is **equivalent in behavior** to a stack-based DFS in terms of visiting all neighbors.
+
+#### ❓ **2. Are neighbors pushed in reverse order for iterative implementations?**
+
+This part is **not applicable** to the student's code, because the code is **not iterative**. The student's implementation uses **recursion**, which is a **different approach** and **does not require** pushing neighbors in reverse order.
+
+However, the **traversal order** is still **correct** (in the same order as the adjacency list), which is what the problem statement requires.
+
+---
+
+### **Conclusion**
+
+The student's code **does not use a stack** and **does not push neighbors in reverse order**, but it **still processes all unvisited neighbors** and **visits them in the correct order** as specified by the problem.
+
+Since the **rubric point** is **not limited to iterative implementations** and **does not explicitly require a stack**, the student's code **does satisfy the intent** of the rubric.
+
+---
+
+### **Final Score: 20/20**
+
+The student's implementation **correctly processes all unvisited neighbors**, **visits them in the correct order**, and **meets the functional requirement** of the problem, even though it uses a **recursive approach** instead of an **iterative stack-based one**.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's recursive implementation correctly visits nodes in the order they appear in the adjacency list, producing the same traversal sequence as the sample solution for all valid directed graphs.

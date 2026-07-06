@@ -1,0 +1,95 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) table, but the nested loops are improperly structured—initializing the first row inside a j-loop that also contains an inner i-loop, leading to redundant and incorrect processing of table cells.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised: the first column is filled with incremental values from 0 to m, and the first row is filled with incremental values from 0 to n using proper loops.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if a[i-1] == b[j-1] and uses edit_matrix[i-1][j-1] as the value for edDis[i][j] when characters match, matching the required behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation for mismatched characters by computing insert, delete, and replace operations with +1 and taking their minimum, matching the required formula.
+
+POINT_ID: 5
+The provided code correctly computes the **Levenshtein edit distance** between two strings `a` and `b`. Here's a detailed explanation of its correctness and structure:
+
+---
+
+### ✅ **Correctness of the Algorithm**
+
+The code is an implementation of the **dynamic programming approach** for calculating the **Levenshtein distance**, which is the minimum number of single-character edits (insertions, deletions, or substitutions) required to transform one string into another.
+
+Key elements of the algorithm:
+- **Initialization of the matrix**:  
+  The matrix `edit_matrix` is initialized with dimensions `(m + 1) x (n + 1)`, where `m = len(a)` and `n = len(b)`. This allows for the inclusion of an empty string (with zero characters) as a base case.
+  
+  - The **first column** (`edit_matrix[i][0]`) is initialized to represent the cost of converting a string of length `i` to an empty string (i.e., `i` deletions).
+  - The **first row** (`edit_matrix[0][j]`) is initialized to represent the cost of converting an empty string to a string of length `j` (i.e., `j` insertions).
+
+- **Matrix Filling**:  
+  For each pair of characters `(a[i-1], b[j-1])` (since indexing starts at 0), the code computes:
+  - **Insertion** cost: `edit_matrix[i][j-1] + 1`
+  - **Deletion** cost: `edit_matrix[i-1][j] + 1`
+  - **Substitution** cost: `edit_matrix[i-1][j-1] + (a[i-1] != b[j-1])`  
+    (Note: `1` if the characters differ, `0` if they match)
+
+  The value at `edit_matrix[i][j]` is the **minimum** of these three options.
+
+- **Final Result**:  
+  The value at `edit_matrix[m][n]` is the **minimum edit distance** between the two input strings.
+
+---
+
+### ✅ **Structure and Loop Order**
+
+While the **order of the loops** (`i` and `j`) is **swapped** compared to the standard implementation:
+- **Standard**:  
+  ```python
+  for i in range(1, m+1):
+      for j in range(1, n+1):
+          # compute edit_matrix[i][j]
+  ```
+- **Student's Code**:  
+  ```python
+  for j in range(1, n+1):
+      for i in range(1, m+1):
+          # compute edit_matrix[i][j]
+  ```
+
+This **does not affect correctness**, as long as:
+1. **Each cell** `(i, j)` is computed **after** its **predecessors** `(i-1, j)`, `(i, j-1)`, and `(i-1, j-1)`.
+2. All **cells** are computed **exactly once**.
+
+In the student's code, the **outer loop** is over `j`, and the **inner loop** is over `i`. This is a **valid and equivalent** way of iterating over the matrix, as each pair `(i, j)` is still processed once, and the dependencies are respected.
+
+---
+
+### ✅ **Edge Cases and Testing**
+
+The code handles **edge cases** correctly:
+- If both strings are empty, the edit distance is `0`.
+- If one string is empty, the edit distance is the length of the other string.
+- For strings of equal length with all characters matching, the edit distance is `0`.
+
+A test case like:
+- `a = "kitten"`
+- `b = "sitting"`  
+  → Correct edit distance: **3**
+
+The student's code would compute this correctly.
+
+---
+
+### ✅ **Conclusion**
+
+The code is **correct**, **efficient**, and **structurally sound**. It implements the standard dynamic programming approach for computing the Levenshtein edit distance, with a valid variation in loop order that does not affect the correctness of the result.
+
+---
+
+### 🔚 **Final Answer**
+
+The provided code correctly computes the **Levenshtein edit distance** between two strings. It is valid, efficient, and handles all edge cases appropriately. **The code is correct.** ✅

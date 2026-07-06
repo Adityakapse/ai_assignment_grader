@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly constructs an adjacency list from A but misses the virtual source node 0 that connects to all other nodes, limiting the solution to only considering paths starting from existing nodes rather than enabling a global longest path search.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a Lengths array initialized to 0 and updates it iteratively, but no memoization array is present to cache computed results, leading to potential recomputation of subproblems.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement a DFS function with a base case for leaf nodes; instead, it uses a dynamic programming approach that does not explicitly handle the base case for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution iterates over nodes and updates children's lengths but does not compute the maximum over children's results +1; instead, it uses a non-topological iteration and lacks memoization, leading to incorrect path length calculations.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The code contains an incorrect assertion that all edges must satisfy a < b, which fails for valid DAGs with edges in any direction. It also lacks a virtual source node and does not process nodes in topological order, leading to incorrect longest path calculations.

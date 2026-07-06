@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates a 2D table with dimensions (nItem+1) x (capacity+1) and initializes all entries to 0 via default array initialization and explicit setting of the first row.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j=1 instead of j=0, missing the zero-capacity subproblem required for handling items with weight 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly checks if the item's weight is <= current capacity using the inverse condition (weight[i-1] > j), ensuring items are only considered when they fit, including zero-weight items at j=0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation by taking the max of including (value + previous row's j - weight) or excluding the item (previous row's j), and consistently references the previous row (i-1) for both cases.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle items with volume 0 when capacity is 0 because the inner loop starts at j=1, skipping j=0 where zero-weight items should contribute their value.

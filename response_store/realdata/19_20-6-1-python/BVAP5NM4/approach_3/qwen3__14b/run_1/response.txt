@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: A 2D table of size (m+1) x (n+1) is allocated, but the nested loops are incorrectly structured. The inner loop for i is nested inside the j loop, leading to improper iteration order that may affect bottom-up filling.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialized with edit_matrix[i][0] = i for the first column and edit_matrix[0][j] = j for the first row using proper index increments.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the code correctly sets replace to edit_matrix[i-1][j-1] and uses min(insert, delete, replace), which effectively assigns the diagonal value when no edit is needed.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch case correctly computes insert, delete, and replace as 1 + respective previous values, then takes the min of the three, accurately implementing the 1 + min(...) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code uses an iterative approach but has a structural flaw: the inner loop for i is nested inside the j loop during initialization, which may cause incorrect computation of edit distances for some inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D array with dimensions (volumes.length + 1) x (capacity + 1), matching the required (n+1) x (capacity+1) size, and used Java's default initialization to 0.0 for all cells.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j = 1 instead of j = 0, missing the zero-capacity subproblem required for handling items with weight 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if the item's volume exceeds the current capacity (volumes[i-1] > j), which is logically equivalent to checking if the item fits (volumes[i-1] <= j), ensuring zero-weight items are handled properly at j=0.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the recurrence relation using Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1]) when the item fits, and references the previous row (table[i - 1][j]) when it doesn't fit, matching the required recurrence structure.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j = 1, which skips processing j = 0, leading to incorrect results when capacity is 0 or items have volume 0.

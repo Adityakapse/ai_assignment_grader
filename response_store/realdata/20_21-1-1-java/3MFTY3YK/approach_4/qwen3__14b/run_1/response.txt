@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function lacks a base case for b == 0, which is required to return 1 % c. When b == 0, the code incorrectly returns 1 (without applying % c) or falls into the else clause, leading to incorrect results for edge cases like c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses `b % 2 == 0` to identify even b and handles odd b in the else clause, leading to distinct recursive branches for even and odd cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case correctly reduces b by 1 and multiplies the result of the recursive call by a, with the modulo operation applied appropriately.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly halves b using integer division, recursively computes the half-power, squares the result, and applies modulo c, matching the required O(log b) approach.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for b=0 (returns 1 instead of 1%c) and for b=1 (returns a instead of a%c), leading to incorrect results for these edge cases despite proper modulo application in recursive steps.

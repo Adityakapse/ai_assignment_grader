@@ -1,0 +1,133 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student implemented a correct merge sort algorithm with proper divide-and-conquer structure, splitting the array recursively and merging sorted subarrays using a standard merge procedure.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution correctly terminates recursion when the subarray length is 1 (or 0) by checking "if 1 < r" and returning the array immediately, preventing infinite recursion on already-sorted subarrays.
+
+POINT_ID: 3
+The student's implementation of the merge step in the merge sort algorithm is **correctly implemented**, and thus **deserves full marks** for the rubric point that evaluates the **correctness of the core sorting operation (merge)**.
+
+---
+
+### ✅ **Key Points Supporting Full Marks**
+
+1. **Correct Structure of the Merge Function**  
+   - The function `merge(A, p, r)` correctly identifies the two halves of the array to be merged:
+     ```python
+     n1 = p
+     n2 = r - p
+     L = [A[i] for i in range(n1)]
+     R = [A[p + j] for j in range(n2)]
+     ```
+     - This ensures that the first `n1 = p` elements (left half) and the next `n2 = r - p` elements (right half) are extracted into temporary lists `L` and `R`.
+
+2. **Sentinels for Simplification**  
+   - The use of large sentinel values (`3000000`) at the end of both `L` and `R` is a standard technique to avoid checking for the end of the lists during the merge process. This simplifies the logic and ensures that the merge terminates correctly.
+
+3. **Correct Merging Logic**  
+   - The merging loop:
+     ```python
+     for k in range(r):
+         if L[i] <= R[j]:
+             A[k] = L[i]
+             i += 1
+         else:
+             A[k] = R[j]
+             j += 1
+     ```
+     - This is a standard implementation of the merge step, where elements from the two sorted lists `L` and `R` are merged back into the original array `A` in sorted order.
+
+4. **Proper Handling of the Input Array**  
+   - The `solution` function correctly partitions the array into two halves, recursively sorts them, and then merges them:
+     ```python
+     A1 = A[0:p]
+     A2 = A[p:r]
+     A1 = solution(A1)
+     A2 = solution(A2)
+     A = A1 + A2
+     merge(A, p, r)
+     ```
+     - This ensures that the two halves to be merged are already sorted, and the merge function is called with the correct indices.
+
+---
+
+### ⚠️ **Potential Edge Cases (Not a Problem Here)**
+
+- **Odd Length Arrays**: The function `math.floor(r / 2)` correctly partitions arrays of odd length into two parts, which is acceptable in merge sort.
+- **Handling Large Inputs**: The use of lists and nested loops is appropriate for the scope of this implementation.
+
+---
+
+### 📌 **Conclusion**
+
+The merge step in the student's code is **correctly implemented**, fulfilling the requirements of the rubric point. Therefore, **full marks** should be awarded for the core sorting operation.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The student implemented merge sort, which has a guaranteed worst-case O(n log n) time complexity, satisfying the rubric requirement without needing randomization.
+
+POINT_ID: 5
+The provided code implements a **correct merge sort algorithm**, which satisfies the requirements of the problem. Below is a detailed analysis and justification for the conclusion that the solution is **correct** and deserves **full marks** for this rubric point.
+
+---
+
+### ✅ **Correctness of the Algorithm**
+
+The code follows the standard merge sort approach:
+
+1. **Base Case**:
+   - If the length of the current subarray (`r`) is less than or equal to 1, the function returns the subarray as it is already sorted.
+   - This is correct, as a single-element array is trivially sorted.
+
+2. **Recursive Splitting**:
+   - The array is split into two halves: `A1` and `A2`, with the midpoint calculated as `p = math.floor(r / 2)`.
+   - Each half is then sorted recursively by calling the `solution` function on `A1` and `A2`.
+
+3. **Merging**:
+   - After the recursive calls, the two sorted halves are merged back into a single sorted array.
+   - The merging is done by the `merge` function, which:
+     - Extracts the two halves from the current array.
+     - Merges them into one sorted array using a two-pointer approach.
+
+---
+
+### ✅ **Time Complexity**
+
+- **Merge Sort** has a worst-case, average-case, and best-case time complexity of **O(n log n)**, which meets the requirement for the problem.
+- The code does not contain any unnecessary or inefficient operations that would increase the time complexity.
+
+---
+
+### ✅ **Adherence to Constraints**
+
+- The solution **does not use any disallowed keywords** such as `"sort"` or `"numpy"`, as required by the problem.
+- The code is **purely functional** and does not rely on any external libraries or constructs beyond standard Python.
+
+---
+
+### ✅ **Edge Cases and Examples**
+
+- The code correctly handles:
+  - **Empty arrays** (though not explicitly tested, the base case handles this by default).
+  - **Single-element arrays** (returns the array as is).
+  - **Odd-length arrays** (e.g., `[3, 2, 1]` → correctly sorted to `[1, 2, 3]`).
+  - **Even-length arrays** (e.g., `[4, 3, 2, 1]` → correctly sorted to `[1, 2, 3, 4]`).
+
+---
+
+### ✅ **Conclusion**
+
+The code is a **correct and efficient implementation** of merge sort that:
+
+- Sorts the array in **O(n log n)** time.
+- **Avoids disallowed constructs**.
+- Handles **all edge cases**.
+- Is **well-structured** and **easy to follow**.
+
+---
+
+### ✅ **Final Verdict**
+
+**The solution is correct and deserves full marks for this rubric point.** ✅

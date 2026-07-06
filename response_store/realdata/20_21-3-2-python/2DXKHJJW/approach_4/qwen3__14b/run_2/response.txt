@@ -1,0 +1,35 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student constructs an adjacency list correctly by processing edges into a list of lists, but fails to add a virtual source node 0 with edges to all other nodes, limiting the solution to only paths starting from nodes present in the original edges.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution uses a Lengths array initialized to 0 and updates it iteratively, but there is no memoization array initialized to -1 or any cache check mechanism to avoid recomputation, leading to incorrect handling of cached results.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement a DFS function with a base case for leaf nodes; instead, it uses a non-recursive approach that does not explicitly handle nodes with no outgoing edges.
+
+POINT_ID: 4
+The student's code does not meet the recurrence requirement specified in the rubric. While it iterates over children and updates their lengths based on the parent's value (adding 1), it does not correctly compute the maximum path length **starting at** a node by taking the max over its children's values. Instead, it updates the children's lengths **based on the parent**, which is a fundamentally different approach and does not align with the recurrence described in the sample solution.
+
+### Key Issues:
+1. **Recurrence Misalignment**:
+   - The sample solution computes the maximum path length starting at a node by taking the max over its children's values (i.e., `sol = max(sol, dfs(child) + 1)`).
+   - The student's code updates the children's lengths based on the parent's value (i.e., `Lengths[u] = max(Lengths[u], Lengths[e] + 1)`), which is not the same recurrence and does not compute the maximum path length **from** the current node.
+
+2. **Lack of Memoization**:
+   - The student's approach does not use memoization or a recursive structure that ensures the maximum path length is computed correctly for each node.
+
+3. **Dependence on Topological Order**:
+   - The student's code relies on processing nodes in a topological order (which is not explicitly ensured), but this is not a guarantee in the code and may lead to incorrect results if the order is not correct.
+
+### Conclusion:
+Since the recurrence does not match the required approach and the code does not compute the maximum path length **starting at** each node as specified in the rubric, the solution falls into the **'Wrong'** bucket.
+
+**Answer:**  
+The student's code does not correctly implement the required recurrence and falls into the **'Wrong'** bucket.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code processes edges in arbitrary order and may fail for DAGs where the longest path depends on predecessors being processed before successors, as demonstrated by a test case with edges [1,3], [2,3], [1,2] which incorrectly returns 1 instead of 2.

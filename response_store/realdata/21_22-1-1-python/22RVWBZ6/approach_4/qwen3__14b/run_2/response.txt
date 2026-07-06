@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly derives the closed form $a_n = 2^n - 1$ but implements exponentiation incorrectly by checking if $n/2 \mod 2 == 0$ (which fails for even $n$ where $n/2$ is odd), leading to incorrect exponentiation logic.
+
+POINT_ID: 2
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's exp function lacks a base case for when the exponent is 0, which is required for correct recursion termination. The existing base case (n == 1) does not handle the b == 0 scenario from the rubric's requirement.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly handles the odd case by reducing the exponent by 1 and multiplying by 2 (the base), as seen in the line `return exp(n-1)*2 % 1000000007`.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case uses '/' instead of '//' for division, causing the exponent to become a float and preventing correct halving of the exponent.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code uses floating-point division (n/2) instead of integer division (//), leading to incorrect recursion and potential infinite loops for even n, and the -1 adjustment is missing in some cases.

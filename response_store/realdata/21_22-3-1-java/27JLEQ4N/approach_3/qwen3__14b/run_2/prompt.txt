@@ -1,0 +1,108 @@
+QUESTION:
+(This task is a slightly modified old exam task from the
+WS 2020/21)
+
+A company obtains permission to place billboards on one side of a road.
+Along the $n \in \mathbb{N}$ kilometers long road, there are $n+1$ suitable
+locations at intervals of exactly one kilometer. For the location at kilometer
+$i \in\{0,1, \ldots, n\}$ advertisers are willing to pay an amount $w_i$
+with $0 < w_{i} < 10^9$ to the company. However, the road traffic regulation states
+that there must be at least two kilometers between every two billboards.
+So if the company places a billboard at kilometer $i$, then at kilometer $i-1$ and $i+1$
+no billboard may be placed.
+
+Help the company determine a selection of locations that will
+maximizes the total profit from renting the sites.
+
+Input: an array $W$ of size $n+1$ for a
+$n \in \mathbb{N} \land 1 \leq n \leq 1000$.
+
+Output: The maximum profit that can be obtained from the billboards.
+
+The output must be calculated in $O(n)$.
+
+SAMPLE SOLUTION:
+long opt(long []W){
+    int n = W.length - 1;
+    long []memo = new long [n+1];
+    for (int i = 0; i < n+1; i++)
+        memo[i] = -1;
+    return opt_helper(n,W,memo);
+}
+
+
+long opt_helper(int n,long [] W,long [] memo){
+    if (n == 0)
+        return W[0];
+    if (n == 1)
+        return Math.max(W[0], W[1]);
+    if (memo[n] != -1)
+        return memo[n];
+    memo[n] = Math.max(W[n] + opt_helper(n - 2, W, memo), opt_helper(n - 1, W, memo));
+    return memo[n];
+}
+
+STUDENT SOLUTION:
+long opt(long W[]){
+long A[] = new long[W.length];
+A[0] = W[0];
+if (W[0] <=W[1])
+{
+    A[1]= W[1];
+}
+else
+{
+      A[1]= W[0];
+}
+
+    for (int i = 2; i < W.length; i++)
+{
+    if (W[i] + A[i -2] <= A[i - 1])
+    {
+        A[i] = A[i - 1];
+    }
+    else
+    {
+       
+        A[i] = W[i] + A[i - 2];
+    }
+}
+
+return A[W.length-1];
+}
+
+RUBRIC:
+Point 1 — Memo array allocation and initialisation
+  A memo array of size n+1 is allocated and initialised to -1 as the sentinel for uncached entries.
+  Buckets:
+    - Wrong (0 marks): No memo array is allocated; the recursion recomputes all subproblems on every call, resulting in exponential runtime.
+    - Semi (10 marks): A memo array is present but initialised to 0 instead of -1, making it impossible to distinguish an uncached entry from a subproblem with zero profit; or the array is the wrong size (e.g., n instead of n+1).
+    - Correct (20 marks): A memo array of size n+1 is allocated and all entries are initialised to -1, correctly serving as the 'not yet computed' sentinel.
+
+Point 2 — Base cases
+  opt(0) returns W[0]; opt(1) returns max(W[0], W[1]).
+  Buckets:
+    - Wrong (0 marks): No base cases are present; the recursion accesses negative indices or runs indefinitely.
+    - Semi (10 marks): Only one base case is present (e.g., n == 0 returns W[0]) but n == 1 is missing, causing an off-by-one access or incorrect result when W has length 2.
+    - Correct (20 marks): Both base cases are correct: n == 0 returns W[0], and n == 1 returns max(W[0], W[1]).
+
+Point 3 — Cache check
+  At the start of each helper call, if memo[n] != -1, return memo[n] immediately without recomputation.
+  Buckets:
+    - Wrong (0 marks): No cache check is present; memo is written but never read, so all subproblems are recomputed on every call.
+    - Semi (8 marks): A cache check is present but uses the wrong sentinel (e.g., checks != 0 instead of != -1), causing subproblems with zero profit to be incorrectly recomputed or skipped.
+    - Correct (15 marks): if memo[n] != -1: return memo[n] at the start of each helper call, ensuring each subproblem is computed at most once.
+
+Point 4 — Recurrence and memo store
+  memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)); the result is stored in memo[n] before returning.
+  Buckets:
+    - Wrong (0 marks): No recurrence is applied; the helper returns a constant or does not recurse into smaller subproblems.
+    - Semi (12 marks): A max-based recurrence is present but incorrect: only one branch is computed (always includes or always skips W[n]), or the result is not stored in memo[n] before returning (breaking memoization for callers).
+    - Correct (25 marks): memo[n] = max(W[n] + opt_helper(n-2, ...), opt_helper(n-1, ...)) is applied correctly; memo[n] is set before returning so subsequent calls to opt_helper(n) use the cached result.
+
+Point 5 — Overall correctness
+  opt returns the maximum billboard profit for all valid inputs in O(n) time.
+  Buckets:
+    - Wrong (0 marks): Returns 0 or an incorrect value for most inputs.
+    - Semi (10 marks): Returns correct results for small inputs (n <= 2) but fails for larger inputs due to missing memoization (stack overflow or TLE), or always includes W[n] without considering the skip option.
+    - Correct (20 marks): Returns the correct maximum profit for all valid inputs (1 <= n <= 1000) in O(n) time.

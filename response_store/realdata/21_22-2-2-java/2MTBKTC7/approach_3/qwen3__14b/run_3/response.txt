@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: No prefix sum array is allocated; the solution uses helper functions summe1 and summe2 to compute sums directly for each query instead of building a cumulative prefix array.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No prefix sum construction loop is present; the code lacks any cumulative sum calculation and relies entirely on per-query summation via summe1 and summe2.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: An output array D of size n is allocated, but the query loop uses b.length instead of iterating exactly n times, which may fail if B's length differs from n.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not use a prefix array to compute range sums; instead, it directly calculates sums for each query using helper functions, violating the requirement to use prefix sums for O(n) time.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm is O(n*q) time due to per-query summation via helper functions, which fails the O(n) time requirement, even though the mathematical logic for range sums is correct.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D array of size (n+1) x (capacity+1) and initializes all elements to 0 by explicitly setting rucksack[0][j] = 0 for all capacities j.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items (from 1 to n) and the inner loop iterates j from 1 to capacity. While it starts at j=1 instead of j=0, the initial row (i=0) is explicitly initialized to 0, which covers the j=0 case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student checks if volumes[i-1] > j before deciding to include the item, which is equivalent to checking if the item can fit (volumes[i] <= j). This correctly allows inclusion when the item exactly fills the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly computes max(rucksack[i-1][j], rucksack[i-1][j - volumes[i-1]] + values[i-1]) when the item fits, and uses the previous row (i-1) consistently for forward iteration.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code returns rucksack[n][capacity], which is the correct cell for the forward iteration approach. It correctly handles the test cases provided in the question, including the example with capacity 3 and 7.

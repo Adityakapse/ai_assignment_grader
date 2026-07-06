@@ -1,0 +1,41 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution uses recursion instead of an explicit while loop with a stack, failing to implement the required iterative DFS loop structure described in the rubric point.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution uses recursion instead of an explicit stack structure, and does not pop from the end of a list to enforce LIFO order, which is required by the rubric point.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The student's solution correctly checks if a vertex is in the results list before processing it and adds it to the list when processed, ensuring no duplicates are added and preventing infinite recursion.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's recursive implementation does not use a stack to push neighbors, and the adjacency list is not reversed, leading to incorrect traversal order compared to the sample solution's iterative approach.
+
+POINT_ID: 5
+The student's code is **correct** in terms of the order in which nodes are visited during a depth-first search (DFS). Here's a detailed explanation:
+
+### **Key Points of the Student's Code**
+The code performs a recursive DFS, visiting nodes in the order specified by the adjacency list. Here's a breakdown:
+
+1. **Traversal Order**:
+   - The code processes the adjacency list in its natural order (`for v in adj[u]`).
+   - This ensures that nodes are visited in the same order as they appear in the adjacency list, satisfying the problem's requirement that "the nodes are to be visited in the order they appear in the adjacency list."
+
+2. **Result List Order**:
+   - The result list is built in **post-order** (i.e., nodes are appended to the result list after their children have been processed).
+   - However, the problem does **not** specify that the result list must reflect the order of traversal (pre-order). It only requires that the nodes are visited in the order dictated by the adjacency list.
+
+3. **Correctness of Traversal**:
+   - The traversal order (visiting nodes in the adjacency list order) is correct.
+   - The post-order nature of the result list does not affect the correctness of the traversal itself.
+
+### **Comparison with the Sample Solution**
+- The sample solution uses an **iterative DFS** with a stack, appending the reversed adjacency list to maintain the same traversal order.
+- The result list in the sample solution is built in **pre-order** (nodes are added as they are visited).
+- Both implementations are correct, but they differ in the **order of the result list** (pre-order vs. post-order).
+
+### **Conclusion**
+The student's code is **correct** as it satisfies the problem's core requirement of visiting nodes in the order specified by the adjacency list. The difference in the result list order (post-order vs. pre-order) is a side effect of the implementation (recursive vs. iterative) and does not violate the problem's constraints.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student allocated a 2D table with correct dimensions (n+1) x (capacity+1), but initialized all cells to -1.0 instead of 0 as required by the rubric.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a recursive approach with memoization instead of nested loops, and no loop structure is present to iterate over items and capacities.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's solution checks if the item's weight exceeds the current capacity before attempting to include it, which is equivalent to checking if the item fits (weights[i] <= capacity) and correctly avoids including items that don't fit.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the recurrence relation by taking the maximum between including the current item (value + previous row's entry at reduced capacity) and excluding it (previous row's entry), using the same structure as the sample solution.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution uses a recursive approach with memoization but incorrectly returns matrix[amount][capacity] instead of the correct cell from the DP table (which should be matrix[0][capacity] for backward filling or matrix[n][capacity] for forward filling). This leads to incorrect results for multi-item inputs.

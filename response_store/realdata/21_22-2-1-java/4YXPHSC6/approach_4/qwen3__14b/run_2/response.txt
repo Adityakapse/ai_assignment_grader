@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses B.clone() to create the counting array, which has the correct size but is initialized with B's capacity values instead of zeros, leading to incorrect frequency counts.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student initializes the frequency array with B's values and subtracts counts instead of incrementing them, which fails to correctly accumulate the frequency of each category in A.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop iterates from 0 to c.length-1 (equivalent to B's length - 1) using j < c.length, correctly producing a binary string of length m.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly appends '1' when the count of category j in A (B[j] - c[j]) is ≤ B[j], which is equivalent to checking if c[j] ≥ 0, and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly computes the required binary string by initializing a clone of B, decrementing counts for each element in A, and appending '1' if the result is non-negative, which matches the required condition |A|_i ≤ B[i]. The algorithm runs in O(n + m) time and avoids forbidden substrings.

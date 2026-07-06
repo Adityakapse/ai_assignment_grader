@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly built from A, but no virtual source node 0 is added with edges to all nodes 1 to N, so the algorithm cannot find the globally longest path.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is used; the DFS recomputes values for nodes multiple times, leading to incorrect results and potentially exponential runtime on large DAGs.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No base case for leaf nodes is present; the code does not return 0 when a node has no outgoing edges, leading to incorrect path length calculations.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence relation is implemented that takes the max of child DFS results + 1; instead, the code uses a post-order traversal with a separate longest_path array that does not correctly propagate path lengths.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to correctly compute the longest path for DAGs due to missing virtual source node and lack of memoization, leading to incorrect results for most inputs.

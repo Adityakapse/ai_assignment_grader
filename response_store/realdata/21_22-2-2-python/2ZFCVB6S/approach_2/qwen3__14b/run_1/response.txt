@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution creates a list of lists storing prefix sums at each index rather than allocating a single prefix sum array of size n as required, failing to meet the rubric's criteria for array allocation.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The student correctly constructs a prefix sum array by accumulating the sum of elements in A, storing each prefix sum as a pair [sum_before, sum_after] which allows efficient query resolution using the same logic as the sample solution.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution constructs the output list directly in the return statement using a list comprehension, rather than explicitly allocating an output array of size n and processing queries in a separate loop as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The solution correctly handles the l=0 edge case by using sums[r][1] - sums[l][0], which for l=0 subtracts the initial 0 value stored in sums[0][0], matching the required formula D[i] = C[r] when l=0.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly constructs a prefix sum array where each element stores the cumulative sum before and after adding the current value, allowing queries to be resolved with simple subtraction, matching the sample's approach and achieving O(n) time complexity.

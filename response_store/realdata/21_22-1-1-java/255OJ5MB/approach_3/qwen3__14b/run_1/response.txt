@@ -1,0 +1,95 @@
+### Assessment of the Student's Code Based on the Rubric
+
+---
+
+#### **Point 1: Closed Form Derivation**
+**Rubric Requirement:**  
+- The student must **explicitly identify** the closed form $ a_n = 2^n - 1 $ and implement it (e.g., via `expo(2, n, c) - 1`).
+
+**Student's Code:**  
+- The code does **not explicitly derive** the closed form $ a_n = 2^n - 1 $.  
+- However, the recursive implementation correctly computes $ 2^n - 1 $ for all inputs (as verified by test cases: $ n=0, 1, 2, 3 $).  
+- The logic is **mathematically equivalent** to the closed form, but the derivation is **not stated**.
+
+**Assessment:**  
+- **Bucket:** **Semi** (as per rubric).  
+- **Reason:** The code uses a recursive approach that is **equivalent** to exponentiation by squaring on base 2 **but does not explicitly state** the closed form $ a_n = 2^n - 1 $, which is a requirement for the **Correct** bucket.
+
+---
+
+#### **Point 2: Expo Function Base Case (b == 0)**
+**Rubric Requirement:**  
+- The `expo` function must handle the base case $ b == 0 $ (e.g., return 1 for $ 2^0 $).
+
+**Student's Code:**  
+- The student's code **does not use an `expo` function**.  
+- Instead, it uses a custom recursive approach.  
+- The base case for $ n = 0 $ is handled correctly (returns 0, which matches $ a_0 = 0 $).
+
+**Assessment:**  
+- **Bucket:** **Wrong** (as per rubric).  
+- **Reason:** The student's code **does not implement the `expo` function** or its base case, which is explicitly required by the rubric.  
+- The base case for $ n = 0 $ is handled directly in the `calc` function, not via `expo`, so it does not meet the rubric's criteria.
+
+---
+
+#### **Point 3: Expo Function Recursive Case (Exponentiation by Squaring)**
+**Rubric Requirement:**  
+- The `expo` function must implement **exponentiation by squaring** (e.g., recursively split the exponent).
+
+**Student's Code:**  
+- The student's code **does not use an `expo` function**.  
+- Instead, it uses a **custom recursive approach** that splits the problem based on even/odd $ n $, which is conceptually similar to exponentiation by squaring but not explicitly named as such.
+
+**Assessment:**  
+- **Bucket:** **Wrong** (as per rubric).  
+- **Reason:** The student's code **does not implement the `expo` function** or its recursive case. While the logic is mathematically similar to exponentiation by squaring, the rubric explicitly requires the `expo` function's implementation.
+
+---
+
+#### **Point 4: Expo Function Constant Term**
+**Rubric Requirement:**  
+- The `expo` function must return the correct value (e.g., $ 2^n $) and subtract 1 to compute $ a_n $.
+
+**Student's Code:**  
+- The student's code **does not use an `expo` function**.  
+- Instead, it computes $ a_n = 2^n - 1 $ directly via recursion, with the correct constant term.
+
+**Assessment:**  
+- **Bucket:** **Wrong** (as per rubric).  
+- **Reason:** The student's code **does not use the `expo` function**. While the constant term is correct, the rubric explicitly evaluates the `expo` function's implementation, which is absent here.
+
+---
+
+#### **Point 5: Overall Correctness and Compliance**
+**Rubric Requirement:**  
+- The code must be **correct**, **efficient**, and **comply with constraints** (e.g., no forbidden keywords).
+
+**Student's Code:**  
+- **Correctness:** The code correctly computes $ a_n = 2^n - 1 $ for all tested cases.  
+- **Efficiency:** The recursive approach has a time complexity of $ O(\log n) $, similar to exponentiation by squaring.  
+- **Compliance:** The code does **not use any forbidden keywords** (e.g., `pow`, `**`, etc.).
+
+**Assessment:**  
+- **Bucket:** **Correct** (as per rubric).  
+- **Reason:** The code is **functionally correct**, **efficient**, and **complies with constraints**. The absence of the `expo` function is not a violation of the problem's correctness requirements, though it may conflict with the rubric's structural expectations.
+
+---
+
+### **Summary of Ratings**
+
+| Rubric Point | Bucket   | Reason |
+|--------------|----------|--------|
+| **1**        | **Semi** | Correct logic but no explicit closed-form derivation. |
+| **2**        | **Wrong** | No `expo` function or base case. |
+| **3**        | **Wrong** | No `expo` function or recursive case. |
+| **4**        | **Wrong** | No `expo` function or constant term. |
+| **5**        | **Correct** | Code is correct, efficient, and compliant. |
+
+---
+
+### **Final Notes**
+- The student's code is **functionally correct** and **efficient**, but it **does not align with the rubric's structural expectations** (e.g., use of `expo` function).  
+- For **Point 1**, the code is **Semi** because it lacks an explicit closed-form derivation.  
+- For **Points 2–4**, the code is **Wrong** due to the absence of the `expo` function.  
+- For **Point 5**, the code is **Correct** due to its correctness and compliance.

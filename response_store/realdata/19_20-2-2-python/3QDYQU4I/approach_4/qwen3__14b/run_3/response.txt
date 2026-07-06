@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates through all tokens in the input list left to right, using a try-except block to distinguish numeric strings (converted to int) from operator strings (processed with arithmetic operations).
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The student correctly converts numeric tokens to integers using int(a[i]) and pushes them onto the stack in all cases where the token is a number.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly pops two values from the stack for each operator, applies the corresponding arithmetic operation, and pushes the result back onto the stack for all four operators.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code performs subtraction and division as x - y and x / y, which reverses the correct RPN order of second_popped op first_popped (i.e., computes a - b instead of b - a for input "a b -").
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code incorrectly subtracts and divides in the order y - x and y / x instead of x - y and x / y, leading to wrong results for expressions like "3 4 -" which should return -1 but would return 1.

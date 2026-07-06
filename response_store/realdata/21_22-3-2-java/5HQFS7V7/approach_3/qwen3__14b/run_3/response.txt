@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is built correctly from A by storing predecessors, but the virtual source node 0 is missing. The algorithm processes nodes 1 to N directly without ensuring all nodes are reachable from a single source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used. The code uses a "gewicht" array to track path lengths but this is not a memoization cache; it is updated iteratively without checking for cached results.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no base case for leaf nodes in the code. The algorithm processes nodes iteratively without checking for nodes with no outgoing edges, which would require a different approach than the sample's DFS-based solution.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code does not iterate over children of a node or use a recursive DFS structure. It processes predecessors in a topological manner but does not apply the recurrence "sol = max(sol, dfs(child) + 1)" as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code fails to account for the virtual source node and returns the maximum of a non-cached "gewicht" array. It does not ensure the longest path is computed correctly for all DAGs, particularly those requiring traversal from arbitrary starting points.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is constructed correctly from the input array, but no virtual source node (0) is added with edges to all other nodes, so the algorithm processes each node individually instead of starting from a unified source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student uses a visited array instead of a memoization array initialized to -1, and does not return cached values immediately, leading to recomputation of subproblems and incorrect time complexity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student's code correctly returns 0 for leaf nodes by initializing the longest distance array to 0 and not updating it when there are no outgoing edges, which matches the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's solution iterates over all children of a node, computes the maximum path length by taking the maximum of child values +1, and stores the result in the 'längsteEntfernung' array, which effectively serves the same purpose as memoization in the sample solution.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution performs DFS from each node but lacks memoization and a virtual source node, leading to incorrect path length calculations for branching DAGs.

@@ -1,0 +1,377 @@
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c
+
+STUDENT SOLUTION:
+def expo(a, b, c):
+    j=b
+    res=1
+    res1=a%c
+    
+    while j>0:
+        if j%2!=0:
+            res=(res1*res)%c
+            j-=1
+        res1=(res1*res1)%c
+        j=j/2
+
+    return res
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''
+
+RUBRIC POINT:
+Point 1 — Base case: b == 0 (valid range: 0–20)
+  When b == 0, the function returns 1 % c (handles termination and the edge case c == 1).
+
+========================================
+
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c
+
+STUDENT SOLUTION:
+def expo(a, b, c):
+    j=b
+    res=1
+    res1=a%c
+    
+    while j>0:
+        if j%2!=0:
+            res=(res1*res)%c
+            j-=1
+        res1=(res1*res1)%c
+        j=j/2
+
+    return res
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''
+
+RUBRIC POINT:
+Point 2 — Parity detection: odd vs even b (valid range: 0–15)
+  The algorithm correctly distinguishes odd b from even b using b % 2 (or equivalent).
+
+========================================
+
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c
+
+STUDENT SOLUTION:
+def expo(a, b, c):
+    j=b
+    res=1
+    res1=a%c
+    
+    while j>0:
+        if j%2!=0:
+            res=(res1*res)%c
+            j-=1
+        res1=(res1*res1)%c
+        j=j/2
+
+    return res
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''
+
+RUBRIC POINT:
+Point 3 — Odd case: reduce by 1 and multiply (valid range: 0–20)
+  When b is odd, the function returns (a * expo(a, b-1, c)) % c.
+
+========================================
+
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c
+
+STUDENT SOLUTION:
+def expo(a, b, c):
+    j=b
+    res=1
+    res1=a%c
+    
+    while j>0:
+        if j%2!=0:
+            res=(res1*res)%c
+            j-=1
+        res1=(res1*res1)%c
+        j=j/2
+
+    return res
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''
+
+RUBRIC POINT:
+Point 4 — Even case: halve and square (valid range: 0–25)
+  When b is even, the function computes tmp = expo(a, b/2, c) and returns (tmp * tmp) % c.
+
+========================================
+
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0  \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{10}$
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+def expo(a,b,c):
+    if b == 0:
+        return 1 % c
+    elif b % 2:
+        return (a * expo(a,b-1,c)) % c
+    else:
+        a = expo(a,b // 2,c) % c
+        return (a*a) % c
+
+STUDENT SOLUTION:
+def expo(a, b, c):
+    j=b
+    res=1
+    res1=a%c
+    
+    while j>0:
+        if j%2!=0:
+            res=(res1*res)%c
+            j-=1
+        res1=(res1*res1)%c
+        j=j/2
+
+    return res
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  expo(a, b, c) returns the correct value of a^b mod c for all valid inputs, without using 'import' or '**'.

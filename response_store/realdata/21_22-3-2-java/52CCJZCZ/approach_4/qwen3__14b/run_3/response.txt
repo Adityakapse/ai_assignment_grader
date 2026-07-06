@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is constructed correctly from the input array, but the virtual source node 0 (with edges to all other nodes) is missing, so the algorithm cannot find the globally longest path across all possible starting nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student solution does not use memoization at all; it employs topological sorting and dynamic programming with an 'in' array, which is unrelated to the memoization technique required by this rubric point.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use DFS and thus lacks a DFS-based base case. The code uses topological sorting instead, which is unrelated to the rubric's criterion about DFS leaf node handling.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's solution uses topological sorting and dynamic programming, which does not involve iterating over children in a DFS with memoization or applying the recurrence sol = max(sol, dfs(child) + 1) as required by the rubric point.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly implements topological sorting followed by dynamic programming to compute the longest path, ensuring the solution works for all DAGs and runs in O(N+M) time.

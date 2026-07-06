@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The DP table is correctly allocated but the main loop only iterates i < len1 and j < len2 instead of i <= len1 and j <= len2, which causes the final cell (len1, len2) to be unprocessed.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The base case initialization correctly sets dp[i][0] = i and dp[0][j] = j for all i and j.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The character match case correctly assigns dp[i+1][j+1] = dp[i][j] when characters are equal, equivalent to using the diagonal value from the previous step.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The mismatch recurrence incorrectly uses dp[i][j+1] for insert and dp[i+1][j] for delete, which are the wrong indices. The correct indices should be dp[i][j-1] and dp[i-1][j].
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: Due to incorrect loop bounds and recurrence indices, the implementation fails to compute the correct edit distance for many inputs, violating the overall correctness requirement.
+
+TOTAL: 65

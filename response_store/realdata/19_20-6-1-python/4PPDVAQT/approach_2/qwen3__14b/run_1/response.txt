@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student uses a 1D list (result) and builds rows iteratively instead of allocating a 2D table as required, which fails to meet the rubric's explicit requirement for a (m+1)x(n+1) 2D array allocation.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's code initializes the first row (insertion costs) but fails to properly initialize the first column (deletion costs) for all i, unlike the sample solution which explicitly sets edDis[i][0] = i for all rows.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: When characters match, the student's code uses result[j] (from the previous row) instead of the correct diagonal value edDis[i-1][j-1], leading to incorrect edit distance calculations for matching characters.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code uses min(result[j], result[j+1], tmp[-1]) for mismatched characters, which incorrectly references result[j+1] instead of the correct diagonal value result[j-1] from the previous row.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The code incorrectly computes the minimum of (result[j], result[j+1], tmp[-1]) instead of the correct (result[j], tmp[-1], result[j-1]) values required for the edit distance algorithm, leading to incorrect distances for many inputs.

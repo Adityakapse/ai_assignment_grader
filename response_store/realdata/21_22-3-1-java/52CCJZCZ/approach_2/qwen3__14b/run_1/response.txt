@@ -1,0 +1,95 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution does not allocate or initialize a memo array as required. Instead, it uses two variables (a and b) with a simple loop, which does not match the memoization approach specified in the rubric point.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student's solution correctly handles the base cases for n=0 and n=1, returning W[0] and max(W[0], W[1]) respectively, even though it does so implicitly through the loop rather than explicit if statements.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution does not use memoization or a cache array, so there is no check for precomputed values in the memo array as required by the rubric point.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's solution uses two variables to track even/odd index profits but does not implement the correct recurrence relation (choosing between taking W[i] + dp[i-2] or dp[i-1]) or store results in a memoization array as required by the rubric point.
+
+POINT_ID: 5
+The provided code is **correct** and successfully computes the maximum sum of a subsequence where no two elements are adjacent. This is a well-known problem in dynamic programming, and the code's approach is an efficient and clever variation of the standard solution.
+
+---
+
+### 🔍 **Understanding the Problem**
+
+We are given a list of numbers, and we want to select a subset of these numbers such that:
+
+- No two selected elements are adjacent.
+- The sum of the selected elements is maximized.
+
+For example, given the input `[1, 2, 3, 4, 5]`, the optimal selection is `[2, 4]` with a sum of `6`.
+
+---
+
+### 📌 **Standard Dynamic Programming Approach**
+
+The standard solution uses a dynamic programming array `dp`, where `dp[i]` represents the maximum sum we can get from the first `i` elements:
+
+- `dp[0] = nums[0]`
+- `dp[1] = max(nums[0], nums[1])`
+- For `i >= 2`, `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`
+
+This is an O(n) time and O(n) space solution.
+
+---
+
+### 🧠 **Code's Approach: Efficient Space Optimization**
+
+The provided code uses **two variables `a` and `b`**, which effectively simulate the `dp[i-2]` and `dp[i-1]` values from the standard approach, but with **constant space**.
+
+Here's how it works:
+
+- Initialize `a = 0`, `b = 0`.
+- For each index `i` in the list:
+  - If `i` is **even**, compute `a = max(a + nums[i], b)`.
+  - If `i` is **odd**, compute `b = max(b + nums[i], a)`.
+
+This approach is **equivalent** to the standard DP solution, but it uses **only two variables** instead of a full array. It cleverly alternates between `a` and `b` to simulate the recurrence relation.
+
+---
+
+### ✅ **Why This Works**
+
+The logic behind the code is based on the observation that:
+
+- At each step, you have two options:
+  1. **Take** the current element, and add it to the best sum from **two steps back**.
+  2. **Don't take** the current element, and use the best sum from **one step back**.
+
+By alternating between `a` and `b` based on the parity of the index, the code correctly captures this behavior.
+
+---
+
+### 🧪 **Example Walkthrough**
+
+For `nums = [10, 1, 1, 1, 100]`:
+
+- `i = 0 (even)`: `a = max(0 + 10, 0) = 10`
+- `i = 1 (odd)`: `b = max(0 + 1, 10) = 10`
+- `i = 2 (even)`: `a = max(10 + 1, 10) = 11`
+- `i = 3 (odd)`: `b = max(10 + 1, 11) = 11`
+- `i = 4 (even)`: `a = max(11 + 100, 11) = 111`
+
+Final result is `111`, which is the correct maximum sum.
+
+---
+
+### 📈 **Time and Space Complexity**
+
+- **Time Complexity**: **O(n)** – we iterate through the list once.
+- **Space Complexity**: **O(1)** – we only use two variables.
+
+---
+
+### ✅ **Conclusion**
+
+The code is **correct**, **efficient**, and **space-optimized**. It uses a clever trick to simulate the standard dynamic programming approach with just two variables, making it ideal for use in scenarios with memory constraints.

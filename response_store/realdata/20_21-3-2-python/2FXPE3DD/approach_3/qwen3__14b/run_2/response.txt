@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is built correctly from A, but the virtual source node 0 is missing. The DFS is initiated from each node 1 to N separately, which prevents a single traversal from considering all possible starting points.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: A 'heap' array is used as a cache but is initialised to 0 instead of -1. There's no explicit check for a sentinel value, making it impossible to distinguish between unvisited nodes and those with a path length of 0.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The base case for leaf nodes is not explicitly handled. When a node has no outgoing edges, the code does not return 0, and 'heap[v]' remains 0, which is not the correct value for an empty path.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code attempts to update 'heap[v]' with the maximum of its current value and the child's value + 1, but this is not done in a memoized way. The 'heap' array is not used as a proper memoization cache, and the result is not stored in a way that prevents recomputation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to find the correct longest path in many cases due to the absence of a virtual source node and incorrect memoization. The code may return an incorrect value for graphs with multiple disconnected components.

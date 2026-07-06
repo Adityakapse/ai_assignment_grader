@@ -1,0 +1,77 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The base case correctly returns 1 % c when b == 0, matching the sample solution's handling of the edge case and ensuring proper termination.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student correctly uses b % 2 to distinguish between even and odd values of b, with separate handling for even b, odd b ≠ 1, and the base case b = 1.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The student correctly handles the odd case by recursively computing $a^{b-1}$ and multiplying by $a$, matching the required approach of reducing $b$ by 1 and multiplying.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the even case by recursively computing expo(a, b/2, c) and squaring the result modulo c, matching the required halve-and-square approach.
+
+POINT_ID: 5
+The provided code correctly implements the computation of $ a^b \mod c $ using a recursive approach that mirrors the standard **modular exponentiation** method. Below is a breakdown of the algorithm's correctness and efficiency.
+
+---
+
+### ✅ **Correctness of the Code**
+
+The code follows the recursive formula:
+
+$$
+a^b \mod c = 
+\begin{cases}
+a \cdot (a^{b-1} \mod c) \mod c & \text{if } b \text{ is odd} \\
+(a^{b/2} \mod c)^2 \mod c & \text{if } b \text{ is even}
+\end{cases}
+$$
+
+This is known as **exponentiation by squaring**, a classic and efficient method for computing large powers modulo a number.
+
+- **Base Case (b = 1)**: Returns $ a \mod c $, which is correct.
+- **Even b**: The code computes $ a^{b/2} \mod c $, then squares the result modulo $ c $, which is the correct approach for even exponents.
+- **Odd b (b ≠ 1)**: The code computes $ a^{b-1} \mod c $, then multiplies by $ a $, and takes the result modulo $ c $, which is the correct approach for odd exponents.
+
+---
+
+### 📌 **Example Walkthrough**
+
+Let’s take the example where $ a = 2 $, $ b = 5 $, and $ c = 10 $:
+
+- $ 2^5 = 32 \Rightarrow 32 \mod 10 = 2 $
+
+**Code Execution:**
+
+- $ \text{exp}(2, 5, 10) $: $ b $ is odd (5 ≠ 1), so call $ \text{exp}(2, 4, 10) $.
+- $ \text{exp}(2, 4, 10) $: $ b $ is even, so call $ \text{exp}(2, 2, 10) $.
+- $ \text{exp}(2, 2, 10) $: $ b $ is even, so call $ \text{exp}(2, 1, 10) $.
+- $ \text{exp}(2, 1, 10) $: returns $ 2 \mod 10 = 2 $.
+- $ \text{exp}(2, 2, 10) $: $ (2 \cdot 2) \mod 10 = 4 $.
+- $ \text{exp}(2, 4, 10) $: $ (4 \cdot 4) \mod 10 = 16 \mod 10 = 6 $.
+- $ \text{exp}(2, 5, 10) $: $ (6 \cdot 2) \mod 10 = 12 \mod 10 = 2 $.
+
+✅ Result matches the expected value.
+
+---
+
+### 📈 **Efficiency**
+
+The algorithm runs in **$ O(\log b) $** time complexity due to the **exponentiation by squaring** technique, which is optimal for this kind of problem.
+
+---
+
+### 📌 **Potential Issues to Consider**
+
+- The function assumes that $ b $ is a **positive integer**. If $ b = 0 $, the result should be $ 1 \mod c $, which is not handled in the current implementation.
+- The function may have **stack overflow** for very large $ b $ due to recursion. An **iterative version** could be used for deeper recursion or larger inputs.
+
+---
+
+### ✅ **Conclusion**
+
+The code is **correct** and **efficient** for computing $ a^b \mod c $ using the **exponentiation by squaring** method. It handles all expected cases correctly and follows the standard algorithm for modular exponentiation.

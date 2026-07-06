@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly identifies the node to delete (y) in all cases: when the node has no left child, no right child, or two children (using successor which effectively finds the minimum of the right subtree as in the sample solution).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student implemented a correct treeMinimum helper function named tree_min that traverses left until reaching a node with no left child, matching the required behavior.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student solution does not explicitly identify x as y's non-null child (left if non-null, else right) as required, instead relying on transplant to handle child promotion without directly assigning x.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's solution correctly implements splicing by updating the child node's parent pointer (via transplant) and adjusting the parent's child pointer, matching the required behavior described in the rubric.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution does not copy the key from the successor node to the delete node when y is the successor, which is required to properly maintain the tree's logical structure as shown in the sample solution.
+
+POINT_ID: 6
+MARKS: 12
+FEEDBACK: The student's solution incorrectly replaces the delete node with its successor rather than copying the key as in the sample, which can lead to invalid BST structures when the successor has its own children. The code also fails to handle root deletion cases properly when the successor is not the immediate child of the delete node.

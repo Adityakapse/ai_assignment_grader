@@ -1,0 +1,29 @@
+POINT_ID: 1
+The student's code initializes the upper bound correctly (`1e18`), which matches the requirement in the rubric's "Correct" bucket. However, the lower bound is set to `1` instead of `0`, which is a deviation from the rubric's specification. Since the rubric's "Correct" bucket explicitly requires both bounds (`l=0` and `r=1e18`) to be correct, the student's code does not fully meet the criteria for "Correct." 
+
+The rubric's "Semi" bucket is defined as cases where the **upper bound is too small**, which does not apply here since the upper bound is correct. The "Wrong" bucket refers to cases where **no bounds are set** or the **upper bound is unrelated**, which also does not apply here.
+
+Given the ambiguity in the rubric's description and the fact that the student's code **does set bounds** and **only the lower bound is incorrect**, the most appropriate classification based on the rubric is:
+
+**"Semi"** — because the student's code deviates from the rubric's exact specification for the lower bound, even though the rubric's description for "Semi" is primarily focused on the upper bound.
+
+---
+
+**Answer:**  
+The student's code is in the **"Semi"** bucket because, although the upper bound is correctly set to `1e18`, the lower bound is set to `1` instead of `0`, which deviates from the rubric's specification.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop condition checks upper - lower > 1 instead of l <= r, which may miss cases where l == r, and the midpoint is computed correctly as (upper + lower) // 2.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly updates upper to mid when f(mid) == 1 (N ≤ mid) and lower to mid when f(mid) == 0 (N > mid), narrowing the search space appropriately.
+
+POINT_ID: 4
+BUCKET: Correct (15 marks)
+FEEDBACK: The student correctly returns 'upper' after the loop, which corresponds to the first value where f returns 1, as 'lower' is guaranteed to be the last value where f returns 0.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles N ≥ 1 but fails for N = 0 since the initial lower bound is set to 1, missing the case where N is the smallest possible value.

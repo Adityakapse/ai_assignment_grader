@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly derives the closed form $a_n = 2^n - 1$ and implements it using exponentiation by squaring with `res - 1` to match the recurrence.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop-based approach implicitly handles the base case where $n = 0$ by returning `res - 1 = 1 - 1 = 0`, which matches the recurrence's base case $a_0 = 0$.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When $n$ is odd (i.e., `n % 2 == 1`), the code multiplies `res` by `base` and applies modulo $10^9+7$, correctly implementing the odd case of exponentiation by squaring.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code squares `base` (via `base = base * base % 1000000007`) and halves `n` (via `n = n / 2`), correctly implementing the even case of exponentiation by squaring.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code computes $(2^n - 1) \mod 10^9+7$ for all $n$ in $O(\log n)$ time, avoids forbidden keywords, and applies modulo at every step to prevent overflow.

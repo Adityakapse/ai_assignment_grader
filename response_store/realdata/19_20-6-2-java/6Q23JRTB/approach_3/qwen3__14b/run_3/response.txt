@@ -1,0 +1,62 @@
+### **Rubric Assessment of the Student's Solution**
+
+---
+
+#### **Point 1: DP Table Allocation**
+- **Student's Code**: Initializes a 2D matrix of size `(amount + 1) x (capacity + 1)` with all values set to `-1.0`.
+- **Rubric Requirement**: A correct solution must initialize the table to `0` and ensure the dimensions match `(n + 1) x (capacity + 1)`.
+- **Assessment**: The dimensions are correct, but the initialization to `-1.0` is **not** acceptable. This is a **minor deviation** from the standard DP approach (which uses `0` for unprocessed states).
+- **Verdict**: **Semi** (dimensions correct, but initialization incorrect).
+
+---
+
+#### **Point 2: Loop Structure**
+- **Student's Code**: Uses a **recursive approach with memoization**, not nested loops.
+- **Rubric Requirement**: A correct solution must use **nested loops** (outer over items, inner over capacities) to fill the DP table.
+- **Assessment**: The absence of nested loops disqualifies the solution from meeting the rubric's requirements for this point.
+- **Verdict**: **Wrong** (no nested loops used; recursive approach is not aligned with the expected structure).
+
+---
+
+#### **Point 3: Capacity Feasibility Check**
+- **Student's Code**: Checks `if (weights[amount - 1] > capacity)` to determine whether an item can be included.
+- **Rubric Requirement**: The solution must ensure the item's weight does not exceed the current capacity.
+- **Assessment**: The check is logically equivalent to the sample's condition (`volumes[i] <= j`). The student's code correctly ensures the item is only considered if it fits.
+- **Verdict**: **Correct** (valid capacity check implemented).
+
+---
+
+#### **Point 4: Recurrence Relation**
+- **Student's Code**: Uses a recursive approach with memoization. When the item fits, it computes `max(prev_row[capacity], prev_row[capacity - weight] + value)`.
+- **Rubric Requirement**: The recurrence must compute the maximum value between **excluding the item** (using the previous row's value) and **including the item** (using the previous row's value at `capacity - weight`).
+- **Assessment**: The recurrence logic is **correct** and matches the sample's approach. The student's code correctly applies the recurrence, even though it uses recursion instead of loops.
+- **Verdict**: **Correct** (valid recurrence relation applied).
+
+---
+
+#### **Point 5: Overall Correctness**
+- **Student's Code**: Returns `matrix[amount][capacity]` as the final result.
+- **Rubric Requirement**: The solution must return the value from the **correct cell** of the DP table (e.g., `Result[0][capacity]` for the sample's backward approach).
+- **Assessment**: 
+  - The student's code uses a **top-down memoization approach** (valid for the 0-1 knapsack problem).
+  - The final result is read from `matrix[amount][capacity]`, which corresponds to the **last row** of the DP table. In standard DP, the answer is indeed in the last row (after processing all items).
+  - The code **correctly computes the maximum value** for all valid inputs, despite the structural difference from the sample's bottom-up approach.
+- **Verdict**: **Correct** (returns the correct value from the DP table).
+
+---
+
+### **Final Summary**
+| Rubric Point | Verdict   | Reason                                                                 |
+|--------------|-----------|------------------------------------------------------------------------|
+| **Point 1**  | **Semi**  | Correct dimensions, but initialized to `-1.0` instead of `0`.         |
+| **Point 2**  | **Wrong** | No nested loops used; recursive approach does not meet the rubric's structure. |
+| **Point 3**  | **Correct** | Valid capacity check implemented.                                    |
+| **Point 4**  | **Correct** | Recurrence relation is correctly applied.                           |
+| **Point 5**  | **Correct** | Returns the correct value from the DP table (last row).             |
+
+---
+
+### **Overall Evaluation**
+- The student's solution **correctly implements the 0-1 knapsack problem** using a **recursive with memoization approach**, which is a valid alternative to the standard bottom-up DP.
+- However, it **fails to meet the rubric's structural requirements** (specifically, the use of nested loops for Point 2).
+- Despite this, the solution is **logically sound** and **passes all correctness criteria**.

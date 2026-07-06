@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code does not handle the base case for b == 0 correctly; it returns 1 instead of 1 % c, which fails when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly checks if j % 2 != 0 to identify odd exponents and uses j % 2 == 0 for even exponents.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code does not explicitly reduce b by 1 and multiply by a in the odd case; instead, it updates res by multiplying with res1 (which is a^something), deviating from the required approach.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case is handled by squaring res1 (res1 = res1 * res1 % c) and halving j, which correctly implements the even case logic.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code returns 1 instead of 1 % c when b == 0, which fails for c == 1, and while the algorithm is generally correct, this edge case is not handled properly.

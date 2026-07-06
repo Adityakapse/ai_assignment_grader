@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D table with dimensions (n+1) x (capacity+1) and initialized all cells to 0 by default, matching the required structure.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j = 1 instead of j = 0, which may cause the code to miss handling zero-weight items and subproblems at capacity 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `volumes[i - 1] > j` correctly checks whether the item fits by comparing the item's volume to the current capacity, allowing inclusion when the volume is exactly equal to or less than j.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly uses `Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1])` to compute the maximum value for each subproblem.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j = 1, which may lead to incorrect results for zero-weight items and capacity 0, as the code does not explicitly process these cases even though the table is initialized to 0.

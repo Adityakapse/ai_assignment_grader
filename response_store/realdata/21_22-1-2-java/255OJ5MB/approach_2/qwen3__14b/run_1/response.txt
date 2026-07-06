@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student initializes lower to 1 instead of 0, which fails to account for N=0 (if allowed) and deviates from the sample solution's correct initial bounds of [0, 1e18].
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The student's code uses a loop condition of "upper - lower > 1" instead of the required "l <= r" and computes mid as (upper + lower)/2, which is correct but the loop condition deviates from the rubric's specification.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: The student's code incorrectly sets lower = mid when f_N(mid) == 0, whereas the correct approach is to set lower = mid + 1 to search the right half. This error prevents proper narrowing of the search space.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The student correctly returns 'lower' if f_N(lower) is 1, otherwise 'upper', which is equivalent to returning the correct N as the sample solution's post-loop logic since upper = lower + 1.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements binary search to find N in O(log n) time, properly handling edge cases by initializing bounds and using the function's monotonicity to narrow down the search range.

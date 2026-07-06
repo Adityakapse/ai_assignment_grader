@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses B.copy() as the counting array, which has length m (the same as B), but the problem requires a counting array of size at least 10^6+1 to accommodate all possible values in A. This will cause index-out-of-bounds errors for values in A exceeding m-1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Instead of incrementing C[a] for each element a in A, the student decrements c[A[i]] (where c is a copy of B), which incorrectly subtracts from B's values instead of counting frequencies of elements in A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop correctly iterates over all elements of B (from 0 to len(B)-1), producing a binary string of exactly length m as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition 'if c[i] >= 0' is equivalent to checking whether the count of category i in A is <= B[i], as B[i] was decremented by the number of occurrences in A. This correctly determines the binary output.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution contains logical errors in both counting array allocation (using B.copy() instead of a proper array of size 10^6+1) and frequency counting (subtracting instead of adding), which cause incorrect results for valid inputs.

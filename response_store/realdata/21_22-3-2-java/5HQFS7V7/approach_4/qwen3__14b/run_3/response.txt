@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student built an adjacency list for predecessors but did not add a virtual source node (0) with edges to all other nodes, leading to incomplete path consideration starting from arbitrary nodes.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student uses an array 'gewicht' initialized to 0 instead of -1, making it impossible to distinguish between uncomputed nodes and those with a true path length of 0, which violates the memoization requirements.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use DFS or handle leaf nodes in the same way as the sample solution; it processes predecessors in a topological order but lacks any explicit base case for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution iterates over predecessors of each node rather than children, and does not compute the maximum path length by recursively processing children and adding 1 for each edge.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student's solution fails to include a virtual source node (like node 0 in the sample) and does not subtract 1 from the final result, leading to incorrect path lengths for graphs requiring traversal starting from a virtual source. The algorithm also processes nodes starting from index 1, potentially missing paths involving node 0.

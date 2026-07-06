@@ -1,0 +1,27 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's code lacks an explicit base case for b == 0 and returns 1 instead of 1 % c, which fails when c == 1 or other edge cases.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly identifies odd b using (b & 1) == 1 and handles even b by shifting right, ensuring distinct processing for odd and even cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative approach with bit manipulation, which does not explicitly reduce b by 1 when b is odd, and instead shifts b right and squares a, deviating from the required recursive odd-case handling.
+
+POINT_ID: 4
+The student's code **does not** fall into the "Correct" bucket as defined by the rubric, which specifically refers to the **recursive approach** used in the sample solution. However, it also does not fall into the "Wrong" bucket, as the code **does** correctly halve the input (via bit-shifting) and square the value, which are key aspects of the correct algorithmic behavior.
+
+The rubric's "Semi" bucket is intended to capture cases where the code **does** recurse but **fails** to square correctly. However, the student's code **does not recurse** at all, which makes it **incongruent** with the "Semi" bucket's intended scope. Despite this, the code's behavior (halving and squaring) aligns with the **correct algorithmic logic** of the even-case handling, even though it is implemented using an **iterative approach** rather than the recursive one described in the rubric.
+
+Given the limitations of the rubric's bucket definitions and the fact that the student's code is **functionally correct** (albeit not following the sample's recursive structure), the **best possible fit** is the **"Semi"** bucket. This is because the code **does not fully align with the "Correct"** bucket (due to the lack of recursion), but it also **does not meet the criteria for "Wrong"** (as it halving and squaring are correct). Thus, it is **incongruously** categorized as "Semi" due to the rubric's narrow focus on the recursive approach.
+
+---
+
+**Final Answer:**  
+`Semi`
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly implements exponentiation by squaring with modulo at each step, but returns 1 instead of 1 % c when b = 0, leading to incorrect results for inputs like (a=2, b=0, c=1).

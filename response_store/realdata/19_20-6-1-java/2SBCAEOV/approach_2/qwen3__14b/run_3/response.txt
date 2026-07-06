@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a (len1+1)x(len2+1) DP table and uses nested loops to fill it bottom-up, with equivalent logic to the sample solution's i/j ranges despite using offset indices (i+1, j+1) for array access.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the base cases by setting dp[i][0] = i for all i and dp[0][j] = j for all j, matching the sample solution's approach for the first row and column of the DP table.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the character match case by setting dp[i+1][j+1] to dp[i][j] when characters are equal, mirroring the sample solution's logic of using edDis[i-1][j-1] for matches.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code incorrectly uses dp[i][j+1] (right neighbor) and dp[i+1][j] (below neighbor) for insert/delete operations, whereas the correct recurrence should use dp[i][j-1] (left) and dp[i-1][j] (above) as shown in the sample solution.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance without recursion, properly initializing the DP table and handling all three operations (insert, delete, replace) with accurate calculations.

@@ -1,0 +1,42 @@
+The provided code is **incorrect** and will **not** correctly compute the longest path in a Directed Acyclic Graph (DAG). Here's the breakdown of the problem and why the code fails:
+
+---
+
+### **Why the Code is Incorrect**
+
+The code processes nodes in **arbitrary order** (from `0` to `N-1`) and updates the length of each node based on its **immediate predecessors**. However, this approach **does not guarantee** that the predecessors of a node are processed before the node itself. In a DAG, the **longest path** must be computed using **topological sorting** to ensure that all predecessors of a node are processed before the node. 
+
+#### **Example Where the Code Fails**
+
+Consider a DAG with edges:  
+- Node 2 → Node 1  
+- Node 1 → Node 3  
+
+The correct longest path is **2 → 1 → 3** (length 2). However, the code processes nodes in the order 0 (Node 1), 1 (Node 2), 2 (Node 3). Here's what happens:
+
+1. **Processing Node 0 (Node 1)**: It has an edge to Node 3. The code updates `Lengths[3] = max(0, 0 + 1) = 1`.  
+2. **Processing Node 1 (Node 2)**: It has an edge to Node 1. The code updates `Lengths[1] = max(0, 0 + 1) = 1`.  
+3. **Processing Node 2 (Node 3)**: No outgoing edges.  
+
+The maximum length is **1**, but the correct answer is **2**. The code fails because it processes **Node 1** (the predecessor of Node 3) **after** Node 3, missing the opportunity to propagate the correct length.
+
+---
+
+### **Correct Approach**
+
+To compute the longest path in a DAG, **topological sorting** is required. Here's the correct algorithm:
+
+1. **Topologically sort** the nodes of the DAG.  
+2. **Initialize** a `lengths` array where `lengths[v]` represents the length of the longest path ending at node `v`.  
+3. **Iterate** through the nodes in topological order. For each node `u`, and for each neighbor `v` of `u`, update:  
+   ```python
+   lengths[v] = max(lengths[v], lengths[u] + 1)
+   ```
+
+This ensures that all predecessors of a node are processed **before** the node itself, allowing the longest path to be correctly computed.
+
+---
+
+### **Conclusion**
+
+The provided code **fails** to compute the longest path correctly in a DAG because it **does not use topological sorting**. The correct approach requires processing nodes in **topological order** to ensure accurate propagation of path lengths.

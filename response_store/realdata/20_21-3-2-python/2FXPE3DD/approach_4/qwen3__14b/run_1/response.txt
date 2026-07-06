@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly built from A, but the virtual source node 0 is missing. The code runs DFS separately for each node instead of using a single DFS from node 0, which would ensure all paths are considered.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The student uses a 'heap' array initialized to 0 instead of -1, making it impossible to distinguish between unprocessed nodes and those with a path length of 0, and the cache check uses a 'seen' array for traversal rather than checking the 'heap' value.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's DFS function does not explicitly return 0 for leaf nodes; instead, it relies on an initial heap value of 0, which does not constitute a proper base case as required by the rubric.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly takes the maximum over children and adds 1 for each edge, but the result is not stored in a memoization table before returning (the 'heap' array is updated in-place during traversal, not explicitly set before returning).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution processes each node individually with DFS but lacks a virtual source node, leading to incorrect path length calculations for DAGs with multiple disconnected components or non-linear structures. The 'heap' array is updated during traversal but does not properly track the longest path from each node.

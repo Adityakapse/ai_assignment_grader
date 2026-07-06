@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The code correctly identifies the node to delete (y) by using the successor function, which effectively finds the minimum of the right subtree when the node has two children, aligning with the required logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student's tree_min function correctly traverses left until reaching a node with no left child, then returns it, matching the required behavior for finding the in-order minimum.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code does not explicitly identify x as the non-null child of the node being deleted; instead, it directly uses transplant without determining or assigning x, which is required by the rubric point.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student's code correctly updates x.parent (via the transplant function's node2.parent assignment) and adjusts y.parent's child pointer (via transplant's parent pointer modifications), including handling the root replacement case when y.parent is None.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's solution does not copy the key from the successor to the delete node, leaving delete.key unchanged even when a successor is used, which leaves the original key in the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The successor function contains a critical error comparing Node (the class) to y.right, which will fail to correctly find successors in many cases, leading to invalid BST structures after deletion.

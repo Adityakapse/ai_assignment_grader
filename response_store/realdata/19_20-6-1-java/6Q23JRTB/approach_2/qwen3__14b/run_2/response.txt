@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D matrix of size (aL+1)x(bL+1) and uses nested loops to fill it bottom-up, with the outer loop iterating over b and inner loop over a, which achieves the same effect as the sample solution's loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the base cases by setting matrix[a][0] = a for all a from 1 to aL (deletion costs) and matrix[0][b] = b for all b from 1 to bL (insertion costs), matching the required initialization for the edit distance algorithm.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code does not explicitly check for character equality and assign the diagonal value (edDis[i-1][j-1]) when characters match, unlike the sample solution which directly sets the value in this case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation for edit distance when characters differ, using min of deletion (a-1,b), insertion (a,b-1), and substitution (a-1,b-1) with appropriate cost (0 for matches, 1 for mismatches).
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the edit distance algorithm using dynamic programming with a 2D matrix, properly initializing boundaries and calculating cell values based on character comparisons without recursion, matching the required functionality.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly identifies the node to delete (y) by using the successor function, which finds the minimum in the right subtree when the node has two children, and uses the child directly when there is only one child.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student implemented the tree_min function correctly by traversing left until reaching a node with no left child, matching the expected behavior of treeMinimum from the sample solution.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student's code does not explicitly identify x as the non-null child of y (the node to delete) in all cases. When the node has two children, the code uses the successor and transplants without directly handling the child promotion logic, leading to incomplete identification of x.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student's code correctly updates x.parent to y.parent (via the transplant function's node2.parent assignment) and adjusts y.parent's child pointer (via the parent's left/right updates in transplant), including handling the root replacement case when y.parent is None.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution does not copy the successor's key to the delete node, leaving delete.key unchanged even when a successor is used, which leaves the original node's key in the tree.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code fails to correctly find successors due to a typo (Node == y.right instead of checking the actual node), leading to incorrect deletions in two-children cases and potential invalid BSTs. Root deletion may also be mishandled.

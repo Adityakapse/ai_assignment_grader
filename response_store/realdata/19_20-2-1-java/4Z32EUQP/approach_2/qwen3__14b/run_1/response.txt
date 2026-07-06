@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student correctly defines the Queue class with a String array for storage and maintains Qhead/Qrear pointers to track FIFO order, matching the structural requirements of the sample solution.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student's emptyqueue() method correctly checks if Qhead equals Qrear, accurately reflecting whether the queue contains no elements based on the internal state.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The head() method correctly returns qu[Qhead] without modifying any internal state, accurately reflecting the front element of the queue as required.
+
+POINT_ID: 4
+MARKS: 12
+FEEDBACK: The enqueue method correctly adds elements to the rear using modulo arithmetic but incorrectly checks for queue fullness with `(Qrear +1) % max != Qhead`, which prevents adding elements when the queue is full despite the problem allowing up to 100 elements.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The dequeue() method returns "error" when the queue is empty, which is incorrect as the method should always remove and return the front element (the sample solution does not handle empty dequeues explicitly).
+
+POINT_ID: 6
+MARKS: 0
+FEEDBACK: The enqueue method incorrectly checks for queue fullness using (Qrear +1) % max != Qhead, which prevents enqueuing when there is available space, violating the FIFO behavior and causing incorrect queue operations.

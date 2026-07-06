@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) and initializes the base case (table[0][j] = 0), which matches the rubric's requirements for DP table allocation.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The inner loop iterates from j = 1 to capacity instead of starting at j = 0, which violates the rubric requirement to cover all subproblems including zero-weight items at j = 0.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly checks if the item's volume is not greater than the current capacity before considering including it, ensuring proper handling of both regular and zero-weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation for both cases (item fits and does not fit) using Math.max with the proper indices, matching the logic in the sample solution.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The solution correctly handles most cases but fails when items have volume 0 and the capacity is 0, as the inner loop starts at j=1 and never processes j=0, leading to incorrect results for items that can fit in zero capacity.

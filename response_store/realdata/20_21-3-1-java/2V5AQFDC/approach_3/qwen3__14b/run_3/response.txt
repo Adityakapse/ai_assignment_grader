@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocated a 2D table with dimensions (n+1) x (capacity+1) and initialized all cells to 0 using the default Java initialization and an explicit loop for the first row.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all n items, but the inner loop starts at j = 1 instead of j = 0, missing the zero-capacity subproblem needed for zero-weight items.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks if volumes[i-1] > j to determine feasibility, allowing items to be included when they fit exactly or with room to spare, and properly handles zero-weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation uses Math.max with the correct terms, referencing the previous row (i-1) and subtracting the item's volume from j, which aligns with the dynamic programming approach.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails to handle zero-weight items when capacity is 0, as the inner loop starting at j = 1 skips processing j = 0, where such items could be included.

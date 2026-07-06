@@ -1,0 +1,101 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly implements the closed-form solution $2^n - 1$ using a recursive approach that mirrors exponentiation by squaring, ensuring $O(\log n)$ time complexity and proper modulo operations.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement an expo function with a base case for b == 0, which is required by the rubric point. Instead, the code directly handles the recurrence relation in calc without proper exponentiation logic.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For odd n, the code correctly reduces n by 1, recursively computes the result, multiplies by 2, and adds 1 — matching the required transformation for the recurrence relation.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code does not implement an expo function or handle the even case by halving the exponent and squaring the result once, as required by the rubric. Instead, it uses a recursive approach within calc that does not explicitly separate exponentiation logic.
+
+POINT_ID: 5
+The code provided is **not** correct for all inputs, and the reason lies in the final step of the **odd case** recursion. Let's analyze the situation in detail to understand why.
+
+---
+
+### ✅ **Correctness of the Algorithm**
+
+The algorithm correctly models the recursive computation of $ 2^n - 1 \mod \text{mod} $, where `mod = 1000000007`. The approach is based on the following identities:
+
+1. **Even case** (n = 2k):  
+   $$
+   2^{2k} - 1 = (2^k - 1 + 1)^2 - 1 = (2^k)^2 - 1
+   $$
+   The code correctly computes this as:
+   ```
+   res = calc(n//2) + 1
+   res = res * res - 1
+   ```
+
+2. **Odd case** (n = 2k + 1):  
+   $$
+   2^{2k+1} - 1 = 2 \cdot (2^k - 1) + 1 = 2^{2k+1} - 1
+   $$
+   The code correctly computes this as:
+   ```
+   res = calc(n-1) * 2 + 1
+   ```
+
+So, **the recursive logic is mathematically correct**, and the algorithm would work properly **if** the final result is always returned modulo `mod`.
+
+---
+
+### ❌ **Critical Bug in the Code**
+
+The **bug** occurs in the **odd case** recursion. The code currently returns:
+
+```python
+return res + 1
+```
+
+However, the variable `res` is computed as:
+
+```python
+res = calc(n) % mod
+res = (res * 2) % mod
+```
+
+So, `res` is already **modded** before the final addition. However, **`res + 1` is not modded**. This can lead to incorrect results when `res + 1` exceeds `mod`.
+
+#### Example:
+Let’s say `mod = 7`, and `res = 6`. Then:
+
+- `res + 1 = 7`, which **mod 7 is 0**, but the code returns `7` instead of `0`.
+
+This **deviates from the expected result** and is **not congruent modulo `mod`**.
+
+---
+
+### ✅ **Fixing the Bug**
+
+To ensure the result is always **modulo `mod`**, the final return statement in the **odd case** should be:
+
+```python
+return (res + 1) % mod
+```
+
+This ensures that even if the result exceeds `mod`, it is adjusted accordingly.
+
+---
+
+### ✅ **Other Considerations**
+
+- **Modulo applied to the input `n` in the even case:**  
+  The code applies `n = (n // 2) % mod`. Since the input `n` is constrained to $ 0 \le n \le 10^9 $, and `mod = 10^9 + 7`, this operation is **redundant** but **not incorrect**. It does not affect the correctness of the algorithm.
+
+- **No use of forbidden keywords:**  
+  The code does **not** use any of the forbidden keywords: `pow`, `**`, `import`, or any other disallowed constructs.
+
+---
+
+### 📌 **Conclusion**
+
+The algorithm is **mathematically sound**, but due to a **missing modulo operation** in the **odd case**, it is **not correct** for all inputs. The **corrected code** should include the modulo operation in the final return statement of the odd case to ensure the result is always within the desired range.
+
+**Therefore, the code is not in the "Correct" bucket of the rubric, but in the "Incorrect" bucket due to this critical bug.**

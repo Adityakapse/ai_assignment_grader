@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses a for loop that iterates over the initial list of found nodes, but does not dynamically process newly added nodes, leading to an incomplete traversal that only processes the start node's immediate neighbors.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a list and appends new nodes to the end, but processes nodes in a for loop without dequeuing from the front, leading to incorrect traversal order (similar to DFS rather than BFS).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student uses a list called 'gefunden' to track visited nodes and checks if a neighbor is in this list before adding it, ensuring no duplicates are processed.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a list 'gefunden' and appends neighbors directly to it, but does not use a queue structure. This approach processes nodes in the order they are added to the list, not in the correct BFS order, and fails to enqueue neighbors properly.
+
+POINT_ID: 5
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's code uses a list and appends new nodes during iteration, but the for loop only processes the original list elements. This causes nodes added later (e.g., 3 in the example) to be missed entirely, leading to an incomplete traversal that fails for most inputs.

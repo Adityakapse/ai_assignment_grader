@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a (len1+1) x (len2+1) 2D array and uses nested loops with i and j ranging from 0 to len1-1 and len2-1 respectively, which effectively fills the table from (1,1) to (len1, len2) bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised: the first row (dp[i][0] = i) and first column (dp[0][j] = j) are filled with the appropriate values representing deletion and insertion costs.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the student correctly sets dp[i+1][j+1] = dp[i][j], which corresponds to taking the value from the diagonal cell (i-1,j-1) in the original indices, as required by the edit distance recurrence.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches, the student computes the minimum of insert (dp[i][j+1]), delete (dp[i+1][j]), and replace (dp[i][j]) values, adds 1 for the edit cost, and assigns the result to dp[i+1][j+1], correctly implementing the three edit operations.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly computes the edit distance for all valid inputs using an iterative dynamic programming approach with no recursion, matching the expected behavior of the edit distance algorithm.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D array with dimensions (n+1) x (capacity+1) and initializes all cells to 0, matching the rubric's requirements.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j=1 instead of j=0, skipping the 0 capacity case. While the initial row is explicitly set to 0, the loop structure does not fully cover all capacities from 0 to capacity as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `volumes[i-1] > j` correctly checks if the item fits (equivalent to `volumes[i] <= j` due to index adjustment), allowing inclusion when the item exactly fits or has room to spare.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence correctly uses `Math.max(rucksack[i-1][j], rucksack[i-1][j - volumes[i-1]] + values[i-1])` and references the previous row (`i-1`), ensuring items are not reused and the max value is computed.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `rucksack[n][capacity]` which corresponds to the correct final state in the forward DP approach, passing the sample input and handling edge cases like zero capacity or items that exactly fill the knapsack.

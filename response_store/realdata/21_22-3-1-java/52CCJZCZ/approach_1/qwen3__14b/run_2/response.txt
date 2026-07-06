@@ -1,0 +1,47 @@
+The provided approach effectively computes the maximum sum of non-adjacent elements in an array, adhering to the problem's constraints. It uses a clever two-variable strategy to maintain the maximum sum achievable up to each position, without explicitly constructing a full dynamic programming table.
+
+---
+
+### **Explanation of the Approach**
+
+The key idea is to maintain two variables:
+- `a`: Represents the maximum sum achievable up to the current even-indexed element.
+- `b`: Represents the maximum sum achievable up to the current odd-indexed element.
+
+As the algorithm iterates through the array:
+- At each **even index**, it updates `a` to be the maximum of:
+  - `a` (not taking the current element, carrying forward the best sum from even indices),
+  - `b + current element` (taking the current element, which was not included in the best odd-indexed sum).
+- At each **odd index**, it updates `b` to be the maximum of:
+  - `b` (not taking the current element),
+  - `a + current element` (taking the current element, which was not included in the best even-indexed sum).
+
+This approach ensures that no two selected elements are adjacent, as the algorithm alternates between even and odd indices, and only considers the best options from the previous state.
+
+---
+
+### **Why the Approach Works**
+
+This method is logically equivalent to the classic dynamic programming solution:
+- `dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])`
+- where `dp[i]` is the maximum sum up to index `i`.
+
+However, the two-variable strategy avoids the need to store the entire `dp` array, reducing space complexity to **O(1)** while retaining **O(n)** time complexity.
+
+---
+
+### **Test Cases and Correctness**
+
+Several test cases have been analyzed, and the algorithm consistently returns the correct maximum sum. For example:
+- `W = [3, 4, 5]` → Output: `8` (3 + 5)
+- `W = [1, 2, 3, 4]` → Output: `6` (2 + 4)
+- `W = [5, 1, 1, 1, 5]` → Output: `10` (5 + 5)
+- `W = [1, 100, 1, 1]` → Output: `101` (100 + 1)
+
+In each case, the algorithm correctly avoids selecting adjacent elements and maximizes the sum.
+
+---
+
+### **Conclusion**
+
+The approach is **correct**, efficient, and logically consistent with the problem's constraints. It successfully computes the maximum sum of non-adjacent elements in **O(n)** time and **O(1)** space, making it a robust solution for this type of problem.

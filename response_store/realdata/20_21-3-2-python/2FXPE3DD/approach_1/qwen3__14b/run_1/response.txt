@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The adjacency list is correctly constructed from the input edges, but the virtual source node 0 is missing. The DFS is initiated from nodes 1 to N instead of a single virtual source, which may fail to find the longest path in disconnected components.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: No memoization is implemented. The 'heap' array is initialized to 0 and used for path length tracking, but there is no check for cached values or recomputation avoidance.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The base case for leaf nodes is implicitly handled. When a node has no children, the loop does not execute, leaving heap[v] at 0, which is correct for leaf nodes.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The recurrence logic correctly computes the maximum path length by comparing 1 + child's value. However, this is done during a post-order traversal rather than through recursive memoization as in the sample.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The solution is incorrect because it lacks a virtual source node and memoization. The approach may fail to find the longest path in disconnected components and has incorrect initialization (heap starts at 0 instead of -1).
+
+TOTAL: 45

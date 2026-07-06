@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D double array with dimensions (n+1) x (capacity+1) using "new double[volumes.length + 1][capacity + 1]", and relies on Java's default zero-initialization of the table, matching the sample solution's approach.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The inner loop starts at j=1 instead of j=0, missing the base case for capacity=0 which is required to handle items with zero weight and ensure all subproblems are covered.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly checks if the item's volume is less than or equal to the current capacity (j) before considering including the item, using the condition "if (volumes[i - 1] > j)" which effectively handles both regular and zero-weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation where, when the item fits, the value is the maximum of including the item (value + table[i-1][j - volume]) or excluding it (table[i-1][j]), matching the required logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the 0/1 knapsack dynamic programming approach, properly handling items with volume 0 by comparing taking and not taking the item in each iteration, matching the expected behavior for all valid inputs.

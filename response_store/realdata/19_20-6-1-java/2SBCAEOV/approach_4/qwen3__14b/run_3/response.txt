@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly allocates a 2D table of size (len1+1) x (len2+1) and uses nested loops with i and j ranging from 0 to len1-1 and 0 to len2-1 respectively, which effectively fill the table from (1,1) to (len1, len2) through i+1 and j+1 indexing.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly initializes both the first column (dp[i][0] = i for deletions) and first row (dp[0][j] = j for insertions) of the DP table, matching the sample solution's base case setup.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the student correctly sets dp[i+1][j+1] to dp[i][j], which corresponds to edDis[i][j] = edDis[i-1][j-1] in the sample solution.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student's code uses dp[i][j+1] and dp[i+1][j] for insert/delete operations, which incorrectly references future cells instead of the correct neighbors dp[i][j-1] and dp[i-1][j]. The +1 cost is present, but the cell indices are wrong.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance using nested loops and a 2D array, without recursion, and properly handles all cases including character comparisons and minimum operation calculations.

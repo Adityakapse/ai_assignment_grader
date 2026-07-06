@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution uses a 1D list and updates it in place rather than allocating a 2D table as required, and the loop structure does not use nested loops over both string lengths.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's code initializes the first row as range(len(pre)+1) but fails to account for the full length of the longer string, leading to incorrect base case values for insertions and deletions compared to the sample solution's proper initialization of edDis[i][0] = i and edDis[0][j] = j.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code uses result[j] (from the previous row) instead of the correct diagonal value (edDis[i-1][j-1]) when characters match, leading to incorrect edit distance calculations in this case.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code incorrectly uses result[j+1] instead of the correct edDis[i-1][j-1] (result[j-1]) in the min function, leading to an invalid recurrence relation for the edit distance calculation.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code incorrectly computes the minimum of (result[j], result[j+1], tmp[-1]) instead of the correct (result[j], tmp[-1], result[j-1]) for the edit distance formula, leading to incorrect results for many input cases.

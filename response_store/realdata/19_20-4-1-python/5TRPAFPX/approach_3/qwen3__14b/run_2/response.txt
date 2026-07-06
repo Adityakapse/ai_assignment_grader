@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The recursive approach correctly navigates left or right based on key comparison, reaching the correct insertion point by checking root.key against insertNode.key at each step.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parent pointer is tracked during traversal; the parent is only set directly when attaching the node to a parent, not during the traversal itself.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The node is correctly attached as left or right child based on key comparison (root.key > insertNode.key) when inserting into a non-null position.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: insertNode.parent is explicitly set to the parent node (root) immediately when the node is attached as a left or right child.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function correctly returns insertNode as the new root when the original root is None, and returns the original root otherwise, preserving the BST property.

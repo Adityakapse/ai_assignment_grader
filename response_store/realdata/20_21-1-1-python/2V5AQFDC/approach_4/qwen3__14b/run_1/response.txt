@@ -1,0 +1,52 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code implicitly handles b == 0 by returning the initial value 1, but fails to apply % c, leading to incorrect results when c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses (b & 1) == 1 to check if b is odd, which is functionally equivalent to b % 2 == 1, correctly distinguishing between odd and even cases in the loop.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly multiplies the result by `a` when `b` is odd (detected via `b & 1`) and reduces `b` by 1 through bitwise shift, achieving the same effect as the recursive approach in the sample solution.
+
+POINT_ID: 4
+The student's code correctly implements the "even case: halve and square" strategy, even though it uses an **iterative** approach rather than the **recursive** approach described in the sample solution. Here's the breakdown:
+
+---
+
+### **Key Points from the Rubric**
+- The "Correct" bucket is defined as:  
+  *"When the function computes `tmp = expo(a, b//2, c)` once and returns `(tmp * tmp) % c`."*  
+  This implies a **recursive** implementation, which aligns with the sample solution.
+
+- However, the **core algorithmic correctness** is not restricted to recursion. The rubric evaluates **correct behavior** in the even case, which includes:
+  - **Halving** the input (`b`), and
+  - **Squaring** the result (via `a * a`), even in an **iterative** context.
+
+---
+
+### **Student's Code Analysis**
+The code:
+- Uses `b >> 1` (equivalent to `b // 2`), **correctly halving** the exponent.
+- Updates `a = (a * a) % c`, **correctly squaring** the result.
+- Achieves **O(log b)** time complexity, which is the intended goal.
+
+While the approach is **iterative**, it **correctly implements the algorithmic behavior** described in the rubric.
+
+---
+
+### **Conclusion**
+Even though the code differs from the **recursive** approach in the sample solution, it **still meets the rubric's criteria** for the "Correct" bucket, as it:
+- **Halves** the exponent.
+- **Squares** the result.
+- Achieves the desired algorithmic efficiency.
+
+---
+
+### ✅ **Final Answer:**
+**Correct** — The student's code correctly implements the even case by halving the exponent and squaring the result, even though it uses an iterative approach rather than recursion.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements modular exponentiation by squaring using an iterative approach, applying modulo c at each step to prevent overflow and ensure correctness for all valid inputs.

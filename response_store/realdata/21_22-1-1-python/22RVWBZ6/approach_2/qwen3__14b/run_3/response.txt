@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The student correctly derives the closed-form expression $a_n = 2^n - 1$ and implements it using a recursive exponentiation function that returns $2^n \mod 10^9+7$, matching the sample solution's mathematical approach.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's exp function lacks a base case for exponent 0, which is required to handle the scenario where the exponent is zero. The sample solution correctly returns 1 % c when b == 0, but the student's code does not address this case.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the odd case by reducing the exponent by 1 and multiplying by 2, matching the required approach of returning (a * expo(a, b-1, c)) % c when b is odd.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code checks if (n/2 % 2 == 0) to determine the even case, which incorrectly evaluates whether n is even rather than directly checking if n is even. This leads to incorrect handling of exponents like 6, where the code fails to use the halve-and-square approach as required.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The solution uses division with '/' instead of integer division '//', causing incorrect handling of even exponents and potential type errors due to floating-point values being passed recursively.

@@ -1,0 +1,41 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student uses a 2D list 'win' of size n (same as input length) initialized with [0,0], not a memo array of size n+1 with -1 sentinel values as required.
+
+POINT_ID: 2
+The student's solution correctly implements the base cases for `n = 0` and `n = 1`, as required by the rubric point.
+
+---
+
+### **Base Case for `n = 0`**
+When the input array has only one element (i.e., `n = 0`), the maximum profit is simply the value of that element. The code correctly initializes `win[0][0]` to `0` (not taking the element) and `win[0][1]` to the value of the element (taking it). Therefore, the maximum profit is `max(0, element)`, which is the correct value.
+
+---
+
+### **Base Case for `n = 1`**
+For `n = 1`, the input array has two elements. The code's logic for `i = 1` sets:
+- `win[1][0] = win[0][1]` (not taking the second element, which is the maximum profit up to the first element),
+- `win[1][1] = max(W[1], W[0])` (taking the second element, which is compared against the first element).
+
+Although the logic may appear flawed at first glance (suggesting that the second element could be taken in conjunction with the first), the result is correct. The maximum value between the two elements is the correct maximum profit when choosing the best of the two options (taking one or the other), as the constraint of not being able to take adjacent elements is naturally enforced in the logic.
+
+In fact, the result for `n = 1` is `max(W[0], W[1])`, which is the correct answer for this case.
+
+---
+
+### **Conclusion**
+The student's code correctly implements the base cases for `n = 0` and `n = 1` as required. Despite some superficially confusing logic, the outcome is correct and aligns with the expected behavior.
+
+**Score: Full marks for the base case implementation.**
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution uses an iterative dynamic programming approach with a win array, but there is no memoization table or cache check implemented in the helper function as required by the rubric point.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The student's code incorrectly sets win[1][0] to win[0][1] instead of taking the maximum between win[0][0] and win[0][1], leading to an incorrect recurrence relation for the base case when i=1.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution incorrectly computes the recurrence relations for the dynamic programming table, using win[i-2][1] + w instead of considering the optimal value up to i-2, and mishandles the base case for i=1 by comparing W[i-1] instead of properly evaluating the maximum profit.

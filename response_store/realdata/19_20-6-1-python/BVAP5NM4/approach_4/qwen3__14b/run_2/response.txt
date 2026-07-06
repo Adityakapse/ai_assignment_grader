@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The 2D table is correctly allocated with (m+1) x (n+1) size, but the nested loops are improperly structured with the inner i-loop nested inside the j-loop, leading to incorrect computation order instead of processing each (i,j) pair once.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised: the first column is filled with incremental values from 0 to m (deletion costs) and the first row with incremental values from 0 to n (insertion costs), matching the required initialisation.
+
+POINT_ID: 3
+The student's code correctly handles the case when `a[i-1] == b[j-1]` by setting the `replace` variable to `edit_matrix[i-1][j-1]`, which corresponds to the correct cell in the matrix. Although the code does not explicitly assign `edit_matrix[i][j]` to `edit_matrix[i-1][j-1]` as in the sample solution, it effectively achieves the same result by computing the minimum of the three values (`insert`, `delete`, and `replace`). Since the `replace` value is the correct one in the case of a match, and the other two values (`insert`, `delete`) are higher, the minimum operation ensures that the correct value is assigned.
+
+The rubric's correct bucket is satisfied because the code correctly identifies and uses the appropriate cell (`i-1, j-1`) for the replacement value, even though the implementation differs from the sample solution. Thus, the student's code meets the criteria outlined in the rubric.
+
+**Answer:**  
+The student's code is in the **Correct** bucket because it correctly uses the `edit_matrix[i-1][j-1]` cell for the replacement value, even though it employs the `min` function to compute the final assignment. This implementation is functionally equivalent to directly assigning the value and satisfies the rubric's criteria.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly applies the recurrence for mismatch cases by adding 1 to each of insert, delete, and replace operations (edit_matrix[i][j-1]+1, edit_matrix[i-1][j]+1, and edit_matrix[i-1][j-1]+1) and taking the minimum of these three values.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The student's code incorrectly nests the inner loop for i inside the j loop, leading to improper matrix filling order and incorrect calculations for non-trivial cases, though basic initializations and the min logic are correct.

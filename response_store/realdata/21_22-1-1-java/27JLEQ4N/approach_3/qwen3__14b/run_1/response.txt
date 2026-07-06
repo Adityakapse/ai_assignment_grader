@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly computes $2^n \mod 10^9+7$ using exponentiation by squaring, then subtracts 1 to match the closed-form $a_n = 2^n - 1$.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code does not implement an explicit `expo` function with a base case for $b = 0$, which is required by the rubric's criteria for this point.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code does not implement an explicit `expo` function with an odd case that reduces $b$ by 1 and multiplies by $a$, as required by the rubric's criteria for this point.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student's code does not implement an explicit `expo` function with an even case that squares the result of a recursive call to `expo(a, b/2, c)`, as required by the rubric's criteria for this point.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's code correctly computes $(2^n - 1) \mod 10^9+7$ for all valid inputs in $O(\log n)$ time, avoids forbidden keywords, and applies modulo at each step.

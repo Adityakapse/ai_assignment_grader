@@ -1,0 +1,27 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student solution does not allocate a 2D table at all; instead, it uses a greedy approach with a list to track selected items, completely omitting the required dynamic programming table structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a single loop to process items in a greedy sorted order, with no nested loops iterating over both items and capacities as required by the dynamic programming approach.
+
+POINT_ID: 3
+The student's code performs a **correct feasibility check** within the context of the greedy algorithm, even though it does not use the same condition as the DP approach. Specifically, the code checks whether the current item can be added without exceeding the total capacity (`volumeSum + item[2] <= capacity`), which is a valid way of ensuring that the item fits within the constraints of the problem.
+
+However, the rubric's **correct bucket** is defined as **when the code checks `volumes[i] <= j`**, which is specific to the **DP approach**. Since the student's code does **not** use this exact condition, it does **not** meet the rubric's definition of the "correct" bucket.
+
+Thus, while the student's code is logically correct in its own approach, it does **not** align with the rubric's specific criteria for the DP-based feasibility check. As a result, the correct classification is:
+
+---
+
+**Answer:**  
+The student's code is **not** in the "correct" bucket as defined by the rubric, because it does not use the condition `volumes[i] <= j` that is required for the DP approach. Instead, it uses a different, but still valid, feasibility check. Therefore, the code is **not** classified under the "correct" bucket in the context of the rubric's definition.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a greedy approach based on value-to-volume ratios and does not implement any recurrence relation or dynamic programming table updates, completely missing the required DP structure.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student implemented a greedy approach based on value-to-volume ratios, which fails for 0/1 Knapsack cases where optimal solutions require non-greedy item selection (e.g., when excluding a high-ratio item allows including multiple lower-ratio items with higher total value).

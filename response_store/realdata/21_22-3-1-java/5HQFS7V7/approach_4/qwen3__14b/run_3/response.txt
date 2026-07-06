@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses a memo array of size n+1 but initializes it with 0 values (and explicitly sets m[0] = 0, m[1] = W[0]) instead of the required -1 sentinel values for uncached entries.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly handles base cases for n=0 (returns W[0]) and n=1 (returns max(W[0], W[1])) through the initialization of m[0] = 0 and m[1] = W[0], with the loop correctly computing subsequent values.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code initializes the memo array with zeros but contains no check to read from it before recomputing values, leading to redundant calculations and violating the O(n) time requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation m[i] = max(W[i-1] + m[i-2], m[i-1]) and stores each computed value in the memo array m before proceeding, ensuring optimal substructure is preserved.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements an O(n) dynamic programming approach, properly handling all edge cases and correctly computing the maximum profit by considering both placing and skipping billboards at each position.

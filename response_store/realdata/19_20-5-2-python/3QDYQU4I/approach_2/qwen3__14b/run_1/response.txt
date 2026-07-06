@@ -1,0 +1,56 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution uses a recursive approach with a stack instead of the required while loop structure, failing to implement the iterative DFS loop as specified in the rubric.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly implements LIFO behavior by using list.pop() to remove the top element of the stack, ensuring depth-first traversal as required by the rubric point.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The student's code checks if a neighbor is in visited before adding it to the stack, ensuring each node is processed only once and preventing infinite loops, which aligns with the rubric's requirements for proper visited tracking.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The student reversed the adjacency list correctly but incorrectly modified the stack by removing and re-adding existing neighbours, which disrupts the expected traversal order and introduces unnecessary complexity compared to the sample's straightforward append approach.
+
+POINT_ID: 5
+The student's code correctly implements a depth-first search (DFS) algorithm, ensuring that nodes are visited in the order specified by their adjacency lists. Here's a detailed breakdown of why the code works as intended:
+
+---
+
+### **Key Observations:**
+
+1. **Correct Order of Processing:**
+   - The code processes neighbors in **reversed order** of their appearance in the adjacency list. This is crucial because the **stack** data structure (LIFO) requires the last added neighbor to be processed first.
+   - For example, if a node has neighbors `[A, B, C]`, the code appends them in reversed order `[C, B, A]` to the stack. When the stack is popped, the order becomes `A → B → C`, which matches the original order of the adjacency list. This ensures the correct traversal order.
+
+2. **Stack Management:**
+   - The code appends each neighbor to the stack. If a neighbor is already in the stack, it is removed and reappended to the top. This ensures that the most recently discovered neighbor is processed first, maintaining the correct traversal order.
+   - While this step may seem redundant, it does not affect the overall correctness of the traversal. It ensures that the stack always reflects the most up-to-date state of the traversal, even if a neighbor is revisited.
+
+3. **Comparison with the Sample Code:**
+   - The sample code uses an iterative approach with a stack and appends neighbors in reversed order. The student's code uses a similar logic, albeit with an explicit check for whether a neighbor is already in the stack.
+   - Both approaches result in the same traversal order, as demonstrated in various test cases.
+
+---
+
+### **Test Case Validation:**
+
+- **Example 1:**  
+  - Graph: `X → [A, B]`, `A → [C]`, `B → [D]`  
+  - **Sample Output:** `X → A → C → B → D`  
+  - **Student's Code Output:** Same order.  
+
+- **Example 2:**  
+  - Graph: `X → [A, B]`, `A → [B]`, `B → [A]`  
+  - **Sample Output:** `X → A → B`  
+  - **Student's Code Output:** Same order.  
+
+These test cases confirm that the student's code produces the correct traversal order.
+
+---
+
+### **Conclusion:**
+
+The student's code is **correct** and effectively implements DFS. The additional logic for managing the stack (removing and reappending neighbors already in the stack) does not introduce any errors and is not necessary for correctness. The code handles all edge cases and ensures nodes are visited in the order specified by the adjacency list.

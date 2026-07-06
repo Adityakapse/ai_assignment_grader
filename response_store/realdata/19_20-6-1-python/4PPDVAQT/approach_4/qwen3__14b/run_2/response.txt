@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses a 1D array 'result' instead of a 2D table, and the loop structure iterates over characters with temporary lists rather than nested loops over indices 1 to m and 1 to n as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student initializes the first row (result = range(len(pre)+1)) and the first column (tmp starts with i+1 for each row) correctly, matching the required base case initializations for the edit distance DP table.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code checks for character equality (if a != b) but when characters match, it incorrectly uses result[j] (from the previous row) instead of referencing the diagonal cell (i-1,j-1) as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student uses min(result[j], result[j+1], tmp[-1]) for the mismatch case, which incorrectly references result[j+1] (not part of the standard recurrence) instead of the diagonal cell (result[j-1] or tmp[-2]). The +1 is present but the three neighbors are not correctly identified.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code uses a 1D array approach but incorrectly computes the min operations using result[j], result[j+1], and tmp[-1] instead of the correct previous row (i-1,j), current row (i,j-1), and diagonal (i-1,j-1) values, leading to incorrect results for complex cases.

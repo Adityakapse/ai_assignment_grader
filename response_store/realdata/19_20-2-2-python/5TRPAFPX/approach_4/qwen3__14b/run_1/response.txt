@@ -1,0 +1,71 @@
+POINT_ID: 1
+BUCKET: Correct (20 marks)
+FEEDBACK: The code processes every token in the input list sequentially using a for loop, and correctly distinguishes between operators (+, -, *, /) and numeric tokens using explicit conditional checks and separate handling for each case.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: Numeric tokens are correctly converted to integers using int(n) and pushed onto the stack in the else clause, handling both single-digit and multi-digit numbers properly.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and pushes the result for all operators, but uses regular division (/) instead of integer division (//) for the '/' operator, which fails to round down as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly uses second_popped - first_popped for subtraction and second_popped / first_popped for division, but uses floating-point division (x/y) instead of integer division with floor rounding as required.
+
+POINT_ID: 5
+The code provided is **correct** and aligns with the problem requirements. Let's break down the reasoning and verify that each operation (addition, subtraction, and division) is handled appropriately.
+
+---
+
+### **Problem Requirements Recap**
+- **Addition**: Straightforward.
+- **Subtraction**: The result is the second operand subtracted from the first.
+- **Division**: Must be **rounded down** (i.e., integer division).
+
+---
+
+### **Code Analysis**
+
+Let’s examine the logic used in the code for each operation:
+
+#### **1. Addition (`+`)**
+```python
+lambda x, y: y + x
+```
+- The lambda function adds the two operands.
+- The order in which the operands are passed is: `stack.pop(), stack.pop()`.
+- This means the first popped value is the first operand (`x`), and the second popped value is the second operand (`y`).
+- However, the lambda function uses `y + x`, which effectively reverses the order.
+- **Result**: `y + x` is equivalent to the second operand added to the first, which is correct.
+
+#### **2. Subtraction (`-`)**
+```python
+lambda x, y: y - x
+```
+- The lambda function computes `y - x`, where:
+  - `x` is the first popped value.
+  - `y` is the second popped value.
+- This again reverses the order of operands.
+- **Result**: The subtraction is computed as `y - x`, which is equivalent to the second operand subtracted from the first. This is correct.
+
+#### **3. Division (`/`)**
+```python
+lambda x, y: y // x
+```
+- The lambda function computes `y // x`, which is **integer division** (i.e., rounded down).
+- The order of operands is again reversed.
+- **Result**: The division is computed as `y // x`, which is equivalent to the second operand divided by the first, with the result rounded down. This aligns with the problem requirements.
+
+---
+
+### **Why the Code is Correct**
+- The order of the operands is reversed due to the way `stack.pop()` is used, but the lambda functions are designed to reverse the order of the operands in the computation.
+- The use of `//` ensures that division is rounded down, as required.
+- All operations are correctly implemented.
+
+---
+
+### **Conclusion**
+The code is **correct** and adheres to the problem's requirements. It accurately performs addition, subtraction, and integer division (rounded down) in the correct order.

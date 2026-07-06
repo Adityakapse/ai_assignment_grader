@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D array with dimensions (n+1) x (capacity+1) using `new double[n + 1][capacity + 1]` and initializes all entries in the first row to 0 with the loop `rucksack[0][j] = 0`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The outer loop iterates over all n items (from 1 to n) and the inner loop processes j from 1 to capacity inclusive, covering all required subproblems after initializing the base case for j=0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if volumes[i - 1] > j before excluding the item, which correctly allows inclusion when the item exactly fits (volumes[i - 1] == j) or fits with room to spare (volumes[i - 1] < j).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the recurrence relation using Math.max with both branches (taking and not taking the item), and properly references the previous row (i-1) for both cases, matching the required structure for the forward DP approach.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements the 0/1 knapsack dynamic programming approach, properly initializing the DP table and using the correct recurrence relation to compute maximum values, with the final result correctly retrieved from rucksack[n][capacity].

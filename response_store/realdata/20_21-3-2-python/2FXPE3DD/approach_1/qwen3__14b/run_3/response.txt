@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The graph is constructed correctly but lacks the virtual source node 0 that connects to all other nodes, which is required to ensure a single DFS traversal covers all components.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: No memoization array is used; instead, the code uses a 'heap' array initialized to 0 and a 'seen' array, which does not implement the required memoization mechanism.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The base case for leaf nodes is implicitly handled by leaving 'heap[v]' as 0 when no children are processed, which matches the expected behavior for nodes with no outgoing edges.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly computes the maximum path length by updating 'heap[v]' with the maximum value from children using 'max(heap[v], 1 + heap[child])' during post-order traversal.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The code correctly computes the longest path length for all valid DAG inputs by initiating DFS on every unvisited node and tracking the maximum value in 'heap'.
+
+TOTAL: 80

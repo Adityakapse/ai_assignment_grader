@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a 1D list (`total`) instead of a 2D table, and the loop structure processes characters in a single pass rather than using nested loops over both string indices.
+
+POINT_ID: 2
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly initializes the first row (when one string is empty) with 'total = range(len(a) + 1)' and the first column (when the other string is empty) by setting 'tmpdist' elements to 'i_b+1' during each iteration.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: When characters match (s_a == s_b), the student correctly uses the value from the previous diagonal cell (total[i_a]) which corresponds to edDis[i-1][j-1], matching the required behavior for the character match case.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student's code uses 1 + min(total[i_a], total[i_a + 1], tmpdist[-1]) for mismatches, but this incorrectly references table entries (total[i_a + 1] instead of the proper edDis[i-1][j] value). The recurrence is present but the cell references are not aligned with the standard DP formulation.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles simple cases like empty strings and identical strings, but the logic for computing min operations incorrectly references previous row elements (total[i_a] and total[i_a+1]) instead of the correct previous values (current row's left and previous row's diagonal), leading to incorrect results for longer inputs.

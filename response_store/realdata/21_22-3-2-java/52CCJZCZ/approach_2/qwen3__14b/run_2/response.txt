@@ -1,0 +1,72 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's code does not add a virtual source node (node 0) with edges to all other nodes as required, unlike the sample solution which ensures all nodes are reachable from this virtual node.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution uses topological sorting and dynamic programming with an 'in' array instead of implementing memoization with a cache initialized to -1, which is required for this rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student solution does not implement a DFS-based approach and instead uses topological sorting, so it lacks the required DFS base case for leaf nodes that returns 0 as specified in the rubric point.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly computes the longest path by iterating through nodes in topological order and updating each child's maximum path length using the parent's value + 1, which is equivalent to the recurrence described in the rubric.
+
+POINT_ID: 5
+The provided code contains a critical error in its implementation of the topological sort, which leads to incorrect results in computing the longest path in a Directed Acyclic Graph (DAG). Here's a structured breakdown of the issue and its implications:
+
+---
+
+### **Error Analysis: Reversed Topological Order**
+
+**Key Issue:**
+The code reverses the topological sort order unintentionally, which disrupts the correct processing sequence required for the longest path algorithm.
+
+**How It Happens:**
+- The `topoSortUtil` function adds nodes to the `list` in the order of their completion (standard DFS approach), which is the **reverse** of the correct topological order.
+- However, the `topoSort` function **reverses the list again** when constructing `topoList`, resulting in **processing nodes in the wrong order**.
+
+**Consequences:**
+- The algorithm processes nodes in **reverse topological order**, which means predecessors of a node may not have been processed yet.
+- This leads to **incorrect updates** of the `in` array (which tracks the length of the longest path ending at each node), and thus **wrong results** for the longest path.
+
+**Example:**
+Consider a DAG with edges `1 -> 2 -> 3`. The correct topological order is `[1, 2, 3]`, and processing in that order ensures that when node `2` is processed, its predecessor `1` has already been processed. However, the reversed order `[3, 2, 1]` causes node `3` to be processed first, leading to incorrect updates (e.g., `in[2]` and `in[3]` may not be properly updated).
+
+---
+
+### **Code Implications**
+
+1. **Incorrect Topological Order:**
+   - The `topoList` is constructed in **reverse topological order**, violating the prerequisite for the longest path algorithm.
+   - This invalidates the correctness of the algorithm.
+
+2. **Impact on Longest Path Calculation:**
+   - The `in` array is initialized to `0` for all nodes, and the algorithm updates it as:
+     ```java
+     in[neighbor] = Math.max(in[neighbor], in[current] + 1);
+     ```
+   - If nodes are processed in reverse topological order, predecessors (which should have been processed first) are not yet processed, leading to **incorrect maximum values**.
+
+---
+
+### **Fix: Correct Topological Order**
+
+To resolve this, the `topoList` should be constructed in the **correct topological order**. This can be achieved by **removing the reversal** in the `topoSort` method:
+
+```java
+// Corrected code snippet
+for (int i = 0; i < n; i++) {
+    topoList[i] = list.get(i); // Do not reverse
+}
+```
+
+This change ensures that nodes are processed in the correct topological order, allowing the algorithm to compute the longest path correctly.
+
+---
+
+### **Conclusion**
+
+The code fails due to a **critical error in the topological sort order**, which leads to incorrect updates in the `in` array. The fix involves **removing the reversal** of the topological order in the `topoSort` method. This ensures the algorithm processes nodes in the correct sequence, enabling accurate computation of the longest path in a DAG.

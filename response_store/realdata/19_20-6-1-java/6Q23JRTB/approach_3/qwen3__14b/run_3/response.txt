@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: A 2D matrix of size (aL+1)x(bL+1) is correctly allocated, and nested loops iterate from 1 to aL and 1 to bL respectively to fill the table bottom-up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The first column (matrix[a][0] = a) and first row (matrix[0][b] = b) are correctly initialised to represent the base cases of deletions and insertions.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The character match case correctly uses aS.charAt(a-1) == bS.charAt(b-1) and avoids adding cost when characters match, effectively copying the diagonal cell value.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The mismatch recurrence correctly applies 1 + min of three operations (insert, delete, replace) using matrix[a-1][b], matrix[a][b-1], and matrix[a-1][b-1] with appropriate cost calculation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly returns matrix[aL][bL] without recursion and handles all edit operations as required by the problem statement.

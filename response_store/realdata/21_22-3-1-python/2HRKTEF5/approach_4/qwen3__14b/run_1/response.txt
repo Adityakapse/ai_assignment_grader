@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's solution uses an iterative DP array (P) instead of a memo array; no memo array is allocated or initialized with -1 as required by the rubric point.
+
+POINT_ID: 2
+BUCKET: Correct (20 marks)
+FEEDBACK: The code initializes P[0] as W[0] (correct for n=0) and P[1] as max(W[0], W[1]) (correct for n=1), properly handling both base cases required by the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's solution uses an iterative dynamic programming approach without any memoization or cache check, so the code does not perform a cache check as required by the rubric point.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly implements the recurrence relation max(P[i-2] + W[i], P[i-1]), which mirrors the sample's memoization approach by considering both cases of including or excluding the current billboard. The iterative DP table P is properly built and returns the correct final value.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution correctly implements an iterative dynamic programming approach that builds an array P where each entry P[i] represents the maximum profit up to position i, considering both the inclusion and exclusion of W[i], and returns the final value in O(n) time.

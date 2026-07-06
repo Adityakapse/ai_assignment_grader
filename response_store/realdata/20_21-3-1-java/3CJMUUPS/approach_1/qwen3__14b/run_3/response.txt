@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) using `double[][] table = new double[volumes.length + 1][capacity + 1];` which matches the rubric requirement.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The student's inner loop starts at `j = 1` instead of `j = 0`, which misses the base case where capacity is 0. This violates the rubric's requirement to cover all subproblems including zero-weight items at `j = 0`.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly checks `if (volumes[i - 1] > j)` to determine if an item can fit into the current capacity, which aligns with the rubric's requirement for capacity feasibility checks.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation using `Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1])` when the item fits, which matches the rubric's specification.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The arbitrary `if (capacity > 1000) capacity++;` line introduces a bug not present in the sample solution, and the loop structure misses `j = 0` cases, leading to incorrect results for some inputs, which reduces overall correctness.
+
+TOTAL: 80

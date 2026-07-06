@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is built correctly from A, but the virtual source node 0 is missing; the graph is initialized with empty lists and edges added directly from A without connecting node 0 to all other nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used; the code uses a 'heap' array initialized to 0 and a 'seen' array for traversal, but recomputes values during DFS without caching results, leading to exponential time complexity.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The base case for leaf nodes is not explicitly handled; the code relies on the 'heap' array being initialized to 0, but when a node has no children, the loop does not execute, and the 'heap' value remains 0 without an explicit return statement.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence is not properly implemented; the code updates 'heap[v]' with max(heap[v], 1 + heap[child]) during traversal but does not store results in a memoization array, and the order of operations differs from the correct approach.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm returns the maximum value in the 'heap' array, but due to missing memoization and the virtual source node, it fails to compute the correct longest path for most DAGs, leading to incorrect outputs.

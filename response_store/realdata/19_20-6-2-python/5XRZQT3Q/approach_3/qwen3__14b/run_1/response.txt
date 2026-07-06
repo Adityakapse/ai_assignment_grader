@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (n+1) x (capacity+1) using list comprehensions and initializes all cells to 0 with [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)].
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student uses nested loops where the outer loop iterates over all n+1 items (including the 0th row) and the inner loop covers all capacities from 0 to capacity inclusive, properly processing all subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if volume[i-1] <= w before considering including the item, ensuring that items are only considered when they fit within the current capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implements the correct recurrence relation using max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w]) when the item fits, and correctly references the previous row (i-1) for forward iteration.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly returns table[len(value)][capacity], which corresponds to the maximum value for all items and full capacity, and the code would produce the correct outputs like 0.5 for capacity 3 and 0.8 for capacity 7 as specified.

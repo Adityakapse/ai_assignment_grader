@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) but initializes it with -1.0 instead of 0.0 as required by the rubric.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student uses a recursive approach with memoization rather than nested loops, which fails to meet the rubric's requirement for an explicit outer loop over items and inner loop over capacities.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if weights[amount-1] > capacity before deciding whether to include an item, ensuring items are only considered when they fit in the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation correctly computes the maximum value by comparing the value of excluding the current item (matrix[amount-1][capacity]) versus including it (matrix[amount-1][capacity - weights[amount-1]] + values[amount-1]).
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student returns matrix[amount][capacity], which corresponds to the correct cell in the DP table after processing all items and capacities, matching the expected output for the sample inputs.

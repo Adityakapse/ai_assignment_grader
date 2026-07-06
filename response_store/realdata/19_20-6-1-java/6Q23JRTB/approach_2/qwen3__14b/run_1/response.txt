@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) DP table and uses nested loops to fill it bottom-up, with the outer loop iterating over the length of b and the inner loop over the length of a, matching the required structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the first column (matrix[a][0] = a for a from 1 to aL) and first row (matrix[0][b] = b for b from 1 to bL), matching the sample solution's base case initialization for edit distance.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code does not explicitly check for character equality and set the matrix value to the diagonal entry (as in the sample), instead relying on a ternary cost calculation that indirectly achieves the same result but fails to meet the rubric's structural requirement.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the mismatch recurrence using 1 + min of insert (matrix[a][b-1] + 1), delete (matrix[a-1][b] + 1), and replace (matrix[a-1][b-1] + cost) operations, matching the required formula.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance, initializing the matrix properly and using the same formula as the sample solution for calculating substitution, insertion, and deletion costs.

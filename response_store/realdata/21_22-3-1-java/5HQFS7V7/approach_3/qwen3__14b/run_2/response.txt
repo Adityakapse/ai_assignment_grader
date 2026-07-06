@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student allocated a memo array of size n+1, but initialized it to 0 instead of -1, which may incorrectly treat zero-profit cases as cached results.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code does not handle base cases explicitly. For n=0, m[0] is initialized to 0 instead of W[0], and for n=1, m[1] is set to W[0] instead of max(W[0], W[1]).
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student implemented an iterative DP approach without any cache check mechanism in a helper function, as required by the rubric's memoization structure.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation `Math.max(W[i-1] + m[i-2], m[i-1])` is applied correctly in the loop, and the memo array is updated for each i, ensuring proper DP computation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code returns incorrect results for n=0 and n=1 due to improper base case initialization (m[0] = 0, m[1] = W[0]), even though the recurrence is correct for larger n.

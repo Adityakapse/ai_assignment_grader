@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function lacks a base case for b == 0, leading to incorrect results when b is zero. The existing base cases handle b == 1 and return 1 without applying % c, which fails to handle the edge case c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly uses `b % 2 == 0` to identify even b and handles odd b in the else clause, leading to distinct recursive branches for even and odd cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case correctly reduces b by 1, recursively calls expo(a, b-1, c), multiplies the result by a, and applies modulo c — matching the required structure (a * expo(...)) % c through commutative multiplication.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes tmp = expo(a, b/2, c) using integer division and returns (tmp * tmp) % c, matching the required halve-and-square approach with proper mod application.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly implements exponentiation by squaring but fails to apply modulo c in base cases (when b=0 or b=1), leading to incorrect results when a exceeds c or when b=0 and c>1.

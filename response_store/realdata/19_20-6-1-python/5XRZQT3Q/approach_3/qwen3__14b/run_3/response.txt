@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses a 1D array (`total`) instead of a 2D table and processes characters with nested loops but not in the standard nested loop structure (i from 1 to m and j from 1 to n).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base cases are correctly initialized: the first row is set to `range(len(a) + 1)` (cost of inserting characters) and the first column is set to `i_b + 1` (cost of deleting characters) during each iteration.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the code correctly appends `total[i_a]` (equivalent to `edDis[i-1][j-1]` in a 2D table) to the current row.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches, the code correctly computes `1 + min(total[i_a], total[i_a+1], tmpdist[-1])` (equivalent to `min(edDis[i-1][j-1], edDis[i][j-1], edDis[i-1][j])` in a 2D table).
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code uses an iterative approach with proper logic for all cases and computes the correct edit distance, even though it uses a space-optimized 1D array instead of a 2D table.

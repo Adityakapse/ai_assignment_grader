@@ -1,0 +1,78 @@
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0 \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{9}$.
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+long expo(long a,long b,long c){
+    if (b == 0){
+        return 1 % c;
+    }
+    else if (b % 2 != 0){
+        return (a * expo(a,b-1,c)) % c;
+    }
+    else{
+        a = expo(a,b / 2,c) % c;
+        return (a*a) % c;
+    }
+}
+
+STUDENT SOLUTION:
+long expo(long a,long b,long c) {
+    if (b > 1) {
+        if (b % 2 == 0) {
+            long res = expo(a, b / 2, c);
+            return ((res * res) % c);
+        } else {
+            return ((expo(a, b - 1, c) * a) % c);
+        }
+    }
+    else if (b == 1) {
+        return (a);
+    } else {
+        return (1);
+    }
+}
+
+RUBRIC:
+Point 1 — Base case: b == 0 (valid range: 0–20)
+  When b == 0, the function returns 1 % c (handles termination and the edge case c == 1).
+
+Point 2 — Parity detection: odd vs even b (valid range: 0–15)
+  The algorithm correctly distinguishes odd b from even b using b % 2 (or equivalent).
+
+Point 3 — Odd case: reduce by 1 and multiply (valid range: 0–20)
+  When b is odd, the function returns (a * expo(a, b-1, c)) % c.
+
+Point 4 — Even case: halve and square (valid range: 0–25)
+  When b is even, the function computes tmp = expo(a, b/2, c) and returns (tmp * tmp) % c.
+
+Point 5 — Overall correctness (valid range: 0–20)
+  expo(a, b, c) returns the correct value of a^b mod c for all valid inputs, without using 'import' or '**'.

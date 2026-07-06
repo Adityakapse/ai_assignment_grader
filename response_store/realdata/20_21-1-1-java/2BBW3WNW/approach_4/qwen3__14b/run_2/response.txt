@@ -1,0 +1,80 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function correctly returns 1 % c when b == 0, properly handling the edge case where c == 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly uses `b % 2 == 0` for even `b` and `b % 2 != 0` for odd `b`, with additional checks for `b != 1` and `b == 0` handled separately, ensuring distinct recursive branches for even and odd cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly handles the odd case by recursively computing expo(a, b-1, c) and multiplying the result by a before applying modulo c, which matches the required approach.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case correctly computes b/2, recursively calculates the half-power, and returns (tmp * tmp) % c, achieving O(log b) depth with proper squaring and modulo application.
+
+POINT_ID: 5
+The provided code correctly implements a recursive modular exponentiation function, which computes $ a^b \mod c $ for given inputs $ a $, $ b $, and $ c $, while adhering to the constraints specified in the problem. Here's a structured analysis of its correctness:
+
+---
+
+### ✅ **Correctness of the Algorithm**
+
+1. **Base Case for $ b = 0 $:**
+   - The code returns $ 1 \mod c $, which is correct since any number raised to the power of 0 is 1, and $ 1 \mod c $ is valid for $ c \geq 1 $.
+
+2. **Recursive Case for Even $ b $:**
+   - When $ b $ is even, the function computes $ \text{mod\_exp}(a, b/2, c) $, squares the result, and returns it modulo $ c $. This is mathematically equivalent to $ a^b \mod c $, leveraging the identity:
+     $$
+     a^b \mod c = \left((a^{b/2} \mod c)^2 \right) \mod c
+     $$
+
+3. **Recursive Case for Odd $ b $:**
+   - When $ b $ is odd and not equal to 1, the function recursively computes $ \text{mod\_exp}(a, b-1, c) $, multiplies the result by $ a $, and returns the product modulo $ c $. This is correct because:
+     $$
+     a^b \mod c = \left((a^{b-1} \mod c) \cdot a \right) \mod c
+     $$
+
+4. **Handling $ b = 1 $:**
+   - The code correctly returns $ a \mod c $, which is the base case for the recursive function.
+
+---
+
+### ✅ **Handling Edge Cases**
+
+- **Large Exponents and Moduli:**
+  - The function applies the modulo operation at every recursive step, ensuring that intermediate values do not overflow and remain within the range of the data type (e.g., 32-bit or 64-bit integers). This is crucial for preventing integer overflows and ensuring correctness in computations involving large exponents.
+
+- **Modulo $ c = 1 $:**
+  - Since any number modulo 1 is 0, the function correctly returns 0 for all $ a $ and $ b $ when $ c = 1 $.
+
+- **$ a = 0 $:**
+  - The function correctly returns 0 for any $ b > 0 $, as $ 0^b = 0 $ for $ b > 0 $, and $ 0 \mod c = 0 $.
+
+- **$ b = 0 $:**
+  - The function returns $ 1 \mod c $, which is correct for $ a \neq 0 $, as $ a^0 = 1 $.
+
+---
+
+### ✅ **Compliance with Constraints**
+
+- **No Use of $ \texttt{import} $ or $ \texttt{**} $:**
+  - The code is written in C, and there is no use of Python syntax such as $ \texttt{import} $ or $ \texttt{**} $, which is in compliance with the problem's constraints.
+
+- **Valid Input Ranges:**
+  - The function assumes that $ c \geq 1 $, as per the input constraints, and does not handle invalid inputs such as $ c = 0 $, which is consistent with the problem's specifications.
+
+---
+
+### ✅ **Conclusion**
+
+The function is **correctly implemented** and **adheres to all constraints**. It avoids integer overflows by applying the modulo operation at every recursive step and correctly handles all valid input cases. The code is **efficient** (logarithmic time complexity in $ b $) and **robust** against edge cases.
+
+---
+
+### ✅ **Final Answer**
+
+$$
+\boxed{\text{Correct (20 marks)}}
+$$

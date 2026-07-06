@@ -1,0 +1,22 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's code does not handle the b == 0 case, instead returning 1 (without modulo c) when b is 0 through the else clause, which is incorrect as the correct result should be 1 % c.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student correctly uses b % 2 == 0 to detect even values of b and handles odd values via the else clause, accurately distinguishing between even and odd cases as required.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The student correctly handles the odd case by recursively computing expo(a, b-1, c) and multiplying the result by a before applying modulo c, which aligns with the required approach.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly handles the even case by recursively computing expo(a, b/2, c) and squaring the result modulo c, matching the required halve-and-square approach.
+
+POINT_ID: 5
+The student's code is missing critical mod operations in the base cases, which leads to incorrect results for certain valid inputs. For example, when $ b = 1 $, the code returns $ a $ instead of $ a \mod c $, and when $ b = 0 $, it returns $ 1 $ instead of $ 1 \mod c $. These errors are significant because they violate the requirement that the function must return the correct value for all valid inputs. While the recursive steps are implemented correctly, the missing mod operations in the base cases compromise the overall correctness of the code.
+
+$$
+\boxed{15}
+$$

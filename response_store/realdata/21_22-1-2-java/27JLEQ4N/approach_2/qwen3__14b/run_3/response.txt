@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student initialised the lower bound to 1 instead of 0, which fails to account for the possibility that N=0 (even though N is in ℕ, the function's definition allows N=0 as a valid case).
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student uses recursion instead of a while loop and computes the midpoint with a different formula (l + b/2 - 1) rather than the standard (l + r) // 2 used in the sample solution.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's code correctly updates l when f_N(x) == 0 (l = x + 1) but incorrectly sets r = x instead of r = x - 1 when f_N(x) == 1, failing to properly narrow the search range for N.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code returns 'l' unconditionally when the binary search base case is reached, without checking f_N(x) to determine whether N is l or l+1, unlike the sample solution which explicitly checks f_N(m) after the loop.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's implementation correctly performs a recursive binary search to find N in O(log n) time, adjusting the search interval based on the function's output, and returns the correct value when the interval size reduces to 1.

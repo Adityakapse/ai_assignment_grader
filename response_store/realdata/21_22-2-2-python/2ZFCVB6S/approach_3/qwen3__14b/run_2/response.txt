@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student creates a prefix sum structure with n elements, but each element is a list of two values rather than a single cumulative sum. C[0] is not initialized to A[0] directly, but the first element's cumulative sum is stored as the second value in the first sublist.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly builds the prefix sum by appending [s] and updating s += transporte for each element, resulting in a cumulative sum that matches C[i] = A[i] + C[i-1] in the sample solution.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student uses a list comprehension to process queries rather than explicitly allocating an output array D of size n, but the loop over all queries in B is present and correct.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly computes the range sum as sums[r][1] - sums[l][0], which handles both l = 0 (subtracting 0) and l > 0 (subtracting the prefix sum up to l-1) cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's solution computes all range sums correctly in O(n) time, avoids forbidden keywords, and handles all edge cases including l = 0.

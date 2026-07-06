@@ -1,0 +1,472 @@
+QUESTION:
+In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$
+
+SAMPLE SOLUTION:
+int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] c = new int[n];
+    int [] d = new int[n];
+    
+    c[0] = a[0];
+    for (int i = 1; i < n ; i++){
+        c[i] = a[i] + c[i-1];
+    }
+    for (int i = 0; i < n ; i++){
+        if (b[i][0]-1 >= 0){
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        }else{
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;   
+}
+
+STUDENT SOLUTION:
+int [] calc(int []a, int[][]b){
+   int l;
+   int r;
+    int n = a.length;
+    int [] d = new int[n];
+    int [] intervalle = new int[n];
+    intervalle[0]=a[0];
+    for(int i=1;i<=n-1; i++)
+    {
+        intervalle[i]= a[i] + intervalle[i-1];
+    }
+    for(int j=0;j<=b.length-1; j++)
+    {
+        r=intervalle[b[j][1]];
+        l= b[j][0]-1;
+        if(l>=0)
+        {
+        d[j]=r-intervalle[l];    
+        }
+        else{
+            d[j]=r;
+        }
+    }
+   
+   
+    return d;   
+}
+
+RUBRIC POINT:
+Point 1 — Prefix sum array allocation
+  An array C of size n is allocated and C[0] is initialised to A[0].
+  Buckets:
+    - Wrong (0 marks): No prefix sum array is allocated; the algorithm sums each query range from scratch using a nested loop, or returns a constant.
+    - Semi (10 marks): A prefix sum array is present but allocated with wrong size (e.g., n+1 allocated but C[0] not set to A[0], or size mismatch), or C[0] is not initialised separately from the loop.
+    - Correct (20 marks): An array C of size n is allocated and C[0] = A[0] is set correctly before the cumulative loop begins.
+
+========================================
+
+QUESTION:
+In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$
+
+SAMPLE SOLUTION:
+int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] c = new int[n];
+    int [] d = new int[n];
+    
+    c[0] = a[0];
+    for (int i = 1; i < n ; i++){
+        c[i] = a[i] + c[i-1];
+    }
+    for (int i = 0; i < n ; i++){
+        if (b[i][0]-1 >= 0){
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        }else{
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;   
+}
+
+STUDENT SOLUTION:
+int [] calc(int []a, int[][]b){
+   int l;
+   int r;
+    int n = a.length;
+    int [] d = new int[n];
+    int [] intervalle = new int[n];
+    intervalle[0]=a[0];
+    for(int i=1;i<=n-1; i++)
+    {
+        intervalle[i]= a[i] + intervalle[i-1];
+    }
+    for(int j=0;j<=b.length-1; j++)
+    {
+        r=intervalle[b[j][1]];
+        l= b[j][0]-1;
+        if(l>=0)
+        {
+        d[j]=r-intervalle[l];    
+        }
+        else{
+            d[j]=r;
+        }
+    }
+   
+   
+    return d;   
+}
+
+RUBRIC POINT:
+Point 2 — Prefix sum construction
+  C[i] = A[i] + C[i-1] for i from 1 to n-1, building the cumulative sum array.
+  Buckets:
+    - Wrong (0 marks): No prefix sum loop; C is either left as zeros or just copies A without accumulation.
+    - Semi (12 marks): A loop is present but the accumulation is wrong: e.g., C[i] = A[i] (copies without summing previous), or C[i] = C[i-1] (ignores current element), or iterates over the wrong range.
+    - Correct (25 marks): C[i] = A[i] + C[i-1] for i from 1 to n-1, correctly building the cumulative sum so that C[j] = sum of A[0..j].
+
+========================================
+
+QUESTION:
+In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$
+
+SAMPLE SOLUTION:
+int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] c = new int[n];
+    int [] d = new int[n];
+    
+    c[0] = a[0];
+    for (int i = 1; i < n ; i++){
+        c[i] = a[i] + c[i-1];
+    }
+    for (int i = 0; i < n ; i++){
+        if (b[i][0]-1 >= 0){
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        }else{
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;   
+}
+
+STUDENT SOLUTION:
+int [] calc(int []a, int[][]b){
+   int l;
+   int r;
+    int n = a.length;
+    int [] d = new int[n];
+    int [] intervalle = new int[n];
+    intervalle[0]=a[0];
+    for(int i=1;i<=n-1; i++)
+    {
+        intervalle[i]= a[i] + intervalle[i-1];
+    }
+    for(int j=0;j<=b.length-1; j++)
+    {
+        r=intervalle[b[j][1]];
+        l= b[j][0]-1;
+        if(l>=0)
+        {
+        d[j]=r-intervalle[l];    
+        }
+        else{
+            d[j]=r;
+        }
+    }
+   
+   
+    return d;   
+}
+
+RUBRIC POINT:
+Point 3 — Output array allocation and query loop
+  An output array D of size n is allocated and a loop iterates over all n queries in B.
+  Buckets:
+    - Wrong (0 marks): No query loop; only a single query is answered, or no output array is constructed.
+    - Semi (8 marks): A query loop is present but iterates over the wrong range (e.g., stops before the last query), or the output array has the wrong size.
+    - Correct (15 marks): An output array D of size n is allocated and a loop iterates i from 0 to n-1, computing each query result.
+
+========================================
+
+QUESTION:
+In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$
+
+SAMPLE SOLUTION:
+int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] c = new int[n];
+    int [] d = new int[n];
+    
+    c[0] = a[0];
+    for (int i = 1; i < n ; i++){
+        c[i] = a[i] + c[i-1];
+    }
+    for (int i = 0; i < n ; i++){
+        if (b[i][0]-1 >= 0){
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        }else{
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;   
+}
+
+STUDENT SOLUTION:
+int [] calc(int []a, int[][]b){
+   int l;
+   int r;
+    int n = a.length;
+    int [] d = new int[n];
+    int [] intervalle = new int[n];
+    intervalle[0]=a[0];
+    for(int i=1;i<=n-1; i++)
+    {
+        intervalle[i]= a[i] + intervalle[i-1];
+    }
+    for(int j=0;j<=b.length-1; j++)
+    {
+        r=intervalle[b[j][1]];
+        l= b[j][0]-1;
+        if(l>=0)
+        {
+        d[j]=r-intervalle[l];    
+        }
+        else{
+            d[j]=r;
+        }
+    }
+   
+   
+    return d;   
+}
+
+RUBRIC POINT:
+Point 4 — Range sum computation with l=0 edge case
+  For each query (l, r): D[i] = C[r] - C[l-1] when l > 0; D[i] = C[r] when l == 0.
+  Buckets:
+    - Wrong (0 marks): D[i] does not use the prefix array; range is summed from scratch, or D[i] = C[r] - C[l] (off-by-one, using l instead of l-1).
+    - Semi (10 marks): D[i] = C[r] - C[l-1] is used correctly when l > 0, but the l == 0 edge case is not handled: accessing C[-1] causes an index error or the formula is applied unconditionally.
+    - Correct (20 marks): When l > 0: D[i] = C[r] - C[l-1]; when l == 0: D[i] = C[r]. Both cases correctly compute the closed-interval sum A[l..r].
+
+========================================
+
+QUESTION:
+In a large warehouse, one robot is responsible for transporting
+goods from warehouse X to warehouse Y. The robot worked $n$ days.
+On the $i-$th (for $0\leq i\leq n-1$) day, the robot moved $x_i$ goods
+from the first warehouse to the second warehouse. These values are stored in a
+list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$. Now we want to process a list of
+queries $B = [(l_1,r_1),...,(l_n,r_n)]$. 
+
+For this one would like to know how many goods the robot has tranported between the days
+$l_i$ and $r_i$ with $0\leq l_i \leq r_i \leq n-1$ for
+$1\leq i\leq n$. Here $[l_i,r_i]$ forms a closed
+interval. For example, for $A = [x_0,x_1] = [4,5]$ and queries
+$B =[(l_1,r_1),(l_2,r_2)] = [(1,1),(0,1)]$ we get
+$[\sum_{i=l_1}^{r_1}x_i,\sum_{i=l_2}^{r_2}x_i] = [\sum_{i=1}^{1}x_i,\sum_{i=0}^{1}x_i] = [5, 4 + 5]$.
+
+So for each query, we want to return a list of the following
+form:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$. This calculation
+shall be done in $O(n)$.
+
+Input: a list of length $n$ of non-negative integers:
+$A = [x_0,...,x_{n-1}]$ and a list of two-tuples of length
+$O(n)$ $B = [(l_1,r_1),...,(l_n,r_n)]$ with $0\leq l_i \leq r_i \leq n-1$
+for $1\leq i\leq n$).
+
+Output: A list of length $n$ of non-negative integers:
+
+$[\sum_{i=l_1}^{r_1}x_i,...,\sum_{i=l_n}^{r_n}x_i]$ computed in $O(n)$.
+
+Note: Let $l_j \geq 1$. Then: 
+
+$\sum_{i=l_j}^{r_j}x_i= \sum_{k=0}^{r_j}x_k - \sum_{k=0}^{l_j - 1}x_k$
+
+SAMPLE SOLUTION:
+int [] calc(int []a, int[][]b){
+    
+    int n = a.length;
+    int [] c = new int[n];
+    int [] d = new int[n];
+    
+    c[0] = a[0];
+    for (int i = 1; i < n ; i++){
+        c[i] = a[i] + c[i-1];
+    }
+    for (int i = 0; i < n ; i++){
+        if (b[i][0]-1 >= 0){
+            d[i] = c[b[i][1]] - c[b[i][0] - 1];
+        }else{
+            d[i] = c[b[i][1]];
+        }
+    }
+    return d;   
+}
+
+STUDENT SOLUTION:
+int [] calc(int []a, int[][]b){
+   int l;
+   int r;
+    int n = a.length;
+    int [] d = new int[n];
+    int [] intervalle = new int[n];
+    intervalle[0]=a[0];
+    for(int i=1;i<=n-1; i++)
+    {
+        intervalle[i]= a[i] + intervalle[i-1];
+    }
+    for(int j=0;j<=b.length-1; j++)
+    {
+        r=intervalle[b[j][1]];
+        l= b[j][0]-1;
+        if(l>=0)
+        {
+        d[j]=r-intervalle[l];    
+        }
+        else{
+            d[j]=r;
+        }
+    }
+   
+   
+    return d;   
+}
+
+RUBRIC POINT:
+Point 5 — Overall correctness
+  calc returns the correct list of range sums for all queries in O(n) time, without forbidden keywords.
+  Buckets:
+    - Wrong (0 marks): Returns incorrect sums for most queries, or contains forbidden keywords ('check_calc', 'eval').
+    - Semi (10 marks): Returns correct sums when l > 0 but crashes or gives wrong results when l == 0, or the algorithm is O(n*q) due to per-query iteration over A.
+    - Correct (20 marks): Returns the correct range sum list for all queries including l == 0 in O(n) time; forbidden keywords are absent.

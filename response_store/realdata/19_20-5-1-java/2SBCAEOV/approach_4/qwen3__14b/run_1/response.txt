@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student initializes the queue with the start node before the loop and uses a while loop that processes nodes until the queue is empty, matching the required BFS structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student consistently removes nodes from the front of the queue using q.remove(0), which ensures the correct FIFO order required for breadth-first traversal.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The student uses a color-based visited tracking, but marks nodes as visited (GRAU) when enqueued rather than when dequeued, which may allow revisits if the same node is added to the queue multiple times.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code iterates through all neighbors in graph[current] (via u.adj) and adds each unvisited neighbor (v.farbe == WEIß) to the back of the queue, matching the required behavior for BFS.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's code implements BFS using a queue (even though it uses a list with remove(0), which is inefficient), and processes nodes in the order of their adjacency lists, ensuring level-by-level traversal for all valid directed graphs.

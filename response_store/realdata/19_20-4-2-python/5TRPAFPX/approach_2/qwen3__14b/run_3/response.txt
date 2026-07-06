@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly selects the node to delete (y) by setting newNode to delete when it has at most one child, and to treeMinimum(deleteNode.right) when it has two children, matching the sample solution's logic.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student's treeMinimum function correctly implements the left-child traversal logic using recursion, successfully returning the leftmost node as required by the rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code does not directly identify x as y's non-null child (left if exists, else right) as required. Instead, it handles subtree reattachment through complex conditional logic that bypasses the explicit x identification step present in the sample solution.
+
+POINT_ID: 4
+MARKS: 12
+FEEDBACK: The student's solution attempts to handle splicing by adjusting parent pointers of the successor node, but misses the critical step of directly updating the parent's child pointer (or root) to x (the non-null child of y) as done in the sample solution. This leads to incomplete and potentially incorrect splicing logic.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution does not copy the key from the successor node to the delete node when y is the in-order successor, which is required to maintain the search tree property as demonstrated in the sample solution.
+
+POINT_ID: 6
+MARKS: 12
+FEEDBACK: The student's solution correctly handles some cases (leaf, one child, root deletion) but has logical errors in the two-children case. Specifically, the code incorrectly attempts to "move" the minimum node instead of properly updating parent/child pointers as in the sample, leading to potential broken tree structures when the minimum node has its own children.

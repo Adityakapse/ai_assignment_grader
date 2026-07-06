@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student solution creates a list of lists (`sums`) where each element contains two cumulative sums, but does not allocate a single prefix sum array of size `n` as required. The code also initializes the first element with `s = 0` instead of setting `C[0] = A[0]`.
+
+POINT_ID: 2
+BUCKET: Correct (25 marks)
+FEEDBACK: The student constructs a prefix sum array where each entry stores the cumulative sum up to that index, using a running total 's' that accumulates A[i] correctly for each element.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The student allocates an output list of length n using a list comprehension and iterates over all queries in B, correctly computing each sum using prefix sums stored in the 'sums' array.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly computes the sum for l=0 by using sums[r][1] - sums[0][0] (equivalent to C[r+1] - C[0]) and for l>0 by using sums[r][1] - sums[l][0] (equivalent to C[r+1] - C[l]), matching the required formula.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly constructs a prefix sum array where each element stores cumulative sums up to that index, and computes queries using sums[r][1] - sums[l][0], handling all cases including l=0 in O(n) time.

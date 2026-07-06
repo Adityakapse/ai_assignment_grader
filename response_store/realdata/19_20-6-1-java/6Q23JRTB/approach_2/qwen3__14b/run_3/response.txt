@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) DP table and uses nested loops to fill it bottom-up, with the inner loop variables iterating from 1 to their respective string lengths, matching the required structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the first column (matrix[a][0] = a) and first row (matrix[0][b] = b) for all indices, achieving the same base case initialization as the sample solution, despite using slightly different loop bounds.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the character match case by setting the substitution cost to 0 when characters are equal, which results in matrix[a][b] being set to matrix[a-1][b-1] through the Math.min calculation, matching the required behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the mismatch recurrence using 1 + min of deletion (matrix[a-1][b] + 1), insertion (matrix[a][b-1] + 1), and substitution (matrix[a-1][b-1] + cost) with proper cost calculation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance, initializing the matrix properly, calculating substitution cost accurately, and returning the correct value from the bottom-right cell of the matrix.

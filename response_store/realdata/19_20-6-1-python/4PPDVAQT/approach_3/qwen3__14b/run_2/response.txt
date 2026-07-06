@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student uses a 1D array (`result`) instead of a 2D table as required, and updates it row by row rather than using nested loops over both dimensions.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The first row (insertion costs) is initialized with `range(len(pre) + 1)`, but the first column (deletion costs) is not explicitly initialized, leading to incomplete base case handling.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the student correctly copies the value from the previous diagonal cell (`result[j]`), equivalent to `edDis[i-1][j-1]` in the 2D approach.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The mismatch recurrence incorrectly uses `result[j+1]` (which corresponds to a non-adjacent cell) instead of `edDis[i-1][j-1]`, leading to an incorrect min calculation.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code avoids recursion but contains errors in the DP table structure and recurrence logic, causing it to fail for non-trivial inputs like "kitten" vs "sitting".

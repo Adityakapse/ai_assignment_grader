@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution does not create a virtual source node (node 0) with edges to all other nodes, which is essential for ensuring the DFS covers all disconnected components. Instead, it initializes Connections for N nodes without adding the virtual source.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student solution does not use a memoization array or check for cached values, instead using a simple array of lengths that is updated iteratively without any explicit memoization mechanism.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's solution does not implement a DFS function or handle leaf nodes as a base case, instead using an iterative approach that updates node lengths based on predecessors without explicit recursion or memoization.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's solution incorrectly updates child node lengths based on parent values (Lengths[u] = max(Lengths[e] + 1, ...)) rather than computing node values as 1 + max(child values) as required by the recurrence. This reverses the dependency direction needed for correct longest path calculation.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The student's code incorrectly assumes all edges are in the form [a,b] where a < b (via the assert statement), and processes nodes in arbitrary order rather than topological order, leading to incorrect path length calculations in many cases.

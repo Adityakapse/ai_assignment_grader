@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly builds an adjacency list by initializing Connections as a list of lists and adding edges to the appropriate nodes, but no virtual source node is added. The code does not include a node 0 with edges to all other nodes, so the algorithm cannot find the globally longest path.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution does not use a memoization array. Instead, it uses a Lengths array that is updated in a non-recursive loop, which does not cache results for individual nodes and recomputes values multiple times.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code does not implement a DFS function or any base case for leaf nodes. The algorithm relies on a non-recursive loop that updates Lengths directly, with no explicit check for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence is not implemented via a DFS with memoization. Instead, the student uses a loop that updates Lengths[u] = max(Lengths[e] + 1, Lengths[u]) for each connection, which does not recursively compute the longest path through children and lacks proper memoization.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code returns max(Lengths), but this approach is incorrect. It does not account for the virtual source node, and the algorithm's logic for propagating path lengths through the graph is flawed, leading to incorrect results for many DAGs.

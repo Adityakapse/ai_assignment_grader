@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The student correctly uses treeMinimum(deleteNode.right) when the node has two children, but fails to explicitly set y = delete when the node has at most one child, deviating from the sample's approach of selecting y as the node to physically remove.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student implemented the treeMinimum helper function correctly using recursion to traverse left until reaching a node with no left child, matching the required behavior described in the rubric.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code does not explicitly identify x as y's non-null child (as in the sample solution), instead directly manipulating subtree pointers without properly handling the promotion of the non-null child node.
+
+POINT_ID: 4
+MARKS: 12
+FEEDBACK: The student's code attempts to handle splicing by modifying parent pointers but uses a more complex approach than necessary. They incorrectly handle the case where newNode is not the direct child of deleteNode, and fail to properly update parent pointers in all scenarios, unlike the sample's straightforward x.parent and y.parent pointer adjustments.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The student's solution does not copy the key from the successor node (newNode) to the original deleteNode when y is the in-order successor, which is required to maintain the logical node deletion as specified in the rubric.
+
+POINT_ID: 6
+MARKS: 10
+FEEDBACK: The student's code incorrectly handles the two-children case by moving subtrees instead of replacing the node's key with the minimum and then deleting that minimum node, leading to invalid BST structures. The sample solution correctly replaces the key and adjusts pointers to maintain BST properties.

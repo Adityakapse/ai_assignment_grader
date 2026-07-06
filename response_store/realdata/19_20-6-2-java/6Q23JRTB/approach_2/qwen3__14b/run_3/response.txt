@@ -1,0 +1,107 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student allocated the DP table with correct dimensions (n+1)x(capacity+1) but initialized all values to -1.0 instead of 0.0 as required by the rubric point.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution uses a recursive approach with memoization instead of the required nested loops iterating over items and capacities as specified in the rubric point.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's solution correctly checks if the item's weight exceeds the current capacity before deciding to include it, mirroring the sample's approach of only considering item inclusion when its volume is feasible for the current capacity.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation for both cases (item fits and does not fit) using Math.max and proper references to previous states in the matrix, mirroring the logic in the sample solution.
+
+POINT_ID: 5
+The provided code is a correct and valid implementation of a dynamic programming solution to the **knapsack problem**, where the goal is to select items with given weights and values to maximize the total value without exceeding a given capacity. The code uses **memoization** (top-down approach) to store intermediate results and avoid redundant computations, making it both efficient and correct for this problem.
+
+---
+
+### ✅ **Key Points of the Code**
+
+1. **Function Signature**:
+   ```python
+   def knapsack(values, weights, capacity):
+   ```
+   The function takes a list of item values (`values`), a list of item weights (`weights`), and a `capacity` (maximum weight the knapsack can hold).
+
+2. **Memoization Table**:
+   ```python
+   memo = [[-1 for _ in range(capacity + 1)] for _ in range(len(values) + 1)]
+   ```
+   A 2D list `memo` is used to store computed values for subproblems. `memo[i][j]` represents the maximum value achievable using the first `i` items and a capacity of `j`.
+
+3. **Recursive Helper Function**:
+   ```python
+   def helper(amount, cap):
+       if memo[amount][cap] != -1:
+           return memo[amount][cap]
+       if amount == 0 or cap == 0:
+           return 0
+       # Option 1: Skip the current item
+       skip = helper(amount - 1, cap)
+       # Option 2: Take the current item if possible
+       take = 0
+       if weights[amount - 1] <= cap:
+           take = values[amount - 1] + helper(amount - 1, cap - weights[amount - 1])
+       memo[amount][cap] = max(skip, take)
+       return memo[amount][cap]
+   ```
+   - This function uses recursion with memoization to compute the optimal solution.
+   - At each step, it considers two options: skipping the current item or taking it (if the weight allows).
+   - The result is stored in `memo[amount][cap]`.
+
+4. **Base Case**:
+   ```python
+   if amount == 0 or cap == 0:
+       return 0
+   ```
+   If there are no items or no capacity left, the maximum value is 0.
+
+5. **Return Value**:
+   ```python
+   return helper(len(values), capacity)
+   ```
+   The final result is obtained by calling the helper function with all items and full capacity.
+
+---
+
+### ✅ **Correctness and Efficiency**
+
+- **Correctness**:
+  - The algorithm correctly computes the maximum possible value that can be carried in the knapsack.
+  - It adheres to the constraint that each item can be used **at most once**.
+  - It handles the edge cases (no items or no capacity) correctly.
+
+- **Efficiency**:
+  - The use of memoization ensures that each subproblem is computed **only once**, leading to a time complexity of **O(n * capacity)**, where `n` is the number of items.
+  - Space complexity is **O(n * capacity)** due to the memoization table.
+
+---
+
+### 🧪 **Example Test Case**
+
+Input:
+```python
+values = [0.5, 0.3]
+weights = [2, 5]
+capacity = 3
+```
+Expected Output:
+```python
+0.5
+```
+
+Explanation:
+- The first item has a weight of 2 and value 0.5.
+- The second item has a weight of 5 and value 0.3.
+- Since the capacity is 3, the second item cannot be taken.
+- The optimal choice is to take the first item, yielding a total value of **0.5**.
+
+---
+
+### ✅ **Conclusion**
+
+The code is **correct**, **efficient**, and **well-structured**. It uses a **top-down dynamic programming approach** with **memoization** to solve the knapsack problem. The function is correctly named and follows good Python practices. It is a valid and optimal solution to the given problem.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The adjacency list is correctly built from A, but the virtual source node 0 is missing. The algorithm processes nodes via topological sort instead of using a DFS from a virtual source node, which could miss paths starting from nodes not connected to others.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used; the algorithm relies on topological sorting and dynamic programming updates instead of memoizing DFS results, which is not aligned with the rubric's criteria for memoization.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No DFS base case is implemented; the algorithm uses topological sorting and dynamic programming instead of a DFS-based approach with a leaf node returning 0.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence is not implemented via DFS; the algorithm processes nodes in topological order and updates path lengths iteratively, which does not match the rubric's criteria for DFS-based recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The algorithm correctly computes the longest path length using topological sorting and dynamic programming, achieving O(N + M) time complexity without relying on the virtual source adjustment.

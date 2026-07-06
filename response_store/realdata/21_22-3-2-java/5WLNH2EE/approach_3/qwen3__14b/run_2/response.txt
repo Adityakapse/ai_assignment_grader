@@ -1,0 +1,56 @@
+### **Rubric Evaluation: Student Solution**
+
+---
+
+#### **Point 1: Graph Construction and Virtual Source**  
+**Student's Code:**  
+- The student creates an adjacency list but **does not add a virtual node** (node 0) connected to all other nodes. Instead, they perform a DFS for each node individually.  
+- **Analysis:** The virtual source node is **missing**, which is critical for ensuring that the longest path is computed correctly across the entire graph (especially for paths not starting at the first node processed).  
+- **Bucket:** **Semi** (correct graph construction but missing the virtual source node).  
+
+---
+
+#### **Point 2: Memoization**  
+**Student's Code:**  
+- The student uses a `besucht` array to track visited nodes during traversal but **does not use memoization** (e.g., no `memo` or `dp` array to cache computed results).  
+- **Analysis:** The lack of memoization means the algorithm is not efficient (potentially exponential time for large DAGs) and may recompute results for the same node multiple times.  
+- **Bucket:** **Wrong** (no memoization array; violates the requirement for O(N + M) time).  
+
+---
+
+#### **Point 3: DFS Base Case**  
+**Student's Code:**  
+- The student does **not explicitly check** for the base case (no outgoing edges) in the `tiefensuche` function.  
+- However, the `längsteEntfernung` array is initialized to 0, and for leaf nodes (no children), the loop does not execute, leaving the value as 0. This **matches the expected behavior**.  
+- **Analysis:** While the code does not have an explicit base case check, the result is **correct**. However, the rubric emphasizes the **presence** of the base case check.  
+- **Bucket:** **Semi** (correct result but missing explicit base case handling).  
+
+---
+
+#### **Point 4: Recurrence**  
+**Student's Code:**  
+- For each child, the student updates the current node's `längsteEntfernung` value with `Math.max(..., längsteEntfernung[nachbar] + 1)`.  
+- **Analysis:** This correctly computes the longest path from the current node to any of its children (adding 1 for the edge). However, the code **does not use memoization**, which could lead to incorrect results in complex DAGs (e.g., if a node is processed before its children).  
+- **Bucket:** **Correct** (the recurrence logic is valid, though efficiency is not addressed here).  
+
+---
+
+#### **Point 5: Overall Correctness**  
+**Student's Code:**  
+- The code **does not use a virtual source node**, leading to potential failures in finding the longest path (e.g., if the path starts at a node not processed first).  
+- The lack of memoization also means the algorithm may **not terminate in O(N + M) time** for large graphs.  
+- **Analysis:** The code may work for **simple linear graphs** but **fails for branching DAGs** or large inputs due to the missing virtual source and lack of memoization.  
+- **Bucket:** **Wrong** (returns incorrect results for complex DAGs and violates time complexity constraints).  
+
+---
+
+### **Summary of Buckets**  
+| **Point** | **Bucket** | **Reason** |
+|-----------|------------|------------|
+| 1         | **Semi**   | Missing virtual source node. |
+| 2         | **Wrong**  | No memoization array. |
+| 3         | **Semi**   | Correct result but no explicit base case check. |
+| 4         | **Correct**| Valid recurrence logic. |
+| 5         | **Wrong**  | Incorrect results for complex DAGs and missing virtual source. |  
+
+**Overall Score:** **Wrong** (due to critical failures in Point 5).

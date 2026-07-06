@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code iterates through all tokens in the input list and correctly distinguishes between operator tokens (+, -, *, /) and numeric tokens using conditional checks.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are correctly converted to integers using int(n) and pushed onto the stack with stack.push(int(n)).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator, exactly two values are popped from the stack, the correct arithmetic operation is applied, and the result is pushed back onto the stack for all four operators.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Subtraction and division use the correct operand order (second_popped op first_popped), but the division operation uses regular floating-point division (/) instead of integer division (//), which violates the problem's requirement to round down.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code fails for division cases involving negative numbers or non-integer results because it uses regular division (/) instead of integer division (//), leading to incorrect rounding behavior for some inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student initializes lower to 1 instead of 0, which fails to account for N=0 (if allowed by the problem's definition), whereas the sample solution correctly uses l=0 to bound the search space for all valid N.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The student's code uses a loop condition "upper - lower > 1" instead of "l <= r" as required, and sets mid = (upper + lower)/2 which is functionally equivalent to (l + r)//2 but lacks the explicit integer division operator.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: When f_N(mid) == 1 (indicating mid >= N), the code incorrectly sets upper = mid instead of narrowing the search to the left half by setting upper = mid - 1. Similarly, when f_N(mid) == 0, it sets lower = mid instead of lower = mid + 1, violating the required narrowing logic.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The student correctly returns 'lower' if f_N(lower) is 1, otherwise 'upper', which is equivalent to returning the correct N as the sample solution does by checking the final bounds and returning the appropriate value.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements a binary search to find N in O(log n) time, properly adjusting bounds based on the function's output and returning the correct value in all cases.

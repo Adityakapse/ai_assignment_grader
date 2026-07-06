@@ -1,0 +1,57 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses B.copy() as the counting array but fails to initialize it to zeros, instead copying B's capacity values which are unrelated to frequency counts. This results in incorrect initial counts for each category.
+
+POINT_ID: 2
+The student's code is **not** in the *Correct* bucket of the rubric, as it does **not** create a frequency array and increment values for each element in `A`. Instead, the code initializes a copy of `B` and subtracts 1 for each element encountered in `A`. While the logic ultimately produces the correct result (i.e., `B[i] - count_A[i]`), the **method** of frequency counting deviates from the rubric's explicit requirement to **"increment the count for each element in A"**.
+
+---
+
+### **Detailed Analysis of the Code Against the Rubric:**
+
+#### **1. Is the code iterating over `A`?**
+✅ **Yes** — The code iterates over `A` (via the loop), which is a **necessary condition** for the *Correct* bucket.
+
+#### **2. Is the index used for updating the frequency array correct?**
+✅ **Yes** — The code uses the element value `A[i]` as the index into the array `c`, which is **correct** (i.e., `c[A[i]] -= 1`), unlike the *Wrong* bucket's examples (e.g., using `i` instead of `A[i]`).
+
+#### **3. Is the frequency being accumulated correctly?**
+❌ **No** — The code **does not increment the frequency** of each element in `A`. Instead, it **subtracts** 1 from the value in `c`, which is a **misuse of the operation**. The rubric's *Correct* bucket explicitly requires **incrementing** the count for each element in `A`.
+
+---
+
+### **Why This Code Falls into the *Semi* Bucket:**
+
+The rubric's *Semi* bucket includes the following scenarios:
+- The code iterates over `A`, but the **wrong index** is used (e.g., `C[i]` instead of `C[A[i]]`).
+- The code **overwrites** the count instead of **accumulating** it (e.g., `C[A[i]] = 1` instead of `C[A[i]] += 1`).
+
+While the student's code **does not** overwrite the count (i.e., it does not set `C[A[i]] = 1`), it **subtracts** from the initial value of `C`, which is **not** the intended operation for counting frequencies. This is a **logical misalignment** with the rubric's *Correct* bucket, even though the index is used correctly.
+
+Thus, the code satisfies the **first two criteria** of the *Correct* bucket but **fails the third**, and as a result, it falls under the *Semi* bucket due to **incorrect accumulation of counts**.
+
+---
+
+### **Conclusion:**
+
+- **Bucket:** *Semi*
+- **Reason:** The code iterates over `A` and uses the correct index (`A[i]`), but **does not increment the count** of each element in `A` (instead, it subtracts 1 from a value in `c`), which is **not** aligned with the rubric's *Correct* bucket requirement.
+
+---
+
+### **Final Answer:**
+
+**Bucket:** *Semi*  
+**Reason:** The code iterates over `A` and uses the correct index, but it **subtracts** from a value in `c` instead of **incrementing** the frequency count for each element in `A`. This is not aligned with the rubric's *Correct* bucket requirement.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop uses range(len(B)) which correctly iterates from 0 to m-1, producing a binary string of exactly length m as required.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The code correctly checks if B[i] - count_A[i] >= 0 (equivalent to count_A[i] <= B[i]) and appends '1' when true, matching the required condition for the output string.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly computes counts by decrementing B's values for each occurrence in A, then checks if the adjusted values are non-negative, which is equivalent to the required condition. The algorithm runs in O(n + m) time and avoids forbidden substrings.

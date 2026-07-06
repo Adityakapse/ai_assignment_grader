@@ -1,0 +1,78 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly selects y as delete when it has at most one child, and uses treeMinimum(delete.right) when delete has two children, matching the sample solution's logic for choosing the node to physically remove.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The treeMinimum method correctly traverses left from the input node until reaching a node with no left child, matching the required behavior exactly as in the sample solution.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly identifies x as the non-null child of the node to be deleted using a ternary operator, matching the logic in the sample solution.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly updates the parent pointer of the non-null child and adjusts the parent's child pointer to the non-null child, matching the required splicing steps in the sample solution.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The student correctly implements the key copy logic with "if (toBeDeleted != delete)" before assigning toBeDeleted.key to delete.key, matching the sample solution's approach for handling successor nodes.
+
+POINT_ID: 6
+The student's code is **incorrect** due to a critical flaw: it assumes the presence of a `parent` field in the `Node` class, which is **not** part of the standard implementation of a binary tree node in Java. This assumption leads to **compilation errors** and **logical errors** in the code.
+
+---
+
+### 🔍 **Issue: Missing `parent` field in the Node class**
+
+In the provided code, the student attempts to access `toBeDeleted.parent`, which is not defined in the standard `Node` class. This is a fundamental issue because:
+
+- **Binary tree nodes typically do not have a `parent` field** unless explicitly defined.
+- Without a `parent` pointer, the code **cannot determine** the parent of a given node.
+- This omission **breaks the logic** of the code and makes it **non-functional**.
+
+---
+
+### 🧠 **Why This Matters**
+
+The logic of the code relies on correctly updating the parent's left or right child pointer when a node is deleted. However, the code:
+
+```java
+if (toBeDeleted.equals(toBeDeleted.parent.left)) {
+    toBeDeleted.parent.left = notNullChildOfToBeDeleted;
+} else {
+    toBeDeleted.parent.right = notNullChildOfToBeDeleted;
+}
+```
+
+requires that `toBeDeleted.parent` is a valid reference. In a standard `Node` class, this is **not** available, and the code would **not compile**.
+
+---
+
+### 🛠️ **Possible Fixes**
+
+To make the code functional, the `Node` class must be modified to include a `parent` field. For example:
+
+```java
+class Node {
+    int value;
+    Node left;
+    Node right;
+    Node parent; // Added parent pointer
+
+    Node(int value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+        this.parent = null;
+    }
+}
+```
+
+Once the `parent` field is included, the code can be used to navigate the tree and update parent pointers correctly.
+
+---
+
+### ✅ **Conclusion**
+
+The student's code is **incorrect** due to the **missing `parent` field** in the `Node` class. This omission renders the code **non-functional** in any standard binary tree implementation. To fix the issue, the `Node` class must be modified to include a `parent` field.

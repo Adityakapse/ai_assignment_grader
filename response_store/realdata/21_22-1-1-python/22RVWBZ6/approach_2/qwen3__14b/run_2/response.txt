@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The student correctly derives the closed-form $a_n = 2^n - 1$ and implements it using `exp(n) - 1`, matching the mathematical insight required for this rubric point.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's code lacks a base case for when the exponent is 0, which is required to return 1 (or 1 % c) as specified in the rubric. The exp function only handles n == 1 and does not address the b == 0 scenario.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly implements the odd case by recursively calling exp(n-1) and multiplying by 2, mirroring the sample solution's approach of reducing the exponent and multiplying by the base.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly implements the even case by recursively computing exp(n/2) and squaring the result, which matches the required halve-and-square approach for exponentiation.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The student's code uses floating-point division ("/") instead of integer division ("//") which introduces precision errors and incorrect recursive calls for even exponents, leading to incorrect results for many inputs.

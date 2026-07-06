@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct (25 marks)
+FEEDBACK: The code correctly uses a loop to traverse the tree, moving left when target.key < x.key and right otherwise, and inserts the node at the first available null child position while properly setting the parent pointer.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code does not maintain a separate parent pointer during traversal; instead, it relies on the current node (x) to set the parent only at the insertion point, without tracking the parent node during the traversal steps.
+
+POINT_ID: 3
+BUCKET: Correct (20 marks)
+FEEDBACK: The student correctly attaches the target node as a left child when target.key < x.key and as a right child otherwise, using the same key comparison logic as the sample solution.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly sets target.parent = x when inserting the node as a child of x, which is the parent node identified during traversal.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly handles empty trees by returning the target node as the new root, and for non-empty trees, it properly inserts the node while maintaining the BST property and correctly updating parent pointers. The return value is always the original root unless inserting into an empty tree.

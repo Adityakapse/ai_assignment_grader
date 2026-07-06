@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) and initializes all values to 0 by setting the first row explicitly and relying on Java's default 0.0 initialization for the rest.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The inner loop starts at j=1 instead of j=0, which may miss cases involving items with weight 0 and capacities of 0, even though the table is properly initialized.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility check correctly uses the condition `weight[i-1] > j` to determine whether an item can be included, which is logically equivalent to the sample's `volumes[i] <= j`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence relation accurately computes the maximum value by comparing the case where the current item is not taken (`dynTab[i-1][j]`) and where it is taken (`dynTab[i-1][j - weight[i-1]] + value[i-1]`).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the code handles most cases correctly, the inner loop's exclusion of j=0 may lead to incorrect results for items with weight 0 when the capacity is 0, due to the lack of processing for those specific cases.

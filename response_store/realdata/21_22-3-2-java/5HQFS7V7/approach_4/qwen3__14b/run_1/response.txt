@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student built an adjacency list (using predecessors instead of successors) but did not add a virtual source node. The algorithm processes nodes sequentially but cannot find the globally longest path starting from any node.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student solution uses an iterative dynamic programming approach with a 'gewicht' array initialized to 0, but no memoization array is present to cache results and avoid recomputation, violating the memoization requirement.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not check for nodes with no outgoing edges (leaf nodes) and instead processes nodes based on predecessors, leading to no explicit base case for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution iterates over predecessors of each node rather than children, and does not increment the predecessor's path length by 1 when considering the current node as an extension.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution processes nodes in arbitrary order (1 to N-1) instead of topological order, leading to incorrect maximum path lengths in DAGs with branching or dependencies. The virtual source node is also missing, which may cause disconnected components to be ignored.

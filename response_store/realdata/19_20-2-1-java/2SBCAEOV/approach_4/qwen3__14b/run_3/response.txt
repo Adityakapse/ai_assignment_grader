@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The Queue class uses a String array for storage and maintains head/end indices with modulo arithmetic to handle wrapping, providing complete internal state tracking needed for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The emptyqueue() method correctly returns true when head and end are equal, accurately reflecting whether the queue contains no elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method correctly returns list[head], which is the front element of the queue, without modifying any internal state or advancing the head pointer.
+
+POINT_ID: 4
+BUCKET: Correct (18 marks)
+FEEDBACK: The enqueue method correctly adds elements to the end of the list using modulo arithmetic to handle wrapping, and properly updates the 'end' index to maintain correct internal state for subsequent operations.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue() method correctly retrieves the element at the current head index, increments the head pointer using modulo arithmetic to wrap around the array, and returns the value, ensuring the internal state is properly updated.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The enqueue method uses a modulo-based overflow check that limits capacity to 99 elements instead of the required 100, and dequeue returns an empty string rather than throwing an error when the queue is empty, which may violate expected behavior.

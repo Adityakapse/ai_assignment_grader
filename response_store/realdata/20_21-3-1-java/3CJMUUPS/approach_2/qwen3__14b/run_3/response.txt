@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D double array with dimensions (n+1) x (capacity+1) using "new double[volumes.length + 1][capacity + 1]", and relies on Java's default 0.0 initialization for the table, which matches the required setup.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j=1 instead of j=0, missing the critical case for zero capacity and zero-weight items as required by the rubric.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's solution correctly checks if volumes[i-1] > j before considering including the item, which ensures proper handling of both regular items and zero-weight items by only allowing inclusion when the item's volume is feasible for the current capacity.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation by comparing the value of including the current item (table[i-1][j - volumes[i-1]] + values[i-1]) with not including it (table[i-1][j]) when the item fits, matching the sample solution's logic.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The student's solution incorrectly increments the capacity by 1 when it exceeds 1000, leading to incorrect results for valid inputs. Additionally, the code fails to handle cases where capacity is 0 and items have volume 0, as the inner loops do not process these scenarios.

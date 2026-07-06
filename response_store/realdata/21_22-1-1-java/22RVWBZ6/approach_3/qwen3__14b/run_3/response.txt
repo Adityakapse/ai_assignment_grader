@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly derives the closed form $a_n = 2^n - 1$ and implements it as `exp(2, n, 1000000007) - 1`, matching the required formula.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (e == 0) return 1 % m;` correctly returns 1 modulo `m` for exponent 0, ensuring proper termination of the recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd case `else return (exp(b, e-1, m) * b) % m;` correctly reduces the exponent by 1 and multiplies by the base, matching the required recursive step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even case `long x = exp(b, e/2, m); return (x*x) % m;` correctly computes the square of the result of the recursive call with halved exponent, achieving logarithmic time complexity.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly computes $(2^n - 1) \mod (10^9+7)$ for all inputs in $O(\log n)$ time without forbidden keywords, applying modulo at each step.

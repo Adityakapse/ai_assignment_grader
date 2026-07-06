@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student uses successor logic for two-child nodes (correctly finding minimum of right subtree), but does not explicitly set y as in the sample. The case split is present but lacks the explicit y selection variable used in the reference solution.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The tree_min function correctly traverses left until reaching a node with no left child, matching the sample solution's tree_minimum implementation.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The student's code lacks an explicit x variable to track the non-null child of y. The transplant function directly manipulates node pointers without identifying the child to promote, violating the rubric's requirement to explicitly identify x as the child of y.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The transplant function correctly updates x.parent and y.parent's child pointers, handling all cases including root replacement, matching the sample's splicing logic.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code never copies the successor's key to the delete node. When using a successor, delete.key remains unchanged, leaving a logical copy of the deleted node in the tree.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The method fails to preserve BST correctness in cases requiring key copying (e.g., deleting nodes with two children). The missing key copy leaves the deleted node's key in the tree, violating BST properties.

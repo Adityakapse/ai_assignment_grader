@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student modifies the input array 'a' in-place to build the prefix sum but does not explicitly initialize the first element of the prefix sum array (a[0] is used as-is without separate assignment).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly constructs the prefix sum array by iterating from index 1 to len(a)-1 and updating each element as a[i] += a[i-1], which accumulates the cumulative sum properly.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code processes all queries using a list comprehension, but does not explicitly allocate an output array of size n as required by the rubric point.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly uses a prefix sum array and handles the l=0 case with a[r] and the general case with a[r] - a[l-1], matching the required formula for closed-interval sums.
+
+POINT_ID: 5
+BUCKET: Correct (20 marks)
+FEEDBACK: The solution correctly computes prefix sums in-place and uses them to answer all queries in O(1) per query with proper handling of l=0 cases, achieving O(n) total time without forbidden keywords.

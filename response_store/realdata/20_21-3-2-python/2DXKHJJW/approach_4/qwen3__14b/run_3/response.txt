@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly constructs an adjacency list from A, but does not add a virtual source node (node 0) that connects to all other nodes, leading to an incorrect approach that processes nodes in arbitrary order rather than through a unified traversal starting from all possible nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a Lengths array initialized to 0 and updates it iteratively without any memoization array or cache check; recomputation of subproblems is not avoided.
+
+POINT_ID: 3
+BUCKET: Wrong (0 marks)
+FEEDBACK: The student's solution does not include a base case for leaf nodes in the DFS function; instead, it initializes all node lengths to 0 and updates them iteratively, which does not correctly handle the base case for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly computes the max over children with +1 using Lengths[e] + 1, but does not use memoization or store results in a memo array before returning, breaking the memoization mechanism described in the rubric.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution processes nodes in arbitrary order and lacks a virtual source node, leading to incorrect results for branching DAGs where the longest path depends on multiple predecessors. The assertion e[0] < e[1] also incorrectly assumes edge directionality.

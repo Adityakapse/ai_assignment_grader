@@ -1,0 +1,21 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses recursion instead of an explicit while loop with a stack, and the start node is added to the results list before any loop is executed.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution uses recursion instead of an explicit stack with pop(), violating the requirement to remove nodes from the top of the stack (LIFO) as specified in the rubric.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if each vertex is in the 'results' list before processing and adds it to 'results' when processed, ensuring nodes are only visited once and preventing infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The student's recursive implementation iterates through the adjacency list in forward order, which is correct for recursive DFS as it naturally processes nodes in the order they appear in the adjacency list. All unvisited neighbors are added to the results list and recursively processed.
+
+POINT_ID: 5
+The student's code correctly implements a depth-first search (DFS) by recursively visiting nodes in the order specified by their adjacency lists. Each node is appended to the results list as it is first visited, ensuring the traversal order matches the adjacency list's sequence. This approach naturally avoids the need for reversing the adjacency list, which is a requirement in the iterative stack-based method (sample solution) due to the LIFO nature of stacks. The code also properly handles cycles by checking if a node is already in the results list before processing it. Therefore, the student's code is **correct** in producing the required DFS traversal order.
+
+**Final Answer**
+The code is correct.

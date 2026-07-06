@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student's solution does not add a virtual source node 0 with edges to all other nodes, which is required to ensure a single DFS traversal covers all nodes in the graph.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student solution uses a "heap" array initialized to 0 and a "seen" array for tracking visited nodes, but does not implement memoization with a -1-initialized cache check as required. The code instead performs a post-order traversal updating values directly, which lacks the explicit memoization mechanism described in the rubric.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The student's code does not explicitly check for leaf nodes (no outgoing edges) in the DFS function, relying instead on the initial heap value of 0, which may not handle the base case correctly as required by the rubric.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's solution correctly computes the maximum path length for each node by iterating over its children and updating the value as max(heap[v], 1 + heap[child]), which matches the required recurrence relation.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The student's solution correctly computes the longest path in a DAG using a post-order DFS traversal with memoization, handling all components and correctly initializing the heap array to track path lengths.

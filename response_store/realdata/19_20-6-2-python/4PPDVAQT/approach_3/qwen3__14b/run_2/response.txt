@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly allocates a 2D table with dimensions (len(val)+1) x (cap+1) and initializes all cells to zero, matching the rubric's requirements.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The outer loop iterates over capacities (j) instead of items (i), violating the rubric's requirement that the outer loop must iterate over all n items (forward or backward).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student correctly checks if `vol[i-1] <= j` before attempting to include the item, ensuring the item fits within the current capacity.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence relation uses `matrix[i-1][...]` for the previous row, but the incorrect loop structure (processing capacities first) leads to improper state transitions, resulting in an incorrect recurrence implementation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The incorrect loop structure and recurrence relation cause the final result to be computed from an invalid state, leading to incorrect overall results for some test cases.

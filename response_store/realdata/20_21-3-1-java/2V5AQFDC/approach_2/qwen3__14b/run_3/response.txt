@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student correctly allocates a 2D table of size (n+1) x (capacity+1) and initializes all entries to 0 via array default initialization, matching the required DP table structure.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The inner loop starts at j=1 instead of j=0, failing to explicitly handle capacity=0 cases and not fully iterating over all subproblems as required by the rubric.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly checks if volumes[i-1] > j before considering including the item, ensuring that only feasible items are considered for each capacity j, matching the required capacity feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly implements the recurrence relation by choosing the maximum between excluding the current item (table[i-1][j]) and including it (table[i-1][j - volumes[i-1]] + values[i-1]) when the item fits, matching the rubric's requirement.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the 0-1 knapsack dynamic programming algorithm, handling all edge cases including items with zero volume and ensuring items are not reused, matching the expected behavior described in the problem statement.

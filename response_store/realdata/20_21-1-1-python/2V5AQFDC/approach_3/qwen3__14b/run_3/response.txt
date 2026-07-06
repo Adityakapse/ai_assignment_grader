@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code initializes ergebnis to 1 but does not apply % c when returning it, which fails the edge case where c == 1 and b == 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student uses bitwise AND (b & 1) to detect odd b, which is functionally equivalent to b % 2 == 1 and correctly distinguishes between odd and even cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When b is odd, the code multiplies ergebnis by a and applies % c, correctly factoring out one a from the exponentiation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code squares a (a = (a*a) % c) after shifting b right, effectively handling the even case by halving the exponent and squaring the result.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code avoids 'import' and '**' but fails the edge case where b == 0 and c == 1, returning 1 instead of 1 % c, which is required for correct behavior.

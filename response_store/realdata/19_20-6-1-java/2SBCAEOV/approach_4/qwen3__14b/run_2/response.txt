@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student correctly allocates a (m+1)x(n+1) DP table, but the nested loops start at i=0 and j=0 instead of i=1 and j=1, and use i < len1 instead of i <= len1, which deviates from the required loop bounds in the rubric.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are correctly initialised with dp[i][0] = i for all i (deletion costs) and dp[0][j] = j for all j (insertion costs), matching the reference solution's approach.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match, the code correctly sets dp[i+1][j+1] to dp[i][j], which corresponds to edDis[i][j] = edDis[i-1][j-1] in the sample solution.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student's code correctly computes the minimum of three values (replace, insert, delete) but references incorrect cells for insert and delete operations, using dp[i][j+1] and dp[i+1][j] instead of the required left (dp[i][j-1]) and up (dp[i-1][j]) neighbors.
+
+POINT_ID: 5
+BUCKET: Correct (20 marks)
+FEEDBACK: The student's solution correctly implements the dynamic programming approach for edit distance using nested loops and a 2D array, without recursion. It properly initializes the base cases and computes the minimum operations for all character pairs.

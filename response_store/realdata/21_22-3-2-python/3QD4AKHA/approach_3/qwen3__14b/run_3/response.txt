@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The adjacency list is correctly constructed from the input edges, and node 0 is added with edges to all nodes 1 to N, enabling a single DFS traversal to find the longest path across the entire DAG.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memoization array `M` is initialized to -1 for all nodes, and the function correctly returns `M[node]` immediately if it contains a cached value, ensuring each node is processed only once.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case correctly returns 0 when a node has no outgoing edges (`len(Adj[node]) == 0`), accurately representing the path length from a leaf node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child, the code computes `max(retVal, tiefenSuche(...) + 1)` and stores the result in `M[node]`, correctly calculating the longest path through each node and maintaining memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `calc` function returns `tiefenSuche(0, ...) - 1`, which correctly adjusts the result from the virtual source node 0 to the actual longest path length in the original graph. All components work together to meet the O(N+M) time requirement.

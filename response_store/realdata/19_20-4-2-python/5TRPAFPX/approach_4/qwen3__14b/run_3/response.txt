@@ -1,0 +1,32 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student correctly sets y to deleteNode when it has zero or one child, and uses treeMinimum(deleteNode.right) when it has two children, matching the required logic for selecting the node to remove.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum function correctly implements a leftward traversal from the input node until reaching a node with no left child, returning that node as required.
+
+POINT_ID: 3
+The student's code does **not** correctly identify `x` as the non-null child of `y`, as required by the rubric point. Instead, the code follows an approach based on finding the **in-order successor** (the minimum of the right subtree) and adjusting parent pointers accordingly. However, the rubric explicitly emphasizes that `x` should be the **non-null child of `y`**, which is a **distinct step** from locating the in-order successor.
+
+### Key Discrepancy:
+- **Sample Solution (Correct Approach):**  
+  When `y` (the node to be deleted) has two children, `x` is set to `y.left` (if non-null) or `y.right` (if `y.left` is null). This directly identifies the child of `y` that will be used in the deletion process.
+
+- **Student's Code (Incorrect for Rubric Point):**  
+  The student's code focuses on finding the **in-order successor** (the minimum of the right subtree), which is a **different node** than the child of `y`. While this approach is valid for certain steps in the deletion process, it **does not align with the rubric's requirement** to explicitly identify `x` as the **non-null child of `y`**.
+
+### Conclusion:
+The student's code **fails** to meet the rubric's specific criterion of identifying `x` as the non-null child of `y`. Instead, it uses a different method (in-order successor) that, while related, is **not the same** as the required approach. Therefore, the student's implementation is **incorrect** with respect to the rubric point.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The student correctly updates x.parent (newNode.parent = deleteNode.parent) and handles the root replacement case, but fails to properly redirect y.parent's child pointer to x in all scenarios, particularly when newNode is not the direct child of deleteNode.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's code does not copy the key from the successor node to the delete node when y != delete, leaving the original delete node's key in the tree instead of replacing it with the successor's key.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code handles leaf and single-child deletions correctly but fails in two-children cases due to incorrect pointer adjustments when moving the minimum node into the deleted node's position, potentially violating the BST property. The root update logic is also incomplete when the minimum node is not the direct child of the deleted node.

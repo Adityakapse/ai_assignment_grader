@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The student allocated a prefix sum array 'd' of size n, but did not explicitly initialize d[0] to a[0] before the loop; instead, the first element was computed within the loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly constructs the prefix sum array 'd' by initializing 'last' to 0 and accumulating a[i] into it for each index i from 0 to n-1, resulting in d[i] = sum(A[0..i]).
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The student correctly allocates an output array of size n and uses a loop that iterates from 0 to n-1 to process all queries, computing each result using the precomputed prefix sums.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly handles both cases for l=0 (no subtraction) and l>0 (subtracts d[l-1]) using the prefix array, matching the required formula for closed-interval sums.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student correctly computes prefix sums in O(n) time and uses them to answer all queries in O(n) total time, handling l=0 cases properly by not subtracting when b[i][0] is 0.

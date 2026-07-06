@@ -1,0 +1,95 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution uses a 1D array and updates it iteratively rather than allocating a 2D table as required, and the loop structure processes characters in a different order than the nested i/j loops in the sample solution.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The student correctly initializes the base cases by setting the first row to represent insertion costs (edDis[0][j] = j) and the first column values (edDis[i][0] = i) through the tmpdist initialization in each iteration.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student correctly handles the character match case by assigning the value from the previous row's corresponding position (total[i_a]) when characters are equal, which is equivalent to the diagonal cell in the standard DP table.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The student's code incorrectly uses total[i_a + 1] and tmpdist[-1] in the min function instead of the required edDis[i][j-1], edDis[i-1][j], and edDis[i-1][j-1] terms, leading to an incorrect recurrence relation.
+
+POINT_ID: 5
+To compute the **minimum edit distance** between two strings efficiently using **space-optimized dynamic programming**, we should follow a structured approach that avoids in-place modifications of the previous row, which can lead to incorrect results.
+
+---
+
+### ✅ **Correct Algorithm Overview**
+
+Given two strings `a` and `b`, the edit distance is the minimum number of operations (insert, delete, replace) required to convert one string into the other.
+
+**Space-Optimized Approach:**
+
+- We only keep track of **two rows** of the DP table: the **previous row** and the **current row**.
+- The **previous row** starts as `[0, 1, 2, ..., len(a)]`.
+- For each character in `b`, we compute the **current row** based on the **previous row**.
+- After processing each character of `b`, we **overwrite the previous row** with the current row for the next iteration.
+- At the end, the last element of the **previous row** is the edit distance.
+
+---
+
+### ✅ **Implementation in Python**
+
+Here is the corrected and properly structured implementation:
+
+```python
+def edit_distance(a, b):
+    len_a, len_b = len(a), len(b)
+    # Initialize the previous row (0th row)
+    prev_row = list(range(len_a + 1))
+    
+    for i in range(1, len_b + 1):
+        # Initialize the current row with the first element
+        curr_row = [i]
+        
+        for j in range(1, len_a + 1):
+            # Cost of replacement
+            cost = 0 if a[j-1] == b[i-1] else 1
+            # Compute the minimum edit distance
+            curr_row.append(
+                min(
+                    curr_row[j-1] + 1,   # Insert
+                    prev_row[j] + 1,     # Delete
+                    prev_row[j-1] + cost # Replace
+                )
+            )
+        
+        # Update previous row for next iteration
+        prev_row = curr_row
+    
+    return prev_row[-1]
+```
+
+---
+
+### 🔍 **Why the Original Approach Was Incorrect**
+
+In the original implementation, the `prev_row` (or `total` array) was being **modified in-place**, which led to incorrect values being used in the computation of the current row. This is **not** the correct way to compute the current row from the previous row in a space-optimized approach.
+
+Instead, a **new temporary array** should be used for the current row at each step, and only **after** the entire row has been computed, the `prev_row` is updated to point to this new array.
+
+---
+
+### 📌 **Example Usage**
+
+```python
+a = "abc"
+b = "abd"
+print(edit_distance(a, b))  # Output: 1
+```
+
+---
+
+### ✅ **Summary**
+
+- Use **two rows** (previous and current) instead of a single array.
+- Compute the current row **based on the previous row**, not by modifying the previous row in-place.
+- This ensures that the correct values are used for each step in the dynamic programming solution.
+- This approach reduces **space complexity** from O(n*m) to **O(n)**, where `n` is the length of the shorter string.
+
+This is a **robust and efficient** implementation of the edit distance problem with space optimization.
