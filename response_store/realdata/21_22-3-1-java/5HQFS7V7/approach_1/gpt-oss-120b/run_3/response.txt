@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code allocates `long[] m = new long[n+1];` correctly, but it only initializes `m[0]` and `m[1]` instead of setting every entry to -1 as the rubric requires.
+
+POINT_ID: 2
+MARKS: 12
+FEEDBACK: The implementation does not explicitly code the base cases `opt(0)` and `opt(1)`, yet the initial assignments `m[0]=0; m[1]=W[0];` together with the loop produce the correct results for those cases.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: No recursive helper is used, so the required cache‑check `if (memo[n] != -1) return memo[n];` is absent.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence `m[i] = Math.max(W[i-1] + m[i-2], m[i-1]);` correctly implements the specified formula and stores the computed value in the memo array before proceeding.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `m[m.length-1]`, which is the maximum billboard profit, and the algorithm runs in a single linear pass, meeting the O(n) requirement for all valid inputs.
+
+TOTAL: 67

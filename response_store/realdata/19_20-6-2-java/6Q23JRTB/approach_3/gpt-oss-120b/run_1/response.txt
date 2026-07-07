@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a double[][] matrix of size (amount+1) × (capacity+1) but initializes every cell to –1 instead of 0.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No nested loops over items and capacities are present; the solution uses a recursive memoized approach rather than the required double‑loop DP.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The algorithm checks `if (weights[amount‑1] > capacity)` and only processes the item in the else branch, effectively implementing the required `weights[i] <= capacity` feasibility test.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits, it assigns `matrix[amount][capacity] = Math.max(matrix[amount‑1][capacity], matrix[amount‑1][capacity‑weights[amount‑1]] + values[amount‑1])`, correctly applying the DP recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive memoization fills the DP table and returns `matrix[amount][capacity]`, producing the correct maximum value for all valid inputs.

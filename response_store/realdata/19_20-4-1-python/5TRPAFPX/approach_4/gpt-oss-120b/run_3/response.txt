@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function recursively walks down the tree, using `root.key > insertNode.key` to decide left or right, and inserts the node when it reaches a null child, correctly finding the insertion point.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never declares or updates a separate parent variable during traversal; it relies on recursion and only sets insertNode.parent when the insertion point is reached.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code attaches insertNode to root.left when root.key > insertNode.key (i.e., insert.key < parent.key) and to root.right otherwise, correctly setting the parent pointer.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code assigns `insertNode.parent = root` exactly when the new node is linked as a left or right child, correctly establishing the upward link to its parent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles the empty‑tree case by returning the new node, correctly updates parent links, and recursively inserts deeper nodes while ultimately returning the original root, preserving the BST property.

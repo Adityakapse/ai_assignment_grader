@@ -1,0 +1,116 @@
+QUESTION:
+The goal of this task is to find the longest path in the dag (directed acyclic
+graph) in $O(N+M)$. 
+
+Input: A natural number $1 \leq N \leq 2500$, which indicates how many
+nodes the graph $G$ has. A two dimensional array $A$ of the
+size $1 \leq M \leq 10^6$ of integers
+$A = [[a^{1}_1,a^{2}_1],[a^{1}_2,a^{2}_2],...,[a^{1}_M,a^{2}_M]]$, which
+encodes the node and edge set of $G$.  If $[a,b] \in A$, then
+there is a directed edge from the node$a$ to the node $b$. You
+may assume that there are no directed cycles in $G$. An
+example: let $N = 3$ and the edges $A = [[1,2],[2,3]]$ then the result is
+the following graph:
+
+[]
+
+Output: The length of the longest directed path in $G$.
+Your algorithm must compute the solution in $O(N+M)$.
+
+Time limit: 1 CPU second ($O(N+M)$ ).
+
+Hint:
+
+(1) The libraries java.util.Arrays, java.util.ArrayList, java.lang.Math
+are already imported automatically.
+
+(2) If you have difficulties with this task: Ignore
+the runtime restrictions and first implement a naive 
+recursive solution. Then use dynamic programming
+(memoization) to achieve the desired runtime.
+
+(3) Some test cases have been hidden and are not displayed to 
+prevent hardcoding of the solutions.
+(4) If you have difficulties with the task, read the following
+pages from Cormen (Introduction to algorithms third edition) pp.
+384-389 (from the subitem "overlapping subproblems") and/or
+https://en.wikipedia.org/wiki/Overlapping_subproblems.
+
+SAMPLE SOLUTION:
+int dfs(int node,ArrayList<ArrayList<Integer>> graph,int[] memo){
+    if(graph.get(node).size() == 0){
+        return 0;
+    }
+    else if(memo[node] != -1)
+        return memo[node];
+    else
+    {
+        int sol = 0;
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            sol = Math.max(sol,dfs(graph.get(node).get(i),graph,memo) + 1);
+        }
+        memo[node] = sol;
+        return memo[node];
+    }
+}
+
+int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+      graph.add(new ArrayList<>());
+      if(i != 0)
+          graph.get(0).add(i); 
+    }
+    for (int i = 0; i < A.length; i++) {
+      int start,end;
+      start = A[i][0];
+      end = A[i][1];
+      graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+      memo[i] = -1;
+    }
+    return dfs(0,graph,memo)-1;
+}
+
+STUDENT SOLUTION:
+int calc(int N, int[][] A) {
+        int[] gewicht = new int[N];
+        gewicht[0] = 0;
+        ArrayList<ArrayList<Integer>> vorgaenger = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            vorgaenger.add(new ArrayList<>());
+        }
+        for (int[] a : A) {
+            vorgaenger.get(a[1] - 1).add(a[0]);
+        }
+        for (int i = 1; i < N; i++) {
+            int endgewicht = 0;
+            for (int j = 0; j < vorgaenger.get(i).size(); j++) {
+                endgewicht = Math.max(gewicht[vorgaenger.get(i).get(j) - 1] + 1, endgewicht);
+            }
+            gewicht[i] = endgewicht;
+        }
+        int maxGewicht = 0;
+        for (int i : gewicht) {
+            maxGewicht = Math.max(maxGewicht, i);
+        }
+        return maxGewicht;
+    }
+
+RUBRIC:
+Point 1 — Graph construction and virtual source (valid range: 0–20)
+  An adjacency list is built from A, and a virtual source node 0 is added with edges to all nodes 1 to N so that a single DFS covers all nodes.
+
+Point 2 — Memoization: initialisation and cache check (valid range: 0–20)
+  A memo array is initialised to -1 for all nodes, and if memo[node] != -1 the cached value is returned immediately without recomputation.
+
+Point 3 — DFS base case: leaf node (valid range: 0–15)
+  When a node has no outgoing edges (leaf), the function returns 0.
+
+Point 4 — Recurrence: longest path over children (valid range: 0–20)
+  For each child of node, sol = max(sol, dfs(child) + 1) is computed; the result is stored in memo[node] before returning.
+
+Point 5 — Overall correctness (valid range: 0–25)
+  calc returns the correct length of the longest directed path in the DAG for all valid inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates an array `intervalle` of size n and sets `intervalle[0] = a[0]` before the cumulative loop, matching the required prefix‑sum initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i=1;i<=n-1;i++) intervalle[i]=a[i]+intervalle[i-1];` correctly builds the prefix sums for all indices 1…n‑1.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `d` of size n is created and the loop `for(int j=0;j<=b.length-1;j++)` iterates over every query, computing a result for each.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each query the code computes `l = b[j][0]-1`; if `l >= 0` it uses `d[j]=r-intervalle[l]`, otherwise `d[j]=r`, correctly handling the l = 0 edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the correct list of range sums for all queries in overall O(n) time and contains no forbidden keywords.

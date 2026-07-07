@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution uses a rolling 1‑D list and never allocates a (m+1)×(n+1) table or iterates with explicit i‑from‑1‑to‑m and j‑from‑1‑to‑n loops as the rubric requires.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes `total = range(len(a)+1)` giving the correct delete costs (i → i) and starts each new row with `tmpdist = [i_b+1]`, which correctly sets the insert costs for the empty‑string column.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The implementation correctly uses `tmpdist.append(total[i_a])` when `s_a == s_b`, which assigns the diagonal DP value (no edit needed) as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: In the else branch you correctly compute `1 + min(total[i_a], total[i_a + 1], tmpdist[-1])`, which uses the three neighboring cells for insert, delete, and replace.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly computes the edit distance for all test cases and uses an iterative approach without any recursion.

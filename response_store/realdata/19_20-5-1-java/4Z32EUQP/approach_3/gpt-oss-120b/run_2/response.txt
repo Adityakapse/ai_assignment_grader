@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code adds the start node with `myQ.add(start);` before the loop and uses `while(!myQ.isEmpty())` to process until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is taken with `int u = myQ.get(0);` followed by `myQ.remove(0);`, consistently dequeuing from the front.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The `color` array records node states; nodes are only processed if their color is 0, set to 1 when enqueued, and to 2 after processing, preventing revisits.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The inner `for` loop iterates `graph[u]` and enqueues each neighbor whose color is 0 with `myQ.add(color[graph[u][v]][0]);`, ensuring all unvisited neighbours are added.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `result`, which contains all reachable nodes in the order they are dequeued, matching the expected BFS level‑by‑level traversal for any directed graph.

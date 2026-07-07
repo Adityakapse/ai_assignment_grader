@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b is 0 (loop never runs) but does not apply % c, so the base case is present but incorrect for cases like c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Parity is detected with (b&1)==1, correctly distinguishing odd from even exponents.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the code updates ergebnis = (ergebnis*a)%c, effectively multiplying by a as required for the odd case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After handling the odd bit, the code halves b with b>>1 and squares a via (a*a)%c, matching the even‑case recursion.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative binary‑exponentiation returns the correct a^b mod c for all inputs, uses no import or ** and applies the modulo at each step.

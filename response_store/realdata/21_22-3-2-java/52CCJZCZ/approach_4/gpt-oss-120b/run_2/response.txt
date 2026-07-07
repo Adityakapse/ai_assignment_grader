@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs an adjacency list from A (using zero‑based indices) but never adds a virtual source node with edges to every node, so it cannot guarantee finding the globally longest path starting from any node.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never creates a memo array or checks a sentinel value; it uses a topological DP instead of DFS memoization, so no -1‑initialized cache is employed.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not implement a DFS function at all, so there is no base case returning 0 for leaf nodes; it uses a topological‑sort DP approach instead.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution computes longest paths with a topological order and an iterative DP array instead of a recursive dfs that calls each child, adds +1, takes the max, and stores the result in a memo table.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a correct adjacency list, performs a topological sort, and uses DP to compute the longest path length, returning the maximum in[] value, which yields the correct result for all DAGs within O(N+M) time.

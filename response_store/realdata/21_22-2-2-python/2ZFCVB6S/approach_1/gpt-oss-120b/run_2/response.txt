@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The solution creates a list `sums` of length n, but it stores a pair `[prev, current]` instead of a single prefix‑sum array C and does not initialise C[0] to A[0].
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: Prefix sums are accumulated in variable `s` and stored as the second element of each pair, which yields correct cumulative values, but the required C[i] = A[i] + C[i‑1] array is not explicitly built.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The list comprehension `[sums[r][1]-sums[l][0] for l,r in B]` implicitly creates the output list of length n and iterates over all queries, satisfying allocation and loop requirements.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The expression `sums[r][1]-sums[l][0]` correctly returns the range sum and works when l = 0 because `sums[0][0]` is 0, handling the edge case.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct range‑sum list for all queries, runs in O(n) time, and contains no forbidden keywords.
+
+TOTAL: 70

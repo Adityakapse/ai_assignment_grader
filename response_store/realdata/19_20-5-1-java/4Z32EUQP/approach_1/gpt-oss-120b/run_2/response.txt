@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node to `myQ` before the `while(!myQ.isEmpty())` loop and processes nodes until the queue is empty, satisfying the required initialisation and loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Inside the loop the current node is obtained with `myQ.get(0)` and removed with `myQ.remove(0)`, correctly dequeuing from the front (FIFO).
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The `color` array is used to track node states; nodes are marked as discovered (`color[...][1]=1`) before being enqueued and as finished (`color[u][1]=2`) after processing, preventing duplicate visits.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each neighbor the code checks `color[graph[u][v]][1]==0` and, if unvisited, enqueues it with `myQ.add(...)`, correctly adding unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `result`, which contains all reachable nodes from `start` in proper BFS (level‑by‑level) order for directed graphs, meeting overall correctness.
+
+TOTAL: 100

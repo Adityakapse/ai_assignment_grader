@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a (aLength+1)×(bLength+1) matrix, but the nested loops start at 0 instead of iterating from 1 to m and 1 to n as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base cases are correctly set with matrix[0][j] = j and matrix[i][0] = i for all i and j.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When a.charAt(i‑1) == b.charAt(j‑1) the code assigns matrix[i][j] = matrix[i‑1][j‑1], matching the specification.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatched characters the implementation uses 1 + min(ins, rem, rep) where ins, rem, rep are the three neighboring cells, correctly covering insert, delete, and replace.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method is fully iterative and returns the correct edit distance for all tested string inputs.

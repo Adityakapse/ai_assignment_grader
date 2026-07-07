@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function includes `if(b == 0) return result = 1 % c;` which correctly returns 1 mod c for the base case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses `b % 2 == 0` for even and `b % 2 != 0` (with a special case for b = 1) for odd, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch (`else if(b % 2 != 0 && b !=1)`) it calls `expo(a, b-1, c)` and returns `(zwResult * a) % c`, matching the required reduction.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even branch halves b (`bhalb = b/2`) and returns `(zwResult * zwResult) % c`, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation produces the correct `a^b mod c` for all valid inputs, avoids `import` and `**`, and applies modulo at each step.

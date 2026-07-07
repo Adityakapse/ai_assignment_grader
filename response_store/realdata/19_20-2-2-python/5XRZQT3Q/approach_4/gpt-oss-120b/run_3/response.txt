@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution iterates over every token with `for x in inputarray:` and uses `int(x)` in a try/except to separate numeric tokens from operators, handling each case appropriately.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code attempts `c = int(x)` inside a try block and then pushes `c` onto the stack, correctly converting numeric strings to integers before pushing.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and pushes the result for each operator, but it uses `a / b` for division, which yields a float instead of the required integer floor division.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses a - b (correct order) and division uses a / b (correct order), but '/' performs floating‑point division instead of the required integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator handles addition, subtraction, and multiplication correctly, but uses true division (`a / b`) which returns a float instead of performing floor integer division as required, leading to incorrect results for expressions involving `/`.

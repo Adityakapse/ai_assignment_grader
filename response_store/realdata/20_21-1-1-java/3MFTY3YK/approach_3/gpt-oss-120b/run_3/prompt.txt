@@ -1,0 +1,98 @@
+QUESTION:
+Input: $a,b,c \in \mathbb{N}_0 \land 1 \leq a \leq 100 \land 0 \leq b \leq 10^9 \land 1 \leq c \leq 10^{9}$.
+
+Output: $a^b \; mod \; c$
+
+Let $a^b \; mod \; c$ be calculated in the function expo(a,b,c). Make sure
+that your algorithm has a run time of $O(log \; b + log \; c)$.
+Your solution must not contain the string "import" and "**" as a
+substring. For easier debugging, you can divide your result
+in each calculation step by modulo $c$. For example (The example
+can also be found commented out in the answer field):
+
+def add(a,b,c,d,e):
+    res = (a+b) % 10000007
+    res = (res+c) % 10000007
+    res = (res+d) % 10000007
+    res = (res+e) % 10000007
+    return (res+1000) % 10000007
+
+Hint:
+
+Use "//" (without the quotes) to perform integer division in
+Python and to avoid floats.
+
+If $b$ is even, then:
+
+$a^b = (a^{\frac{b}{2}})^2 = a^{\frac{b}{2}} \cdot a^{\frac{b}{2}}$
+
+If $b$ is odd, then:
+
+$a^b = a^{b-1} \cdot a$
+
+SAMPLE SOLUTION:
+long expo(long a,long b,long c){
+    if (b == 0){
+        return 1 % c;
+    }
+    else if (b % 2 != 0){
+        return (a * expo(a,b-1,c)) % c;
+    }
+    else{
+        a = expo(a,b / 2,c) % c;
+        return (a*a) % c;
+    }
+}
+
+STUDENT SOLUTION:
+long expo(long a,long b,long c) {
+    if (b > 1) {
+        if (b % 2 == 0) {
+            long res = expo(a, b / 2, c);
+            return ((res * res) % c);
+        } else {
+            return ((expo(a, b - 1, c) * a) % c);
+        }
+    }
+    else if (b == 1) {
+        return (a);
+    } else {
+        return (1);
+    }
+}
+
+RUBRIC:
+Point 1 — Base case: b == 0
+  When b == 0, the function returns 1 % c (handles termination and the edge case c == 1).
+  Buckets:
+    - Wrong (0 marks): No base case is present; the recursion never terminates or returns an incorrect constant (e.g., always returns 0 or 1 regardless of c).
+    - Semi (10 marks): A base case is present but incorrect: for example, returns 1 without applying % c (fails when c == 1), or the base condition is b == 1 instead of b == 0, causing incorrect results for b == 0.
+    - Correct (20 marks): Returns 1 % c when b == 0, correctly terminating the recursion and handling the edge case where c == 1.
+
+Point 2 — Parity detection: odd vs even b
+  The algorithm correctly distinguishes odd b from even b using b % 2 (or equivalent).
+  Buckets:
+    - Wrong (0 marks): No parity check is present; odd and even b are treated identically, so only one recursive case is ever applied.
+    - Semi (8 marks): A parity check is present but the odd and even cases are swapped (e.g., b % 2 == 0 is treated as the odd case), producing incorrect results for all non-trivial inputs.
+    - Correct (15 marks): b % 2 != 0 (or b % 2 == 1) correctly identifies odd b; b % 2 == 0 correctly identifies even b. The two cases lead to different recursive branches.
+
+Point 3 — Odd case: reduce by 1 and multiply
+  When b is odd, the function returns (a * expo(a, b-1, c)) % c.
+  Buckets:
+    - Wrong (0 marks): The odd case is absent, or reduces b by a value other than 1, or does not multiply by a.
+    - Semi (10 marks): Reduces b by 1 and recurses correctly, but does not multiply by a (e.g., returns expo(a, b-1, c) directly), or does not apply % c to the result.
+    - Correct (20 marks): Returns (a * expo(a, b-1, c)) % c, correctly factoring out one a and reducing the exponent by 1.
+
+Point 4 — Even case: halve and square
+  When b is even, the function computes tmp = expo(a, b/2, c) and returns (tmp * tmp) % c.
+  Buckets:
+    - Wrong (0 marks): The even case is absent, or does not halve b, or does not square the recursive result (e.g., just returns expo(a, b/2, c) without squaring).
+    - Semi (12 marks): Halves b and recurses, but squares incorrectly (e.g., multiplies by a instead of by itself, or calls expo twice with b/2 which is correct but doubles the recursive work to O(b)), or does not apply % c to the squared result.
+    - Correct (25 marks): Computes tmp = expo(a, b//2, c) once (using integer division), then returns (tmp * tmp) % c, achieving O(log b) depth and correctly squaring the half-power result.
+
+Point 5 — Overall correctness
+  expo(a, b, c) returns the correct value of a^b mod c for all valid inputs, without using 'import' or '**'.
+  Buckets:
+    - Wrong (0 marks): Returns incorrect results for most inputs, or contains 'import' or '**' in the submission.
+    - Semi (10 marks): Returns correct results for small or simple inputs (e.g., b=0, b=1, small a and b) but fails for large b due to integer overflow, missing modulo steps, or incorrect recursion depth.
+    - Correct (20 marks): Returns a^b mod c correctly for all valid inputs; 'import' and '**' are absent; modulo is applied at each recursive step to keep intermediate values bounded.

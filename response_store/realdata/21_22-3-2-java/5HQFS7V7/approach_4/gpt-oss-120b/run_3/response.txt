@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code creates a predecessor adjacency list from A, but it never adds a virtual source node 0 with edges to every node, so it cannot evaluate paths that start at arbitrary nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never creates a memo array initialized to –1 nor checks a cached value before recomputation; it uses a plain int array defaulting to 0 and computes each node in a simple loop without a sentinel cache check.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not implement a recursive DFS with a base case for leaf nodes; it uses an iterative DP instead, so there is no leaf‑node return of 0 as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over all predecessors of each node, computes `endgewicht = Math.max(gewicht[pred-1] + 1, endgewicht)`, and stores the result in `gewicht[i]`, effectively applying the max‑over‑children recurrence and memoizing the value.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code computes longest paths correctly for simple linear graphs but assumes nodes are processed in topological order (by index), so it gives wrong results on DAGs where edges go from higher‑numbered to lower‑numbered nodes or have branching.

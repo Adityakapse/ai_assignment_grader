@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution splits the array, recursively calls `solution` on both halves, and then merges them with a `Merge` function, providing a complete divide‑and‑conquer structure typical of merge sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code checks `if len(A)>1:` before recursing, so it stops recursion for subarrays of length 0 or 1, correctly preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The Merge function attempts to interleave the two halves but appends sentinel values (10**6) to both lists and copies them into A, causing extra or duplicate elements and an incorrect final order.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution implements a merge sort, which has a guaranteed worst‑case O(n log n) runtime, so random pivot selection is unnecessary.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The merge function appends a sentinel value (10**6) to both halves and writes it into the output array, so the final array contains this sentinel instead of the true maximum element, causing incorrect sorting for typical inputs.

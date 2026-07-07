@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A (using adj.get(A[i][0]-1).add(A[i][1]-1)), but it never adds a virtual source node with edges to every node, so the DFS‑style approach cannot start from a single source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is created or used; the solution relies on a topological‑order DP instead of memoized DFS, so the memoization criterion is not met.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no recursive DFS function at all, thus no leaf‑node base case returning 0 is present.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement the required DFS recurrence (sol = max(sol, dfs(child)+1)) nor store results in a memo table.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: By topologically sorting the graph and propagating longest‑path lengths in in[], the algorithm correctly computes the maximum path length for any DAG in O(N+M) time.

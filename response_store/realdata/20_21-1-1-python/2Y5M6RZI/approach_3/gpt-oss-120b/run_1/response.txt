@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function lacks an explicit `if b == 0` base case; when `b` is 0 it returns `res` which is 1, but does not apply `% c`, so it fails for the edge case `c == 1`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `if j%2!=0:` to detect odd exponents, correctly distinguishing odd from even values of `b`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the algorithm multiplies `res` by `res1` and decrements `j` by 1, then applies `% c`, matching the required `(a * expo(a, b-1, c)) % c` behavior.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case halves `j` with `/` (floating‑point division) instead of integer division `//` and does not follow the recursive pattern, which can cause incorrect looping or results.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation works for small inputs but may give wrong results for edge cases (e.g., `c == 1` or very large `b`) due to the missing modulo in the base case and the use of floating‑point division.

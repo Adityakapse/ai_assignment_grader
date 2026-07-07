@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if(delete.left == null || delete.right == null)` to set `y = delete` and otherwise assigns `y = treeMinimum(delete.right)`, correctly handling the one‑child/zero‑child and two‑child cases.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s `treeMinimum` method uses `while(node.left != null) { node = node.left; }` and returns `node`, correctly walking left to find the minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets x with Node x = (y.left != null) ? y.left : y.right; which correctly chooses y.left when present, otherwise y.right (or null if y is a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets x.parent to y.parent when x is non‑null, updates y.parent.left or y.parent.right to x as appropriate, and handles the root replacement case when y.parent is null.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution includes `if(y != delete) { delete.key = y.key; }`, correctly copying the successor’s key only when y differs from the node being deleted.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation correctly handles leaf, single‑child, two‑children, and root deletions, preserving BST properties and returning the proper root (e.g., it swaps with the successor and updates parent links).

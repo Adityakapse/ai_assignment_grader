@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `matrix = [[0 for x in range(cap + 1)] for x in range(len(val) + 1)]`, correctly allocating a (n+1)×(capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 5
+FEEDBACK: The nested loops iterate over all capacities and items, but the outer loop iterates over capacities (`for j in range(cap + 1)`) instead of items as the rubric specifies.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `elif vol[i-1] <= j:` correctly checks whether the current item's volume fits within the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the code uses `max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])`; otherwise it copies `matrix[i-1][j]`, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `matrix[len(val)][cap]`, which yields the maximum achievable value for the given capacity on all valid inputs.
+
+TOTAL: 85

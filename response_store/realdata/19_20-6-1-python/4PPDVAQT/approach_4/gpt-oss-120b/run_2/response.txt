@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑dimensional arrays (`result` and `tmp`) and never allocates a (m+1)×(n+1) table; although it has nested loops, they do not correspond to the required 2‑D DP table structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes `result = range(len(pre)+1)` giving edDis[0][j]=j and sets `tmp = [i+1]` inside the outer loop, providing edDis[i][0]=i for each i, so both base cases are correctly handled.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution compares characters with `if a != b` and, when they match, appends `result[j]`, which correctly copies the diagonal cell (edDis[i‑1][j‑1]) for the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `1 + min((result[j], result[j + 1], tmp[-1]))` in the `if a != b` branch, correctly applying the 1 + min of the three neighboring cells for the mismatch case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code uses iterative loops to compute the DP table (swapping strings for size, updating `result` row by row) and returns `result[-1]`, yielding the correct edit distance for all inputs without any recursion.

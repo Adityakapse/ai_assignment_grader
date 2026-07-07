@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution builds a list P iteratively and never allocates a memo array initialized to -1, so it does not meet the required memo‑array allocation and sentinel initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes P with W[0] and max(W[0], W[1]), correctly handling the cases n = 0 and n = 1.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative DP list P and never defines or checks a memo array, so there is no cache check like `if memo[n] != -1:` as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution correctly computes the max recurrence iteratively (using P[i] = max(P[i-2] + W[i], P[i-1])) but it never creates or stores results in a memo array as specified, so the memoization requirement is not met.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds the DP list P with the proper recurrence and returns P[-1]; it handles all input sizes (n ≥ 1) in linear time and yields the optimal profit.

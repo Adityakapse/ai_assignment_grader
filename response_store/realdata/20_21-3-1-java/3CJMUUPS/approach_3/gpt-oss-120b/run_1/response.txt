@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] table = new double[volumes.length + 1][capacity + 1];` which creates a (n+1) × (capacity+1) table, and Java initializes all entries to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates `i = 1 … volumes.length`, but the inner loop starts at `j = 1` instead of `j = 0`, so the subproblem for zero capacity is never processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `if (volumes[i - 1] > j) … else …` correctly implements the condition `volumes[i] <= j` for deciding whether an item can be placed.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence uses `table[i-1][j]` and `table[i-1][j - volumes[i-1]] + values[i-1]` inside `Math.max`, referencing the previous row as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns the correct maximum for typical capacities, but because the DP never fills the column `j = 0`, it returns 0 when `capacity` is 0 (failing to include zero‑volume items), so overall correctness is incomplete.

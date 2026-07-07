@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates `long[] m = new long[n+1];` where `n = W.length`, resulting in an array that is one element larger than needed, and it initializes entries to 0 (default) instead of the required sentinel value –1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The base cases set `m[0] = 0` and `m[1] = W[0]`; the specification requires `opt(0) = W[0]` and `opt(1) = max(W[0], W[1])`, so the second base case is missing the max comparison.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No cache‑check (`if memo[n] != -1`) is present; the solution uses an iterative loop rather than a recursive helper that would consult the memo array before recomputing subproblems.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `m[i] = Math.max(W[i-1] + m[i-2], m[i-1]);` correctly computes the max profit for each prefix and stores it in `m[i]`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Despite the earlier issues, the function returns the correct maximum billboard profit for all valid inputs and runs in O(n) time.

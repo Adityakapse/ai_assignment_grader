@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑loop iterates from the root, moving left when node.key < r.key and right otherwise, and stops when r becomes null, correctly locating the insertion point.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution declares `parent` before the loop and updates it to `r` on each iteration, ensuring it holds the last non‑null node (the correct parent) after traversal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After finding the parent, the code sets `node.parent = parent` and correctly uses `if (node.key < parent.key) parent.left = node; else parent.right = node;` to attach the new node on the proper side.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code tracks the parent during traversal in the variable `parent` and assigns `node.parent = parent;`, correctly establishing the upward link.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly finds the insertion point, updates parent links, handles the empty‑tree case by setting root = node, and returns the original root for non‑empty trees, preserving the BST property.

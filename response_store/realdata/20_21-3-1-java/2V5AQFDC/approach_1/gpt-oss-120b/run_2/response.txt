@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `double[][] table = new double[n + 1][capacity + 1];` which creates a (n+1)×(capacity+1) table that is zero‑initialized, and it also explicitly sets the first row to 0, satisfying the allocation and initialization requirement.
+
+POINT_ID: 2
+MARKS: 8
+FEEDBACK: The outer loop iterates i from 1 to n and the inner loop iterates j from 1 to capacity, but it never processes j = 0, so the subproblems for capacity zero are omitted, violating the rubric’s requirement for full coverage.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i - 1] > j)` correctly implements the feasibility check (the else branch handles `volumes[i] <= j`) for each examined capacity j.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence is correctly coded as `Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1])` when the item fits, and `table[i - 1][j]` otherwise, matching the required formula.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The method returns the correct maximum value for most inputs, but it fails when the knapsack capacity is zero because `table[n][0]` remains 0, so zero‑weight items are not accounted for, making the overall correctness incomplete.
+
+TOTAL: 80

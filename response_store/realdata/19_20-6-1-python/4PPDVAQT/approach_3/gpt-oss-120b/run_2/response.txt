@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑D lists (`result` and `tmp`) and no 2‑D table of size (m+1)×(n+1) is allocated, violating the required table allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The initial row is set with `result = range(len(pre)+1)` (ed[0][j]=j) and each new row starts with `tmp = [i+1]` (ed[i][0]=i), correctly initializing both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match (`if a != b` else branch), the code appends `result[j]`, which corresponds to `ed[i‑1][j‑1]`, correctly handling the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches the code computes `1 + min((result[j], result[j + 1], tmp[-1]))`, correctly using the three neighboring cells (diag, up, left) with the +1 cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `result[-1]`, the final edit distance, works for all string inputs and contains no recursion, producing correct results.

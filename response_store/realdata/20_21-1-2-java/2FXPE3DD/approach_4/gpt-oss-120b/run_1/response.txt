@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds a heap in b() and then repeatedly swaps the root with the last element and calls v() to heapify in the extraction loop, forming a complete O(n log n) heap‑sort structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code’s loops (e.g., `for(int i=a.length-1;i>0;i--)` and the `while(i <= (j / 2) - 1)` in `v`) ensure that processing stops when the subarray size reaches 0 or 1, preventing infinite recursion or looping.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution implements heap‑like functions (b, v, t) but never performs a quicksort partition or a merge step, so the central ordering operation required by the rubric is missing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution builds a heap (b) and repeatedly extracts the max (t and v), i.e., heap sort, which guarantees O(n log n) worst‑case without needing random pivots.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation builds a heap (b and v functions) and repeatedly extracts the maximum, resulting in the array being returned in ascending order for all inputs, and it does not contain the prohibited substrings.

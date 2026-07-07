@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 23
+FEEDBACK: The implementation uses the identity a_n = 2^n‑1 (e.g., even case computes (calc(n/2)+1)^2‑1), showing the closed form is recognized, though it isn’t explicitly stated in comments.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution does not implement an expo function at all, so it never includes the required base case that returns 1 when the exponent b equals 0.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The odd case in your code uses ((calc(n‑1)+1)*2‑1) % MOD instead of reducing the exponent by one and multiplying by the base as (a * expo(a,b‑1,c)) % c, so it does not follow the required expo odd‑case logic.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: In the even branch you call calc(n/2), add 1, square it and subtract 1, rather than computing a single tmp = expo(... ) and returning (tmp * tmp) % MOD as required.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The function computes the right formula mathematically, but for large n it recurses linearly (via calc(n‑1) for odd n), causing stack overflow or timeout, so it does not reliably return the correct result for all inputs up to 10⁹.

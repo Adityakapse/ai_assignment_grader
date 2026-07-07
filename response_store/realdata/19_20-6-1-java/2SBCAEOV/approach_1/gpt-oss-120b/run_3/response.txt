@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 14
+FEEDBACK: The DP table is allocated with size (len1+1)×(len2+1) correctly, but the filling loops iterate from 0 to len‑1 and use i+1/j+1 indexing instead of the required 1..m and 1..n range, which is a slight deviation from the rubric.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Base cases are correctly set: dp[i][0]=i for all i and dp[0][j]=j for all j.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match, the code assigns dp[i+1][j+1]=dp[i][j], matching the required behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters the code computes replace, insert, delete and stores the minimum, correctly implementing 1+min of the three neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct edit distance for any input strings and does not use recursion.
+
+TOTAL: 94

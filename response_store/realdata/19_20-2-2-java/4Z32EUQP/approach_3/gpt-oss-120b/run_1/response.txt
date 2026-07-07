@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code iterates over all tokens, but uses `==` to compare strings, so none of the operator tokens are recognized and all tokens are treated the same.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted with `Integer.parseInt` and pushed onto the stack in the `else` branch.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: Because the operator strings are never matched, the branches that pop two values, compute, and push the result are never executed.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the subtraction and division branches the code uses `zahl2 - zahl1` and `zahl2 / zahl1`, which follows the correct operand order for RPN.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method fails to produce correct results for any expression containing operators due to the string comparison issue, so it does not return the correct integer result overall.

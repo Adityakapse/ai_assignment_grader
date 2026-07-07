@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code uses a one‑dimensional list and iterates over b then a, rather than allocating a (m+1)×(n+1) table and nesting loops i = 1..m, j = 1..n as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes `total = range(len(a)+1)` (giving edDis[i][0] = i) and starts each new row with `i_b+1` (giving edDis[0][j] = j), correctly handling the base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When `s_a == s_b` the code appends `total[i_a]`, which correctly uses the diagonal DP value (edDis[i‑1][j‑1]) for the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly applies the mismatch case by adding 1 to the minimum of the three neighboring values (total[i_a], total[i_a+1], and tmpdist[-1]), matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly computes the edit distance for all cases (including empty strings) using an iterative DP without recursion.

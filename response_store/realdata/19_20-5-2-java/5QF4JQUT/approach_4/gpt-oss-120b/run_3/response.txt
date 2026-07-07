@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses recursion (dfsVisit) rather than pushing the start node onto a stack and iterating with a while‑loop, so no explicit stack initialization or loop termination condition is present.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution implements DFS recursively and never uses a stack or a pop operation, so it does not demonstrate removing the current node from the top of a stack as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses a boolean visited array, checks `if (!visited[node])` before processing each node, marks it visited, and only recurses on unvisited neighbours, thus preventing duplicate entries and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution uses a recursive DFS and iterates each node’s adjacency list in forward order, which the rubric accepts as correct for recursive implementations.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The recursive DFS correctly visits neighbours in adjacency‑list order, but the hard‑coded visited array of size 200 can fail on larger graphs, so it isn’t guaranteed to work for all valid inputs.

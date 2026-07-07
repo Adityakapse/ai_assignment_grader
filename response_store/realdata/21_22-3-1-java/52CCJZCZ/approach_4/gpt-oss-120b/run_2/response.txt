@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a memo array; it uses only two scalar variables a and b, so no -1‑initialized cache of size n+1 is present.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative loop with variables a and b and never defines the required recursive base cases opt(0) = W[0] or opt(1) = max(W[0],W[1]).
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses only two variables a and b in an iterative loop and never creates or checks a memo array, so no cache check is present.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code never defines or uses a memo array nor a recursive max‑based recurrence; it iteratively updates two variables a and b instead of storing memo[n] = max(W[n] + opt_helper(n‑2), opt_helper(n‑1)).
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative DP using variables a and b correctly computes the maximum profit for all input sizes in linear time, matching the required optimal solution.

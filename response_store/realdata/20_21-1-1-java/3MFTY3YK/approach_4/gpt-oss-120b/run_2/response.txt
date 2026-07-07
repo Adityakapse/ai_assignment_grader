@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function handles b = 0 by returning 1, but it does not apply “% c”, so it fails to return 1 % c and mishandles cases where c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if (b % 2 == 0)` for the even case and an `else` branch for odd `b`, correctly separating the two recursive paths.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch you correctly return ((expo(a, b - 1, c) * a) % c), which matches the required (a * expo(a, b-1, c)) % c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you compute `res = expo(a, b / 2, c)` once and return `(res * res) % c`, correctly halving b, squaring the result, and applying the modulo.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code works for tiny inputs, but the base cases return a and 1 without applying % c, so intermediate products can overflow and give wrong results for large b.

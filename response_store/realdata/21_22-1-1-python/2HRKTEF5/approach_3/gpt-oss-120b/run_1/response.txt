@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Closed form derivation
+BUCKET: Wrong
+FEEDBACK: The solution never states or uses the closed form aₙ = 2ⁿ − 1; it tries to compute the recurrence directly and even reduces the exponent modulo 10⁹+7, which is not a correct closed‑form implementation.
+
+POINT_ID: Point 2 — Expo base case: b == 0
+BUCKET: Wrong
+FEEDBACK: No separate expo function is defined, so there is no base case for b == 0; the recursion relies on the calc function’s n == 0 case instead.
+
+POINT_ID: Point 3 — Expo odd case: reduce by 1 and multiply
+BUCKET: Wrong
+FEEDBACK: The code does not contain an expo function with an odd‑exponent branch; the odd case is handled inside calc, but it does not follow the required (a * expo(...)) % c pattern.
+
+POINT_ID: Point 4 — Expo even case: halve and square
+BUCKET: Wrong
+FEEDBACK: There is no expo function implementing the even‑exponent halving and single recursive call; the even case is embedded in calc but does not match the specified expo structure.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Semi
+FEEDBACK: calc returns the correct values for small n (e.g., n = 0,1,2,3) but incorrectly applies “% 1000000007” to the exponent itself, causing wrong results for large inputs and thus failing overall correctness.

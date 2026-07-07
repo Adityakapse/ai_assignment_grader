@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The function returns res = 1 for b = 0, but the preceding “if (a == 0) return 0;” makes it return 0 when a % c = 0, so it fails to always return 1 % c for the base case.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `(b & 1) == 1` to test oddness, correctly distinguishing odd and even values of b.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Your loop checks if the current bit of b is 1 and multiplies res by a (mod c), which correctly implements the “odd case” behavior of reducing the exponent by 1 and multiplying.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The solution uses an iterative binary‑exponentiation loop rather than recursively calling expo(a, b/2, c) and squaring the result for the even case.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The iterative binary‑exponentiation loop correctly computes a^b mod c for all edge cases (including b = 0 and a ≡ 0 (mod c)) and meets the required constraints.

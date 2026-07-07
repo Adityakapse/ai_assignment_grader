@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The code sets `l = 0` and `r = (long)1.0E18`, which correctly establishes the search interval covering all possible N values.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: You correctly recompute the midpoint with (l+r)/2 each iteration, but the loop condition uses while (l != r) instead of the required while (l <= r), so the binary‑search loop does not follow the rubric specification.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly moves `l` to `pivot+1` when `f_N(pivot) == 0`, but it sets `r = pivot` instead of the required `r = pivot - 1` when `f_N(pivot) == 1`, deviating from the specified narrowing rule.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The function returns pivot (which equals l when the loop ends), correctly providing the first index where f_N is 1, satisfying the required post‑loop return behavior.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The binary search logic is correct, but using `(long)1.0E18` creates an upper bound slightly smaller than 10¹⁸, so the function fails when N equals 10¹⁸.

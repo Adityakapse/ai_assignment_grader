@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution computes 2^n modulo 10^9+7 via exponentiation by squaring in exp and then subtracts 1, correctly implementing the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function includes `if (e==0) return 1 % m;`, correctly handling the base case for exponent zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the code returns (exp(b, e‑1, m) * b) % m, correctly reducing e by 1, recursing, multiplying by b, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you call `exp(b, e/2, m)` once, store it in `x`, and return `(x*x) % m`, correctly halving and squaring with the modulo.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The calc function correctly returns exp(2, n, 1000000007)-1, and the recursive exp implementation applies the modulo at each step and runs in O(log n) without using any forbidden keywords.

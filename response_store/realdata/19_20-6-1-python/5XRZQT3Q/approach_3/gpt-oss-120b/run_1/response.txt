@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑D lists (`total` and `tmpdist`) and no nested loops over a full (m+1)×(n+1) table, so it does not allocate a 2‑D DP array.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes `total = range(len(a)+1)` (deletion costs) and starts each new row with `tmpdist = [i_b+1]` (insertion costs), correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `s_a == s_b` the algorithm appends `total[i_a]`, which corresponds to copying the diagonal value `edDis[i-1][j-1]`, handling the match case properly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches it appends `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, which correctly uses the three neighbours (diagonal, up, left) and adds the edit cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `total[-1]` after processing all characters, yielding the correct edit distance for any input strings without any recursion.

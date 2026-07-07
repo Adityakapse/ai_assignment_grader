@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node to the queue before entering the while‑loop and processes nodes until the queue is empty, matching the required BFS initialization and loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Nodes are removed with `q.get(0); q.remove(0);`, i.e., from the front of the list, ensuring FIFO behavior.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: Visited status is tracked via the `Farbe` enum (white, gray, black) and checked before enqueuing, preventing duplicates, but the node is marked gray and added to the result when discovered rather than when processed, and there is no explicit visited‑collection check before processing.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each dequeued node the code iterates over `u.adj` and enqueues any white neighbour, correctly adding unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns all nodes reachable from the start in the order they are discovered, which corresponds to correct BFS level‑by‑level order for directed graphs.
+
+TOTAL: 92

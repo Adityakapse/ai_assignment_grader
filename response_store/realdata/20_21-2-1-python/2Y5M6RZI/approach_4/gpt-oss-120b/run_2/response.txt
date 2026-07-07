@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates C = [0]*n where n = len(B), correctly allocating a zero‑initialized counting array of size at least |B| (which meets the required max(A)+1 bound).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over A with `for i in range(m): C[A[i]]+=1`, correctly incrementing the count for each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop uses `for i in range(n):` where `n = len(B)`, iterating from 0 to |B|-1 and appending one digit per B entry, yielding a binary string of exactly length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if C[i] > B[i]:` and appends 0, otherwise 1, correctly outputting '1' when the count is ≤ capacity and '0' when it exceeds.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds a frequency array C sized to len(B), counts occurrences from A, compares each count to B[i] in a single pass, and returns a correctly sized binary string without any forbidden substrings.

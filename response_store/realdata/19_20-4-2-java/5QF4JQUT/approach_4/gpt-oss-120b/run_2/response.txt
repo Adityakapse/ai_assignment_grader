@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `Node toBeDeleted = (delete.left == null || delete.right == null) ? delete : treeMinimum(delete.right);` which correctly chooses `delete` when it has ≤1 child and the right‑subtree minimum when it has two children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum method iterates while root.left is not null, moving to root.left each time and returns the final node, correctly finding the leftmost (minimum) node.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets `notNullChildOfToBeDeleted` to `toBeDeleted.left` when non‑null, otherwise to `toBeDeleted.right`, correctly handling the leaf case where both are null.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution sets `notNullChildOfToBeDeleted.parent = toBeDeleted.parent` when the child exists, updates the parent’s left/right pointer (or root when `toBeDeleted.parent == null`) to the child, correctly handling all splicing cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution copies delete.key from toBeDeleted only when toBeDeleted != delete, correctly handling the case where y is the in‑order successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation correctly selects the successor for two‑child deletions, updates parent/child links (including when the deleted node is the root), copies the key when needed, and returns the proper new root, preserving the BST property.

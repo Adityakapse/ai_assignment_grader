@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, correctly allocating a (n+1) × (capacity+1) 2‑D array initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code uses `for i in range(len(value) + 1)` as the outer loop and `for w in range(capacity + 1)` as the inner loop, correctly iterating over every item and every capacity value.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The implementation includes the condition `elif volume[i-1] <= w:` to verify capacity feasibility before considering the item, satisfying the rubric requirement.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly implements the recurrence by using `table[i-1][w]` as the previous state and applying `max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])` when the item fits, otherwise copying `table[i-1][w]`.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The DP table is built correctly and the recurrence matches the 0/1 knapsack logic, so the function returns the optimal maximum value for any valid input.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code builds an adjacency list from A and assigns Adj[0]=range(1,N+1) to create a virtual source node with edges to every node 1…N, enabling a single DFS from node 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution creates a list M filled with -1 for all nodes and returns M[node] whenever M[node] != -1, correctly using the sentinel to avoid recomputation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function checks `if len(Adj[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The function iterates over all children, uses `max(retVal, tiefenSuche(child, Adj, M) + 1)` for each, stores the result in `M[node]`, and returns it, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a virtual source (Adj[0]=range(1,N+1)), uses memoized depth‑first search, and returns tiefenSuche(0,…)-1, correctly computing the longest path length for all DAGs.

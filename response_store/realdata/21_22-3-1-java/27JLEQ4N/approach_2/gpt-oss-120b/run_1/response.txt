@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The code allocates an array A of size W.length (n+1) but never initializes its entries to –1 as required for a memo‑array sentinel.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code correctly initializes A[0] = W[0] and sets A[1] to the maximum of W[0] and W[1], but it unconditionally accesses W[1] even when the input length is 1, so opt(0) would cause an out‑of‑bounds error.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code never uses a memo array or a cache‑check; it computes the DP iteratively and never returns early from a stored value.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your iterative DP uses A[i] = max(W[i] + A[i‑2], A[i‑1]), correctly implementing the recurrence and storing each result in the memo array before it is used later.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly initializes A[0] and A[1], then iteratively computes A[i] = max(A[i‑1], W[i] + A[i‑2]) for all i, returning A[last] which yields the optimal profit in O(n) time.

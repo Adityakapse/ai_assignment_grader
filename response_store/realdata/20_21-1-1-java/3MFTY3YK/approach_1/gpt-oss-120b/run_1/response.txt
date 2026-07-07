@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The function handles b == 0 by returning 1, but it does not apply “% c”, so the base case is incomplete for cases where c = 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Parity is correctly detected using `b % 2 == 0` inside the `b > 1` branch.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: For odd b the code returns `((expo(a, b - 1, c) * a) % c)`, which matches the required reduction.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For even b the code computes `res = expo(a, b / 2, c)` and returns `((res * res) % c)`, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: Because the base cases omit the modulo operation (returning `a` for b==1 and `1` for b==0), the function can give wrong results for some valid inputs, so overall correctness is partial.
+
+TOTAL: 80

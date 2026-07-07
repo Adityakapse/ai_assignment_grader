@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code initializes `lower = 1` instead of `0`, so the search space does not include the possible value N = 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses a binary‑search loop, but it terminates with `while (upper - lower > 1)` instead of the required `while l <= r`, so the termination condition does not match the rubric’s specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code updates `upper` when `f(mid)==1` and `lower` when `f(mid)==0`, narrowing the interval each iteration, so the search space is correctly reduced toward N.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After the binary search the code checks f(lower) and returns lower if it is 1 otherwise upper, correctly yielding the first index where f equals 1.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm starts `lower = 1`, so it never tests 0 and returns 1 when N = 0, causing an off‑by‑one error for that valid case.

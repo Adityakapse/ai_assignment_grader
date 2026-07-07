@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a double[][] of size (n+1) × (capacity+1) and, relying on Java’s default zeroing (plus an explicit row‑0 initialization), ensures all entries start at 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all n items, but the inner loop starts at j = 1 instead of j = 0, so the zero‑capacity subproblem (needed for weight‑0 items) is not handled.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (volumes[i - 1] > j)` and otherwise uses the item, which correctly implements a `volumes[i] <= j` feasibility test and works for zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `Math.max(table[i-1][j], table[i-1][j-volumes[i-1]] + values[i-1])` when the item fits and `table[i-1][j]` when it does not, correctly referencing the previous row in both cases.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The DP loops start at j = 1, so table[i][0] remains 0 and zero‑weight items are not accounted for when capacity is 0, causing incorrect results for that scenario.

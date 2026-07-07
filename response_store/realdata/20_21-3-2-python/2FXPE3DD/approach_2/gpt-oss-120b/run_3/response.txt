@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code builds the adjacency list from A correctly, but it never creates a virtual source node 0 with edges to all vertices, so it does not follow the required single‑DFS approach.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution uses a `heap` array initialized to zeros and never checks for a previously computed value, so it lacks the required -1 initialization and cache‑lookup logic described in the rubric.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The DFS function never returns a value for leaf nodes; it lacks an explicit `return 0` base case and instead relies on side‑effects, so it does not meet the requirement.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The DFS updates heap[v] with max(heap[v], 1 + heap[child]) for each child, correctly implementing the recurrence and storing the result before finishing.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The DFS correctly computes each node’s longest downstream path using memoization via the heap array and returns the maximum value, which matches the required longest path length for all DAG inputs.

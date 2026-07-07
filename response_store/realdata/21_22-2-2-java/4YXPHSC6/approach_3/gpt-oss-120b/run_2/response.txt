@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates an int[] intervalle of size n and correctly initializes intervalle[0] = a[0].
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i=1;i<=n-1;i++)` computes `intervalle[i] = a[i] + intervalle[i-1]`, building the proper prefix sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `d` of size n is created and the query loop `for(int j=0;j<=b.length-1;j++)` iterates over all queries, matching the required size and range.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each query the code sets `l = b[j][0]-1` and uses `if(l>=0) d[j]=r-intervalle[l]; else d[j]=r;`, correctly handling the l = 0 edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the correct list of range sums for all queries in O(n) time and contains no forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `edit_matrix = [[0]*(n+1) for _ in range(m+1)]` (size (m+1) × (n+1)) and uses nested loops `for j in range(1, n+1): for i in range(1, m+1):` to fill the table for all i = 1..m and j = 1..n.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly fills the first column with i deletions and the first row with j insertions using the two loops before the main DP computation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution compares `a[i-1] == b[j-1]` and sets `replace = edit_matrix[i-1][j-1]`, ensuring that on a match the distance is taken directly from the diagonal cell.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code adds +1 to the insert, delete, and replace costs (including when characters differ) and then takes min(insert, delete, replace), correctly implementing 1 + min of the three neighboring cells.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation builds the DP matrix iteratively (no recursion) and correctly initializes the base cases and computes insert, delete, and replace costs, yielding the proper edit distance for all inputs.

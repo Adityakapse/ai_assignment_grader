@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates a double[][] K of size (n+1) by (W+1) and sets K[i][w] to 0 for the base cases (i = 0 or w = 0), effectively initializing the entire table to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses a nested loop where the outer loop runs i = 0..n (covering all items) and the inner loop runs w = 0..W (covering every capacity), thus iterating over all required subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `else if (wt[i - 1] <= w)` to ensure an item is only considered when its weight fits the current capacity, matching the required feasibility check.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation uses `K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]], K[i-1][w])` for fitting items and `K[i][w] = K[i-1][w]` otherwise, correctly referencing the previous row in the recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds the DP table forward and returns K[n][W], correctly handling all cases and yielding the maximum achievable value for any valid input.

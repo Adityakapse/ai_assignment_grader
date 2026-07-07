@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: Your implementation uses exponentiation‑by‑squaring on the recurrence (e.g., handling even n by squaring (calc(n//2)+1)−1), which shows you understood that aₙ = 2ⁿ−1, though you never state the closed form explicitly.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submission does not define an expo function with a base case for b == 0, so it never returns 1 (or 1 % c) as required.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case you reduce n, call calc, then do “res*2 + 1”, which does not match the required “return (a * expo(a, b‑1, c)) % c” implementation.
+
+POINT_ID: 4
+MARKS: 5
+FEEDBACK: In the even branch you reduce n with “% 1000000007” and then compute calc(n) followed by “+1”, square, and “-1” instead of calling the recursive function once and simply returning (tmp*tmp) % c, so the even‑case logic does not match the required halve‑and‑square pattern.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: The recursive logic correctly implements the formula 2ⁿ‑1, but the odd‑n branch returns res+1 without applying the modulo, which can produce a value equal to 10⁹+7 for some inputs, making the result incorrect for all cases.

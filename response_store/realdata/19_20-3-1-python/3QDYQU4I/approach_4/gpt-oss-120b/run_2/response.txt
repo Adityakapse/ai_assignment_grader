@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses an outer `for i` loop over the list and an inner `for j` loop to find the minimum element before swapping, matching the expected two‑level loop structure of a sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution calls `l.Smaller(j, mini)` to compare elements at indices j and mini, correctly using the provided API to detect out‑of‑order elements during selection sort.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code always calls l.Swap(mini, i) after the inner loop, regardless of any comparison result, and the swapped indices (mini and i) are not the same pair used in the l.Smaller(j, mini) comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer loop (`for i in range(0, l.Length())`) and the inner loop (`for j in range(i+1, l.Length())`) use `Length()` to bound their ranges, so the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation correctly finds the minimum element with `l.Smaller(j, mini)` and swaps it into position for each index, producing a fully sorted list for any valid input length.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The code correctly computes the sequence using recursion and exponentiation by squaring, but the student never explicitly states the closed‑form aₙ = 2ⁿ − 1 as required by the rubric.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submission never defines an expo function or a base case for exponent b == 0, so it does not meet the requirement of returning 1 (or 1 % c) when b is zero.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd case you implement `return ((calc(n-1)+1)*2 -1) % 1000000007` instead of the required `return (a * expo(a, b-1, c)) % c`, so the expo odd‑case logic is not followed.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code does not implement an expo function for the even case; it recurses on calc(n/2) and adds/subtracts 1 instead of computing tmp = expo(a, b//2, c) once and returning (tmp*tmp) % c.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The function correctly implements the recurrence (returning 2ⁿ − 1 mod 1e9+7) for all inputs and avoids forbidden keywords, though it uses “/” instead of integer division.

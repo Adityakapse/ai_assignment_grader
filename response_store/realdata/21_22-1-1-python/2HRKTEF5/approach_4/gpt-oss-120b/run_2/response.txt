@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The recursive logic implements exponentiation by squaring and returns (2^n − 1) modulo 10^9+7, correctly using the closed form a_n = 2^n − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never defines an expo function or a base case returning 1 for b == 0; it only handles n == 0 in calc, so the required exponent base case is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd branch you reduce n by 1 but then compute `res = (res*2)%1000000007` and return `res+1` without the final modulo, and you never return the product `(a * expo(...)) % c` as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In the even branch you modify n with “n = (n//2)%1000000007” and then after the recursive call you add 1, square, and subtract 1, instead of simply squaring the single recursive result as required. This does not implement the “tmp = expo(a, b//2, c); return (tmp*tmp)%c” pattern.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function works for small n, but it incorrectly reduces the recursive argument with “n = (n//2) % 1000000007” (and similarly for odd n), causing wrong results for large inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code builds an adjacency list (using zero‑based indices) but never creates a virtual source node 0 or adds edges from it to all other nodes, so it does not satisfy the required graph construction with a virtual source.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution does not create a memo array nor initialize it to –1, and it never checks a cached value before recomputing, so the required memoization step is missing.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: Your code uses a topological sort and DP instead of a recursive DFS, so there is no leaf‑node base case returning 0 as required by this rubric point.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The solution computes longest paths with a topological‑order DP rather than a recursive dfs that updates sol = max(sol, dfs(child)+1) and stores it in a memo array, so the required recurrence is not implemented.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The code builds a correct adjacency list, obtains a valid topological order, and uses dynamic programming to compute the longest path length, returning the correct result for all DAG inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The code uses exp(2, n, mod) – 1, correctly applying the closed‑form aₙ = 2ⁿ − 1, so the derivation is present.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The exp function includes `if (e==0) return 1 % m;`, correctly returning 1 (mod m) when the exponent is zero.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: In the odd‑exponent branch you correctly return `(exp(b, e-1, m) * b) % m`, which matches the required “reduce by 1 and multiply” behavior.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The even‑exponent branch correctly calls exp(b, e/2, m) once, stores the result in x, and returns (x*x) % m, matching the required halve‑and‑square logic.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your calc function correctly computes (2^n - 1) mod 10^9+7 using the exp helper, which implements fast modular exponentiation without any forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 4
+FEEDBACK: The function never checks for b == 0 and returns res as 1 instead of 1 % c, so it fails to handle the required base case (especially when c = 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `if j%2!=0:` to detect odd exponents and otherwise treats the even case, correctly distinguishing parity as required.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The code correctly detects an odd exponent (j%2!=0), multiplies the accumulated result by the current base (res1) and decrements j by 1, implementing the required “reduce by 1 and multiply” step.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The solution never uses a recursive call for the even case; it uses an iterative loop instead of computing tmp = expo(a, b/2, c) and returning (tmp*tmp)%c.
+
+POINT_ID: 5
+MARKS: 3
+FEEDBACK: The function uses `j=j/2`, which produces a float and breaks the binary‑exponentiation loop for most inputs, and it also returns 1 instead of `1 % c` when `b` is zero, so it fails to compute the correct result in general.

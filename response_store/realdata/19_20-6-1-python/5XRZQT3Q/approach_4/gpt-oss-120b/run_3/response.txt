@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑dimensional lists (`total` and `tmpdist`) and no explicit (m+1)×(n+1) table, and it relies on a single loop over `b` with an inner loop over `a` rather than the required nested i‑j loops over a 2D DP matrix.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes `total = range(len(a)+1)` giving edDis[i][0] = i, and each new row starts with `tmpdist = [i_b+1]` providing edDis[0][j] = j, correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if s_a == s_b:` and on a match appends `total[i_a]`, which correctly copies the diagonal cell (edDis[i‑1][j‑1]) as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch you compute `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, which correctly uses the three neighboring cells (diagonal, up, left) for the mismatch case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses an iterative DP table (with only two rows) and correctly computes the edit distance for empty, identical, and longer strings without any recursion.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑loop iterates from the root, moving left when `insert.key < x.key` and right otherwise, stopping when `x` becomes null, matching the required traversal.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The variable `y` is initialised to null and updated to the current node `x` on each loop iteration, so after the loop it correctly references the parent of the insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After traversal the code attaches `insert` as `y.left` if `insert.key < y.key`, otherwise as `y.right`, correctly placing the node as a left or right child.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The statement `insert.parent = y;` assigns the tracked parent `y` to `insert.parent`, establishing the correct upward link.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `root`, which is set to `insert` when the original tree is empty and left unchanged otherwise, preserving the BST property for all insertion cases.

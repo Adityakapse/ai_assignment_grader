@@ -1,0 +1,23 @@
+POINT_ID: Point 1
+BUCKET: Correct
+FEEDBACK: The student sets `toBeDeleted` to `delete` when `delete.left == null || delete.right == null` and otherwise uses `treeMinimum(delete.right)`, correctly distinguishing the one‑child/leaf case from the two‑children case.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The `treeMinimum` method iterates while `root.left != null`, moving left each time and returns the leftmost node, matching the required behavior.
+
+POINT_ID: Point 3
+BUCKET: Correct
+FEEDBACK: `notNullChildOfToBeDeleted` is assigned `toBeDeleted.left` if it exists, otherwise `toBeDeleted.right`, correctly identifying y’s non‑null child (or null if y is a leaf).
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: The code updates the child’s parent pointer, handles the root replacement (`toBeDeleted.parent == null`) by setting `root`, and otherwise redirects the appropriate left/right pointer of `toBeDeleted.parent` to the child, fully splicing y out of the tree.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: When `toBeDeleted != delete` the statement `delete.key = toBeDeleted.key;` copies the successor’s key only in the two‑child case, as required.
+
+POINT_ID: Point 6
+BUCKET: Correct
+FEEDBACK: The method correctly handles leaf, single‑child, two‑children, and root deletions and returns the updated root, preserving the BST property in all cases.

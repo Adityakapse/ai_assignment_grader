@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The function never includes an explicit b == 0 case and returns 1 directly, not 1 % c, so it fails the required base‑case handling (e.g., returns 1 instead of 0 when c == 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution uses `if j%2!=0:` to detect odd values of b, correctly distinguishing odd from even as required.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The implementation correctly detects an odd exponent (`j%2!=0`), multiplies the current result by `res1` (which is `a % c`), and decrements `j` by 1, matching the required reduce‑by‑1 and multiply behavior.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The function never computes a recursive tmp for the even case and uses `j=j/2` (float division) instead of halving the exponent and squaring via a recursive call as required.
+
+POINT_ID: 5
+MARKS: 14
+FEEDBACK: The function correctly implements fast modular exponentiation for most cases, but it returns 1 instead of 0 when c = 1 (b = 0) and uses '/' instead of integer division, which can cause subtle errors.

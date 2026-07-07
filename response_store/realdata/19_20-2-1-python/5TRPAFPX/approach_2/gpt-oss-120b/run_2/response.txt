@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 14
+FEEDBACK: The class defines a list for storage and uses `firstElement` and `firstEmpty` indices (with a circular wrap) to track the queue, providing the necessary state to preserve FIFO order.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Your `isEmpty` method correctly returns `True` when `self.firstElement` equals `self.firstEmpty`, which accurately reflects an empty queue in your circular‑buffer implementation.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The head() method correctly returns the element at self.firstElement without altering any queue state (though it only prints a message when the queue is empty).
+
+POINT_ID: 4
+MARKS: 18
+FEEDBACK: Your enqueue method correctly appends or overwrites at the position indicated by firstEmpty, updates firstEmpty with wrap‑around, and respects the full‑queue check, so the queue’s internal state remains consistent.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: The dequeue method returns the front element, advances `firstElement` with wrap‑around and thus updates the queue state correctly (it just moves the pointer rather than deleting the list entry).
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: Your queue maintains FIFO order for typical use (up to 100 elements) and implements the required methods without imports, but the circular‑buffer logic has an off‑by‑one error (isFull never becomes true) and the extra print statements instead of returning values may cause unexpected behavior.

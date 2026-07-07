@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function correctly returns `1 % c` when `b == 0`, satisfying the base case and handling the edge case `c == 1`.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Parity is detected using `b % 2 == 0` for even and `b % 2 != 0` (with an extra `b != 1` check) for odd, correctly distinguishing the two cases.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: For odd `b` (except `b == 1`) the code calls `expo(a, b-1, c)` and multiplies the result by `a` modulo `c`; the special case `b == 1` returns `a % c`, which is also correct.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When `b` is even, the implementation halves `b`, recursively computes `expo(a, b/2, c)`, and returns the square modulo `c`, matching the required even‑case logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The overall function produces the correct `a^b mod c` for all valid inputs, avoids prohibited constructs, and follows the expected logarithmic runtime.
+
+TOTAL: 100

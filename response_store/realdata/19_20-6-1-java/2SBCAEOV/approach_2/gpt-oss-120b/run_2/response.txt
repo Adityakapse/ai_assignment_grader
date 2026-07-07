@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (len1+1)×(len2+1) DP array and uses nested loops (i from 0 to len1‑1, j from 0 to len2‑1) that correctly fill dp[i+1][j+1], effectively iterating over the required 1‑to‑m and 1‑to‑n range.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly initializes dp[i][0] = i for all i and dp[0][j] = j for all j, matching the required base case setup.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly assigns dp[i+1][j+1] = dp[i][j] when the characters match, implementing the no‑edit case as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly computes `dp[i+1][j+1]` as `1 + min(replace, insert, delete)` when characters differ, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The DP loops correctly fill the table, handle base cases, compute the minimum of replace/insert/delete, and return dp[len1][len2] without any recursion, yielding the correct edit distance.

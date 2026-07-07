@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `double[][] table = new double[volumes.length + 1][capacity + 1];`, which creates a (n+1) × (capacity+1) DP table automatically filled with zeros.
+
+POINT_ID: 2
+MARKS: 12
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so the subproblem for capacity 0 (including zero‑weight items) is never processed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code uses `if (volumes[i - 1] > j)` and an else branch, correctly checking `volumes[i] <= j` before including an item, and this also works for zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code uses `table[i][j] = Math.max(table[i-1][j], table[i-1][j-volumes[i-1]] + values[i-1])` when the item fits and copies `table[i-1][j]` otherwise, correctly implementing the required recurrence relation.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The DP logic is correct for typical cases and handles zero‑volume items, but the extra line `if (capacity > 1000) capacity++;` changes the knapsack size for large capacities, leading to incorrect results for inputs where capacity exceeds 1000.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] of size (n+1) × (capacity+1) and, relying on Java’s default zeroing (plus an explicit first‑row loop), ensures the table starts at 0, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 12
+FEEDBACK: The outer loop correctly runs from 1 to n, but the inner loop starts at j = 1 instead of 0, so you never iterate over the j = 0 subproblem as the rubric requires.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution checks `if (volumes[i - 1] > j)` before attempting to include an item, ensuring only items with volume ≤ j are considered, and this logic also correctly handles zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses `if (volumes[i - 1] > j) table[i][j] = table[i - 1][j];` for the non‑fit case and `Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1])` for the fit case, which matches the required recurrence relation.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The DP correctly computes the optimal value for typical cases, but it never updates table entries for j = 0, so when the knapsack capacity is zero (especially with zero‑volume items) it returns 0 instead of the sum of those items’ values.

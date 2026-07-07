@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: Your calc function computes exp(n) and then returns (exp(n)‑1) % MOD, demonstrating that you identified the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The exp function lacks a base case for b == 0 (it only checks n == 1), so it never returns 1 when the exponent is zero.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The odd‑exponent branch correctly returns exp(n‑1)*2 % 1000000007, which matches the required (a * expo(a, b‑1, c)) % c behavior.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The even branch uses `n/2` (float division) and checks `n/2 % 2 == 0`, which is incorrect for detecting even `b` and does not compute a single recursive call `tmp = expo(a, b//2, c)` before squaring.
+
+POINT_ID: 5
+MARKS: 2
+FEEDBACK: The function returns the right value for tiny inputs, but uses floating‑point division (n/2) and linear recursion, causing incorrect behavior or recursion depth errors for large n up to 10⁹, so it does not reliably compute (2ⁿ‑1) mod 10⁹+7.

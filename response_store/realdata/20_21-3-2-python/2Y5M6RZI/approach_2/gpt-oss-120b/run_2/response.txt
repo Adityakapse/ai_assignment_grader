@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates an adjacency list `ll` of size N+1, populates it with the edges from A, and correctly adds a virtual source node 0 with edges to every node 1…N, matching the required construction.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The code creates a memo array (nodes_mp) and checks nodes_mp[node] != min to return a cached value, but it initializes the array with -10000 instead of the required -1 sentinel.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs implementation includes `if len(ll[node]) == 0: return 0`, so it correctly returns 0 for leaf nodes as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your dfs correctly iterates over each child, updates `bs` with `max(bs, dfs(child) + 1)`, stores the result in `nodes_mp[node]`, and returns it, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The implementation correctly builds the adjacency list, uses memoization with a sentinel value, and returns the longest path length (subtracting the dummy node) for all valid DAG inputs.

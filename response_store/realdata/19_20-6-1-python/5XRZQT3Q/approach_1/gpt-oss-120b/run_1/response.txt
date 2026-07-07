@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution uses a space‑optimized 1‑D row instead of allocating a full (m+1)×(n+1) 2‑D table as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Base cases are correctly handled: the initial row `total = range(len(a)+1)` sets edDis[0][j]=j and `tmpdist = [i_b+1]` sets edDis[i][0]=i for each i.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match (`s_a == s_b`) the code copies `total[i_a]`, which corresponds to edDis[i‑1][j‑1], correctly implementing the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatches the code computes `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, correctly using the three neighboring values (diagonal, up, left) for insert, delete, and replace.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for all inputs and avoids recursion, meeting the overall correctness requirement.
+
+TOTAL: 80

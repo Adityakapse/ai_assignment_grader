@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if z.left == None or z.right == None: y = z` and otherwise sets `y = minimum(z.right)`, correctly choosing the node to delete according to the number of children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `minimum` helper walks left with `while x.left != None: x = x.left` and returns the left‑most node, matching the required tree‑minimum behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `x` is set with `if y.left != None: x = y.left else: x = y.right`, correctly selecting y’s non‑null child (or None if y is a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The splice updates `x.parent = y.parent` when `x` exists, handles the root case with `if y.parent == None: root = x`, and redirects the appropriate parent pointer (`y.parent.left` or `.right`) to `x`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The key is copied only when `y != z` via `z.key = y.key`, correctly preserving the logical delete when the successor is used.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The function returns the updated `root` and correctly handles leaf, single‑child, two‑child, and root deletions, maintaining BST properties in all cases.

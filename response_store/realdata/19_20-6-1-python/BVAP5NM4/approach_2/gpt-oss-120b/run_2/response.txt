@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a (m+1)×(n+1) matrix and uses nested loops (outer over j = 1..n, inner over i = 1..m) to fill every cell, correctly implementing the required DP table allocation and bottom‑up iteration.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly initializes edit_matrix[i][0] = i via a cumulative loop and edit_matrix[0][j] = j in the subsequent loop, matching the required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly sets `replace = edit_matrix[i-1][j-1]` when `a[i-1] == b[j-1]`, and the subsequent `min` call ensures the cell receives this value, matching the required behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code adds 1 to the insert, delete and (when characters differ) replace costs and then takes the minimum, correctly implementing the 1 + min of the three neighbours recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The DP matrix is correctly initialized and filled (using the nested j‑then‑i loops) and the function returns edit_matrix[m][n] without any recursion, producing the proper edit distance.

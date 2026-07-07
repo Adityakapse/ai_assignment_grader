@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: When b is 0 the loop is skipped and the function returns 1 instead of 1 % c, so it fails for cases like c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if((b&1)==1):` to detect odd exponents (equivalent to `b % 2 == 1`) and handles the even case separately, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution multiplies by a when the current bit is 1 but then halves b with a right‑shift instead of reducing b by 1 and recursing, so it does not implement the required (a * expo(a, b‑1, c)) % c odd‑case.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative loop with bit‑shifts instead of a recursive even case that halves b and squares the recursive result, so the required even‑case logic is absent.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The iterative binary exponentiation correctly applies modulo for each step, but when b = 0 it returns 1 instead of 1 % c, giving a wrong result for c = 1.

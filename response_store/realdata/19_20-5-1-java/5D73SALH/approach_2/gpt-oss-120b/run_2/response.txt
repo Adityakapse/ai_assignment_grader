@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code pushes the start node onto `queue` before the loop and uses `while(!queue.isEmpty())` to process nodes until the queue is empty, satisfying the required BFS initialization and loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code dequeues nodes with `queue.get(0)` and `queue.remove(0)`, consistently removing the front element, thus maintaining FIFO order.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: You use a color list to track visited nodes and check it before adding neighbors, but you compare strings with `==` instead of `.equals`, so the visited check may fail and allow duplicates.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code iterates over each neighbor in the adjacency list, checks that its color is "WHITE", and enqueues it with queue.push(knot[i]), correctly adding all unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method correctly discovers and records each reachable node in FIFO order, producing a proper BFS traversal for any directed graph (despite using a Stack as a queue and comparing strings with ==).

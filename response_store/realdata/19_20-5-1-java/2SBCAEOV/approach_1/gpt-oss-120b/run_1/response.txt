@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node to the queue `q` before the while‑loop (`q.add(n)`) and then processes nodes with `while (!q.isEmpty())`, satisfying the required initialisation and loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Nodes are dequeued with `Node u = q.get(0); q.remove(0);`, i.e., always from index 0, ensuring FIFO behavior.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The `Farbe` colour field is used to track visitation; nodes are only processed if their colour is `WEIß`, are marked `GRAU` when discovered, and set to `SCHWARZ` after processing, preventing repeats.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each neighbour `v` of the current node `u`, the code checks `v.farbe.equals(Farbe.WEIß)` and, if unvisited, marks it gray, adds its value to `result`, and enqueues it with `q.add(v)`.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `result`, which contains all reachable vertices in level‑by‑level order for any directed graph, matching the expected BFS traversal.
+
+TOTAL: 100

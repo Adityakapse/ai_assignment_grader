@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The code builds the adjacency list from A, but it never creates a virtual source node 0 with edges to all vertices, instead starting DFS from each unvisited node individually.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution initializes `heap` with zeros and never checks a memo entry before recursing, so it does not use a -1‑initialized memo array or a cache‑check as required.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The DFS function never returns a value for leaf nodes (it has no return statement), so it does not explicitly return 0 as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your DFS updates `heap[v]` with `max(heap[v], 1 + heap[child])` for each child, correctly implementing the recurrence and storing the result before returning.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The DFS correctly computes longest path lengths for most DAGs, but because it uses plain recursion it will hit Python's recursion limit on deep chains (e.g., N > 1000), causing a failure on valid inputs.

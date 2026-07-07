@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function loops over `inputarray` with `for x in inputarray:` and uses a try/except to separate numbers from operators, satisfying the iteration and classification requirement.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Numeric tokens are converted with `c=int(x)` and then immediately pushed onto the stack via `stack.push(c)`, correctly handling numbers.
+
+POINT_ID: 3
+MARKS: 25
+FEEDBACK: For operator tokens the code pops two values (`b = stack.pop(); a = stack.pop()`), computes the result, and pushes it back with `stack.push(c)`, fulfilling the pop‑compute‑push behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The subtraction and division use `a - b` and `a / b`, where `a` is the second popped value, preserving the correct operand order for non‑commutative operators.
+
+POINT_ID: 5
+MARKS: 4
+FEEDBACK: Division is performed with `/`, yielding a float and not rounding down as required, so the overall result can be incorrect for expressions involving `/`.
+
+TOTAL: 89

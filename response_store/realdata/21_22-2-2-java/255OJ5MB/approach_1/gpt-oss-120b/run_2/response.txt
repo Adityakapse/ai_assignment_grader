@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The code allocates a prefix‑sum array `d` of size n, and after the first loop `d[0]` holds `a[0]`, though it is not explicitly set before the loop.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The cumulative sums are correctly built using the running variable `last`, resulting in `d[i] = a[i] + d[i‑1]` for all i ≥ 1.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: An output array `output` of size n is allocated and a loop iterates over all n queries in B.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each query the code computes `output[i] = d[r]` and subtracts `d[l‑1]` only when `l > 0`, handling the l = 0 case correctly.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct list of range sums for all queries in overall O(n) time and uses no prohibited constructs.
+
+TOTAL: 95

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function loops over `range(0,len(a))` processing each token in order and uses a try/except to separate numeric tokens from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted with `int(a[i])` and pushed onto the stack via `stack.push(int(a[i]))`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (`y = stack.pop(); x = stack.pop()`), applies the appropriate arithmetic, and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Subtraction uses the correct operand order (`x - y`), but division uses `/` producing a float instead of integer (floor) division as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns the result as a string and gives floating‑point results for division, so it fails for expressions that involve division or require an integer return value.

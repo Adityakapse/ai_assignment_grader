@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a memo‑like array `m` of size `n+1` but initializes its entries to 0 (e.g., `m[0]=0`) instead of the required sentinel -1.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Only one explicit base case is coded (`m[1] = W[0]`); the case for `n == 1` (max of `W[0]` and `W[1]`) is handled implicitly by the loop rather than as a separate base case.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No cache‑check such as `if (memo[n] != -1) return memo[n];` is present; the algorithm never reads a stored value before recomputing subproblems.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence `m[i] = Math.max(W[i-1] + m[i-2], m[i-1])` correctly implements the optimal substructure and stores the result in `m[i]` before it is used later.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct maximum billboard profit for all valid inputs and runs in O(n) time, meeting the overall specification.

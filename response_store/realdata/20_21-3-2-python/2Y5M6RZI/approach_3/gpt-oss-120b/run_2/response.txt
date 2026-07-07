@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds an adjacency list `ll` from A and sets `ll[0] = [1, …, N]`, correctly adding the virtual source node 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: It creates `nodes_mp` initialized to -10000 and checks `nodes_mp[node] != min`; this works as a sentinel but does not use the -1 value required by the rubric.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The DFS base case `if len(ll[node]) == 0: return 0` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child it computes `bs = max(bs, dfs(child, …) + 1)` and stores `bs` in `nodes_mp[node]` before returning, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `calc` returns `dfs(0, …) - 1`, producing the correct longest path length for all valid DAGs in O(N + M) time.

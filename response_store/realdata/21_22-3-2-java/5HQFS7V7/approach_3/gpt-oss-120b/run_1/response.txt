@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code builds a list of predecessors (vorgaenger) instead of an adjacency list of outgoing edges and never adds a virtual source node 0 with edges to all nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is used; the algorithm computes values iteratively without the -1 sentinel and cache‑check required for memoization.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, so no leaf‑node base case is defined.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement the required recurrence sol = max(sol, dfs(child) + 1) nor store results in a memo array.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the code returns the maximum weight computed, it assumes nodes are processed in topological order and lacks a virtual source adjustment, so it may give correct results for simple linear graphs but fails on general DAGs.

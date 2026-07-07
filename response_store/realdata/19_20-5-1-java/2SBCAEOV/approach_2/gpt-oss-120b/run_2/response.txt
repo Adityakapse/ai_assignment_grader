@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node (identified by Farbe.GRAU) to the queue `q` before entering the `while (!q.isEmpty())` loop, and the loop correctly processes nodes until the queue is empty.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The BFS loop uses `Node u = q.get(0); q.remove(0);` which removes the current node from the front of the queue, correctly implementing FIFO dequeue.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The BFS uses the Farbe enum (white, gray, black) to check a node’s color before expanding it and marks it gray when discovered and black after processing, effectively preventing duplicate visits and infinite loops.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The loop `for (Node v : u.adj) { if (v.farbe.equals(Farbe.WEIß)) { … q.add(v); } }` correctly iterates over each unvisited neighbour and enqueues it at the back of the queue.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your BFS correctly colors nodes, enqueues them, and adds each node’s value when first discovered, producing the proper level‑by‑level order for all reachable nodes.

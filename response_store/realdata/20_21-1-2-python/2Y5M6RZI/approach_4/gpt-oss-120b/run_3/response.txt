@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses a recursive divide‑and‑conquer approach with two recursive calls on the left and right halves and a merge step, matching the structure of merge sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution checks `if len(A)>1:` before recursing, so it stops recursion for arrays of length 0 or 1, correctly preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The Merge function correctly interleaves the two sorted sub‑arrays L and R into A using sentinel values, establishing the proper order after the recursive calls.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution implements a recursive merge sort (splitting the list and merging with the Merge function), which guarantees O(n log n) worst‑case performance, so randomisation is not required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The merge function appends a sentinel value of 10⁶, which is not guaranteed to be larger than all possible elements (the input can contain 10⁶), leading to incorrect ordering or extra sentinel entries on some valid inputs.

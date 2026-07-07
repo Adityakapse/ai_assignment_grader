@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] rucksack = new double[n + 1][capacity + 1];`, which matches the required (n+1) × (capacity+1) size and Java initializes all entries to 0 (the first row is also set explicitly).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop runs `i = 1 … n`, but the inner loop starts at `j = 1` and stops at `capacity`, so the subproblem for capacity 0 is never processed explicitly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `if (volumes[i - 1] > j)` correctly implements the required `volumes[i] <= j` check by handling the else‑branch when the item fits.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits, the code assigns `rucksack[i][j] = Math.max(rucksack[i‑1][j], rucksack[i‑1][j‑volumes[i‑1]] + values[i‑1]);`, which follows the proper recurrence using the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `rucksack[n][capacity]`, which is the correct DP cell for the forward formulation, yielding the optimal knapsack value for all valid inputs.

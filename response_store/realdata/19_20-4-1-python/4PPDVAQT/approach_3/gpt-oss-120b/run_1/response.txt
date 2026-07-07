@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses recursion to walk down the tree, comparing z.key to x.key and recursing left or right until it reaches a null child where the node is inserted.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate parent variable is maintained during the traversal; the code only sets z.parent when the insertion point is found.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the appropriate null child is reached, the code attaches z as x.left if z.key < x.key, otherwise as x.right, matching the BST left/right rule.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: At the insertion point the code assigns z.parent = x, correctly linking the new node to its parent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the original root (or the new node when the tree is empty) and preserves the BST property for all insertion cases.

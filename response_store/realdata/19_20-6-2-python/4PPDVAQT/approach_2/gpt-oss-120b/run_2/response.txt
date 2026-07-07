@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `matrix = [[0 for x in range(cap + 1)] for x in range(len(val) + 1)]`, correctly allocating a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code uses an outer loop over capacities (j) and an inner loop over items (i), whereas the rubric requires the outer loop to iterate over the items and the inner loop over the capacities.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code includes the condition `elif vol[i-1] <= j:` before using the item, correctly performing the capacity feasibility check for each item and capacity.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly applies the recurrence, using `max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])` when the item fits and `matrix[i-1][j]` when it does not.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly builds the DP table, handles base cases, and returns matrix[len(val)][cap], which yields the optimal knapsack value for all valid inputs.

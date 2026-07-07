@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: Your code correctly chooses y as the node to delete – you transplant delete directly when it has ≤1 child (equivalent to y = delete) and use successor(delete), which returns tree_min(delete.right), when delete has two children.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Your `tree_min` function correctly walks left until there is no left child and returns that node, matching the required treeMinimum behavior.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The delete function correctly promotes the appropriate child (e.g., succ.right or delete.right/left) when removing a node, matching the required identification of y’s non‑null child.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your `transplant` function correctly updates `node2.parent = node1.parent` (when non‑null) and adjusts the parent’s left/right pointer or root, fulfilling the required splicing behavior.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution never copies delete.key from the successor (y); instead it transplants the successor node, so the required key‑copy step when y ≠ delete is missing.
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: The delete implementation correctly handles leaf, single‑child, two‑child, and root deletions using transplant and successor, though the unused successor branch contains a comparison bug that isn’t exercised by the deletion cases.

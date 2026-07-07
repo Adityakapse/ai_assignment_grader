@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds an adjacency list from A and assigns Adj[0] = range(1, N+1), creating a virtual source node 0 with edges to all nodes 1…N, as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student creates a list M filled with -1 for all nodes and checks M[node] != -1 to return cached results, matching the required memoization pattern.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function checks `if len(Adj[node]) == 0:` and returns 0 for leaf nodes, correctly handling the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The function iterates over all children, uses `max(retVal, tiefenSuche(child, Adj, M) + 1)`, stores the result in `M[node]`, and returns it, correctly implementing the recurrence with memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly builds a virtual source, uses memoized depth‑first search, and returns tiefenSuche(0) − 1, yielding the proper longest path length for all DAGs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function iterates with `for n in inputarray:` covering every token from left to right and uses an if/elif chain to separate operators from numeric tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `else` branch the code executes `stack.push(int(n))`, correctly converting each numeric string to an integer before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (`y` then `x`), computes the appropriate operation (`x+y`, `x-y`, `x*y`, `x/y`), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Subtraction uses the correct order (`x-y`), and division also uses `x/y`, but division is performed with true division (`/`) producing a float; the later `int()` cast does not guarantee floor (integer) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because division is implemented with floating‑point `/` and only converted to int at the end, the calculator gives incorrect results for cases that require floor division (e.g., negative operands), so it is not fully correct for all RPN expressions.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution does not allocate a 2‑dimensional (m+1)×(n+1) table; it uses a one‑dimensional array instead, so the required table allocation and nested i/j loops are missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Base cases are handled via the 1‑D arrays (result and tmp) rather than explicit assignments to edDis[i][0] and edDis[0][j]; therefore the specified base‑case initialization is not present.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match (a == b) the code appends result[j], which corresponds to edDis[i‑1][j‑1], correctly implementing the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters the code computes 1 + min(result[j], result[j+1], tmp[-1]), correctly using the three neighbouring values for insert, delete, and replace.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for all inputs and avoids recursion, satisfying overall correctness.
+
+TOTAL: 60

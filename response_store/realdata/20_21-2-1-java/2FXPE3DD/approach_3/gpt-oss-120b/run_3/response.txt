@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int c[] = new int[B.length];`, allocating a counting array sized to |B| (which is at least max(A)+1) and automatically zero‑initialised.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) c[A[i]]++;` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for (int i = 0; i < B.length; i++)` iterates from 0 to |B|‑1, producing exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The expression `B[i] >= c[i] ? '1' : '0'` outputs '1' when the frequency `c[i]` is ≤ capacity `B[i]`, matching the required logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `new String(res)` with the correct binary string in O(n+m) time and contains none of the forbidden substrings.

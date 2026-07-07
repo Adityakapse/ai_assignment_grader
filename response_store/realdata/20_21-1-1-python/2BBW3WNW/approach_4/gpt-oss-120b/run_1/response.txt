@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function returns pow(a, b, c), which yields 1 % c when b is 0, satisfying the required base‑case behavior.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution directly returns pow(a, b, c) without any check of b % 2, so it never distinguishes odd from even exponents.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The function just returns pow(a, b, c) and does not implement the required odd‑case recursion that reduces b by 1 and multiplies by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function simply returns pow(a, b, c) and does not implement the required even‑case logic of halving b, recursing, and squaring the result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution returns pow(a, b, c), which correctly computes a^b mod c for all valid inputs and does not contain either 'import' or '**'.

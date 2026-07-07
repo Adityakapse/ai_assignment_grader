@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function has no explicit `if b == 0` return; when b starts as 0 it falls through to return `ergebnis` which is 1, but it does not apply `% c`, so it gives the wrong result for c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Parity is detected with `(b&1)==1`, correctly distinguishing odd from even exponents.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For odd bits the code executes `ergebnis = (ergebnis*a)%c`, effectively multiplying by a and taking the modulo as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After shifting b, the line `a = (a*a)%c` squares the current base modulo c, implementing the even‑case halve‑and‑square step.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm computes aⁿ mod c correctly for normal cases and avoids `import` and `**`, but it returns 1 instead of 0 when c = 1, so it is not correct for that edge case.

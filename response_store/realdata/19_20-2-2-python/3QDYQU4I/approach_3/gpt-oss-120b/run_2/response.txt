@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution loops over the entire input list with `for i in range(0,len(a))` and uses a try/except to separate numeric tokens (converted to int) from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted with `int(a[i])` and immediately pushed onto the stack via `stack.push(int(a[i]))`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When an operator is caught, the code pops two values (`y = stack.pop(); x = stack.pop()`), applies the appropriate operation, and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The operand order for `-` and `/` is correct (`x - y` and `x / y`), but division uses floating‑point `/` instead of integer floor division, and the result is later converted to a string.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns a string (`result = str(stack.pop())`) and performs floating‑point division, so it fails to produce the required integer result for expressions involving division (and any case expects an int).

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates an int[] c by cloning B, giving the correct size but it is initialized with B’s values instead of zeros, so the counting array is not zero‑initialized.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: In the loop over A the code decrements c[x] (c[x] = c[x] - 1) rather than incrementing a separate count array, so frequencies are not accumulated as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates j from 0 to c.length‑1 (where c.length equals B.length), producing exactly m output characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if(c[j] >= 0)` appends 1 when the remaining capacity is non‑negative (i.e., count ≤ B[j]) and 0 otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n + m) time, avoids forbidden substrings, and returns the correct binary string for all valid inputs.

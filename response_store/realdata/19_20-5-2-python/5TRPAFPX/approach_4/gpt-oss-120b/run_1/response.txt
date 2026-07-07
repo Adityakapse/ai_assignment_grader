@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a recursive helper without initializing a stack or a while loop, so it never pushes the start node onto a stack nor iterates until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The implementation uses recursive calls and never performs a stack pop operation, so there is no explicit removal of nodes from the top of a stack as required for LIFO behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses the gefunden list as a visited set, adding each node before recursing and checking if not zielknoten in gefunden to skip already‑visited nodes, thus preventing duplicates and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recursive dfs iterates over graph[knoten] in forward order and recursively visits each unvisited neighbour, which satisfies the neighbour‑push requirement for a recursive implementation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive implementation appends each node before recursing over its adjacency list and checks `if not zielknoten in gefunden` to avoid cycles, thus returning all reachable nodes in the proper DFS order.

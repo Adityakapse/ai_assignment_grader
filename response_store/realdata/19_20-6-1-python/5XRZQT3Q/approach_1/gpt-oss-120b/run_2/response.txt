@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution does not allocate a 2‑dimensional (m+1)×(n+1) table; it uses only two 1‑D rows, so the required table allocation and loop structure are missing.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Base cases are correctly set – the initial “total = range(len(a)+1)” provides the first row (edDis[0][j]=j) and “tmpdist = [i_b+1]” supplies the first column (edDis[i][0]=i).
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match the code appends total[i_a], which corresponds to the diagonal cell edDis[i‑1][j‑1], correctly handling the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatches the algorithm appends 1 + min(total[i_a], total[i_a+1], tmpdist[-1]), implementing the required 1 + min of the three neighbouring cells (insert, delete, replace).
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for all inputs and uses no recursion, satisfying overall correctness.
+
+TOTAL: 80

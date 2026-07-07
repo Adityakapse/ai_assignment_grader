@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code creates a DP list P and never allocates a memo array of size n+1 initialized to -1, so it does not meet the memo‑array allocation requirement.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The code correctly handles the case n = 1 by initializing P with max(W[0], W[1]), but it tries to access W[1] even when the input length is 1, so opt(0) would raise an IndexError.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution uses an iterative list P instead of a recursive helper with a memo array, so it never performs a cache check such as `if memo[n] != -1: return memo[n]`.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly implements the recurrence P[i] = max(P[i‑2] + W[i], P[i‑1]) and stores each computed value in the list P, effectively using it as a memo table before returning the final result.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly builds the DP array P using the recurrence max(P[i-2]+W[i], P[i-1]) and returns the final entry, handling all valid input sizes in linear time.

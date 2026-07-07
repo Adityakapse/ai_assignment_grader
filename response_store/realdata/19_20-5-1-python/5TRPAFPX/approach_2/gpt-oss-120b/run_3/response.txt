@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 4
+FEEDBACK: The code adds the start node before iterating, but it uses a for‑loop over the list instead of a while loop that processes nodes until a queue is empty, so the required BFS loop structure is not correctly implemented.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never removes the current node from the front of a queue (no pop(0) or similar), it simply iterates over and appends to the list, so it does not demonstrate FIFO dequeue.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code uses the gefunden list to track visited nodes and checks if not zielknoten in gefunden before appending, which prevents duplicates, but it adds nodes when discovered rather than when they are processed, deviating from the ideal visited‑when‑processed pattern.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your loop iterates over each node in gefunden and appends any neighbour not already in gefunden to the end of the list, correctly enqueuing all unvisited neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your bfs iterates over the growing ‘gefunden’ list, appending unseen neighbours, which correctly visits all reachable nodes in FIFO (BFS) order for any directed graph.

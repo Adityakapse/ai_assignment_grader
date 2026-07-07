@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b is 0 (by skipping the loop) but does not apply % c, so it fails the required base case of returning 1 % c, especially when c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if j%2!=0:` to detect odd exponents and handles that case separately, while even values follow the subsequent squaring step, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the loop, when j is odd the code does `res = (res1 * res) % c` and then `j -= 1`, correctly reducing the exponent by one and multiplying by the base modulo c.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative loop and never implements a recursive even case that calls expo(a, b//2, c) and squares its result; it also halves b with “j=j/2” (float division) instead of integer division.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns 1 instead of 1 % c when b = 0 (e.g., c = 1) and uses float division (j=j/2), which can cause incorrect looping for some inputs.

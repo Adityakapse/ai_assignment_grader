@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code uses calc(n) = exp(n)-1 with exp computing powers of 2, showing the student recognized the closed form a_n = 2^n‑1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The exponent function has no base case for b == 0; it only handles n == 1, so the required base case is missing.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: For odd n the else branch returns exp(n‑1)*2 % MOD, correctly reducing the exponent by 1 and multiplying by the base.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: An even‑case branch is present, but it checks “n/2 % 2 == 0” (using float division) instead of correctly testing n % 2 == 0, so the implementation is not a proper halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: While the function returns the right result for small inputs, it uses linear‑depth recursion and does not run in O(log n), so it is not correct for the full input range.
+
+TOTAL: 50

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a (len1+1)×(len2+1) table, but the nested loops iterate i from 0 to len1‑1 and j from 0 to len2‑1, using i+1/j+1 offsets instead of looping from 1 to m and 1 to n as specified.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are properly initialised with dp[i][0] = i for all i and dp[0][j] = j for all j.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When characters match (c1 == c2) the code sets dp[i+1][j+1] = dp[i][j], correctly copying the diagonal cell.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatched characters the solution computes replace, insert, and delete from the three neighbouring cells, takes the minimum, adds 1, and stores it in dp[i+1][j+1], matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method is iterative (no recursion) and returns the correct edit distance for all tested inputs.

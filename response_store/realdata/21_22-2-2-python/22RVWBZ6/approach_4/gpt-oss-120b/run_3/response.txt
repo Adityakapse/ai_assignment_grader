@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates c = A.copy(), giving a size‑n array with c[0] equal to A[0], and then builds the prefix sums from index 1 onward.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes c as a copy of A and then correctly updates each c[i] with c[i-1] + c[i] for i from 1 to n‑1, constructing the proper prefix‑sum array.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The solution iterates over all queries using `for i in range(len(B))`, but it creates `res = []` and appends results instead of pre‑allocating an output array of size n.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution builds a prefix array `c` and correctly returns `c[r]` when `l == 0` and `c[r] - c[l-1]` otherwise, handling the edge case properly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds a prefix‑sum array `c` in a single pass and correctly handles both `l == 0` (using `c[B[i][1]]`) and `l > 0` cases, returning the right sums without any forbidden keywords.

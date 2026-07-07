@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: The solution uses recursion (myQuicksort) and a while loop inside partition, but there is no outer loop that repeatedly passes over the whole list as in typical iterative sorts.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The code calls Smaller(l, p), Larger(r, p) and Equal(l, p)/Equal(r, p) with appropriate index pairs to decide element ordering during partitioning.
+
+POINT_ID: Point 3
+BUCKET: Correct
+FEEDBACK: Swap(l, r) is performed only after the comparison loops determine that elements are on the wrong side, and Swap(l, p) is called after partitioning, matching the indices used in the comparisons.
+
+POINT_ID: Point 4
+BUCKET: Semi
+FEEDBACK: Length() is used once to compute the initial right bound (listToSort.Length()-1), but the inner while loops in partition do not reference Length() directly.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: The recursive quicksort with its partition routine correctly sorts the list in ascending order for the tested inputs.

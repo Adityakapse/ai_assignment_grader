@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, which allocates a (n+1)×(capacity+1) matrix initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The nested loops `for i in range(len(value) + 1):` and `for w in range(capacity + 1):` iterate over all items and all capacities from 0 up to the given limits, covering every subproblem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Inside the inner loop the condition `elif volume[i-1] <= w:` correctly checks whether the current item fits within the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the assignment `table[i][w] = max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])` implements the proper recurrence; when it does not fit, `table[i][w] = table[i-1][w]` correctly carries forward the previous result.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `table[len(value)][capacity]`, which yields the maximum achievable value for the full set of items and the given capacity, satisfying the problem requirements.
+
+TOTAL: 100

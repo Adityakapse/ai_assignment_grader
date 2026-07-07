@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The code computes 2^n using binary exponentiation and returns res‑1, correctly applying the closed form a_n = 2^n − 1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code does not implement an expo function with a b == 0 base case returning 1; it uses an inline loop instead, so the required base case is absent.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your loop checks `if (n%2 == 1)` and updates `res = res*base % 1000000007`, which correctly implements the odd‑exponent case equivalent to `(a * expo(a, b-1, c)) % c`.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your loop correctly handles the even case by halving n and squaring base (base = base*base % MOD) exactly once per iteration, which matches the required tmp * tmp behavior.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The implementation correctly computes (2^n − 1) mod 1e9+7 for all inputs using binary exponentiation and avoids all forbidden keywords.

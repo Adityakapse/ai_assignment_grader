@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a Queue class and initializes a list (self.array) as internal storage, providing the necessary state for FIFO operations.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty method returns `len(self.array) == 0`, which accurately reflects whether the queue has no elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns self.array[0], correctly retrieving the front element without altering the queue.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method uses `self.array.append(x)` to add elements to the end of the internal list, which correctly updates the queue for subsequent operations.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue method uses `self.array.pop(0)`, which returns the front element and removes it from the list, correctly updating the queue’s internal state for future operations.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The queue maintains FIFO order, but head() doesn’t check for an empty queue and raises an IndexError instead of returning a safe value, which fails on boundary cases.

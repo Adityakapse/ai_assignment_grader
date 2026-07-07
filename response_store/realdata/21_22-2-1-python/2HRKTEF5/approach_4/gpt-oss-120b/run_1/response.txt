@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates C with `[0 for i in range(len(B))]`, initializing a zero‑filled counting array sized to len(B), which is guaranteed to be at least max(A)+1, and then indexes it directly to count occurrences.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in A: C[i] += 1` correctly iterates over every element of A and increments the corresponding entry in C, accumulating the frequencies as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for i in range(len(B)):` which iterates from 0 to |B|-1, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution correctly compares `C[i] <= B[i]` and appends "1" when true and "0" otherwise, implementing the required output logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a count array C of size len(B), tallies occurrences from A, then compares each C[i] to B[i] in two linear passes, producing the correct binary string in O(n + m) without any forbidden substrings.

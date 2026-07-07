@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list `Connections` from A, but it never adds a virtual source node with edges to all vertices, so it cannot start a DFS from a single source covering all possible start nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is created; the solution uses a single forward pass over `Lengths` instead of recursive DFS with a `-1`‑initialized cache, so subproblems are not memoized.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, thus no explicit base‑case handling for leaf nodes; the algorithm never returns a value for a node with no outgoing edges via recursion.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence is implemented as a simple loop updating `Lengths[u] = max(Lengths[e] + 1, Lengths[u])` without recursion, without adding 1 to a recursive call result, and without storing results in a memo table as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because it assumes edges only go from lower‑indexed to higher‑indexed vertices and lacks a virtual source, the function returns incorrect longest‑path lengths for many valid DAGs.

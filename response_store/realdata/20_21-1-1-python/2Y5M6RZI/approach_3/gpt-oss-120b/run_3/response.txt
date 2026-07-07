@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b is 0 (since the loop is skipped) but does not apply % c, so for c = 1 it returns 1 instead of 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses if j%2!=0 to detect odd exponents, correctly distinguishing odd from even values of b.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the algorithm multiplies res by res1 and applies % c, then decrements j by 1, matching the required (a * expo(a,b‑1,c)) % c logic.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For the even case the code squares res1 (mod c) and halves j (using j=j/2), effectively implementing the “halve and square” step.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation computes a^b mod c correctly for typical inputs, but it fails the edge case b = 0, c = 1 (returns 1 instead of 0), so overall correctness is only partial.

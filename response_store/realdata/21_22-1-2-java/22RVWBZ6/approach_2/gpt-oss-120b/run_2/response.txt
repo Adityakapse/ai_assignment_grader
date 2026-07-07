@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The code initializes l = 0 and r = (long)1.0E18, correctly bounding the search space for all possible N up to 10¹⁸.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution correctly calculates the midpoint as (l+r)/2 each iteration, but it uses `while (l != r)` rather than the required `while (l <= r)` loop condition.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: Your code updates `l` correctly for `f_N(pivot) == 0`, but for `f_N(pivot) == 1` it sets `r = pivot` instead of the required `r = pivot - 1`, so the narrowing step does not follow the rubric specification.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The code returns pivot after the loop, and since the loop ends with l == r == N, pivot equals l, correctly yielding the unknown N.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The binary‑search logic is correct and runs in logarithmic time, but using `(long)1.0E18` makes the upper bound slightly smaller than 10¹⁸, so the function fails when N = 10¹⁸.

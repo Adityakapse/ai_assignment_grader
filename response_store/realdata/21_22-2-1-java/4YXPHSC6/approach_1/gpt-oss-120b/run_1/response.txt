@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution creates `int[] c = B.clone();` instead of allocating a new zero‑initialized counting array of size at least max(A)+1, so the required counting array allocation is not satisfied.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: In the loop over A the code does `c[x] = c[x] - 1;` rather than incrementing a separate count, thus it does not perform the specified frequency counting by incrementing C[a].
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop runs `for(int j = 0; j < c.length; ++j)`, which iterates exactly |B| times and produces a binary string of length m as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The condition `if(c[j] >= 0)` appends `1` otherwise `0`, correctly implementing the rule that a ‘1’ is output when the category count does not exceed B[i].
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The overall method returns the correct binary string for all valid inputs in O(n+m) time and contains none of the forbidden substrings, despite using a non‑standard counting approach.
+
+TOTAL: 55

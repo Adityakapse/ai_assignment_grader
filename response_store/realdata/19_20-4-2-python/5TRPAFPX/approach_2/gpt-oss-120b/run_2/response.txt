@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code uses `newNode = treeMinimum(deleteNode.right)` when the node has two children and otherwise treats `deleteNode` itself as the node to be removed (setting `newNode` to its sole child or `None`), matching the required selection of y.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Your `treeMinimum` function correctly recurses left until a node without a left child is found (or returns None for a null input), matching the required behavior.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly promotes the successor’s only possible child (newNode.right) when removing the successor, handling both the leaf case (newNode.right is None) and the non‑leaf case, which aligns with identifying y’s non‑null child as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your code correctly updates the successor’s (or deleted node’s) child’s parent pointer and rewires the parent’s left/right reference (or root) to that child, handling leaf, single‑child, and two‑child cases.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The code never copies the successor’s key into the deleted node (no `deleteNode.key = newNode.key`), it only rewires the nodes, so the required key‑copy step is missing.
+
+POINT_ID: 6
+MARKS: 8
+FEEDBACK: The code handles leaf and one‑child deletions correctly, but in the two‑children case it mishandles the situation where the successor is the direct right child (it sets the node’s parent and right pointer to itself), causing an invalid BST.

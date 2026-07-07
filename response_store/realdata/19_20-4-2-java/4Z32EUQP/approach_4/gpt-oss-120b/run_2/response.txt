@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if(delete.left == null || delete.right == null){ y = delete; } else { y = treeMinimum(delete.right); }`, correctly choosing `y` as the node to delete when it has ≤1 child and the successor otherwise.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The treeMinimum method iterates while x.left is not null, moving left each time and returns the final node, correctly finding the in‑order minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (y.left != null) x = y.left; else x = y.right;`, correctly selecting y's non‑null child or null when y is a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets `x.parent = y.parent` when `x` is non‑null, updates `root = x` if `y.parent` is null, and otherwise redirects `y.parent`'s left or right pointer to `x`, correctly handling all splicing cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution checks `if (y != delete)` before assigning `delete.key = y.key;`, so the key is copied only when y is the in‑order successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your delete method follows the lecture algorithm exactly, handling leaf, single‑child, two‑child, and root deletions correctly and returning the proper new root.

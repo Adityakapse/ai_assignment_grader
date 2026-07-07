@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code adds the start node to the list before looping, but uses a `for` loop over the list rather than a `while` loop that runs until a queue is empty, so the loop structure does not match the required BFS pattern.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never dequeues a node from the front; it iterates over the “gefunden” list and appends new nodes without any pop(0) or equivalent removal, so no FIFO dequeue is performed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses the list ‘gefunden’ to store visited nodes and checks “if not zielknoten in gefunden” before appending, preventing duplicates and avoiding infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `graph[knoten]` and appends each `zielknoten` to `gefunden` only if it is not already present, effectively enqueuing all unvisited neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation uses the growing list `gefunden` as a queue, iterating over it while appending unseen neighbours, which yields a level‑by‑level traversal and correctly avoids revisiting nodes even in cyclic graphs.

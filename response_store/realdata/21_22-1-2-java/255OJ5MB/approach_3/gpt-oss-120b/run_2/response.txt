@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Search bounds initialisation
+BUCKET: Wrong
+FEEDBACK: The student sets `lower = 1` instead of `0`, so the search interval does not include the possible value N = 0, violating the required full range.
+
+POINT_ID: Point 2 — Binary search loop and midpoint
+BUCKET: Semi
+FEEDBACK: The loop uses `while (upper - lower > 1)` rather than the required `while (l <= r)`, which is a different termination condition even though a midpoint is computed correctly.
+
+POINT_ID: Point 3 — Narrowing: updating l and r based on f(m)
+BUCKET: Semi
+FEEDBACK: When `f_N(mid) == 1` the code assigns `upper = mid` (instead of `upper = mid - 1`), and when `f_N(mid) == 0` it assigns `lower = mid` (instead of `lower = mid + 1`); the direction is correct but the updates do not match the exact specification.
+
+POINT_ID: Point 4 — Post-loop return value
+BUCKET: Correct
+FEEDBACK: The return statement `return f_N(lower) == 1 ? lower : upper;` correctly yields the first index where `f_N` is 1, which is equivalent to returning `l`.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Semi
+FEEDBACK: The algorithm fails for the edge case N = 0 because the lower bound starts at 1, though it runs in O(log n) and contains no forbidden keywords.

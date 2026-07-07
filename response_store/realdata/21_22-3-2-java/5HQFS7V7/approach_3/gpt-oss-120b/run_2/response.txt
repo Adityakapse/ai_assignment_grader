@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution builds a predecessor list (vorgaenger) instead of an adjacency list of outgoing edges and never adds a virtual source node 0 with edges to all nodes, so the required graph construction is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is used; the code only fills the array gewicht in a single forward pass and never checks a cached value, so memoization is absent.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, thus no base‑case handling for leaf nodes is present.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Because no DFS is implemented, the recurrence “sol = max(sol, dfs(child) + 1)” and storing the result in memo[node] never occurs.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm assumes node indices give a topological order and lacks a virtual source, causing incorrect longest‑path lengths for many DAGs; it does not reliably return the correct answer.

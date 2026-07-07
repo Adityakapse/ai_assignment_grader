@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A (`knoten[e[0]].append_to_adj(e[1])`) but never adds a virtual source node 0 with edges to every node 1…N, so the required source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is created; the solution relies on a separate DP pass after a DFS instead of initializing a `memo = [-1]*...` and checking `memo[node] != -1` inside the recursive function.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The recursive function `dfs_visit` does not return a value or handle a leaf‑node base case returning 0; it simply recurses and appends the node after exploring children.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence `sol = max(sol, dfs(child)+1)` is not implemented; the longest‑path lengths are computed later in a loop over the topological order, and no result is stored in a memo entry during recursion.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: By performing a DFS to obtain a topological order and then propagating lengths with `longest_path[value] = max(longest_path[value], longest_path[v] + 1)`, the function returns the correct length of the longest directed path for all DAG inputs in O(N+M) time.

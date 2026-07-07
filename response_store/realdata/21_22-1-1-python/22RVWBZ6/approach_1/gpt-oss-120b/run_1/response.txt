@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution never states or derives the closed form a_n = 2^n − 1; it directly implements a recursive function instead.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The recursive function exp handles n == 1 as the base case, but does not provide a case for exponent 0 as required.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: For odd‑looking inputs the code falls into the final else branch and returns exp(n‑1)*2 % mod, which matches the required “reduce by 1 and multiply” behavior, though it also handles some even numbers this way.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The even case is only triggered when n/2 % 2 == 0 (i.e., n divisible by 4); true halving and squaring for all even exponents is not implemented.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: While calc(n) produces the correct numerical result for the tested values, the algorithm is not O(log n) and therefore will not work for the full input range; it also uses forbidden constructs like floating‑point division.
+
+TOTAL: 20

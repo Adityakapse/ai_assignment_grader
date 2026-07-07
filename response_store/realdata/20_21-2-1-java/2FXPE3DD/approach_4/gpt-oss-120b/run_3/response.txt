@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int c[] = new int[B.length];`, which is sized at least `max(A)+1` (since `max(A) ≤ |B|-1`) and Java initializes it to zero, satisfying the counting array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over A and uses `c[A[i]]++` to accumulate the frequency of each category, correctly implementing the required counting.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop iterates `i` from 0 up to `i < B.length`, correctly covering indices 0 to |B|-1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `res[i] = B[i] >= c[i] ? '1' : '0';`, which correctly outputs '1' when the count `c[i]` is less than or equal to the capacity `B[i]` and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code counts occurrences in O(n), compares each to B[i] in O(m), returns the proper '1'/'0' string, and contains no forbidden substrings.

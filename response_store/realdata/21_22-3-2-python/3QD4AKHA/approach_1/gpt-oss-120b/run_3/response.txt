@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds `Adj` as a list of N+1 lists, fills it from `A`, and sets `Adj[0]=range(1,N+1)` to create a virtual source with edges to every node, satisfying the construction requirement.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array `M` is created with `-1` for every index and the function returns `M[node]` immediately when `M[node] != -1`, correctly implementing memoization.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The base case `if len(Adj[node]) == 0: return 0` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The loop computes `retVal = max(retVal, tiefenSuche(child, Adj, M) + 1)` for each child and stores the result in `M[node]` before returning, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: `calc` returns `tiefenSuche(0,Adj,M)-1`, which yields the length of the longest directed path for all valid DAG inputs, so the overall solution is correct.
+
+TOTAL: 100

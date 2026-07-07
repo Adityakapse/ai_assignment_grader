@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2‑dimensional DP table; it only builds a list of ratios and uses a greedy loop, so no (n+1) × (capacity+1) array initialized to zero is allocated.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses only a single loop over the sorted items to fill the knapsack and never iterates over capacities with an inner loop, so it lacks the required nested loops covering all subproblems.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution checks `if volumeSum + item[2] <= capacity:` before adding each item, using a ≤ comparison to ensure the item fits within the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution builds a sorted ratio list and greedily adds items, never constructing a DP table or applying the required max‑based recurrence relation.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code greedily selects items by value‑to‑volume ratio, which works for trivial cases but does not guarantee the optimal total value for general multi‑item inputs, so it fails on many valid test cases.

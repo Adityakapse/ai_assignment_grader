@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The function returns 1 when b is 0, but it does not apply % c to that result, so it fails the edge case c = 1 (should return 0).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `(b & 1)` to test whether b is odd, correctly distinguishing odd and even exponents.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Your loop checks `if ((b & 1) == 1)` and multiplies `res` by `a` modulo c, which correctly implements the odd‑case reduction and multiplication required by the specification.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The solution uses an iterative loop with bit‑shifts and squaring instead of recursively calling expo(a, b/2, c) and then returning (tmp*tmp) % c for the even case.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: The binary‑exponentiation loop correctly computes a^b mod c for most cases, but it returns 0 when a % c == 0 even if b == 0, giving the wrong result (should be 1 % c).

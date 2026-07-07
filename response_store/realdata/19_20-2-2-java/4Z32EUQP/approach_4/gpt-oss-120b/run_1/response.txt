@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The method iterates over all input tokens, but it uses `==` to compare strings for operators, which fails to correctly distinguish operator tokens from numbers.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the else clause you use Integer.parseInt(input[i]) to convert each numeric token to an int before calling s.push, so numbers are properly converted and pushed onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator branch the code pops two values, applies the appropriate arithmetic (including correct operand order for subtraction and division), and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In both the subtraction and division cases you pop the right operand first (zahl1) and then the left operand (zahl2) and compute `zahl2 - zahl1` and `zahl2 / zahl1`, which follows the required operand order and uses integer division.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution compares strings with `==` (e.g., `if(input[i]== "+")`), so operators may not be recognized, leading to incorrect results or runtime failures.

@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Correct
+FEEDBACK: The function iterates over `inputarray` with `for n in inputarray` and uses an if/elif/else chain to distinguish operators from numeric tokens, processing every token left‑to‑right.
+
+POINT ID: 2
+BUCKET: Correct
+FEEDBACK: In the else branch the code converts the token with `int(n)` and pushes it onto the stack, correctly handling numeric tokens.
+
+POINT ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values, applies the appropriate arithmetic (`x+y`, `x-y`, `x*y`, `x/y`), and pushes the result back, satisfying the required pop‑compute‑push pattern.
+
+POINT ID: 4
+BUCKET: Semi
+FEEDBACK: Subtraction uses the correct operand order (`x - y`), but division uses `/` which produces a float; the specification requires integer (floor) division, so the division handling is incorrect.
+
+POINT ID: 5
+BUCKET: Semi
+FEEDBACK: Because division returns a float and the final result is cast with `int()`, the calculator yields wrong results for expressions involving division (especially with non‑integer or negative results), so it is not fully correct for all test cases.

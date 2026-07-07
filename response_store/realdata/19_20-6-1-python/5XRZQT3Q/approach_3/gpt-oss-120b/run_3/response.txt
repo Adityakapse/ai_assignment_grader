@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑dimensional arrays (`total` and `tmpdist`) and never allocates a 2‑D table of size (m+1)×(n+1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The first row is initialized with `total = range(len(a)+1)` (dp[0][j]=j) and each new row starts with `tmpdist = [i_b+1]` (dp[i][0]=i), correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `s_a == s_b` the code appends `total[i_a]`, which is the diagonal value `edDis[i‑1][j‑1]`, correctly handling the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches the code appends `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, which corresponds to the three neighbours (replace, delete, insert) with the required +1 cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `total[-1]` after processing all characters, yielding the correct edit distance for any input strings without any recursion.

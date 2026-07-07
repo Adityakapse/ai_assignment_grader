@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function does not include an explicit base case for b == 0; it simply returns pow(a, b, c) without handling the termination condition.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No parity check (b % 2) is performed; the solution relies entirely on the built‑in pow function.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no separate odd‑case logic that reduces b by 1 and multiplies by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code does not implement an even‑case that halves b and squares the recursive result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Using pow(a, b, c) correctly returns a^b mod c for all valid inputs and avoids both 'import' and '**'.

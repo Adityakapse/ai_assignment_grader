@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Wrong
+FEEDBACK: The solution initializes lower = 1 instead of 0, so the search space does not include the possible value N = 0, violating the required bounds.
+
+POINT_ID: Point 2
+BUCKET: Semi
+FEEDBACK: The loop uses the condition `while (upper - lower > 1)` rather than the specified `while l <= r`; although it eventually terminates, the termination condition does not match the rubric’s requirement.
+
+POINT_ID: Point 3
+BUCKET: Semi
+FEEDBACK: When `f(mid) == 1` the code sets `upper = mid` (instead of `upper = mid - 1`), and when `f(mid) == 0` it sets `lower = mid`; the direction is correct but the update is off by one relative to the rubric.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: After the loop the code returns `lower` if `f(lower) == 1` else `upper`, which correctly yields the first index where `f` becomes 1.
+
+POINT_ID: Point 5
+BUCKET: Semi
+FEEDBACK: The algorithm works for most N but fails when N = 0 because the lower bound starts at 1; otherwise it avoids forbidden keywords and runs in logarithmic time.

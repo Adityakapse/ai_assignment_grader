@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses recursion (myQuicksort) together with while loops in partition, providing the repeated passes and element‑stepping characteristic of a sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Comparisons are performed with Smaller(l, p), Larger(r, p) and Equal(l, p) using the appropriate index pairs to decide element order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Swap is called conditionally after the comparisons (Swap(l, r) and finally Swap(l, p)) with the same indices that were examined.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Length() is used to compute the initial right bound (listToSort.Length()-1), and all subsequent loops are bounded by the derived l and r indices, so no hard‑coded sizes appear.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The quicksort implementation sorts many inputs but the recursive calls use the pivot index for both sub‑ranges (myQuicksort(l, p‑1) and myQuicksort(p, r)), which can cause incorrect handling or non‑termination for certain edge cases.

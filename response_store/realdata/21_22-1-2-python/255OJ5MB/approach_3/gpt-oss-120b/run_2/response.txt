@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code sets lower = 1 instead of 0, so the search space does not include the possible value N = 0, which can cause incorrect results for that edge case.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop uses the condition `while (upper - lower > 1)` rather than `while l <= r`; while it still narrows the interval, the termination condition does not match the rubric’s specification.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `f(mid) == 1` the code updates `upper = mid`, and when `f(mid) == 0` it updates `lower = mid`, correctly narrowing the search interval toward N.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After the loop the function returns `lower` if `f(lower) == 1` else `upper`, which correctly yields the first index where `f` becomes 1 for all cases covered by the search bounds.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation works for most N but fails when N = 0 because the lower bound starts at 1; otherwise it runs in O(log n) and contains no forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements QuickSort with recursive calls and uses while/do‑while loops in the partition routine to repeatedly compare and swap elements, providing the required outer and inner iteration structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The partition function uses A.Smaller(i, r) and A.Larger(j, r) (with Equal checks) to compare elements against the pivot at index r, correctly applying the provided comparison API.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition routine swaps A.Swap(i, j) only after moving i and j based on comparisons with the pivot, but the swap isn’t directly triggered by a Smaller/Larger comparison of the same i and j indices.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code calls list.Length() once to set the initial right index, but the inner while/do‑while loops use the parameters l and r instead of directly referencing Length(), so not all loop bounds are explicitly tied to Length().
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The QuickSort implementation sorts some small lists, but the Hoare partition logic and the recursive bounds (using q‑1 and q+1) are incorrect, causing the algorithm to fail on larger or more complex inputs.

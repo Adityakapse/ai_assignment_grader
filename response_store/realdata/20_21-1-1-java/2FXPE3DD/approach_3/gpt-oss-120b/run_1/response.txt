@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b is 0, but it does not apply % c, so for c = 1 it returns 1 instead of 0 as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses (b & 1) == 1 to detect odd exponents, correctly distinguishing odd from even values of b.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd case does not reduce b by 1 and multiply by a; instead it handles the odd bit inside an iterative loop, which does not match the required (a * expo(a, b‑1, c)) % c pattern.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For even exponents it halves b with b >> 1 and squares a mod c via a = (a * a) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation computes a^b mod c correctly for all valid inputs, avoids the prohibited strings, and handles edge cases such as c = 1.

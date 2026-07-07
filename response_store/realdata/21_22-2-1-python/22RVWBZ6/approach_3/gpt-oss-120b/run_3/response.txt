@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses `c = B.copy()` instead of allocating a new counting array initialized to zero, so it does not create a proper zero‑initialized frequency array.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: In the loop over `A` the code does `c[A[i]] -= 1` rather than incrementing a count, so frequencies are not accumulated correctly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates `for i in range(len(B))`, covering indices 0 to |B|‑1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if c[i] >= 0` yields ‘1’ when the remaining capacity is non‑negative (i.e., count ≤ B[i]) and ‘0’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct binary string for all valid inputs in O(n+m) time and contains no forbidden substrings.

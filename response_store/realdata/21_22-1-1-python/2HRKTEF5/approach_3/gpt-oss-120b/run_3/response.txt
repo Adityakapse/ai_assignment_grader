@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never states or uses the closed‑form aₙ = 2ⁿ − 1; it attempts a custom recursion instead of computing 2ⁿ − 1 directly.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The base case returns 0 for n == 0, whereas an exponentiation routine should return 1 (or 1 % c) when the exponent is 0.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd‑n branch the code multiplies the recursive result by 2 and then adds 1, rather than returning (2 * expo(2, n‑1, c)) % c as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑n branch does halve n and squares the recursive result, but it also adds and subtracts 1 and applies a modulo to n itself, deviating from the required single‑call square of expo.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function works for small n (e.g., n ≤ 10⁹+7) but incorrectly reduces n modulo 10⁹+7, producing wrong results for larger inputs; otherwise it avoids forbidden keywords.

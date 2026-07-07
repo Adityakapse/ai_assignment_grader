@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates an array `intervalle` of length n, sets `intervalle[0] = a[0]`, and then builds the prefix sums in the subsequent loop, matching the required prefix‑sum allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes intervalle[0] with a[0] and then correctly fills intervalle[i] as a[i] + intervalle[i‑1] for i from 1 to n‑1, building the proper cumulative sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] d = new int[n];` and iterates with `for(int j=0; j<=b.length-1; j++)` covering all queries, correctly filling each entry of the output array.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution computes the prefix sum in intervalle and for each query uses l = b[j][0]-1; if l >= 0 it returns r‑intervalle[l] otherwise it returns r, correctly handling the l == 0 edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a prefix‑sum array in a single loop and then answers each query in O(1), correctly handling the l = 0 case with the else branch, so it returns the right sums in overall O(n) time.

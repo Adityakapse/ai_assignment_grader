@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes the start node onto the stack before entering the while loop and iterates while the stack is not empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the current node is removed with `s.pop()`, which always takes the top element of the stack (LIFO).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Before processing a node the code checks `if(!result.contains(start))` and adds the node to `result` only when it has not been visited, preventing duplicates.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The neighbours are iterated in reverse order and pushed onto the stack, but the code pushes them without checking whether they have already been visited.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns all reachable nodes in the proper DFS order (adjacency‑list order) for the tested graphs, despite the extra pushes of already‑visited neighbours.

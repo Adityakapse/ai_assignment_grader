@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The method loops over the entire input array with `for (int i = 0; i < input.length; i++)` and uses a try‑catch to separate numeric tokens from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the try block the token is parsed with `Integer.parseInt` and the resulting integer is pushed onto the stack via `s.push(num);`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the catch block the code pops two values (`k` and `m`), applies the appropriate operation in the switch, and pushes the result back onto the stack for all four operators.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For subtraction and division the implementation uses `m - k` and `m / k`, respectively, preserving the correct operand order (second popped is left operand) and uses integer division.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `s.pop()` after processing all tokens, yielding the correct integer result for both simple and nested RPN expressions with all supported operators.

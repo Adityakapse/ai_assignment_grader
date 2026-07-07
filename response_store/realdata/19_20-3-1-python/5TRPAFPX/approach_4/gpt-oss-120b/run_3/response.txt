@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses recursive quicksort calls as the outer repeated‑pass mechanism and the partition function contains while loops that step through the sub‑array, comparing and swapping elements, satisfying the required loop structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The partition function uses Smaller(l, p) and Larger(r, p) (and Equal) with the proper index pairs to compare elements against the pivot, correctly applying the provided comparison API.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution swaps indices l and r only after moving them with separate pivot comparisons, and later swaps l with p unconditionally; neither swap is directly tied to a comparison between the same two indices indicating an order violation.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: Length() is only used when initially calling myQuicksort (listToSort.Length()-1), but the while loops inside partition and the recursion do not use Length() to bound their iterations.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The quicksort implementation recurses using the original right‑hand index (`p`) instead of the pivot’s final position, so the list is not correctly sorted for general inputs.

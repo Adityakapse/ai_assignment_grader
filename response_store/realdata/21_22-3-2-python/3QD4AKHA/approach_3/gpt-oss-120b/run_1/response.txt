@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student builds an adjacency list with `Adj = []` and fills it from `A`, then sets `Adj[0]=range(1,N+1)` to add a virtual source connected to every node, matching the required construction.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array `M` is initialised to `-1` for all nodes and the function returns `M[node]` immediately when `M[node] != -1`, correctly implementing memoization.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case `if len(Adj[node]) == 0: return 0` returns 0 for leaf nodes, as specified.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each child the code computes `max(retVal, tiefenSuche(child,Adj,M)+1)`, stores the result in `M[node]`, and returns it, correctly applying the recurrence and memo storage.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `calc` returns `tiefenSuche(0,Adj,M)-1`, which yields the length of the longest directed path for all tested DAGs and respects the O(N+M) complexity.

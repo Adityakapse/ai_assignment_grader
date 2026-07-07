@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function includes base cases for b == 0 and b == 1, but returns 1 and a without applying “% c”, so it fails when c == 1 or a ≥ c.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `b % 2 == 0` for even and the else branch for odd, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch it returns `((expo(a, b - 1, c) * a) % c)`, correctly reducing the exponent by 1, multiplying by a, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch it computes `res = expo(a, b / 2, c)` and returns `((res * res) % c)`, correctly halving b, squaring the result, and taking the modulo.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the recursion and modulo steps are correct for most cases, the missing “% c” in the base cases causes wrong results when c = 1 or a ≥ c, so the function is not fully correct for all inputs.

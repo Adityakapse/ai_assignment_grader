@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code creates a double[][] of size (amount+1) × (capacity+1) correctly, but it initializes the entries to –1 instead of the required 0.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code relies on the recursive setAndGet method with memoization rather than an explicit outer loop over all items and an inner loop over capacities 0..capacity, so it does not implement the required nested loop structure.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution uses `if (weights[amount - 1] > capacity)` to ensure an item is only considered when its weight fits the current capacity, correctly implementing the required feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your setAndGet method correctly applies the recurrence, using Math.max to choose between including the item (value + previous result for reduced capacity) and excluding it, and copies the previous result when the item doesn’t fit.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The recursive memoized DP correctly computes and stores sub‑problem results, handling both the “item fits” and “item too heavy” cases, and returns the optimal knapsack value for all valid inputs.

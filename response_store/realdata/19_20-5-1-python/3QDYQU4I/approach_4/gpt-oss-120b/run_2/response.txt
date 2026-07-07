@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code adds the start node to the queue before processing and stops when the queue is empty, but it uses recursion instead of an explicit while loop to iterate over the queue.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code consistently uses `queue.pop(0)` to remove the current node from the front of the queue, ensuring proper FIFO behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code maintains a visited list, adds each dequeued node to it, and only enqueues neighbors that are not already visited (or queued), preventing duplicate processing and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code loops over `graph[node]` and appends each neighbour to the queue only if it is not already in `visited` (or `queue`), correctly enqueuing all unvisited neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive BFS correctly processes nodes level‑by‑level, respects adjacency list order, and handles cycles by checking both visited and queued nodes.

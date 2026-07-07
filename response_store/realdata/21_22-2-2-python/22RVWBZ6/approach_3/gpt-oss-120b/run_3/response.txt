@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `c = A.copy()`, allocating an array of size n, and `c[0]` is already set to `A[0]` from the copy.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(1,len(A)): c[i] = c[i-1] + c[i]` correctly builds the cumulative prefix sums.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An empty list `res` is created and the code iterates `for i in range(len(B))` over all queries, appending each result, thus producing an output list of length n.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if B[i][0] == 0` and uses `c[r]` for the l = 0 case, otherwise computes `c[r] - c[l-1]`, handling both cases correctly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct list of range sums for all queries in linear time and contains no forbidden keywords.

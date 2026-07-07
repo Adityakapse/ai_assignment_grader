@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The function does not contain an explicit `b == 0` base case returning `1 % c`; it returns 1 unmodded, which fails when `c == 1`.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Odd/even detection is correctly performed using `(b & 1) == 1`, which is equivalent to `b % 2`.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: When `b` is odd, the code multiplies the accumulator `ergebnis` by `a` and takes `% c`, matching the required odd‑case reduction.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For the even case the algorithm squares `a` with `a = (a*a) % c` after shifting `b`, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The iterative method yields the correct `a^b mod c` for all typical inputs and avoids `import` and `**`, but it does not handle the edge case `c == 1` correctly.
+
+TOTAL: 80

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (nItem+1) x (capacity+1) and relies on Java’s default zero initialization, also explicitly sets the first row to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates over all items, but the inner loop starts at j = 1 instead of 0, so subproblems with capacity 0 are not explicitly processed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (weight[i-1] > j)` correctly checks feasibility, and zero‑weight items are handled because the else branch uses `j - weight[i-1]` which equals j.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence uses `Math.max(dynTab[i-1][j], dynTab[i-1][j - weight[i-1]] + value[i-1])` when the item fits and copies the previous value when it does not, matching the required formula.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the optimal knapsack value for all tested cases, including empty inputs and items with zero weight.
+
+TOTAL: 90

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs an adjacency list from A correctly, but it never adds a virtual source node 0 with edges to every node 1…N, instead looping over all nodes manually.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution creates a distance array defaulting to 0 and uses a visited flag, but never initializes a memo array to -1 nor checks a cached value before recursion, so it lacks proper memoization.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The DFS method tiefensuche has no explicit base case that returns 0 for a leaf node; it is a void function that simply skips the loop, so it never returns the required 0 value.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The tiefensuche function iterates over all neighbors, updates längsteEntfernung[i] with Math.max(längsteEntfernung[i], längsteEntfernung[nachbar]+1) for each child, and stores this value before returning, effectively memoizing the result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your `calc` builds the adjacency list, runs a DFS that memoizes each node’s longest downstream distance, and returns the maximum over all nodes, correctly handling any DAG in O(N + M) time.

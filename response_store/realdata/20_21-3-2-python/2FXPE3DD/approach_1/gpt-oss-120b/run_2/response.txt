@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code builds an adjacency list from A, but it never creates a virtual source node 0 with edges to all vertices, so the required source is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: No memo array is initialised to -1, and the DFS does not check a cache before recursing; it only uses the heap and seen arrays.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The DFS function does not have an explicit base‑case return for leaf nodes; it returns None and relies on heap[v] remaining 0, which does not match the specification.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: After visiting each child, the code updates heap[v] with max(heap[v], 1 + heap[child]) which correctly implements the recurrence for the longest path.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Despite the missing virtual source and lack of explicit memoisation, the algorithm computes the maximum path length over all nodes and returns the correct result for DAG inputs.
+
+TOTAL: 50

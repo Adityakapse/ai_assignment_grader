@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Correct
+FEEDBACK: The solution uses an outer `for i in range(0, l.Length())` loop and an inner `for j in range(i+1, l.Length())` loop, matching the typical selection‑sort structure.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: It calls `l.Smaller(j, mini)` to compare elements while searching for the minimum, using the API correctly.
+
+POINT_ID: Point 3
+BUCKET: Semi
+FEEDBACK: `l.Swap(mini, i)` is called, but it is unconditional and swaps a different pair of indices than those used in the comparison, so the swap does not directly correspond to the comparison step.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: Both loops use `l.Length()` for their bounds, ensuring the algorithm works for any list size.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation correctly places the smallest remaining element at each position, resulting in an ascendingly sorted list for all valid inputs.

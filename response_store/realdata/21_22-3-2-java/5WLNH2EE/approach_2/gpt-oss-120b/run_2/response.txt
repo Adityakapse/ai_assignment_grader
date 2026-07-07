@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code builds the adjacency list from A correctly, but it never adds a virtual source node 0 with edges to every other node, instead looping over all nodes with separate DFS calls.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution uses a `besucht` boolean array and a `längsteEntfernung` array defaulting to 0, but it never initializes a memo array to –1 nor checks `memo[node] != -1` before recomputing, so it does not implement the required memoization pattern.
+
+POINT_ID: 3
+MARKS: 4
+FEEDBACK: The DFS method `tiefensuche` is void and never returns a value; for leaf nodes it simply leaves `längsteEntfernung[i]` at its default 0 instead of explicitly returning 0 as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The tiefensuche function iterates over each child, recursively computes its longest distance, and updates longestEntfernung[i] with Math.max(longestEntfernung[i], longestEntfernung[child] + 1), effectively storing the memoized result for each node.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your depth‑first search correctly computes the longest distance from each node and the final max over all nodes yields the correct longest path length for any DAG.

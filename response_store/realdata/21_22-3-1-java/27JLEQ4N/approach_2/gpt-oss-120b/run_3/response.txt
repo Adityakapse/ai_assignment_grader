@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code allocates an array A but never initializes its entries to -1 as a sentinel, so it does not meet the required memo array allocation and initialization.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The code correctly sets A[0] = W[0] and computes A[1] as the maximum of W[0] and W[1], but it assumes the array has at least two elements and will fail for the opt(0) case, so the base cases are only partially handled.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code uses an iterative array A and never implements a memo array or a cache‑check (`if (memo[n] != -1) return memo[n];`), so the required cache check is missing.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly implements the recurrence A[i] = max(W[i] + A[i‑2], A[i‑1]) and stores each result in the array before it is used later, fulfilling the memoisation requirement.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly initializes the base cases (A[0] and A[1]) and uses the recurrence A[i] = max(A[i‑1], W[i] + A[i‑2]) in a linear loop, so it returns the optimal profit for all valid inputs in O(n) time.

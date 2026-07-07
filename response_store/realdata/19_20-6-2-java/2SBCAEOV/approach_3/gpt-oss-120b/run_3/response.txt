@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `double K[][] = new double[n + 1][W + 1];`, a table of size (n+1) × (capacity+1), and Java initializes all cells to 0 (also explicitly set for i==0 or w==0).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses nested loops with `i = 0..n` and `w = 0..W`, thus iterating over every item and every capacity value inclusive.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `wt[i - 1] <= w` correctly ensures an item is only considered when its weight does not exceed the current capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For a fitting item the code assigns `max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w])`; otherwise it copies `K[i - 1][w]`, exactly implementing the required recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `K[n][W]`, which yields the maximum achievable value for any valid input set.

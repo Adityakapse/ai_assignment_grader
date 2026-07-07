@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution adds the start node to `myQ` before the loop and uses `while(!myQ.isEmpty())` to process nodes until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution consistently removes the current node with `myQ.get(0)` followed by `myQ.remove(0)`, always dequeuing from the front of the list.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses a `color` array to track node states, checks `color[neighbor][1]==0` before enqueuing, and marks nodes as processed (`color[u][1]=2`) before adding them to the result, preventing duplicate visits.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `for(int v = 0; graph[u].length > v; v++)` over all neighbors of `u` and enqueues each unvisited neighbor (`color[graph[u][v]][1]==0`) by adding it to `myQ`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses a queue (myQ) and a color array to avoid revisiting nodes, enqueues each unvisited neighbor, and adds each node to the result list when it is dequeued, yielding the proper BFS level‑by‑level order even with cycles.

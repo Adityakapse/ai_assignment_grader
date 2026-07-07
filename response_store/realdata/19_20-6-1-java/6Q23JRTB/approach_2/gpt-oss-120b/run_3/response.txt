@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (aL+1)×(bL+1) matrix and uses nested loops that iterate from 1 to aL and 1 to bL, correctly filling the DP table in bottom‑up order (the outer/inner order is swapped but still valid).
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code correctly sets matrix[i][0] = i and matrix[0][j] = j for all i and j (the [0][0] entry is correctly left as the default 0), satisfying the required base case initialization.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution sets `cost` to 0 when `aS.charAt(a‑1) == bS.charAt(b‑1)` and includes `matrix[a‑1][b‑1] + cost` in the min, which results in `matrix[a][b]` being assigned `matrix[a‑1][b‑1]` for matching characters, satisfying the requirement.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly adds a cost of 1 when characters differ and computes matrix[a][b] as 1 + min of the three neighboring cells, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly builds the DP matrix iteratively, handles all base cases, and returns the proper edit distance without any recursion.

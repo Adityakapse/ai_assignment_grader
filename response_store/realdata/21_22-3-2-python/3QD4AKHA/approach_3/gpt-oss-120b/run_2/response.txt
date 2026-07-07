@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student builds an adjacency list with `Adj = [...]` and sets `Adj[0]=range(1,N+1)`, adding a virtual source node 0 that connects to every node 1..N.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The memo array `M` is initialised to -1 for all nodes and the check `elif M[node] != -1:` returns the cached value, matching the required sentinel logic.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The base case `if len(Adj[node]) == 0: return 0` correctly returns 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recursion iterates over all children, updates `retVal = max(retVal, tiefenSuche(child,Adj,M)+1)`, stores the result in `M[node]`, and returns it, implementing the proper recurrence with memoisation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `calc` returns `tiefenSuche(0,Adj,M)-1`, which yields the correct longest path length for the DAG and runs in O(N+M) time.

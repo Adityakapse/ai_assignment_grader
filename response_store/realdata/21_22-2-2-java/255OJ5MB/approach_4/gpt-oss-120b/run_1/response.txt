@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a prefix‑sum array `d` of size n, but `d[0]` is set inside the cumulative loop rather than being initialized to `a[0]` before the loop starts.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop uses a running total (`last += a[i]`) and stores it in `d[i]`, correctly building a cumulative sum array where each entry equals the sum of all previous elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution creates an `output` array of length n and iterates with `for (int i = 0; i < n; i++)` to compute each query’s sum, satisfying the required allocation and loop.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets output[i] = d[r] and only subtracts d[l‑1] when l > 0, so queries with l = 0 correctly return C[r] without an out‑of‑bounds access.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code builds a prefix‑sum array and for each query subtracts the appropriate prefix, correctly handling the l = 0 case and runs in O(n) time without forbidden keywords.

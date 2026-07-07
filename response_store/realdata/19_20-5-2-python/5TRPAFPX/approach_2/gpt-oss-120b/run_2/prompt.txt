@@ -1,0 +1,192 @@
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+SAMPLE SOLUTION:
+def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten, deren dfs_rek-Aufruf noch läuft sind grau.
+#Knoten, deren dfs_rek-Aufruf abgeschlossen ist sind schwarz.
+def dfs(graph, start):
+    gefunden = []
+    dfs_rek(graph, start, gefunden)
+    return gefunden
+
+def dfs_rek(graph, knoten, gefunden):
+    gefunden.append(knoten)
+    for zielknoten in graph[knoten]:
+        if not zielknoten in gefunden:
+            dfs_rek(graph, zielknoten, gefunden)
+
+RUBRIC POINT:
+Point 1 — DFS loop structure and initialisation (valid range: 0–20)
+  The start node is pushed onto the stack before the loop, and a while loop processes nodes until the stack is empty.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+SAMPLE SOLUTION:
+def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten, deren dfs_rek-Aufruf noch läuft sind grau.
+#Knoten, deren dfs_rek-Aufruf abgeschlossen ist sind schwarz.
+def dfs(graph, start):
+    gefunden = []
+    dfs_rek(graph, start, gefunden)
+    return gefunden
+
+def dfs_rek(graph, knoten, gefunden):
+    gefunden.append(knoten)
+    for zielknoten in graph[knoten]:
+        if not zielknoten in gefunden:
+            dfs_rek(graph, zielknoten, gefunden)
+
+RUBRIC POINT:
+Point 2 — LIFO pop: removing from the top (valid range: 0–20)
+  The current node is always removed from the top (back) of the stack, ensuring depth-first traversal.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+SAMPLE SOLUTION:
+def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten, deren dfs_rek-Aufruf noch läuft sind grau.
+#Knoten, deren dfs_rek-Aufruf abgeschlossen ist sind schwarz.
+def dfs(graph, start):
+    gefunden = []
+    dfs_rek(graph, start, gefunden)
+    return gefunden
+
+def dfs_rek(graph, knoten, gefunden):
+    gefunden.append(knoten)
+    for zielknoten in graph[knoten]:
+        if not zielknoten in gefunden:
+            dfs_rek(graph, zielknoten, gefunden)
+
+RUBRIC POINT:
+Point 3 — Visited tracking: check and mark (valid range: 0–20)
+  Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+SAMPLE SOLUTION:
+def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten, deren dfs_rek-Aufruf noch läuft sind grau.
+#Knoten, deren dfs_rek-Aufruf abgeschlossen ist sind schwarz.
+def dfs(graph, start):
+    gefunden = []
+    dfs_rek(graph, start, gefunden)
+    return gefunden
+
+def dfs_rek(graph, knoten, gefunden):
+    gefunden.append(knoten)
+    for zielknoten in graph[knoten]:
+        if not zielknoten in gefunden:
+            dfs_rek(graph, zielknoten, gefunden)
+
+RUBRIC POINT:
+Point 4 — Neighbour push (valid range: 0–20)
+  All unvisited neighbours from graph[current] are pushed onto the stack. For iterative implementations, neighbours are pushed in reverse adjacency list order so that they are popped and visited in forward order.
+
+========================================
+
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+SAMPLE SOLUTION:
+def dfs(graph, start):
+    visited, queue = list(), [start]
+    while queue:
+        next = queue.pop()
+        if next not in visited:
+            visited.append(next)
+            for vertex in reversed(graph[next]): # Need to reverse list in order to visit vertex in correct order
+                if vertex not in visited:
+                    queue.append(vertex)
+    return visited
+
+STUDENT SOLUTION:
+#Knoten, die noch nicht in gefunden sind, sind weiß.
+#Knoten, deren dfs_rek-Aufruf noch läuft sind grau.
+#Knoten, deren dfs_rek-Aufruf abgeschlossen ist sind schwarz.
+def dfs(graph, start):
+    gefunden = []
+    dfs_rek(graph, start, gefunden)
+    return gefunden
+
+def dfs_rek(graph, knoten, gefunden):
+    gefunden.append(knoten)
+    for zielknoten in graph[knoten]:
+        if not zielknoten in gefunden:
+            dfs_rek(graph, zielknoten, gefunden)
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns all reachable nodes from start in correct DFS order for all valid directed graphs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs an adjacency list from A correctly, but it never adds a virtual source node 0 with edges to all vertices, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a `heap` array initialized to 0 and a `seen` flag, but it never checks a memo sentinel (like -1) before recursing, so subproblems are recomputed rather than cached.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The DFS function never includes a base‑case return for leaf nodes; it has no return statement when graph[v] is empty, so it does not explicitly return 0 for leaves.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The DFS iterates over all children, updates heap[v] with max(heap[v], 1 + heap[child]) for each, and stores the result in heap[v] before returning, correctly implementing the recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The DFS fills heap[v] with the longest distance from each node to a leaf and the final max(heap) returns the correct longest path length for any DAG, meeting the required O(N+M) complexity.

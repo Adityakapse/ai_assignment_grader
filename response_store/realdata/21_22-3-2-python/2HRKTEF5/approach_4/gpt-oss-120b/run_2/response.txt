@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs adjacency lists `F` and `P` from A, but it never adds a virtual source node 0 with edges to every node; instead it starts from nodes with indegree 0, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code does not create or use a memo array at all; it computes the result via a topological layering loop rather than memoized DFS, so the required -1 initialization and cache check are absent.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The submitted code does not define a DFS function at all, so there is no base case handling for leaf nodes where graph[node] is empty.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative indegree‑based layering method and never defines a recursive dfs that iterates over each child, takes max(dfs(child)+1), or stores the result in a memo table.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds indegree counts, performs a layer‑by‑layer topological traversal, and returns i‑1, which correctly yields the longest path length for any DAG in O(N+M) time.

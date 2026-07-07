@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] table of size (volumes.length+1) x (capacity+1); Java initializes it to 0, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates i from 1 to n and the inner loop iterates j from 1 to capacity, but it skips j = 0, so not all subproblems (including the zero‑capacity case) are processed.
+
+POINT_ID: 3
+MARKS: 7
+FEEDBACK: The condition `volumes[i-1] > j` correctly checks feasibility for j ≥ 1, yet zero‑weight items are never considered because j never equals 0.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When an item fits, the code uses `Math.max(table[i-1][j], table[i-1][j-volumes[i-1]] + values[i-1])`; when it does not fit it copies `table[i-1][j]`, correctly implementing the recurrence.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: The method returns the correct maximum for typical cases, but fails for capacities >1000 (due to the stray `if (capacity > 1000) capacity++;`) and does not handle items with volume 0, so overall correctness is incomplete.
+
+TOTAL: 70

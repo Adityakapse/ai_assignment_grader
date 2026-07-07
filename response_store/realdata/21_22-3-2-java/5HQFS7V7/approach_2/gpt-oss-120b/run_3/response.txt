@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code builds a predecessor list and never creates a virtual source node 0 with edges to all nodes, nor does it construct the required adjacency list for a single DFS traversal.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution does not create a memo array initialized to –1 nor perform a “if memo[node] != –1” cache check; it simply computes weights in a loop, so the required memoization initialization and check are missing.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The submitted code does not implement a DFS routine at all, so it never defines a leaf‑node base case that returns 0 as required by the rubric.
+
+POINT_ID: 4
+MARKS: 5
+FEEDBACK: The code computes the longest path by iterating over predecessors (vorgaenger) and filling an array, rather than applying the required recurrence over each child with dfs(child)+1 and storing the result in a memo table.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: The code builds predecessor lists and computes longest distances in a single pass assuming node numbers give a topological order, which is not guaranteed, so it will give wrong results for DAGs where edges go from higher‑numbered to lower‑numbered nodes.

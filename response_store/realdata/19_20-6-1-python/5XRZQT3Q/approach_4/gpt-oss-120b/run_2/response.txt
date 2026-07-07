@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution only uses one‑dimensional lists (`total` and `tmpdist`) and does not allocate a (m+1)×(n+1) table or employ nested loops over i and j to fill a 2D DP matrix.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution sets `total = range(len(a)+1)` (initial column values edDis[i][0] = i) and initializes each new row with `tmpdist = [i_b+1]` (initial row values edDis[0][j] = j), correctly handling both base cases.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly checks `s_a == s_b`, but on a match it appends `total[i_a]` (the cell above) instead of the diagonal cell `edDis[i-1][j-1]`, so the match case copies the wrong value.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch the code uses `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, correctly adding 1 to the minimum of the three neighboring cells for insert, delete, and replace.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation iteratively computes the edit distance using a rolling array and returns the correct value for all test cases, without any recursion.

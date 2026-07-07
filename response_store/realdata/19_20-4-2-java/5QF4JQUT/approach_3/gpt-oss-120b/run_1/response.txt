@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a ternary expression `delete.left == null || delete.right == null ? delete : treeMinimum(delete.right)` which correctly selects `delete` when it has ≤1 child and the in‑order successor otherwise.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: `treeMinimum` repeatedly follows `root = root.left` until `root.left` is null and returns that node, matching the required left‑most walk.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `notNullChildOfToBeDeleted` is assigned with `(toBeDeleted.left != null) ? toBeDeleted.left : toBeDeleted.right`, correctly picking the non‑null child or null if `toBeDeleted` is a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates `notNullChildOfToBeDeleted.parent`, handles the root case (`toBeDeleted.parent == null`), and redirects the appropriate parent pointer (`left` or `right`) to the child, fully splicing out `toBeDeleted`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The key copy `if (toBeDeleted != delete) { delete.key = toBeDeleted.key; }` is performed only when the successor differs from the node to delete.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: All cases (leaf, one‑child, two‑children, and root deletion) are handled, and the method returns the correct new root, preserving the BST property.

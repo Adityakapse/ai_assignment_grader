@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code adds the start node before looping, but it uses a for‑loop over the result list instead of a while loop that processes nodes until the queue is empty.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never removes the current node from the front of a queue; it simply iterates over the growing result list, so it does not implement FIFO dequeue as required.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: The code uses `result` as a visited list and checks `if not vertex in result` before appending, which avoids duplicates, but it never checks a node against the visited collection before processing its neighbors, so the visited‑tracking is incomplete.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code loops over each node in `result` and appends any vertex not already in `result` to the end, correctly enqueuing all unvisited neighbours.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: Your implementation appends the start node to result and then iterates over result, adding each unseen neighbor, which correctly yields all reachable nodes in BFS order, though it uses the result list as both visited set and queue rather than an explicit queue.

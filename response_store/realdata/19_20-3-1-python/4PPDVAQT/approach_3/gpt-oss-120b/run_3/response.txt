@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses an outer `for i` loop and an inner `for j` loop, matching the classic selection‑sort structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It calls `listToSort.Larger(min, j)` to compare elements, correctly identifying when a smaller element is found.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: `Swap(min, i)` is executed unconditionally after the inner loop, not directly tied to a specific comparison result, and the indices differ from those used in the `Larger` call.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both loops use `listToSort.Length()` (with `-1` where appropriate) to set their bounds, so the code works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation returns the list sorted in ascending order for all valid inputs.

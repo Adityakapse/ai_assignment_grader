@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code uses `c = B.copy()` as the counting array, giving the correct size but starting with B’s values instead of zeros, so the array is not initialized to 0 as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over A but does `c[A[i]] -= 1` instead of incrementing a separate count array (e.g., `C[A[i]] += 1`), so it does not correctly accumulate frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution’s output loop uses `for i in range(len(B))`, iterating from 0 to |B|-1 and building a string of exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution copies B into c, subtracts one for each occurrence in A, and then outputs “1” when c[i] ≥ 0 (i.e., C[i] ≤ B[i]) and “0” otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution copies B, decrements counts for each A element, and outputs “1” when the resulting value is non‑negative, correctly implementing the required check in O(n + m) time and without using any forbidden substrings.

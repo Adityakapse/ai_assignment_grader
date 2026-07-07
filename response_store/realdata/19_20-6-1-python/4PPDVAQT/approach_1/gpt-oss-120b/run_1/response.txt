@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution uses a one‑dimensional DP array instead of allocating a 2D table of size (m+1) × (n+1) with nested i and j loops.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Base cases are handled via `result = range(len(pre)+1)` and `tmp = [i+1]`, which correctly initialise the first row and first column, though not using an explicit 2D table.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match (`a == b`) the code appends `result[j]`, effectively copying the diagonal value as required.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatches the code computes `1 + min((result[j], result[j + 1], tmp[-1]))`, correctly using the three neighbouring values for insert, delete, and replace.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for all inputs and does not use recursion.
+
+TOTAL: 75

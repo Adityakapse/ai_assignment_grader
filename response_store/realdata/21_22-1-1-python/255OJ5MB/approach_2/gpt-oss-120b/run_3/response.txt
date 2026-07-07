@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: Your implementation correctly applies the recurrence to compute (2^n − 1) using exponentiation‑by‑squaring, but you never explicitly state or derive the closed‑form a_n = 2^n − 1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Your code does not define an expo function at all, so there is no handling of the case b == 0 returning 1 as required.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The odd branch in calc uses ((calc(n-1)+1)*2‑1) rather than reducing the exponent by one and multiplying by the base as required for the expo odd case.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: In the even branch you call calc(n/2) + 1, square it and subtract 1, instead of computing a single recursive expo result (tmp) and returning (tmp*tmp) % c, and you also use '/' rather than integer division.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The function correctly implements the recurrence (using the even‑case square formula and the odd‑case step) and returns (2^n‑1) mod 1e9+7 without any forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses exponentiation by squaring on base 2 to compute 2ⁿ mod 1 000 000 007 and then returns res‑1, correctly implementing aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution implements exponentiation iteratively and never defines an expo function with a base case for b == 0, so there is no recursion termination for the exponent zero.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code handles odd exponents by multiplying `res` by `base` in a loop, but it never reduces `n` by 1 and calls a recursive `expo` function as required for the odd case.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code lacks a recursive expo function and therefore does not implement the required even‑case that calls expo(a, b//2, c) once and squares the result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function uses binary exponentiation with modulo at each multiplication and returns res‑1, correctly computing (2ⁿ − 1) mod 1e9+7 for all inputs without any forbidden keywords.

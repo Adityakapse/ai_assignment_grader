@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `double K[][] = new double[n + 1][W + 1];`, creating a (n+1) × (capacity+1) table that Java initializes to 0.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The nested loops `for (i = 0; i <= n; i++)` and `for (w = 0; w <= W; w++)` iterate over all items (including the base case) and all capacities from 0 to W inclusive.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Inside the loops the condition `if (wt[i - 1] <= w)` correctly checks whether the current item fits in the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the code uses `max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w])`; otherwise it copies `K[i - 1][w]`, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `K[n][W]`, which yields the optimal maximum value for the given capacity on all valid inputs.
+
+TOTAL: 100

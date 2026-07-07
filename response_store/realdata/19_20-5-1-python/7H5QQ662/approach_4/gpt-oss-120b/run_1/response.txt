@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code adds the start node to `result` but uses a `for` loop over `result` instead of a `while` loop that runs until the queue is empty, so the required BFS loop structure is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never removes a node from the front of a queue; it simply iterates over the growing `result` list without any dequeue operation, so it does not implement a FIFO pop.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses `result` to store visited nodes and checks `if not vertex in result` before appending, but it never checks a node against a visited set before processing it; it processes each element directly from `result` without a proper visited‑before‑process check.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over each node’s adjacency list (`for vertex in graph[element]:`) and appends a vertex to `result` only if it is not already present, correctly enqueuing each unvisited neighbour.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation uses `result` as a growing queue, iterating over it while appending unseen vertices, which yields all reachable nodes in proper BFS level order and correctly avoids duplicates even in cyclic graphs.

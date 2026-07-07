@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if(delete.left == null || delete.right == null){ y = delete; } else { y = treeMinimum(delete.right); }`, correctly choosing `y` as the node itself when it has zero or one child and the successor from the right subtree when it has two children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s treeMinimum method iterates with `while (x.left != null) { x = x.left; }` and returns `x`, correctly walking left to find the minimum node.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (y.left != null) { x = y.left; } else { x = y.right; }`, correctly selecting y's non‑null child or null when y is a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution sets x.parent to y.parent, updates the root when y.parent is null, and correctly redirects y.parent.left or y.parent.right to x, matching the required splicing behavior.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution uses `if (y != delete){ delete.key = y.key; }`, ensuring the key is copied only when y is the in‑order successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation follows the textbook algorithm, handling leaf, single‑child, two‑children, and root deletions correctly and returns the updated root.

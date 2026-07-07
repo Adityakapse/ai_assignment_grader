@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code computes 2^n using exponentiation by squaring and returns res‑1, which implements the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: When n = 0 the while loop is skipped, leaving res = 1, so the function correctly handles the b == 0 base case (returning 1 before the final ‑ 1).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Inside the loop, if n is odd the statement res = res*base % 1000000007 multiplies by the current base and applies the modulus, matching the odd‑exponent reduction rule.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Each iteration squares base (mod 1000000007) after halving n, which implements the even‑exponent case (halve exponent, square the recursive result) correctly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns (2ⁿ − 1) mod 10⁹+7 for all valid inputs in O(log n), avoids forbidden keywords, and applies the modulo at each step, so it is overall correct.

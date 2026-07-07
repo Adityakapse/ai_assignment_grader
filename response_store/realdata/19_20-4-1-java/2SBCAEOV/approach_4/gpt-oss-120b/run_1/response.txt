@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a while‑loop that moves `r` left when `node.key < r.key` and right otherwise, iterating until `r` becomes null before inserting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code declares `parent` and assigns it to `r` on every loop iteration before moving down, ensuring it holds the last non‑null node visited for insertion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets node.parent and then correctly uses `if (node.key < parent.key) parent.left = node; else parent.right = node;` to attach the new node as the left or right child.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After traversing with `r`, the code assigns `node.parent = parent`, correctly using the tracked parent node to set the upward link.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly walks down the tree, inserts the node as a leaf, handles the empty‑tree case by setting root = node, and returns the original root for non‑empty trees, preserving the BST property.

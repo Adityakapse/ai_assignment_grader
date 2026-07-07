@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `matrix = [[0 ...] for ...]` with dimensions `(len(val)+1) x (cap+1)`, initializing every cell to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses nested loops `for j in range(cap + 1)` and `for i in range(len(val) + 1)` so both all capacities (0‑cap) and all items (0‑n) are processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `elif vol[i-1] <= j:` correctly checks that an item fits before considering inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits the code computes `max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])`; otherwise it copies `matrix[i-1][j]`, matching the required recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `matrix[len(val)][cap]`, which is the optimal value for the full set of items and the given capacity, yielding correct results for all valid inputs.

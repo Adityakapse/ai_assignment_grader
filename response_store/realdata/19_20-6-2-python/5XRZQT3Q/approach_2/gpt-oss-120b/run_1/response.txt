@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, correctly allocating a (n+1) × (capacity+1) 2‑D list initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code uses `for i in range(len(value) + 1)` as the outer loop and `for w in range(capacity + 1)` as the inner loop, correctly iterating over all items and all capacities from 0 up to the given capacity.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly includes the condition `elif volume[i-1] <= w:` to verify that an item's volume fits within the current capacity before considering it for inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation uses the exact recurrence — when the item fits it assigns `max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])` and otherwise `table[i-1][w]`, correctly matching the required relation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your bottom‑up DP table correctly implements the 0/1 knapsack recurrence and returns the optimal value for any valid input.

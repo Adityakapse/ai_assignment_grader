@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 18
+FEEDBACK: The code allocates a (aLength+1)×(bLength+1) matrix and uses nested loops to fill it, handling the i = 0 and j = 0 cases inside the same loops, so the DP table is correctly built even though the loops start at 0 instead of 1.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly sets matrix[i][0] = i and matrix[0][j] = j inside the nested loops, fully covering the required base case initialization.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly handles the matching case by assigning matrix[i][j] = matrix[i-1][j-1] when a.charAt(i-1) equals b.charAt(j-1).
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The else clause correctly calculates 1 + Math.min(ins, Math.min(rem, rep)), using the three neighboring cells for insert, delete, and replace as required.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The code correctly initializes the matrix, handles all base cases, computes the DP recurrence, and returns the proper edit distance without any recursion.

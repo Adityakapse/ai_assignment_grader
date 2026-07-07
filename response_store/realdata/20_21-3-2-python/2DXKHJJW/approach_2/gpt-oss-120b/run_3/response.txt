@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The code creates an adjacency list (Connections) from A, but it never adds a virtual source node with edges to all vertices, so it does not satisfy the required graph construction with a virtual source.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution never creates a memo array initialized to -1 nor checks for a cached value; it uses a single-pass update of Lengths instead of memoized recursion.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution does not define a DFS function with a base case returning 0 for leaf nodes; it uses an iterative update instead, so the required leaf‑node return behavior is missing.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code never implements the required recurrence `sol = max(sol, dfs(child) + 1)` with memoization; it only updates lengths in a forward loop over edges and does not store a memoized result per node.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The solution asserts e[0] < e[1] and updates lengths in a single left‑to‑right pass, so it only works when all edges go from a lower‑numbered vertex to a higher‑numbered one; for general DAGs this assumption is false and the returned length can be wrong or trigger an assertion.

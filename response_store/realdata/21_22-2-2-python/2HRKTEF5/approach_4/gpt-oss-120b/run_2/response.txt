@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution modifies the input list in place instead of allocating a separate prefix‑sum array C of size n and setting C[0] = A[0] before the cumulative loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(1, len(a)): a[i] += a[i-1]` correctly builds the prefix sums in‑place, matching C[i] = A[i] + C[i‑1].
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution builds the result list with a list comprehension that iterates over every (l, r) pair in b, implicitly allocating an output array of the correct size.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The list comprehension returns a[r] when l == 0 and a[r] - a[l-1] otherwise, correctly handling the l = 0 edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds an in‑place prefix sum in O(n) and returns a[r] for l = 0 or a[r]‑a[l‑1] otherwise, correctly handling all queries in linear time without using forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution builds a predecessor adjacency list from A, but it never adds a virtual source node 0 with edges to every node, so it lacks the required common starting point for a single DFS.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code uses an array `gewicht` initialized only for index 0 and never sets a sentinel value like –1 nor checks `gewicht[node] != -1` before recomputing, so it does not implement the required memoization cache.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain a DFS function at all, so there is no base case that returns 0 for leaf nodes; consequently the required leaf‑node base case is missing.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution iterates over each node’s predecessors and computes a weight array, but it never defines a recursive dfs that iterates over children, adds +1 to the child result, or stores the result in a memo table as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code computes longest paths by iterating nodes in numeric order, so it fails when an edge goes from a higher‑numbered node to a lower‑numbered one (e.g., 2→1), producing an incorrect length for such DAGs.

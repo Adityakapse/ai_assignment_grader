@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] table = new double[volumes.length + 1][capacity + 1];`, which is a (n+1) × (capacity+1) table that Java initializes to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop runs `i = 1 … volumes.length`, but the inner loop starts at `j = 1` instead of `j = 0`, so the subproblem for capacity 0 is never processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `if (volumes[i - 1] > j) { … } else { … }` correctly implements the check `volumes[i] <= j` before considering inclusion of the item.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the assignment `table[i][j] = Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1]);` follows the required recurrence; otherwise the code copies `table[i - 1][j]`.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method produces correct results for typical inputs but fails for capacity 0 (zero‑weight items are ignored) because the DP column for `j = 0` is never updated.

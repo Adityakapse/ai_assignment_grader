@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: In the else branch (both children present) the code sets newNode to treeMinimum(deleteNode.right), while in the leaf and single‑child branches it effectively removes deleteNode itself, matching the required y selection.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `treeMinimum` function checks `root.left` and recursively calls itself on `root.left` until `root.left` is None, then returns that node, correctly walking left to find the minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the two‑child case the code finds the successor (newNode) and then promotes its only possible child with `if newNode.right is None: … else: …`, correctly handling the case where the successor is a leaf (x becomes None).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates the successor’s (y) parent’s child pointer to x and sets x.parent = y.parent (e.g., `newNode.right.parent = newNode.parent` and later `newNode.parent = deleteNode.parent`, with root replacement handled when `deleteNode is root`).
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution never copies the successor’s key into deleteNode (no `deleteNode.key = newNode.key`), so when y is the in‑order successor the original key remains unchanged.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation handles leaf, single‑child, two‑child, and root deletions, correctly rewiring parents and returning the updated root while preserving BST properties.

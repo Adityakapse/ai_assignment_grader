@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution returns (exp(n)-1) % 1000000007, showing the student recognized aₙ = 2ⁿ‑1, but the exp function’s recursion (using n/2 % 2) is flawed and does not correctly compute 2ⁿ for all n.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The function exp uses a base case if (n==1): return 2 instead of handling n==0 and returning 1, leading to an off‑by‑one error for the exponent zero case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd branch uses `return exp(n-1)*2 % 1000000007`, reducing n by 1, multiplying by a (2), and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even branch uses an incorrect condition (`n/2 % 2 == 0`) and float division, so it fails to reliably halve `n` and square the recursive result as required.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your `exp` function correctly computes 2ⁿ modulo 10⁹+7 (using recursion with modulo at each step) and `calc` returns (2ⁿ‑1) mod 10⁹+7 for all inputs without any forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The implementation uses the identities u = calc(n/2)+1 and (u*u‑1) for even n and ((calc(n‑1)+1)*2‑1) for odd n, which correctly computes a_n = 2^n‑1 mod 10^9+7.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate expo function is provided, and there is no base case returning 1 when the exponent b equals 0; the only base case handles n<1 returning 0.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain an expo odd case of the form (a * expo(a, b‑1, c)) % c; the odd case is handled inside calc with a different formula.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: There is no expo even case that computes tmp = expo(a, b/2, c) once and returns (tmp*tmp) % c; the even handling is embedded in calc and does not follow the required expo pattern.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc(n) returns (2^n‑1) mod 1 000 000 007 for all valid inputs, runs in O(log n) recursion depth, and avoids all forbidden keywords.

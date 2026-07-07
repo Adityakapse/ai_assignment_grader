@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds `ll` as an adjacency list from `A` and adds a virtual source node 0 with edges to every node 1…N (`ll[0] = [x for x in range(1, N + 1)]`), satisfying the construction requirement.
+
+POINT_ID: 2
+MARKS: 12
+FEEDBACK: `nodes_mp` is initialised with the value -10000 instead of the specified -1, and the cache check uses `nodes_mp[node] != min`; while functional, it does not follow the exact sentinel described in the rubric.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS correctly returns 0 when `len(ll[node]) == 0`, handling leaf nodes as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The recurrence computes `bs = max(bs, dfs(child, …) + 1)` for each child and stores the result in `nodes_mp[node]` before returning, matching the expected longest‑path logic.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The algorithm produces the correct longest‑path length for typical DAGs, but it relies on recursive DFS without increasing Python’s recursion limit, which can cause a RecursionError for graphs with paths longer than the default limit (~1000).
+
+TOTAL: 79

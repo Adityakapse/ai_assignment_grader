@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (aL+1)×(bL+1) matrix and uses nested loops (outer over b, inner over a) that iterate from 1 to the string lengths, correctly filling the DP table bottom‑up.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code sets matrix[a][0]=a and matrix[0][b]=b for all a and b ≥ 1, and relies on the default 0 at matrix[0][0], correctly establishing the required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code computes a cost of 0 when aS.charAt(a‑1) equals bS.charAt(b‑1) and includes matrix[a‑1][b‑1] + cost in the min, effectively setting matrix[a][b] to matrix[a‑1][b‑1] for matching characters.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code uses `cost` and `Math.min` to compute `matrix[a][b] = Math.min(matrix[a-1][b]+1, Math.min(matrix[a][b-1]+1, matrix[a-1][b-1]+cost))`, which correctly implements the 1 + min of the three neighboring cells for mismatches.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The code correctly builds the DP matrix iteratively, handles base cases, computes insert/delete/substitution costs, and returns the proper edit distance without any recursion.

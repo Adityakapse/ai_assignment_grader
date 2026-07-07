@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `double K[][] = new double[n + 1][W + 1];`, creating a table of size (n+1) × (capacity+1), and initializes the base cells to 0 in the first iteration.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The nested loops `for (i = 0; i <= n; i++)` and `for (w = 0; w <= W; w++)` correctly iterate over every item index and every capacity from 0 up to the given capacity.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `else if (wt[i - 1] <= w)` properly checks whether the current item's volume fits within the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the assignment `K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);` implements the correct recurrence; otherwise `K[i][w] = K[i - 1][w];` is used.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `K[n][W]`, which is the optimal maximum value for the full set of items and the given capacity, satisfying the problem requirements.
+
+TOTAL: 100

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates C = [0]*n where n = len(B), allocating a zero‑initialized counting array sized to the length of B, which satisfies the required size at least max(A)+1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(m): C[A[i]] += 1` iterates over every element of A and increments the corresponding entry in C, correctly accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for i in range(n):` iterates from 0 to len(B)-1, building a list of length |B| and thus producing a binary string of exactly that length.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if C[i] > B[i]: fit_list.append(0) else: fit_list.append(1)` outputs 1 when C[i] ≤ B[i] and 0 otherwise, matching the specification.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct binary string for all valid inputs in linear time and contains no forbidden substrings.

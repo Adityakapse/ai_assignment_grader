@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses recursion to walk down the tree, comparing keys (root.key > insertNode.key) and correctly moves left or right until it finds a null child where it inserts the node.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never uses a separate parent variable updated during traversal; it relies on recursion and only sets insertNode.parent when the child slot is empty, so no parent pointer is tracked throughout the walk.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if root.key > insertNode.key` and attaches `insertNode` to `root.left` when true, otherwise to `root.right`, correctly placing the new node based on its key.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code assigns insertNode.parent to the current root node at the insertion point, correctly establishing the upward link for the new node.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function correctly handles empty‑tree insertion, recursively finds the proper spot, sets the parent pointer, and always returns the original root (or the new node when the tree was empty).

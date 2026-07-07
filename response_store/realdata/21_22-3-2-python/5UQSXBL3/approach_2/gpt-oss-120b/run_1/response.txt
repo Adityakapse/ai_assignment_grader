@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code builds an adjacency list from A, but it never adds edges from a virtual source node 0 to every node 1…N, so the required virtual source is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution does not create a memo array initialized to –1 nor perform a cache check before recomputing values; it uses a topological ordering instead of memoization.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The DFS implementation never returns a value (leaf nodes just get appended to a list), so there is no base case that returns 0 for nodes with no outgoing edges.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your `calc` function computes `longest_path[value] = max(longest_path[value], longest_path[v] + 1)` for each child `v`, storing the result in the `longest_path` array, which correctly implements the required recurrence over children.
+
+POINT_ID: 5
+MARKS: 24
+FEEDBACK: The implementation performs a DFS to obtain a postorder list and then computes longest_path using dynamic programming, correctly handling all nodes and edges, and returns the maximum path length, which matches the required result for DAGs.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates `int [] intervalle = new int[n];` and sets `intervalle[0]=a[0];`, satisfying the required array allocation and initialization.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The loop `for(int i=1;i<=n-1; i++)` correctly computes `intervalle[i]= a[i] + intervalle[i-1];`, building the prefix sum array as specified.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: An output array `int [] d = new int[n];` is allocated and the query loop `for(int j=0;j<=b.length-1; j++)` iterates over all queries, meeting the allocation and iteration requirement.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each query the code computes `r=intervalle[b[j][1]]; l=b[j][0]-1;` and uses `if(l>=0) d[j]=r-intervalle[l]; else d[j]=r;`, correctly handling the l = 0 edge case.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct list of range sums in overall O(n) time and does not use any forbidden keywords.
+
+TOTAL: 100

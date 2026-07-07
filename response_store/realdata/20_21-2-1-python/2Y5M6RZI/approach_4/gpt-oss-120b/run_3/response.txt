@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates C = [0]*n, initializing a zero‑filled array of length |B| (which is ≥ max(A)+1 per the problem constraints), and then counts frequencies by direct indexing.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(m): C[A[i]]+=1` iterates over every element of A and increments the corresponding entry in C, properly accumulating the frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop uses `for i in range(n):` with `n = len(B)`, correctly iterating from 0 to |B|-1 and building a binary string of exactly length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if C[i]>B[i]: fit_list.append(0) else: fit_list.append(1)`, correctly outputting 1 when the count is ≤ capacity and 0 otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds a count array of size len(B), tallies occurrences from A, compares each count to B[i], and returns a correctly sized binary string in linear time without using any forbidden substrings.

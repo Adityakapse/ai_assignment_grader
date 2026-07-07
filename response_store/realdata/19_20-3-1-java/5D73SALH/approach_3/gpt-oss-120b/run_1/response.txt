@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements QuickSort with a recursive `quicksort` method and an inner `while` loop in `partitionHoare`, providing the required outer‑recursive and inner‑iterative structure for a sorting algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside `partitionHoare` the code calls `A.Smaller(i, r)`, `A.Equal(i, r)`, `A.Larger(j, r)` and `A.Equal(j, r)` to compare elements with the pivot, using the provided comparison API correctly.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: `A.Swap(i, j)` is performed conditionally, but the indices swapped (i and j) are not the same pair that were directly compared (i with r and j with r), so the swap does not match the exact comparison pair.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: `Length()` is used only to compute the initial right bound (`list.Length()-1`) for the first call to `quicksort`; the loops inside `partitionHoare` rely on the parameters `l` and `r` instead of calling `Length()` themselves.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The QuickSort implementation correctly sorts the list in ascending order for all tested inputs, returning the sorted `list` from the `Sort` method.

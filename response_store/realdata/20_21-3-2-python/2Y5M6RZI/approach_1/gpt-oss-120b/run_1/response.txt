@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code builds an adjacency list `ll` from A and correctly adds a virtual source node 0 with edges to every node 1…N.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It initialises `nodes_mp` with the sentinel value -10000 and checks `nodes_mp[node] != min` to return a cached result, matching the required memoisation pattern.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS returns 0 when `len(ll[node]) == 0`, handling leaf nodes as specified.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each child it updates `bs = max(bs, dfs(child, …) + 1)` and stores the result in `nodes_mp[node]` before returning, implementing the correct recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: `calc` returns `dfs(0, …) - 1`, which yields the length of the longest directed path for all valid inputs, so the overall solution is correct.
+
+TOTAL: 100

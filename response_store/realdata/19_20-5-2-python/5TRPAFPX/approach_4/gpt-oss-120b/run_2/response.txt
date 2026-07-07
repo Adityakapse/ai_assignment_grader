@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a recursive helper function without any explicit stack or while loop, so the start node is never pushed onto a stack and no loop processes nodes until the stack is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution implements DFS recursively and never performs a stack.pop() (or any explicit pop), so there is no removal from the top of a stack as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses the list `gefunden` to track visited nodes, adds each node with `gefunden.append(knoten)`, and checks `if not zielknoten in gefunden` before recursing, preventing duplicate visits.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recursive dfs iterates over graph[knoten] in forward order and recursively visits each unvisited neighbour, which the rubric counts as correct.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive `dfs_rek` appends each node when first visited and iterates `for zielknoten in graph[knoten]` in the given adjacency order, correctly producing a depth‑first traversal of all reachable nodes.

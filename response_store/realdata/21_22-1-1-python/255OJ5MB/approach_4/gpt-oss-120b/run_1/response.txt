@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses the recurrence a_n = 2^n‑1 by returning (calc(n/2)+1)^2‑1 for even n and ((calc(n‑1)+1)*2‑1) for odd n, correctly implementing the closed‑form a_n = 2^n‑1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution defines no expo function and provides no base case handling b == 0, so the required termination condition is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code does not define an expo function and its odd-case logic; it recurses in calc without reducing b by 1 and multiplying by a as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In the even branch you call `calc(n/2)` (using `/` which yields a float) and then add 1, square, and subtract 1, rather than halving `b` and squaring the single recursive result as required for the expo even case.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns the correct value for small n, but for odd inputs it recurses by n‑1, giving O(n) time and will time out on large n, so it does not meet the required O(log n) complexity.

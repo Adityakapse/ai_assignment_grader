@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] table of size (volumes.length+1) x (capacity+1), which matches the required (n+1) by (capacity+1) dimensions and relies on Java’s default zero‑initialisation.
+
+POINT_ID: 2
+MARKS: 12
+FEEDBACK: The outer loop iterates over all items, but both loops start at 1 instead of 0, so the subproblem for capacity j = 0 is never processed, violating the rubric’s requirement to cover j = 0.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i - 1] > j)` correctly implements the feasibility check (equivalent to volumes[i] ≤ j) and works for zero‑weight items because the else branch is taken when volume is 0.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence `table[i][j] = Math.max(table[i-1][j], table[i-1][j - volumes[i-1]] + values[i-1])` is implemented exactly as specified for fitting items, and the non‑fitting case copies the previous row value.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: The extra statement `if (capacity > 1000) capacity++;` alters the input capacity, leading to incorrect results for capacities over 1000, and the missing j = 0 iteration may affect edge cases, so the overall method is not reliably correct.
+
+TOTAL: 80

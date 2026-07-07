@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `double[][] table = new double[volumes.length + 1][capacity + 1];` which correctly allocates a (n+1)×(capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at 1 rather than 0, so the j = 0 subproblem (required for zero‑weight items) is omitted.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code uses `if (volumes[i - 1] > j)` and otherwise includes the item, correctly checking `volumes[i] <= j` and handling zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code implements the correct recurrence, using `Math.max(table[i-1][j], table[i-1][j-volumes[i-1]] + values[i-1])` when the item fits and copying `table[i-1][j]` when it does not.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The DP logic correctly computes the optimal value for typical cases, but the line `if (capacity > 1000) capacity++;` alters the capacity for large inputs, leading to incorrect results for capacities over 1000.

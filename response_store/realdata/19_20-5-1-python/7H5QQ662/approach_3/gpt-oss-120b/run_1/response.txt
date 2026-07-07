@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is added before the loop, but the algorithm uses a `for element in result:` loop instead of a `while` loop that runs until the queue is empty, so the loop termination condition is not as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No dequeue operation is performed; nodes are never removed from the front of a queue, violating the FIFO removal requirement.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: `result` is used to track visited nodes and the code checks `if not vertex in result` before appending, but it does not explicitly check a node against the visited collection before processing it, so visited handling is only partially correct.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `graph[element]` and appends each unvisited neighbour to `result`, correctly enqueuing neighbours at the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Although the loop structure is unconventional, the method returns all reachable nodes from the start in proper BFS (level‑by‑level) order for valid directed graphs.

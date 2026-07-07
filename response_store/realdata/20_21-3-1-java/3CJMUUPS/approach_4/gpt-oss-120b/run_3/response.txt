@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `double[][] table = new double[volumes.length + 1][capacity + 1];`, giving a (n+1) × (capacity+1) array that is automatically zero‑initialized.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses nested loops, but the inner loop starts at j = 1 instead of j = 0, so the zero‑capacity subproblem (needed for weight‑0 items) is never processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (volumes[i - 1] > j) … else …` which correctly treats the else case as `volumes[i-1] <= j`, handling exact fits and zero‑weight items properly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `table[i][j] = Math.max(table[i-1][j], table[i-1][j-volumes[i-1]] + values[i-1])` when the item fits and `table[i][j] = table[i-1][j]` otherwise, correctly referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code adds one to the capacity when it exceeds 1000 and starts the inner loop at j = 1, so it never evaluates the zero‑capacity case or correctly handles zero‑volume items, leading to incorrect results for many inputs.

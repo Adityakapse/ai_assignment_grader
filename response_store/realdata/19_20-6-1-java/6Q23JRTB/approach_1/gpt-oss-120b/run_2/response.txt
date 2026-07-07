@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (aL+1)×(bL+1) matrix and uses nested loops that iterate over all indices from 1 to the string lengths, satisfying the required table allocation and bottom‑up iteration.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It initializes matrix[a][0] = a for a = 1..aL and matrix[0][b] = b for b = 1..bL, correctly setting the delete and insert base cases (matrix[0][0] remains 0 by default).
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: When characters match the code uses a min expression that includes matrix[a‑1][b‑1] with zero cost, effectively yielding the same value as an explicit assignment, though it does not directly set matrix[a][b] = matrix[a‑1][b‑1].
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatching characters it computes cost = 1 and assigns matrix[a][b] = min(delete+1, insert+1, substitute+cost), correctly implementing the 1 + min of the three neighbours recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct edit distance for any pair of strings and contains no recursive calls, meeting the overall correctness requirement.
+
+TOTAL: 97

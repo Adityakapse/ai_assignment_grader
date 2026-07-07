@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution uses a one‑dimensional rolling array and loops over the strings directly, without allocating a (m+1)×(n+1) table or iterating i and j from 1 to m and n as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes `result = range(len(pre)+1)` for the first row and sets `tmp = [i+1]` for each new row, correctly providing the i‑deletion and j‑insertion base costs.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the match branch the code appends `result[j]`, which corresponds to the cell above (i‑1, j) rather than the diagonal cell (i‑1, j‑1), so the required `edDis[i][j] = edDis[i-1][j-1]` is not correctly implemented.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code uses `1 + min((result[j], result[j + 1], tmp[-1]))` when characters differ, correctly applying the 1 + min of the three neighboring cells for the mismatch recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation uses an iterative DP with space optimisation, correctly handles all string lengths (including empty strings) and returns the proper edit distance without any recursion.

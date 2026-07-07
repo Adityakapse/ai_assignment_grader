@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 12
+FEEDBACK: The code uses recursive quicksort with while loops in the partition function to move pointers, providing inner iteration, but it does not have a clear outer loop or flag‑based pass structure typical of the expected sorting algorithm pattern.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly calls Smaller(l, p), Larger(r, p) and Equal(l, p) with appropriate indices to compare elements during partitioning.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The code swaps indices l and r after separate pivot comparisons, never directly comparing l and r to detect a violation, so Swap is not called on the same pair used in a comparison indicating they are out of order.
+
+POINT_ID: 4
+MARKS: 7
+FEEDBACK: The code calls Length() only to compute the initial right index (listToSort.Length()-1) but the subsequent while loops in myQuicksort and partition are bounded by the passed indices rather than directly using Length(), so not all loops are properly bounded by Length().
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The quicksort implementation uses incorrect recursive bounds (calling myQuicksort on (l, p‑1) and (p, r) instead of excluding the pivot), which can cause infinite recursion or leave the list unsorted for many inputs.

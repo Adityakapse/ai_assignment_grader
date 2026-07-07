@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (n+1) × (capacity+1) and, with Java’s default zero values (plus an explicit loop for the first row), correctly initializes the DP table to 0.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop correctly runs from 1 to n covering all items, but the inner loop starts at 1 instead of 0, so the j = 0 subproblem isn’t iterated over as the rubric requires.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly checks `if (volumes[i - 1] > j)` and only considers adding the item in the `else` branch, ensuring the volume feasibility condition is applied for each item and capacity.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses the correct recurrence—when the item fits you compute `Math.max(rucksack[i-1][j], rucksack[i-1][j-volumes[i-1]] + values[i-1])`, and when it doesn't you copy `rucksack[i-1][j]`, matching the required formula.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly builds the DP table using the 0/1 knapsack recurrence and returns the optimal value for all inputs.

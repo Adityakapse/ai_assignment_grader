@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution recursively splits the array into L and R, calls solution on both halves, and then merges them, which follows the classic divide‑and‑conquer structure of merge sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when len(A) ≤ 1 because the function only recurses if len(A) > 1, correctly handling the base case.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The Merge function appends a sentinel value 10**6 to each sublist and merges, but using a sentinel equal to the maximum possible element can insert that sentinel into the output and produce an incorrect order.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The algorithm is merge sort, which guarantees O(n log n) worst‑case performance, so randomisation is not required and the criterion is satisfied.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the merge step may place the sentinel 10**6 into the final array, the returned list is not correctly sorted for many valid inputs, so overall correctness fails.

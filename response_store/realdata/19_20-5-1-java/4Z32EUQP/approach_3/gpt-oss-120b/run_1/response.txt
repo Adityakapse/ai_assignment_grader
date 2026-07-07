@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code adds the start node with `myQ.add(start);` before the `while(!myQ.isEmpty())` loop, satisfying the required initialization and loop condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is removed using `myQ.get(0)` followed by `myQ.remove(0)`, which always dequeues from the front of the queue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The `color` array tracks node states (0 = unvisited, 1 = discovered, 2 = processed); nodes are only added to `result` after being dequeued and their state is set to 2, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The inner `for` loop iterates over `graph[u]` and enqueues each neighbour whose `color[...][1]` is 0, ensuring all unvisited neighbours are added to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: By using FIFO removal, proper visited tracking, and enqueuing neighbours in adjacency‑list order, the method returns all reachable nodes from `start` in correct BFS order for any directed graph.

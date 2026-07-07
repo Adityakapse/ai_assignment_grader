@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 22
+FEEDBACK: Your implementation uses the relation aₙ = 2ⁿ − 1 (e.g., for even n you compute (calc(n//2)+1)² − 1), showing you derived the closed‑form, though it isn’t explicitly commented.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: Your code does not implement an expo function with a base case returning 1 when the exponent is 0; the only base case returns 0 for n==0, which does not satisfy this rubric point.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The odd branch reduces n by 1 but then applies the recurrence (adds 1) and also takes n modulo 1e9+7 before the recursive call, so it does not implement the required “return (a * expo(a, b‑1, c)) % c” behavior.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: In the even branch you change n, add 1, square, and subtract 1 instead of computing a single recursive call to expo with b//2 and returning (tmp*tmp)%c, so the required halve‑and‑square logic is not implemented.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The function incorrectly applies `% 1000000007` to the exponent `n` (e.g., `n = (n//2)%1000000007` and `n = (n-1)%1000000007`), which breaks the calculation for larger inputs, so it does not reliably return (2ⁿ − 1) mod 10⁹+⁷.

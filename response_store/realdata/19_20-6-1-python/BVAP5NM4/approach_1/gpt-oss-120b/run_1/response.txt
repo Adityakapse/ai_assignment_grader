@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates a (m+1)×(n+1) matrix and fills all cells using nested loops over i and j (j outer, i inner), satisfying the required bottom‑up structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly initializes edit_matrix[i][0] = i and edit_matrix[0][j] = j using incremental assignments, covering all base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When a[i‑1] equals b[j‑1] the student sets replace = edit_matrix[i‑1][j‑1], effectively using the previous diagonal value with no extra cost.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters the student computes insert, delete, and replace each with a +1 cost and stores the minimum, matching the required 1 + min of the three neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns edit_matrix[m][n] as the edit distance, works for empty strings, and contains no recursion, thus producing correct results for all inputs.
+
+TOTAL: 100

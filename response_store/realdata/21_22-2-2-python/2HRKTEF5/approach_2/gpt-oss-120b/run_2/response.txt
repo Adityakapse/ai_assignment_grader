@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code modifies the original list a in place and never allocates a separate prefix‑sum array C with C[0] initialized to A[0], so it does not satisfy the required array allocation.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The solution correctly builds the prefix sum by iterating from 1 to len(a)-1 and updating each element with the sum of itself and the previous element.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution builds the result with a list comprehension that creates a list of length n and processes each (l, r) pair, effectively allocating an output array and iterating over all queries.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your list comprehension correctly returns a[r] when l is 0 and a[r]‑a[l‑1] otherwise, handling the l = 0 edge case as required.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your function builds the prefix sums in-place and then correctly computes each range sum with a list comprehension, achieving O(n) time and avoiding the forbidden keywords.

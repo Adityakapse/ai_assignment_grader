@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `matrix = [[0 for x in range(cap + 1)] for x in range(len(val) + 1)]`, which correctly allocates a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The solution iterates over capacities in the outer loop and items in the inner loop, covering all subproblems but not following the required outer‑item/inner‑capacity order.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `elif vol[i-1] <= j:` correctly checks whether the current item fits into the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When an item fits, the code uses `max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])`; otherwise it copies `matrix[i-1][j]`, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `matrix[len(val)][cap]`, which yields the correct maximum value for all valid inputs.
+
+TOTAL: 90

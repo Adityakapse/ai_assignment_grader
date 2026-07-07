@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The start node is placed in the initial queue ([start]) and the recursive bfs_help function repeatedly processes nodes until the queue becomes empty, fulfilling the loop requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with queue.pop(0), which always dequeues from the front, preserving FIFO order.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: A visited list is maintained and nodes are added after being dequeued, but the code does not explicitly check whether a dequeued node has already been visited before processing it.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The algorithm iterates over graph[node] and enqueues each neighbour only if it is neither in visited nor already in the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns all reachable nodes from the start in proper BFS (level‑by‑level) order for directed graphs, including those with cycles.

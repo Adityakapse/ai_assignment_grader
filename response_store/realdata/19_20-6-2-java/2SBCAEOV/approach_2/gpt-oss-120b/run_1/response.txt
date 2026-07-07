@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] K of size (n+1) by (W+1) and correctly sets all entries to 0 in the nested loops (i==0 or w==0 case), satisfying the allocation and initialization requirement.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses an outer loop `for (i = 0; i <= n; i++)` over all items (including the base case) and an inner loop `for (w = 0; w <= W; w++)` over every capacity, thus covering every subproblem as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The implementation correctly checks `if (wt[i - 1] <= w)` before attempting to include an item, satisfying the capacity feasibility requirement.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly applies the recurrence, using K[i][w] = max(val[i‑1] + K[i‑1][w‑wt[i‑1]], K[i‑1][w]) when the item fits and K[i][w] = K[i‑1][w] otherwise.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your bottom‑up DP correctly builds the table and returns K[n][W], producing the optimal knapsack value for all valid inputs.

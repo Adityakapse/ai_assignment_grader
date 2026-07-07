@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Graph construction and virtual source
+BUCKET: Semi
+FEEDBACK: The code builds `graph` from A correctly, but it never adds a virtual source node 0 with edges to all vertices, so the required virtual source is missing.
+
+POINT_ID: Point 2 — Memoization: initialisation and cache check
+BUCKET: Wrong
+FEEDBACK: The solution uses `heap` initialized to 0 and a `seen` array, but it does not create a memo array set to -1 nor check a memo value before recursing, so proper memoization is absent.
+
+POINT_ID: Point 3 — DFS base case: leaf node
+BUCKET: Correct
+FEEDBACK: When a node has no outgoing edges the `for` loop does not execute, leaving `heap[v]` at its initial 0, which correctly represents a leaf path length of 0.
+
+POINT_ID: Point 4 — Recurrence: longest path over children
+BUCKET: Correct
+FEEDBACK: Inside DFS the code updates `heap[v] = max(heap[v], 1 + heap[graph[v][i]])` for each child, correctly applying the max‑plus recurrence and storing the result.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Correct
+FEEDBACK: After processing all nodes the function returns `max(heap)`, which yields the length of the longest directed path for any DAG and runs in O(N + M) time.

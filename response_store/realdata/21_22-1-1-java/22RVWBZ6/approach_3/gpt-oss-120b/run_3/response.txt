@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implements calc as exp(2, n, 1000000007) - 1, correctly using the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In exp the first condition `if (e==0) return 1 % m;` correctly handles the base case for exponent 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The odd‑exponent branch `else return (exp(b, e-1, m)*b) % m;` reduces the exponent by 1 and multiplies by b, as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The even‑exponent case computes `long x = exp(b, e/2, m); return (x*x) % m;`, calling the recursive function once and squaring the result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc returns exp(2, n, 1000000007) - 1, yielding (2ⁿ − 1) mod 10⁹+7 for all inputs, uses no forbidden keywords, and runs in O(log n).

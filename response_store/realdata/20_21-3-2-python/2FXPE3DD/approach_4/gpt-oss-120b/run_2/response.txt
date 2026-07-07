@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A, but it never adds a virtual source node 0 with edges to all vertices, opting instead to start DFS from each node individually.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses a `heap` array initialized to 0 and a `seen` flag, but it never creates a memo array with a -1 sentinel nor checks `memo[node] != -1` before recomputing, so it does not implement the required memoization pattern.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The DFS function never includes a base case that returns 0 for leaf nodes; it has no return statement and relies on the pre‑initialized heap, so leaf handling does not meet the required specification.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The DFS loops over every child, updates heap[v] with max(heap[v], 1 + heap[child]) and keeps this value in heap, effectively memoizing the longest path for each node.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The DFS fills heap with the longest distance from each node and the final max(heap) returns the correct longest path length for any DAG, matching the required output without needing a virtual source.

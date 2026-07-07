@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b starts at 0, but it does not apply % c, so for c = 1 it returns 1 instead of 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses (b&1)==1 to detect odd exponents, correctly distinguishing odd from even b.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the current bit is 1, the algorithm updates ergebnis = (ergebnis*a) % c, which matches the required (a * expo(...)) % c behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each loop iteration the exponent is halved with b = b >> 1 and the base is squared via a = (a*a) % c, implementing the even‑case squaring correctly.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The iterative method computes a^b mod c correctly for typical inputs and avoids import or **, but it fails the edge case c = 1 due to the missing modulo in the zero‑exponent return.

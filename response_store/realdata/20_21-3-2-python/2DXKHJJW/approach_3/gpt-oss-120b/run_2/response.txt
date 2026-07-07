@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list `Connections` from `A`, but it never adds a virtual source node with edges to every vertex, so the DFS‑style traversal cannot start from a single source covering all nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo (cache) array is created; the solution does not use recursion or any memoization to avoid recomputing sub‑problems.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, so no explicit base case for leaf nodes is defined.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The algorithm does not implement the recursive recurrence `sol = max(sol, dfs(child)+1)` nor store results in a memo table; it only performs a single forward pass over edges.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the forward DP may give correct lengths for DAGs that are already topologically ordered, it can produce wrong results for general DAGs and lacks the virtual source handling required for full correctness.

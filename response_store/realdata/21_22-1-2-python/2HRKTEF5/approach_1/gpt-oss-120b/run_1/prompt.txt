@@ -1,0 +1,68 @@
+QUESTION:
+Let $N \in \mathbb{N} \land N \leq 10^{18}$ and
+$f_N:\mathbb{N}_0 \mapsto \{0,1\}, \; n \mapsto \begin{cases}1, & \text { if } n \geq N \ 0, & \text { if } n < N \end{cases}$
+a binary function, where $N$ is unknown. The goal of the task is to calculate $N$ 
+in $O(log \: n)$.
+
+Input: A binary function $f_N$, where $N$ is unknown.
+
+Output: $N$.
+
+The function $f_N$ is available as argument in the
+implementation.  For the implementation you must not use the keyword
+"import" , "globals" or "eval". Calculate the output
+in $O(log \: n)$ in the function "calc(f)".
+
+Hints:
+
+1. Analyze the monotonicity of the function.
+
+2. Let $x \in \mathbb{N}$ with $f_N(x) = 0$. What do we know for all
+values $y \in \mathbb{N}, y < x$? Now let $f_N(x) = 1$. What do we know
+for all values $z \in \mathbb{N}, x < z$?
+
+SAMPLE SOLUTION:
+def calc(f):
+    l = 0
+    r = 10**(18)
+    while 0 <= l <= r:
+        m = ((r + l) // 2)
+        #print(m)
+        if f(m):
+            r = m - 1
+        else:
+            l = m + 1
+    if f(m):
+        return m
+    else:
+        return m + 1
+
+STUDENT SOLUTION:
+def calc(f):
+    u = 1
+    o = 10**18
+    while o-u>=2:
+        t = (u+o)//2
+        if f(t):
+            o = t
+        else:
+            u = t+1
+    while not f(u):
+        u = u+1
+    return u
+
+RUBRIC:
+Point 1 — Search bounds initialisation (valid range: 0–15)
+  l = 0 and r = 10^18 (or Long.MAX_VALUE), correctly bounding the search space for all valid N.
+
+Point 2 — Binary search loop and midpoint (valid range: 0–20)
+  A while loop runs while l <= r, computing midpoint m = (l + r) // 2 at each iteration.
+
+Point 3 — Narrowing: updating l and r based on f(m) (valid range: 0–30)
+  If f(m) == 1 (m >= N), search the left half: r = m - 1. If f(m) == 0 (m < N), search the right half: l = m + 1.
+
+Point 4 — Post-loop return value (valid range: 0–15)
+  After the loop, the correct N is returned: if f(m) == 1 return m, else return m + 1 (or equivalently, return l).
+
+Point 5 — Overall correctness (valid range: 0–20)
+  calc correctly returns N for all valid inputs in O(log n), without forbidden keywords.

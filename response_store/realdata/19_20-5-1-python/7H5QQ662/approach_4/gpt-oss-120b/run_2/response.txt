@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code adds the start node before a `for` loop, but uses a `for element in result` loop instead of a `while` loop that runs until the queue is empty, so the termination condition is incorrect.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never removes the current node from the front of a queue (no pop(0) or similar); it simply iterates over the growing result list, so there is no FIFO dequeue operation.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses result as a visited list but adds the start node and each neighbor to it as soon as they are discovered, without checking visited before processing each dequeued element, so the visited tracking is applied incorrectly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The inner loop `for vertex in graph[element]:` goes through every neighbour and the check `if not vertex in result:` adds only unvisited vertices to `result`, correctly enqueuing them at the back.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution uses `result` as a growing list, iterating over it while appending unseen neighbours, which yields a level‑by‑level traversal and avoids revisiting nodes, thus producing the correct BFS order for all directed graphs.

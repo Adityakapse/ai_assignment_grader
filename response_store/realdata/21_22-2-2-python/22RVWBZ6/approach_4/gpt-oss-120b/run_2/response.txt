@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates c as a copy of A, giving an array of size n with c[0] already equal to A[0] before the cumulative loop starts.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes c as a copy of A and then loops from 1 to len(A)-1 setting c[i] = c[i-1] + c[i], which correctly builds the cumulative sum array.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code loops over all queries with `for i in range(len(B))`, but the output list `res` is created empty and filled via `append` instead of being pre‑allocated to size n.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses the prefix array c and correctly returns c[r] when l == 0 and c[r] - c[l-1] otherwise, handling the edge case properly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds a prefix‑sum array in a single pass and correctly handles both l = 0 and l > 0 cases, returning the right sums for all queries in O(n) without using forbidden keywords.

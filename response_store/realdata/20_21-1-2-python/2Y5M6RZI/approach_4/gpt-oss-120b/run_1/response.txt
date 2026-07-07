@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution defines a recursive split of the array into two halves, calls `solution` on both sub‑arrays, and then merges them with a `Merge` function, which matches the divide‑and‑conquer pattern of merge sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if len(A)>1:` to stop recursion, correctly handling subarrays of length 0 or 1 and preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The Merge function attempts to combine the two halves using sentinels, but appending 10**6 to each list inserts extra values into the result (and may misorder elements equal to 10**6), so the merged array is not correctly sorted.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution uses a merge‑sort implementation (splitting and merging), which guarantees O(n log n) worst‑case performance, so randomisation is unnecessary.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution implements a merge sort that correctly returns the array in ascending order for all inputs and does not contain the prohibited substrings.

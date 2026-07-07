@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code correctly uses the closed form aₙ = 2ⁿ − 1 (subtracting 1 in calc), but the exponentiation helper exp has logical errors (uses float division n/2 and an incorrect parity check), so it does not reliably compute 2ⁿ.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The function exp defines its base case as if n==1: return 2 instead of handling the exponent 0 and returning 1, so the recursion is off‑by‑one and does not correctly cover the b == 0 case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the code does `return exp(n-1)*2 % 1000000007`, which correctly reduces the exponent by 1, multiplies by 2, and applies the modulo.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case uses `n/2 % 2 == 0` with float division and an incorrect condition, so it neither properly halves the exponent nor guarantees a single recursive call before squaring.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution uses floating‑point division (n/2) causing non‑integer recursion and fails to maintain logarithmic complexity, resulting in incorrect or non‑terminating results for many inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong (0 marks)
+FEEDBACK: The solution does not allocate a separate prefix‑sum array C; it updates the input list a in place, so no distinct C[0] is initialized.
+
+POINT_ID: 2
+BUCKET: Correct (25 marks)
+FEEDBACK: The loop `for i in range(1, len(a)): a[i] += a[i-1]` correctly computes each element as A[i] plus the previous cumulative sum, building the prefix array.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The list comprehension creates a new list of length len(b) and iterates over every (l, r) pair, effectively allocating the output array D and processing all queries.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: It uses `a[r] if l == 0 else a[r]-a[l-1]`, handling the l = 0 edge case and the general case correctly.
+
+POINT_ID: 5
+BUCKET: Correct (20 marks)
+FEEDBACK: The function returns the correct list of range sums for all queries in O(n) time and does not contain the forbidden keywords.

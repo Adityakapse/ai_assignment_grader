@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses an outer for‑loop over i and an inner for‑loop over j to find the minimum element and then swaps, which matches the typical selection‑sort structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution calls `listToSort.Larger(min, j)` with the appropriate indices to detect when the current minimum is larger than a later element, correctly using the provided comparison API.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code always calls listToSort.Swap(min, i) after the inner loop, not only when a comparison shows a violation, and the swapped indices (min and i) differ from the pair (min, j) used in the Larger check.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer loop (`range(0, listToSort.Length()-1)`) and the inner loop (`range(i, listToSort.Length())`) use Length() to set their bounds, so the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation correctly finds the minimum element in each unsorted suffix (using Larger) and swaps it into place, resulting in a fully sorted list for any valid input.

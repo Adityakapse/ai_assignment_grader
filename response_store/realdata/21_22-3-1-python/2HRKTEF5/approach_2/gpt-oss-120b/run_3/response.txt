@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution builds a list P directly without allocating a memo array of size n+1 initialized to -1, so it does not meet the required memo‑array allocation and initialization.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The solution initializes P with W[0] and max(W[0], W[1]), correctly handling the case n = 1, but it crashes for n = 0 since it tries to access W[1] without checking the array length.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution does not use a memo array or a cache check; it builds the DP list iteratively and never returns a stored value as described in the rubric point.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The solution implements the recurrence P[i]=max(P[i-2]+W[i], P[i-1]) and stores each computed value in the list P before returning the final entry, effectively providing memoization.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly builds the DP array P using the recurrence P[i]=max(P[i-2]+W[i], P[i-1]) and returns the last entry, handling all cases in linear time.

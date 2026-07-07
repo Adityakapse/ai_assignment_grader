@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code builds a list of predecessors and never creates a virtual source node 0 with edges to all nodes, nor does it construct the required adjacency list of outgoing edges.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution never creates a memo array initialized to -1 nor checks for a cached value before recomputing; it uses a weight array initialized to 0, so the required memoization pattern is absent.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The submitted code does not implement a DFS function at all, so it never includes a leaf‑node base case that returns 0.
+
+POINT_ID: 4
+MARKS: 18
+FEEDBACK: The code iterates over each node’s predecessors, computes max(weight[pred‑1] + 1) and stores the result in gewicht[i], effectively implementing the required max‑over‑children recurrence (though using incoming edges instead of explicit children).
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The implementation processes nodes only in increasing index order, so it misses contributions from predecessors with larger indices (e.g., an edge 3→1), causing incorrect results for many valid DAGs.

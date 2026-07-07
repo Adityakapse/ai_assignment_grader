@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if z.left == None or z.right == None: y = z` for zero/one‑child cases and otherwise sets `y = minimum(z.right)`, correctly selecting the successor from the right subtree.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `minimum` function loops with `while x.left != None: x = x.left` and returns `x`, correctly walking left to find and return the in‑order minimum node.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets x to y.left when it is not None, otherwise to y.right, correctly handling the case where both children are None.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates `x.parent = y.parent` when `x` is non‑null, handles the root case with `if y.parent == None: root = x`, and correctly redirects `y.parent`'s left or right pointer to `x`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly checks `if y != z:` before assigning `z.key = y.key`, ensuring the key is copied only when y is the successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The delete function correctly selects y (either the node or its successor), reassigns child pointers (including root replacement), updates parent links, and copies the key when needed, handling leaf, single‑child, two‑children, and root deletions while preserving the BST property.

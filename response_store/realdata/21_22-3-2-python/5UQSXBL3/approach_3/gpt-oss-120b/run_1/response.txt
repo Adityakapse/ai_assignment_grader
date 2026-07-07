@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds adjacency lists from A (e.g., `knoten[e[0]].append_to_adj(e[1])`) but never adds a virtual source node 0 with edges to all nodes, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is created; the solution uses a separate `longest_path` array after DFS instead of memoization inside the recursive calls, so the memoization criterion is not met.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The DFS functions (`dfs` and `dfs_visit`) do not return a numeric value for leaf nodes and have no base case returning 0, thus the required leaf‑node base case is absent.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The recurrence `sol = max(sol, dfs(child) + 1)` is not implemented; the DFS does not compute path lengths, and the max‑over‑children logic is performed later without storing results in a memo array.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Despite the missing virtual source and memoization, the algorithm computes a topological order and then correctly propagates longest path lengths, returning the correct maximum path length for all DAGs.

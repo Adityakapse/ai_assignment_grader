@@ -1,0 +1,21 @@
+POINT ID: 1
+MARKS: 10
+FEEDBACK: The code allocates a double[][] of size (n+1)×(capacity+1) correctly, but it initializes the table entries to –1 instead of 0 as required.
+
+POINT ID: 2
+MARKS: 0
+FEEDBACK: The solution uses recursive calls with memoisation rather than an explicit outer loop over items and inner loop over capacities, so the required loop structure is absent.
+
+POINT ID: 3
+MARKS: 12
+FEEDBACK: Before attempting to include an item the code checks `if (weights[amount - 1] > capacity)` (and the opposite case), providing the necessary feasibility test.
+
+POINT ID: 4
+MARKS: 25
+FEEDBACK: The recurrence is implemented correctly via `Math.max(matrix[amount - 1][capacity], matrix[amount - 1][capacity - weights[amount - 1]] + values[amount - 1])` when the item fits, and by copying the previous value when it does not.
+
+POINT ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct maximum value for the given capacity across all tested inputs, demonstrating overall correctness.
+
+TOTAL: 67

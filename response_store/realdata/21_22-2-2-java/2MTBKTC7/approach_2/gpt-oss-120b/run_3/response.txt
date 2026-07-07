@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code never creates a prefix‑sum array C of length n nor sets C[0] = A[0]; it recomputes sums with loops instead of using a pre‑computed prefix array.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution never constructs a prefix‑sum array (C[i] = A[i] + C[i‑1]); instead it recomputes sums with separate loops for each query, so the required prefix‑sum construction is missing.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code creates an output array d with length n and iterates with for(int i=0; i<b.length; i++) over the query list, effectively processing all queries as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly returns C[r] when l is 0 (using summe1) and C[r] – C[l‑1] when l > 0 (using summe2), thus handling the edge case as required.
+
+POINT_ID: 5
+MARKS: 4
+FEEDBACK: The code computes each range sum correctly, but it recomputes prefix sums for every query using loops in summe1 and summe2, resulting in O(n²) time instead of the required O(n) overall.

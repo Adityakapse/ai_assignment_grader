@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] of size (volumes.length+1) by (capacity+1), which Java initializes to 0.0, satisfying the required DP table allocation.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at 1 instead of 0, so it never processes the j = 0 subproblem and thus does not fully cover zero‑weight cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code uses `if (volumes[i - 1] > j)` to ensure an item is only considered when its volume fits the current capacity, correctly handling regular and zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code uses the correct recurrence, computing table[i][j] as max(table[i‑1][j], table[i‑1][j‑volumes[i‑1]] + values[i‑1]) when the item fits and otherwise copying table[i‑1][j].
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The DP logic is correct for typical cases, but the extra line `if (capacity > 1000) capacity++;` alters the capacity for large inputs, causing incorrect results for capacities above 1000.

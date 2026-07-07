@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a prefix‑sum array `d` of size n, but it does not set `d[0]` to `a[0]` before the cumulative loop; instead the first element is assigned inside the loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < n; i++) { last += a[i]; d[i] = last; }` correctly builds the cumulative sums so that `d[i]` equals the sum of `a[0..i]`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `output` of size n is allocated and a loop iterates from `i = 0` to `n‑1`, processing each query in `b`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each query the code uses `output[i] = d[r];` and subtracts `d[l‑1]` only when `l > 0`, correctly handling the `l == 0` edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the correct list of range sums for all queries in overall O(n) time and contains no forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code initializes `lower = 1` instead of 0, so the search interval does not cover the possible case N = 0, even though the upper bound is correct.
+
+POINT_ID: 2
+MARKS: 12
+FEEDBACK: The solution correctly computes `mid = (upper + lower) / 2` each iteration, but the loop condition `while (upper - lower > 1)` differs from the required `while (l <= r)` pattern, so it only partially meets the rubric.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code updates the bounds with `upper = mid` and `lower = mid` instead of the required `r = m - 1` and `l = m + 1`, so the narrowing step does not follow the specified rule.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The post‑loop return correctly selects the first index where f_N is 1 (returning lower when it already equals 1, otherwise upper), which matches the required behavior.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The binary search works in O(log n) and returns the correct N for most cases, but initializing lower to 1 means it fails when N = 0 (the function would return 1 instead of 0).

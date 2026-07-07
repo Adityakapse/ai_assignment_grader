@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (nItem+1) x (capacity+1) and relies on Java’s default zero initialization, additionally setting the first row to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates i = 1..nItem, but the inner loop starts at j = 1, so subproblems for j = 0 are never processed as required by the rubric.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (weight[i-1] > j)` correctly implements the feasibility check weight ≤ capacity, handling zero‑weight items because the else branch is taken when weight is 0.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence uses `Math.max(dynTab[i-1][j], dynTab[i-1][j - weight[i-1]] + value[i-1])` for fitting items and copies the previous value when the item does not fit, matching the required relation.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The method returns correct results for typical cases but fails when capacity is 0 (it returns 0 instead of the sum of zero‑weight item values) and omits j = 0 subproblems, so overall correctness is incomplete.
+
+TOTAL: 82

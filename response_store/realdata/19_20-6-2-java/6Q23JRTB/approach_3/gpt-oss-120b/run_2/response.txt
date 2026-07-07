@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a double[amount+1][capacity+1] table, but initializes every cell to –1 instead of 0 as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No explicit nested loops over items and capacities are used; the DP table is filled via recursive calls rather than iterative loops.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (weights[amount - 1] > capacity)` and only considers inclusion in the else branch, effectively implementing the required `volumes[i] <= j` feasibility test.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the algorithm assigns `matrix[amount][capacity] = Math.max(matrix[amount-1][capacity], matrix[amount-1][capacity-weights[amount-1]] + values[amount-1])`, correctly using the previous row in the recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive memoized DP returns the optimal maximum value for all tested cases, reading the result from the appropriate DP cell.

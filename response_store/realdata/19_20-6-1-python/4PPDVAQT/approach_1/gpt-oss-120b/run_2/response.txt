@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The solution uses a space‑optimized 1‑D DP array instead of allocating a full (m+1)×(n+1) table, so it does not meet the table allocation requirement, though it does have nested loops over the two strings.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Base cases are correctly handled by initializing `result` with 0…len(pre) (insertions) and `tmp` with i+1 (deletions), matching the required initialisation logic.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match (`a == b`), the code appends `result[j]`, which corresponds to `edDis[i‑1][j‑1]`, correctly implementing the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatches the code computes `1 + min(result[j], result[j+1], tmp[-1])`, correctly representing replace, delete, and insert operations.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for all inputs and avoids recursion, satisfying overall correctness.
+
+TOTAL: 83

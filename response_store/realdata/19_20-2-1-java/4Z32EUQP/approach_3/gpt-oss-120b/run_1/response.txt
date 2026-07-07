@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The class Queue is defined with a String array `qu` of size 100 and two index fields `Qhead` and `Qrear`, providing complete storage and tracking state for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `emptyqueue()` method returns `Qhead == Qrear`, which accurately reflects whether the queue contains any elements.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `head()` simply returns `qu[Qhead]` without modifying `Qhead` or any other state, correctly exposing the front element.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: `enqueue(String s)` stores the element at `qu[Qrear]` and updates `Qrear` with `(Qrear + 1) % max`, correctly adding to the back and handling wrap‑around.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: `dequeue()` retrieves `qu[Qhead]`, advances `Qhead` with `(Qhead + 1) % max`, and returns the element (returning `"error"` only when the queue is empty), thus correctly removing the front item.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: All four methods work together to preserve FIFO order, handle circular buffering, and the solution contains no `import` statements.

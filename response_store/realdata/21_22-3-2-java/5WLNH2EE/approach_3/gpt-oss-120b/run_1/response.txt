@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list “nachbarn” from A, but it never adds a virtual source node 0 with edges to every node 1..N, so the DFS cannot start from a single source covering all nodes.
+
+POINT_ID: Point 2
+BUCKET: Wrong
+FEEDBACK: Instead of a memo array initialized to –1 and a sentinel cache check, the solution uses a boolean “besucht” array and a distance array initialized to 0, so it does not follow the required memo‑initialisation pattern.
+
+POINT_ID: Point 3
+BUCKET: Correct
+FEEDBACK: When a node has no outgoing edges, the for‑loop in tiefensuche does not execute and “längsteEntfernung[i]” remains 0, correctly representing a leaf path length of 0.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: For each neighbor the code updates “längsteEntfernung[i] = Math.max(längsteEntfernung[i], längsteEntfernung[neighbor] + 1)”, correctly applying the recurrence and storing the result for later use.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: After DFS from all unvisited nodes, the method returns the maximum value in “längsteEntfernung”, which yields the correct length of the longest directed path for any DAG and runs in O(N+M) time.

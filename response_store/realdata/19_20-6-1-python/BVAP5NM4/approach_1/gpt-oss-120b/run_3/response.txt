@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 18
+FEEDBACK: The code allocates a (m+1)×(n+1) matrix and uses nested loops to fill every cell, but the loops are ordered with j outer and i inner instead of i outer and j inner as described.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The first column and first row are initialized with incremental costs using edit_matrix[i][0] = edit_matrix[i-1][0] + 1 and edit_matrix[0][j] = edit_matrix[0][j-1] + 1, matching the required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When a[i-1] equals b[j-1], the code sets replace = edit_matrix[i-1][j-1] and uses it in the min, correctly implementing the match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters the algorithm computes insert, delete, and replace each with a +1 cost and takes the minimum, which is equivalent to 1 + min of the three neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns edit_matrix[m][n], the correct edit distance for all inputs, and contains no recursive calls.
+
+TOTAL: 98

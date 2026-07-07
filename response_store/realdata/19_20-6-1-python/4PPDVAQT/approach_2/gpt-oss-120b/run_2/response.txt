@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution uses a one‑dimensional rolling array and a single nested loop rather than allocating a (m+1)×(n+1) DP table and iterating i from 1..m and j from 1..n as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes the first row with `result = range(len(pre)+1)` (giving edDis[0][j] = j) and sets `tmp = [i+1]` for each new row (giving edDis[i][0] = i), correctly handling the base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly handles the match case by appending `result[j]` (the diagonal DP value) when `a == b`, matching the required behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: In the mismatch branch you correctly compute `1 + min((result[j], result[j + 1], tmp[-1]))`, which uses the three neighboring DP values as required.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The code implements an iterative DP using a single row (result/tmp), correctly swaps strings to minimise space, handles empty inputs, and returns the proper edit distance without any recursion.

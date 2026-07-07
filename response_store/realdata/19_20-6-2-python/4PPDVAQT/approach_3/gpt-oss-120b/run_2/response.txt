@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `matrix = [[0 ...] for ...]` with dimensions `(len(val)+1) x (cap+1)` and all entries are initialised to 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The nested loops iterate `for j in range(cap + 1)` then `for i in range(len(val) + 1)`, so the outer loop processes capacities instead of the `n` items, which does not match the required outer‑item loop.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `elif vol[i-1] <= j:` correctly checks that the current item fits in the current capacity before considering inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits the code uses `max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])`, and otherwise copies `matrix[i-1][j]`, correctly implementing the DP recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `matrix[len(val)][cap]`, which is the standard result cell for the forward DP and yields the optimal knapsack value for all valid inputs.

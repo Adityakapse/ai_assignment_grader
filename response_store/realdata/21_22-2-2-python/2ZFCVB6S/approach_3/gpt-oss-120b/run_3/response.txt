@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a list `sums` of length n, but it stores a pair `[previous, current]` instead of a single prefix‑sum array C with C[0] set to A[0].
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop updates `s` with each `transporte` and stores the cumulative total, effectively building the correct prefix sums (sums[i][1] = sum of A[0..i]).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The list comprehension `[sums[r][1]-sums[l][0] for l,r in B]` creates an output list of the same length as B and iterates over every query.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each query the code returns `sums[r][1] - sums[l][0]`; when l == 0, `sums[0][0]` is 0, so the edge case is handled correctly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct range‑sum list for all queries in O(n) time and contains no forbidden keywords.

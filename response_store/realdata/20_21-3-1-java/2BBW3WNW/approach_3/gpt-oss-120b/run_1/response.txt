@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] dynTab = new double[nItem+1][capacity+1];` which gives a (n+1) × (capacity+1) table, and Java initializes all entries to 0 (the first row is also explicitly set to 0).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates `i = 1 … nItem`, but the inner loop starts at `j = 1` instead of `j = 0`, so the zero‑capacity subproblem is never filled.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `if (weight[i-1] > j) … else …` correctly implements the required `weight[i] <= j` check before considering inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the code uses `Math.max(dynTab[i-1][j], dynTab[i-1][j - weight[i-1]] + value[i-1])`, which follows the proper recurrence referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the DP never computes the column `j = 0`, the method returns 0 for a knapsack of capacity 0 even when zero‑weight items exist, so it fails for that edge case.

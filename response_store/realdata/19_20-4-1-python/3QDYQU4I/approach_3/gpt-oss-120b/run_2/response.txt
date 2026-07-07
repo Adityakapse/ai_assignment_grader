@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑True loop walks from the root, moving left when target.key < x.key and right otherwise, and stops when it finds a null child slot.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: No separate parent variable (e.g., y) is kept; the code relies on the current node x instead of tracking a distinct parent pointer throughout the traversal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the empty slot is found, the code assigns target to x.left or x.right based on the key comparison, correctly attaching it as a left or right child.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: insert.parent is set to x (the live traversal pointer) rather than a dedicated parent variable, which the rubric classifies as using the wrong variable.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles insertion into an empty tree, returns the appropriate root, and maintains the BST property for all cases.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution sets `lower = 1` instead of `0`, so the search interval does not include the possible value N = 0 and thus does not correctly bound the entire range.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses a while loop with condition `upper - lower > 1` instead of the required `while l <= r`, so the termination condition is not the standard l ≤ r, although it does compute the midpoint correctly with `(upper + lower) // 2`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution updates `upper` when `f(mid)` is 1 and `lower` when `f(mid)` is 0, correctly narrowing the search interval toward the unknown N.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After the binary search you test f(lower) and return lower if it is 1 otherwise upper, which correctly yields the first index where f equals 1.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm works for many N but initializes lower to 1, so when N = 0 it returns 1 instead of 0, causing an off‑by‑one error for that valid case.

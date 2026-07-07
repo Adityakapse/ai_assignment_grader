@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The code allocates a (len1+1)×(len2+1) table correctly, but fills it using loops that run from 0 to len‑1 and write to dp[i+1][j+1] instead of iterating i and j from 1 to m and n as specified.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Base cases are initialized correctly with dp[i][0]=i and dp[0][j]=j for all i and j.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When characters match, the implementation sets dp[i+1][j+1] = dp[i][j], which correctly mirrors edDis[i][j] = edDis[i‑1][j‑1].
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatches the code computes replace, insert, and delete costs and stores the minimum plus one, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct edit distance for any input strings and does not use recursion.
+
+TOTAL: 95

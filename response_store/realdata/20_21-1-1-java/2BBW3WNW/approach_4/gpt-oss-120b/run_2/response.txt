@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution checks `if(b == 0)` and returns `1 % c`, correctly handling the base case and the edge case where c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution checks `b % 2 == 0` for even exponents and uses `b % 2 != 0` (with a special case for b = 1) for odd exponents, correctly separating the two parity branches.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch (b % 2 != 0 && b != 1) the code calls expo(a, b‑1, c), multiplies the result by a, and applies % c, matching the required (a * expo(a,b‑1,c)) % c behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch you compute `bhalb = b/2`, call `expo(a, bhalb, c)` once, and return `(zwResult * zwResult) % c`, correctly halving and squaring with the modulo.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles all cases (b = 0, b = 1, even and odd b) using recursion and applies the modulo after each multiplication, yielding the correct a^b mod c for all inputs without using import or **.

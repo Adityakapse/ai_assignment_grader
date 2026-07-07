@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a 2‑D array dp of size (len1+1)×(len2+1) correctly, but the nested loops run i from 0 to len1‑1 and j from 0 to len2‑1 instead of iterating i = 1..m and j = 1..n as the rubric specifies.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Both base cases are properly initialized: the first column is set with dp[i][0] = i for all i and the first row with dp[0][j] = j for all j.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the characters match (c1 == c2), the code assigns dp[i+1][j+1] = dp[i][j], correctly copying the diagonal predecessor as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatching characters the implementation computes replace, insert, and delete from the three neighboring cells, takes the minimum, and stores it in dp[i+1][j+1], faithfully implementing 1 + min of the three neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method is fully iterative (no recursion) and returns dp[len1][len2]; it yields the correct edit distance for all valid string inputs.

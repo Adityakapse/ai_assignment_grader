@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution uses recursive quicksort with while loops in the partition routine, but it lacks the explicit outer‑loop/inner‑loop pass structure typical of a recognisable sorting algorithm as described in the rubric.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The partition function uses A.Smaller(i, r) and A.Larger(j, r) (with Equal checks) to compare elements against the pivot index r, correctly applying the provided comparison API.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The partition routine swaps i and j only after the loops that compare A[i] and A[j] to the pivot, and it calls A.Swap(i, j) with the same indices used in those comparisons, satisfying the swap‑on‑violation requirement.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution only calls Length() when invoking quicksort initially, but none of the loops (while/do‑while) use Length() to set their bounds, so the algorithm does not rely on Length() for loop limits.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The Sort method delegates to a QuickSort implementation that correctly partitions and recursively sorts the sub‑lists, handling empty, single‑element, duplicate, and larger cases, resulting in an ascending ordered list for all valid inputs.

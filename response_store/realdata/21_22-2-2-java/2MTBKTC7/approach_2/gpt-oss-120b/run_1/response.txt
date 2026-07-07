@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution never creates a prefix‑sum array C nor initializes C[0] to A[0]; it recomputes sums with separate loops instead of using a pre‑allocated prefix array.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution never builds a cumulative array C; instead it recomputes sums with summe1 and summe2 for each query, so the required C[i] = A[i] + C[i‑1] prefix‑sum construction is absent.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code creates `int[] d = new int[n];` and iterates with `for (int i = 0; i < b.length; i++)`, correctly allocating an output array of size n and processing each query.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly returns a[links] when l = r, uses summe1 to compute C[r] when l = 0, and otherwise returns summe1(a, r) – summe2(a, l) which equals C[r] – C[l‑1]; thus the l = 0 edge case is handled properly.
+
+POINT_ID: 5
+MARKS: 4
+FEEDBACK: The code computes each range sum correctly, but it recomputes prefix sums for every query, resulting in O(n²) time instead of the required O(n) overall.

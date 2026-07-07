@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list `F` from `A`, but it never adds a virtual source node 0 with edges to every node 1…N, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is created; the solution never stores or reuses previously computed longest‑path values.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, so no leaf‑node base case is defined.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Because the solution does not implement a DFS, it never applies the recurrence `sol = max(sol, dfs(child)+1)` nor stores results in a memo table.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The topological‑layer algorithm correctly computes the length of the longest directed path (returning `i‑1`) for all DAG inputs, satisfying the problem’s functional requirement.

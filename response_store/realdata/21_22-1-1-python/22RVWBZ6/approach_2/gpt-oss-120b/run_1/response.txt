@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: Your calc function returns exp(n)-1, showing you recognized the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The exp function does not handle the case b == 0 at all and uses n==1 as its base case, so it never returns 1 for an exponent of zero as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The else branch correctly returns exp(n-1)*2 % 1000000007, which implements the required “reduce by 1 and multiply by a” step for odd exponents.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The exp function checks `n/2 % 2 == 0` and uses float division, so it does not correctly halve `n` once and square the recursive result for the even case as required.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The function returns the correct value for small n, but it uses recursive calls that decrement n by 1 for odd inputs, causing non‑logarithmic depth and will exceed recursion limits for large n, so it is not correct for all valid inputs.

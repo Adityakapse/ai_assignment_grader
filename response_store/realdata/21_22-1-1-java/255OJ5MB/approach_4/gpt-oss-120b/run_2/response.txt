@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: Your implementation recursively computes (calc(n/2)+1)^2‑1 for even n and ((calc(n‑1)+1)*2‑1) for odd n, correctly yielding 2ⁿ‑1 modulo 10⁹+7.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function at all, so there is no base case handling b == 0, causing the required termination condition to be absent.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd branch the code computes ((calc(n‑1)+1)*2‑1) % 1000000007L instead of returning (a * expo(a, b‑1, c)) % c, so it neither multiplies by the base a nor follows the required odd‑case formula.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code never defines an expo function and its even case; instead it recurses in calc, so it does not halve a exponent and square a single recursive result as required.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive implementation correctly computes (2^n − 1) mod 1,000,000,007 for all n, applying the modulo at each step and avoiding any forbidden keywords.

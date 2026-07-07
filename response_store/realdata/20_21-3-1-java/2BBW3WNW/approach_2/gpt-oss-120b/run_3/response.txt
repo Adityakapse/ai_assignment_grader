@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates a double[][] of size (nItem+1) × (capacity+1) and, using Java’s default zero values (plus an explicit loop for the first row), ensures the table is initialized to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at 1 rather than 0, so capacity 0 subproblems (including zero‑weight cases) are not handled.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly checks `if (weight[i-1] > j)` before considering inclusion, ensuring volumes are only added when they fit (including handling zero‑weight items).
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses dynTab[i][j] = Math.max(dynTab[i-1][j], dynTab[i-1][j-weight[i-1]] + value[i-1]) when the item fits and copies dynTab[i-1][j] when it doesn't, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The DP correctly computes the optimal value for all cases, including zero‑volume items, and returns the proper maximum for the given inputs.

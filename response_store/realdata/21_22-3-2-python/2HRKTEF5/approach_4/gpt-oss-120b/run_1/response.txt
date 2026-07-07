@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds adjacency lists F and P from A, but it never adds a virtual source node 0 with edges to every node; instead it starts from nodes with indegree 0, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never creates a memo array or performs a cache check; it uses an iterative layering approach instead of memoized DFS, so the required -1‑initialized memoization is absent.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not define a DFS function with a base case for leaf nodes, so it never returns 0 for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a topological layering loop instead of a recursive dfs, never iterates children to compute sol = max(sol, dfs(child) + 1), and does not store results in a memo table.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation builds forward and predecessor lists, uses Kahn’s topological layering to compute the number of layers, and returns i‑1, which correctly yields the longest path length for all DAGs in O(N+M) time.

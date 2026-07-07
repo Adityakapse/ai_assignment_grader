@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Graph construction and virtual source
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A correctly, but it never adds a virtual source node 0 with edges to all nodes, so it cannot rely on a single DFS from node 0.
+
+POINT_ID: Point 2 — Memoization: initialisation and cache check
+BUCKET: Wrong
+FEEDBACK: No memo array initialized to –1 is used; the solution relies on a visited flag and a distance array instead of the required sentinel‑based memoization.
+
+POINT_ID: Point 3 — DFS base case: leaf node
+BUCKET: Correct
+FEEDBACK: When a node has no outgoing edges the loop does nothing and längsteEntfernung[i] remains 0, effectively returning 0 for leaf nodes as required.
+
+POINT_ID: Point 4 — Recurrence: longest path over children
+BUCKET: Correct
+FEEDBACK: For each neighbor the code updates längsteEntfernung[i] with Math.max(längsteEntfernung[i], längsteEntfernung[neighbor] + 1), correctly applying the recurrence and storing the result.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Correct
+FEEDBACK: The algorithm computes the longest distance from every node, takes the maximum, and runs in O(N+M), yielding the correct longest path length for all DAG inputs.

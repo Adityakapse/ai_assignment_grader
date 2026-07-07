@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates an array A of the correct size, but it never initializes its entries to -1 (they remain the default 0), so it does not meet the required sentinel initialization for a memo array.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes A[0] with W[0] and sets A[1] to the larger of W[0] and W[1], correctly handling the n = 0 and n = 1 base cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative array A and never includes a memo array or a cache check like `if (memo[n] != -1) return memo[n];`, so subproblems are not cached at all.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution correctly implements the max‑based recurrence (A[i] = max(W[i] + A[i‑2], A[i‑1])) but does not use a memo array nor store results in memo[n] before returning, violating the required memoization pattern.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative DP correctly computes A[i] = max(A[i‑1], W[i] + A[i‑2]) with proper base cases and runs in O(n), yielding the maximum profit for all inputs.

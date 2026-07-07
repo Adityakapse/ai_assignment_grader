@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code builds a predecessor list instead of an adjacency list and never adds a virtual source node 0 with edges to all nodes, so it does not satisfy the required graph construction.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution does not initialise a memo array to –1 nor perform a cache‑check (memo[node] != –1) before computing; it uses a plain int array with default 0 and recomputes values in a forward loop instead of memoisation.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: Your code does not implement a DFS routine at all, so there is no leaf‑node base case that returns 0 as required by the rubric.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code builds a predecessor list and iteratively computes longest distances, never recursing over children or storing a memoized result as sol = max(sol, dfs(child)+1) before returning.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The code assumes nodes are processed in numeric order and only works when all edges go from lower‑numbered to higher‑numbered nodes; for general DAGs (e.g., an edge 3→1) it will compute an incorrect path length.

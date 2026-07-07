@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The Queue class defines a list and uses firstElement and firstEmpty indices to store elements, providing the required internal storage, but the __loopIndex method only resets when i equals maxLength+1, so the circular buffer logic can break after enough enqueues, making the FIFO tracking incomplete.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The isEmpty method correctly returns `True` when `self.firstElement` equals `self.firstEmpty`, which accurately reflects an empty circular buffer implementation.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The head() method correctly returns self.list[self.firstElement] when the queue is non‑empty and does not change any internal indices, fulfilling the requirement.
+
+POINT_ID: 4
+MARKS: 16
+FEEDBACK: Your enqueue method correctly appends or overwrites the element at the back, updates firstEmpty and wraps it with __loopIndex, so the queue’s internal state stays consistent.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: Your dequeue method correctly returns the front element, advances and wraps the firstElement index, and thus updates the queue’s internal state, effectively removing the element.
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: Your circular‑buffer implementation preserves FIFO order and the methods cooperate, but you print messages instead of raising errors and use a 150‑element capacity rather than the required ≤100, which slightly deviates from the specification.

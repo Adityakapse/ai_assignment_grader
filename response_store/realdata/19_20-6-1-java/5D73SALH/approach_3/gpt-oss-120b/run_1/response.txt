@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a (aLength+1)×(bLength+1) matrix, but the nested loops start at 0 instead of iterating from 1 to m and 1 to n as specified.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base cases are correctly set with `if(i == 0) matrix[i][j] = j;` and `else if(j == 0) matrix[i][j] = i;`, initializing the first row and column.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `a.charAt(i-1) == b.charAt(j-1)` the code assigns `matrix[i][j] = matrix[i-1][j-1];`, correctly handling the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches the code computes `ins`, `rem`, `rep` and sets `matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));`, implementing the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `matrix[aLength][bLength]` after filling the DP table and contains no recursion, yielding the correct edit distance for all inputs.

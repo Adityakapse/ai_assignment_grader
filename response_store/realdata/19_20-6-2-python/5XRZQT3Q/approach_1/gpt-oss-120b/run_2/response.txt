@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, a (n+1) × (capacity+1) 2‑D list initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The nested loops `for i in range(len(value) + 1): for w in range(capacity + 1):` iterate over every item index and every capacity value, covering all sub‑problems.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Inside the inner loop the condition `elif volume[i-1] <= w:` correctly checks whether the current item fits into the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the code uses `max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])`; otherwise it copies `table[i-1][w]`. This implements the required recurrence with the forward‑DP “prev” index.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `table[len(value)][capacity]`, which yields the optimal maximum value for all valid inputs, matching the expected behavior.
+
+TOTAL: 100

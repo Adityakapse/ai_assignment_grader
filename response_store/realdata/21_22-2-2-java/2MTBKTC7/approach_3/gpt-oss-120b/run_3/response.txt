@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never allocates a prefix‑sum array C; instead it calls summe1 and summe2 for each query, summing the original array from scratch.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No cumulative‑sum loop is present; the code does not build C[i] = A[i] + C[i‑1] at all.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: An output array d is allocated, but its size is set to a.length instead of the number of queries (b.length), which may be mismatched even though the loop iterates over all queries.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly handles the l = 0 case (using summe1 only) and the l > 0 case (computing sum1 – sum2), producing the proper closed‑interval sum.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the returned sums are correct, each query recomputes sums with a linear scan, giving O(n · q) time rather than the required O(n) overall.

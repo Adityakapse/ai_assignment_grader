@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a (m+1)×(n+1) matrix and uses nested loops that iterate i = 1..m and j = 1..n (with j outer, i inner) to fill the table bottom‑up, correctly handling the base cases.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly sets edit_matrix[i][0] = i for all i and edit_matrix[0][j] = j for all j, establishing the proper base cases for deletions and insertions.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly assigns `replace = edit_matrix[i-1][j-1]` when `a[i-1] == b[j-1]`, so the matrix entry uses the diagonal value with no extra cost.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The student correctly adds 1 to each of the three neighbor values (insert, delete, replace) and takes the minimum, implementing the required 1 + min recurrence for mismatched characters.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly fills the DP matrix, handles base cases, and computes the minimum edit operations without recursion, returning the proper edit distance for all inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function loops over `range(0,len(a))` and processes each token in order, using a try/except to separate numeric tokens (converted to int) from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted with `int(a[i])` and immediately pushed onto the stack via `stack.push(int(a[i]))`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For operator tokens the code pops two values (`y = stack.pop(); x = stack.pop()`), applies the appropriate operation, and pushes the result back with `stack.push(...)`.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The operand order for subtraction and division is correct (`x - y` and `x / y`), but division uses floating‑point `/` instead of integer floor division as required.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns the result as a string (`result = str(stack.pop())`) and performs non‑integer division, causing incorrect outputs for many valid RPN expressions.

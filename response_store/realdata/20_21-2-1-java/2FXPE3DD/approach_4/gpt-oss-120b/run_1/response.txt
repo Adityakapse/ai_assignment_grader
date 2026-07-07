@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int c[] = new int[B.length];`, which provides a counting array of size at least max(A)+1 and is automatically zero‑initialized in Java.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) c[A[i]]++;` correctly iterates over A and increments the count for each category, accumulating frequencies as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code iterates `for (int i = 0; i < B.length; i++)`, covering indices 0 through |B|‑1 and builds a result array of length B.length, yielding a binary string of exact length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `B[i] >= c[i] ? '1' : '0'`, correctly outputting '1' when the count `c[i]` is less than or equal to the capacity `B[i]` and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly counts occurrences, compares each count to B[i] in two linear passes, returns the proper binary string, runs in O(n+m), and contains no forbidden substrings.

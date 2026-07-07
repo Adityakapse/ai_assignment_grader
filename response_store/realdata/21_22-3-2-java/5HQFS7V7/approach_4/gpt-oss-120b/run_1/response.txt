@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution constructs a list of incoming edges from A, but it never adds a virtual source node 0 with edges to all nodes, so it lacks the required single‑source graph structure.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never creates a memo array initialized to –1 nor checks a sentinel before recomputing; it uses a plain int[] `gewicht` with default 0 values instead of a -1‑based cache.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain a DFS function with a leaf‑node base case; it uses an iterative DP instead, so no base case returning 0 for nodes with no outgoing edges is present.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code builds a predecessor list and iterates over it, never recursing over children or using dfs(child)+1, and it does not store results in a memo array, so the required max‑over‑children recurrence with memoization is missing.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code computes longest paths assuming node indices are topologically ordered, so it works for simple linear graphs but gives wrong results when a node has predecessors with higher indices (e.g., edge [2,1] yields 0 instead of 1).

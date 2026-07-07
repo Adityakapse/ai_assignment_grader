@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 18
+FEEDBACK: Your recursive implementation (using calc(n/2) and calc(n‑1) with the “+1” and “‑1” adjustments) shows you recognized that aₙ = 2ⁿ − 1, though you did not explicitly state the closed‑form formula.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submitted code does not define an expo function at all, so it never includes the required base case handling b == 0 returning 1.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution does not implement an expo function and its odd case does not reduce the exponent by one and multiply by the base as required; it uses a different recurrence instead.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: In the even branch you call calc(n/2) and then adjust with +1 and -1 instead of computing a single tmp = expo(a, b/2, c) and returning (tmp*tmp)%c, so the required expo even‑case logic is not implemented.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The recursive implementation correctly computes (2^n − 1) mod 1e9+7 for all n and avoids any forbidden keywords.

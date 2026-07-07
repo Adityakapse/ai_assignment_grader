@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The code correctly builds an adjacency list from A, but it never adds edges from the placeholder node 0 to every other node, so the required virtual source is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never creates a memo array initialized to –1 nor checks memo[node] before recomputing, instead it builds a topological order and uses a separate longest_path list.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The dfs_visit function does not return any value (it returns None), so leaf nodes are not handled by returning 0 as the rubric requires.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The solution iterates over each node’s children, updates longest_path[node] with max(longest_path[child] + 1), and stores the result in the longest_path array, correctly implementing the recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your `calc` builds a DFS finishing‑time list to obtain a reverse topological order and then correctly propagates longest‑path lengths using that order, returning the maximum length for all DAG inputs.

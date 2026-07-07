@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The class defines a String array `qu` of size 100 and maintains `Qhead` and `Qrear` indices, providing the necessary storage and state to support FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The emptyqueue() method returns `Qhead == Qrear`, which accurately reflects that the queue is empty based on the internal head and rear indices.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns qu[Qhead] directly and does not change Qhead or any other state, correctly providing the front element without modifying the queue.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method stores the element at qu[Qrear] and then updates Qrear with `(Qrear + 1) % max`, correctly adding to the back and maintaining the queue’s internal indices.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue() method returns the element at Qhead, advances Qhead with modulo arithmetic, and thus removes the front element while keeping the queue state consistent.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation uses a circular buffer with Qhead and Qrear, correctly preserves FIFO order across enqueues and dequeues, handles wrap‑around, and contains no import statements.

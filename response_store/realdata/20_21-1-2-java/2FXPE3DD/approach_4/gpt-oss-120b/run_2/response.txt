@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution builds a max‑heap (b and v) and then repeatedly swaps the root with the last element and re‑heapifies (t and v), which is the complete iterative structure of heap sort, an O(n log n) algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `while(i <= (j / 2) - 1)` loop in `v` stops when the sub‑array size is 0 or 1, preventing any infinite recursion or looping.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution implements heap‑building and heapify calls (functions b, v, t) instead of a quicksort partition or a merge step, so the required core sorting operation is absent.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution implements a heap‑sort (building a heap with b and repeatedly heapifying with v), which guarantees O(n log n) worst‑case performance, so randomisation is not needed.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation builds a heap (functions b, v, t) and repeatedly extracts the maximum, resulting in the array being returned in ascending order without using “sort” or “numpy”.

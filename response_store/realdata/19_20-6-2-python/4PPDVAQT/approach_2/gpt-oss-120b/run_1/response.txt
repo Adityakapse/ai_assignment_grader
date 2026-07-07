@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `matrix = [[0 for x in range(cap + 1)] for x in range(len(val) + 1)]`, correctly allocating a (n+1) × (capacity+1) table filled with zeros.
+
+POINT_ID: 2
+MARKS: 5
+FEEDBACK: The code uses a outer loop over capacities (j) and an inner loop over items (i), reversing the required order of iterating items first and capacities second.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution includes `elif vol[i-1] <= j:` to verify an item’s volume fits the current capacity before attempting to add it, correctly implementing the feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses the correct recurrence, updating `matrix[i][j]` with `max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])` when the item fits and `matrix[i-1][j]` otherwise.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The DP table is built correctly and the function returns matrix[len(val)][cap], which yields the optimal knapsack value for all valid inputs.

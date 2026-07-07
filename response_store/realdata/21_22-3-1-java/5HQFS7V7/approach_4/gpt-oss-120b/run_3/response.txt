@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a long[] of size n+1, but it initializes the entries to 0 and W[0] rather than filling the whole array with -1, so the required sentinel value is not used.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code initializes m[0] to 0 (should be W[0]) and m[1] to W[0] (should be max(W[0], W[1])), so the required base cases are not implemented correctly.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code uses an iterative DP array `m` without any recursive helper or memo‑check; it never tests `memo[n]` before computing, so the required cache check is missing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop computes m[i] = Math.max(W[i-1] + m[i-2], m[i-1]) and stores it in m[i] before it is used later, correctly implementing the max‑based recurrence with memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The DP array m is built iteratively in O(n) time, with correct base cases (m[0]=0, m[1]=W[0]) and the recurrence m[i]=max(W[i‑1]+m[i‑2], m[i‑1]) which yields the optimal profit for all input sizes.

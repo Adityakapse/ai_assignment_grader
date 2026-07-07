@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates a (m+1)×(n+1) matrix and uses nested loops (j outer, i inner) that cover all i = 1..m and j = 1..n to fill the table bottom‑up.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It correctly initializes edit_matrix[i][0] = i for all i and edit_matrix[0][j] = j for all j using incremental assignments.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: When a[i‑1] == b[j‑1] the code sets replace = edit_matrix[i‑1][j‑1] and uses it in the min, matching the no‑cost match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatched characters it adds 1 to the appropriate neighbour (insert, delete, replace) and assigns edit_matrix[i][j] = min(insert, delete, replace), satisfying the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct edit distance for all inputs and contains no recursive calls.
+
+TOTAL: 100

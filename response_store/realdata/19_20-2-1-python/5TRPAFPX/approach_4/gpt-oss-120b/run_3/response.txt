@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The class defines a Queue with a list for storage and uses firstElement and firstEmpty indices (and a loop helper) to track the front and back, providing the necessary state for FIFO behavior.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The isEmpty method returns `self.firstElement == self.firstEmpty`, which accurately reflects emptiness based on the queue’s internal indices.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method returns self.list[self.firstElement] when the queue isn’t empty and does not change any pointers or remove elements, correctly providing the front value without modifying the queue.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method appends (or overwrites) the element at the position indicated by firstEmpty, then increments and wraps firstEmpty via __loopIndex, properly maintaining the queue’s internal state for later operations.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue method returns the element at self.list[self.firstElement], then advances and wraps firstElement with __loopIndex, correctly updating the queue’s internal state so subsequent operations remain consistent.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The Queue class implements isEmpty, head, enqueue, and dequeue using circular indexing without any imports, and maintains FIFO order even after many enqueue/dequeue operations.

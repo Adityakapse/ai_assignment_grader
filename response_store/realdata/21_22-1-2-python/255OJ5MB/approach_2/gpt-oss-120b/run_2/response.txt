@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: You initialise the upper bound correctly to 10^18, but you start the lower bound at 1 instead of 0, so the case N = 0 is not covered.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution implements a binary‑search loop and correctly computes `mid = (upper + lower)//2` each iteration, but it uses `while upper - lower > 1` instead of the specified `while l <= r` condition.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The code updates the bounds based on f(mid) but uses `upper = mid` and `lower = mid` instead of the required `r = m - 1` and `l = m + 1`, so the narrowing logic is only partially correct.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The post‑loop code returns `lower` when it already satisfies `f(lower)==1` and otherwise returns `upper`, which correctly yields the smallest n with f(n)=1 as required.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The binary search works for most N but starts `lower` at 1, so it returns 1 instead of 0 when the hidden threshold N is 0, making the solution incorrect for that edge case.

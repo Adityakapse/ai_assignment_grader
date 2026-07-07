@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution creates a list M for iterative DP instead of a memo array of size n+1 initialized to -1, so no sentinel‑based memoization is used.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes M[0] with W[0] and sets M[1] to max(W[0],W[1]), correctly handling the n = 0 and n = 1 cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative list M and never includes a memo array or a cache‑check like `if memo[n] != -1: return memo[n]`, so subproblems are not cached at all.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly implements the max‑based recurrence (M[i] = max(M[i‑1], W[i] + M[i‑2])) but it uses an iterative list M instead of a memo array in a recursive helper, so the required memo[n] storage pattern is not present.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The DP loop only iterates up to index n‑1 and returns M[n‑1], so the solution never considers the last element W[n] and gives wrong results for inputs where the optimal set includes the final location.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The function never checks for b == 0 and returns the initial value 1 instead of 1 % c, so it fails the required base case (e.g., when c = 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `if j%2!=0:` to detect when the exponent is odd, correctly distinguishing odd from even as required.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Your loop correctly detects an odd exponent (j%2!=0), multiplies the accumulated result by the current base (res1) and decrements j by 1, matching the required odd‑case reduction.
+
+POINT_ID: 4
+MARKS: 5
+FEEDBACK: The loop tries to halve j and square res1 for even exponents, but it uses `j=j/2` (float division) instead of integer division, so the even‑case halving and squaring is not correctly implemented.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The function correctly implements fast modular exponentiation for typical cases, but it returns 1 instead of 0 when b = 0 and c = 1 (it should return 1 % c), so it fails on that valid edge case.

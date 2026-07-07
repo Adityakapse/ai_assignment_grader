@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: C is created as `[0]*n` where `n = len(B)`, which is at least `max(A)+1` and thus correctly sized and zero‑initialized.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(m): C[A[i]] += 1` iterates over all elements of `A` and increments the corresponding count, correctly accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop `for i in range(n):` iterates from 0 to `len(B)-1`, producing exactly one output character per element of `B`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside that loop the code appends `0` when `C[i] > B[i]` and `1` otherwise, matching the required `1` when `C[i] <= B[i]`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function runs in O(len(A)+len(B)) time, returns the correct binary string for all valid inputs, and contains no forbidden substrings.

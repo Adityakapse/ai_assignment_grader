@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] of size (nItem+1) × (capacity+1) and, relying on Java’s default zero‑initialisation (plus an explicit loop for the first row), correctly initializes the DP table to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so the j = 0 subproblem (needed for zero‑weight items) is never processed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code checks `if (weight[i-1] > j)` before using the item, ensuring `weight[i-1] <= j` for inclusion and correctly handling zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code uses `dynTab[i][j] = Math.max(dynTab[i-1][j], dynTab[i-1][j-weight[i-1]] + value[i-1])` when the item fits and copies `dynTab[i-1][j]` when it doesn't, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The DP correctly computes the optimal value for typical cases and handles zero‑weight items, but it returns 0 immediately when capacity ≤ 0, so it fails to include zero‑weight items when the knapsack capacity is zero.

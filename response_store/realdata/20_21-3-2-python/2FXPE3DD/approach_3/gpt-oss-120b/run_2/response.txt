@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A, but it never adds a virtual source node 0 with edges to every vertex, so the DFS cannot start from a single source covering all nodes.
+
+POINT_ID: Point 2
+BUCKET: Wrong
+FEEDBACK: There is no memo array initialised to -1 and no cache‑check (`if memo[node] != -1`) before recursion; the algorithm relies only on a `seen` flag and a `heap` array, which does not satisfy the required memoisation pattern.
+
+POINT_ID: Point 3
+BUCKET: Wrong
+FEEDBACK: The DFS function does not contain an explicit base‑case return for leaf nodes; it returns None and only leaves `heap[v]` at 0, which does not match the specification of returning 0 for a leaf.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: After recursing to each child, the code updates `heap[v] = max(heap[v], 1 + heap[child])`, correctly taking the maximum over children and storing the result for reuse.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: By taking `max(heap)` after processing all vertices, the function returns the length of the longest directed path for any DAG and runs in O(N+M) time.

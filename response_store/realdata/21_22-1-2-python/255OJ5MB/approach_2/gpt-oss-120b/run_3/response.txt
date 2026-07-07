@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 7
+FEEDBACK: You set the lower bound to 1 instead of 0, so the search space does not cover the case N = 0, though the upper bound of 10^18 is correct.
+
+POINT_ID: 2
+MARKS: 14
+FEEDBACK: The code uses a while loop that computes the midpoint with integer division each iteration, but it stops when upper – lower > 1 instead of the textbook “while l <= r” condition described in the rubric.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The code narrows the search interval using `upper = mid` and `lower = mid` instead of the required `r = m - 1` and `l = m + 1`, and it starts `lower` at 1, which fails when N = 0.
+
+POINT_ID: 4
+MARKS: 12
+FEEDBACK: The post‑loop logic returns lower when f(lower) is 1 and otherwise returns upper, which correctly yields N for the usual case but fails when N could be 0 due to the initial lower bound.
+
+POINT_ID: 5
+MARKS: 15
+FEEDBACK: The binary search works for most N values, but initializing lower to 1 means the function fails when N = 0 (it would return 1 instead of 0).

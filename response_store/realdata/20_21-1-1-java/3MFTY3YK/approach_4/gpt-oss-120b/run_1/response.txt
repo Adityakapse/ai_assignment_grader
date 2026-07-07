@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 for b == 0 without applying “% c”, so the base case is incorrect and would fail for c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if (b % 2 == 0)` for the even case and the `else` branch for odd `b`, correctly separating the two recursive paths.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch the code returns ((expo(a, b - 1, c) * a) % c), which correctly multiplies by a and applies the modulo after reducing the exponent by 1.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even case the code calls `expo(a, b / 2, c)` once, stores it in `res`, and returns `(res * res) % c`, correctly halving and squaring with the modulo.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns a instead of a % c when b == 1 (and returns 1 instead of 1 % c when c = 1), and the multiplication steps can overflow before the modulo is applied, so it fails for larger inputs.

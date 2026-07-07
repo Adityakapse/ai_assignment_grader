@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a prefix‑sum array `d` of size n and fills it, but it does not set `d[0] = a[0]` explicitly before the cumulative loop—instead the first element is assigned inside the loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop uses a running variable `last` and assigns `d[i] = last`, effectively implementing `C[i] = A[i] + C[i-1]` for all i, so the cumulative sum array is built correctly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution creates an `output` array of length n and iterates with `for (int i = 0; i < n; i++)` to compute each query, satisfying the required allocation and loop.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets output[i] = d[r] and only subtracts d[l‑1] when l > 0, so queries with l == 0 correctly return C[r] without an out‑of‑bounds access.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a prefix‑sum array `d` and uses it to compute each query in constant time, correctly handling `l == 0` and running in O(n) overall.

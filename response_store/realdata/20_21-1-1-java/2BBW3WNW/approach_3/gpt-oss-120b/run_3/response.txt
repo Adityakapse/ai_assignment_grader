@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function includes `if(b == 0) return result = 1 % c;` which returns 1 % c for the base case, handling the termination and the c = 1 edge case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It distinguishes parity with `if(b % 2 == 0)` for even and `else if(b % 2 != 0 && b != 1)` for odd, correctly using `b % 2` to separate the two cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch it calls `expo(a, b-1, c)` and then computes `result = (zwResult * a) % c;`, correctly reducing the exponent by 1 and multiplying by a with modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch it computes `zwResult = expo(a, b/2, c);` and then `result = (zwResult * zwResult) % c;`, correctly halving b, squaring the recursive result, and applying modulo.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The overall implementation returns the correct `a^b mod c` for all valid inputs, avoids the forbidden strings, and applies modulo at each step to keep intermediate values bounded.

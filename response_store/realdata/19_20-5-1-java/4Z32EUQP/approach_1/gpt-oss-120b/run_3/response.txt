@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node to `myQ` before the loop and uses `while(!myQ.isEmpty())` to process nodes until the queue is empty, satisfying the required initialisation and loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Each iteration removes the current node with `int u = myQ.get(0); myQ.remove(0);`, which correctly dequeues from the front of the list, ensuring FIFO behavior.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The `color` array tracks node states; nodes are marked discovered (`color[...][1]=1`) before enqueue and finished (`color[u][1]=2`) after processing, preventing duplicate processing and acting as a visited set.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The inner loop iterates over `graph[u]` and enqueues each unvisited neighbour with `myQ.add(color[graph[u][v]][0]);`, correctly adding neighbours to the back of the queue.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `result`, which records nodes in the order they are dequeued, producing the correct BFS level‑by‑level order for all reachable nodes from the start vertex.
+
+TOTAL: 100

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: When b == 0 the function falls to the final else clause and returns 1, not 1 % c, so it does not correctly handle the required base case or the edge case c == 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `b % 2 == 0` for the even case and the `else` branch for odd, correctly distinguishing parity.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The odd branch returns ((expo(a, b - 1, c) * a) % c), which correctly implements (a * expo(a, b‑1, c)) % c.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For even b the code calls expo(a, b/2, c) and returns (res * res) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The recursive logic follows exponentiation by squaring, but the base case returns a instead of a % c, and the algorithm can overflow before the final modulo, so it fails for inputs where a ≥ c.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if z.left == None or z.right == None: y = z` to handle zero/one child cases and correctly sets `y = minimum(z.right)` for the two‑child case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `minimum` function iterates with `while x.left != None: x = x.left` and returns `x`, correctly walking left to find the in‑order minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses `if y.left != None: x = y.left else: x = y.right`, correctly selecting y’s non‑null child (or None if y is a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code sets `x.parent = y.parent` when `x` is non‑null, updates `y.parent`’s left or right child (or root when `y.parent` is None) to `x`, correctly handling all splicing cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code copies the key with `if y != z: z.key = y.key`, ensuring the key is only replaced when y is the successor, not when y equals the node being deleted.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The delete function correctly handles leaf, single‑child, two‑children, and root deletions, updating pointers and returning the proper root as shown in the implementation.

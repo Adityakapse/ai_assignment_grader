@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `matrix = [[0 for x in range(cap + 1)] for x in range(len(val) + 1)]`, correctly allocating a (n+1) × (capacity+1) table initialized to zero.
+
+POINT_ID: 2
+MARKS: 5
+FEEDBACK: The solution includes nested loops over items and capacities, but the outer loop iterates over `j` (capacity) and the inner loop over `i` (items), reversing the required order of iterating items first.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution includes the required check `elif vol[i-1] <= j:` before adding an item, correctly ensuring capacity feasibility for each item and capacity.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly implements the recurrence, using `matrix[i][j] = max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])` when the item fits and `matrix[i][j] = matrix[i-1][j]` otherwise.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly builds the DP matrix, handles the base cases, and returns matrix[len(val)][cap], which yields the optimal knapsack value for all valid inputs.

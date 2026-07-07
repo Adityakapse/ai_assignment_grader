@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code creates an array A for DP but never allocates a memo array initialized to -1 (it only sets A[0] and A[1] and fills later), so it does not meet the required memo‑array allocation and sentinel initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes A[0] with W[0] and sets A[1] to the larger of W[0] and W[1], correctly handling the n = 0 and n = 1 cases.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative array A and never includes a memoization array or a check like `if (memo[n] != -1) return memo[n];`, so subproblems are not cached.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code builds an iterative DP array A instead of a recursive helper that assigns memo[n] = max(W[n] + opt_helper(n‑2), opt_helper(n‑1)) and returns it, so the required memo‑store pattern is absent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative DP fills array A with A[i] = max(A[i‑1], W[i] + A[i‑2]) and correctly handles the base cases, yielding the optimal profit in O(n) time.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses `for n in inputarray:` to iterate over every token and correctly distinguishes operators with `if/elif` checks while handling numbers in the final `else` branch.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the else clause the code does `stack.push(int(n))`, correctly converting each numeric token to an integer before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and pushes the result for each operator, but it uses '/' for division, producing a float and truncating with int() instead of performing floor (rounded‑down) integer division.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code correctly pops the right operand first and computes x‑y for subtraction, but for division it uses x/y (floating‑point) instead of integer floor division, violating the required integer semantics.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator works for addition, subtraction, and multiplication, but uses true division (x/y) instead of integer floor division, so results are incorrect for division cases, especially with negative numbers.

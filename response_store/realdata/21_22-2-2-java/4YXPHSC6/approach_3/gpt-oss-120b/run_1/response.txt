@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `intervalle` with length `n` and initializes `intervalle[0] = a[0]` before building the cumulative sums.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i=1;i<=n-1;i++)` correctly sets `intervalle[i] = a[i] + intervalle[i-1]`, constructing the prefix‑sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array `d` of size `n` is created and the loop `for(int j=0;j<=b.length-1;j++)` iterates over every query in `b`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each query the code computes `l = b[j][0]-1`; if `l >= 0` it uses `r - intervalle[l]`, otherwise it uses `r`, correctly handling the `l == 0` edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the correct list of range sums for all queries in O(n) time and does not contain any forbidden keywords.

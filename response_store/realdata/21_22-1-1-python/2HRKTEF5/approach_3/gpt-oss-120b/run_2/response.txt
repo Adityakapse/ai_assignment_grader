@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never states or uses the closed form a_n = 2^n − 1; it attempts a custom recursive computation instead of directly applying 2^n − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There is no separate expo function, and the base case in calc returns 0 for n == 0 rather than the required 1 for the exponentiation base case.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd‑n branch the code reduces n by 1 and multiplies the recursive result by 2, but it also adds 1 afterwards and does not follow the pattern (a * expo(a, b‑1, c)) % c.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑n branch modifies n, adds 1, squares the result, and subtracts 1, which does not match the required single recursive call expo(a, b//2, c) followed by (tmp*tmp) % c.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function produces correct results for small n (e.g., n ≤ 4) but incorrectly reduces the exponent with “% 1000000007”, causing wrong answers for large inputs and omits a final modulo in the odd case, so it is not fully correct for all valid inputs.

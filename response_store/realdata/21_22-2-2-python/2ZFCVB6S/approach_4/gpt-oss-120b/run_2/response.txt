@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds a list of [previous_sum, current_sum] pairs instead of a single array C of size n, and it never sets C[0] = A[0] before the loop (the first prefix is derived inside the loop).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop iterates over A, updates s with s += transporte and stores the previous and new cumulative sums, effectively building the prefix sums needed for the queries.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution builds a prefix‑sum list and then returns a list comprehension `[sums[r][1]-sums[l][0] for l,r in B]`, which creates an output array of length len(B) and iterates over every query.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The list `sums` stores the prefix sums, and the comprehension returns `sums[r][1] - sums[l][0]`, which correctly yields `C[r]` when `l == 0` (since `sums[0][0]` is 0) and `C[r] - C[l-1]` otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds prefix sums in a single pass and computes each query as `sums[r][1]-sums[l][0]`, correctly handling l = 0 and running in O(n) without using forbidden keywords.

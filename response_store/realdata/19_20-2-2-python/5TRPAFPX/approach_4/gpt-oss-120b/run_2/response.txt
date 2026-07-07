@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses a `for n in inputarray` loop to process every token left‑to‑right and distinguishes operators with `if/elif` checks while handling all other tokens as numbers via `else`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the else clause the code converts each numeric token with int(n) before pushing it onto the stack, satisfying the required integer handling.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and computes +, -, and * operations, but for division it uses `x/y` (floating‑point division) instead of integer floor division as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses the correct operand order (x‑y), but the division also uses the correct order yet performs floating‑point division (x/y) instead of integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator works for addition, subtraction, and multiplication, but uses “/” which yields a float and doesn’t perform floor division, so results are wrong for division‑involved or nested expressions.

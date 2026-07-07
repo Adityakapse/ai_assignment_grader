@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code copies B into c instead of allocating a new zero‑initialized counting array, so it does not create a separate array of size ≥ max(A)+1 initialized to 0.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution decrements a copy of B for each element in A (`c[A[i]] -= 1`) instead of incrementing a dedicated count array, so it does not correctly count frequencies as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your output loop uses `for i in range(len(B))`, correctly iterating from 0 to |B|-1 and building a result of exactly length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your code correctly copies B, decrements counts for each A element, and then outputs '1' when the remaining value is non‑negative (i.e., count ≤ B[i]) and '0' otherwise, matching the required comparison.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly copies B, decrements counts for each occurrence in A, and then checks `c[i] >= 0` to produce the required binary string in O(n+m) time, meeting the specification.

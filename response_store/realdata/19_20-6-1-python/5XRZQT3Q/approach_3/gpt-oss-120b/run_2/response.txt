@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑D arrays (`total` and `tmpdist`) and does not allocate a 2‑D table or employ nested i‑j loops as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It initializes `total = range(len(a)+1)` (first row) and `tmpdist = [i_b+1]` (first column), correctly setting the base costs for deletions and insertions.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `s_a == s_b` the code appends `total[i_a]`, which corresponds to copying `ed[i-1][j-1]`, implementing the match case correctly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches it appends `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, correctly using the three neighbouring cells and adding the edit cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct Levenshtein distance for all inputs and does so iteratively without any recursion.

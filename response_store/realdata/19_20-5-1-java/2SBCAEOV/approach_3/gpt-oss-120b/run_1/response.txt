@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code adds the start node to the list q before the while loop and iterates while q is not empty, matching the required BFS initialization and loop structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is obtained with q.get(0) and removed with q.remove(0), always dequeuing from the front of the queue.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The algorithm uses the Farbe color field to track visited nodes, marking neighbours GRAU when they are discovered (before they are dequeued), which is a visited check but not performed at dequeue time as the rubric expects.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each dequeued node u, the code iterates over u.adj and enqueues every neighbour v that is still WEIß, adding them to the back of q.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the list result containing all reachable vertices in the order they are discovered, which corresponds to the correct BFS level‑by‑level traversal for directed graphs.

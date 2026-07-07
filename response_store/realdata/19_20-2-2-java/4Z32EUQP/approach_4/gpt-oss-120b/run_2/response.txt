@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code loops over every token, but it checks operators with `input[i] == "+"` (and similar), which does not reliably compare strings in Java, so numeric and operator tokens are not correctly distinguished.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The else branch uses Integer.parseInt(input[i]) and pushes the resulting int onto the stack, correctly handling numeric tokens.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values (e.g., `int zahl1 = s.pop(); int zahl2 = s.pop();`) applies the appropriate arithmetic (`zahl2 - zahl1`, `zahl2 / zahl1`, etc.) and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In both the subtraction and division cases you pop the right operand first (zahl1) and then the left operand (zahl2), and you compute `zahl2 - zahl1` and `zahl2 / zahl1`, which follows the required RPN operand order.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution uses `if(input[i]== "+")` (and similar) to compare strings, which fails to detect operators correctly, causing incorrect results or runtime errors for most RPN expressions.

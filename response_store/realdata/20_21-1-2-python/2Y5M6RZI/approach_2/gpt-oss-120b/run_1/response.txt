@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 17
+FEEDBACK: The code implements a classic divide‑and‑conquer merge sort with recursive splitting and a merge step, but using a sentinel value equal to the maximum possible element (10⁶) can cause incorrect ordering when the input contains that value.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution uses `if len(A)>1:` and returns the array otherwise, so it correctly stops recursion for subarrays of length 0 or 1.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your Merge function attempts to merge two sorted halves, but it appends a sentinel value of 10⁶, which is not guaranteed to be larger than all possible input elements (they can be 10⁶), so the merge can place a sentinel into the output and lose a real element. This makes the core sorting operation incorrect for edge cases.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The solution implements merge sort, which inherently guarantees a worst‑case O(n log n) runtime, so the random pivot requirement does not apply.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The recursive merge sort correctly sorts the array for all inputs within

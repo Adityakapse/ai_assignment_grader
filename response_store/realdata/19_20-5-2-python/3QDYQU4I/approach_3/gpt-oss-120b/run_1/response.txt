@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The implementation uses a recursive helper (`dfs_help`) instead of an explicit `while` loop, so there is no while‑loop that processes the stack as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The current node is removed with `node = stack.pop()`, which pops from the back of the list, correctly implementing LIFO removal.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Nodes are added to `visited` only after being popped, and neighbours are only pushed onto the stack if they are not already in `visited`, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `for neighbour in reversed(graph[node])` and appends each unvisited neighbour to the stack, pushing them in reverse adjacency order so they are visited in the original order.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the algorithm generally produces a DFS traversal, the extra step that removes and re‑appends already‑stacked neighbours can change the visitation order, resulting in possible order mismatches on some graphs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution constructs an adjacency list from A, but it never adds edges from the virtual source node 0 to all nodes 1…N, leaving node 0 as an unused placeholder.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not create a memo array nor check a cached value before recursing; it performs a full DFS and then computes longest paths separately, so subproblems are not memoized.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The dfs_visit function does not return any value for leaf nodes—it only appends the node to a list—so there is no base case that returns 0 as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over each child and updates longest_path[value] with longest_path[v] + 1, but it never stores the computed length in a memo table inside a recursive call, so the memoization step required by the rubric is missing.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `calc` function builds a full DFS‑based topological order, then computes longest_path via dynamic programming over that order and returns the maximum, yielding the correct longest path length for any DAG in O(N+M) time.

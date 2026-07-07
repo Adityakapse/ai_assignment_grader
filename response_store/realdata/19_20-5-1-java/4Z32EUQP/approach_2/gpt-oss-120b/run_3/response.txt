@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node to myQ before entering the loop and uses `while(!myQ.isEmpty())` to process nodes until the queue is empty, satisfying the required BFS initialization and loop structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code dequeues nodes with `int u = myQ.get(0); myQ.remove(0);`, correctly removing the current node from the front of the list each iteration.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The code uses a color array to track visited nodes, checks `color[...]==0` before adding neighbors to the queue and marks nodes as visited (color = 2) after processing, effectively preventing duplicate entries.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The loop iterates over `graph[u]`, checks `color[graph[u][v]][1]==0` for unvisited neighbours, and enqueues each neighbour with `myQ.add(color[graph[u][v]][0])`, correctly adding all unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly colors nodes, enqueues each unvisited neighbor once, and adds nodes to the result when they are dequeued, producing the proper BFS level‑by‑level order for all reachable vertices.

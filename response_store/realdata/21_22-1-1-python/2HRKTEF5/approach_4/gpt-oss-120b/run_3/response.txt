@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The recursive implementation follows the 2^n‑1 pattern (using squaring for even n and doubling for odd n), but it incorrectly applies `% 1000000007` to the argument n and omits a final modulo in the odd branch, so the result is wrong.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code does not define an expo function with a base case for b == 0; it only handles n == 0 in calc, so the required base case returning 1 for exponent 0 is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd branch you reduce n by 1 and recurse, but you multiply by 2 and then add 1 and return without applying the final modulo, so the result is not (a * expo(a, b‑1, c)) % c as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In the even branch the code halves n and calls calc once, but then adds 1, squares the result, and subtracts 1 instead of simply squaring the recursive value; it does not implement the required “tmp = expo(a, b//2, c); return (tmp*tmp) % c” pattern.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The odd‑n case returns `res+1` without a final modulo, causing incorrect results (e.g., returning 1000000007 instead of 0) for some inputs, even though the recursion otherwise follows the correct formula.

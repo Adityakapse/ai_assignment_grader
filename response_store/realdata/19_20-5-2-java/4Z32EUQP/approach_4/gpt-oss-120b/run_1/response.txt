@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes the start node onto the stack before entering `while(!s.isEmpty())`, and the loop continues until the stack is empty, satisfying the required DFS initialization and loop structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code consistently uses `s.pop()` to remove the current node from the top of the stack, ensuring a proper LIFO order for DFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if(!result.contains(start))` before processing each popped node and adds it to `result` only once, ensuring visited nodes are not processed again.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `graph[start]` from the last index down to zero and pushes each neighbour onto the stack, so neighbours are added in reverse order and will be visited in the correct adjacency‑list sequence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code pushes neighbors in reverse order and only adds a node to the result when first popped, so it returns all reachable nodes in the proper DFS adjacency‑list order, handling cycles correctly.

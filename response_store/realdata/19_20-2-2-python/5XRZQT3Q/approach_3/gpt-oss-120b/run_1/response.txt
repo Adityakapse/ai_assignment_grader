@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Iteration and token classification
+BUCKET: Correct
+FEEDBACK: The function loops `for x in inputarray` and uses `int(x)` in a try/except to separate numbers from operators, processing every token left‑to‑right.
+
+POINT_ID: Point 2 — Number handling: push to stack
+BUCKET: Correct
+FEEDBACK: When `int(x)` succeeds, the integer `c` is pushed onto the stack with `stack.push(c)`.
+
+POINT_ID: Point 3 — Operator handling: pop, compute, push
+BUCKET: Correct
+FEEDBACK: In the except block the code pops two values (`b = stack.pop(); a = stack.pop()`), applies the appropriate operation, assigns the result to `c`, and then pushes `c` back onto the stack.
+
+POINT_ID: Point 4 — Correct operand order for non-commutative operators (- and /)
+BUCKET: Semi
+FEEDBACK: Subtraction uses the correct order (`a - b`), but division uses `a / b`, which yields a floating‑point result instead of the required integer (floor) division.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Semi
+FEEDBACK: The calculator returns correct integer results for addition, subtraction, and multiplication, but produces a float (or incorrect value) for expressions involving division, so it fails on some valid RPN cases.

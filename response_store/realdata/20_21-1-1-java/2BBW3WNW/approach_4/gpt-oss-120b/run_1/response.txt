@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution includes `if(b == 0) return result = 1 % c;`, which correctly returns 1 % c as the base case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if(b % 2 == 0)` for the even case and an `else if(b % 2 != 0 && b !=1)` (with a separate branch for `b == 1`) for the odd case, correctly separating the two parity branches.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code handles the odd case (b % 2 != 0 && b != 1) by calling expo(a, b‑1, c) and then computing (zwResult * a) % c, which matches the required (a * expo(a, b‑1, c)) % c.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch the code halves b (b/2), calls expo once, and returns (zwResult * zwResult) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles all cases (b = 0, even, odd, and b = 1) using recursive calls and applies “% c” after each multiplication, avoiding overflow and meeting the required complexity.

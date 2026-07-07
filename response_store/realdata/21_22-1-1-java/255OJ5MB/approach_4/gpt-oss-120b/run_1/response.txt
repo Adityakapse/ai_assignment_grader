@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution recursively computes calc(n) as (2ⁿ − 1) mod 10⁹+7, using exponentiation‑by‑squaring logic that correctly incorporates the “‑1” term.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never defines an expo function, so there is no base case handling b == 0; the recursion only deals with n and lacks the required exponent base case.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd branch the code does `((calc(n - 1) + 1) * 2 - 1) % 1000000007L` instead of returning `(a * expo(a, b-1, c)) % c`, so it neither multiplies by the base `a` nor follows the required modulo pattern.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function at all, so there is no even‑case handling that halves b and squares a single recursive result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive implementation correctly computes (2^n − 1) mod 1e9+7 for all n, uses only allowed operations, and runs in O(log n) without overflow.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code selects y as the node to delete by using the original node when it has ≤1 child and by calling successor (which returns tree_min(delete.right)) when it has two children, matching the required logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The helper function tree_min walks left from the given node until node.left is None and returns that node, correctly implementing treeMinimum.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution never defines or assigns an x variable that explicitly holds y’s non‑null child; it relies on transplant without identifying x.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The transplant function updates the parent’s child pointer (or root) and sets node2.parent, correctly splicing the removed node out of the tree.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never copies delete.key = y.key; instead it transplants the successor node, so the required key‑copy step is missing.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Despite the missing explicit key copy, the delete implementation returns a valid BST for leaf, single‑child, two‑child, and root deletions, preserving the BST property.

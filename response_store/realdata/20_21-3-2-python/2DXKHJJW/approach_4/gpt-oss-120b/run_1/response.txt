@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates an adjacency list (`Connections`) from A, but it never adds a virtual source node 0 with edges to every vertex, so it cannot evaluate paths that start at arbitrary nodes.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never creates a memo array initialized to -1 nor checks a cached value; it uses a Lengths list initialized to 0 and updates it directly, so it does not implement the required memoization.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not implement a DFS function at all, so there is no base case handling for leaf nodes; it simply iterates over edges without returning 0 for nodes with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over each child and updates Lengths[u] with max(Lengths[e] + 1, …), so it adds the +1, but it never stores a memoized result for a node via a recursive call, thus not following the required dfs‑with‑memo pattern.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code asserts `e[0] < e[1]` and assumes edges go from lower‑ to higher‑indexed vertices, then updates lengths in a single forward pass, which fails for general DAGs and even raises an AssertionError on valid inputs where this ordering does not hold.

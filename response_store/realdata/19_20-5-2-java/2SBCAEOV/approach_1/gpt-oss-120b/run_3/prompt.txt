@@ -1,0 +1,112 @@
+QUESTION:
+As a second algorithm - analogous to the first task - a depth
+depth-first search is to be implemented.
+
+Here, too, the nodes are to be visited in the order in which they appear in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(start);
+
+    while(!stack.isEmpty()){
+        int next = stack.pop();
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int i = graph[next].length-1; i >= 0; --i) { // Need to traverse list in reverse order to visit vertex in correct order
+                if(!visited.contains(graph[next][i])) {
+                    stack.push(graph[next][i]);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+public List<Integer> dfs(int[][] graph, int start) {
+        List<Integer> result = new ArrayList<Integer>();
+        List<Node> graf = new ArrayList<Node>();
+        Node s = null;
+        for (int i = 0; i < graph.length; i++) {
+            ArrayList<Integer> adj = new ArrayList<Integer>();
+            for (int j : graph[i]) adj.add(j);
+            Node n = new Node(i, adj);
+            n.farbe = Farbe.WEIß;
+            graf.add(n);
+            if (i==start) s = n;
+        }
+
+        for (Node n : graf) n.convertIntToNode(graf);
+        dfsvisit(s, result);
+        //System.out.println("result: " + result);
+        return result;
+}
+
+public void dfsvisit(Node u, List<Integer> result) {
+    u.farbe = Farbe.GRAU; result.add(u.val);
+    for (Node v : u.adj) {
+        if (v.farbe.equals(Farbe.WEIß)) {
+            dfsvisit(v, result);
+        }
+    }
+    u.farbe = Farbe.SCHWARZ;
+}
+
+enum Farbe {
+    WEIß, SCHWARZ, GRAU
+}
+
+class Node {
+    public Farbe farbe;
+    public int val;
+    public List<Node> adj;
+    public ArrayList<Integer> adjIntList;
+
+    public Node(int val, ArrayList<Integer> adj) {
+        this.val = val;
+        this.adj = new ArrayList<Node>();
+        this.adjIntList = adj;
+    }
+
+    public void convertIntToNode(List<Node> nodes) {
+        this.adj = new ArrayList<Node>();
+        for (int i : adjIntList) {
+            for (Node n : nodes) {
+                if (n.val == i) {
+                    this.adj.add(n);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "farbe=" + farbe +
+                ", val=" + val +
+                ", adjIntList=" + adjIntList +
+                '}';
+    }
+}
+
+RUBRIC:
+Point 1 — DFS loop structure and initialisation (valid range: 0–20)
+  The start node is pushed onto the stack before the loop, and a while loop processes nodes until the stack is empty.
+
+Point 2 — LIFO pop: removing from the top (valid range: 0–20)
+  The current node is always removed from the top (back) of the stack, ensuring depth-first traversal.
+
+Point 3 — Visited tracking: check and mark (valid range: 0–20)
+  Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.
+
+Point 4 — Neighbour push (valid range: 0–20)
+  All unvisited neighbours from graph[current] are pushed onto the stack. For iterative implementations, neighbours are pushed in reverse adjacency list order so that they are popped and visited in forward order.
+
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns all reachable nodes from start in correct DFS order for all valid directed graphs.

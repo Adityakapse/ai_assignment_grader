@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a (len1+1)×(len2+1) DP table, but the filling loops run from 0 to len‑1 (using i+1/j+1 offsets) instead of iterating i and j from 1 to len1/len2 as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes dp[i][0] = i for all i and dp[0][j] = j for all j, correctly setting both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code compares `c1 == c2` (i.e., `word1.charAt(i)` with `word2.charAt(j)`) and on a match correctly sets `dp[i + 1][j + 1] = dp[i][j]`, matching the required `edDis[i][j] = edDis[i-1][j-1]` behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch the student computes replace = dp[i][j]+1, insert = dp[i][j+1]+1, and delete = dp[i+1][j]+1, then stores the minimum of these three in dp[i+1][j+1], correctly implementing 1 + min of the three neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative DP fills the table correctly, handling base cases and character matches, and returns dp[len1][len2] without any recursion, yielding the proper edit distance for all inputs.

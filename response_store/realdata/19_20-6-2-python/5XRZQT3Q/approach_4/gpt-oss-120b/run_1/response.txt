@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `table = [[0 ...] for x in range(len(value) + 1)]`, which allocates a (n+1) × (capacity+1) matrix and initializes every entry to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Your solution uses a nested loop where the outer loop runs over `i` from 0 to `len(value)` (all items) and the inner loop runs over `w` from 0 to `capacity` inclusive, covering every subproblem.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `elif volume[i-1] <= w:` to ensure an item is only considered when its volume does not exceed the current capacity, satisfying the required feasibility check.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses the proper max‑based recurrence, referencing `table[i-1]` for both the fit (`value[i-1] + table[i-1][w-volume[i-1]]`) and no‑fit cases, matching the required relation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds the DP table in the standard forward manner and returns table[len(value)][capacity], which correctly yields the maximum value for all valid inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code builds a list of [previous, current] sums rather than allocating a single prefix‑sum array C of length n and setting C[0] = A[0], so the required array allocation and initialization are not present.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: Your loop maintains a running total s and stores it for each index, effectively constructing the prefix sums (C[i] = A[i] + C[i‑1]) needed for the queries.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution builds the result list with a list comprehension that iterates over every (l, r) pair in B, effectively allocating an output array of size n and processing all queries.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your list comprehension uses `sums[r][1] - sums[l][0]`, and since `sums[l][0]` is 0 when `l == 0`, it correctly returns `C[r]` for the edge case while handling `l > 0` as `C[r] - C[l-1]`.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your code correctly builds prefix sums and computes each query as sums[r][1]‑sums[l][0], yielding the right results in O(n) time and without using any forbidden keywords.

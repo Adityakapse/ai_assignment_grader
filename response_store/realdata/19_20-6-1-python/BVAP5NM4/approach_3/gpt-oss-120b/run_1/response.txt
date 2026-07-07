@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `edit_matrix` with dimensions (m+1) x (n+1) and uses nested loops (outer over j, inner over i) that iterate i from 1 to m and j from 1 to n to fill the table.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The first column is initialized with `edit_matrix[i][0] = edit_matrix[i-1][0] + 1` and the first row with `edit_matrix[0][j] = edit_matrix[0][j-1] + 1`, correctly setting edDis[i][0]=i and edDis[0][j]=j.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When `a[i-1] == b[j-1]` the code sets `replace = edit_matrix[i-1][j-1]`, effectively assigning `edDis[i][j] = edDis[i-1][j-1]` for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches the code computes `insert`, `delete`, and `replace` each with a +1 cost and assigns `edit_matrix[i][j] = min(insert, delete, replace)`, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `edit_matrix[m][n]` after filling the DP table iteratively, producing the correct edit distance for all inputs without any recursion.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑True loop walks down the tree, moving left when target.key < x.key and right otherwise, and stops when it finds a null child to insert into.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate parent variable is kept during traversal; the code relies on x only at the moment of insertion and does not retain a parent pointer after the loop.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code attaches the new node as x.left when target.key < x.key and as x.right otherwise, correctly choosing the side based on the key comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Immediately after linking the node as a child, the statement target.parent = x sets the new node’s parent to the correct parent node.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles the empty‑tree case, returns the original root for non‑empty trees, and inserts the node while preserving the BST property for all depths.

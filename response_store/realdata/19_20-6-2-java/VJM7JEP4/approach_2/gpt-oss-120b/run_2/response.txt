@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] of size (n+1) × (capacity+1) and relies on Java’s default zero‑initialisation (explicitly setting the first row to 0), satisfying the required DP table allocation and initialization.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code correctly loops over all n items with i = 1..n, but the inner loop starts at j = 1 instead of 0, so it does not iterate over the j = 0 subproblem (even though that case is pre‑initialized).
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code uses `if (volumes[i - 1] > j)` (else branch) to ensure an item is only considered when its volume fits the current capacity, satisfying the required feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your implementation uses the correct recurrence, setting `rucksack[i][j] = rucksack[i-1][j]` when the item doesn't fit and `Math.max(rucksack[i-1][j], rucksack[i-1][j - volumes[i-1]] + values[i-1])` when it does, matching the required forward relation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly builds the DP table using the 0/1 knapsack recurrence and returns rucksack[n][capacity], handling base cases and edge conditions properly.

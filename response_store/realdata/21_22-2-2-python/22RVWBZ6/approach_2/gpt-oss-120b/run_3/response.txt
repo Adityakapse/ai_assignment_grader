@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution creates `c = A.copy()`, which allocates a size‑n array and leaves `c[0]` equal to `A[0]`, meeting the prefix‑sum allocation and initialization requirement.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The code creates `c = A.copy()` and correctly updates each `c[i]` with `c[i-1] + c[i]` for i = 1…n‑1, properly constructing the prefix‑sum array.
+
+POINT_ID: 3
+MARKS: 8
+FEEDBACK: The solution iterates over all queries in B, but it builds the result list with `append` instead of allocating an output array of size n up front as the rubric specifies.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly uses the prefix array `c` and returns `c[r]` when `l == 0` and `c[r] - c[l-1]` otherwise, handling the l=0 edge case as required.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your function correctly builds a prefix‑sum array and uses it to answer each query in constant time, achieving overall O(n) complexity and contains no forbidden keywords.

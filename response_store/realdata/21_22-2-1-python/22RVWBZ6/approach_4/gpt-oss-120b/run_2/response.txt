@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates `c = B.copy()` instead of allocating a fresh zero‑filled array, so the counting array is not initialized to 0 (it starts with the capacity values).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over A but uses `c[A[i]] -= 1` on a copy of B instead of incrementing a dedicated count array, so it does not correctly accumulate the frequencies of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution’s output loop uses `for i in range(len(B))`, iterating from 0 to |B|‑1 and thus produces a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code decrements a copy of B by the counts in A and then outputs '1' when the resulting value is non‑negative, correctly implementing the condition C[i] ≤ B[i] and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution copies B, decrements counts for each element of A, and then outputs 1 when the remaining value is non‑negative, correctly implementing the required check in O(n + m) without forbidden substrings.

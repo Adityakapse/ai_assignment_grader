@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines calc(n) as (exp(n)-1) % 1000000007, showing they understand the closed form a_n = 2^n − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The exp function’s base case checks for n == 1 instead of handling the exponent b == 0, so there is no correct base case for b == 0.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the else branch the student returns exp(n‑1)*2 % 1000000007, correctly implementing the odd‑exponent reduction and multiplication.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even case uses the condition (n/2 % 2 == 0) and float division, which does not correctly detect even exponents and leads to incorrect or inefficient recursion.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Because the exponent function is flawed for many inputs, calc(n) does not reliably return (2^n − 1) mod 10^9+7 for all valid n.

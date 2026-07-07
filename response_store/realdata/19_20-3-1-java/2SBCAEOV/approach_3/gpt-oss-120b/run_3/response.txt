@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Correct
+FEEDBACK: The student uses an outer `for (int i = 0; i < list.Length()-1; i++)` loop and an inner `for (int j = i+1; j < list.Length(); j++)` loop, which matches the typical structure of a selection‑sort algorithm.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The comparison `if(list.Smaller(j, min))` correctly calls `Smaller` with the indices of the current element `j` and the current minimum `min` to detect a smaller value.
+
+POINT_ID: Point 3
+BUCKET: Wrong
+FEEDBACK: `list.Swap(min, i)` is executed unconditionally after the inner loop and does not use the same pair of indices that were compared, violating the requirement that swap be based directly on the comparison result.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: Both the outer and inner loops use `list.Length()` (or `list.Length()-1`) for their bounds, ensuring the algorithm works for any list size.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation correctly places the smallest remaining element at position `i` each pass, resulting in the list being sorted in ascending order for all valid inputs.

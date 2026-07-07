@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution loops over the entire input list with `for i in range(0,len(a))` and uses a try/except to push integers or, on `ValueError`, handle operators, correctly distinguishing numbers from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution attempts `stack.push(int(a[i]))` inside a try block, converting each numeric token to an integer before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and pushes the result for each operator, but it uses `x/y` which yields a float instead of performing integer floor division as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution pops y then x and computes x‑y and x/y, so the operand order for subtraction and division is correct, but it uses floating‑point division instead of the required integer (floor) division.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The function returns a string and uses true division (`/`) instead of integer floor division, so results are incorrect for expressions involving division (and the return type is not an integer).

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates a (aL+1)×(bL+1) matrix and uses nested loops that iterate over all indices from 1 to aL and 1 to bL, correctly filling the DP table bottom‑up.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It initializes matrix[a][0] = a for all a and matrix[0][b] = b for all b, correctly setting the base cases for deletions and insertions.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code computes a cost of 0 when characters match and uses the min expression, which effectively assigns matrix[a][b] = matrix[a‑1][b‑1] for matching characters.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For mismatching characters the cost is 1 and the assignment uses matrix[a‑1][b] +1, matrix[a][b‑1] +1, and matrix[a‑1][b‑1] +1, matching the required 1 + min of the three neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns matrix[aL][bL] and contains no recursion, producing the correct edit distance for all valid string inputs.
+
+TOTAL: 100

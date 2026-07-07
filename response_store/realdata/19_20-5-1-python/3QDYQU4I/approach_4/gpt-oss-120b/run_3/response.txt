@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution adds the start node to the queue but uses recursion (bfs_help) instead of a while loop to process nodes, so the required loop structure is missing.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution consistently removes the current node with `queue.pop(0)`, always dequeuing from the front of the list.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code maintains a visited list and avoids enqueuing already‑visited nodes, but it never checks whether the dequeued node is already in visited before processing—it simply appends it, so the visited check is applied only when adding neighbours.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code loops over every neighbour in graph[node] and appends each one to the queue only if it is not already visited (and not already queued), correctly enqueuing all unvisited neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive bfs_help correctly uses a FIFO queue, checks both visited and queued nodes, and returns the reachable nodes in proper BFS order for all graph shapes, including cycles.

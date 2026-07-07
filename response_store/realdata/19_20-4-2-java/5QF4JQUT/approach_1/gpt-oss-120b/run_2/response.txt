@@ -1,0 +1,25 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code selects `toBeDeleted` using a ternary that sets it to `delete` when `delete.left == null || delete.right == null`, otherwise it calls `treeMinimum(delete.right)`, matching the required rule.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The `treeMinimum` method iterates left until `root.left` is null and returns that node, exactly as specified.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: `notNullChildOfToBeDeleted` is assigned `toBeDeleted.left` if non‑null, else `toBeDeleted.right`, correctly identifying y’s (toBeDeleted’s) single child or null.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The splice updates the child’s parent when the child is non‑null and correctly reassigns either the root or the parent’s left/right pointer based on whether `toBeDeleted` is a left or right child.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: When `toBeDeleted != delete`, the code copies `toBeDeleted.key` into `delete.key`, implementing the key‑copy step for the successor case.
+
+POINT_ID: 6
+MARKS: 20
+FEEDBACK: The method handles leaf, single‑child, two‑child, and root deletions correctly and returns a valid BST root for all cases.
+
+TOTAL: 100

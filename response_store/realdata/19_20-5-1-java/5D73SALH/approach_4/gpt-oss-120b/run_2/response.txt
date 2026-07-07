@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution pushes the start node onto the queue (using `queue.push(start)`) before entering `while(!queue.isEmpty())`, and the loop continues until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution removes the current node with `int predecessor = queue.get(0); queue.remove(0);`, always taking the element at index 0, which implements a FIFO dequeue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses a `colorList` to mark nodes WHITE, GRAY, and BLACK, checks that a neighbor is WHITE before adding it to the result and queue, and updates the color to prevent revisiting, thereby correctly tracking visited nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code loops over `int[] knot = graph[predecessor]` and, for each neighbour whose color is still "WHITE", adds it to `results` and enqueues it with `queue.push(knot[i])`, ensuring all unvisited neighbours are added to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method uses a FIFO queue (via Stack with get(0)/remove(0)) and marks nodes gray/black, ensuring each reachable node is visited once in level‑by‑level order following the adjacency list sequence, handling cycles properly.

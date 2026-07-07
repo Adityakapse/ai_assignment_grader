@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student adds the start node to the queue `q` before entering the `while (!q.isEmpty())` loop, and the loop continues until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is removed with `Node u = q.get(0); q.remove(0);`, i.e., always from the front of the list, preserving FIFO order.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Node colors (WEIß, GRAU, SCHWARZ) are used to track visitation; a node is only enqueued if its color is WEIß and is marked GRAU when discovered, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `for (Node v : u.adj)` and enqueues each neighbour `v` that is still WEIß, adding it to the back of the queue with `q.add(v);`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `result`, which contains all reachable nodes in the order they are discovered, matching the expected BFS level‑by‑level order for directed graphs.

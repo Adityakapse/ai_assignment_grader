@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a long[] m of size n+1, but it initializes entries to 0 (m[0]=0, m[1]=W[0]) instead of the required sentinel value –1.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code sets m[0]=0 and m[1]=W[0]; it lacks the explicit base case returning max(W[0], W[1]) for n = 1, so the base cases are only partially correct.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No cache‑check of a sentinel value is performed; the array m is never consulted to skip recomputation, as the solution is purely iterative.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence m[i] = Math.max(W[i‑1] + m[i‑2], m[i‑1]) is implemented correctly and the result is stored in m[i] before the next iteration.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm runs in O(n) and works for small inputs, but it ignores the last element W[n] (off‑by‑one error), so it can return an incorrect maximum profit for larger inputs.

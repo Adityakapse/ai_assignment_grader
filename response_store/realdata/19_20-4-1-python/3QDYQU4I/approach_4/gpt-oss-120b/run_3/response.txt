@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a while loop that moves left when target.key < x.key and right otherwise, inserting the node when a null child is found, correctly traversing to the insertion point.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never declares or updates a separate parent pointer during traversal, instead setting target.parent only at the insertion point, so it does not maintain a parent variable as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code assigns `x.left = target` when `target.key < x.key` and `x.right = target` otherwise, correctly attaching the new node as left or right child based on the key comparison.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code assigns `target.parent = x` right before linking the new node as a child, correctly setting the parent to the node found during traversal.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles the empty‑tree case, correctly traverses down the tree, inserts the new node as a leaf while setting its parent, and returns the original root, preserving the BST property.

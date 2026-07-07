@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a 1‑dimensional list (`result` and `tmp`) and updates it row by row, never allocating a 2‑D table of size (m+1) × (n+1) nor nested i/j loops over that table.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution sets `result = range(len(pre) + 1)` establishing the first row (edDis[0][j] = j) and initializes each new row with `tmp = [i+1]`, correctly giving the first column (edDis[i][0] = i).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the match branch (`else:`) the code appends `result[j]`, which corresponds to the diagonal cell `edDis[i-1][j-1]`, correctly handling the no‑edit case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When characters differ, the code uses `1 + min((result[j], result[j + 1], tmp[-1]))`, correctly referencing the three neighboring cells for insert, delete, and replace.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative DP implementation correctly handles empty, identical, and longer strings without recursion, returning the proper edit distance for all cases.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] table of size (n+1) × (capacity+1) and relies on Java’s default zero initialization, also explicitly sets the first row to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates over all items, but the inner loop starts at j = 1 instead of 0, so subproblems for capacity 0 are not processed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i - 1] > j)` correctly implements the feasibility check `volumes[i] <= j` for all j ≥ 1.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence uses `Math.max(table[i-1][j], table[i-1][j - volumes[i-1]] + values[i-1])` when the item fits and copies the previous value when it does not, matching the required formula.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The method returns correct results for typical cases, but fails when the knapsack capacity is 0 and there are zero‑volume items, because those entries are never updated.
+
+TOTAL: 80

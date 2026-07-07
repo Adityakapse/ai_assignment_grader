@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code chooses the successor with newNode = treeMinimum(deleteNode.right) when the node has two children, and otherwise uses the node itself (or its single child) as the removal target, matching the required y‑selection logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s `treeMinimum` recursively follows `root.left` until `root.left` is None and then returns that node, correctly implementing the left‑ward walk to find the in‑order minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the two‑child case the code finds the successor (`newNode = treeMinimum(deleteNode.right)`) and then correctly handles `newNode.right`—treating it as the promoted child and covering the case where it is `None`. This matches the required identification of x.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates the parent’s child pointer (e.g., `deleteNode.parent.left = newNode` or `.right = newNode`) and sets `newNode.parent = deleteNode.parent`, and also handles the root replacement case with `if deleteNode is root: root = newNode`.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: In the two‑child case the code never copies the successor’s key into deleteNode (no `deleteNode.key = newNode.key`), so the original key is not updated when y ≠ delete.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The code handles leaf and single‑child deletions and root replacement, but when the node to delete has two children and its successor is the immediate right child, it never updates deleteNode.right.parent, leaving an incorrect parent link and breaking the BST structure.

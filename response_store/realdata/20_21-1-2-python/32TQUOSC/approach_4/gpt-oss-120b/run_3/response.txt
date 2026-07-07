@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution splits the array at the midpoint, recursively calls solution on both halves (A1 and A2), and then merges them with a merge function, demonstrating a complete divide‑and‑conquer sorting structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if 1 < r:` to only recurse on subarrays longer than one element, correctly terminating when the subarray length is 0 or 1.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The merge function attempts to interleave the two sorted halves, but because it loops a fixed r times and includes sentinel values (3000000) in the output, it inserts an extra large element into the final array, resulting in an incorrect order.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution implements a merge‑sort (splits at the middle and merges the halves), which guarantees O(n log n) worst‑case performance, so randomisation is unnecessary.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your recursive split‑and‑merge implementation correctly sorts the array for all inputs and avoids using “sort” or “numpy”, as demonstrated by the proper merging of the halves in the `merge` function.

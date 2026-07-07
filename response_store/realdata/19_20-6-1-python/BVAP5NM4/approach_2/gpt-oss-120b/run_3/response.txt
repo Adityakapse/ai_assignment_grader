@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (m+1)×(n+1) matrix and uses nested loops that iterate i from 1 to m inside a loop over j from 1 to n, correctly filling the DP table bottom‑up.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly sets edit_matrix[i][0] = i via the first loop and edit_matrix[0][j] = j via the second loop, covering all required base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly assigns `replace = edit_matrix[i-1][j-1]` when `a[i-1] == b[j-1]`, ensuring the distance is taken from the diagonal without an extra edit.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly computes insert, delete, and replace costs and assigns edit_matrix[i][j] = min(insert, delete, replace), which implements the required 1 + min of the three neighbours for mismatched characters.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly builds the DP matrix with proper loops, handles all base cases, and returns the exact edit distance without any recursion.

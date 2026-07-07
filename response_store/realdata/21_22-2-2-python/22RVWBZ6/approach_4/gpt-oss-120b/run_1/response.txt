@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates c as a copy of A, giving an array of size n with c[0] already equal to A[0] before the cumulative loop, satisfying the prefix‑sum allocation requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(1,len(A)): c[i] = c[i-1]+c[i]` correctly updates each entry to the sum of the current element and the previous cumulative total, building the proper prefix sum array.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The solution creates an empty list `res` and appends results while looping over all queries, but it does not pre‑allocate an output array of size n before the loop.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution checks `if B[i][0] == 0` and returns `c[B[i][1]]` for that case, otherwise it uses `c[B[i][1]]-c[B[i][0]-1]`, correctly handling both l = 0 and l > 0.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a prefix‑sum array `c` in a single pass and correctly handles both `l == 0` and `l > 0` cases when answering each query, returning the proper sums without using forbidden keywords.

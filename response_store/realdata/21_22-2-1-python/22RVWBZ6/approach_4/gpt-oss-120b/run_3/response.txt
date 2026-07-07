@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code uses `c = B.copy()` rather than allocating a zero‑initialized counting array, so while the size is adequate, the array is not initialized to 0 as the rubric requires.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code iterates over A but subtracts from a copy of B (`c[A[i]] -= 1`) instead of incrementing a separate frequency array, so it never correctly counts how many times each category appears.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student’s output loop uses `for i in range(len(B)):` which correctly iterates from 0 to |B|-1, producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code decrements a copy of B by the occurrences in A so that c[i] = B[i] – C[i] and then outputs ‘1’ when c[i] ≥ 0 (i.e., C[i] ≤ B[i]) and ‘0’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution copies B, decrements counts for each A element, and outputs “1” when the remaining capacity is non‑negative, correctly handling all cases in O(n + m) without forbidden substrings.

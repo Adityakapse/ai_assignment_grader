@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates a `double[][] table = new double[n + 1][capacity + 1];` which matches the required (n+1) × (capacity+1) dimensions, and Java initializes all entries to 0 (the explicit row‑0 initialization further confirms this).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop correctly iterates over all n items, but the inner loop starts at j = 1 instead of j = 0, so the zero‑capacity subproblem (needed for weight‑0 items) is not handled.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (volumes[i - 1] > j)` and otherwise uses the item, which correctly implements a `volumes[i] <= j` feasibility test and also works for zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `table[i-1][j]` for the “not‑fit” case and `Math.max(table[i-1][j], table[i-1][j‑volumes[i-1]] + values[i-1])` for the “fit” case, correctly applying the required recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation works for typical cases, but because the inner loop starts at j = 1, zero‑volume items are never considered when the knapsack capacity is 0, leading to an incorrect maximum value for such inputs.

@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code iterates over the input array with a for‑loop, but it classifies operators using `==` on strings (e.g., `if(input[i]== "+")`), which is incorrect in Java and may fail to recognize operators.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: Numeric tokens are handled in the final `else` block where `Integer.parseInt(input[i])` is called and the resulting integer is pushed onto the stack with `s.push(...)`.
+
+POINT_ID: 3
+MARKS: 25
+FEEDBACK: For each operator the code pops two values, applies the operation, and pushes the result back onto the stack, satisfying the required pop‑compute‑push behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: In the subtraction and division cases the code uses `zahl2 - zahl1` and `zahl2 / zahl1`, correctly treating the second popped value as the left operand.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: The method returns `s.head()` instead of `s.pop()`, which still yields the correct result for a single remaining value, but the earlier string comparison issue can cause runtime errors, so overall correctness is not fully reliable.
+
+TOTAL: 83

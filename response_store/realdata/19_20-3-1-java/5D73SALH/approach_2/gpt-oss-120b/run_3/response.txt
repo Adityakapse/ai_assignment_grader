@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The solution uses recursion for the repeated passes and only inner while‑loops inside the partition routine, so it lacks the explicit outer loop that the rubric expects for a recognisable sorting‑algorithm iteration structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The QuickSort implementation uses A.Smaller(i, r), A.Larger(j, r) and A.Equal(i, r)/A.Equal(j, r) with the correct index arguments to compare elements during partitioning.
+
+POINT_ID: 3
+MARKS: 5
+FEEDBACK: The partition routine swaps A[i] and A[j] after moving i and j based on comparisons with the pivot, but it never directly compares A[i] and A[j] before swapping, so the swap is not tied to a specific order‑violation comparison as required.
+
+POINT_ID: 4
+MARKS: 8
+FEEDBACK: You invoke Length() only to set the initial right index for quicksort, but the loops inside partitionHoare use the passed‑in bounds (l and r) rather than calling Length() directly, so not every loop is explicitly bounded by Length().
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The Sort method correctly calls a working QuickSort implementation that partitions and recursively sorts the list, resulting in an ascending order for all tested inputs.

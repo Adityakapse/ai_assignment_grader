@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution creates a `win` list of length n with sub‑lists `[0,0]` instead of allocating a memo array of size n+1 initialized to -1, so it does not follow the required allocation and sentinel initialization.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The i = 0 branch sets win[0][1] to W[0] and the i = 1 branch stores max(W[0], W[1]) in win[1][1], so opt(0) returns W[0] and opt(1) returns max(W[0], W[1]) as required.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution uses an iterative DP table (`win`) instead of a recursive helper with a memo array, so it never performs a `if memo[n] != -1` cache check as required.
+
+POINT_ID: 4
+MARKS: 8
+FEEDBACK: The code creates a two‑element DP table instead of a single memo entry and uses win[i][1] = max(win[i-1][1], win[i-2][1]+w), which does not match the required recurrence max(W[i] + opt(i‑2), opt(i‑1)) and thus stores an incorrect value.
+
+POINT_ID: 5
+MARKS: 4
+FEEDBACK: The DP recurrence is wrong – for i = 1 you set win[1][1] to the larger of w and W[0] (which violates the spacing rule), and for i ≥ 2 you use win[i‑2][1] instead of the best profit up to i‑2, so the returned value is not the true maximum in general.

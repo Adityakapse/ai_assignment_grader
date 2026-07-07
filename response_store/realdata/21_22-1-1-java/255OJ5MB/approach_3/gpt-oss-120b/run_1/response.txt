@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses the identity a_n = (a_{n/2}+1)^2‑1 for even n and the recurrence a_n = 2·a_{n‑1}+1 for odd n, which is equivalent to computing 2^n‑1 modulo 10^9+7.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate expo function is defined, so there is no base case handling b == 0 as required by the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain an expo function with an odd‑exponent case that multiplies by the base a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function with an even‑exponent case that halves the exponent and squares the recursive result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc(n) returns (2^n ‑ 1) mod 10^9+7 for all n, uses only allowed operations, applies the modulo at each step, and runs in O(log n) time.

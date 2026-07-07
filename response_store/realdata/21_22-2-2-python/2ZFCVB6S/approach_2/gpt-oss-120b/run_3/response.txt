@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code creates a list of two‑element sublists rather than allocating a single prefix‑sum array C of length n and initializing C[0] to A[0], so it does not meet the required allocation and initialization.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: Your loop correctly accumulates a running total `s` and stores the previous and current sums, effectively constructing the prefix sums needed (C[i] = A[i] + C[i‑1]).
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution builds the result list with a list comprehension that iterates over every (l, r) pair in B, effectively allocating an output array of size n and processing all queries.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your computation `sums[r][1] - sums[l][0]` correctly yields `C[r]` when `l == 0` because `sums[0][0]` is initialized to 0, so the l‑zero edge case is handled properly.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation builds a prefix‑sum array in a single pass and computes each query as `sums[r][1] - sums[l][0]`, which correctly yields the range sum in O(n) total time and contains no forbidden keywords.

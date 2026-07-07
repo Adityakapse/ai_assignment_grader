@@ -1,0 +1,23 @@
+POINT_ID: Point 1
+BUCKET: Correct
+FEEDBACK: The code uses `successor(delete)` (which calls `tree_min(delete.right)`) for the two‑child case and directly transplants `delete` with its single child for the zero/one‑child cases, matching the required y selection.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The helper `tree_min(node)` walks left while `node.left` is not `None` and returns the leftmost node, correctly implementing treeMinimum.
+
+POINT_ID: Point 3
+BUCKET: Correct
+FEEDBACK: In each case the child to be promoted is passed to `transplant` (e.g., `delete.right` or `delete.left`), effectively identifying x as y’s non‑null child (or `None` for a leaf).
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: The `transplant` function updates the parent’s child pointer (or root) and sets `node2.parent = node1.parent` when `node2` is not `None`, correctly splicing y out of the tree.
+
+POINT_ID: Point 5
+BUCKET: Wrong
+FEEDBACK: The solution never copies `delete.key = succ.key`; instead it moves the successor node with `transplant`, so the required key‑copy step is missing.
+
+POINT_ID: Point 6
+BUCKET: Correct
+FEEDBACK: Despite the missing key copy, the overall algorithm correctly deletes nodes in all cases (leaf, one‑child, two‑children, root) and returns a valid BST.

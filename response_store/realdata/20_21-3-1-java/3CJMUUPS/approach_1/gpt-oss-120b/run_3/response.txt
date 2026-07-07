@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (volumes.length+1) x (capacity+1), which matches the required (n+1) by (capacity+1) table and relies on Java’s default zero initialization.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop iterates i from 1 to n and the inner loop iterates j from 1 to capacity, but it omits j = 0, so the subproblem for zero capacity is never processed as required.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: The condition `volumes[i‑1] > j` correctly checks feasibility for j ≥ 1, but because j never equals 0 the check does not handle the case where capacity is zero (important for zero‑weight items).
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When an item fits, the implementation uses `Math.max(table[i‑1][j], table[i‑1][j‑volumes[i‑1]] + values[i‑1])`, matching the required recurrence; when it does not fit it copies `table[i‑1][j]`.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The method returns the correct maximum for typical inputs, but it fails for cases with zero‑weight items or capacity = 0 and also alters capacity when it exceeds 1000, so it is not fully correct for all valid inputs.
+
+TOTAL: 75

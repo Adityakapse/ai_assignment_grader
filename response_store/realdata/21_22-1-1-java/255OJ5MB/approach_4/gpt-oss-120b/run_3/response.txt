@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The implementation uses recursion with exponentiation by squaring (adding 1 then squaring for even n, and multiplying by 2 for odd n) and returns (2^n - 1) modulo 10^9+7, correctly reflecting the closed form a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution does not define an expo function at all, so there is no base case handling b == 0, causing the required termination condition to be missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd branch the code returns ((calc(n - 1) + 1) * 2 - 1) % 1000000007L instead of (a * expo(a, b-1, c)) % c, so it neither reduces b by 1 and multiplies by a nor applies the required modulo pattern.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code has no expo function and its even‑n case calls calc recursively and adjusts the result, rather than halving b, calling expo once, and returning (tmp*tmp)%c as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function correctly computes (2^n − 1) for small n, but for large n the intermediate multiplication (u * u) can overflow a 64‑bit long before the modulo is applied, leading to incorrect results.

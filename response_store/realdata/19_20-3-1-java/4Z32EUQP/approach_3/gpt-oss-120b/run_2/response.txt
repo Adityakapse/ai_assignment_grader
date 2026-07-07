@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code contains an outer loop over j and an inner loop over i, forming the classic selection‑sort structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It calls list.Larger(minIndex, i) to detect when the element at i is smaller than the current minimum, which is the proper comparison for ascending order.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: list.Swap(j, minIndex) is executed unconditionally after the inner loop and uses indices different from those in the comparison, so the swap is not directly tied to each comparison result.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer and inner loops use list.Length() to set their bounds, avoiding any hard‑coded sizes.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation correctly produces an ascending‑ordered list for any valid input size.

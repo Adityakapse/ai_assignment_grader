@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The implementation uses the identity a_n = 2^n − 1 via the recursive formulas, effectively computing (2^n − 1) mod 10^9+7.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate expo function with a base case b == 0 is provided; the recursion terminates directly for n == 0 returning 0 instead of the required 1 for exponentiation.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain an expo function handling the odd exponent case; the odd‑n branch is merged into calc and does not match the required (a * expo(...)) pattern.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: There is no expo function implementing the even‑exponent case; although calc halves n and squares, it does not follow the specified expo(a, b/2) → (tmp*tmp) pattern.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc(n) returns (2^n − 1) mod 10^9+7 for all inputs, runs in O(log n), applies the modulo at each step, and uses no forbidden keywords.

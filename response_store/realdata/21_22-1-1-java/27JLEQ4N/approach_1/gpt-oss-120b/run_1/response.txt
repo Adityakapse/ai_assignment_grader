@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: The implementation computes 2^n using binary exponentiation and returns res‑1, demonstrating the closed‑form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: When n = 0 the while loop is skipped, res remains 1 and the function returns 1‑1 = 0, matching the required base case of returning 1 (mod c) for exponent 0.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: For odd n the code executes `if (n%2 ==1) res = res*base % MOD;`, correctly applying the “multiply by a” step for the odd exponent case.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each iteration the statement `base = base*base % MOD;` squares the base after halving n (`n = n/2;`), correctly implementing the even‑exponent case.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The function returns (2ⁿ − 1) mod 1 000 000 007 for all 0 ≤ n ≤ 10⁹, uses no forbidden keywords, and runs in O(log n).
+
+TOTAL: 100

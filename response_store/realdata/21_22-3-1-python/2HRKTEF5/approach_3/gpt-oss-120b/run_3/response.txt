@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution does not allocate a memo array at all; it uses a list P for iterative DP instead of a size‑n+1 array initialized to –1.
+
+POINT ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly handles the base cases by initializing P[0] = W[0] and P[1] = max(W[0], W[1]).
+
+POINT ID: 3
+BUCKET: Wrong
+FEEDBACK: No cache check is performed because the implementation is iterative and never reads from a memo array.
+
+POINT ID: 4
+BUCKET: Correct
+FEEDBACK: The recurrence max(P[i‑2] + W[i], P[i‑1]) is implemented correctly and the result is stored in P for later use.
+
+POINT ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the optimal billboard profit in O(n) time for all valid inputs.

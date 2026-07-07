@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list `F` from the edge list `A`, but it never adds a virtual source node 0 with edges to every node, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is created or used; the algorithm relies on an iterative topological layering instead of a DFS with cached results.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, so no leaf‑node base case is defined.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement a recursive DFS nor compute `max(dfs(child)+1)`; it uses a layer‑by‑layer removal loop instead.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: By repeatedly removing nodes with zero indegree and counting layers, the function returns `i‑1`, which correctly equals the length of the longest directed path for any DAG, meeting the problem’s requirements.

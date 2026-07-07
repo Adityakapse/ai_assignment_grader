@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The code uses recursive quicksort with while loops inside the partition function, but it lacks the explicit outer‑loop/inner‑loop structure typical of the required sorting algorithm pattern.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The partition function uses Smaller(l, p), Larger(r, p) and Equal(l, p) with the correct index arguments to compare elements against the pivot, fulfilling the comparison step requirement.
+
+POINT_ID: 3
+MARKS: 5
+FEEDBACK: The partition routine swaps l and r based on pivot comparisons, but it never calls Swap immediately after a direct Larger/Smaller check of the same pair, so the swap step does not match the rubric’s requirement.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: Length() is only used to set the initial right index; the while loops in partition and the recursive calls do not use Length() to bound their iterations.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The quicksort implementation has bugs in the partition logic and recursive calls (e.g., using the same pivot index for the right sub‑array), so the returned list is not reliably sorted for all inputs.

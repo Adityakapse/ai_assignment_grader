@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 17
+FEEDBACK: Your implementation uses recursion to drive repeated passes and the `while` loops in `partition` to step through element pairs, providing a recognisable sorting‑algorithm iteration structure.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The partition function uses Smaller(l, p), Larger(r, p) and Equal(l, p)/Equal(r, p) with the correct index arguments to compare elements against the pivot.
+
+POINT_ID: 3
+MARKS: 4
+FEEDBACK: The partition function swaps l and r after separate Smaller/Larger checks against the pivot, but it never calls Swap with the exact pair of indices that were directly compared for order violation.
+
+POINT_ID: 4
+MARKS: 7
+FEEDBACK: The code calls Length() once to set the initial right index, but the loops inside partition are bounded only by the variables l and r rather than directly using Length(), so not all loops are explicitly limited by Length().
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The quicksort implementation recurses on the pivot index itself (myQuicksort(listToSort, p, r)) and the partition logic is flawed, so the algorithm can loop indefinitely or return an unsorted list for many inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int [] bucketList = new int[l];` where `l = B.length`, which is at least `max(A)+1`, and Java initializes the array to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i = 0;i < A.length; i++) { bucketList[A[i]]++; }` correctly increments the count for each value in `A`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `for(int i = 0; i < l; i++)` (i.e., from 0 to `B.length‑1`), producing exactly `m` characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the condition `if(bucketList[i] <= B[i])` appends `"1"` otherwise `"0"`, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the correctly built binary string in O(n+m) time and contains none of the forbidden substrings.

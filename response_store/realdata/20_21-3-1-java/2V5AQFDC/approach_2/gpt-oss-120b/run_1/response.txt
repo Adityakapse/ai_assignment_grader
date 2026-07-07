@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] of size (n+1)×(capacity+1) and, with Java’s default zeroing (plus an explicit loop for the first row), correctly initializes the table to 0.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The outer loop correctly iterates over all n items, but the inner loop starts at j = 1 instead of 0, so the subproblem for capacity 0 (needed for zero‑weight items) is never processed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code checks `if (volumes[i - 1] > j)` and only considers inclusion in the `else` branch, correctly handling regular and zero‑weight items.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation uses `table[i][j] = Math.max(table[i-1][j], table[i-1][j - volumes[i-1]] + values[i-1])` when the item fits and `table[i][j] = table[i-1][j]` when it does not, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly computes the optimal value using a 0/1 knapsack DP table and properly handles items with volume 0 by considering them once without consuming capacity.

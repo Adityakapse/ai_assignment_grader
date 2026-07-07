@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, a (n+1) × (capacity+1) matrix initialized to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses `for i in range(len(value) + 1):` and `for w in range(capacity + 1):`, iterating over all items and all capacities from 0 to the given capacity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The condition `elif volume[i-1] <= w:` correctly checks that the current item fits before considering inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits, the code assigns `max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])`; otherwise it copies `table[i-1][w]`, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `table[len(value)][capacity]`, which is the correct DP cell for the optimal knapsack value, yielding correct results for all valid inputs.

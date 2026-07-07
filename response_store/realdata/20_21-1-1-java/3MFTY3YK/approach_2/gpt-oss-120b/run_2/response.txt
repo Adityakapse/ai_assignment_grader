@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The function’s base case for b == 0 returns plain 1 instead of 1 % c, so it fails the required modulo handling (especially when c == 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `b % 2 == 0` for the even case and the else branch for odd, correctly distinguishing parity.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The odd case correctly returns ((expo(a, b - 1, c) * a) % c), which matches the required (a * expo(...)) % c implementation.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: For even b the code calls expo(a, b/2, c) and returns (res * res) % c, correctly implementing the halve‑and‑square step.
+
+POINT_ID: 5
+MARKS: 7
+FEEDBACK: The function returns a instead of a % c when b == 1, so it gives wrong results when a ≥ c, and the recursive even case can overflow before applying the modulo.

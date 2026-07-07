@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never allocates a prefix‑sum array C; it directly calls summe1 and summe2 for each query instead of building C.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No loop constructs C[i] = A[i] + C[i‑1]; the code lacks any cumulative‑sum array construction.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: An output array d of size n is allocated and the loop `for(int i = 0; i < b.length; i++)` iterates over all queries, computing each result.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Range sums are computed by summing from scratch with summe1/summe2 rather than using the prefix array C, so the required C[r]‑C[l‑1] (and C[r] for l = 0) logic is not applied.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns correct sums but does so with per‑query recomputation, resulting in O(n·q) time instead of the required O(n) overall complexity.

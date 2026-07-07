@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates `double[][] rucksack = new double[n + 1][capacity + 1];`, which creates a table of the required (n+1) × (capacity+1) size, and Java initializes all entries to 0 (the first row is also set explicitly).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop iterates `i = 1..n` and the inner loop iterates `j = 1..capacity`; it does not explicitly iterate over `j = 0`, relying on the default zero values, so it falls short of the specification that j run from 0 to capacity inclusive.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i - 1] > j)` correctly implements the feasibility check (equivalent to `volumes[i] <= j`) before attempting to include the item.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the code uses `Math.max(rucksack[i-1][j], rucksack[i-1][j - volumes[i-1]] + values[i-1])`, matching the required recurrence; when it does not fit it copies `rucksack[i-1][j]`, satisfying the relation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `rucksack[n][capacity]`, which yields the correct maximum value for all valid inputs and correctly handles empty or non‑positive cases by returning 0.
+
+TOTAL: 95

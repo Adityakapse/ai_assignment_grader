@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The solution uses nested loops over the two strings but does not allocate a 2‑D (m+1)×(n+1) table as required, instead it works with a single‑dimensional array.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code initializes `total = range(len(a)+1)` giving `total[i]=i` (deleting i characters) and sets `tmpdist = [i_b+1]` for each new row (inserting i_b+1 characters), correctly handling both base cases.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly handles the match case by appending `total[i_a]`, which corresponds to the diagonal previous cell (no edit needed).
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your else branch uses `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, correctly applying the 1 + min of the three neighboring cells for mismatched characters.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function correctly computes the edit distance using an iterative DP approach without any recursion, handling all edge cases and returning the proper distance.

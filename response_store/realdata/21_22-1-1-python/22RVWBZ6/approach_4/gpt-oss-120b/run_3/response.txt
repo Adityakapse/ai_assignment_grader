@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution defines calc(n) as exp(n)-1, correctly reflecting the closed form aₙ = 2ⁿ − 1, even though the exponentiation routine itself is flawed.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The function exp uses if n==1: return 2 as its base case instead of returning 1 when n==0, so it lacks the required b == 0 base case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch (`else:`) the student correctly calls `exp(n-1)`, multiplies the result by `2`, and applies `% 1000000007`, matching the required `(a * expo(a, b-1, c)) % c` behavior.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function exp checks `elif (n/2 % 2 == 0)` instead of testing `n % 2 == 0`, uses float division, and therefore does not correctly halve b in the even case, violating the required single recursive call and squaring pattern.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The solution computes the right values for small n, but uses floating‑point division (n/2) and a recursive n‑1 step for odd numbers, causing loss of precision and O(n) recursion for large inputs, so it will fail or be incorrect for large n.

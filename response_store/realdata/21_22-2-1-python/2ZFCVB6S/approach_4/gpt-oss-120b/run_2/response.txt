@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates C with keys 0 to m‑1 initialized to 0, providing a counting structure of size |B| (which is ≥ max(A)+1) and correctly indexes it to count frequencies.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(n): C[A[i]] += 1` correctly iterates over A and increments `C` at the element’s value, accumulating the frequency counts as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The list comprehension `for i in range(m)` iterates from 0 to |B|-1, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The list comprehension uses `"1" if C[i] <= B[i] else "0"` for each i, correctly outputting 1 when the count fits within capacity and 0 otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a count dictionary for categories 0..m‑1, tallies occurrences in O(n), then creates the binary string in O(m) without using any forbidden substrings, correctly handling edge cases.

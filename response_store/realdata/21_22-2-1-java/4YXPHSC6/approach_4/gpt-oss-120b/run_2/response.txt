@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution clones `B` to create `c`, so the array is sized correctly but is not initialized to zero—it contains the capacity values, not a zero‑filled counting array as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code loops over A but uses `c[x] = c[x] - 1` (decrementing) instead of incrementing a frequency counter like `C[x]++`, so it does not correctly accumulate the counts of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates `j` from 0 up to `c.length` (which equals `B.length`) exclusive, correctly producing a binary string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code appends ‘1’ when c[j] ≥ 0 (i.e., B[j] − |A|_j ≥ 0, meaning |A|_j ≤ B[j]) and ‘0’ otherwise, correctly reflecting the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution clones B, decrements counts for each A element, and then outputs 1 when the remaining capacity is non‑negative, correctly implementing the required check in O(n + m) without using any forbidden substrings.

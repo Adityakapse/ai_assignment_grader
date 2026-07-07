@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The solution correctly uses `upper = 1000000000000000000L`, but initializes `lower` to 1 rather than 0, so the search range fails to include the possible N = 0 case.
+
+POINT_ID: 2
+MARKS: 5
+FEEDBACK: The code uses a binary‑search loop and computes `mid = (upper + lower) / 2` each iteration, but the loop condition is `while (upper - lower > 1)` instead of the required `while (l <= r)`.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: Your code narrows the interval using `upper = mid` and `lower = mid` instead of the required `r = m - 1` and `l = m + 1`, which deviates from the specified update rule.
+
+POINT_ID: 4
+MARKS: 4
+FEEDBACK: The post‑loop return checks `f_N(lower)` and returns `lower` or `upper`, which works for many cases but fails when N = 0 (and does not match the required “return l” logic).
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The binary search works and runs in O(log n), but initializing lower to 1 causes the function to return 1 instead of 0 when N = 0, so it fails for that valid case.

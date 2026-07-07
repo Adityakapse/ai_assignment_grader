@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution allocates a list `win` of size n with pairs [0,0] instead of a memo array of size n+1 initialized to -1, so it does not meet the required allocation and sentinel initialization.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly handles the cases for i = 0 and i = 1, returning W[0] for a single element and `max(W[0], W[1])` for two elements, matching the specified base cases.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: There is no memoization check; the function never tests `memo[n] != -1` because it does not use a memo array at all.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The implementation stores intermediate results in a two‑element list `win[i]` rather than a single memo entry `memo[n]`, and does not follow the exact recurrence `memo[n] = max(W[n] + opt_helper(n-2), opt_helper(n-1))`.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Despite the different data structure, the algorithm correctly computes the maximum profit in linear time for all valid inputs.
+
+TOTAL: 40

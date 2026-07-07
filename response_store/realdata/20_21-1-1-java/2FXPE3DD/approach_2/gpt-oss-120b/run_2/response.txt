@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code never explicitly checks for b == 0 and returns the initialized value 1 without applying “% c”, so it fails to return 1 % c and does not handle the edge case c == 1.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `(b & 1) == 1` to detect odd exponents, which correctly distinguishes odd from even values of b.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The iterative loop checks the lowest bit and, when b is odd, multiplies res by a (equivalent to a * expo(a,b‑1,c)) before shifting b, correctly implementing the odd case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code halves b using `b = b >> 1` and squares a with `a = (a * a) % c`, correctly performing the even‑case halve‑and‑square step of exponentiation by squaring.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your iterative binary‑exponentiation correctly computes a^b mod c for all valid inputs, handles the b = 0 and a mod c = 0 edge cases, and avoids both “import” and “**”.

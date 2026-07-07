@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `double[][] table = new double[volumes.length + 1][capacity + 1];` which creates a (n+1) × (capacity+1) table, and Java initializes all cells to 0 as required.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates over all items (`i = 1 .. volumes.length`), but the inner loop starts at `j = 1` instead of `j = 0`, so the capacity‑0 subproblem is never filled.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (volumes[i - 1] > j)` and otherwise treats the item as fitting, which is equivalent to the correct `volumes[i] <= j` feasibility test.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For a fitting item the assignment `table[i][j] = Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1]);` and for a non‑fitting item `table[i][j] = table[i - 1][j];` correctly implements the DP recurrence using the previous row.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the inner loop never processes `j = 0`, the method returns 0 for capacity 0 and can miss zero‑volume items in that case, so it does not produce the correct maximum value for all valid inputs.

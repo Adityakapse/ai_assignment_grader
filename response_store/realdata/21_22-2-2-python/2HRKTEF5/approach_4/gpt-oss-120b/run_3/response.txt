@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code updates the input list a in place rather than allocating a separate prefix‑sum array C of size n and initializing C[0] = A[0] before the cumulative loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for i in range(1, len(a)): a[i] += a[i-1]` correctly updates each element to the sum of itself and the previous prefix, building the cumulative sum array as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function builds the result list with a list comprehension that iterates over every (l,r) in b, producing an output list of length len(b), satisfying the required allocation and full query loop.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The list comprehension returns a[r] when l == 0 and a[r] - a[l-1] otherwise, correctly handling the l = 0 edge case after building the prefix sums.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function builds an in‑place prefix sum and then returns each query’s sum with a conditional that correctly handles l = 0, achieving the required O(n) time and avoiding forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `ll` as an adjacency list, fills it with the edges from A, and correctly sets `ll[0]` to contain all vertices 1…N, providing the required virtual source node.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution initializes the memo array with -10000 and checks `nodes_mp[node] != min` instead of using -1 as the sentinel, so it does not follow the required -1 initialization and cache‑check specification.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS function correctly checks `if len(ll[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your dfs correctly computes `bs = max(bs, dfs(child, ...) + 1)` for each child and stores the result in `nodes_mp[node]` before returning.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The implementation correctly builds the adjacency list, uses a sentinel memo value (‑10000) safely, and the DFS with memoization returns the longest path length for all valid inputs.

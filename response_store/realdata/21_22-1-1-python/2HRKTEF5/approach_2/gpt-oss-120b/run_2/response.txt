@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: Your code applies (calc(n//2)+1)^2‑1 for even n and 2*calc(n‑1)+1 for odd n, which reflects the closed‑form a_n = 2^n‑1, but you never explicitly state that formula, so only partial credit is awarded.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The submitted code never defines an expo function or a base case for b == 0, so it does not return 1 (or 1 % c) as required.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: In the odd branch you reduce n, call calc recursively, multiply the result by 2 and then add 1, which does not implement the required “return (a * expo(a, b‑1, c)) % c” behavior for the odd exponent case.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The even branch does not compute tmp = expo(a, b//2, c) and return (tmp*tmp)%c; instead it calls calc, adds and subtracts 1, deviating from the required halve‑and‑square implementation.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: The recursive logic correctly implements the recurrence, but the odd‑n branch returns `res+1` without applying the modulo, so for inputs where `(calc(n‑1)*2) % MOD` equals `MOD‑1` the result is off by `MOD`.

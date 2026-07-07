@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses recursive quicksort with a partition loop that iterates through the list and recursive calls that act as the outer passes, providing a recognisable sorting algorithm structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The quicksort implementation calls A.Smaller(i, r) and A.Larger(j, r) (with optional Equal) using the element indices and the pivot index, correctly using the provided comparison API to detect ordering.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code swaps A.Swap(i, j) only based on the index condition i < j, not on a comparison between the elements at i and j, so the swap is not tied to an order‑violation check.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code calls Length() only when initializing the quicksort recursion (list.Length()-1), but the loops inside partitionHoare use the passed indices (l, r) instead of directly referencing Length(), so not all loop bounds are tied to Length().
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The Sort method delegates to a QuickSort implementation that correctly partitions and recursively sorts the sub‑lists, returning the list in ascending order for all input sizes.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code sets `toBeDeleted` to `delete` when `delete.left == null || delete.right == null` and otherwise to `treeMinimum(delete.right)`, matching the required selection of y.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `treeMinimum` method iterates left while `root.left != null` and returns the leftmost node, correctly implementing the helper.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `notNullChildOfToBeDeleted` is assigned `toBeDeleted.left` if non‑null, otherwise `toBeDeleted.right`, correctly identifying x (or null for a leaf).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates the child's parent pointer, handles the root replacement when `toBeDeleted.parent == null`, and redirects the appropriate left/right pointer of the parent, fully splicing y out.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The key copy `delete.key = toBeDeleted.key` is performed only when `toBeDeleted != delete`, correctly handling the successor case.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: All cases (leaf, one‑child, two‑children, and root deletion) are handled, and the method returns the updated root, preserving BST properties.

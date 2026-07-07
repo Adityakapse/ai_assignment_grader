@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements a_n as (calc(n/2)+1)^2 - 1 for even n and ((calc(n‑1)+1)*2 - 1) for odd n, correctly reflecting the closed form a_n = 2^n - 1 and subtracting 1 before the modulo.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never defines an expo function with a base case for b == 0; it only implements calc recursively and lacks the required base case, so the recursion never terminates correctly for exponent zero.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not define an expo function and never implements the odd‑case logic “return (a * expo(a, b‑1, c)) % c”; instead it uses a different recursion in calc.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement an expo function with an even case; instead it recurses in calc and never computes tmp = expo(a, b//2, c) once and squares it, so the required even‑case logic is missing.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns the right values for tiny inputs, but it uses `n/2` (float division) and a linear `calc(n‑1)` step, so it fails or becomes too slow for large n, violating the required O(log n) behavior.

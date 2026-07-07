@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution builds a list `sums` of length n containing pairs rather than a single prefix‑sum array C with C[0] set to A[0], so the allocation does not match the required format.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the first loop the variable s accumulates A[i] and stores it as the second element of each pair, effectively implementing C[i] = A[i] + C[i‑1].
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The list comprehension `[sums[r][1]-sums[l][0] for l,r in B]` creates an output list of the same length as B and iterates over every query, satisfying the output‑array and loop requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each (l, r) the expression `sums[r][1] - sums[l][0]` correctly yields C[r] – C[l‑1] and works for l = 0 because `sums[0][0]` is 0.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct range‑sum list for all queries in O(n + |B|) time and contains no forbidden keywords.

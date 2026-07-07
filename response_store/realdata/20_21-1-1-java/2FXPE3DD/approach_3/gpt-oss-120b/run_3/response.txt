@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The function never explicitly returns 1 % c for the b == 0 case; it falls through to return res = 1, which is incorrect when c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Parity is detected with (b & 1) == 1, correctly distinguishing odd from even exponents.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When b is odd the code updates res = (res * a) % c, effectively multiplying by a and applying the modulo as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: After each shift of b, the base a is squared via a = (a * a) % c, correctly implementing the “halve and square” step for even exponents.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative exponentiation‑by‑squaring algorithm returns a^b mod c for all valid inputs, uses no import or **, and keeps intermediate values bounded with modulo operations.

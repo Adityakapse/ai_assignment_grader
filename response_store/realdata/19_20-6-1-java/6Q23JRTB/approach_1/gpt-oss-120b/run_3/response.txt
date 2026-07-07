@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (aL+1)×(bL+1) matrix and uses nested loops that iterate a from 1..aL and b from 1..bL, correctly filling the DP table bottom‑up.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: It initializes matrix[a][0]=a for all a and matrix[0][b]=b for all b (matrix[0][0] remains 0), matching the required base cases.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The match case is handled via a cost variable (0 when characters are equal) inside a min expression; it yields the correct value but does not explicitly set matrix[a][b] = matrix[a‑1][b‑1] as the rubric specifies.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When characters differ, cost = 1 and the assignment uses Math.min on delete, insert, and substitution costs, effectively implementing 1 + min of the three neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct edit distance for all inputs and contains no recursive calls.
+
+TOTAL: 97

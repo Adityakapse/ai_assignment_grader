@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student defines a Queue class with a list attribute (`self.queue`) that serves as internal storage, providing the necessary state to maintain FIFO order.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The isEmpty method correctly returns `len(self.queue) == 0`, which accurately reports True only when the queue has no elements.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The head() method returns self.queue[0], correctly providing the front element without changing the queue (though it lacks an explicit empty‑check).
+
+POINT_ID: 4
+MARKS: 18
+FEEDBACK: The enqueue method uses `self.queue.append(x)` which correctly adds the element to the back of the internal list, maintaining proper queue state.
+
+POINT_ID: 5
+MARKS: 18
+FEEDBACK: Your dequeue method uses `self.queue.pop(0)`, which correctly removes and returns the front element (and raises an error if the queue is empty).
+
+POINT_ID: 6
+MARKS: 20
+FEEDBACK: Your queue correctly preserves FIFO order using append and pop(0) and does not import anything, but the head() method does not handle the empty case and will raise an IndexError instead of returning a safe value.

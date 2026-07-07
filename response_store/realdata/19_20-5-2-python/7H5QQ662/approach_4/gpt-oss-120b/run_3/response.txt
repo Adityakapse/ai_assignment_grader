@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code appends the start node to the results list and then uses recursive calls (dfs_visit) instead of a while loop with a stack, so no loop processes nodes as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never performs a pop operation on a stack; it uses recursion and only appends nodes, so it does not demonstrate the required LIFO removal for DFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses the results list as a visited set, checks if not vertex in results before recursing, and adds each node only once, preventing duplicate entries and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recursive dfs_visit iterates over graph[u] in forward order and recursively visits each unvisited neighbour, which satisfies the neighbour‑push requirement for a recursive solution.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your recursive `dfs_visit` walks each adjacency list in order and avoids revisiting nodes, so `dfs` returns all reachable vertices from `start` in the proper DFS order.

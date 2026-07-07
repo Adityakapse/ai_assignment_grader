@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates a double[amount+1][capacity+1] table, but it initializes every cell to -1 rather than to 0, which does not meet the rubric’s initialization requirement.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses recursive calls with memoization instead of the required nested loops over items and capacities, so no outer‑inner loop structure is present.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if(weights[amount - 1] > capacity)` and only considers inclusion in the else branch, correctly ensuring an item is added only when its weight fits (i.e., weight ≤ capacity).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses the recurrence Result[amount][capacity] = max(values[amount‑1] + Result[amount‑1][capacity‑weights[amount‑1]], Result[amount‑1][capacity]) and correctly falls back to Result[amount‑1][capacity] when the item doesn’t fit.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive DP fills the matrix and returns matrix[amount][capacity] (the forward DP cell), correctly handling inclusion/exclusion and producing the optimal value for all test cases.

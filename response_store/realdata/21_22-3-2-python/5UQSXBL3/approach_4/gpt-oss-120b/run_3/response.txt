@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code constructs an adjacency list from A correctly, but it never adds edges from the placeholder node 0 to all other nodes, so the required virtual source is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never defines a memo array or performs a memo[node] != -1 cache check; it relies on a topological order and a separate DP loop rather than memoization.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The dfs_visit function never returns a value for leaf nodes (or any node); it simply appends to endzeit_list, so there is no base case that returns 0 for a node with no outgoing edges.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over each child and updates longest_path with +1, but it never stores a memoized value inside a recursive dfs call; the max‑over‑children logic is applied only after the separate DFS traversal, breaking the required memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `calc` function builds a DFS finishing‑time order, then computes longest_path values from children to parents and returns the maximum, which correctly yields the longest directed path length for any DAG within O(N+M).

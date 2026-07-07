@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses a recursive quicksort (myQuicksort) that repeatedly processes sub‑ranges and the partition function contains while loops that step through the elements and perform swaps, providing both the repeated‑pass and element‑stepping structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the partition function the code uses listToSort.Smaller(l, p) and listToSort.Larger(r, p) (with Equal checks) to compare elements against the pivot, correctly applying the provided comparison API.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code swaps indices l and r only when l < r, not directly after a comparison between those same positions, so the swap is not tied to the specific comparison that detected an order violation.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code calls Length() once to set the initial right index, but the while loops in partition are bounded only by l and r instead of using Length(), so not all loops are directly limited by Length().
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The quicksort implementation sorts small lists (e.g., length 2) but the recursive calls use the pivot index as the start of the right sub‑range, which can cause incorrect behavior or non‑termination on larger inputs.

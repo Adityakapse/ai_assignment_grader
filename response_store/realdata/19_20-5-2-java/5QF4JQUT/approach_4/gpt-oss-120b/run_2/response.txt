@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a recursive dfsVisit method with no explicit stack or while loop, so the start node is never pushed onto a stack and there is no loop that processes nodes until a stack is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution uses recursive calls and a boolean array instead of an explicit stack, so no pop operation (stack.pop()) is performed to remove nodes from the top.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses a boolean visited array, checks `if (!visited[node])` before processing each node, marks it visited, and only recurses on unvisited neighbors, preventing duplicate entries and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The recursive DFS iterates over graph[node] from start to end and recursively visits each unvisited neighbour, which satisfies the neighbour handling requirement for a recursive implementation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive dfsVisit processes each neighbor from index 0 upward, adding nodes to the result list before recursing, which yields the proper DFS preorder respecting adjacency‑list order and handles cycles via the visited array.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if z.left == None or z.right == None: y = z` and otherwise sets `y = minimum(z.right)`, correctly choosing the node itself when it has ≤1 child and the right‑subtree minimum when it has two children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function `minimum` correctly iterates left with `while x.left != None: x = x.left` and returns the leftmost node, matching the required treeMinimum behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets `x = y.left` when `y.left` is not None and otherwise `x = y.right`, correctly handling the case where both children are None.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution updates `x.parent = y.parent` when `x` is non‑null, correctly handles the root case with `if y.parent == None: root = x`, and redirects `y.parent`’s left or right pointer to `x` in the subsequent `elif/else` block.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code copies the key with `if y != z: z.key = y.key`, ensuring the key is only replaced when y is the successor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The delete function correctly handles leaf, single‑child, two‑children, and root deletions by transplanting the appropriate node and updating parent links, and it returns the updated root in all cases.

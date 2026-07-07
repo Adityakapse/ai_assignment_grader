@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses the left‑null and right‑null checks to replace delete directly (y = delete) and calls successor(delete), which returns tree_min(delete.right), correctly selecting y = treeMinimum(delete.right) when delete has two children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s `tree_min` function correctly walks left from the given node until `node.left` is None and returns that node, matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The delete function correctly selects the non‑null child (or None) to replace the node by checking delete.left and delete.right and passing the appropriate child to transplant, handling the leaf case properly.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Your `transplant` function correctly updates the child pointer of `y`’s parent (or the root) to `x` and sets `x.parent = y.parent` when `x` is non‑null, satisfying the splicing requirements.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The delete function never assigns `delete.key = succ.key`; it only transplants the successor node without copying the key, leaving the original key unchanged.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The delete function correctly handles leaf, single‑child, two‑children, and root deletions using transplant and successor, preserving BST properties and returning the updated root.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code correctly creates an adjacency list from A, but it never adds a virtual source node 0 with edges to every other node; instead it iterates over all nodes with a loop, so the virtual‑source requirement is not met.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution never creates a memo array initialized to –1 nor checks a cached value before recursing; it only uses a visited flag and computes distances without the required memoization pattern.
+
+POINT_ID: 3
+MARKS: 13
+FEEDBACK: The recursive method tiefensuche does not explicitly return a value, but for a leaf node the loop is skipped and längsteEntfernung[i] remains 0, effectively handling the base case correctly.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The tiefensuche method recursively visits each child, updates längsteEntfernung[i] with Math.max(längsteEntfernung[i], längsteEntfernung[nachbar]+1) after the recursive call, and stores this value before returning, correctly implementing the required recurrence.
+
+POINT_ID: 5
+MARKS: 24
+FEEDBACK: The implementation correctly builds the adjacency list, performs a DFS with memoization to compute longest distances, and returns the maximum distance, yielding the correct longest path length for all DAG inputs.

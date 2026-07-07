@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The class defines a String[] array for storage and an int length field to track the number of elements, providing the necessary state to maintain FIFO order.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `emptyqueue()` method returns `length == 0`, which accurately reflects whether the queue has any elements based on the `length` field.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The head() method simply returns array[0] and does not change any fields, correctly providing the front element without modifying the queue.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The enqueue method stores the new string at array[length] and then increments length, correctly adding the element to the back and updating the queue’s size tracking.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The dequeue() method saves the front element via head(), shifts the remaining elements left, decrements length, and returns the saved value, correctly updating the queue’s state for future operations.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The dequeue method shifts elements with a loop that accesses array[i+1] up to i = length‑1, which reads past the array bounds and causes a runtime error, so the queue does not preserve FIFO correctly.

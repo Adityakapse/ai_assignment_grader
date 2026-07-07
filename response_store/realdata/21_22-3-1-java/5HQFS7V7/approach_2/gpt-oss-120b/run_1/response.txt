@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The code allocates a memo array of size n+1, but it never initializes the entries to –1 as required for the uncached sentinel.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The implementation initializes m[0]=0 and m[1]=W[0], and the first loop iteration computes m[2] as max(W[1], W[0]), correctly yielding opt(0)=W[0] and opt(1)=max(W[0],W[1]).
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: Your solution uses an iterative DP and never performs a recursive memo‑cache check like “if (memo[n] != -1) return memo[n];”, so this rubric point is not satisfied.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your iterative DP correctly implements the recurrence `m[i] = max(W[i‑1] + m[i‑2], m[i‑1])` and stores each result in the memo array before it is used later.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The DP correctly initializes m[0] and m[1], iterates with the recurrence m[i] = max(W[i‑1] + m[i‑2], m[i‑1]) for i up to W.length, and returns the final entry, yielding the optimal profit in O(n) time.

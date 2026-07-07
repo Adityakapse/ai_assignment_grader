@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: Your implementation computes 2^n modulo 10^9+7 using binary exponentiation and then returns res‑1, correctly applying the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution does not define an expo function with a b == 0 base case; it uses an inline loop instead, so the required base case is absent.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your loop checks `if (n%2 == 1)` and multiplies `res` by `base` modulo MOD, which correctly implements the odd‑exponent case of `a * expo(a, b‑1, c) % c`.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code lacks an expo function and does not compute a temporary value via a recursive call for the even case; instead it uses an iterative loop, which does not match the required “tmp = expo(a, b//2, c) then (tmp*tmp)%c” pattern.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your calc function correctly implements binary exponentiation to compute 2^n mod 1e9+7 and returns res‑1, yielding (2^n − 1) mod 1e9+7 for all allowed n, and it avoids all forbidden keywords.

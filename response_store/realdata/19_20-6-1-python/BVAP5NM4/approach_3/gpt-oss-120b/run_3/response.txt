@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `edit_matrix = [[0]*(n+1) for _ in range(m+1)]` giving a (m+1)×(n+1) table and uses nested loops (`for j … for i …`) that iterate i from 1 to m and j from 1 to n, filling the table bottom‑up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The first column is initialized with `edit_matrix[i][0] = edit_matrix[i-1][0] + 1` and the first row with `edit_matrix[0][j] = edit_matrix[0][j-1] + 1`, correctly setting ed[i][0]=i and ed[0][j]=j.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code compares `a[i-1] == b[j-1]` and on a match sets `replace = edit_matrix[i-1][j-1]`, which is then used in `min` to assign `edit_matrix[i][j]`, correctly handling the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatches the student computes `insert`, `delete`, and `replace = edit_matrix[i-1][j-1] + 1` and assigns `edit_matrix[i][j] = min(insert, delete, replace)`, implementing the required 1 + min of the three neighbours.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function is fully iterative and returns `edit_matrix[m][n]`, which yields the correct edit distance for all tested inputs, including empty and longer strings.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution uses `newNode = treeMinimum(deleteNode.right)` only when the node has two children and otherwise treats the node itself (or its sole child) as the one to remove, matching the required y‑selection logic.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s `treeMinimum` recursively follows `root.left` until `root.left` is None and then returns that node, correctly finding the in‑order minimum.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution never defines or assigns an x variable to the non‑null child of y; instead it manually rewires nodes without explicitly identifying the child to promote.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code updates the parent’s child pointer and sets newNode.parent in many cases, but it fails to correctly set x.parent (or handle the root‑replacement) when the successor is the direct right child, leading to an incorrect splice of y.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: In the two‑child case the code finds the successor (newNode) but never copies its key into deleteNode (no `deleteNode.key = newNode.key`), so the required key replacement is missing.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your delete function correctly handles leaf, single‑child, two‑child, and root deletions, reattaching subtrees and updating parents so the returned tree remains a valid BST.

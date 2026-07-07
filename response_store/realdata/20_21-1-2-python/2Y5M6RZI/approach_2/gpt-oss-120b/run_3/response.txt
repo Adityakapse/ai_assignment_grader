@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 18
+FEEDBACK: The code follows the classic divide‑and‑conquer pattern of merge sort with recursive calls on the halves and a merge step, so the overall structure is recognizable O(n log n).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The solution uses `if len(A)>1:` and returns immediately for length 0 or 1, so the recursion terminates correctly.
+
+POINT_ID: 3
+MARKS: 10
+FEEDBACK: The merge function attempts to combine two sorted halves using sentinels, but it appends a sentinel value equal to the maximum possible element (10⁶), which can break ordering when the input contains that value, so the core merging operation is not fully correct.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: Your solution implements merge sort, which guarantees a worst‑case O(n log n) runtime, so no random pivot is required and the rubric point is fully satisfied.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The merge implementation appends a sentinel value of 10⁶ to each half, which can be equal to legitimate input elements and leads to extra sentinel entries being written into the result, so the returned array is not correctly sorted for all valid inputs.

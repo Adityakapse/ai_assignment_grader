@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The implementation uses recursion (bfs_help) instead of an explicit while loop, so the required loop structure is absent.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Nodes are removed with `queue.pop(0)`, which always dequeues from the front, ensuring FIFO behavior.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: A visited list is kept and neighbours are added only if not visited, but the code never checks whether the dequeued node is already in visited before processing it.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: All neighbours of the current node are iterated, and each unvisited neighbour (also not already queued) is appended to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns all reachable nodes from the start in correct BFS order, correctly handling cycles and multiple branches.

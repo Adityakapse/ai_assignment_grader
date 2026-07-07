@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a counting array `c` by cloning `B`, giving the correct size, but it is not initialized to zero (it contains the original capacities), violating the required zero‑initialization.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over A but decrements c[x] (cloned from B) instead of incrementing a separate frequency array, so it does not correctly accumulate counts of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates from j = 0 up to j < c.length (where c is a clone of B), thus covering indices 0 to |B|-1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if(c[j]>=0)` (i.e., count ≤ capacity) and appends 1, otherwise 0, correctly matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code clones B, decrements capacities for each occurrence in A, and then outputs 1 when the remaining capacity is non‑negative, correctly producing the required binary string in O(n + m) without forbidden substrings.

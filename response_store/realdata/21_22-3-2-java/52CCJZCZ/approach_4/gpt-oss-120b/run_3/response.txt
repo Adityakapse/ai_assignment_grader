@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution correctly constructs an adjacency list from A (using zero‑based indices), but it never creates a virtual source node 0 with edges to every node, so the required source‑node augmentation is missing.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never creates a memo array nor checks a cached value; it computes longest paths using a topological order instead of memoized DFS, so the required -1 initialization and cache check are absent.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not include a recursive DFS function at all, so there is no base case handling leaf nodes returning 0.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code builds a topological order and updates distances iteratively, never defining a recursive dfs that iterates each child, computes max(sol, dfs(child)+1) and stores the result in a memo array as required.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a proper adjacency list, obtains a topological order, propagates longest‑path lengths via DP, and returns the maximum edge count, which yields the correct longest path length for all DAGs.

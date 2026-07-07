@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The while‑loop uses `r` to walk from the given root, moving left when `node.key < r.key` and right otherwise, and stops when `r` becomes null, correctly finding the insertion slot.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The variable `parent` is initialized to null and updated to `r` on each iteration, so after the loop it holds the last non‑null node visited—the proper parent of the insertion point.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After traversal the code compares `node.key` with `parent.key` and assigns `parent.left = node` or `parent.right = node` accordingly, correctly attaching the new node as a left or right child.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: `node.parent` is set to `parent`, the tracked parent node, establishing the correct upward link for the inserted node.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the original root for non‑empty trees and the new node when the tree was empty, preserving the BST property for all inputs.

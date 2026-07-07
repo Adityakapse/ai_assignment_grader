@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `int[][] matrix = new int[aL + 1][bL + 1];` and uses nested loops `for (int b = 1; b <= bL; b++)` and `for (int a = 1; a <= aL; a++)` to fill the table, satisfying the required size and iteration bounds.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base cases are initialized with `matrix[a][0] = a;` for all `a` and `matrix[0][b] = b;` for all `b`, correctly setting the first row and column.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code computes `cost = (aS.charAt(a-1) == bS.charAt(b-1)) ? 0 : 1;` and uses it in the min expression, which results in `matrix[a][b] = matrix[a-1][b-1]` when the characters match, fulfilling the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For mismatching characters the expression `Math.min(matrix[a-1][b] + 1, Math.min(matrix[a][b-1] + 1, matrix[a-1][b-1] + cost))` correctly implements `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method is fully iterative, returns `matrix[aL][bL]`, and correctly computes the edit distance for all tested inputs.

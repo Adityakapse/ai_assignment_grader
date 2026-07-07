@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a prefix‑sum array C; instead it recomputes sums for each query with the summe1 and summe2 loops, so no C[0] initialization or cumulative array is present.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never builds a cumulative array C; instead it recomputes sums with separate loops (summe1, summe2) for each query, so the required prefix‑sum construction is missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] d = new int[n];` where `n = a.length` and iterates with `for(int i = 0; i < b.length; i++)`, covering all queries, matching the required output array size and loop range.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution recomputes the sums with summe1 and summe2 for each query instead of using a pre‑computed prefix array, so it does not apply D[i] = C[r] or C[r]‑C[l‑1] as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code computes each range sum with separate loops (summe1 and summe2), giving correct results but resulting in O(n × q) time rather than the required overall O(n) linear time.

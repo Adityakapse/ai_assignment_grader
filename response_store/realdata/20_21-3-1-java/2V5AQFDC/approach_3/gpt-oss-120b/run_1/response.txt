@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] table = new double[n + 1][capacity + 1];` which is exactly (n+1) × (capacity+1) and relies on Java’s default zero‑initialisation (also explicitly sets the first row to 0).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop runs `i = 1 … n`, but the inner loop starts at `j = 1` instead of `j = 0`, so the subproblem for zero capacity is never processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test uses `if (volumes[i‑1] > j)` which is equivalent to allowing inclusion when `volumes[i‑1] <= j`, correctly handling exact fits and zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the code computes `Math.max(table[i‑1][j], table[i‑1][j‑volumes[i‑1]] + values[i‑1])`, and when it does not fit it copies `table[i‑1][j]`; this matches the required recurrence using the previous row.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns the optimal value for positive capacities, but because the inner loop never updates `j = 0`, it returns 0 for capacity 0 even when zero‑weight items exist, violating full correctness.

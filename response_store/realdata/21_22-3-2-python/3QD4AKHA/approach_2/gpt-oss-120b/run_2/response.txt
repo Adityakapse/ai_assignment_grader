@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates an adjacency list for all nodes, populates it from A, and sets Adj[0] to range(1, N+1) to act as the virtual source with edges to every node, satisfying the construction requirement.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The solution creates the memo list M with -1 for every node and correctly returns M[node] when it is not -1, implementing the required cache check.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The function correctly uses `if len(Adj[node]) == 0: return 0` to handle leaf nodes, returning 0 as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The function tiefenSuche correctly iterates over each child, updates retVal with max(retVal, child result + 1), stores the value in M[node], and returns it, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The implementation correctly builds a super‑source, uses memoized depth‑first search, and returns the longest path length (subtracting the extra edge), matching the required behavior for all DAG inputs.

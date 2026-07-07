@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: When b is 0 the loop is skipped and the function returns ergebnis = 1, but it does not apply “% c”, so it fails for cases like c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution checks `if ((b&1)==1):` to handle odd b and otherwise processes the even case, correctly distinguishing parity using an equivalent of `b % 2`.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code uses an iterative loop and never implements the recursive odd case (a * expo(a, b-1, c)) % c; it handles odd bits with a loop instead of the required reduction by 1 and multiplication.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative loop with bit‑shifts and squares `a` each iteration, never recurses on `b/2` or returns `(tmp*tmp)%c` for an even exponent, so the required even‑case halving and squaring is absent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative binary exponentiation correctly applies the modulo at each step, handles all cases (including b = 0) without using import or '**', and thus returns a^b mod c for all valid inputs.

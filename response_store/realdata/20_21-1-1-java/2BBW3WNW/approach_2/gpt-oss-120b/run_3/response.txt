@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The function includes `if(b == 0) return result = 1 % c;`, correctly returning `1 % c` for the base case.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `b % 2 == 0` to handle even exponents and `b % 2 != 0` (with a special case for b = 1) for odd exponents, correctly distinguishing parity.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The code correctly handles the odd case by calling expo(a, b‑1, c) and returning (zwResult * a) % c (and also covers b = 1 with a % c).
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: In the even branch you correctly compute `bhalb = b/2`, call `expo(a, bhalb, c)`, and return `(zwResult * zwResult) % c`, matching the required halve‑and‑square logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your recursive implementation correctly handles the base case b = 0, the even case by squaring the half‑exponent result, and the odd case (including b = 1), producing the proper a^b mod c without using prohibited constructs.

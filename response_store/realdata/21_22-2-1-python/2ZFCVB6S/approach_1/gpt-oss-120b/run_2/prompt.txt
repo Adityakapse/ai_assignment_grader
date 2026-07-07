@@ -1,0 +1,80 @@
+QUESTION:
+It's Christmas and Santa Claus has little time left: he must
+to come up with a system to deliver all the presents on time.
+To do this, he uses the following system: first, all the cuddly
+toys are delivered, then all the books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately the sleigh of
+Santa Claus does not have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all the
+objects of a category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one, if it is possible to deliver
+all objects of the category $i$ in one pass and $0$,
+if this is not possible. As a reminder, Santa Claus can
+deliver all objects of category $i$ in one pass,
+if $|A|_i \leq B[i]$ holds. Since Santa does not have much time left
+your algorithm must have a runtime of $O(n + m)$.
+
+Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+with $1 \leq m, n \leq 4 \cdot 10^6$
+and $\forall 1\leq i \leq n: 0 \leq a_i,b_i \leq 10^6$. Furthermore
+it holds: $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{when } |A|_i \leq B[i] \ 0, &\text{when } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how many times the number $i$ occurs in the array $A$.
+
+Timelimit: 5 CPU seconds
+
+Hint:
+
+(1) The substring "import", "eval", "sort", "sol_calc", or "getattr"
+must not appear in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$ .
+
+SAMPLE SOLUTION:
+def calc(A, B):
+    C = []
+    for i in range(10**6 + 1):
+        C.append(0)
+    for a in A:
+        C[a] = C[a] + 1
+    sol = ""
+    for i in range(len(B)):
+        if C[i] <= B[i]:
+            sol += "1"
+        else:
+            sol += "0"
+    return sol
+
+STUDENT SOLUTION:
+def calc(A,B):
+    m = len(B)
+    n = len(A)
+    C = {kategorie:0 for kategorie in range(m)}
+    for i in range(n):
+        C[A[i]] += 1
+    s = ["1" if C[i] <= B[i] else "0" for i in range(m)]
+    return "".join(s)
+
+RUBRIC:
+Point 1 — Counting array allocation (valid range: 0–20)
+  A counting array C of size at least max(A)+1 (equivalently |B| or 10^6+1) is allocated and initialised to 0.
+
+Point 2 — Frequency counting over A (valid range: 0–25)
+  For each element a in A, C[a] is incremented by 1, accumulating the count of each category.
+
+Point 3 — Output loop bounds (valid range: 0–15)
+  The output loop iterates i from 0 to |B|-1 inclusive, producing a binary string of exactly length |B| = m.
+
+Point 4 — Comparison and output character (valid range: 0–20)
+  For each position i, '1' is appended when C[i] <= B[i] (category fits in one pass), and '0' when C[i] > B[i].
+
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns the correct binary string of length m for all valid inputs in O(n + m) time, without forbidden substrings.

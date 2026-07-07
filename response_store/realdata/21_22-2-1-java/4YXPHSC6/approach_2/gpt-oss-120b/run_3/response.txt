@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The code creates the counting array with `int[] c = B.clone();` which copies B’s values instead of allocating a new zero‑filled array of size ≥ max(A)+1, so the array is not properly initialized to zero.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code decrements c[x] for each A element instead of incrementing a separate count array, and initializes c from B rather than zero, so it does not correctly count frequencies of categories.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The final loop uses `for(int j = 0; j < c.length; ++j)`, iterating from 0 up to `c.length‑1` (where `c.length` equals `B.length`), and appends one character per iteration, yielding a binary string of exactly length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your code correctly checks `c[j] >= 0` (i.e., B[j] − count ≥ 0) and appends 1 when the category fits and 0 otherwise, matching the required comparison.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly decrements a copy of B for each occurrence in A and outputs ‘1’ when the remaining capacity is non‑negative, yielding the right binary string in O(n+m) without using any forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The function never explicitly checks b == 0, but the loop is skipped and it returns the initial value 1, which is not reduced modulo c, so it fails the required 1 % c return (especially when c = 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses `if((b&1)==1):` to test the least‑significant bit, correctly distinguishing odd from even values of b.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Your loop checks `if (b & 1) == 1` and multiplies the accumulator by `a` (mod c) when b is odd, correctly implementing the “reduce by 1 and multiply” step.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your loop correctly handles the even case by squaring the base (a = (a*a)%c) after shifting b, which implements the halve‑and‑square step without recursion.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function correctly implements binary exponentiation without using import or '**', handling b = 0 and all other cases to return a^b mod c.

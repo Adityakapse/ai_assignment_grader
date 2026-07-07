@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution builds an iterative list M with actual profit values instead of allocating a memo array of size n+1 initialized to -1, so it does not meet the required memo‑array initialization.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code correctly sets M[1] to max(W[0], W[1]) for arrays of length ≥2, but it crashes when W has length 1 because it unconditionally accesses W[1] without a proper base‑case check.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution builds the DP array M iteratively and never creates or checks a memo table, so there is no cache check like “if memo[n] != -1: return memo[n]”.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution uses the recurrence M[i] = max(M[i‑1], W[i] + M[i‑2]) and stores each result in the list M before returning M[n‑1], effectively memoizing the subproblem values.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative DP builds array M with M[i] = max(M[i-1], W[i] + M[i-2]) and returns M[n-1], correctly handling all inputs in O(n) time.

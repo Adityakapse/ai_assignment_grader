@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution allocates C with `[0]*len(B)`, which given the constraint `max(A) ≤ |B|-1` provides a counting array of size at least `max(A)+1` and initializes all entries to zero.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The loop `for i in range(len(A)): C[A[i]] += 1` correctly increments the count for each element of A, accumulating frequencies as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop `for ii in range(len(B))` iterates over all indices `0 … m‑1`, ensuring the produced string has exactly length `|B|`.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Inside the loop the code checks `if C[ii] <= B[ii]` and appends `'1'` or `'0'` accordingly, matching the specification for each position.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function runs in O(n+m) time, returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.
+
+TOTAL: 100

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implements calc as (exp(n)-1) % 1000000007, showing they recognize a_n = 2^n - 1.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The exponent function exp uses a base case of n == 1 returning 2 instead of handling the exponent b == 0, which is an off‑by‑one base case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the else branch the code reduces n by 1 and multiplies by 2 with a modulo, correctly handling the odd‑exponent case.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The even case checks (n/2 % 2 == 0) instead of n % 2 == 0, so halving and squaring are applied only for numbers divisible by 4, making the implementation incorrect for general even n.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While calc returns the right value for small inputs, the use of float division and an incorrect even‑case condition cause non‑logarithmic recursion and potential errors for large n, so overall correctness is only partial.

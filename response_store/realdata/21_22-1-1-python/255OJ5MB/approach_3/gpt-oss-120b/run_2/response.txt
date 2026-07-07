@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The recursive implementation effectively computes 2ⁿ − 1 using exponentiation‑by‑squaring, which matches the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate expo function is provided, so the required base case returning 1 when b == 0 is absent.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The odd‑exponent case is not implemented as (a * expo(a, b‑1, c)) % c; the code handles odd n directly in calc instead of an expo odd branch.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The even‑exponent case does not follow the specified expo pattern of halving b, calling expo once, and squaring the result; the logic is embedded in calc with extra +1/‑1 adjustments.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc(n) returns (2ⁿ − 1) mod 1 000 000 007 for all valid inputs, runs in O(log n), and does not use any forbidden

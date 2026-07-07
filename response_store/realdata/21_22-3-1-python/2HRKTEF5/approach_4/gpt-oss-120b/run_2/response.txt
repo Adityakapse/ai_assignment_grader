@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution builds a DP list P without allocating a memo array initialized to -1, so it does not use the required sentinel‑based memoization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes P with [W[0], max(W[0], W[1])], correctly handling the cases n = 0 and n = 1 as required.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution builds an iterative DP list P and never uses a memo array or a cache check like `if memo[n] != -1: return memo[n]`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution implements the recurrence `P[i] = max(P[i-2] + W[i], P[i-1])` and stores each result in the list `P`, effectively memoizing the subproblem values before the final return.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a DP list P, correctly handling the base cases and using the recurrence max(P[i-2]+W[i], P[i-1]) in a linear loop, thus returning the optimal profit for all valid inputs in O(n) time.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never selects a variable y; it uses newNode as the replacement and sets it to the child (or None) instead of setting y to delete when there is at most one child.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The provided treeMinimum function recursively follows left children until none remain, correctly returning the in‑order minimum.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: No variable x is defined; the algorithm never explicitly identifies y’s non‑null child to promote.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation updates the parent’s child pointer to newNode (or None) and sets newNode.parent appropriately, handling the root replacement case.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution never copies deleteNode.key = newNode.key; it replaces the node entirely instead of copying the successor’s key.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Despite the missing key copy, the function correctly restructures the tree for leaf, single‑child, two‑child, and root deletions, returning a valid BST.

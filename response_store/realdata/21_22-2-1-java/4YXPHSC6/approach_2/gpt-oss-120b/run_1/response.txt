@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution clones `B` to create `c` rather than allocating a new zero‑initialized counting array of size at least max(A)+1, so it does not satisfy the required counting array allocation.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution subtracts from the cloned B array (c[x] = c[x]-1) rather than incrementing a separate counter for each A[i], so it fails to correctly count frequencies as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student iterates `j` from 0 up to `c.length‑1` (where `c` is a clone of `B`), so the loop runs exactly |B| times and produces a binary string of the required length.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your code correctly decrements a copy of B by the occurrences in A and then appends ‘1’ when the resulting value is non‑negative (i.e., count ≤ B[i]) and ‘0’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your code correctly clones B, decrements counts for each occurrence in A, and outputs ‘1’ when the remaining capacity is non‑negative, achieving the required O(n+m) time and producing the correct binary string.

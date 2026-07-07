@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never includes an explicit `b == 0` base case returning `1 % c`; it simply returns `res` (initially 1) without applying `% c`, so it gives the wrong result when `c == 1`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `(b & 1) == 1` to detect odd `b`, which correctly distinguishes odd from even values and applies the appropriate branch in the loop.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative loop with bit‑shifts instead of a recursive odd case, so it never implements the required “return (a * expo(a, b‑1, c)) % c” branch.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code uses an iterative loop with bit‑shifts and squaring of a, but it never performs the recursive call expo(a, b/2, c) and squares that result as required for the even case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative binary‑exponentiation loop correctly applies the modulo at each multiplication and handles all cases (including b = 0 and a = 0) without using import or **, so it returns a^b mod c for the full input range.

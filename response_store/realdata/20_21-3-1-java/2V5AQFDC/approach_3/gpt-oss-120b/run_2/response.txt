@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] table = new double[n + 1][capacity + 1];` and initializes the first row to 0; all other cells are default‑initialized to 0, satisfying the required table size and zero initialization.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates `i = 1..n` correctly, but the inner loop starts at `j = 1` instead of `j = 0`, so the zero‑capacity subproblem is never processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `if (volumes[i - 1] > j)` correctly implements the condition `volumes[i] <= j` for inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the code uses `Math.max(table[i - 1][j], table[i - 1][j - volumes[i - 1]] + values[i - 1])`, correctly referencing the previous row for both branches of the recurrence.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns the correct maximum for typical cases, but because the DP never updates column 0, it fails when the knapsack capacity is 0 and there are zero‑volume items, leading to an incorrect result in that scenario.

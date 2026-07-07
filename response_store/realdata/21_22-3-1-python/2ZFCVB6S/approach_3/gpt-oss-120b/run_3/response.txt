@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Wrong
+FEEDBACK: The code creates a list `win` of size `n` (where `n = len(W)`) and never allocates a memo array of size `n+1` initialized to –1.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The loop handles `i == 0` and `i == 1` explicitly, setting `win[0][1] = W[0]` and `win[1][1] = max(W[1], W[0])`, which matches the required base cases.
+
+POINT_ID: Point 3
+BUCKET: Wrong
+FEEDBACK: There is no cache‑check like `if memo[n] != -1: return memo[n]`; the solution uses an iterative DP instead of recursive memoization.
+
+POINT_ID: Point 4
+BUCKET: Wrong
+FEEDBACK: The recurrence stores two separate values and uses `win[i][1] = max(win[i-1][1], win[i-2][1] + w)`, which omits the case of skipping `i‑2` and therefore does not implement `memo[n] = max(W[n] + opt_helper(n-2), opt_helper(n-1))`.
+
+POINT_ID: Point 5
+BUCKET: Wrong
+FE

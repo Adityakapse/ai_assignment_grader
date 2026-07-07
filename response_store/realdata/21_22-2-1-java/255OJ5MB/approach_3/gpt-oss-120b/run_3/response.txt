@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int M[] = new int[B.length];`, which has size at least |B| (and thus ≥ max(A)+1) and is zero‑initialized in Java.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The enhanced for‑loop `for(int i: A){ M[i]++; }` correctly increments the count for each category value found in A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for(int i = 0; i < B.length; i++)` iterates from 0 to B.length‑1, producing exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the loop the condition `if(M[i] <= B[i]) sb.append("1"); else sb.append("0");` appends '1' when the count fits and '0' otherwise, matching the specification.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, avoids the forbidden substrings, and returns the correct binary string for all valid inputs.

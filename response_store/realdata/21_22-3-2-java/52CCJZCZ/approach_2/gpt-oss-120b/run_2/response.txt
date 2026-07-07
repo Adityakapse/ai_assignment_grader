@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The code correctly builds an adjacency list from the edge array A, but it never creates a virtual source node 0 with edges to all other nodes, so the required source‑node augmentation is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code does not create a memo array, nor does it initialize entries to -1 or check memo[node] != -1 before recomputing; it uses a topological DP approach instead.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The submitted code uses a topological‑sort DP approach and does not contain a DFS routine with a leaf‑node base case returning 0, so the required base case is missing.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The solution computes longest paths iteratively after a topological sort and never implements the required recursive recurrence sol = max(sol, dfs(child)+1) with a memo array.
+
+POINT_ID: 5
+MARKS: 23
+FEEDBACK: The DP over a topological order correctly computes the longest path length for typical 1‑indexed inputs, but the solution assumes edges are 1‑indexed and omits a dummy source, which could cause off‑by‑one errors if the test data uses 0‑indexed node numbers.

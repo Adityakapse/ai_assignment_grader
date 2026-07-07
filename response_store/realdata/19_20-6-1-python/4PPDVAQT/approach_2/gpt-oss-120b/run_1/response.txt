@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code uses a rolling 1‑D array instead of allocating a (m+1)×(n+1) table and does not contain the required nested i‑from‑1‑to‑m, j‑from‑1‑to‑n loops.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The solution initializes `result = range(len(pre)+1)` (setting edDis[0][j] = j) and `tmp = [i+1]` for each new row (setting edDis[i][0] = i), correctly handling the base case costs.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: In the else branch you correctly assign `result[j]` (the diagonal value) when `a == b`, matching the required behavior for the character‑match case.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code correctly applies the recurrence `1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1])` when characters differ, using the three neighboring values.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly computes the edit distance using an iterative DP approach without recursion, handling empty strings and swapping inputs to keep the inner loop short.

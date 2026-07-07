@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution never creates a 2‑D table of size (n+1) × (capacity+1); it builds a ratio list and uses a greedy loop instead of allocating and initializing the required DP matrix.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code only uses a single loop over the sorted items and never iterates over capacities, so it lacks the required outer‑item and inner‑capacity loops covering all subproblems.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: Your solution only checks `if volumeSum + item[2] <= capacity` when adding items, but it never iterates over each capacity j and test `volumes[i] <= j` as required by the rubric.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code sorts items by value‑to‑volume ratio and greedily adds them, never constructing the DP table or using the recurrence Result[i][j] = max(...), so the required recurrence relation is not implemented.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution uses a greedy ratio‑based selection, which is not guaranteed to find the optimal 0/1 knapsack value (e.g., it fails on classic counter‑examples), so it does not return the correct maximum for all inputs.

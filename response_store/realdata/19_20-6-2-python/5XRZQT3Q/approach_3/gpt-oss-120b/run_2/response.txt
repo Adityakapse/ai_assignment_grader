@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `table = [[0 ...] for ...]` with dimensions (len(value)+1) × (capacity+1) and each entry is initialized to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It uses `for i in range(len(value)+1)` and `for w in range(capacity+1)`, iterating over all items (including the base case) and all capacities from 0 to the given capacity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test `elif volume[i-1] <= w:` correctly checks that the current item's volume does not exceed the current capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When the item fits, the code assigns `max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])`; otherwise it copies `table[i-1][w]`, matching the required recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `table[len(value)][capacity]`, which yields the optimal knapsack value for all valid inputs.

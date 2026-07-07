@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list `Connections` from A, but it never adds a virtual source node with edges to every vertex, so only paths that start at a vertex with no incoming edges are considered.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memoization array is used; the solution relies on a single forward pass instead of a recursive DFS with a `memo` cache.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function and therefore no explicit base‑case handling for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Although the code updates `Lengths[u] = max(Lengths[e] + 1, Lengths[u])` for each child, it does not perform a recursive DFS, nor does it store results in a memo table as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm works for simple DAGs where every edge goes from a lower‑indexed vertex to a higher‑indexed one, but it fails on general acyclic graphs and thus does not reliably return the correct longest path length.

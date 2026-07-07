@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses exponentiation by squaring to compute 2ⁿ mod 10⁹+7 and then returns res‑1, correctly implementing the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code implements exponentiation iteratively inside calc and does not define an expo function with a base case for b == 0, so the required base case is missing.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the loop, when n is odd the code does `res = res*base % 1000000007;`, which multiplies by the current base and applies the modulo, effectively implementing the (a * expo(a, b‑1, c)) % c behavior.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution implements exponentiation iteratively in calc and never defines an expo function with a recursive even case that halves b and squares the recursive result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function uses binary exponentiation with modulo at each step to compute 2ⁿ mod 1e9+7 and returns res‑1, correctly yielding (2ⁿ‑1) mod 1e9+7 for all inputs without forbidden keywords.

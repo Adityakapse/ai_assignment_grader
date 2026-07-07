@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code adds the start node to `gefunden` before the loop, but uses a `for` loop over the list instead of a `while` loop that runs until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution never removes a node from the front of a queue (no pop(0) or similar); it simply iterates over the list while appending new nodes, so there is no explicit FIFO dequeue operation.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code uses the list `gefunden` to track visited nodes, but it adds each neighbor to this list before the node is actually processed (the `for knoten in gefunden` loop), rather than checking a visited set before dequeuing and then marking the node as visited. This misuse of the visited structure could lead to incorrect ordering even though duplicates are avoided.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over each node’s adjacency list (`for zielknoten in graph[knoten]:`) and appends only those neighbours not already in `gefunden`, effectively enqueuing each unvisited neighbour.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your implementation uses the growing list ‘gefunden’ as a queue and appends unseen neighbours, preserving adjacency‑list order, which yields the correct BFS level‑by‑level traversal for all directed graphs.

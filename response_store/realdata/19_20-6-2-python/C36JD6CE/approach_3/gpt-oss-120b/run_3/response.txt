@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2‑D DP table; it only builds a 1‑D list of ratios and uses simple variables.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There are no nested loops that iterate over each item and each capacity; the code only loops once to compute ratios and once to greedily add items.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The only feasibility test is `if volumeSum + item[2] <= capacity`, which checks the current total rather than `volumes[i] <= j` for each sub‑problem in a DP table.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence relation is used; the algorithm simply sums selected item values without referencing previously computed sub‑problem results.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The greedy approach happens to give the correct answer for the provided examples, but it fails on many 0/1 knapsack instances (e.g., values [60,100,120] with volumes [10,20,30] and capacity 50).

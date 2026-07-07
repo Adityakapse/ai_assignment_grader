@@ -1,0 +1,362 @@
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}
+
+STUDENT SOLUTION:
+public int editDistance(String a, String b) {
+    int aLength = a.length();
+        int bLength = b.length();
+
+        int matrix[][] = new int[aLength+1][bLength+1];
+
+        for(int i = 0; i <= aLength; i++) {
+            for(int j = 0; j <= bLength; j++ ) {
+                if(i == 0) {
+                    matrix[i][j] = j;
+                }
+                else if(j == 0) {
+                    matrix[i][j] = i;
+                }
+                else if(a.charAt(i-1) == b.charAt(j-1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } 
+                else {
+                    int ins = matrix[i][j - 1];
+                    int rem = matrix[i - 1][j];
+                    int rep = matrix[i - 1][j - 1];
+                    matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));
+                }
+            }
+        }        
+        return matrix[aLength][bLength];
+}
+
+RUBRIC POINT:
+Point 1 — DP table allocation and loop structure (valid range: 0–20)
+  A 2D table of size (m+1) x (n+1) is allocated, and nested loops iterate i from 1 to m and j from 1 to n to fill it bottom-up.
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}
+
+STUDENT SOLUTION:
+public int editDistance(String a, String b) {
+    int aLength = a.length();
+        int bLength = b.length();
+
+        int matrix[][] = new int[aLength+1][bLength+1];
+
+        for(int i = 0; i <= aLength; i++) {
+            for(int j = 0; j <= bLength; j++ ) {
+                if(i == 0) {
+                    matrix[i][j] = j;
+                }
+                else if(j == 0) {
+                    matrix[i][j] = i;
+                }
+                else if(a.charAt(i-1) == b.charAt(j-1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } 
+                else {
+                    int ins = matrix[i][j - 1];
+                    int rem = matrix[i - 1][j];
+                    int rep = matrix[i - 1][j - 1];
+                    matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));
+                }
+            }
+        }        
+        return matrix[aLength][bLength];
+}
+
+RUBRIC POINT:
+Point 2 — Base case initialisation (valid range: 0–20)
+  edDis[i][0] = i for all i from 0 to m (cost of deleting i characters), and edDis[0][j] = j for all j from 0 to n (cost of inserting j characters).
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}
+
+STUDENT SOLUTION:
+public int editDistance(String a, String b) {
+    int aLength = a.length();
+        int bLength = b.length();
+
+        int matrix[][] = new int[aLength+1][bLength+1];
+
+        for(int i = 0; i <= aLength; i++) {
+            for(int j = 0; j <= bLength; j++ ) {
+                if(i == 0) {
+                    matrix[i][j] = j;
+                }
+                else if(j == 0) {
+                    matrix[i][j] = i;
+                }
+                else if(a.charAt(i-1) == b.charAt(j-1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } 
+                else {
+                    int ins = matrix[i][j - 1];
+                    int rem = matrix[i - 1][j];
+                    int rep = matrix[i - 1][j - 1];
+                    matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));
+                }
+            }
+        }        
+        return matrix[aLength][bLength];
+}
+
+RUBRIC POINT:
+Point 3 — Character match case (valid range: 0–15)
+  When a[i-1] == b[j-1], edDis[i][j] is set to edDis[i-1][j-1] (no edit needed).
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}
+
+STUDENT SOLUTION:
+public int editDistance(String a, String b) {
+    int aLength = a.length();
+        int bLength = b.length();
+
+        int matrix[][] = new int[aLength+1][bLength+1];
+
+        for(int i = 0; i <= aLength; i++) {
+            for(int j = 0; j <= bLength; j++ ) {
+                if(i == 0) {
+                    matrix[i][j] = j;
+                }
+                else if(j == 0) {
+                    matrix[i][j] = i;
+                }
+                else if(a.charAt(i-1) == b.charAt(j-1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } 
+                else {
+                    int ins = matrix[i][j - 1];
+                    int rem = matrix[i - 1][j];
+                    int rep = matrix[i - 1][j - 1];
+                    matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));
+                }
+            }
+        }        
+        return matrix[aLength][bLength];
+}
+
+RUBRIC POINT:
+Point 4 — Mismatch recurrence: 1 + min of three neighbours (valid range: 0–25)
+  When a[i-1] != b[j-1], edDis[i][j] = 1 + min(edDis[i][j-1], edDis[i-1][j], edDis[i-1][j-1]), representing insert, delete, and replace respectively.
+
+========================================
+
+QUESTION:
+In this task the edit distance of two given strings is implemented.
+This is defined as the minimum number of insert, delete and replace operations
+of single characters to convert the one string into the other.
+Important: The implementation must NOT use recursive calls.
+
+SAMPLE SOLUTION:
+/*
+ * This function calculates and returns the edit distance
+ * beween tow given strings. this strings are given by the
+ * parameters a and b. In the implementation the recursive
+ * definition is implemented iterativly
+ */
+
+public int editDistance(String a, String b) {
+    int m = a.length();
+    int n = b.length();
+    int[][] edDis = new int[m+1][];
+    for(int i = 0; i <= m; ++i) {
+        edDis[i] = new int[n+1];
+        edDis[i][0] = i;
+    }
+    for(int i = 0; i <= n; ++i) {
+        edDis[0][i] = i;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        for(int j = 1; j <= n; ++j) {
+            if(a.charAt(i-1) == b.charAt(j-1)) {
+                edDis[i][j] = edDis[i-1][j-1];
+            } else {
+                edDis[i][j] = 1 + Math.min(Math.min(edDis[i][j-1], edDis[i-1][j]), edDis[i-1][j-1]);
+            }
+        }
+    }
+    return edDis[a.length()][b.length()];
+}
+
+STUDENT SOLUTION:
+public int editDistance(String a, String b) {
+    int aLength = a.length();
+        int bLength = b.length();
+
+        int matrix[][] = new int[aLength+1][bLength+1];
+
+        for(int i = 0; i <= aLength; i++) {
+            for(int j = 0; j <= bLength; j++ ) {
+                if(i == 0) {
+                    matrix[i][j] = j;
+                }
+                else if(j == 0) {
+                    matrix[i][j] = i;
+                }
+                else if(a.charAt(i-1) == b.charAt(j-1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } 
+                else {
+                    int ins = matrix[i][j - 1];
+                    int rem = matrix[i - 1][j];
+                    int rep = matrix[i - 1][j - 1];
+                    matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));
+                }
+            }
+        }        
+        return matrix[aLength][bLength];
+}
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns the correct edit distance for all valid string inputs without using recursion.

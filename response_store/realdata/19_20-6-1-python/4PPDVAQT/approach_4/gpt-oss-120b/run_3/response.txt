@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑dimensional lists (`result` and `tmp`) and never allocates a 2‑D table, and the loops are not the required nested i‑from‑1‑to‑m and j‑from‑1‑to‑n structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution initializes `result = range(len(pre) + 1)` to set the first row (insert costs) and creates `tmp = [i+1]` for each new row, correctly establishing the first column (delete costs).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code compares characters with `if a != b:` and in the else branch appends `result[j]`, correctly using the previous‑row‑previous‑column value for the match case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the mismatch branch the code computes `1 + min((result[j], result[j + 1], tmp[-1]))`, correctly using the three neighboring DP values for insert, delete, and replace.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function implements an iterative DP (swapping strings to keep the shorter one) and correctly computes the edit distance for all cases, returning the proper value without using recursion.

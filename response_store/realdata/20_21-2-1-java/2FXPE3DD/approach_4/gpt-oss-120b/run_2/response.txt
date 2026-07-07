@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int c[] = new int[B.length];`, which provides a counting array of size |B| (at least max(A)+1) and is zero‑initialized, satisfying the requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) c[A[i]]++;` correctly iterates over array A and increments `c[A[i]]` for each element, properly accumulating the frequency counts.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for (int i = 0; i < B.length; i++)` to fill `res`, iterating from 0 to |B|‑1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `B[i] >= c[i] ? '1' : '0'`, correctly outputting '1' when the count does not exceed capacity and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a frequency array `c` of size `B.length`, counts occurrences, and then creates the result with `res[i] = B[i] >= c[i] ? '1' : '0'`, achieving O(n+m) time and producing the correct binary string for all cases.

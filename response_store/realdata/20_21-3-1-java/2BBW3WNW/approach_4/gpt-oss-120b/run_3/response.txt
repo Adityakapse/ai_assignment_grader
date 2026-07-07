@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `double[][] dynTab = new double[nItem+1][capacity+1];` which matches the required (n+1) × (capacity+1) size, and Java’s default zero‑initialisation (plus the explicit loop for row 0) ensures all cells start at 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses nested loops, but the inner loop starts at j = 1 instead of 0, so the zero‑capacity subproblem (needed for weight‑0 items) is not covered.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if (weight[i-1] > j)` and otherwise includes the item, effectively using a `weight[i-1] <= j` feasibility test, which correctly handles exact fits and zero‑weight items.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `dynTab[i][j] = Math.max(dynTab[i-1][j], dynTab[i-1][j - weight[i-1]] + value[i-1])` when the item fits and copies `dynTab[i-1][j]` when it does not, correctly referencing the previous row.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code returns 0 for capacity = 0 (or when capacity ≤ 0) even if there are zero‑weight items with positive value, and the inner loop starts at j = 1, so zero‑weight items aren’t handled correctly for that case.

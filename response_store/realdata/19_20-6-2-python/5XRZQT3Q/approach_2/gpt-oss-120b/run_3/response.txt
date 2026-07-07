@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, correctly allocating a (n+1) × (capacity+1) 2D list initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your code uses an outer loop over i = 0…n and an inner loop over w = 0…capacity, correctly iterating through every item and capacity subproblem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The implementation uses `elif volume[i-1] <= w:` to verify that an item fits in the current capacity before attempting to include it, satisfying the required feasibility check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation uses the exact recurrence—when volume[i‑1] ≤ w it assigns max(value[i‑1] + table[i‑1][w‑volume[i‑1]], table[i‑1][w]), otherwise it copies table[i‑1][w], matching the required forward‑DP relation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation builds the DP table correctly and returns table[len(value)][capacity], which yields the optimal knapsack value for all valid inputs.

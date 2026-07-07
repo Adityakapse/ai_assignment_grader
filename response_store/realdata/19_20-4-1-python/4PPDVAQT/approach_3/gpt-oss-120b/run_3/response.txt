@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function uses recursion to walk down the tree, comparing `z.key` with `x.key` and moving left or right until it reaches a null child, then attaches the node.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: No separate parent variable is kept during the traversal; the code only sets `z.parent = x` at the point of insertion rather than tracking a parent pointer throughout the walk.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When the correct null slot is found, the code assigns `x.left = z` or `x.right = z` based on the key comparison, correctly placing the new node as a left or right child.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The statement `z.parent = x` is executed right before linking `z` to its parent, correctly establishing the upward link.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the original root (or the new node when the tree is empty) and preserves the BST property for all insertion cases.

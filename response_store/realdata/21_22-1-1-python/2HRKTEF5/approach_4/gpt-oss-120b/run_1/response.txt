@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: Your recursive implementation uses exponentiation by squaring (handling even and odd n) and returns (2^n mod c) − 1, correctly matching the closed form a_n = 2^n − 1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution’s recursion ends with `if n == 0: return 0` instead of returning 1 (or 1 % c) for the exponent base case, so the required base case is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: In the odd branch the code reduces n by 1 and recurses, but it multiplies the result by 2 and then adds 1 instead of returning (2 * expo(2, n‑1, c)) % c as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: In the even branch the code halves n and calls calc recursively, but it does not implement the required expo pattern of calling a single recursive step and squaring its result; instead it adds and subtracts values and modifies n with a modulo, so the even case is incorrect.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The recursive logic is correct, but the odd‑n branch returns `res+1` without applying `% 1000000007`, so for some large inputs the final modulo is missed and the result can be wrong.

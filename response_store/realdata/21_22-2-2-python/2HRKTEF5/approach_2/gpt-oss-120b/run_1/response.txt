@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution updates the input list in place instead of allocating a separate prefix‑sum array C of size n and initializing C[0] to A[0].
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The solution correctly builds the prefix‑sum array in‑place with `for i in range(1, len(a)): a[i] += a[i-1]`, implementing C[i] = A[i] + C[i‑1] as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The solution builds the result list with a list comprehension that creates an array of length n and processes each query, satisfying the allocation and loop requirement.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your list comprehension correctly returns `a[r]` when `l == 0` and `a[r]-a[l-1]` otherwise, handling the l‑zero edge case as required.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The solution creates an in‑place prefix sum loop and then returns each range sum via a list comprehension, correctly handling the l = 0 case and running in O(n) without using any forbidden keywords.

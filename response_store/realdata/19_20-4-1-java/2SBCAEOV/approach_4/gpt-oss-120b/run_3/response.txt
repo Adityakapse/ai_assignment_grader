@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a while‑loop that starts at the root, updates a parent pointer, and moves left when node.key < r.key or right otherwise, stopping when it reaches a null child position.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution declares `parent` before the loop and updates it to `r` on each iteration, ensuring it holds the last non‑null node visited before insertion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After finding the parent, the code sets `node.parent = parent` and correctly uses `if (node.key < parent.key) parent.left = node; else parent.right = node;` to attach the new node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code tracks the predecessor in `parent` during the loop and then assigns `node.parent = parent;`, correctly linking the new node to its parent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly traverses to the insertion point, updates parent links, handles the empty‑tree case by setting root = node, and returns the original root for non‑empty trees, preserving the BST property.

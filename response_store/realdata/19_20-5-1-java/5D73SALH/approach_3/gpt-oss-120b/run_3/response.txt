@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes the start node onto `queue` before the loop and uses `while(!queue.isEmpty())` to process nodes until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the node is taken with `queue.get(0)` and removed with `queue.remove(0)`, consistently dequeuing from the front.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: Visited tracking is done with `colorList`, but the code checks the colour only when enqueuing neighbours, not when a node is dequeued for processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The neighbour loop iterates over `knot` and enqueues each neighbour whose colour is `"WHITE"` using `queue.push`, adding only unvisited nodes to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns `results`, which contains the start node followed by all reachable nodes in the order they are discovered, matching BFS order even in graphs with cycles.

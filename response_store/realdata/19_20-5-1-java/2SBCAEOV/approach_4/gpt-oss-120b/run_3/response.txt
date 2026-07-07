@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code marks the start node (color GRAU), adds it to the queue `q` before entering the `while (!q.isEmpty())` loop, and the loop continues processing until the queue is empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code dequeues the current node with `Node u = q.get(0); q.remove(0);`, consistently removing from the front of the queue.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution uses the Farbe enum to track node states, marking nodes gray when enqueued and black after processing, and only expands white (unvisited) neighbors, preventing duplicate visits and infinite loops.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over each neighbor in u.adj and, after checking that v.farbe is WEIß (unvisited), marks it and enqueues it with q.add(v), correctly adding all unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses a FIFO list as a queue, marks nodes gray/white/black to avoid revisits, and adds each newly discovered node to the result in adjacency‑list order, yielding the proper BFS level‑by‑level traversal even with cycles.

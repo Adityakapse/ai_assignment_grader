@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `double[][] rucksack = new double[n + 1][capacity + 1];`, giving the required (n+1) × (capacity+1) table, and Java’s default initialization (plus the explicit zeroing of the first row) ensures all cells start at 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses an outer loop over i = 1..n and an inner loop over j = 1..capacity (j = 0 is implicitly handled), iterating through every item and every capacity subproblem as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (volumes[i - 1] > j) … else …` which correctly ensures items are only considered when `volumes[i-1] <= j`, allowing inclusion when they exactly fit.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `rucksack[i][j] = Math.max(rucksack[i-1][j], rucksack[i-1][j-volumes[i-1]] + values[i-1])` when the item fits and copies `rucksack[i-1][j]` when it does not, correctly referencing the previous row in both cases.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds the DP table forward, correctly handles the base case and returns rucksack[n][capacity], yielding the optimal value for all inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: When b is 0 the loop is skipped and the function returns 1, not 1 % c, so it fails the required modulo handling (e.g., for c = 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `if j%2!=0:` to detect odd exponents and handles the odd case differently from the even case, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code handles odd exponents inside a loop by decrementing j and multiplying res by res1, but it never returns the required expression (a * expo(a, b-1, c)) % c for the odd case.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function uses an iterative loop and never implements the recursive even case (halving b and squaring the recursive result), and even the loop uses `j=j/2` which produces a float instead of integer division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function returns 1 for b=0 without applying the modulo, so it yields the wrong result when c=1, even though the loop correctly computes a^b mod c for most other inputs.

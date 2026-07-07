@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates a double[][] table of size (n+1) × (capacity+1) and the array is zero‑initialized (also explicitly sets row 0 to 0).
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates i = 1 … n, but the inner loop starts at j = 1 instead of j = 0, so the subproblem for capacity 0 is never computed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility test uses `if (volumes[i‑1] > j)` which correctly implements the required `volumes[i] <= j` condition for inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the code assigns `Math.max(table[i‑1][j], table[i‑1][j‑volumes[i‑1]] + values[i‑1])`, correctly referencing the previous row for both include and exclude cases.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method produces correct results for typical inputs but fails for zero‑capacity or zero‑weight items because the j = 0 subproblem is never filled.

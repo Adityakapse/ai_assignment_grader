@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a cumulative list inside the loop rather than allocating a separate array C of size n and initializing C[0] = A[0] before the loop, so the required prefix‑sum array initialization is not done correctly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop iterates over A, updating s with s += transporte so that each sums[i][1] stores the cumulative total A[0]+…+A[i], correctly implementing C[i] = A[i] + C[i‑1].
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution creates the result list with a list comprehension that iterates over every (l, r) pair in B, producing an output array of the correct size and covering all queries.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The list `sums` stores prefix sums so `sums[r][1] - sums[l][0]` correctly computes `C[r] - C[l-1]` and yields `C[r]` when `l` is 0 because `sums[0][0]` is 0.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code builds prefix sums in a single pass and computes each query as sums[r][1]‑sums[l][0], correctly handling l = 0 and running in O(n) without using forbidden keywords.

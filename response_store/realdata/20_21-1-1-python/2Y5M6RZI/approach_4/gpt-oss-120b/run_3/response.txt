@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns 1 when b is 0 (by initializing res to 1 and skipping the loop) but does not apply % c, so it fails for cases like c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if j%2!=0:` to detect odd exponents and otherwise handles the even case, correctly distinguishing the two parities.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution handles odd exponents with a loop and multiplication, but it never returns `(a * expo(a, b-1, c)) % c` nor makes a recursive call, so the required odd‑case pattern is missing.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function never recurses on the even case (it uses a while loop and never calls expo with b/2), so it does not compute tmp = expo(a, b//2, c) and square it as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function works for many cases but returns 1 instead of 1 % c when b = 0 (e.g., c = 1) and uses float division (j=j/2) instead of integer division, which can cause correctness issues.

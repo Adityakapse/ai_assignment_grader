@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates an array A of size W.length but does not initialise it to –1; the entries start at the default 0 value, which does not match the required sentinel initialisation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code sets A[0] = W[0] and assigns A[1] the maximum of W[0] and W[1], correctly handling the base cases for n = 0 and n = 1.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no cache‑check like “if (memo[n] != -1) return memo[n];” because the implementation is iterative and never reads a memoised value.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop computes A[i] as the maximum of W[i] + A[i‑2] and A[i‑1] and stores it in A[i], faithfully implementing the required recurrence and memoisation step.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns A[W.length‑1], which yields the optimal billboard profit for any valid input in O(n) time.

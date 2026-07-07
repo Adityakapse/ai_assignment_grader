@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a recursive helper instead of a while loop, so although the start node is placed on the stack, there is no explicit while‑loop that processes nodes until the stack is empty as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The current node is removed with `stack.pop()`, which always takes the element from the top of the stack, satisfying the LIFO requirement.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: Nodes are added to `visited` after being popped without first checking if they have already been visited; the code relies on the push logic to avoid duplicates, so the visited check is not performed as specified.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `reversed(graph[node])` and appends each unvisited neighbour to the stack, correctly pushing neighbours in reverse adjacency order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns a list of all reachable nodes in the proper DFS order (adjacency‑list order) for the tested graphs, handling cycles without repeats.

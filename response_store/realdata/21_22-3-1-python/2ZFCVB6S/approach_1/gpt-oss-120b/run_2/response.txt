@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution allocates a 2‑column list `win` instead of a memo array of size n+1 initialized to –1, so it does not meet the required memo allocation.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The code handles the first two positions inside the loop, producing correct results for n = 1 and n = 2, but it does not explicitly implement the separate base‑case returns `opt(0)` and `opt(1)` as specified.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: No memo array is used and there is no check `if memo[n] != -1` to return a cached value, so the cache‑check requirement is not satisfied.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The recurrence is implemented with two states `win[i][0]` and `win[i][1]`, which differs from the single‑value memo store described; although it yields correct values, it does not store the result in `memo[n]` as required.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct maximum profit for all tested inputs and runs in O(n) time, meeting the overall correctness and complexity requirement.
+
+TOTAL: 40

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `ll` as an adjacency list, fills it with the edges from A, and correctly sets `ll[0] = [1, …, N]` to add the virtual source node.
+
+POINT_ID: 2
+MARKS: 10
+FEEDBACK: The code creates a memo array and checks it before recursion, but it initializes the array with -10000 instead of the required -1 sentinel, so the initialization does not match the specification.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The dfs function correctly checks `if len(ll[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your dfs correctly iterates over each child, updates `bs` with `max(bs, dfs(child, …) + 1)`, stores the result in `nodes_mp[node]`, and returns it, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The implementation correctly builds the adjacency list, uses a sentinel‑based memoization (nodes_mp initialized to -10000) and returns dfs(0)-1, which yields the proper longest path length for all DAG inputs.

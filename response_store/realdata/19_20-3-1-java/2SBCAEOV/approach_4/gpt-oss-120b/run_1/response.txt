@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses an outer for‑loop over i and an inner for‑loop over j to find the minimum element and then swaps, which matches the typical selection‑sort iteration structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution calls `list.Smaller(j, min)` to compare each candidate element with the current minimum, using the proper index arguments for the selection‑sort logic.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The solution swaps the element at index i with the minimum index found, but this swap is not performed on the same pair of indices used in the comparison (list.Smaller(j, min)), so it does not directly correspond to each order‑violation check.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer loop (`i < list.Length()-1`) and the inner loop (`j < list.Length()`) use Length() to bound their iterations, ensuring the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses selection sort—finding the minimum element each pass and swapping it into place—so it correctly returns the list in ascending order for all input sizes.

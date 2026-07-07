@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a (len1+1)×(len2+1) array and uses nested loops that cover every cell (via i from 0 to len1‑1 and j from 0 to len2‑1, writing to dp[i+1][j+1]), effectively filling the DP table bottom‑up as required.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code correctly initializes dp[i][0] = i for all i and dp[0][j] = j for all j, matching the required base case setup.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly handles the match case by assigning dp[i+1][j+1] the value of dp[i][j] when the current characters are equal, matching the required behavior.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The code correctly computes replace, insert, and delete costs (each with +1) and selects the minimum, matching the required 1 + min of the three neighbours.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your DP implementation correctly initializes the base cases, iterates over the strings without recursion, computes the minimum of replace/insert/delete operations, and returns the proper edit distance for all inputs.

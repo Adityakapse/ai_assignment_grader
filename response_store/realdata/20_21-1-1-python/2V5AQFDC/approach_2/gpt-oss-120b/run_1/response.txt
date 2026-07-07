@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code never returns 1 % c for b = 0—it just returns the initial value 1, so it fails the required base case (e.g., returns 1 instead of 0 when c = 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code correctly distinguishes odd and even exponents using the bitwise check `if ((b&1)==1):`, which is equivalent to `b % 2`.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: Your loop checks `if (b&1)==1` and multiplies `ergebnis` by `a` before shifting `b`, correctly handling the odd case by reducing the exponent and multiplying as required.
+
+POINT_ID: 4
+MARKS: 22
+FEEDBACK: Your loop correctly halves b (using b >> 1) and squares a (a = (a*a)%c) for the even case, achieving the same effect as the recursive tmp = expo(a,b/2,c) and (tmp*tmp)%c, though it’s implemented iteratively.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The binary‑exponentiation loop correctly computes a^b mod c for typical cases, but when c = 1 it returns 1 instead of the required 0, so it’s not correct for all valid inputs.

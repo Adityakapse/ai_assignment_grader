@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses `if(delete.left == null || delete.right == null) y = delete; else y = treeMinimum(delete.right);` which correctly selects y according to the number of children.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `treeMinimum` method iterates left while `node.left != null` and returns the leftmost node, matching the required behavior.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `Node x = (y.left != null) ? y.left : y.right;` correctly picks y’s non‑null child or null if y is a leaf.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation updates `x.parent` when x is non‑null, handles the root replacement (`y.parent == null`) and correctly redirects the appropriate child pointer of `y.parent` to x.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code copies the key only when `y != delete` with `delete.key = y.key;`, correctly handling the successor case.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: All cases (leaf, one‑child, two‑children, and root deletion) are handled, and the method returns the updated root, preserving BST properties.

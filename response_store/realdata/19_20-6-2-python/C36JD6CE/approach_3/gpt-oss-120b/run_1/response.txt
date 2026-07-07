@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2‑D table; it only builds a list called ratio and uses scalar variables, so no DP table of size (n+1)×(capacity+1) is allocated or initialized.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There is a single loop over the sorted ratio list; no nested loops iterate over each item and each capacity j from 0 to capacity, so the required DP loop structure is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code checks feasibility with `if volumeSum + item[2] <= capacity`, which is a greedy total‑capacity test, not the per‑item‑and‑capacity check `volumes[i] <= j` required inside a DP subproblem loop.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence relation is applied; the algorithm simply sums values of selected items instead of using `Result[i][j] = max(...)` referencing previously computed sub‑problem results.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The greedy approach may give the correct answer for trivial cases, but it fails for many multi‑item instances where the optimal solution does not follow the highest value‑to‑volume ratio ordering.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The recursive implementation walks down the tree, moving left when z.key < x.key and otherwise recursing right until a null child is found, correctly locating the insertion point.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never declares or updates a separate parent variable during the traversal; it only assigns `z.parent = x` when the insertion point is reached, so it does not maintain a parent pointer throughout the search.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution attaches the new node as `x.left` when `z.key < x.key` and as `x.right` otherwise, correctly placing it according to BST rules.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution sets `z.parent = x` before attaching `z` as a left or right child, correctly linking the new node to its parent during insertion.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles the empty‑tree case (returns z when x is None), correctly recurses left or right based on the key, sets the parent when inserting as a leaf, and returns the original root for non‑empty trees, preserving the BST property.

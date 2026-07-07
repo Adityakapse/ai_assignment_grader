@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with two integer parameters, returns an int, and includes a recursive call, matching the required signature and structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function checks `if (r == 0) return b;` where `r` is `a % b`, correctly implementing the Euclidean base case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After computing `r = a % b`, the code calls `gcd(r, b)`, which reduces the problem size and ensures progress toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function returns `(a * b) / gcd(a, b)`, exactly the required formula with proper parameters and return type.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the gcd works for typical positive inputs, it does not handle cases where `b` (or `a`) is zero, leading to a division‑by‑zero error and thus fails on edge cases.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The lcm formula is correct for positive numbers, but because the underlying gcd fails for zero arguments, the lcm will also be incorrect or crash for those edge cases.

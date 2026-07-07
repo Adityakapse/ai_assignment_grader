@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution clones `B` to create `c`, giving the correct array size, but it isn’t initialized to zero (it contains the capacities), so the counting array isn’t a zero‑filled frequency counter as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code iterates over A but subtracts from the cloned B array (c[x] = c[x]-1) instead of incrementing a separate count array, so it never accumulates the frequencies of categories as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates `j` from 0 up to `c.length-1` (where `c` is a clone of `B`), thus producing exactly `|B|` characters as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if(c[j]>=0)` where `c[j]` equals `B[j] - count`, so it appends ‘1’ exactly when the count of category j is ≤ B[j] and ‘0’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code clones B, decrements counts for each A element, and appends ‘1’ when the resulting value is non‑negative and ‘0’ otherwise, correctly producing the required binary string in O(n + m) without forbidden substrings.

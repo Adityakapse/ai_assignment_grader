@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a memo array of size n+1, but it initializes entries to 0 (e.g., m[0]=0) instead of the required sentinel value –1, so it does not follow the specified initialization rule.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code correctly returns W[0] when the array has length 1, but it lacks an explicit base case for n == 1 (and instead computes it in the loop), so the required max(W[0], W[1]) case is not directly handled.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative DP array `m` without a recursive helper, so there is no `if (memo[n] != -1) return memo[n];` cache check; the memo array is never consulted to skip recomputation.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The for‑loop computes m[i] = Math.max(W[i‑1] + m[i‑2], m[i‑1]) and stores this value in the memo array before the final return, correctly applying the max‑based recurrence.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code indexes the array so that the last location W[n] is never considered, returning the optimum for positions 0..n‑1 only, which yields incorrect results for most inputs.

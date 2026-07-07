@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code pushes the start node onto stack s before entering the while(!s.isEmpty()) loop, satisfying the required initialization and loop condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop the current node is obtained with s.pop(), consistently removing the top element of the stack (LIFO).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Before processing a node the code checks if result.contains(start) and adds the node to result only when it has not been visited, providing proper visited tracking.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The neighbours are iterated from graph[start].length‑1 down to 0 and each is pushed onto the stack, which (despite not pre‑checking visited) pushes them in reverse adjacency order so they are later visited in the correct forward order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the list of visited nodes in the expected DFS order for all reachable vertices, handling cycles correctly by skipping already‑visited nodes.

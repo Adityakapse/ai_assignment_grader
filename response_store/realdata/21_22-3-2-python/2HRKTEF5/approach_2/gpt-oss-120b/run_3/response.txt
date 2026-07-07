@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The solution constructs the forward adjacency list F from A, but it never adds a virtual source node 0 with edges to every node 1…N, so the required virtual source is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never creates a memo array or checks for cached values; it uses a topological layering approach instead of initializing a -1 memo array and returning memo[node] when already computed.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution does not implement a DFS function at all, so there is no leaf‑node base case returning 0 as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code never computes sol = max(sol, dfs(child) + 1) nor stores a memoized value for each node; it uses a layer‑by‑layer indegree reduction instead of the required child‑wise recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: Your implementation builds indegree counts, performs a level‑by‑level topological traversal, and returns i‑1, which correctly yields the length of the longest directed path for all DAG inputs.

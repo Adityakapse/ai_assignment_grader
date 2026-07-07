@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: When b is 0 the loop is skipped and the function returns ergebnis = 1, but it does not apply “% c”, so it fails the required base case of returning 1 % c (e.g., for c = 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if((b&1)==1):` to detect odd exponents and handles the even case in the loop otherwise, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code uses a loop with bit‑shifts instead of the required recursive odd case; it never calls expo(a, b‑1, c) nor reduces b by exactly 1 before multiplying by a.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The function uses an iterative loop and bit‑shifts instead of recursively halving b and squaring the result, so the required even‑case recursion is absent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative implementation correctly applies modulo at each multiplication, handles large exponents with bitwise shifts, and contains neither 'import' nor '**', yielding the proper a^b mod c for all inputs.

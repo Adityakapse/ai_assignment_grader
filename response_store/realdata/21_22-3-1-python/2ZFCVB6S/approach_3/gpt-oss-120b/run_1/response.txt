@@ -1,0 +1,15 @@
+POINT_ID: Point 1 — Memo array allocation and initialisation
+BUCKET: Wrong
+FEEDBACK: The solution creates a 2‑D list `win = [[0,0] for _ in range(n)]` of size n (not n+1) and initializes entries to 0, not a memo array of size n+1 filled with –1 as required.
+
+POINT_ID: Point 2 — Base cases
+BUCKET: Correct
+FEEDBACK: The code handles the first two positions explicitly (`i == 0` and `i == 1`) and correctly sets the profit for a single element and for two elements to `W[0]` and `max(W[0], W[1])` respectively.
+
+POINT_ID: Point 3 — Cache check
+BUCKET: Wrong
+FEEDBACK: There is no cache‑check like `if memo[n] != -1: return memo[n]`; the algorithm fills the table iteratively instead of checking a memoized value before recursion.
+
+POINT_ID: Point 4 — Recurrence and memo store
+BUCKET: Semi
+FEEDBACK: The implementation uses a two‑state recurrence (`win[i][0]` and `win[i][1]`) and stores results in the `win` table, but it does not follow the exact `memo[n] = max(W[n] + opt_helper(n‑2), opt_helper(n‑1))` pattern required

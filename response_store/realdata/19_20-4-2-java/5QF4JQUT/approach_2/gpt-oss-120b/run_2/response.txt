@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: Your code correctly chooses `toBeDeleted` as `delete` when it has ≤1 child and otherwise uses `treeMinimum(delete.right)`, matching the required selection of y.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The treeMinimum method correctly iterates left while root.left is not null and returns the final node, matching the required behavior.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly selects the non‑null child with `notNullChildOfToBeDeleted = (toBeDeleted.left != null) ? toBeDeleted.left : toBeDeleted.right;`, matching the required logic for identifying x.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly sets the non‑null child's parent to `toBeDeleted.parent` and updates either the root or the appropriate left/right pointer of `toBeDeleted.parent` to that child, matching the required splicing behavior.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The code correctly updates delete.key with toBeDeleted.key when the node to splice out is the successor (toBeDeleted != delete).
+
+POINT_ID: 6
+MARKS: 19
+FEEDBACK: Your delete method correctly handles leaf, single‑child, two‑child, and root deletions, preserving BST properties, though using equals instead of == for child comparison could be risky if equals is overridden.

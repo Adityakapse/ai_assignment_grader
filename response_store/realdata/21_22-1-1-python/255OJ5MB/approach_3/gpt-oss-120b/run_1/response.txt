@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The implementation uses the identity a_n = (a_{n/2}+1)^2‑1 for even n and a_n = ((a_{n‑1}+1)*2‑1) for odd n, which correctly computes 2^n‑1 modulo 10^9+7.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate expo function is defined, so there is no base case returning 1 when the exponent is 0 as required by the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain an explicit odd‑exponent case of the form (a * expo(a, b‑1, c)) % c.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution lacks an even‑exponent case that calls expo once with b//2 and squares the result modulo c.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Using “n/2” performs floating‑point division, causing recursive calls with non‑integer arguments and incorrect results for even n; therefore calc does not reliably return (2^n‑1) mod 10^9+7.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `double[][] table = new double[volumes.length + 1][capacity + 1];`, creating a (n+1) × (capacity+1) array that Java initializes to 0.0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses nested loops, but the inner loop starts at j = 1 instead of 0, so the zero‑capacity subproblem (needed for weight‑0 items) is never processed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `if (volumes[i - 1] > j) … else …` which correctly treats the else case as `volumes[i-1] <= j`, allowing items that exactly fit (or have zero volume) to be considered for inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses the proper recurrence, referencing table[i‑1][j] and values[i‑1] + table[i‑1][j‑volumes[i‑1]] when the item fits, and correctly copies table[i‑1][j] when it does not.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The DP loops start at j = 1 and you even change the capacity when it’s >1000, so the function returns 0 for capacity 0 (missing zero‑weight items) and gives incorrect values for large capacities.

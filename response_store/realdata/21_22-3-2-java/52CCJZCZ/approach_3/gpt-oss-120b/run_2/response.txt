@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A (using 0‑based indices) but never adds a virtual source node with edges to all nodes, so it cannot start a single DFS from a common source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array is created or used; the solution relies on a topological DP array instead of the required -1‑initialized memoization cache.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: There is no DFS function at all, so no leaf‑node base case is defined as required.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution does not implement the recursive recurrence sol = max(sol, dfs(child) + 1) nor store results in a memo array; it uses an iterative DP over the topological order instead.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Despite the different approach, the algorithm correctly computes the length of the longest directed path for all DAG inputs in O(N+M) time.

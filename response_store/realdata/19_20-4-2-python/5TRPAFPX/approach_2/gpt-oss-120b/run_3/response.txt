@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: Your code correctly uses the node itself when it has ≤1 child (by removing deleteNode) and selects the successor with treeMinimum(deleteNode.right) when it has two children, matching the required y selection.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The treeMinimum function correctly recurses left until a node with no left child (or None) and returns that node, matching the required behavior.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The code correctly determines the child to promote by using newNode.right (or None when there is no child) when removing the successor, matching the required identification of x.
+
+POINT_ID: 4
+MARKS: 10
+FEEDBACK: The code attempts to splice out the node by reassigning parents and child pointers, but it mishandles the case where the successor is the direct right child (it sets the node’s parent to itself and creates a self‑reference), so the splicing is not correctly implemented in all cases.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution never copies the successor’s key into the node being deleted; it rewires the successor node instead of assigning deleteNode.key = newNode.key when y ≠ delete.
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: The code correctly handles leaf, one‑child, two‑child, and root deletions, rewiring pointers appropriately, though the implementation is a bit verbose and could miss some edge‑case pointer updates.

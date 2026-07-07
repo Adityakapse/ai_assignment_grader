@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The start node is appended to `result` before the loop and a `for` loop iterates over `result`, but the rubric expects a while‑loop that runs until the queue is empty, so the loop structure is only partially correct.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never removes a node from the front of a queue; it simply iterates over `result`, so there is no explicit dequeue operation as required for BFS.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: `result` is used as a visited collection and the condition `if not vertex in result` prevents adding already‑visited nodes, satisfying the visited‑tracking requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The algorithm iterates over `graph[element]` and appends each unvisited neighbour to `result`, correctly enqueuing neighbours at the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns all reachable nodes from `start` in proper BFS (level‑by‑level) order for directed graphs, handling cycles via the visited check.

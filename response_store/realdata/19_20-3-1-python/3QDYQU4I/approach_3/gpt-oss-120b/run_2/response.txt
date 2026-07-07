@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code includes an outer `for i` loop and an inner `for j` loop, matching the recognizable selection‑sort iteration structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It calls `l.Smaller(j, mini)` to compare element j with the current minimum, correctly using the provided comparison method.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: `l.Swap(mini, i)` is executed unconditionally after the inner loop, not only when a comparison indicates an order violation, violating the conditional‑swap requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer and inner loops use `l.Length()` for their bounds, ensuring the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort logic correctly places the smallest remaining element at each position, so the returned list is sorted in ascending order for all valid inputs.

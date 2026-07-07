@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The solution creates a long array of length n+1, but it does not initialise the cells to –1 (it sets m[0]=0 and m[1]=W[0] instead), so the sentinel initialisation required by the rubric is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The implementation sets m[0] to 0 and m[1] to W[0], so opt(0) returns 0 instead of W[0] and opt(1) returns only W[0] rather than max(W[0], W[1]).
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The solution uses an iterative DP array and does not include a recursive helper with a memo‑check, so it lacks the required “if memo[n] != -1 return memo[n]” cache check.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code implements the correct recurrence (using m[i] = max(W[i‑1] + m[i‑2], m[i‑1])) and stores each result in the memo array before the final return, matching the required memoisation.
+
+POINT_ID: 5
+MARKS: 4
+FEEDBACK: The implementation treats the input array as length n instead of n+1, ignores the last location (W[n]) and fails to consider the profit at index 1 for n=1, so it does not always return the optimal profit despite being O(n).

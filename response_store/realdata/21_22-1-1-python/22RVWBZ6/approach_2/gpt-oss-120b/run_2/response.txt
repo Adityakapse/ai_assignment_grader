@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 25
+FEEDBACK: Your calc function uses exp(n)-1, showing you recognized the closed form aₙ = 2ⁿ − 1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The exp function only defines a base case for n==1 and never returns 1 when the exponent is 0, so it lacks the required b == 0 case.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The odd case returns `exp(n-1)*2 % 1000000007`, correctly reducing the exponent by one and multiplying by the base (2) before applying the modulo.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code checks `elif (n/2 % 2==0)` instead of detecting simply an even `n`, uses float division (`n/2`) and only handles numbers divisible by 4, so it does not correctly compute `tmp = exp(n//2)` and return `(tmp*tmp) % MOD` as required.
+
+POINT_ID: 5
+MARKS: 4
+FEEDBACK: The solution computes 2ⁿ‑1 correctly for tiny inputs, but uses floating‑point division (n/2) and a linear‑time recursion for odd n, causing incorrect behavior or recursion depth errors for large n up to 10⁹.

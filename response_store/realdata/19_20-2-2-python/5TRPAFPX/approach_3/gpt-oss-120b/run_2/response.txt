@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function loops over `for n in inputarray` and uses an if/elif/else chain to separate operators from numeric tokens.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the `else` clause the code converts `n` with `int(n)` before pushing it onto the stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For each operator the code pops two values, computes the operation (`x+y`, `x-y`, `x*y`, `x/y`) and pushes the result back onto the stack.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The subtraction uses `x - y` and division uses `x / y`, so the operand order is correct, but division is performed with floating‑point `/` instead of integer floor division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator works for addition, subtraction, and multiplication, but because division is not floor‑rounded, it can return incorrect integer results for expressions involving `/`.

@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Closed form derivation
+BUCKET: Correct
+FEEDBACK: The student computes 2ⁿ in exp and then returns (exp(n)‑1) % 1000000007 in calc, showing they identified aₙ = 2ⁿ‑1.
+
+POINT_ID: Point 2 — Expo base case: b == 0
+BUCKET: Semi
+FEEDBACK: The recursion stops at n == 1 returning 2, instead of providing a base case for exponent 0; calc handles n = 0 separately, but the expo‑style function lacks the required b == 0 case.
+
+POINT_ID: Point 3 — Expo odd case: reduce by 1 and multiply
+BUCKET: Correct
+FEEDBACK: In the else branch the code returns exp(n‑1) * 2 % MOD, which correctly implements the odd‑exponent step (a * expo(a, b‑1, c)) % c with a = 2.
+
+POINT_ID: Point 4 — Expo even case: halve and square
+BUCKET: Wrong
+FEEDBACK: The even branch uses the condition n/2 % 2 == 0 and calls exp(n/2) with a float argument, failing to correctly halve the exponent and square the result as required.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Wrong
+FEEDBACK: Because the even‑case logic is incorrect, calc produces wrong results for many inputs (e.g., n = 2, 4) and does not reliably return (2ⁿ‑1) mod 10⁹+7.

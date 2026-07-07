@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `intervalle` of size n, initializes `intervalle[0] = a[0]` before the loop that builds the cumulative sums, satisfying the prefix‑sum array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code initializes intervalle[0] with a[0] and then loops i from 1 to n‑1, setting intervalle[i] = a[i] + intervalle[i‑1]; this correctly builds the cumulative sum array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] d = new int[n];` and iterates with `for(int j=0; j<=b.length-1; j++)` covering all queries, matching the required output array size and full query loop.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution uses the prefix array `intervalle` and correctly computes `d[j] = r - intervalle[l]` when `l = b[j][0]-1 >= 0`, and falls back to `d[j] = r` for the `l == 0` case, handling the edge case properly.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a prefix‑sum array (`intervalle`) and uses it to compute each range sum in the second loop, handling the `l == 0` case with the `else` branch, achieving O(n) overall without forbidden keywords.

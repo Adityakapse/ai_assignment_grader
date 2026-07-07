@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The function skips the loop when b is 0 and returns the initial value 1, but it does not apply “% c”, so it fails the required base case return of 1 % c (e.g., for c = 1).
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code uses (b&1)==1 to test oddness, which correctly distinguishes odd from even b, satisfying the parity detection requirement.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The loop checks `if (b&1)==1` and multiplies `ergebnis` by `a` before shifting, correctly handling the odd‑case reduction by one and multiplying.
+
+POINT_ID: 4
+MARKS: 22
+FEEDBACK: Your loop correctly halves b (using b>>=1) and squares the base a (a = (a*a)%c) for even exponents, achieving the required halve‑and‑square behavior even though it’s iterative rather than recursive.
+
+POINT_ID: 5
+MARKS: 16
+FEEDBACK: The binary exponentiation loop correctly computes a^b mod c for typical cases, but it returns 1 instead of 0 when b=0 and c=1, so it fails on that edge case.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates an adjacency list `ll` from the edge array and assigns `ll[0] = [1, …, N]`, correctly adding the virtual source node 0 that connects to every vertex.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The solution creates a memo array (nodes_mp) but initializes it with -10000 and checks against that sentinel instead of -1, so the cache check uses the wrong sentinel value.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The dfs function checks `if len(ll[node]) == 0:` and returns 0 for leaf nodes, correctly handling the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The dfs function loops over all children, uses `max(bs, dfs(child, ...) + 1)` and assigns the result to `nodes_mp[node]` before returning, correctly implementing the recurrence with memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation correctly builds a virtual source, memoizes results using a sentinel value, and returns dfs(0) - 1, yielding the proper longest path length for all DAGs within O(N+M) time.

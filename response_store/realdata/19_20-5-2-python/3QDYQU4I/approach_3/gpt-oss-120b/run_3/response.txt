@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution starts with a stack containing the start node, but it uses recursive calls instead of a while loop to process the stack, so the required loop structure is missing.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `node = stack.pop()`, which correctly implements a LIFO pop from the top of the stack.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: Nodes are added to `visited` immediately after popping without first checking whether they have already been visited, so the visited set is not used to guard processing of a node.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `for neighbour in reversed(graph[node])` and appends each unvisited neighbour to the stack, ensuring neighbours are pushed in reverse adjacency order for correct DFS visitation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: For typical directed graphs the function returns all reachable nodes in the proper depth‑first order (adjacency‑list order), matching the expected DFS traversal.

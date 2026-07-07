@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a list `sums` of length n containing two‑element sublists, but it does not allocate a single prefix‑sum array C with C[0] = A[0] as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the first loop the variable s is updated with s += transporte, effectively building the cumulative sums (stored as the second element of each sublist), which matches the intended prefix‑sum construction.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The list comprehension `[sums[r][1]-sums[l][0] for l,r in B]` creates an output list of the same length as B and processes every query, satisfying the allocation and iteration requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each query the code returns sums[r][1] - sums[l][0]; when l = 0, sums[0][0] is 0, so the edge case is handled correctly without an off‑by‑one error.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns the correct range‑sum list for all queries in overall O(n) time and contains no forbidden keywords.

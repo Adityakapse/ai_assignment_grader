@@ -1,0 +1,19 @@
+POINT_ID: Point 1
+BUCKET: Semi
+FEEDBACK: When b == 0 the loop is skipped and the method returns res which is 1, not 1 % c; thus it fails for the edge case c == 1.
+
+POINT_ID: Point 2
+BUCKET: Correct
+FEEDBACK: The code uses (b & 1) == 1 to detect odd exponents, which correctly distinguishes odd from even values of b.
+
+POINT_ID: Point 3
+BUCKET: Wrong
+FEEDBACK: The odd case multiplies res by a but then halves b instead of reducing b by 1 and recursing, so it does not follow the required (a * expo(a, b‑1, c)) % c pattern.
+
+POINT_ID: Point 4
+BUCKET: Correct
+FEEDBACK: After each iteration the exponent is halved ( b >>= 1 ) and a is updated to (a * a) % c, correctly implementing the “halve and square” step.
+
+POINT_ID: Point 5
+BUCKET: Correct
+FEEDBACK: The iterative exponentiation by squaring returns a^b mod c for all valid inputs, uses no import or ** and keeps intermediate values bounded with modulo operations.

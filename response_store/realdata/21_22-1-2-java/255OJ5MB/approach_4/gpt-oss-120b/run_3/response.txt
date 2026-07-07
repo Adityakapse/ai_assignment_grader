@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code initializes `lower = 1` instead of 0, so the search interval does not include the possible value N = 0, failing to correctly bound the entire range.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code uses a binary search loop, but the termination condition `while (upper - lower > 1)` differs from the required `while (l <= r)`, so it does not follow the exact loop condition specified in the rubric.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code updates upper when f_N(mid) is 1 (searches left) and updates lower when f_N(mid) is 0 (searches right), correctly narrowing the interval.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code returns `lower` when `f_N(lower)` is 1 and otherwise returns `upper`, which correctly yields the first index where the function switches to 1.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The algorithm initializes `lower = 1`, so when N = 0 it returns 1 instead of 0, causing incorrect results for that edge case.

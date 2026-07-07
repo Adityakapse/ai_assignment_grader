@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The function loops over `inputarray` with `for x in inputarray:` processing each token from left to right and uses a try/except to separate numbers from operators.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Numeric tokens are converted with `c = int(x)` and then pushed onto the stack via `stack.push(c)`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: For operator tokens the code pops two values (`b = stack.pop(); a = stack.pop()`), computes the appropriate operation, and pushes the result back with `stack.push(c)` for all four operators.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The operand order for `-` and `/` is correct (`a - b` and `a / b`), but division uses `/` producing a float instead of integer floor division as required.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The calculator works for addition, subtraction, and multiplication, but returns incorrect (non‑integer) results for expressions involving division, so it is not fully correct for all valid RPN inputs.

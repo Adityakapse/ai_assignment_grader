@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a two‑parameter function GGT that returns a value and includes a clear recursive call (return GGT(b, r)), matching the expected GCD structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The GGT function correctly stops recursion when the remainder r is zero and returns b, providing a proper base case for the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function swaps to ensure a ≥ b, computes r = a % b, and recursively calls GGT(b, r), correctly reducing the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The LCM function is defined and correctly implements the formula a * b / GGT(a, b), which matches the required (a * b) / gcd(a, b) structure.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The GGT implementation correctly computes the GCD for typical positive inputs, but it does not handle cases where either argument is zero (it performs a modulo by zero), so edge cases like gcd(0, n) fail.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The LCM function uses `a * b / GGT(a, b)`, which performs floating‑point division and returns a float (e.g., 24.0) rather than the exact integer LCM, leading to incorrect or imprecise results for some inputs.

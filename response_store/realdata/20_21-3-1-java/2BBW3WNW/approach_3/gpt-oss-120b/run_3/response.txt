@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates double[][] dynTab = new double[nItem+1][capacity+1]; and Java initializes all entries to 0 (the first row is explicitly set), satisfying the required table size and zero‑initialisation.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The outer loop iterates i = 1..nItem covering all items, but the inner loop starts at j = 1 instead of 0, so the capacity‑0 subproblem is never computed.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The feasibility check uses if (weight[i-1] > j) … else …, which correctly implements the condition weight ≤ j for inclusion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the code assigns dynTab[i][j] = Math.max(dynTab[i-1][j], dynTab[i-1][j - weight[i-1]] + value[i-1]); correctly applying the DP recurrence with the previous row.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the inner loop omits j = 0, the method returns 0 for capacity 0 and fails to account for zero‑weight items at that capacity, so it is not correct for all valid inputs.

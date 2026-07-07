@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a recursive divide‑and‑conquer pattern (splitting the list at the midpoint, recursively calling solution on the halves, then merging), which is recognisable as merge sort.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when the sub‑array length is 0 or 1, implemented by the guard `if len(A)>1:` before the recursive calls.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The Merge function appends a sentinel value 10**6 to both halves, but this value can equal legitimate elements, causing sentinel values to be copied into A and producing an incorrect order for inputs containing the maximum allowed value.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Merge sort has a guaranteed worst‑case O(n log n) runtime, so no randomisation is required and the solution satisfies the requirement.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the sentinel is not strictly larger than all possible elements, the algorithm does not reliably produce a correctly sorted array for all valid inputs (e.g., when 10**6 appears), so overall correctness is only partial.

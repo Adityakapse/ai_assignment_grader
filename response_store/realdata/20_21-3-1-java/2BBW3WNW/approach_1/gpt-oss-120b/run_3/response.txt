@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (nItem+1) x (capacity+1) and the base row is explicitly set to 0, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop iterates over all items, but the inner loop starts at j = 1 instead of 0, so subproblems for capacity 0 are never processed.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (weight[i-1] > j)` correctly checks whether the item fits (i.e., weight ≤ capacity) for the capacities that are iterated.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence uses `Math.max(dynTab[i-1][j], dynTab[i-1][j-weight[i-1]] + value[i-1])`, matching the required DP relation for both fit and non‑fit cases.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: The method returns the correct maximum for typical inputs but fails when items have weight 0 (e.g., capacity 0) because the j = 0 case is never computed.
+
+TOTAL: 83

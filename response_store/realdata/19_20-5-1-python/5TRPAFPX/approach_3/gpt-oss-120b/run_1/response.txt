@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code adds the start node to gefunden before the loop, but uses a for loop over the list instead of a while loop with an explicit queue.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There is no explicit dequeue operation; nodes are never removed from the front of a queue, the algorithm simply iterates over the list.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The list gefunden acts as a visited set and prevents duplicates, but the code does not check a node against visited before processing it—it only checks before enqueuing neighbours.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each current node the code iterates graph[knoten] and appends each neighbour not already in gefunden, effectively enqueuing unvisited neighbours at the back.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns all nodes reachable from start in the order they are discovered, which matches BFS level‑by‑level order for valid directed graphs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The start node is pushed onto the queue before the while loop and the loop runs while the queue is not empty.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Each iteration removes the current node with `queue.get(0)` followed by `queue.remove(0)`, always dequeuing from the front.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: A color list is used to track visited nodes, but nodes are added to the result list when first discovered (before they are dequeued) rather than when they are processed.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates over `graph[predecessor]` and enqueues every neighbour whose color is WHITE, correctly adding all unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns all reachable nodes in proper BFS (level‑by‑level) order for directed graphs, handling cycles without duplicate entries

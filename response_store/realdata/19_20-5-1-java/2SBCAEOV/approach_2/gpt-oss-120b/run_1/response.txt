@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code adds the start node (marked GRAU) to the queue `q` before entering the `while (!q.isEmpty())` loop, and the loop correctly processes nodes until the queue is empty.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code dequeues nodes with `Node u = q.get(0); q.remove(0);`, correctly removing from the front of the list to maintain FIFO order.
+
+POINT_ID: 3
+MARKS: 20
+FEEDBACK: The BFS uses a colour field (WHITE, GRAY, BLACK) to track visited nodes, checks that a neighbour is WHITE before enqueuing and marks it GRAY (and later BLACK), ensuring each node is added to the result only once and preventing infinite loops.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your BFS loop correctly iterates over each neighbor in `u.adj`, checks that its `farbe` is `WEIß` (unvisited), and then enqueues it with `q.add(v)`, satisfying the neighbour‑enqueue requirement.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation builds Node objects, converts adjacency indices correctly, and uses a FIFO ArrayList queue with color marking to visit each reachable node exactly once in the order dictated by the adjacency lists, thus producing a correct BFS traversal.

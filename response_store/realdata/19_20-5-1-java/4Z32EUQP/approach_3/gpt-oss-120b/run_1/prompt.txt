@@ -1,0 +1,123 @@
+QUESTION:
+This task is about the implementation of graphs and very
+simple graph algorithms. In Java we implement graphs with the
+the help of arrays. We look at graphs with unweighted edges.
+To represent a graph in Java, we give all nodes a number (starting with 0),
+which corresponds to the index of the adjacency list in the list. Example:
+
+int[][] graph = {
+    {1, 2},
+    {0},
+    {1}
+};
+
+Each of these edges can now be considered as directed, going out
+from the node with the index number to the node with the corresponding
+number (see image for a graphical visualization).
+
+Now we want to implement some simple algorithms for the graphs,
+starting with breadth-first search. How this
+algorithm works can be found in the lecture, see also Cormen et
+al, chap. 22. The inputs are assumed to be unweighted, directed graphs,
+so it is not always the case that for each edge there is also a back edge
+running in the opposite direction.
+
+The outputs shall contain the nodes of the graph in the order
+as they are processed by the corresponding search.
+The nodes are to be traversed in the order in which they are arranged in the adjacency list.
+
+You can use a java.util.ArrayList or a java.util.Stack
+if this makes sense to you.
+
+SAMPLE SOLUTION:
+public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> visited = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<Integer>();
+    queue.add(start);
+
+    while(!queue.isEmpty()){
+        int next = queue.remove(0);
+        if(!visited.contains(next)) {
+            visited.add(next);
+            for(int vertex: graph[next]) {
+                if(!visited.contains(vertex)) {
+                    queue.add(vertex);
+                }
+            }
+        }
+    }
+    return visited;
+}
+
+STUDENT SOLUTION:
+public List<Integer> bfs(int[][] graph, int start) {
+    List<Integer> result = new ArrayList<Integer>();
+    int [][] color = new int [graph.length][4];
+    List<Integer> myQ = new ArrayList<>();
+    
+     for(int i = 0; graph.length > i; i++){
+       color[i][0] = i; //element
+       color[i][1] = 0; //farbe
+      // color[i][2] = -1; //distanz
+      // color[i][3] = -1;//vorgänger
+       }
+       
+    color[start][1] = 1;
+    myQ.add(start);
+   // result.add(myQ.get(0));
+    
+    
+    while(!myQ.isEmpty()){
+        int u = myQ.get(0);
+        myQ.remove(0);
+        
+        for(int v = 0; graph[u].length > v; v++){
+            if(color[graph[u][v]][1]==0){
+                color[graph[u][v]][1]= 1;
+                myQ.add(color[graph[u][v]][0]);
+            }
+        }
+        color[u][1]=2;
+        result.add(u);
+        
+        
+    }
+    
+    return result;
+}
+
+RUBRIC:
+Point 1 — BFS loop structure and initialisation
+  The start node is added to the queue before the loop, and a while loop processes nodes until the queue is empty.
+  Buckets:
+    - Wrong (0 marks): No loop is present, or only the start node is processed without iterating further; the method returns without traversing the graph.
+    - Semi (10 marks): A loop is present but either the start node is not added to the queue before the loop begins, or the loop termination condition is incorrect (e.g., runs a fixed number of times rather than until the queue is empty).
+    - Correct (20 marks): The start node is added to the queue before the loop, and a while loop continues processing until the queue is empty.
+
+Point 2 — FIFO dequeue: removing from the front
+  The current node is always removed from the front of the queue (index 0), ensuring breadth-first (level-by-level) traversal.
+  Buckets:
+    - Wrong (0 marks): No dequeue operation is present, or nodes are removed from the back of the queue (LIFO), which produces depth-first rather than breadth-first traversal.
+    - Semi (10 marks): A remove operation is present but inconsistently applied (e.g., alternates between front and back), producing a traversal order that is neither pure BFS nor pure DFS.
+    - Correct (20 marks): The current node is always removed from the front of the queue (remove(0) in Java, pop(0) in Python), ensuring nodes are processed in the order they were enqueued.
+
+Point 3 — Visited tracking: check and mark
+  Each node is checked against the visited collection before being processed, and added to visited when processed, preventing duplicate entries and infinite loops.
+  Buckets:
+    - Wrong (0 marks): No visited tracking is present; nodes can be added to the result multiple times or the algorithm loops infinitely on graphs with cycles.
+    - Semi (10 marks): A visited structure exists but is used incorrectly: for example, nodes are added to visited before being dequeued rather than when processed, or the visited check is present but the update is missing, allowing revisits.
+    - Correct (20 marks): Each dequeued node is checked against visited before processing; if not already visited it is added to visited and its neighbors are explored. Already-visited nodes are skipped.
+
+Point 4 — Neighbour enqueue
+  All unvisited neighbours from graph[current] are iterated and added to the back of the queue.
+  Buckets:
+    - Wrong (0 marks): Neighbours are not enqueued; graph[current] is not iterated, so no nodes beyond the start are ever discovered.
+    - Semi (10 marks): graph[current] is iterated but all neighbours are enqueued regardless of visited status (causing duplicates), or only a subset of neighbours is enqueued (e.g., only the first).
+    - Correct (20 marks): All neighbours in graph[current] are iterated, and each unvisited neighbour is added to the back of the queue.
+
+Point 5 — Overall correctness
+  The method returns all reachable nodes from start in correct BFS (level-by-level) order for all valid directed graphs.
+  Buckets:
+    - Wrong (0 marks): Method returns an empty list or produces an incorrect traversal order for most inputs.
+    - Semi (10 marks): Returns correct nodes for simple linear or acyclic graphs but fails for graphs with cycles, multiple branches, or produces DFS order instead of BFS order.
+    - Correct (20 marks): Returns all reachable nodes from start in correct BFS order (level-by-level, neighbours in adjacency list order) for all valid directed graphs including those with cycles.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a correctly sized (aLength+1)×(bLength+1) matrix, but the nested loops begin at 0 rather than iterating from 1 to aLength and 1 to bLength, handling the base cases inside the loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code sets matrix[0][j] = j when i == 0 and matrix[i][0] = i when j == 0, correctly initializing both the first row and first column.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks `a.charAt(i-1) == b.charAt(j-1)` and assigns `matrix[i][j] = matrix[i-1][j-1]` for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch the student correctly computes `int ins = matrix[i][j-1]; int rem = matrix[i-1][j]; int rep = matrix[i-1][j-1];` and sets `matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));`, which implements the required 1 + min of the three neighboring cells.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses an iterative DP matrix, correctly initializes base cases, handles character matches and computes insert/delete/replace costs, and returns the proper distance for all inputs without recursion.

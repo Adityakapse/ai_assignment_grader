@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The recursive calls in `insert` walk down the tree, using `if z.key < x.key` to go left and otherwise proceeding right, and they stop when a null child is found before attaching the new node.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never declares or updates a separate parent pointer during traversal; it only sets z.parent when the insertion point is reached via recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code attaches z as x.left when z.key < x.key and as x.right otherwise, setting z.parent appropriately in both cases.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code assigns z.parent = x when inserting as a left or right child, correctly linking the new node to its parent during traversal.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function handles the empty‑tree case by returning the new node, correctly recurses to left or right subtrees, sets parent pointers, and returns the original root for non‑empty trees, preserving the BST property.

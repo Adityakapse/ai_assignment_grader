@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates a double[][] of size (nItem+1) × (capacity+1) and relies on Java’s default zero values (plus an explicit first‑row loop), satisfying the required allocation and initialization.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop correctly iterates over all items, but the inner loop starts at j = 1 instead of 0, so it does not explicitly iterate over the zero‑capacity subproblem as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code checks `if (weight[i-1] > j)` before using the item, ensuring the volume condition is met, and the else branch correctly handles zero‑weight items by using `j - weight[i-1]`.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your code uses `dynTab[i][j] = Math.max(dynTab[i-1][j], dynTab[i-1][j - weight[i-1]] + value[i-1])` when the item fits and copies `dynTab[i-1][j]` when it doesn't, matching the required recurrence.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly computes the 0/1 knapsack optimum for all cases, including items with volume 0, and returns the proper maximum value.

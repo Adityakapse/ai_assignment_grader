@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a 2‑dimensional table; it only builds a `ratio` list and scalar variables, so no DP table of size (n+1)×(capacity+1) is allocated or initialized.
+
+POINT ID: 2
+BUCKET: Wrong
+FEEDBACK: Only a single loop over the sorted `ratio` list is present; there are no nested loops that iterate over each item and each capacity j from 0 to `capacity`.
+
+POINT ID: 3
+BUCKET: Wrong
+FEEDBACK: The code checks `volumeSum + item[2] <= capacity` rather than verifying `volume[i] <= j` for each capacity j, so the required per‑subproblem feasibility test is missing.
+
+POINT ID: 4
+BUCKET: Wrong
+FEEDBACK: No recurrence relation is used; the algorithm simply adds selected item values and never computes `Result[i][j] = max(...)` based on previously computed subproblems.
+
+POINT ID: 5
+BUCKET: Semi
+FEEDBACK: The greedy approach may give the correct answer for very simple cases, but it fails on many multi‑item instances where the optimal 0/1 knapsack solution requires a different combination of items.

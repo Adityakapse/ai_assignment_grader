@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: You correctly build an adjacency list (using 0‑based indices) from A, but you never add a virtual source node with edges to all vertices, so the required graph construction is incomplete.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution initializes Lengths to 0 (not -1) and never checks a memo array for cached values, so it does not implement the required memoization initialization or cache check.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: Your solution does not include a DFS function, so there is no leaf‑node base case that returns 0 as required.
+
+POINT_ID: 4
+MARKS: 0
+FEEDBACK: The code never uses recursion or a memo array to compute sol = max(sol, dfs(child)+1); it only iterates once over edges and updates Lengths directly, so the required recurrence with memoization is missing.
+
+POINT_ID: 5
+MARKS: 5
+FEEDBACK: The code assumes every edge goes from a lower‑indexed vertex to a higher one (assert e[0] < e[1]) and updates lengths in a single forward pass, so it fails for valid DAGs where the topological order does not match the numeric order.

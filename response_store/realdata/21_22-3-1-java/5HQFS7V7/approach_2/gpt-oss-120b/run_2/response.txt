@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 8
+FEEDBACK: The solution creates a memo array of size n+1, but it does not initialise the array entries to –1 as the rubric requires; it immediately assigns values to m[0] and m[1] instead.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: Your initialization (m[0]=0, m[1]=W[0]) together with the first DP step correctly yields opt(0)=W[0] and opt(1)=max(W[0],W[1]), satisfying the required base cases.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: Your solution uses an iterative DP array and never includes a recursive helper with a memo cache check, so it does not perform the required “if memo[n] != -1 return memo[n]” step.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: Your loop computes m[i] = max(W[i‑1] + m[i‑2], m[i‑1]) and stores it in the memo array each iteration, correctly mirroring the required recurrence and memoisation.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly builds a linear DP array (m) using W[i‑1] and returns the optimal profit in O(n) time, handling all array sizes as required.

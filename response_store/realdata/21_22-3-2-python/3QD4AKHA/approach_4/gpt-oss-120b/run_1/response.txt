@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates an adjacency list (`Adj`) from A and sets `Adj[0]=range(1,N+1)`, providing a virtual source node 0 with edges to every node 1…N, enabling a single DFS from node 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution creates a memo array M filled with -1 and returns M[node] whenever M[node] != -1, correctly avoiding recomputation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function tiefenSuche checks `if len(Adj[node]) == 0:` and returns 0 for leaf nodes, matching the required base case behavior.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The function iterates over all children, uses `max(retVal, tiefenSuche(child)+1)` for each, and stores the result in `M[node]` before returning, matching the required recurrence.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a virtual source, uses memoized DFS, and returns tiefenSuche(0,…)-1, correctly computing the longest path length for all DAGs.

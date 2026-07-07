@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution does not use a stack or a while‑loop; it builds Node objects and calls dfsvisit recursively, so the start node is never pushed onto a stack before a loop.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: There is no pop operation at all; the algorithm relies on recursion instead of removing the top element from a stack.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code tracks visitation with the Farbe enum, checks v.farbe.equals(Farbe.WEIß) before recursing, and marks nodes gray then black, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In dfsvisit the neighbours are iterated in forward order (for u.adj) and recursively visited, which the rubric accepts as correct neighbour handling for a recursive DFS.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method returns the result list containing all reachable nodes in the adjacency‑list order, and the colour‑based visited check handles cycles, yielding a correct DFS traversal.

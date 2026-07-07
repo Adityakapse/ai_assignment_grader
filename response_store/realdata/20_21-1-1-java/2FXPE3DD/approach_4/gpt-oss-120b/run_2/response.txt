@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: When b is 0 the function skips the loop and returns res = 1, not 1 % c, so it fails the required base case handling (e.g., for c = 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `if ((b & 1) == 1)` to detect odd exponents and handles the even case in the loop, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks if the current exponent bit is 1 (`if ((b & 1) == 1)`) and multiplies `res` by `a` modulo c, correctly handling the odd case by factoring out one a and applying the modulus.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative loop and never implements a recursive even case that calls expo(a, b/2, c) and squares its result, so the required even‑case logic is absent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative binary‑exponentiation correctly applies the modulo at each multiplication, handles all edge cases (including b = 0 and c = 1) and avoids any prohibited syntax.

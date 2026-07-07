@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates a correctly sized (m+1)×(n+1) matrix, but the nested loops begin at 0 rather than iterating from 1 to m and 1 to n, handling the base rows/columns inside the loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code sets matrix[i][0] = i when j == 0 and matrix[0][j] = j when i == 0, correctly initializing both the first column and first row.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code correctly checks `a.charAt(i-1) == b.charAt(j-1)` and assigns `matrix[i][j] = matrix[i-1][j-1]` for matching characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch you compute `int ins = matrix[i][j-1]; int rem = matrix[i-1][j]; int rep = matrix[i-1][j-1];` and set `matrix[i][j] = 1 + Math.min(ins, Math.min(rem, rep));`, correctly implementing the 1 + min of the three neighboring cells for mismatched characters.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds a DP matrix iteratively, handles base cases, and computes each cell with the standard recurrence, returning matrix[aLength][bLength] without any recursion.

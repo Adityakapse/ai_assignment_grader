@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: Your code correctly removes the node itself when it has at most one child (via transplant) and uses the successor (tree_min of the right subtree) as the node to physically delete when the node has two children, matching the required y selection.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The function tree_min iteratively follows left pointers until a node with no left child is found and returns it, matching the required treeMinimum behavior.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your code correctly promotes the appropriate child—using delete.right or delete.left in the single‑child cases and succ.right in the two‑child case—matching the required identification of x.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your delete implementation uses the transplant helper to splice out the successor (y), correctly updating the child’s parent pointer and the former parent’s left/right reference (or root) as required.
+
+POINT_ID: 5
+MARKS: 0
+FEEDBACK: The solution never assigns `delete.key = succ.key`; it transplants the successor node instead of copying the key when the successor differs from the node to delete.
+
+POINT_ID: 6
+MARKS: 12
+FEEDBACK: Your delete method works for most cases, but when the successor is the immediate right child (succ.parent == delete) you never assign succ.right = delete.right, so the original right subtree is lost, breaking the BST property.

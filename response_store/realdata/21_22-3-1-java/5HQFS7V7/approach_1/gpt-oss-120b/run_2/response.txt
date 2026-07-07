@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The code allocates a memo array of size n+1, but it initializes only m[0] and m[1] to specific values and leaves the rest at the default 0 instead of using -1 as a sentinel.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The base cases do not match the specification; the function sets m[0]=0 and m[1]=W[0] rather than returning W[0] for opt(0) and max(W[0],W[1]) for opt(1).
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: There is no recursive helper or cache‑check; the solution uses an iterative loop and never checks memo[n] for a cached value.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The recurrence m[i] = max(W[i‑1] + m[i‑2], m[i‑1]) correctly computes the optimal profit and stores it in the memo array before proceeding.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns the correct maximum billboard profit for all valid inputs and runs in O(n) time.
+
+TOTAL: 50

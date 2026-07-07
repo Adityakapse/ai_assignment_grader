@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code includes `if(b == 0) return result = 1 % c;`, correctly returning 1 mod c for the base case.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution uses `if(b % 2 == 0)` for the even case and `else if(b % 2 != 0 && b != 1)` for the odd case, correctly separating the two parity branches.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch (`else if(b % 2 != 0 && b !=1)`) the student calls `expo(a, b-1, c)` and then computes `result = (zwResult * a) % c`, correctly reducing the exponent by 1, multiplying by a, and applying the modulo.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the even branch the code computes `bhalb = b/2`, calls `expo(a, bhalb, c)` once, and returns `(zwResult * zwResult) % c`, correctly halving and squaring with the modulo.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function correctly handles the base cases, uses recursion with halving for even exponents and decrementing for odd ones, applies modulo at each multiplication step, and contains no prohibited strings.

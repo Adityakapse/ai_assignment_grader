@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (n+1) x (capacity+1) and relies on Java’s default zero initialization, satisfying the requirement.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop iterates i = 1..n and the inner loop iterates j = 1..capacity, covering most subproblems but omitting the j = 0 case required by the rubric.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The condition `if (volumes[i - 1] > j)` correctly checks whether the current item fits in the current capacity before applying the inclusion logic.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The implementation uses the standard recurrence `max(r[i‑1][j], r[i‑1][j‑vol] + val)` and correctly handles the “does not fit” case with `r[i‑1][j]`.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `rucksack[n][capacity]`, which yields the optimal maximum value for all valid inputs, matching expected behavior.
+
+TOTAL: 95

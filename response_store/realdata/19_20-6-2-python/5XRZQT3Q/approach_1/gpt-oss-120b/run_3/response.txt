@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student creates `table = [[0 for x in range(capacity + 1)] for x in range(len(value) + 1)]`, which allocates a (n+1) × (capacity+1) matrix initialized to zero.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The code uses `for i in range(len(value) + 1):` as the outer loop and `for w in range(capacity + 1):` as the inner loop, covering every item index and every capacity sub‑problem.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Inside the loops the condition `elif volume[i-1] <= w:` correctly checks whether the current item’s volume fits within the current capacity before considering inclusion.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: When the item fits, the assignment `table[i][w] = max(value[i-1] + table[i-1][w-volume[i-1]], table[i-1][w])` implements the max‑of‑include‑or‑exclude recurrence; otherwise `table[i][w] = table[i-1][w]` copies the previous best value.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The function returns `table[len(value)][capacity]`, which yields the correct maximum total value for the 0/1 knapsack across all valid inputs.
+
+TOTAL: 100

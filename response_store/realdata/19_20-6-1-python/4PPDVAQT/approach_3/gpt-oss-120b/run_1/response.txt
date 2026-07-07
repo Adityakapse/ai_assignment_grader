@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses a 1‑dimensional list `result` (and a temporary list `tmp`) instead of allocating a 2‑D table of size (m+1) × (n+1), and there are no explicit nested loops over i and j that fill such a table.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The first row is initialized with `result = range(len(pre) + 1)` (giving edDis[0][j] = j) and each new row starts with `tmp = [i+1]` (setting edDis[i][0] = i), correctly establishing both base cases.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Inside the inner loop the code checks `if a != b` and in the `else` branch (characters match) appends `result[j]`, which corresponds to edDis[i][j] – the proper diagonal value.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When characters differ the algorithm appends `1 + min((result[j], result[j + 1], tmp[-1]))`, correctly using the three neighbours (diag, up, left) and adding the edit cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function iteratively computes and returns `result[-1]`, which matches the edit distance for all tested strings and does not use recursion.

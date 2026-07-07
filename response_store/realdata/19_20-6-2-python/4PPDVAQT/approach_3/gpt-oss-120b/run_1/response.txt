@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `matrix = [[0 ...] for ...]` with dimensions `(len(val)+1) x (cap+1)` and all entries start as 0.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: Nested loops are used, but the outer loop iterates over capacities (`for j in range(cap + 1)`) and the inner loop iterates over items, whereas the rubric expects the outer loop to iterate over the items.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `elif vol[i-1] <= j:` before attempting to include an item, correctly handling the case where the item exactly fits the remaining capacity.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: When an item fits, the assignment `matrix[i][j] = max(val[i-1] + matrix[i-1][j-vol[i-1]], matrix[i-1][j])` follows the required recurrence, and the else branch copies `matrix[i-1][j]`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns `matrix[len(val)][cap]`, which is the optimal value for the full set of items and the given capacity, yielding correct results for all valid inputs.

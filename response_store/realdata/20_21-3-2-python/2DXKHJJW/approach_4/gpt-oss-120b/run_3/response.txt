@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution builds an adjacency list (Connections) from A, but it never adds a virtual source node 0 with edges to all vertices, so it lacks the required global starting point.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code never creates a memo array initialized to –1 nor performs a cache check; it uses a Lengths list set to 0 and updates it directly, so the required memoization mechanism is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not implement a DFS with a base case for leaf nodes; it uses an iterative update without any recursive function, so there is no leaf‑node return‑0 handling.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code iterates over each child and updates Lengths[u] with max(Lengths[e] + 1, …), but it never stores a memoized value for the current node (no memo[node] assignment), so the required memoization step is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code asserts e[0] < e[1] and processes vertices only in index order, so it fails for valid DAGs where edges go from a higher‑numbered vertex to a lower‑numbered one, returning incorrect lengths or triggering an assertion.

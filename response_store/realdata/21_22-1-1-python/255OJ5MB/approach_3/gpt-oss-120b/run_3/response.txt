@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The implementation uses the identities a_{2k} = (a_k+1)^2‑1 and a_{2k+1} = ((a_{2k}+1)*2‑1), which correspond to the closed form a_n = 2^n‑1, and returns (2^n‑1) mod 10^9+7.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No separate expo function is defined, so there is no base case handling b == 0 as required by the rubric.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution does not contain an expo function with an odd‑exponent case; the odd handling is embedded in calc, not in an expo routine.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Similarly, there is no explicit expo function implementing the even‑exponent halving and squaring case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: calc returns the correct value (2^n‑1) mod 10^9+7 for all tested inputs, runs in O(log n) recursion depth, and avoids all forbidden keywords.

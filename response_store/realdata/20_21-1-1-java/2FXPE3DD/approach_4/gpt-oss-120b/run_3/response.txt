@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: When b is zero the loop is skipped and the function returns 1, but it does not apply “% c”, so it gives the wrong result for cases like c = 1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `if ((b & 1) == 1)` to detect odd exponents and handles the even case in the loop, correctly distinguishing parity.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code uses an iterative loop and never implements the recursive odd case returning (a * expo(a, b‑1, c)) % c; it handles odd exponents by updating res instead of a direct (a * expo(...)) call.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code uses an iterative loop and never performs a recursive call that halves b and squares the result, so the required even‑case halve‑and‑square logic is absent.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The iterative binary‑exponentiation loop correctly updates res and a with modulo c at each step, handling all ranges without using import or **, so it returns a⁽ᵇ⁾ mod c for every valid input.

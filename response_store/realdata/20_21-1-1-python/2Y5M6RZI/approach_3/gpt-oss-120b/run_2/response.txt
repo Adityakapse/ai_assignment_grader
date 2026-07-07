@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The function returns `res` (initially 1) when b = 0 but never applies `% c`, so it returns 1 instead of `1 % c` (fails for c = 1).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code uses `if j%2!=0:` to detect odd exponents, correctly distinguishing odd from even values of b.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: In the odd branch it updates `res` with `(res1*res)%c` and decrements `j` by 1, correctly implementing the `(a * expo(a, b‑1, c)) % c` step.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The even handling halves `j` with `j=j/2` (floating‑point division) instead of integer division, so the required integer halving is not performed correctly.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the missing modulo in the base case and the incorrect floating‑point halving, the function produces wrong results for many inputs, so overall correctness is not achieved.

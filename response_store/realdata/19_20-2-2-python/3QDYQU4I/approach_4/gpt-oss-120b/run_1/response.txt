@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution loops over the entire input list with `for i in range(0,len(a))` and uses a try/except on `int(a[i])` to separate numeric tokens from operators, handling each case appropriately.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code wraps each token in `int(a[i])` inside a try block, so numeric strings are properly converted to integers before being pushed onto the stack.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code correctly pops two values and pushes the result for each operator, but it uses `x/y` for division, which yields a float instead of the required integer floor division.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code pops y then x and correctly computes x‑y and x/y, so the operand order is right, but it uses Python’s true division (producing a float) instead of the required integer floor division.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code correctly handles addition, subtraction, and multiplication, but uses true division (x/y) instead of floor division and returns the result as a string, causing failures on division cases and type expectations.

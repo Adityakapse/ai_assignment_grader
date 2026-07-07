@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code allocates a double[][] of size (n+1)×(capacity+1); Java’s default zero initialization satisfies the requirement.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The outer loop iterates i = 1..n and the inner loop iterates j = 1..capacity, but it omits j = 0, so it does not cover the full 0‑to‑capacity range specified.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The implementation checks `volumes[i‑1] > j` before deciding inclusion, correctly handling the feasibility condition.
+
+POINT_ID: 4
+MARKS: 25
+FEEDBACK: The recurrence uses `Math.max(rucksack[i‑1][j], rucksack[i‑1][j‑volumes[i‑1]] + values[i‑1])` for fitting items and copies the previous value otherwise, matching the required formula.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns the correct maximum value for all tested inputs, handling empty or non‑positive cases appropriately.
+
+TOTAL: 95

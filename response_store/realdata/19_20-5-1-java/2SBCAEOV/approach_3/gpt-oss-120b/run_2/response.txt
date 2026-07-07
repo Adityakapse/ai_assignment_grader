@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student adds the start node to the queue `q` before the loop (by finding the node with colour GRAU and calling `q.add(n)`) and uses `while (!q.isEmpty())` to continue processing, matching the required initialization and loop condition.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Within the loop the node is obtained with `q.get(0)` and removed with `q.remove(0)`, always dequeuing from the front of the list, which ensures FIFO behavior.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code tracks visited nodes using the `Farbe` enum, but it adds nodes to `result` when they are enqueued (and marks them GRAU) rather than when they are dequeued, and it does not check the visited colour before processing a dequeued node, so the visited handling is only partially aligned with the rubric.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each dequeued node `u`, the code iterates over `u.adj` and enqueues every neighbour `v` whose colour is WEIß, correctly adding all unvisited neighbours to the back of the queue.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: By enqueuing neighbours in adjacency‑list order and preventing repeats with colour checks, the method returns all reachable nodes from the start in proper BFS (level‑by‑level) order for directed graphs, including those containing cycles.

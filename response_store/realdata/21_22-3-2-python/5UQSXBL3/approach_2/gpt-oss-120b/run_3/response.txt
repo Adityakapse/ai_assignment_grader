@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 10
+FEEDBACK: The solution constructs the adjacency list correctly, but it never adds edges from the virtual source node 0 to all nodes 1…N, so the required virtual source is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never creates a memo array initialized to –1 nor checks a cached value before recursion; it relies on a separate DP pass rather than the required memoization check.
+
+POINT_ID: 3
+MARKS: 0
+FEEDBACK: The dfs_visit function never returns a value, so leaf nodes are not given a base‑case return of 0 as required; you only append node IDs to a list.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code iterates over each node’s adjacency list and updates longest_path[value] with max(longest_path[value], longest_path[child] + 1), correctly implementing the recurrence over children.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: The implementation builds a correct topological order with DFS and then computes longest_path using reverse‑order DP, returning the exact length of the longest directed path for all DAG inputs.

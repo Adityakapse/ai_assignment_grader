@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code puts the start node in the stack initially, but it processes nodes via recursive calls to dfs_help instead of using a while loop, so the required loop structure is absent.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function uses `node = stack.pop()` to always remove the current node from the top of the stack, guaranteeing a proper LIFO order for depth‑first traversal.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code appends each popped node to visited without first checking if it’s already there, so nodes can be processed and added multiple times despite having a visited list.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `reversed(graph[node])` and appends each unvisited neighbour to `stack`, ensuring neighbours are pushed in reverse adjacency order.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your DFS uses a stack with `pop()` and pushes neighbours in reversed order, ensuring nodes are visited in the adjacency‑list order and handles cycles without repeats, so it returns all reachable nodes in proper DFS order.

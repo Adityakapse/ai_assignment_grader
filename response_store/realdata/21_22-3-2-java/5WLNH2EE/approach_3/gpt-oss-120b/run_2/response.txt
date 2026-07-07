@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code builds an adjacency list from A, but it never adds a virtual source node 0 with edges to every node, so it relies on looping over all nodes instead of a single DFS from a source.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No memo array initialized to -1 is used; the implementation relies on a besucht boolean array and a distance array, so there is no sentinel‑based cache check as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: When a node has no outgoing edges the for‑loop does nothing and längsteEntfernung[i] remains 0, effectively returning 0 for leaf nodes.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each neighbor the code updates längsteEntfernung[i] with Math.max(längsteEntfernung[i], längsteEntfernung[nachbar]+1), correctly applying the recurrence and storing the result.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: After processing all nodes, the function returns the maximum value in längsteEntfernung, which yields the correct length of the longest directed path for any DAG.

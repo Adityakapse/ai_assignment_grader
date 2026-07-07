@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student builds Adj as a list of N+1 entries and assigns Adj[0]=range(1,N+1), effectively adding a virtual source with edges to every node, satisfying the construction requirement.
+
+POINT_ID: 2
+MARKS: 20
+FEEDBACK: The memo array M is initialised with -1 for all indices and the function returns M[node] immediately when it is not -1, matching the memoization criteria.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The DFS function returns 0 when len(Adj[node]) == 0, correctly handling leaf nodes as the base case.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: For each child, the code updates retVal with max(retVal, tiefenSuche(child)+1) and stores the result in M[node] before returning, implementing the required recurrence.
+
+POINT_ID: 5
+MARKS: 25
+FEEDBACK: calc calls tiefenSuche from the virtual source and subtracts 1, yielding the correct longest path length for all DAG inputs.
+
+TOTAL: 100

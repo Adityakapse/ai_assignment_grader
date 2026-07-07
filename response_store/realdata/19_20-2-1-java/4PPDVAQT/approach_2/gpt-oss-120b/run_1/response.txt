@@ -1,0 +1,23 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The class defines a String array for storage and a length counter, and uses these to keep elements in FIFO order (shifting on dequeue), satisfying the required internal state.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The emptyqueue() method correctly returns true when length is zero and false otherwise, matching the queue’s internal state.
+
+POINT_ID: 3
+MARKS: 12
+FEEDBACK: The head() method returns array[0] directly and makes no changes to the queue’s state, correctly providing the front element without modifying the internal data.
+
+POINT_ID: 4
+MARKS: 18
+FEEDBACK: The enqueue method stores the new element at array[length] and then increments length, correctly adding the item to the back of the queue and updating the internal state.
+
+POINT_ID: 5
+MARKS: 12
+FEEDBACK: Your dequeue() returns the first element and shifts the remaining items left, decrementing length, but it runs the shift loop one iteration too many and does not guard against calling it on an empty queue, which can produce an incorrect length.
+
+POINT_ID: 6
+MARKS: 10
+FEEDBACK: Your queue maintains FIFO order, but the dequeue loop copies one element past the end (i < length should be i < length‑1), causing an IndexOutOfBoundsException.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[][] matrix = new int[aL + 1][bL + 1];` and uses nested loops `for (int b = 1; b <= bL; b++) { for (int a = 1; a <= aL; a++) { … } }` that correctly iterate from 1 to the string lengths, filling the DP table bottom‑up.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code sets matrix[a][0] = a for all a = 1..aL and matrix[0][b] = b for all b = 1..bL, correctly initializing both the first column and first row.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code compares aS.charAt(a‑1) with bS.charAt(b‑1) and uses a cost of 0, so when the characters match matrix[a][b] becomes matrix[a‑1][b‑1] as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code computes `matrix[a][b]` using `Math.min(matrix[a-1][b] + 1, Math.min(matrix[a][b-1] + 1, matrix[a-1][b-1] + cost))`, which correctly adds 1 to the minimum of the three neighboring cells when the characters differ.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses an iterative DP matrix, correctly initializes base cases, computes deletions, insertions, and substitutions, and returns matrix[aL][bL] without any recursion, yielding the proper edit distance for all inputs.

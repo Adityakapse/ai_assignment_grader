@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code uses recursion (dfs_help) rather than a while loop, and never sets up a loop that processes the stack after the initial push, so the required while‑loop structure is missing.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function uses `node = stack.pop()` which removes the current node from the top of the list, implementing a proper LIFO pop for DFS.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code adds each popped node to visited unconditionally (visited.append(node)) without first checking if it’s already visited, so duplicate entries can occur on cyclic graphs.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code iterates `reversed(graph[node])` and appends each unvisited neighbour to `stack`, ensuring neighbours are pushed in reverse adjacency order for correct visitation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The recursive helper uses a stack, appends nodes to visited, and iterates neighbours in reversed(graph[node]) so nodes are visited in the adjacency‑list order, producing the proper DFS traversal for all reachable nodes.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates a memo array of size n+1, but it initializes entries to 0 (e.g., m[0]=0) instead of the required sentinel value -1, so uncached entries cannot be distinguished.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code only initializes m[1] = W[0] and never explicitly handles the case n == 1 with a max of W[0] and W[1]; it relies on the loop to compute that, so the second base case is missing.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution uses an iterative DP array m and never includes a recursive helper with a memo check like “if (memo[n] != -1) return memo[n];”, so subproblems are not cached.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop computes m[i] = Math.max(W[i‑1] + m[i‑2], m[i‑1]) and stores it in m[i] before proceeding, correctly implementing the max‑based recurrence with memoization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The DP loop correctly computes `m[i] = max(W[i-1] + m[i-2], m[i-1])` for all i up to `n`, covering every location and returning `m[n]` in O(n) time, so the function yields the maximum profit for all valid inputs.

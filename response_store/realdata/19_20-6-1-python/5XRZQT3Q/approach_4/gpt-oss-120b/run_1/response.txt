@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses only 1‑D arrays (`total` and `tmpdist`) and never allocates a (m+1) × (n+1) table, so it does not satisfy the required 2‑D DP table allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution sets `total = range(len(a)+1)` to initialise the first column (deletions) and begins each new row with `tmpdist = [i_b+1]`, correctly establishing the first row (insertions).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code checks `if s_a == s_b:` and on a match appends `total[i_a]`, which correctly copies the diagonal DP value (edDis[i‑1][j‑1]) for the current cell.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: In the else branch you compute `1 + min((total[i_a], total[i_a + 1], tmpdist[-1]))`, which correctly uses the three neighboring cells (replace, delete, insert) and adds the required +1 cost.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation iteratively builds the distance matrix using two rows (variables `total` and `tmpdist`) and correctly handles empty, identical, and longer strings, returning the proper edit distance without any recursion.

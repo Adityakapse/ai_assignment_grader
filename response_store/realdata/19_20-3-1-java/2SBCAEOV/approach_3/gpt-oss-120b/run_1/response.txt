@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution contains an outer `for` loop over `i` and an inner `for` loop over `j`, matching the classic selection‑sort structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It calls `list.Smaller(j, min)` to compare elements, using the proper indices for the selection‑sort minimum‑search.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: `list.Swap(min, i)` is performed after the inner loop, but the swapped indices (`min` and `i`) do not match the pair used in the comparison (`j` and `min`), so the swap is not directly tied to a specific comparison result.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Both the outer and inner loops use `list.Length()` (with `-1` where appropriate) to bound their iterations, ensuring the algorithm works for any list size.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The selection‑sort implementation correctly returns the list sorted in ascending order for all valid inputs.

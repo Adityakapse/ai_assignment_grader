@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code uses a ternary expression `delete.left == null || delete.right == null ? delete : treeMinimum(delete.right)` to set `toBeDeleted`, correctly handling the one‑child and two‑child cases as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student’s treeMinimum method iterates with `while (root.left != null) { root = root.left; }` and returns the final node, correctly walking left to find the minimum.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code sets `notNullChildOfToBeDeleted` using a ternary that picks `toBeDeleted.left` when non‑null, otherwise `toBeDeleted.right`, correctly handling the leaf case where both are null.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code updates the non‑null child's parent (`notNullChildOfToBeDeleted.parent = toBeDeleted.parent`) and correctly redirects the parent’s left/right pointer (or root) to that child, handling the root‑replacement case when `toBeDeleted.parent == null`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution copies the key with `if (toBeDeleted != delete) { delete.key = toBeDeleted.key; }`, ensuring the assignment occurs only when the successor differs from the node being deleted.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The implementation correctly selects the node to delete (or its successor), rewires its child and parent pointers, copies the key when needed, and returns the proper root for leaf, single‑child, two‑child, and root deletions.

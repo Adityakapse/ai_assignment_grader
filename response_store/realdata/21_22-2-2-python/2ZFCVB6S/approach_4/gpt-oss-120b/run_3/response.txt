@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code builds a list of [previous sum, current sum] pairs instead of allocating a single prefix‑sum array C of length n with C[0] set to A[0] before the loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop updates `s` with `s += transporte` and stores the running totals, correctly constructing the prefix sums needed for later queries.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The solution builds the result list with a list comprehension `[sums[r][1]-sums[l][0] for l,r in B]`, which allocates an output array of length len(B) and iterates over every query in B.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The comprehension computes sums[r][1] - sums[l][0], which equals C[r] - C[l-1] and for l = 0 uses sums[0][0] = 0, correctly handling the edge case.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your function builds a prefix‑sum list `sums` in one pass and then computes each query as `sums[r][1] - sums[l][0]`, correctly handling `l == 0` and running in O(n) without using forbidden keywords.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution adds the start node to the list before the loop, but uses a `for` loop over the list instead of a `while` loop that checks for an empty queue, so the termination condition does not match the required while‑queue‑empty pattern.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: No explicit dequeue operation is performed; the code never removes an element from the front of a queue, it only iterates over the growing list.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The list `gefunden` is used to track visited nodes, and each neighbour is added only if it is not already in this list, preventing duplicate processing.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: For each current node, the code iterates over `graph[knoten]` and appends every unvisited neighbour (`zielknoten`) to the end of `gefunden`, effectively enqueuing them.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The function returns all reachable nodes in BFS order (e.g., start, then its neighbours, then their neighbours) for typical directed graphs, satisfying overall correctness.
