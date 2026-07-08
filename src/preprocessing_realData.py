@@ -55,13 +55,18 @@ def is_gradable(row, valid_qids, rubric_tasks):
     )
 
 
-def sample_solutions(rows, valid_qids, rubric_tasks, per_question):
-    # Keeps the first `per_question` gradable solutions per question, ordered by student_id for reproducibility.
+def sample_solutions(rows, valid_qids, rubric_tasks, per_question, full_qids=frozenset()):
+    # Keeps the first `per_question` gradable solutions per question (ordered by student_id for
+    # reproducibility), except for `full_qids` questions where every gradable solution is kept.
     ordered = sorted(rows, key=lambda r: (r["question_id"], r["student_id"]))
     per_q = {}
     for r in ordered:
-        if is_gradable(r, valid_qids, rubric_tasks) and len(per_q.get(r["question_id"], [])) < per_question:
-            per_q.setdefault(r["question_id"], []).append(r)
+        if not is_gradable(r, valid_qids, rubric_tasks):
+            continue
+        cap = None if r["question_id"] in full_qids else per_question
+        bucket = per_q.setdefault(r["question_id"], [])
+        if cap is None or len(bucket) < cap:
+            bucket.append(r)
     return [r for rows_q in per_q.values() for r in rows_q]
 
 
@@ -108,12 +113,12 @@ def print_summary(questions, sampled, per_question):
         print(f"  {qid}: {per_q[qid]}")
 
 
-def main(raw_data_dir, datastore_dir, out_dir, per_question):
+def main(raw_data_dir, datastore_dir, out_dir, per_question, full_qids=frozenset()):
     valid_qids = {r["question_id"] for r in implementation_questions(datastore_dir)}
     rubric_tasks = rubric_task_ids(datastore_dir)
 
     raw = merge_raw_solutions(raw_data_dir)
-    sampled = sample_solutions(raw, valid_qids, rubric_tasks, per_question)
+    sampled = sample_solutions(raw, valid_qids, rubric_tasks, per_question, full_qids)
     questions = implementation_questions(datastore_dir)
 
     save_questions(out_dir, questions)
@@ -129,9 +134,11 @@ def parse_args():
     parser.add_argument("--datastore_dir", default="datastore")
     parser.add_argument("--out_dir", default="datastore/realdata")
     parser.add_argument("--per_question", type=int, default=DEFAULT_PER_QUESTION)
+    parser.add_argument("--full_qids", nargs="+", default=[],
+                        help="Question IDs to keep ALL gradable submissions for, instead of --per_question")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    main(args.raw_data_dir, args.datastore_dir, args.out_dir, args.per_question)
+    main(args.raw_data_dir, args.datastore_dir, args.out_dir, args.per_question, frozenset(args.full_qids))

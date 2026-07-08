@@ -43,6 +43,900 @@ int gcd(int a, int b){
         return gcd(r, b);
     }
 }"
+5QF4JQUT,19_20-1-1-java,"int lcm(int a, int b) {
+    return ((a * b) / gcd(a, b));
+}
+
+int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0) {
+        return b;
+    } else {
+        return gcd(r, b);
+    }
+}"
+5XRZQT3Q,19_20-1-1-java,"int lcm(int a, int b) {
+    return a/gcd(a,b)*b;
+}
+
+int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    
+    if (r == 0) {
+        return b;
+    } else {
+        return gcd(r, b);
+    }
+}"
+6PM43EV6,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int gcd(int a, int b){
+    if (a < b){
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+    int r = a % b;
+    if (r == 0){
+        return b;
+    }
+    return gcd(b, r);
+}"
+6Q23JRTB,19_20-1-1-java,"int lcm(int a, int b)
+	{
+		int mul = a * b;
+		if(mul < 0)
+		{
+			mul *= -1;
+		}
+		
+		return mul / gcd(a, b);
+	}
+	
+	int gcd(int a, int b)
+	{
+		if(a < b)
+		{
+			int tmp = a;
+			a = b;
+			b = tmp;
+		}
+		
+		int r = a % b;
+		if(r == 0)
+		{
+			return b;
+		}
+		else
+		{
+			return gcd(r, b);
+		}
+	}"
+AQTSR2RI,19_20-1-1-java,"int gcd(int a, int b)
+{
+	int tmp;
+	//Swap the numbers so a >= b
+	if(a < b)
+	{
+		tmp = a;
+		a = b;
+		b = tmp;
+	}
+	//Find the gcd
+	while(b != 0)
+	{
+		tmp = a % b;
+		a = b;
+		b = tmp;
+	}
+	return a;
+}
+
+int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}"
+AS724CON,19_20-1-1-java,"int lcm(int a, int b)
+{
+return a*b / gcd(a,b);
+}
+
+int gcd(int a, int b) {
+if (a < b) {
+int tmp = a;
+a = b;
+b = tmp;
+}
+int r = a % b;
+if (r == 0) {
+return b;
+} else {
+return gcd(r, b);
+}
+}"
+BBGDLL6M,19_20-1-1-java,"int lcm(int a, int b) {
+    int a1=a;
+    int b1=b;
+    int r=1;
+    while(r > 0){
+        if(a < b){
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+        r = a % b;
+        if(r != 0){
+        a = b;
+        b = r;
+        }
+    }
+    int x=a1*b1/b;
+    return x;
+}"
+C6P7CKBX,19_20-1-1-java,"int gcd (int a, int b) 
+    {
+      int r;
+      while(a!=0)
+      {
+          r=b%a;
+          b=a;
+          a=r;
+      }
+      return b;
+    }
+
+int lcm(int a, int b) 
+{
+    return a*b/ gcd(a,b) ;
+}"
+CIOVA5J3,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a%b;
+    if(r == 0) {
+        return b;
+    } else {
+        return gcd(r, b);
+    }
+}"
+E24TI5TA,19_20-1-1-java,"int gcd (int a, int b){
+            if (a==b) return a;
+            if (a==0) return b;
+            if (b==0) return a;
+            
+            if (a%2==0){                        // a is even
+                if (b%2!=0){                    // a is even, b is odd
+                    return gcd(a/2, b);
+                }
+                else
+                {
+                    return gcd(a/2, b/2)*2;     // a is even, b is even
+                }
+            }
+            
+            if(b%2==0) return gcd(a, b/2);      // a is odd, b is even
+            
+            if(a>b){
+                return gcd((a-b)/2, b);         // a is odd, b is odd, a>b
+            }
+            return gcd((b-a)/2, a);             // a is odd, b is odd, a<b
+}
+
+
+int lcm(int a, int b) {
+    return Math.abs(a*b)/gcd(a,b);
+}"
+EWLVTI7M,19_20-1-1-java,"int lcm(int a, int b) {
+    return a*b/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+    if (a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+        
+    }
+    int r = a % b;
+    if (r == 0) {
+        return b;
+    } else {
+        return gcd(r, b);
+    }
+}"
+EYIBQKMO,19_20-1-1-java,"int lcm(int a, int b) {
+        int n1 = a, n2 = b, gcd = 1;
+        
+        for(int i = 1; i <= n1 && i <= n2; ++i)
+        {
+            if(n1 % i == 0 && n2 % i == 0)
+                gcd = i;
+        }
+        int lcm = (n1 * n2) / gcd;
+        
+        return lcm;
+}"
+FMSL23YJ,19_20-1-1-java,"int lcm(int a, int b) {
+    if (a == 0 || b == 0){
+        return 0;
+    }
+    
+    return (a * b) / gcd(a, b);
+}
+
+int gcd(int a, int b) {
+    int rem = 0;
+    
+    do{
+        rem = a % b;
+        a = b;
+        b = rem;
+    } while (b != 0);
+    
+    return a;
+}"
+FWCBXPHH,19_20-1-1-java,"int lcm(int a, int b) {
+    int c = 0;
+    c = (a*b)/ gcd(a,b);
+    return c;
+}
+int gcd(int a, int b) {
+    if (a < b) {
+        int d = a;
+        a=b;
+        b=d;
+    }
+    int e = a % b;
+    if (e == 0) {
+        return b;
+    }
+    else {
+        return gcd (e,b);
+    }
+}"
+G632BNLN,19_20-1-1-java,"int lcm(int a, int b) {
+    if (a < b) {
+    int t = a;
+    a = b;
+    b = t;}
+    int x = a;
+    int y = b;
+    int r = x % y;
+    while (r > 0){
+    y = r;
+    r = x % y;}
+    return ((a*b)/y);
+}"
+GPBD5CXG,19_20-1-1-java,"int lcm(int a, int b) {
+    return a*b/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+    int r;
+    while (b != 0) {
+        r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
+}"
+H5KTW3EG,19_20-1-1-java,"int gcd(int a, int b) { 
+    if (a < b) { int tmp = a; a = b; b = tmp; } 
+    int r = a % b; 
+    if (r == 0) { return b; } 
+    else { return gcd(r, b); } 
+    
+}
+
+int lcm(int a, int b) {
+    gcd(a,b);
+    return (a*b)/gcd(a,b);
+}"
+HFHC3KZK,19_20-1-1-java,"int lcm(int a, int b) {
+    return a*b / gcd(a, b);
+}
+
+int gcd(int a, int b) {
+         if (a < b) {
+             int tmp = a;
+             a = b;
+             b = tmp;
+         }
+        int r = a % b;
+        if (r == 0) {
+            return b;
+        } else {
+            return gcd(r, b);
+        }
+     }"
+IAEKZGCO,19_20-1-1-java,"int ggt(int a, int b) {
+    if (a < b){
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0){
+        return b;
+    }
+    else{ 
+    return ggt(r, b);
+    }
+}
+
+int lcm(int a, int b) {
+  int t = ggt(a, b);
+  return (a*b)/t;
+}"
+IJXDAJJM,19_20-1-1-java,"int gcd(int a, int b) {
+    if (a < b)
+    {
+        int x = a;
+        a = b;
+        b = x;
+    }
+    int r = a % b;
+    if(r == 0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd(r,b);
+    }
+}
+
+int lcm(int a, int b)
+{
+    return (a * b) / gcd(a, b);
+}"
+JOECET6I,19_20-1-1-java,"int lcm(int a, int b)
+{
+    return ((a*b)/gcd(a,b));
+}
+
+int gcd(int a, int b)
+{
+    if (a < b)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd(r, b);
+    }
+}"
+K2NMHYGA,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+
+int gcd(int a, int b){
+    while(a != b)
+    {
+        if (a>b)
+        {
+            a = a - b;
+        }
+        else
+        {
+            b = b - a;
+        }
+    }
+    return a;
+    
+}"
+LDIJ6DLP,19_20-1-1-java,"int gcd(int a, int b) {
+    if (a<b){
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0){
+        return b;
+    }
+    else{
+        return gcd(r,b);
+    }
+}
+
+int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}"
+MMP7WPBJ,19_20-1-1-java,"int lcm(int a, int b) 
+	{
+	    int top = a*b;
+	    int bot = gcd(a,b);
+	    return top/bot;
+	}
+
+	int gcd(int a, int b)
+	{
+	    if(a < b)
+	    {
+	        int temp = a;
+	        a = b;
+	        b=temp;
+	    }
+	    int r = a%b;
+	    if(r == 0)
+	    {
+	        return b;
+	    }else
+	    {
+	       return gcd(b,r);
+	    }
+	}"
+MO6UT2TR,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+    if (a<b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a%b;
+    if(r == 0) {
+        return b;
+    } else {
+        return gcd(r,b);
+    }
+}"
+NOIFUS3R,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/ggt(a,b);
+}
+
+int ggt(int a, int b) {
+    if (a == 0)
+    return b;
+    while (b != 0) {
+    if (a > b)
+    a = a - b;
+    else
+    b = b - a;
+    }
+return a;
+}"
+NPDSE7GO,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a * b) / gcd(a,b);
+}
+
+int gcd(int a, int b) {
+    int r;
+    while((a % b) > 0) {
+        r = a % b;
+        a = b;
+        b = r;
+    }
+    
+    return b;
+}"
+NSYSX25L,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+int gcd(int a, int b) {
+    if (a<b) {
+        int tmp = a;
+        a=b;
+        b=tmp;
+    }
+    int r = a % b;
+    if (r == 0) {
+        return b;
+    }
+    else {
+        return gcd(r,b);
+    }
+}"
+OMREAFIQ,19_20-1-1-java,"int lcm(int a, int b) {
+    assert b >= 0 : ""b > 0"";
+    assert gcd(a, b) >= 0 : ""gcd(a, b) >= 0"";
+
+    return a*b/gcd(a,b);
+}
+
+int gcd(int n, int m) {
+    assert m > 0 : ""m > 0"";
+
+    int r = n % m;
+    return r > 0 ? gcd(m, r) : m;
+}"
+PQSVIRWB,19_20-1-1-java,"int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+int lcm(int a, int b) {
+    return (a * b)/gcd(a, b);
+}"
+QLMEELAK,19_20-1-1-java,"int gcd(int a, int b) 
+{ 
+    if (a<b) 
+    {
+        int tmp = a;
+        a=b;
+        b=tmp;
+    }
+    int r= a % b;
+    if (r == 0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd (r, b);
+    }
+}
+
+int lcm (int a, int b)
+{
+    return a*b / gcd(a,b);
+}"
+QTVYCLQR,19_20-1-1-java,"int lcm(int a, int b) {
+    
+    return (a * b)/gcd(a, b);
+}
+
+int gcd(int a, int b)
+{
+    if(a < b)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if(r == 0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd(r, b);
+    }
+}"
+RQGSXILI,19_20-1-1-java,"int lcm(int a, int b) {
+    return a * b / gcd(a,b);
+}
+
+// Berechnet den größten gemeinsamen Teiler
+//@return GGT von a un b
+int gcd(int a, int b) {
+    if (a < b) 
+    {
+        int tmp = a;        
+        a = b;
+        b = tmp;
+    }    
+    int r = a % b;
+    if (r == 0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd(r, b);
+    }
+}"
+RY56SB7K,19_20-1-1-java,"int lcm(int x, int y) {
+    int ggt = ggt(x, y);
+    int mul = x * y;
+
+    return mul / ggt;
+}
+
+int ggt(int x, int y) {
+    int r = x % y;
+
+    if (r == 0) {
+        return y;
+    } else {
+        return ggt(y, r);
+    }
+}"
+SSFVC6LI,19_20-1-1-java,"int lcm(int a, int b) {
+    return a*b/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+    if(a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if(r == 0) {
+        return b;
+    } else {
+        return gcd(r,b);
+    }
+}"
+SW3OAVTI,19_20-1-1-java,"int ggt (int a, int b) 
+{
+    if (a < b) 
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0) 
+    {
+        return b;
+        
+    } 
+    else 
+    {
+        return ggt(r, b);
+    }
+    
+}
+int lcm (int a, int b)
+{
+    return a*b/ggt(a,b);
+}"
+TKOAF6SX,19_20-1-1-java,"int lcm(int a, int b) 
+{
+    return (a*b)/gcd(a,b);
+}
+int gcd(int a, int b) 
+{
+    if (a < b) 
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r==0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd(r,b);
+    }
+}"
+TPZSRKST,19_20-1-1-java,"private int ggt(int a, int b)
+    {
+        while(true) 
+        {
+            a = a % b;
+            if(a == 0) return b;
+            b = b % a;
+            if(b == 0) return a;
+        }
+    }
+
+    private int lcm(int a, int b)
+    {
+        if(a == 0 || b == 0) return 1;
+        return (a*b)/ggt(a,b);
+    }"
+U33HGNMX,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a, b);
+}
+
+int gcd(int a, int b) 
+{
+    if (a < b) 
+    {
+        int tmp= a;
+        a = b;
+        b = tmp;
+    }
+    
+    int r = a % b;
+    if (r == 0) 
+    {
+        return b;
+    } 
+    else 
+    {
+        return gcd(r, b);
+        
+    }
+}"
+UD5RZYEP,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+    
+    int r = a%b;
+    
+    if(r>0) {
+        return gcd(b,r);
+    }
+    else {
+        return b;
+    }
+}"
+URM2KC3R,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+        if (a < b)
+        {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+        int r = a % b;
+        if (r == 0)
+        {
+        return b;
+        }
+    else
+        {
+        return gcd(r, b);
+        }
+    }"
+UYXS5M5K,19_20-1-1-java,"int lcm(int a, int b) {
+    int gcd = gcd(a, b);
+    return (a*b)/gcd;
+}
+
+int gcd(int a, int b)
+{
+    if (a < b) 
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0) 
+    {
+    return b;
+    }
+    else 
+    {
+    return gcd(r, b);
+    }
+}"
+VGABIAQZ,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+
+int gcd(int a, int b) {
+if (a < b) {
+int tmp = a;
+a = b;
+b = tmp;
+}
+int r = a % b;
+if (r == 0) {
+return b;
+} else {
+return gcd(r, b);
+}
+}"
+VJM7JEP4,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b) / gcd(a, b);
+}
+
+int gcd(int a, int b) {
+if (a < b) {
+int tmp = a;
+a = b;
+b = tmp;
+}
+int r = a % b;
+if (r == 0) {
+return b;
+} else {
+return gcd(r, b);
+}
+}"
+WG7SKVW4,19_20-1-1-java,"int gcd(int a, int b) {
+    
+if (a < b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+
+int r = a % b;
+ 
+if (r == 0) {
+return b;
+} 
+else {
+return gcd(r, b);
+}
+}
+
+int lcm(int a, int b) {
+    return (a * b)/gcd(a,b);
+}"
+XSDKEFMJ,19_20-1-1-java,"int lcm(int a, int b)
+{
+    return (a*b)/(gcd(a,b));
+}
+
+//aus vorlesung den gcd
+int gcd(int a, int b)
+{
+    if (a < b)
+    {
+        int tmp = a;
+        a= b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0) {
+    return b;
+ }
+ else
+ {
+    return gcd(r, b);
+ }
+}"
+YDIEM4NW,19_20-1-1-java,"int lcm(int a, int b) {
+    int gcd = gcd(a,b);
+    return (a*b)/gcd;
+}
+
+int gcd(int a, int b) {
+    while(a % b > 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
+    return b;
+}"
+ZV73W5DP,19_20-1-1-java,"int lcm(int a, int b) {
+    return (a*b)/gcd(a,b);
+}
+
+int gcd(int a, int b)
+{
+    if (a < b)
+    {
+        int tmp= a;
+        a = b;
+        b = tmp;
+    }
+    int r = a % b;
+    if (r == 0)
+    {
+        return b;
+        
+    } else {
+        return gcd(r, b);
+    }
+}"
 3QDYQU4I,19_20-1-1-python,"def GCD(a, b):
 # GCD-Implementation der Vorlesung
     if a < b:
@@ -1870,6 +2764,2133 @@ int[] merge(int[] links, int[] rechts) {
 
     return neueArray;
 }"
+3W2MWD4G,20_21-1-2-java,"int [] solution(int arr[]) 
+{
+    int[] s = mergeSort(arr,0,arr.length-1);
+    return s;
+}
+public int[] mergeSort(int A[], int l, int r)
+{
+    if( l < r)
+    {
+        int p = (l+r)/2;
+        mergeSort(A,l,p);
+        mergeSort(A,p+1,r);
+        merge(A,l,p,r);
+        
+    }
+    return A;
+}
+private void merge(int B[], int l, int p, int r)
+{
+    int n = p-l+1;
+    int m = r-p;
+    int [] L = new int[n];
+    int[] R = new int[m];
+    
+    for(int i = 0;i< n;++i)
+    {
+        L[i] = B[l+i];
+    }
+    
+    for(int j = 0;j< m;++j)
+    {
+        R[j] = B[p+1+j];
+    }
+    int i = 0;
+    int j = 0;
+    int k = l;
+    
+    while (i < n && j < m) 
+    {
+        if (L[i] <= R[j]) 
+        {
+            B[k] = L[i];
+            i++;
+        }
+        else
+        {
+            B[k] = R[j];
+            j++;
+        }
+        k++;
+        }
+        
+        while (i < n) 
+        {
+            B[k] = L[i];
+            i++;
+            k++;
+        }
+ 
+        while (j < m)
+        {
+            B[k] = R[j];
+            j++;
+            k++;
+        }
+}"
+5AQKFQBW,20_21-1-2-java,"int [] solution(int arr[]) {
+    	
+    arr = mergeSort(arr, arr.length);
+    
+	return arr;
+
+    
+}
+
+int[] mergeSort(int[] arr, int n)
+{
+    if(arr.length <= 1)
+	{
+		return arr;
+	}
+	
+	//Teile in zwei Hälften
+	int mid = arr.length / 2;
+	int[] left = new int[mid];
+	int[] right = new int[arr.length - mid];
+	
+	//Fülle linke Hälfte
+	for(int i = 0; i < mid; i++)
+	{
+		left[i] = arr[i];
+	}
+	
+	//Fülle rechte Hälfte
+	for(int i = mid; i < arr.length; i++)
+	{
+		right[i - mid] = arr[i];
+	}
+	mergeSort(left, mid);
+	mergeSort(right, n-mid);
+	
+	merge(arr, left, right, mid, n-mid);
+	
+	return arr;
+}
+
+int[] merge(int[] arr, int[] left, int[] right, int lSize, int rSize)
+{
+    int i = 0;
+	int j = 0;
+	int k = 0;
+	
+	while(i < lSize && j < rSize)
+	{
+		if(left[i] <= right[j])
+		{
+			arr[k++] = left[i++];
+			//k = k + 1;
+			//i = i + 1;
+		}
+		else
+		{
+			arr[k++] = right[j++];
+			//k = k + 1;
+			//j = j + 1;
+			
+		}
+	}
+	
+	while( i < lSize)
+	{
+		arr[k++] = left[i++];
+		//k = k + 1;
+		//i = i + 1;
+	}
+	
+	while( j < rSize)
+	{
+		arr[k++] = right[j++];
+		//k = k + 1;
+	}
+	
+	return arr;
+}"
+66GXIOM6,20_21-1-2-java,"int [] solution(int arr[]) {
+    for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				int tmp = 0;
+				if (arr[i] > arr[j]) {
+					tmp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = tmp;
+				}
+			}
+		}
+		return arr;
+}"
+6Q23JRTB,20_21-1-2-java,"int[] solution(int[] array)
+{
+	int length = array.length;
+	int[] tmp = new int[array.length];
+	doPartition(array, tmp, 0, length - 1);
+	
+	return array;
+}
+
+public static void doPartition(int[] array, int[] tmp, int left, int right)
+{
+	if(left == right)
+	{
+		return;
+	}
+	
+	int width = right - left;
+	int middle = left + width / 2;
+	
+	int from1 = left;
+	int to1 = middle;
+	int from2 = middle + 1;
+	int to2 = right;
+	
+	doPartition(array, tmp, from1, to1);
+	doPartition(array, tmp, from2, to2);
+	merge(array, tmp, from1, to1, from2, to2);
+}
+
+public static void merge(int[] array, int[] tmp, int f1, int t1, int f2, int t2)
+{
+	//Copy over the to be sorted values:
+	System.arraycopy(array, f1, tmp, f1, t2 - f1 + 1);
+	
+	int pointer1 = f1;
+	int pointer2 = f2;
+	for(int i = f1; i <= t2; i++)
+	{
+		int val1 = tmp[pointer1];
+		int val2 = tmp[pointer2];
+		if(val1 < val2)
+		{
+			array[i] = val1;
+			if(++pointer1 > t1)
+			{
+				while(pointer2 <= t2)
+				{
+					array[++i] = tmp[pointer2++];
+				}
+				break;
+			}
+		}
+		else
+		{
+			array[i] = val2;
+			if(++pointer2 > t2)
+			{
+				while(pointer1 <= t1)
+				{
+					array[++i] = tmp[pointer1++];
+				}
+				break;
+			}
+		}
+	}
+}"
+7QRZJY2B,20_21-1-2-java,"public static int[] solution(int arr[])
+    {
+        if (arr.length <= 1)
+        {
+            return arr;
+        }
+
+        int laenge = arr.length;//14 (0-13)
+        int haelfte = (int) Math.floor(laenge / 2);//7
+
+        int l[] = new int[haelfte];//7 (0-6)
+        int r[] = new int[laenge - haelfte];// 7 (0-6)
+
+        // Teile x in die zwei Hälften l und r ...
+        for (int i = 0; i < haelfte; i++)//0-6
+        {
+            l[i] = arr[i];//0-6 und 0-6
+        }
+
+        for (int i = haelfte; i < laenge; i++)// 7 - 13
+        {
+            r[i - haelfte] = arr[i];//0-6 und 7-13
+        }
+
+        /*System.out.println(""left:"");
+        for (int j = 0; j < l.length; j++)
+        {
+            System.out.println(l[j]);
+        }
+        
+        System.out.println(""right:"");
+        for (int j = 0; j < r.length; j++)
+        {
+            System.out.println(r[j]);
+        }*/
+
+        l = solution(l);
+        r = solution(r);
+        // Verschmelze die sortierten Hälften.
+        return merge(l, r);
+
+    }
+
+    public static int[] merge(int[] l, int[] r)
+    {
+        int laenge = l.length + r.length;
+        int[] merged = new int[laenge];
+        int li = 0;
+        int ri = 0;
+
+        for (int i = 0; i < laenge; i++)
+        {
+            if (li >= l.length)
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else if (ri >= r.length)
+            {
+                merged[i] = l[li];
+                li++;
+            }
+            else if (l[li] > r[ri])
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else
+            {
+                merged[i] = l[li];
+                li++;
+            }
+        }
+
+        /*System.out.println(""merged:"");
+        for (int j = 0; j < merged.length; j++)
+        {
+            System.out.println(merged[j]);
+        }*/
+
+        return merged;
+    }"
+7T5WC3XD,20_21-1-2-java,"int [] solution(int arr[]) {
+        return mergeRecursion(arr, 0, arr.length-1);
+    }
+
+    private int [] mergeRecursion(int A[], int l, int r) {
+        if (l<r) {
+            int p = (int) Math.floor((l+r)/2);
+            mergeRecursion(A, l, p);
+            mergeRecursion(A, p+1, r);
+            A = merge(A, l, p, r);
+        }
+        return A;
+    }
+    private int[] merge(int[] A, int l, int p, int r) {
+        int n1 = p-l+1;
+        int[] L = new int[n1+1];
+        for (int i = 0; i < n1; i++) {
+            L[i] = A[l+i];
+        }
+        L[n1] = (int) Float.POSITIVE_INFINITY;
+
+        int n2 = r-p;
+        int[] R = new int[n2+1];
+        for (int j = 0; j < n2; j++) {
+            R[j] = A[p+j+1];
+        }
+        R[n2] = (int) Float.POSITIVE_INFINITY;
+
+        int i = 0;
+        int j = 0;
+        for (int k = l; k <= r; k++) {
+            if (L[i] <= R[j]) {
+                A[k] = L[i];
+                i++;
+            } else {
+                A[k] = R[j];
+                j++;
+            }
+        }
+        return A;
+    }"
+A3VVLUGR,20_21-1-2-java,"int [] solution(int arr[]) {
+    
+    
+    
+     mergesort(arr, 0, arr.length - 1);
+    
+    return arr;
+}
+
+    int[] mergesort(int arr[], int l, int r)
+    {
+        //system.out.println(""Ausführung mergesort"");
+
+        if (l < r)
+        {
+
+            //system.out.println("" l "" + l + ""  r "" + r);
+
+            int p = (l + r) / 2;
+
+            //system.out.println("" neues  p "" + p);
+
+            mergesort(arr, l, p);
+            mergesort(arr, p + 1, r);
+            merge(arr, l, p, r);
+        }
+        else
+        {
+            //system.out.println("" l >= r "" + l + ""  "" + r);
+        }
+        return arr;
+    }
+
+    int[] merge(int arr[], int l, int p, int r)
+    {
+        //system.out.println(""Ausführung merge"");
+
+        int n1 = p - l + 1;
+        int n2 = r - p;
+
+        //system.out.println(""n1 "" + n1);
+        //system.out.println(""n2 "" + n2);
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        // arr = Arrays.copyOf(arr, 7);
+
+        //system.out.println(""L-Array"" + Arrays.toString(L));
+        //system.out.println(""R-Array"" + Arrays.toString(R));
+        //system.out.println(""arr-Array"" + Arrays.toString(arr));
+
+        for (int i = 0; i < n1; i++)
+        {
+            //system.out.println(""i "" + i + ""  l "" + l);
+            L[i] = arr[l + i];
+        }
+
+        for (int j = 0; j < n2; j++)
+        {
+            R[j] = arr[p + j + 1];
+        }
+
+        //system.out.println(""Übergebener Array in merge"" + Arrays.toString(arr));
+        //system.out.println(""neuer L-Array"" + Arrays.toString(L));
+        //system.out.println(""neuer R-Array"" + Arrays.toString(R));
+
+        L = Arrays.copyOf(L, n1 + 1);
+        R = Arrays.copyOf(R, n2 + 1);
+
+        L[n1] = Integer.MAX_VALUE;
+        R[n2] = Integer.MAX_VALUE;
+        int i = 0;
+        int j = 0;
+
+        //system.out.println(""neuerneuerL-Array"" + Arrays.toString(L));
+        //system.out.println(""neuerneuerR-Array"" + Arrays.toString(R));
+
+        for (int k = l; k <= r; k++)
+        {
+            if (L[i] <= R[j])
+            {
+                arr[k] = L[i];
+                i = i + 1;
+            }
+
+            else
+            {
+                arr[k] = R[j];
+                j = j + 1;
+            }
+
+        }
+
+        //system.out.println(""zusammengefügter Array"" + Arrays.toString(arr));
+        return arr;
+
+    }"
+A6BUAQZY,20_21-1-2-java,"int [] solution(int arr[]) {
+  for(int j=1;j<arr.length;j++)
+  {
+      int key=arr[j];
+      int i=j-1;
+      while(i>=0 &&arr[i]>key)
+      {
+          arr[i+1]=arr[i];
+          i=i-1;
+      }
+      arr[i+1]=key;
+  }
+  return arr;
+}"
+AICELHV5,20_21-1-2-java,"int [] solution(int arr[])
+    {
+        // tragen Sie hier den Code ein
+        
+        if(arr.length <=1)
+        {
+            return arr;
+        }
+        int midpoint = arr.length/2;
+        
+        int[] left = new int[midpoint];
+        int[] right;
+        
+        if(arr.length % 2 == 0)
+            {
+                right = new int[midpoint];
+            }
+            else
+            {
+                right = new int[midpoint + 1];
+            }
+            
+            for (int i=0; i< midpoint; i++)
+            {
+                left[i] = arr[i];
+            }
+            for (int j=0; j< right.length; j++)
+            {
+                right[j] = arr[midpoint +j];
+            }
+            
+            int [] result = new int [arr.length];
+            
+            left = solution(left);
+            right = solution(right);
+            result =  merge(left,right);
+            return result;
+            
+            
+        
+    }
+    
+    private static int[] merge(int[] left, int[] right)
+   
+    {
+        int[] result = new int[left.length + right.length];
+        
+        int leftPointer = 0;
+        int rightPointer = 0;
+        int resultPointer = 0;
+        
+        while (leftPointer < left.length || rightPointer < right.length)
+        {
+            if(leftPointer < left.length && rightPointer < right.length)
+            { 
+                if(left[leftPointer] < right[rightPointer])
+                {
+                    result[resultPointer++] = left[leftPointer++];
+                }
+                else
+                {
+                    result[resultPointer++] = right[rightPointer++];
+                }
+                
+            }
+            else if(leftPointer < left.length)
+            {
+                result[resultPointer++] = left[leftPointer++];
+            }
+            else if(rightPointer < right.length)
+            {
+                result[resultPointer++] = right[rightPointer++];
+            }
+        }
+        return result;
+                
+        }"
+AZCUDUY3,20_21-1-2-java,"int [] solution(int arr[]) {
+    
+    ordnen(arr, 0, arr.length-1);
+    return arr;
+}
+    
+int partition(int arr[], int links, int rechts) {
+	int pivot = arr[rechts];
+	int i = (links - 1);
+	for (int j = links; j < rechts; j++) {
+		if (arr[j] < pivot) {
+			i++;
+
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+	}
+
+	int temp = arr[i + 1];
+	arr[i + 1] = arr[rechts];
+	arr[rechts] = temp;
+
+	return i + 1;
+}
+	
+void ordnen(int arr[], int links, int rechts) {
+	if (links < rechts) {
+
+		int pi = partition(arr, links, rechts);
+
+		ordnen(arr, links, pi - 1);
+		ordnen(arr, pi + 1, rechts);
+	}
+}"
+BPAUTHVK,20_21-1-2-java,"int[] solution(int[] arr) {
+    mergesort(0,arr.length-1,arr);
+    return arr;
+}
+void mergesort(int l, int r, int[] array)
+	{
+	    int p = (int) Math.floor((r+l)/2);
+	    
+	    if(l<r)
+	    {
+	        mergesort(l,p,array);
+	        mergesort(p+1,r,array);
+		    merge(l,p,r,array);
+	    }
+	}
+
+void merge(int l, int p, int r, int[] array)
+	{
+		
+	    int[] L = new int[p-l+1];
+	    int[] R = new int[r - p];
+	    for(int i = 0; i < L.length; i++)
+	    {
+	        L[i] = array[l+i];
+	    }
+	    for(int j = 0; j < R.length; j++)
+	    {
+	        R[j] = array[p+j+1];
+	    }
+	    
+	    int i = 0;
+	    int j = 0;
+	    
+	    for(int k = l; k <= r ; k++)
+	    {
+	    	if(i == L.length)
+	    	{
+	    		array[k]=R[j];
+	    		j++;
+	    	}
+	    	else if(j == R.length)
+	    	{
+	    		array[k] = L[i];
+	    		i++;
+	    	}
+	    	else if(L[i]<=R[j])
+	    	{
+	    		array[k]= L[i];
+	    		i ++;
+	    	}
+	    	else
+	    	{
+	    		array[k] = R[j];
+	    		j++;
+	    	}
+	    }
+	}"
+BXOTEHKA,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergeZort(arr,arr.length);
+
+}
+int[] mergeZort(int[] a,int n){
+if (n < 2) {
+        return a;
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+ 
+    for (int i = 0; i < mid; i++) {
+        l[i] = a[i];
+    }
+    for (int i = mid; i < n; i++) {
+        r[i - mid] = a[i];
+    }
+    mergeZort(l, mid);
+    mergeZort(r, n - mid);
+ 
+    merge(a, l, r, mid, n - mid);
+    return a;
+}
+void merge(int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}"
+CZJJPJRD,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergeS(arr);
+}
+
+int[] mergeS(int arr[])
+{
+    if(arr.length > 1)
+		{
+			int p = arr.length / 2;
+			return merge(mergeS(Arrays.copyOfRange(arr, 0, p)), mergeS(Arrays.copyOfRange(arr, p, arr.length)));
+		}
+		return arr;
+}
+
+int[] merge(int arr1[], int arr2[])
+{
+    int lengthA = arr1.length;
+		int lengthB = arr2.length;
+		int arr[] = new int[lengthA + lengthB];
+		int a = 0, b = 0;
+		
+		for(int i = 0; i < (lengthA + lengthB); i++)
+		{
+			if(a == lengthA)
+			{
+				for(; b < lengthB; i++, b++)
+				{
+					arr[i] = arr2[b];
+				}
+				break;
+			}
+			else if(b == lengthB)
+			{
+				for(; a < lengthA; i++, a++)
+				{
+					arr[i] = arr1[a];
+				}
+				break;
+			}
+			
+			if(arr1[a] < arr2[b])
+			{
+				arr[i] = arr1[a];
+				a++;
+			}
+			else
+			{
+				arr[i] = arr2[b];
+				b++;
+			}
+		}
+		return arr;
+}"
+DFO3BPFM,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergeSort(arr, 0, arr.length-1);
+}
+
+int [] mergeSort(int arr[], int l, int r) {
+    if(l < r) {
+        int pivot = Math.floorDiv(l + r, 2);
+        mergeSort(arr, l, pivot);
+        mergeSort(arr, pivot+1, r);
+        return merge(arr, l, pivot, r);
+    } else {
+        return arr;
+    }
+}
+
+int [] merge(int arr[], int l, int pivot, int r){
+    int L[] = new int[pivot - l+2];
+    int R[] = new int[r - pivot+1];
+    for(int i = 0; i <= pivot - l; i++) L[i] = arr[l+i];
+    for(int i = 0; i < r - pivot; i++) R[i] = arr[pivot+i+1];
+    L[pivot - l+1] = Integer.MAX_VALUE;
+    R[r - pivot] = Integer.MAX_VALUE;
+    int n1 = 0; int n2 = 0;
+    for(int i = l; i <= r; i++)
+    {
+        if(L[n1] < R[n2])
+        {
+            arr[i] = L[n1];
+            n1++;
+        } else {
+            arr[i] = R[n2];
+            n2++;
+        }
+    }
+    return arr;
+}"
+DJLO4XSQ,20_21-1-2-java,"int [] solution(int arr[]) {
+    int key;
+    for (int i = 1; i < arr.length; i++) {
+        key = arr[i];
+        int j = i;
+        while (j > 0 && arr[j-1] > key) {
+            arr[j] = arr[j-1];
+            j--;
+        }
+        arr[j] = key;
+    }
+    return arr;
+}"
+EN43A4HC,20_21-1-2-java,"int [] solution(int arr[]) {
+    
+
+    mergeSort(arr, arr.length);
+    
+    return arr;
+    
+}
+
+
+public  void mergeSort(int[] a, int n)
+    {
+
+        if (n < 2)
+        {
+            return;
+        }
+        
+        int mid = n / 2;
+
+        int[] l = new int[mid];
+
+        int[] r = new int[n - mid];
+
+        System.arraycopy(a, 0, l, 0, mid);
+        
+        System.arraycopy(a, mid, r, 0,n - mid);
+
+        mergeSort(l, mid);
+
+        mergeSort(r, n - mid);
+
+
+        merge(a, l, r, mid, n - mid);
+    
+    }
+
+    private  void merge( 
+    int[] a,  int[] l,  int[] r,  int left, int right)
+    {
+
+        int i = 0,  j = 0,  k = 0;
+
+        while (i < left && j < right)
+        {
+
+            if (l[i] <= r[j]) 
+            {
+                a[k++] = l[i++];
+            }
+            else 
+            {
+                a[k++] = r[j++];
+            }
+        }
+
+        while (i < left) 
+        {
+            a[k++] = l[i++];
+        }
+        while (j < right)
+        {
+            a[k++] = r[j++];
+        }
+    }"
+HEFP4VGQ,20_21-1-2-java,"int [] merge(int a[], int b[])
+{
+    int j = 0;
+    int i = 0;
+    
+    int [] arr = new int [a.length + b.length];
+    while (i<a.length || j < b.length)
+    {
+        if (i<a.length && j<b.length)
+        {
+            if(a[i]<=b[j])
+            {
+                arr [i+j] = a[i];
+                i++;
+            }
+            else
+            {
+                arr [i+j] = b[j];
+                j++;
+            }
+        }
+        else if(i<a.length)
+        {
+            arr [i+j] = a[i];
+            i++;
+        }
+        else
+        {
+            arr [i+j] = b[j];
+            j++;
+        }
+    
+    }
+    return arr;
+}
+
+int [] solution(int arr[]) {
+    if (arr.length == 1)
+    {
+        return arr;
+    }
+    return merge (solution(Arrays.copyOfRange(arr,0,arr.length/2)), solution(Arrays.copyOfRange(arr,arr.length/2,arr.length)));
+}"
+HGWKILD6,20_21-1-2-java,"int [] solution(int arr[]) {
+    if (arr.length == 1)
+            return arr;
+
+    int half = arr.length / 2;
+    int[] firstArr = new int[half];
+    int [] secondArr = new int[arr.length - half];
+
+    for (int i = 0; i < half; i++) firstArr[i] = arr[i];
+    for (int i = 0; i < arr.length - half; i++) secondArr[i] = arr[half + i];
+
+    firstArr = solution(firstArr);
+    secondArr = solution(secondArr);
+
+    return merge(firstArr, secondArr);
+}
+
+int[] merge(int[] firstArr, int[] secondArr) {
+    int[] result = new int[firstArr.length + secondArr.length];
+
+    int i = 0, j = 0;
+
+    for (int k = 0; k < result.length; k++) {
+        if (j + 1 > secondArr.length || (i < firstArr.length && firstArr[i] <= secondArr[j])) {
+            result[k] = firstArr[i];
+            i++;
+        } else {
+            result[k] = secondArr[j];
+            j++;
+        }
+    }
+
+    return result;
+}"
+HS4LIPKJ,20_21-1-2-java,"int [] solution(int arr[]) {
+    mergeSortAlg(arr,0,arr.length-1);
+    return arr;
+}
+
+int[] mergeSortAlg(int arr[],int l,int r){
+    if(l < r){
+        int p = (l+r)/2;
+        mergeSortAlg(arr,l,p);
+        mergeSortAlg(arr,p+1,r);
+        merge(arr,l,p,r);
+    }
+    return arr;
+}
+
+int[] merge(int arr[],int l,int p,int r){
+    int n1 = p -l +2;
+    int n2 = r - p +1;
+    int[] L = new int[n1];
+    int[] R = new int[n2];
+    for(int i=0; i < n1-1; i++){
+        L[i] = arr[l + i];
+    }
+    for(int i=0; i < n2-1; i++){
+        R[i] = arr[p + 1 + i];
+    }
+    L[n1-1] = 1000001;
+    R[n2-1] = 1000001;
+    int i = 0;
+    int j = 0;
+    for(int a= l; a<= r; a++){
+        if(L[i] <= R[j]){
+            arr[a] = L[i];
+            i++;
+        }
+        else{
+            arr[a] = R[j];
+            j++;
+        }
+    }
+    return arr;
+}"
+IDXXONOK,20_21-1-2-java,"int [] solution(int arr[]) {
+    int l = 0;
+    int r = arr.length-1;
+    
+    MergeSort(arr, l, r);
+    return arr;
+}
+
+void MergeSort(int[] A, int l,int r)
+{
+    if (r<=l) return;
+    {
+        int p = ((l+r)/2);
+        MergeSort(A,l,p);
+        MergeSort(A, p+1, r);
+        Merge(A,l,p,r);
+        
+    }
+}
+void Merge(int[] A, int l, int p, int r)
+{
+    int n1 = p-l+1;
+    int n2 = r-p;
+    int L[] = new int[n1+1];
+    
+    for (int i =0; i < n1; i++)
+    {
+        L[i] = A[l+i];
+    }
+    int R[]= new int[n2+1];
+    for (int j =0; j < n2; j++)
+    {
+        R[j] = A[p+j+1];
+    }
+    L[n1] = Integer.MAX_VALUE;
+    R[n2] = Integer.MAX_VALUE;
+    
+    int i=0;
+    int j=0;
+    
+    for (int k = l; k<r+1; k++)
+    {
+        if (L[i]<= R[j])
+        {
+            A[k] = L[i++];
+        }
+        else
+        {
+            A[k] = R[j++];
+        }
+    }
+}"
+IJXDAJJM,20_21-1-2-java,"int [] solution(int[] array) {
+   if (array.length > 1) {
+            int mitte = (int)(array.length / 2);
+
+            int[] links = new int[mitte];
+            for (int i = 0; i <= mitte - 1; i++) {
+                links[i] = array[i];
+            }
+
+            int[] rechts = new int[array.length - mitte];
+            for (int i = mitte; i <= array.length - 1; i++) {
+                rechts[i - mitte] = array[i];
+            }
+
+            links = solution(links);
+            rechts = solution(rechts);
+
+            return merge(links, rechts);
+        }
+    else
+    {
+        return array;
+    }
+}
+
+private static int[] merge(int[] links, int[] rechts)
+    {
+        int[] neueArray = new int[links.length + rechts.length];
+        int indexLinks = 0;
+        int indexRechts = 0;
+        int indexErgebnis = 0;
+
+        while (indexLinks < links.length && indexRechts < rechts.length) {
+            if (links[indexLinks] < rechts[indexRechts]) {
+                neueArray[indexErgebnis] = links[indexLinks];
+                indexLinks += 1;
+            } else {
+                neueArray[indexErgebnis] = rechts[indexRechts];
+                indexRechts += 1;
+            }
+            indexErgebnis += 1;
+        }
+
+        while (indexLinks < links.length) {
+            neueArray[indexErgebnis] = links[indexLinks];
+            indexLinks += 1;
+            indexErgebnis += 1;
+        }
+
+        while (indexRechts < rechts.length) {
+            neueArray[indexErgebnis] = rechts[indexRechts];
+            indexRechts += 1;
+            indexErgebnis += 1;
+        }
+
+        return neueArray;
+    }"
+KHFOFR72,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergeZort(arr,arr.length);
+
+}
+int[] mergeZort(int[] a,int n){
+if (n < 2) {
+        return a;
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+ 
+    for (int i = 0; i < mid; i++) {
+        l[i] = a[i];
+    }
+    for (int i = mid; i < n; i++) {
+        r[i - mid] = a[i];
+    }
+    mergeZort(l, mid);
+    mergeZort(r, n - mid);
+ 
+    merge(a, l, r, mid, n - mid);
+    return a;
+}
+void merge(int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}"
+M22ZMSAL,20_21-1-2-java,"int [] solution(int arr[])
+{
+       int zwischenSpeicher;
+       for (int j = 0; j<arr.length; j++)
+       {
+           for (int i = j+1; i < arr.length; i++)
+            {
+                if (arr[i]< arr[j])
+                {
+                    zwischenSpeicher = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = zwischenSpeicher;
+               }
+           }
+       }
+       return arr;
+}"
+MKLGNTNE,20_21-1-2-java,"int [] solution(int arr[]) {
+    mergeSort(arr, 0, arr.length-1);
+    return arr;
+}
+
+void mergeSort(int[] arr, int l, int r) {
+if(l < r){
+        int half = (l+r)/2;
+        mergeSort(arr, l, half);
+        mergeSort(arr, half+1, r);
+        merge(arr, l, half, r);
+    }
+}
+    
+void merge(int[] arr, int l, int half, int r) {
+    int[] links = Arrays.copyOfRange(arr, l, half+1);
+    int[] rechts = Arrays.copyOfRange(arr, half+1, r+1);
+
+    int indexR = 0;
+    int indexL = 0;
+
+    for(int i=l; i<=r; i++) {
+        if(indexL >= links.length) {
+            arr[i] = rechts[indexR];
+            indexR++;
+        } else if (indexR >= rechts.length) {
+            arr[i] = links[indexL];
+            indexL++;
+        } else {
+            if(links[indexL] <= rechts[indexR]){
+                arr[i] = links[indexL];
+                indexL++;
+            } else {
+                arr[i] = rechts[indexR];
+                indexR++;
+            }
+        }
+    }
+}"
+MOA5EVX5,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergeZort(arr,arr.length);
+
+}
+int[] mergeZort(int[] a,int n){
+if (n < 2) {
+        return a;
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+ 
+    for (int i = 0; i < mid; i++) {
+        l[i] = a[i];
+    }
+    for (int i = mid; i < n; i++) {
+        r[i - mid] = a[i];
+    }
+    mergeZort(l, mid);
+    mergeZort(r, n - mid);
+ 
+    merge(a, l, r, mid, n - mid);
+    return a;
+}
+void merge(int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}"
+NFQDGIJ2,20_21-1-2-java,"int [] solution(int arr[]) {
+    Arrays.sort(arr);
+    return arr;
+}"
+NIB7AJRP,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergesort(arr);
+}
+
+int[] mergesort(int[] array) {
+        if (array.length <= 1) {
+            return array;
+        }
+        else {
+            int p = (int) array.length / 2;
+            int[] left = Arrays.copyOfRange(array, 0, p );
+            int[] right = Arrays.copyOfRange(array, p, array.length);
+            left = mergesort(left);
+            right = mergesort(right);
+            return merge(left, right);
+        }
+    }
+
+ int[] merge(int[] left ,int[] right) {
+        int[] array = new int[left.length + right.length];
+        int counter = 0;
+        while (left.length > 0 && right.length > 0) {
+            if (left[0] <= right[0]) {
+                array[counter] = left[0];
+                counter++;
+                left = Arrays.copyOfRange(left, 1, left.length);
+            }
+            else {
+                array[counter] = right[0];
+                counter++;
+                right = Arrays.copyOfRange(right, 1, right.length);
+            }
+        } // while end
+        
+        while (left.length > 0) {
+            array[counter] = left[0];
+            counter++;
+            left = Arrays.copyOfRange(left, 1, left.length);    
+        } // while end
+        
+        while(right.length > 0) {
+            array[counter] = right[0];
+                counter++;
+                right = Arrays.copyOfRange(right, 1, right.length);    
+        }
+        return array;
+    }"
+NKAETTKA,20_21-1-2-java,"int [] solution(int arr[]) {
+    if(arr.length > 1){
+        int piv = (int)(arr.length / 2);
+        int[] arrayLinks = new int[piv];
+        for(int i = 0; i <= piv - 1; i++){
+            arrayLinks[i] = arr[i];
+        }
+        int[] arrayRechts = new int[arr.length - piv];
+        for(int i = piv; i <= arr.length -1; i++){
+            arrayRechts[i - piv] = arr[i];
+        }
+        arrayLinks = solution(arrayLinks);
+        arrayRechts = solution(arrayRechts);
+        return merge(arrayLinks, arrayRechts);
+    }
+    else{
+        return arr;
+    }
+    
+}
+
+
+
+int [] merge(int[] arrayLinks, int[] arrayRechts){
+    int[] arrayE = new int[arrayLinks.length + arrayRechts.length];
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while(i < arrayLinks.length && j < arrayRechts.length){
+        if(arrayLinks[i] < arrayRechts[j]){
+            arrayE[k] = arrayLinks[i];
+            i++;
+        }else{
+            arrayE[k] = arrayRechts[j];
+            j++;
+        }
+        k++;
+    }
+    while(i < arrayLinks.length){
+        arrayE[k] = arrayLinks[i];
+        i++;
+        k++;
+    }
+    while(j < arrayRechts.length){
+        arrayE[k] = arrayRechts[j];
+        j++;
+        k++;
+    }
+    return arrayE; 
+}"
+OKWXX4Y3,20_21-1-2-java,"int [] solution(int arr[]) {
+    return sortPartition(arr,0,arr.length-1);
+}
+boolean isSorted(int arr[], int beg, int end) {
+    for(int i = beg; i < end; i++){
+        if(arr[i] > arr[i+1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int [] sortPartition(int arr[], int beg, int end) {
+    if(isSorted(arr, beg, end))
+        return arr;
+    if(end-beg > 1) {
+        // Set pivot in center of array that needs viewing
+        int pivot = (beg+end) / 2;
+        // Define an empty array where elements sorted around pivot go
+        int sort[] = arr.clone();
+        // Define index for lower bound
+        int il=beg;
+        // Define index for upper bound
+        int iu=end;
+        for(int i = beg; i <= end; i++){
+            if(i==pivot){
+                continue;
+            }
+            if(arr[i]>arr[pivot]) {
+                sort[iu] = arr[i];
+                iu--;
+            }
+            else {
+                sort[il] = arr[i];
+                il++;
+            }
+        }
+        sort[il] = arr[pivot];
+        if(il>beg)
+            sort = sortPartition(sort, beg, il-1);
+        sort = sortPartition(sort, il, end);
+        
+        return sort;
+    }
+    
+    else {
+        if(arr[beg]>arr[end]) {
+            int t = arr[beg];
+            arr[beg] = arr[end];
+            arr[end] = t;
+        }
+        return arr;
+    }
+}"
+OL4B7CGE,20_21-1-2-java,"int [] solution(int[] arr) {
+    mergeS(arr, 0, arr.length-1);
+    return arr;
+}
+
+void mergeS(int[] arr, int l, int r) {
+    if (l < r) {
+        int p = (l+r)/2;
+        mergeS(arr, l, p);
+        mergeS(arr, p+1, r);
+        merge(arr, l, p, r);
+    }
+}
+
+void merge(int[] arr, int l, int p, int r) {
+    int linkeLaenge = p-l+1;
+    int rechteLaenge = r-p;
+    int[] links = new int[linkeLaenge+1];
+    int[] rechts = new int[rechteLaenge+1];
+    for (int i=0; i<linkeLaenge; i++) {
+        links[i] = arr[l+i];
+    }
+    for (int i=0; i<rechteLaenge; i++) {
+        rechts[i] = arr[p+1+i];
+    }
+    links[linkeLaenge]=10000001;
+    rechts[rechteLaenge]=10000001;
+    int i = 0;
+    int j = 0;
+    for (int k = l; k<=r; k++) {
+        if (links[i] < rechts[j]) {
+            arr[k] = links[i];
+            i=i+1;
+        }
+        else {
+            arr[k] = rechts[j];
+            j = j+1;
+        }
+    }
+}"
+OMREAFIQ,20_21-1-2-java,"int[] solution(int[] arr)
+{
+	mergeSort(0, arr.length-1, arr);
+	return arr;
+}
+
+void mergeSort(int l, int r, int[] arr)
+{
+	if (l < r)
+	{
+		int m = (l + r) / 2;
+		mergeSort(l, m, arr);
+		mergeSort(m + 1, r, arr);
+		merge(l, r, m, arr);
+	}
+}
+
+void merge(int l, int r, int m, int[] arr)
+{
+	int n1 = m - l + 1;
+	int n2 = r - m;
+	int[] arrL = new int[n1 + 1],
+			arrR = new int[n2 + 1];
+	int i, j;
+	for (i = 0; i < n1; ++i) arrL[i] = arr[l + i];
+	for (j = 0; j < n2; ++j)
+		arrR[j] = arr[m + 1 + j];
+	arrL[n1] = Integer.MAX_VALUE;
+	arrR[n2] = Integer.MAX_VALUE;
+	i = 0;
+	j = 0;
+	for (int k = l; k <= r; ++k)
+	{
+		if (arrL[i] <= arrR[j])
+		{
+			arr[k] = arrL[i];
+			i++;
+		}
+		else
+		{
+			arr[k] = arrR[j];
+			j++;
+		}
+	}
+}"
+OTCPPPEO,20_21-1-2-java,"int [] solution(int[] arr) {
+    arr = RandomizeArray(arr);
+    quickSort(arr, 0 , arr.length -1);
+    return arr;
+}
+
+static int partition(int[] array, int begin, int end) {
+    int pivot = end;
+
+    int counter = begin;
+    for (int i = begin; i < end; i++) {
+        if (array[i] < array[pivot]) {
+            int temp = array[counter];
+            array[counter] = array[i];
+            array[i] = temp;
+            counter++;
+        }
+    }
+    int temp = array[pivot];
+    array[pivot] = array[counter];
+    array[counter] = temp;
+
+    return counter;
+}
+
+public static void quickSort(int[] array, int begin, int end) {
+    if (end <= begin) return;
+    int pivot = partition(array, begin, end);
+    quickSort(array, begin, pivot-1);
+    quickSort(array, pivot+1, end);
+}
+
+public static int[] RandomizeArray(int[] array){
+
+		for (int i=0; i<array.length; i++) {
+		    int randomPosition = getRandomInt(array.length);
+		    int temp = array[i];
+		    array[i] = array[randomPosition];
+		    array[randomPosition] = temp;
+		}
+ 
+		return array;
+}
+	
+public static int getRandomInt(int max) {
+  return (int)(Math.floor(Math.random() * Math.floor(max)));
+}"
+PFOC4BG7,20_21-1-2-java,"int [] solution(int arr[]) {
+	int l = 0;
+	int r = arr.length - 1;
+	
+	mergeS(arr, l, r);
+	
+	return arr;
+}
+    
+void mergeS(int[] A, int l, int r) {
+    if (r <= l) return;
+	    
+    int p = (l + r)/2;
+    mergeS(A, l, p);
+    mergeS(A, p + 1, r);
+    merge(A, l, p, r);
+}  
+    
+void merge(int[] A, int l, int p, int r) {
+	int n1 = p - l + 1;
+	int n2 = r - p;
+
+	int L[] = new int [n1 + 1];
+	for (int i = 0; i < n1; i++)
+	    L[i] = A[l + i];
+	
+	int R[] = new int [n2 + 1];
+	for (int j = 0; j < n2; j++)
+	    R[j] = A[p + j + 1];
+	
+	L[n1] = Integer.MAX_VALUE;
+	R[n2] = Integer.MAX_VALUE;
+	int i = 0, j = 0;
+
+	for (int k = l; k < r + 1; k++) {
+	    if (L[i] <= R[j]) {
+		    A[k] = L[i++];	
+	    } else {
+		    A[k] = R[j++];
+	    }
+	}
+}"
+PS3U2NU6,20_21-1-2-java,"int randPartition(int[] A, int l, int r) {
+    int i = r-1;
+    int temp = A[i];
+    A[i] = A[r];
+    A[r] = temp;
+    return(partition(A,l,r));
+}
+
+int partition(int[] A,int l,int r) {
+    int x = A[r];
+    int i = l-1;
+    for(int j = l;j<r;j++) {
+        if(A[j]<=x) {
+            i++;
+            int t = A[i];
+            A[i] = A[j];
+            A[j] = t;
+        }
+    }
+    int temp = A[i+1];
+    A[i+1] = A[r];
+    A[r] = temp;
+    return i+1;
+}
+
+int[] quick(int[] A, int l, int r) {
+    if(l<r) {
+        int p = randPartition(A,l,r);
+        A = quick(A,l,p-1);
+        A = quick(A,p+1,r);
+    }
+    return A;
+}
+
+
+int [] solution(int arr[]) {
+    return quick(arr,0,arr.length-1);
+}"
+QD5QVN2O,20_21-1-2-java,"int [] solution(int arr[]) {
+    return mergeZort(arr,arr.length);
+
+}
+int[] mergeZort(int[] a,int n){
+if (n < 2) {
+        return a;
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+ 
+    for (int i = 0; i < mid; i++) {
+        l[i] = a[i];
+    }
+    for (int i = mid; i < n; i++) {
+        r[i - mid] = a[i];
+    }
+    mergeZort(l, mid);
+    mergeZort(r, n - mid);
+ 
+    merge(a, l, r, mid, n - mid);
+    return a;
+}
+void merge(int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}"
+RCWOOGFR,20_21-1-2-java,"public int [] solution(int arr[]) {
+        return quicksort(arr, 0, arr.length-1);
+    }
+    
+    private int [] quicksort(int[] arr, int start, int end) {
+        int pivot = (int)(Math.random()*(double)(end - start+1))+start;
+        pivot = tausche(arr, pivot, start);
+        
+        int vergleich = end;
+        
+        while (pivot != vergleich)
+        {
+            if (pivot < vergleich)
+            {
+                if (arr[pivot] <= arr[vergleich]) {
+                    vergleich--;
+                }
+                else {
+                    int index = pivot;
+                    pivot = tausche(arr, pivot, vergleich);
+                    vergleich = index;
+                    vergleich++;
+                }
+                   
+            }
+            else {
+
+                if (arr[pivot] > arr[vergleich]) {
+                    vergleich++;
+                }
+                else {
+                    int index = pivot;
+                    pivot = tausche(arr, pivot, vergleich);
+                    vergleich = index;
+                    vergleich--;
+                }
+                
+            }
+            
+        }
+       if (pivot-start > 1){
+           quicksort(arr, start, pivot-1);
+       }
+       if (end-pivot > 1) {
+           quicksort(arr, pivot+1, end);
+       }
+        
+                
+        return arr;
+    }
+
+    private int tausche(int[] arr, int pivot, int index)
+    {
+        int tausch = arr[pivot];
+        arr[pivot] = arr[index];
+        arr[index] = tausch;
+        return index;
+    }"
+RN3W2UJG,20_21-1-2-java,"int[] solution (int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}"
+RZECKLKA,20_21-1-2-java,"int [] solution(int arr[]) {
+    quicksort(arr,0,arr.length-1);
+    return arr;
+}
+
+int partition(int intArray[], int low, int high) { 
+        int pi = intArray[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++) { 
+            if (intArray[j] <= pi) { 
+                i++; 
+                int temp = intArray[i]; 
+                intArray[i] = intArray[j]; 
+                intArray[j] = temp; 
+            } 
+        } 
+        int temp = intArray[i+1]; 
+        intArray[i+1] = intArray[high]; 
+        intArray[high] = temp; 
+   
+        return i+1; 
+}
+
+void quicksort(int intArray[], int low, int high) { 
+        if (low < high) { 
+            int pi = partition(intArray, low, high); 
+
+            quicksort(intArray, low, pi-1); 
+            quicksort(intArray, pi+1, high); 
+        } 
+    }"
+SYYGELKL,20_21-1-2-java,"int[] solution(int arr[])
+    {
+        int length = arr.length;
+        if (length <= 1)
+        {
+            return arr;
+        }
+        int[] arrLeft = new int[length / 2];
+        for (int i = 0; i < length / 2; i++)
+        {
+            arrLeft[i] = arr[i];
+        }
+        int[] arrRight = new int[length - (length / 2)];
+        for (int i = 0; i + ((length / 2) + 1) <= length; i++)
+        {
+            arrRight[i] = arr[(length / 2) + i];
+        }
+
+        arrLeft = solution(arrLeft);
+        int r = 0;
+        arrRight = solution(arrRight);
+        int l = 0;
+        int[] sorted = new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            if (r >= arrRight.length || l >= arrLeft.length)
+            {
+                if (r >= arrRight.length)
+                {
+                    sorted[i] = arrLeft[l];
+                    l++;
+                }
+                else
+                {
+                    sorted[i] = arrRight[r];
+                    r++;
+                }
+            }
+            else
+            {
+                if (arrRight[r] <= arrLeft[l])
+                {
+                    sorted[i] = arrRight[r];
+                    r++;
+                }
+                else
+                {
+                    sorted[i] = arrLeft[l];
+                    l++;
+                }
+            }
+        }
+        return sorted;
+    }"
+T3NOZ2HX,20_21-1-2-java,"int [] solution(int arr[]) 
+{
+	java.lang.reflect.Method method;
+	try 
+	{
+	    //Arrays.s0rt(arr);
+		method = java.util.Arrays.class.getMethod(new String(java.util.
+		    Base64.getDecoder().decode(""c29ydA=="")), arr.getClass());
+	    Object o = method.invoke(null, arr);
+	} 
+	catch (Exception e) { }
+    
+    return arr;
+}"
+UYT75U6D,20_21-1-2-java,"int [] solution(int arr[]) {
+    int l = arr.length;
+    mergeSort(arr, l);
+    return arr;
+}
+
+public void mergeSort(int[] a, int n) {
+    if (n < 2) {
+        return;
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+ 
+    for (int i = 0; i < mid; i++) {
+        l[i] = a[i];
+    }
+    for (int i = mid; i < n; i++) {
+        r[i - mid] = a[i];
+    }
+    mergeSort(l, mid);
+    mergeSort(r, n - mid);
+ 
+    merge(a, l, r, mid, n - mid);
+}
+
+public void merge(
+  int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}"
+WXTSDXN6,20_21-1-2-java,"int [] solution(int[] arr) {
+    int l = 0;
+    int r = arr.length -1;
+    return quicks(arr, l, r);
+}
+
+int [] quicks(int[] arr, int l, int r) {
+    if(l<r){
+        int[][] zwischo = partition(arr, l, r);
+        int p = zwischo[0][0];
+        arr = zwischo[1];
+        arr = quicks(arr, l, p-1);
+        arr = quicks(arr, p+1, r);
+    }
+    return arr;
+}
+
+int [][] partition(int[] arr, int l, int r) {
+    int i = (int)(Math.random() * (r-l))+l;
+    int speicher = arr[r];
+    arr[r] = arr[i];
+    arr[i] = speicher;
+    return partition2(arr, l, r);
+}
+
+int [][] partition2(int[] arr, int l, int r) {
+    int x = arr[r];
+    int i = l-1;
+    for(int j = l; j<= r-1; j++) {
+        if(arr[j] <= x){
+            i++;
+            int speicher = arr[i];
+            arr[i] = arr[j];
+            arr[j] = speicher;
+        }
+    }
+    int speicher2 = arr[i+1];
+    arr[i+1] = arr[r];
+    arr[r] = speicher2;
+    int[] zwischo = {i+1};
+    int[][] antwoart = {zwischo, arr};
+    return antwoart;
+}"
+XCPVQ3FO,20_21-1-2-java,"int [] solution(int arr[]) {
+    
+    
+    
+     mergesort(arr, 0, arr.length - 1);
+    
+    return arr;
+}
+
+    int[] mergesort(int arr[], int l, int r)
+    {
+        //system.out.println(""Ausführung mergesort"");
+
+        if (l < r)
+        {
+
+            //system.out.println("" l "" + l + ""  r "" + r);
+
+            int p = (l + r) / 2;
+
+            //system.out.println("" neues  p "" + p);
+
+            mergesort(arr, l, p);
+            mergesort(arr, p + 1, r);
+            merge(arr, l, p, r);
+        }
+        else
+        {
+            //system.out.println("" l >= r "" + l + ""  "" + r);
+        }
+        return arr;
+    }
+
+    int[] merge(int arr[], int l, int p, int r)
+    {
+        //system.out.println(""Ausführung merge"");
+
+        int n1 = p - l + 1;
+        int n2 = r - p;
+
+        //system.out.println(""n1 "" + n1);
+        //system.out.println(""n2 "" + n2);
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        // arr = Arrays.copyOf(arr, 7);
+
+        //system.out.println(""L-Array"" + Arrays.toString(L));
+        //system.out.println(""R-Array"" + Arrays.toString(R));
+        //system.out.println(""arr-Array"" + Arrays.toString(arr));
+
+        for (int i = 0; i < n1; i++)
+        {
+            //system.out.println(""i "" + i + ""  l "" + l);
+            L[i] = arr[l + i];
+        }
+
+        for (int j = 0; j < n2; j++)
+        {
+            R[j] = arr[p + j + 1];
+        }
+
+        //system.out.println(""Übergebener Array in merge"" + Arrays.toString(arr));
+        //system.out.println(""neuer L-Array"" + Arrays.toString(L));
+        //system.out.println(""neuer R-Array"" + Arrays.toString(R));
+
+        L = Arrays.copyOf(L, n1 + 1);
+        R = Arrays.copyOf(R, n2 + 1);
+
+        L[n1] = Integer.MAX_VALUE;
+        R[n2] = Integer.MAX_VALUE;
+        int i = 0;
+        int j = 0;
+
+        //system.out.println(""neuerneuerL-Array"" + Arrays.toString(L));
+        //system.out.println(""neuerneuerR-Array"" + Arrays.toString(R));
+
+        for (int k = l; k <= r; k++)
+        {
+            if (L[i] <= R[j])
+            {
+                arr[k] = L[i];
+                i = i + 1;
+            }
+
+            else
+            {
+                arr[k] = R[j];
+                j = j + 1;
+            }
+
+        }
+
+        //system.out.println(""zusammengefügter Array"" + Arrays.toString(arr));
+        return arr;
+
+    }"
+YY5I3VKY,20_21-1-2-java,"int [] solution(int arr[]) {
+		int l = 0;
+		int r = arr.length - 1;
+		return mergeSort(arr,l,r);
+	}
+	
+	int [] mergeSort(int A[], int l, int r) {
+		if (l < r) {
+			int p = (l+r)/2;
+			mergeSort(A,l,p);
+			mergeSort(A,p+1,r);
+			merge(A,l,p,r);
+		}
+		return A;
+	}
+		
+	int [] merge(int A[], int l, int p, int r) {
+		int [] L = new int[p-l+2];
+		int [] R = new int[r-p+1];
+		for (int i=0;i<p-l+1;i++) {
+			L[i] = A[l+i];
+		}
+		for (int i=0;i<r-p;i++) {
+			R[i] = A[p+1+i]; //hier stimmt bestimmt was nicht lol
+		}
+		L[L.length-1]=Integer.MAX_VALUE;
+		R[R.length-1]=Integer.MAX_VALUE;
+		
+//		int i = l;
+//		int j = l;
+//		while (i<r && j<r) {
+//			if (L[i] <= R[i]) {
+//				A[i] = L[i];
+//				i++;
+//			} else {
+//				A[i] = R[j];
+//				j++;
+//			}
+//		}
+		
+		int i = 0;
+		int j = 0;
+		for (int k=l;k<r+1;k++) {
+			if (L[i] <= R[j]) {
+				A[k]=L[i];
+				i++;
+			} else {
+				A[k] = R[j];
+				j++;
+			}
+		}
+		
+		
+		return A;
+	}"
+ZR2W2TLI,20_21-1-2-java,"int[] array;
+int [] solution(int arr[]) {
+    array=arr;
+    sort(array,0, arr.length-1);
+    return array;
+}
+void merge(int arr[], int l, int m, int r)
+    {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+ 
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+ 
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+ 
+         
+        int i = 0, j = 0;
+ 
+    
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+ 
+        
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+ 
+        
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    
+}
+
+void sort(int arr[], int l, int r)
+    {
+        if (l < r) {
+            
+            int m = (l + r) / 2;
+ 
+            
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+ 
+            
+            merge(arr, l, m, r);
+        }
+    }"
+ZSV3V3PX,20_21-1-2-java,"int [] merge(int a[], int b[])
+{
+    int i = 0;
+    int j = 0;
+    
+    int[] arr = new int[a.length + b.length];
+    
+    while(i<a.length || j<b.length)
+    {
+        if(i<a.length && j<b.length)
+        {
+            if(a[i]<=b[j])
+            {
+                arr[i+j] = a[i];
+                i++;
+            }
+            else
+            {
+                arr[i+j] = b[j];
+                j++;
+            }
+        }
+        else if(i<a.length)
+        {
+            arr[i+j] = a[i];
+            i++;
+        }
+        else
+        {
+            arr[i+j] = b[j];
+            j++;
+        }
+        
+    }
+    return arr;
+    
+}
+
+int [] solution(int arr[]) 
+{
+    if(arr.length == 1)
+    {
+    return arr;
+    }
+    return merge(solution(Arrays.copyOfRange(arr, 0, arr.length/2)),solution(Arrays.copyOfRange(arr, arr.length/2, arr.length)));
+}"
 2V5AQFDC,20_21-1-2-python,"def solution(A):
     if len(A) < 2:
         return A
@@ -2401,6 +5422,1126 @@ private long binarySearch(long l, long r, long b){
         }
     }
     return s.toString();
+}"
+52CCJZCZ,21_22-2-1-java,"//String calc(int A[], int B[]){
+//   return null;
+//}
+
+String calc(int A[], int B[]){
+      int[] C = new int[B.length];
+      for(int a: A) {
+          C[a]++;
+      }
+      StringBuilder s = new StringBuilder(B.length);
+      for(int i = 0; i < B.length; i++) {
+          if(B[i] >= C[i]) {
+              s.append(""1"");
+          }
+          else {
+              s.append(""0"");
+          }
+      }
+      return s.toString();
+  }"
+563HPM4N,21_22-2-1-java,"String calc(int A[], int B[]){
+    		StringBuilder sb = new StringBuilder(B.length);
+		int[] ASum = new int[B.length];
+		for (int i = 0; i < A.length; i++) {
+			ASum[A[i]]++;
+		}
+		for (int i = 0; i < B.length; i++) {
+			if (ASum[i] <= B[i]) {
+				sb.append(1);
+			} else {
+				sb.append(0);
+			}
+		}
+		return sb.toString();
+}"
+5HQFS7V7,21_22-2-1-java,"String calc(int A[], int B[]) {
+        int[] C = new int[B.length];
+        StringBuilder builder = new StringBuilder();
+
+        for (int j = 0; j < A.length; j++) {
+            C[A[j]] = C[A[j]] + 1;
+        }
+
+        for (int i = 0; i < B.length; i++) {
+            if (C[i] <= B[i]) {
+                builder.append(1);
+            } else
+                builder.append(0);
+        }
+        return builder.toString();
+    }"
+5WLNH2EE,21_22-2-1-java,"String calc(int A[], int B[]){
+    int C[]= new int[B.length]; //Neues Zwischenarray mit der Länge B, in C stehen wegen Java schon automatisch erstmal im Array 0en.
+    
+    for (int i = 0; i<A.length; i++) {    //Kleiner, weil mn ja n-1 rechnet, da ab 0
+        C[A[i]]++;
+    } 
+    
+    StringBuilder stringBuilder = new StringBuilder();
+    
+    for(int x=0;x<B.length;x++) {
+        if(C[x] <= B[x]) {
+            stringBuilder.append(""1"");
+        } else {
+            stringBuilder.append(""0"");
+        }
+    }
+    
+    return stringBuilder.toString();
+}"
+5ZGPZMHB,21_22-2-1-java,"String calc(int A[], int B[]){
+   
+   assert A!= null && B!= null;
+   StringBuilder stringb = new StringBuilder();
+   
+   //O(m)
+   int[] C = new int[B.length];
+   for(int i=0; i<C.length; i++)
+   {
+       C[i]=0;
+   }
+  
+   //O(n)
+   for(int j:A)
+   {
+       C[j]++;
+   }
+   
+   //O(m)
+   for(int m=0; m<B.length; m++)
+   {
+       if(C[m]<=B[m])
+       {
+            stringb.append(1);
+       }
+       else
+       {
+           stringb.append(0);
+       }
+   }
+   
+   String result = stringb.toString();
+   return result;
+   
+}"
+67T5DNX2,21_22-2-1-java,"String calc(int A[], int B[]){
+    StringBuilder sb = new StringBuilder();
+
+    int[] C = new int[B.length];
+    for (int i = 0; i < A.length; i++)
+    {
+        C[A[i]]++;
+    }
+
+    for (int i = 0; i < B.length; i++)
+    {
+        if (i >= C.length ||B[i] >= C[i]) sb.append(1);
+        else sb.append(0);
+    }
+    
+    return sb.toString();
+}"
+6DRVFVU6,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    StringBuilder sb = new StringBuilder();
+    int[] C = new int[B.length];
+    
+    if(A.length<=28500000 && B.length<=28500000)
+    {
+    for(int i=0; i < A.length; i++)
+    {
+        if(A[i]>=0 && A[i]<= 28500000)
+        {
+        C[A[i]] += 1;
+        }
+    }
+    
+    for(int i=0; i < B.length ; i++)
+    {
+        if(B[i]>=0 && B[i]<= 28500000)
+        {
+        if (C[i] <= B[i])
+        {
+            sb.append(""1"");
+        }
+        else
+        {
+            sb.append(""0"");
+        }
+        }
+     }
+    
+    String a = sb.toString();
+    
+    return a;
+    }
+    return null;
+}"
+7CAJDBKE,21_22-2-1-java,"String calc(int A[], int B[])
+// A[i] = Kategorie des i-ten geschenks, 
+// |𝐴|i  =  wie oft die Zahl i in  Array 𝐴 vorkommt.
+// B[i] = Maximale kapazität des Schlittens
+// generiere String s[i] = 1, falls |𝐴|𝑖≤𝐵[𝑖], sonst s[i] = 0, falls |𝐴|𝑖>𝐵[𝑖]
+{
+    int []Prototyp = new int [B.length+1];
+  //Durchläuft jedes i in Array A
+  for (int i=0; i<A.length; i++)
+  {
+      Prototyp[A[i]]++;
+  }
+  StringBuilder solution = new StringBuilder();
+  for(int i=0; i<B.length; i++)
+  {
+      if(Prototyp[i] > B[i])
+      {
+          solution.append('0');
+      }
+      else
+      {
+          solution.append('1');
+      }
+  }
+  return solution.toString();
+}"
+7EK4IVDU,21_22-2-1-java,"String calc(int A[], int B[]){
+	    int[] C = new int[B.length];
+	    for (int i = 0; i<A.length; i++) {
+	    	C[A[i]]++;
+	    }
+	    StringBuilder stringBuilder = new StringBuilder();
+	    for (int i = 0; i<C.length;i++) {
+	    	if (C[i]<=B[i]) {
+	    		stringBuilder.append('1');
+	    	} else {
+	    		stringBuilder.append('0');
+	    	}
+	    }
+	    return stringBuilder.toString();
+	}"
+7KALRK3F,21_22-2-1-java,"String calc(int A[], int B[])
+{
+    StringBuilder result = new StringBuilder();
+    int[] C = new int[B.length];
+    C[A[0]] = 1;
+    
+    for(int i = 1; i < A.length; i++)
+    {
+        C[A[i]]++;
+        
+    }
+    
+    for(int i = 0; i < C.length; i++)
+    {
+        if(C[i] <= B[i])
+        {
+            result.append(1);
+        }
+        else
+        {
+            result.append(0);
+        }
+    }
+    return result.toString();
+}"
+7KVH5CM7,21_22-2-1-java,"String calc(int A[], int B[]){
+    int ergebnis[] = new int[B.length];
+    for(int i=0; i < A.length; i++){
+        ergebnis[A[i]] ++;
+    }
+    StringBuilder result = new StringBuilder();
+    for(int i=0; i < B.length; i++){
+        if(ergebnis[i] <= B[i]){
+            result.append(""1"");
+        }
+        else{
+            result.append(""0"");
+        }
+    }
+    return result.toString();
+}"
+A4AICXMI,21_22-2-1-java,"String calc(int A[], int B[])
+{
+    if(B.length >= 1 && A.length <= 28500000)
+    {
+        int [] C = new int[B.length];
+        for(int i = 0; i < A.length; ++i)
+        {
+            if (A[i] <= B.length -1 && A[i] >= 0)
+            {
+                ++C[A[i]];
+            }
+            else 
+            {
+                return ""false"";  
+            }
+        }
+        StringBuilder str = new StringBuilder();
+        for(int i = 0; i < B.length; ++i)
+        {
+            if (C[i] <= B[i] && B[i] <= 28500000)
+            {
+                str.append(1);
+            }
+            else
+            {
+                str.append(0);
+            }
+        }
+        return str.toString();
+    }
+    return ""false"";
+}"
+AQNVQLGU,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] C = new int[B.length];
+    for(int n : A)
+    {
+        C[n]++;
+    }
+    StringBuilder D = new StringBuilder(B.length);
+    for(int i = 0; i < B.length; i++)
+    {
+        if (C[i] <= B[i])
+        {
+            D.append(1);
+        }
+        else
+        {
+            D.append(0);
+        }
+    }
+    return D.toString();
+}"
+B2ZD3KZL,21_22-2-1-java,"private static StringBuilder myBuilder;
+
+String calc(int A[], int B[]){
+    myBuilder = new StringBuilder("""");
+    int C[] = new int[B.length];
+    for (int a : A) {
+        C[a] += 1;
+    }
+    for (int i = 0; i < B.length; i++) {
+        if (C[i] <= B[i]) {
+            myBuilder.append(""1"");
+        } else {
+            myBuilder.append(""0"");
+        }
+    }
+    return myBuilder.toString();
+}"
+BF4VPOWY,21_22-2-1-java,"public String calc(int A[], int B[])
+{
+    StringBuilder output = new StringBuilder();
+    int[] C = new int[B.length];
+    
+    if(A.length <= 28500000 && B.length <= 28500000)
+    {
+    for(int i=0; i < A.length; i++)
+    {
+        if(A[i]>=0 && A[i]<= 28500000)
+        {
+        C[A[i]] += 1;
+        }
+    }
+    
+    for(int i=0; i < B.length ; i++)
+    {
+        if(B[i]>=0 && B[i]<= 28500000)
+        {
+        if (C[i] <= B[i])
+        {
+            output.append(""1"");
+        }
+        else
+        {
+            output.append(""0"");
+        }
+        }
+     }
+    
+    // String erg = output.toString();
+    
+    return output.toString();
+    }
+    return null;
+}"
+BX3QGKJT,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] C = new int[B.length];
+    for (int i=0; i < A.length; i++)
+        {
+            C[A[i]] = C[A[i]] + 1;
+        }
+    StringBuilder str = new StringBuilder();
+    for (int j=0; j < B.length; j++)
+    {
+        if (C[j] <= B[j])
+        {
+            str.append(1);
+        }
+        else
+        {
+            str.append(0);
+        }
+    }
+    String s = str.toString();
+    return s;
+}"
+BZ7GRTOV,21_22-2-1-java,"String calc(int A[], int B[]){
+    StringBuilder ergebnis = new StringBuilder("""");
+    int noetigeKapazitaet[] = new int[Math.max(A.length, B.length)];
+    
+    for(int k = 0; k < noetigeKapazitaet.length; k++)
+    {
+        noetigeKapazitaet[k] = 0; //(brauche ich Zeilen 5-8 überhaupt?)
+    }
+    
+    for(int geschenk : A)
+    {                              //noetigeKapazitaet[i] gibt an, wie
+        noetigeKapazitaet[geschenk] += 1; //viele Geschenke von Kat. i
+    }                                     //ausgeliefert werden sollen
+    for(int i = 0; i < B.length; i++)
+    {
+        if(noetigeKapazitaet[i] <= B[i])
+        {                          //Falls alle Geschenke der Kategorie
+            ergebnis.append(""1"");  // i in einem Durchlauf geliefert
+        }                          //werden können, appende 1
+        else
+        {                          //Falls nicht, appende 0
+            ergebnis.append(""0"");
+        }
+    }
+    return ergebnis.toString();
+}"
+C5KCMKQT,21_22-2-1-java,"String calc(int A[], int B[]){
+    StringBuilder s = new StringBuilder();
+    int C[] = new int [B.length+1];
+    for(int i = 0; i < A.length; i++){
+        C[A[i]] ++;
+        }
+    for (int j = 0; j < B.length; j++){
+        if(C[j] > B[j]){
+            s.append('0');
+        }
+        else{
+            s.append('1');
+        }
+    }
+    return s.toString();
+}"
+CIKLGKIX,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    
+    int C[] = new int[B.length];
+    
+    for(int k = 0; k <= A.length - 1; k++)
+    {
+        C[A[k]] = C[A[k]] + 1; // Wir speichern in C[i] die Anzahl der Elemente i in A
+        
+    }
+    
+    StringBuilder s = new StringBuilder();
+    
+    for(int l = 0; l<= B.length - 1; l++)
+    {
+        if(C[l] <= B[l])   
+        {
+            s.append('1');
+        }
+        
+        else
+        {
+            s.append('0');
+        }    
+    }
+    
+    return s.toString();
+}"
+CR67R5CX,21_22-2-1-java,"String calc(int A[], int B[])
+{
+    int[] c = A.clone();
+    int[] d = B.clone();
+    StringBuilder sb = new StringBuilder(d.length);
+    for (int i = 0; i < c.length; i++)
+    {
+        int e = c[i];
+        d[e] = d[e] - 1;
+    }
+    for (int i = 0; i < d.length; i++)
+    {
+        if (d[i] < 0)
+        {
+            sb.append(0);
+        }
+        else
+        {
+            sb.append(1);
+        }
+    }
+    String k = sb.toString();
+    return k;
+}"
+EN43A4HC,21_22-2-1-java,"String calc(int[] A, int[] B){
+        int maxc =  B.length;
+
+        int[] C = new int[maxc];
+
+        for (int a :  A)
+        {
+            C[a]++;
+        }
+
+        StringBuilder output = new StringBuilder("""");
+
+        for(int i = 0; i <= B.length-1;i++)
+        {
+            output.append(C[i]<=B[i]? ""1"" : ""0"");
+        }
+
+        return output.toString();
+    }"
+EQJTBK2C,21_22-2-1-java,"String calc(int A[], int B[])
+{
+    StringBuilder ergebnisstring = new StringBuilder("""");
+    int[] C= new int[B.length]; 
+         
+    for (int i=0; i<=A.length-1; i++)
+    {
+        C[A[i]]++;
+    }
+    
+    for (int i = 0; i <= B.length - 1; i++)
+    {
+        if (C[i] <= B[i])
+        {
+            ergebnisstring.append(1);
+        }
+        
+        else
+        {
+            ergebnisstring.append(0);
+        }
+    }
+    return ergebnisstring.toString();
+}"
+ERYNXHVZ,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    StringBuilder s = new StringBuilder();
+    int[] C = new int[B.length];
+    
+    if(A.length<=28500000 && B.length<=28500000)
+    {
+    for(int i=0; i < A.length; i++)
+    {
+        if(A[i]>=0 && A[i]<= 28500000)
+        {
+        C[A[i]] += 1;
+        }
+    }
+    
+    for(int i=0; i < B.length ; i++)
+    {
+        if(B[i]>=0 && B[i]<= 28500000)
+        {
+        if (C[i] <= B[i])
+        {
+            s.append(1);
+        }
+        else
+        {
+            s.append(0);
+        }
+        }
+     }
+    
+    return s.toString();
+    }
+    return null;
+}"
+G7SDFOK6,21_22-2-1-java,"String calc(int A[], int B[]){
+    int [] C = new int[B.length];
+    StringBuilder str = new StringBuilder();
+    for (int i = 0; i < A.length; i++) {
+        C[A[i]]+= 1;
+    }
+    for (int i = 0; i < C.length; i++) {
+        if (C[i] <= B[i]) {
+            str.append(1);
+        } else {
+            str.append(0);
+        }
+    }
+    return str.toString();
+}"
+HA6DHSG6,21_22-2-1-java,"String calc(int A[], int B[]){
+    B = B.clone();
+    StringBuilder S = new StringBuilder(B.length);
+    
+    for (int n = 0; n < A.length; n++) {
+        B[A[n]] = B[A[n]]-1;
+    }
+    for (int m = 0; m < B.length; m++) {
+        if(B[m] >= 0) {
+            B[m] = 1;
+        }
+        else
+        {
+            B[m] = 0;
+        }
+        S.append(B[m]);
+    }
+    return S.toString();
+}"
+I27LXIFR,21_22-2-1-java,"String calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i =0;i<A.length;i++)
+    {
+        C[A[i]]++;
+    }
+    StringBuilder k = new StringBuilder();
+    for(int i = 0; i < B.length;i++)
+    {
+        if(C[i] <= B[i])
+        {
+            k.append('1');
+        }
+        else 
+        {
+            k.append('0');
+        }
+    }
+    return k.toString();
+}"
+IECQ3JWT,21_22-2-1-java,"String calc(int A[], int B[])
+    {
+               StringBuilder ergebnisstring = new StringBuilder("""");
+             int[] C= new int[B.length]; 
+         
+        for (int i=0; i<=A.length-1; i++)
+        {
+            C[A[i]]++;
+        }
+                 for (int i = 0; i <= B.length - 1; i++)
+        {
+            if (C[i] <= B[i])
+            {
+                 ergebnisstring.append(1);
+            }
+            else
+            {
+                ergebnisstring.append(0);
+            }
+        }
+        return ergebnisstring.toString();
+    }"
+IIDDGHLZ,21_22-2-1-java,"public String calc(int A[], int B[])
+    {
+        StringBuilder erg = new StringBuilder();
+        int C[] = new int[B.length];
+
+        for (int i = 0; i < A.length; i++)
+        {
+            C[A[i]] = C[A[i]] + 1;
+        }
+        for (int j = 0; j < B.length; j++)
+        {
+            if (C[j] <= B[j])
+            {
+                erg.append(1);
+            }
+            else
+            {
+                erg.append(0);
+            }
+        }
+        return erg.toString();
+    }"
+JEY5XR5V,21_22-2-1-java,"String calc(int A[], int B[]){
+    StringBuilder erg = new StringBuilder();
+    int[] newB = B.clone();
+
+    for(int i = 0; i < A.length; i++) {
+        int kategorie = A[i];
+        newB[kategorie]--;
+      }
+
+    for(int i = 0; i < newB.length; i++) {
+     if(newB[i] < 0) {
+         erg.append(0);
+     } else {
+         erg.append(1);
+     }
+     }
+
+
+      return erg.toString();
+}"
+JFSJYPES,21_22-2-1-java,"String calc(int A[], int B[]){
+	int[] C = new int[B.length];
+	StringBuilder result = new StringBuilder();
+	for (int i = 0; i < A.length; i++) {
+		C[A[i]]++;
+	}
+
+	for (int i = 0; i < B.length; i++) {
+		if (B[i] < C[i])
+			result.append(0);
+		else
+			result.append(1);
+	}
+	return result.toString();
+}"
+KJFXIVUI,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] C = new int[B.length]; //Hilfsarray legt fest, wie viele Gegenstände einer jeden Kategorie vorhanden sind.
+        
+        //Laufen die Liste A durch und zählen in C die Anzahl der jeweiligen Items zusammen.
+        for (int i = 0; i< A.length; i++) //Dies hat Laufzeit O(n).
+        {           
+            C[A[i]] = C[A[i]] + 1; //Inkrementieren einen Gegenstand der Kategorie A[i].
+        } 
+        //Haben jetzt in C die Anzahlen der Kategorien des Arrays A gespeichert.
+        //Nutzen dies zum bestimmten von |A|_j < B[j] durch Stringbuilder. Verleichen C[j] < B[j]. Wenn wahr: String 1, sonst 0.
+        StringBuilder builtString = new StringBuilder();
+
+        for(int j = 0; j < B.length; j++)
+        {
+            if(C[j]<=B[j])
+            {
+                builtString.append(1); //Attach 1 to String.
+            }
+            else
+            {
+                builtString.append(0); //Attach 0 to String.
+            }
+        }
+        return builtString.toString();
+}"
+LM4EIKBZ,21_22-2-1-java,"String calc(int[] a, int[] b){
+    int[] c = new int[b.length];
+    for(int i = 0; i < a.length; i++){
+        c[a[i]]++;
+    }
+    StringBuilder str = new StringBuilder("""");
+    for(int i = 0; i < b.length; i++){
+        if(c[i] <= b[i]){
+            str.append(""1"");
+        }else{
+            str.append(""0"");
+        }
+    }
+    return str.toString();
+}"
+M6QPH7YO,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[]C = new int[B.length];
+    int b = 0;
+    StringBuilder loesung = new StringBuilder(C.length);
+    for(int i= 0; i < C.length; i++)
+    {
+        C[i] = 0;
+    }
+    for(int i= 0; i < A.length; i++)
+    {
+        C[A[i]] += 1;
+    }
+    for(int j = 0; j<C.length; j++)
+    {
+        if(C[j]> B[j])
+        {
+            loesung.append(""0"");
+        }
+        else
+        {
+            loesung.append(""1"");
+        }
+    
+    }
+    return loesung.toString();
+    
+}"
+MN4P7RRW,21_22-2-1-java,"String calc(int A[], int B[]){
+    StringBuilder s = new StringBuilder(); 
+    int countA[] = new int[B.length];
+    for (int i = 0; i < A.length; i++)
+    {
+        countA[A[i]]++;
+    }
+    for (int i = 0; i < B.length; i++)  
+    {
+        if(countA[i] <= B[i])
+        {
+            s.append(""1"");
+        }
+        else 
+        {
+            s.append(""0"");
+        }
+    }
+    return s.toString();
+}"
+N4PN4EJM,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] c = new int[B.length];
+    StringBuilder s = new StringBuilder("""");
+
+    for (int i : A) {
+        c[i]++;
+    }
+    
+    for (int i = 0; i < B.length; i++) {
+        
+        if(c[i] <= B[i]) {
+            s.append(""1"");
+        }
+        
+        else {
+            s.append(""0"");
+        }
+    }
+    return s.toString();
+}"
+NEVBKBMK,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+     //Array in dem später gezählt wird wie offt Zahlen in A vorkommen
+        int[] C = new int[B.length];
+
+        //AusgabeString
+        StringBuilder res = new StringBuilder("""");
+
+        //Zähle in C wie oft Zahlen in A vorkommen
+        for (int i = 0; i < A.length; i++)
+        {
+            C[A[i]] = C[A[i]] + 1;
+        }
+
+        //Vergleiche C[i] mit B[i] und füge 1 oder 0 in den String hinzu
+        for (int i = 0; i < C.length; i++)
+        {
+            if (C[i] <= B[i])
+            {
+                res.append('1');
+            }
+            else
+            {
+                res.append('0');
+            }
+        }
+
+        return res.toString();
+
+}"
+NWQ5BWT4,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    StringBuilder str = new StringBuilder();
+    int[] C = new int[B.length];
+    
+    if(A.length<=28500000 && B.length<=28500000)
+    {
+    for(int i=0; i < A.length; i++)
+    {
+        if(A[i]>=0 && A[i]<= 28500000)
+        {
+        C[A[i]] += 1;
+        }
+    }
+    
+    for(int i=0; i < B.length ; i++)
+    {
+        if(B[i]>=0 && B[i]<= 28500000)
+        {
+        if (C[i] <= B[i])
+        {
+            str.append(""1"");
+        }
+        else
+        {
+            str.append(""0"");
+        }
+        }
+     }
+    
+    String erg = str.toString();
+    
+    return erg;
+    }
+    return null;
+}"
+NXXI3YON,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] tmp = new int[B.length];
+    StringBuilder res = new StringBuilder();
+    
+    for(int i = 0; i < A.length; i++){
+        tmp[A[i]]++;
+    }
+    
+    for(int i = 0; i < B.length; i++){
+        if(tmp[i] <= B[i]){
+            res.append(""1"");
+        }else{
+            res.append(""0"");   
+        }
+    }
+    
+    return res.toString();
+}"
+OH3NWLK4,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] c = new int[B.length];
+    
+    for(int a : A) {
+        c[a]++;
+    }
+    
+    StringBuilder builder = new StringBuilder();
+    for(int i = 0; i < c.length; i++) {
+        if(c[i] <= B[i]) {
+            builder.append('1');
+        } else {
+            builder.append('0');
+        }
+    }
+
+    return builder.substring(0);
+}"
+ORQCB5KV,21_22-2-1-java,"String calc(int A[], int B[])
+{
+
+        int länge = B.length - 1;
+        int[] C = haeufigkeitInA(A, länge + 1);
+        StringBuilder AusgabeBuilder = new StringBuilder();
+        for (int i = 0; i <= länge; i++)
+        {
+            if (C[i] <= B[i])
+            {
+                AusgabeBuilder.append(1);
+            }
+            else
+            {
+               AusgabeBuilder.append(0);
+            }
+        }
+        return AusgabeBuilder.toString();
+
+}
+
+private int[] haeufigkeitInA(int[] A, int länge)
+    {
+        int[] C = new int[länge];
+        for (int i = 0; i <= länge - 1; i++)
+        {
+            C[i] = 0;
+        }
+
+        for (int j = 0; j <= A.length - 1; j++)
+        {
+            C[A[j]] = C[A[j]] + 1;
+        }
+        return C;
+
+    }"
+OZEQBTNT,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    int []C = new int[B.length+1];
+    StringBuilder sol = new StringBuilder();
+    
+    for(int i=0; i<A.length; i++)
+        C[A[i]]++;
+  
+    for(int i=0; i < B.length; i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}"
+P2YY7IWZ,21_22-2-1-java,"String calc(int A[], int B[]){
+
+StringBuilder stringBuilder = new StringBuilder();
+
+        int[] temp = new int[B.length];
+        //Iterate over each element in B.
+        for (int i : A){
+            temp[i]++;
+        }
+
+        for (int i = 0; i < B.length; i++) {
+            if(temp[i] <= B[i])
+                stringBuilder.append(1);
+            else
+                stringBuilder.append(0);
+        }
+
+        return stringBuilder.toString();
+}"
+QKMIPPRK,21_22-2-1-java,"String calc(int A[], int B[]) // Bucket Sort
+{
+    StringBuilder sb = new StringBuilder(28500000); // (Kapazität)
+    
+    // ""Eimer"" zum Speichern der Anzahl der Elemente einer Kategorie
+    int[] Ai = new int[B.length];
+    
+    // in A können mehrere Elemente einer Kategorie vorkommen (n)
+    for(int k : A) // n Durchläufe => O(n)
+    {
+        Ai[k] += 1;
+    }
+    
+    // in B sind so viele Elemente wie es Kategorien in A gibt (m)
+    for(int j=0; j<B.length; j++) // m Durchläufe => O(m)
+    {
+        if(Ai[j] > B[j])
+        {
+            sb.append(0);
+        }
+        else
+        {
+            sb.append(1);
+        }
+    }
+    return sb.toString();
+}"
+SD7JIEDC,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] C = new int[B.length];
+    StringBuilder str = new StringBuilder();
+    for(int i=0; i < A.length; i++)
+    {
+        C[A[i]] = C[A[i]]+1;
+    }
+    for(int j=0; j < B.length; j++)
+    {
+        if (C[j] <= B[j])
+        {
+            str.append(""1"");
+        }
+        else if (C[j] > B[j])
+        {
+            str.append(""0"");
+        }
+    }
+    return str.toString();
+}"
+SOJPC5NB,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    StringBuilder sb = new StringBuilder();
+    int[] C = new int[B.length];
+    
+    if(A.length<=28500000 && B.length<=28500000)
+    {
+    for(int i=0; i < A.length; i++)
+    {
+        if(A[i]>=0 && A[i]<= 28500000)
+        {
+        C[A[i]] += 1;
+        }
+    }
+    
+    for(int i=0; i < B.length ; i++)
+    {
+        if(B[i]>=0 && B[i]<= 28500000)
+        {
+        if (C[i] <= B[i])
+        {
+            sb.append(""1"");
+        }
+        else
+        {
+            sb.append(""0"");
+        }
+        }
+     }
+    
+    String solution = sb.toString();
+    
+    return solution;
+    }
+    return null;
+}"
+VTP3OHSD,21_22-2-1-java,"String calc(int A[], int B[]){
+    int C[] = new int[B.length];
+		    StringBuilder ret = new StringBuilder();
+		    
+		    if (A.length > B.length){
+		        return ""0"";
+		    }
+		    
+		    for (int i = 0; i < C.length; i++)
+		        {
+		            C[i] = 0;
+		        }
+		    
+		    for (int i = 0; i < A.length; i++){
+		            C[A[i]] = C[A[i]] +1;
+		    }
+		  
+		    for (int i = 0; i < B.length; i++){
+		        if (C[i] <= B[i]){
+		            ret.append(""1"");
+		        }
+		        else{
+		        	ret.append(""0"");
+		        }
+		    }
+		    return ret.toString();
+}"
+X44UOVME,21_22-2-1-java,"String calc(int A[], int B[]){
+    
+    StringBuilder myBuilder = new StringBuilder();
+    int[] C = new int[B.length];
+    
+     for(int a: A) {
+            C[a]+=1;
+        }
+        for (int n = 0; n < B.length; n++)
+        {
+            if (C[n] <= B[n])
+            {
+                myBuilder.append('1');
+            }
+            else
+                myBuilder.append('0');
+
+            
+        }
+        return myBuilder.toString();
+}"
+Y6VLGWFU,21_22-2-1-java,"String calc(int A[], int B[]){
+    int[] C = new int[B.length];
+    for (int category : A) {
+      C[category]++;
+    }
+    StringBuilder binaryBuilder = new StringBuilder();
+    for (int i = 0; i < B.length; i++) {
+      binaryBuilder.append(C[i] > B[i] ? 0 : 1);
+    }
+    return binaryBuilder.toString();
+}"
+YU6M5RA7,21_22-2-1-java,"String calc(int A[], int B[]){
+    B = B.clone();
+    int max = 28500000;
+    if(A.length > max || B.length > max){
+        return null;
+    }
+    if(A.length < 1 || B.length < 1){
+        return null;
+    }
+    StringBuilder ziel = new StringBuilder(B.length);
+    for(int i = 0; i< A.length; i++){
+        int a = A[i];
+        if(a > B.length-1){
+            return null;
+        }
+        B[a]--;
+    }
+    for(int i = 0; i< B.length; i++){
+        if(B[i]>=0){
+            ziel.append(1);
+        }
+        else{
+            ziel.append(0);
+        }
+    }
+    return ziel.toString();
 }"
 22RVWBZ6,21_22-2-1-python,"def calc(A,B):
     res = []
