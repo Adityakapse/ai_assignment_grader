@@ -10,8 +10,8 @@ from scipy.stats import spearmanr
 PALETTE = sns.color_palette("tab10")
 APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 
-PRIMARY_MODEL = "Qwen3:14b"
-# PRIMARY_MODEL = "gpt-oss-120b"
+# PRIMARY_MODEL = "Qwen3:14b"
+PRIMARY_MODEL = "gpt-oss-120b"
 
 
 DPI = 150
@@ -125,7 +125,7 @@ def _plot_rq1_runs_figure(df, question_id, model, output_dir, filename):
     for ax in axes[len(approaches):]:
         ax.set_visible(False)
     fig.suptitle(
-        f"RQ1 — Score consistency across runs  |  {question_id}  |  model: {model}",
+        f"Score consistency across runs  |  {question_id}  |  model: {model}",
         fontsize=11,
     )
     plt.tight_layout()
@@ -139,10 +139,10 @@ def plot_rq1_run_consistency(df, output_dir,
     model = model or PRIMARY_MODEL
     if impl_question is not None:
         _plot_rq1_runs_figure(df, impl_question, model, output_dir,
-                              "rq1_runs_implementation.png")
+                              "runs_implementation.png")
     if asym_question is not None:
         _plot_rq1_runs_figure(df, asym_question, model, output_dir,
-                              "rq1_runs_asymptotic.png")
+                              "runs_asymptotic.png")
 
 
 def _plot_rq1_deviation_figure(df, model, output_dir, filename):
@@ -184,7 +184,7 @@ def _plot_rq1_deviation_figure(df, model, output_dir, filename):
     ax.set_ylabel("Max deviation from median run (marks)")
     ax.set_ylim(bottom=0)
     ax.set_title(
-        f"RQ1 — Per-student deviation from median score  |  all questions  |  model: {model}",
+        f"Per student deviation from median score  |  all questions  |  model: {model}",
         fontsize=11,
     )
     plt.tight_layout()
@@ -193,7 +193,7 @@ def _plot_rq1_deviation_figure(df, model, output_dir, filename):
 
 def plot_rq1_deviation(df, output_dir, model=None):
     model = model or PRIMARY_MODEL
-    _plot_rq1_deviation_figure(df, model, output_dir, "rq1_deviation_all_questions.png")
+    _plot_rq1_deviation_figure(df, model, output_dir, "deviation_all_questions.png")
 
 
 def _plot_rq1_kde_figure(df, gt_df, model, output_dir, filename):
@@ -225,7 +225,7 @@ def _plot_rq1_kde_figure(df, gt_df, model, output_dir, filename):
     ax.set_ylabel("Density")
     ax.legend(fontsize=9)
     ax.set_title(
-        f"RQ1 — Score distribution by approach vs human  |  model: {model}",
+        f"Score distribution by approach vs human  |  model: {model}",
         fontsize=11,
     )
     plt.tight_layout()
@@ -234,7 +234,7 @@ def _plot_rq1_kde_figure(df, gt_df, model, output_dir, filename):
 
 def plot_rq1_score_distribution(df, gt_df, output_dir, model=None):
     model = model or PRIMARY_MODEL
-    _plot_rq1_kde_figure(df, gt_df, model, output_dir, "rq1_score_distribution.png")
+    _plot_rq1_kde_figure(df, gt_df, model, output_dir, "score_distribution.png")
 
 
 # ---------------------------------------------------------------------------
@@ -278,7 +278,7 @@ def _plot_rq4_leniency_figure(df, gt_df, model, output_dir, filename):
     ax.set_xticklabels([a.replace("approach_", "Approach ") for a in approaches], fontsize=10)
     ax.set_ylabel("Mean (LLM − Human) marks", fontsize=10)
     ax.set_title(
-        f"RQ4 — Leniency by approach  |  model: {model}",
+        f"Leniency by approach  |  model: {model}",
         fontsize=11,
     )
     ax.spines["top"].set_visible(False)
@@ -291,7 +291,7 @@ def _plot_rq4_leniency_figure(df, gt_df, model, output_dir, filename):
 
 def plot_rq4_leniency(df, gt_df, output_dir, model=None):
     model = model or PRIMARY_MODEL
-    _plot_rq4_leniency_figure(df, gt_df, model, output_dir, "rq4_leniency_by_approach.png")
+    _plot_rq4_leniency_figure(df, gt_df, model, output_dir, "leniency_by_approach.png")
 
 
 def _plot_rq4_leniency_scatter_figure(df, gt_df, model, output_dir, filename):
@@ -336,7 +336,7 @@ def _plot_rq4_leniency_scatter_figure(df, gt_df, model, output_dir, filename):
     ax.set_xticklabels([a.replace("approach_", "Approach ") for a in approaches], fontsize=10)
     ax.set_ylabel("LLM − Human (marks)", fontsize=10)
     ax.set_title(
-        f"RQ4 — Leniency per submission  |  model: {model}",
+        f"Leniency per submission  |  model: {model}",
         fontsize=11,
     )
     ax.spines["top"].set_visible(False)
@@ -350,7 +350,7 @@ def _plot_rq4_leniency_scatter_figure(df, gt_df, model, output_dir, filename):
 def plot_rq4_leniency_scatter(df, gt_df, output_dir, model=None):
     model = model or PRIMARY_MODEL
     _plot_rq4_leniency_scatter_figure(df, gt_df, model, output_dir,
-                                      "rq4_leniency_scatter.png")
+                                      "leniency_scatter.png")
 
 
 # ---------------------------------------------------------------------------
@@ -400,7 +400,7 @@ def _plot_rq2_mae_figure(df, gt_df, models, output_dir, filename):
     ax.set_xticks(x_positions)
     ax.set_xticklabels(models, fontsize=9)
     ax.set_ylabel("MAE (marks)", fontsize=10)
-    ax.set_title("RQ2 — MAE by model and approach", fontsize=11)
+    ax.set_title("MAE by model and approach", fontsize=11)
     ax.legend(title="Approach", fontsize=8, loc="upper right")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -412,7 +412,7 @@ def _plot_rq2_mae_figure(df, gt_df, models, output_dir, filename):
 
 def plot_rq2_mae(df, gt_df, output_dir, models=None):
     models = models or sorted(df["model"].dropna().unique().tolist())
-    _plot_rq2_mae_figure(df, gt_df, models, output_dir, "rq2_mae_by_approach.png")
+    _plot_rq2_mae_figure(df, gt_df, models, output_dir, "mae_by_approach.png")
 
 
 def _plot_rq2_spearman_figure(df, gt_df, model, output_dir, filename):
@@ -477,7 +477,7 @@ def _plot_rq2_spearman_figure(df, gt_df, model, output_dir, filename):
     ax.set_xticklabels([a.replace("approach_", "AP") for a in ordered], fontsize=10)
     ax.set_ylabel("Spearman ρ", fontsize=10)
     ax.set_ylim(-1, 1.12)
-    ax.set_title(f"RQ2 — Spearman correlation by approach  |  model: {model}", fontsize=11)
+    ax.set_title(f"Spearman correlation by approach  |  model: {model}", fontsize=11)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.yaxis.grid(True, linestyle="--", alpha=0.4, zorder=0)
@@ -488,7 +488,7 @@ def _plot_rq2_spearman_figure(df, gt_df, model, output_dir, filename):
 
 def plot_rq2_spearman(df, gt_df, output_dir, model=None):
     model = model or PRIMARY_MODEL
-    _plot_rq2_spearman_figure(df, gt_df, model, output_dir, "rq2_spearman_by_approach.png")
+    _plot_rq2_spearman_figure(df, gt_df, model, output_dir, "spearman_by_approach.png")
 
 
 def _plot_rq2_time_figure(df, models, output_dir, filename):
@@ -538,7 +538,7 @@ def _plot_rq2_time_figure(df, models, output_dir, filename):
     ax.set_xticks(x_positions)
     ax.set_xticklabels([a.replace("approach_", "AP") for a in ordered], fontsize=10)
     ax.set_ylabel("Avg time per grading (seconds)", fontsize=10)
-    ax.set_title("RQ2 — Average grading time by approach", fontsize=11)
+    ax.set_title("Average grading time by approach", fontsize=11)
     ax.legend(title="Model", fontsize=8)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -550,7 +550,7 @@ def _plot_rq2_time_figure(df, models, output_dir, filename):
 
 def plot_rq2_time(df, output_dir, models=None):
     models = models or sorted(df["model"].dropna().unique().tolist())
-    _plot_rq2_time_figure(df, models, output_dir, "rq2_time_by_approach.png")
+    _plot_rq2_time_figure(df, models, output_dir, "time_by_approach.png")
 
 
 # ---------------------------------------------------------------------------
@@ -582,7 +582,7 @@ def _plot_rq3_stability_figure(df, models, output_dir, filename):
 
     ax.set_xlabel("Model", fontsize=10)
     ax.set_ylabel("Max deviation from median run (marks)", fontsize=10)
-    ax.set_title("RQ3 — Score stability across runs by model and approach", fontsize=11)
+    ax.set_title("Score stability across runs by model and approach", fontsize=11)
     ax.set_xticks(range(len(models)))
     ax.set_xticklabels(models, fontsize=9)
     handles, labels = ax.get_legend_handles_labels()
@@ -598,7 +598,7 @@ def _plot_rq3_stability_figure(df, models, output_dir, filename):
 
 def plot_rq3_stability(df, output_dir, models=None):
     models = models or sorted(df["model"].dropna().unique().tolist())
-    _plot_rq3_stability_figure(df, models, output_dir, "rq3_stability_by_model.png")
+    _plot_rq3_stability_figure(df, models, output_dir, "stability_by_model.png")
 
 
 def _plot_rq3_format_failures_figure(df, models, output_dir, filename):
@@ -628,7 +628,7 @@ def _plot_rq3_format_failures_figure(df, models, output_dir, filename):
     ax.set_xticks(x_positions)
     ax.set_xticklabels(models, fontsize=9)
     ax.set_ylabel("Format failure count", fontsize=10)
-    ax.set_title("RQ3 — Format failures by model and approach", fontsize=11)
+    ax.set_title("Format failures by model and approach", fontsize=11)
     ax.legend(title="Approach", fontsize=8, loc="upper right")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -640,7 +640,7 @@ def _plot_rq3_format_failures_figure(df, models, output_dir, filename):
 
 def plot_rq3_format_failures(df, output_dir, models=None):
     models = models or sorted(df["model"].dropna().unique().tolist())
-    _plot_rq3_format_failures_figure(df, models, output_dir, "rq3_format_failures.png")
+    _plot_rq3_format_failures_figure(df, models, output_dir, "format_failures.png")
 
 
 # ---------------------------------------------------------------------------
@@ -756,7 +756,7 @@ def _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output
     ax.set_xticklabels(categories, fontsize=11)
     ax.set_ylabel("% of rubric point classifications", fontsize=10)
     ax.set_ylim(0, 100)
-    ax.set_title(f"RQ4 — Bucket pickup % by approach vs human  |  model: {model}", fontsize=11)
+    ax.set_title(f"Bucket pickup % by approach vs human  |  model: {model}", fontsize=11)
     ax.legend(title="Grader", fontsize=8, loc="upper right")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -769,7 +769,7 @@ def _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output
 def plot_rq4_bucket_distribution(df, gt_df, datastore_dir, output_dir, model=None):
     model = model or PRIMARY_MODEL
     _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output_dir,
-                                         "rq4_bucket_distribution.png")
+                                         "bucket_distribution.png")
 
 
 def _plot_rq4_length_bias_figure(df, solutions, model, output_dir, filename):
@@ -820,7 +820,7 @@ def _plot_rq4_length_bias_figure(df, solutions, model, output_dir, filename):
         ax.set_visible(False)
 
     fig.suptitle(
-        f"RQ4 — Length bias: solution length vs LLM score  |  model: {model}",
+        f"Length bias: solution length vs LLM score  |  model: {model}",
         fontsize=11,
     )
     plt.tight_layout()
@@ -830,7 +830,7 @@ def _plot_rq4_length_bias_figure(df, solutions, model, output_dir, filename):
 def plot_rq4_length_bias(df, datastore_dir, output_dir, model=None):
     model = model or PRIMARY_MODEL
     solutions = load_solutions(datastore_dir)
-    _plot_rq4_length_bias_figure(df, solutions, model, output_dir, "rq4_length_bias.png")
+    _plot_rq4_length_bias_figure(df, solutions, model, output_dir, "length_bias.png")
 
 
 IMPL_QUESTION  = "19_20-1-1-java"
