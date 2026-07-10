@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a dedicated counting array initialized to zero; it reuses a cloned B array (which holds capacities) and decrements it, so frequencies are not correctly accumulated.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code iterates over A but updates B with `B[a]--` instead of incrementing a separate count array (e.g., `C[a]++`), so it does not correctly accumulate frequencies of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop uses `for(int i = 0; i < B.length; i++)`, iterating from 0 to B.length‑1 and appends one character per index, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: By decrementing B[a] for each item and then appending '1' when B[i] ≥ 0 (and '0' otherwise), the solution correctly reflects C[i] ≤ original B[i] versus C[i] > B[i].
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly decrements B[a] for each occurrence and then outputs ‘1’ when the remaining capacity is non‑negative, handling edge cases and running in O(n+m) without using any forbidden substrings.

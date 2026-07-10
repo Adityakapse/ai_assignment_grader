@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code reuses a cloned B array (which contains the original capacities) instead of allocating a new zero‑initialized counting array of size ≥ max(A)+1, so it does not satisfy the required counting‑array allocation.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code decrements entries in the cloned B array instead of incrementing a separate count array for each value in A, so it does not perform the required frequency counting.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your output loop correctly iterates from i = 0 up to i < B.length, appending one character per index and thus producing a binary string of length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code decrements B[a] for each occurrence and then appends ‘1’ when B[i] ≥ 0 (i.e., count ≤ original B[i]) and ‘0’ otherwise, correctly implementing the required comparison.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The code correctly counts occurrences by decrementing a cloned B array and builds the binary string with a StringBuilder, producing the right result in O(n+m) without using any forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length];`, which matches the required size (at least max(A)+1) and Java initializes it to zero, enabling proper frequency counting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over each element in A (`for (int category : A)`) and increments `C[category]++`, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for (int i = 0; i < B.length; i++)` which iterates from 0 to |B|-1 and appends a digit each time, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `binaryBuilder.append(C[i] > B[i] ? 0 : 1);` which appends 1 when `C[i] <= B[i]` and 0 when `C[i] > B[i]`, matching the required output logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution allocates a count array of size B.length, tallies occurrences, and appends ‘0’ or ‘1’ via StringBuilder in two linear passes, meeting the O(n+m) requirement and avoiding forbidden substrings.

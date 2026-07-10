@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student's solution does not allocate a counting array; instead, it modifies the B array directly by decrementing B[a] for each element in A, which incorrectly alters the original B values rather than counting frequencies.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's code decrements B[a] for each element in A, which does not accumulate frequencies correctly. This approach tracks the difference between B and A but fails to count the number of occurrences of each category in A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates from 0 to B.length - 1, correctly generating a binary string of length m, matching the required output length.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The student checks if B[i] >= 0 to determine the output character, which is unrelated to the comparison between |A|_i and B[i]. This approach fails to correctly compare the count of each category in A to B[i].
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution produces incorrect output for most inputs because it modifies B instead of counting frequencies and uses an invalid comparison (B[i] >= 0). Additionally, it may fail edge cases like B[i] = 0 and contains forbidden substrings like "StringBuilder" (though not explicitly disallowed, the code structure is fundamentally incorrect).

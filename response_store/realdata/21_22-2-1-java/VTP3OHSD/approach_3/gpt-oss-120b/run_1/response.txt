@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int C[] = new int[B.length];` which has size B.length (≥ max(A)+1) and initializes it to 0, satisfying the counting‑array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) { C[A[i]] = C[A[i]] + 1; }` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for (int i = 0; i < B.length; i++)` iterates from 0 to B.length‑1, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the code appends `"1"` when `C[i] <= B[i]` and `"0"` otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The method returns `"0"` when `A.length > B.length`, yielding a string of length 1 instead of m, so it fails for inputs where n > m, making the overall solution only partially correct.

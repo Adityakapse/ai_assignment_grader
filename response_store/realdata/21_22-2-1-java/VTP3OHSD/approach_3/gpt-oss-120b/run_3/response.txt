@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int C[] = new int[B.length];` which is at least `max(A)+1` given the problem constraint, and it explicitly initializes all entries to 0 in a loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) { C[A[i]] = C[A[i]] + 1; }` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for (int i = 0; i < B.length; i++)` iterates from 0 to `B.length‑1`, producing a string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the condition `if (C[i] <= B[i]) ret.append("1"); else ret.append("0");` matches the required comparison and appends the proper characters.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The early check `if (A.length > B.length) { return "0"; }` returns a single‑character string for valid inputs where A is longer than B, causing incorrect results on those edge cases.

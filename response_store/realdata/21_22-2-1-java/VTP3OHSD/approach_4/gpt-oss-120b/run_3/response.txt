@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution creates `int C[] = new int[B.length];` and loops to set each entry to 0 before counting frequencies, giving a counting array sized at least max(A)+1.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over A and increments `C[A[i]]` with `C[A[i]] = C[A[i]] + 1`, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop uses `for (int i = 0; i < B.length; i++)` and appends one character per iteration, yielding a binary string of length |B| as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop correctly checks `if (C[i] <= B[i])` and appends `"1"` otherwise `"0"`, matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The method returns "0" immediately when A.length > B.length, producing an incorrect binary string for many valid inputs instead of computing the full result.

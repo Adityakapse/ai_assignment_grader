@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution modifies the B array directly instead of allocating a separate counting array to track frequencies, leading to incorrect logic for comparing counts against capacities.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution decrements elements of B based on A's values instead of counting frequencies in A, which fails to accumulate category counts as required.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop uses `i < B.length` which correctly iterates from 0 to |B|-1 inclusive, producing a binary string of exactly length m as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly appends '1' when B[i] >= 0 after decrementing by the count of i in A, which is equivalent to checking if the count is <= original B[i].
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly counts occurrences by decrementing B values and checks if the result is non-negative, producing the correct binary string in O(n + m) time without forbidden substrings.

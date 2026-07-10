@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code never allocates a separate counting array C; it clones B and modifies it, so there is no new zero‑initialized array of size at least max(A)+1 as required.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code decrements B[a] for each element of A instead of incrementing a separate count array (C[a]++) as required for frequency counting.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The final loop correctly iterates from 0 to B.length‑1, appending one character per index and thus producing a string of length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code decrements B[a] for each occurrence and then appends 1 when B[i] ≥ 0 (i.e., count ≤ capacity) and 0 otherwise, correctly implementing the required comparison and output.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The code correctly decrements capacities for each occurrence, then outputs 1 when the remaining capacity is non‑negative, producing the required binary string in O(n+m) and without using any forbidden substrings.

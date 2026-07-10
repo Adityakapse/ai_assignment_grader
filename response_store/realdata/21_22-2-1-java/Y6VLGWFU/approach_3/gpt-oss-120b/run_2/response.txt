@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a counting array of size |B| (≥ max(A)+1) and is zero‑initialized.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It iterates `for (int category : A) { C[category]++; }`, correctly incrementing the count for each category value in A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for (int i = 0; i < B.length; i++)`, iterating from 0 to |B|‑1 and thus produces a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the loop it appends `C[i] > B[i] ? 0 : 1`, yielding ‘1’ when the count fits (C[i] ≤ B[i]) and ‘0’ otherwise, matching the required logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.

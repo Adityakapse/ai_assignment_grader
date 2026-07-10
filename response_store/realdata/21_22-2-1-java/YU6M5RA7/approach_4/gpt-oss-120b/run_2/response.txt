@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a separate counting array; it reuses and decrements the input array B instead of allocating a zero‑initialized array sized for the categories.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over A but updates B[a] with `B[a]--` instead of incrementing a separate count array (e.g., `C[a]++`), so frequencies are not accumulated as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates `for(int i = 0; i < B.length; i++)`, covering indices 0 through |B|‑1 and appends one character per index, yielding a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements B[a] for each occurrence and then appends ‘1’ when B[i] ≥ 0 (i.e., count ≤ capacity) and ‘0’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences by decrementing a cloned B array and then outputs 1 when the remaining value is non‑negative, handling edge cases and running in O(n+m) without forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The counting array C is allocated with size B.length instead of B.length+1, which would cause index-out-of-bounds errors for categories in A that match B.length (since max(A) ≤ |B| -1). The array is initialized to 0 via a loop, but Java arrays are already zero-initialized by default.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code correctly increments C[A[i]] for each element in A, accumulating the frequency counts for each category in the array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates from 0 to B.length-1 inclusive, ensuring the binary string has exactly m characters as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code appends '1' when C[i] ≤ B[i] and '0' otherwise, correctly implementing the required comparison logic for each category.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code contains an incorrect early return "0" when A.length > B.length, which produces a string of length 1 instead of the required m characters. This violates the output specification and causes incorrect results for valid inputs.

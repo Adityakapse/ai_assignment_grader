@@ -1,0 +1,89 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student did not allocate a separate counting array as required; instead, they modified the B array directly by decrementing values, which does not correctly count occurrences in A.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The solution decrements B[a] for each occurrence of a in A instead of counting frequencies in a separate array, which fails to accumulate the correct counts needed to compare against B[i].
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop correctly iterates from i=0 to B.length-1, appending exactly one character per iteration to produce a binary string of length m = B.length.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's code correctly appends '1' when the count of category i in A is ≤ B[i] (by decrementing B[i] for each occurrence and checking if the result is ≥0), and '0' otherwise, matching the required condition.
+
+POINT_ID: 5
+The student's code is **correct** and meets all the requirements specified in the problem statement. Here's a breakdown of why this is the case:
+
+---
+
+### **1. Correctness of the Core Logic**
+
+The code's primary purpose is to determine whether the number of occurrences of each element in `A` is **less than or equal to** the corresponding value in `B`. This is done by **decrementing** the value in `B` for each occurrence of the element in `A`, and then checking whether the final value in `B` is **non-negative**.
+
+- **Key Insight**:  
+  The final value in `B[i]` after processing is equal to:  
+  $$
+  B[i]_{\text{initial}} - \text{count of } i \text{ in } A
+  $$  
+  If this value is **non-negative**, it means the count of `i` in `A` is **less than or equal to** the initial value of `B[i]`, which is exactly the condition required.
+
+- **Example**:  
+  If `B[i]` starts at `5` and there are `3` occurrences of `i` in `A`, the final value of `B[i]` is `2`, which is **non-negative**, and the code returns `'1'`.  
+  If `B[i]` starts at `2` and there are `3` occurrences, the final value is `-1`, which is **negative**, and the code returns `'0'`.
+
+This logic is **logically equivalent** to the approach used in the sample solution (which uses a frequency array to count occurrences and then compares with `B`), and it produces the **correct output** for all valid inputs.
+
+---
+
+### **2. Handling of Edge Cases**
+
+- **Input Size Checks**:
+  The code includes the following check:
+  ```java
+  if (A.length > max || B.length > max) return null;
+  ```
+  This is based on the problem's constraints: `1 ≤ m, n ≤ 2.85 × 10^7`.  
+  The code **only returns `null` for inputs that violate these constraints**, which are **invalid**.  
+  Since the problem guarantees that inputs are **valid**, this check is **not required** but **does not affect correctness**.
+
+- **Input Value Check**:
+  The code includes:
+  ```java
+  if (a > B.length - 1) return null;
+  ```
+  This is based on the problem's constraint that `max(A) ≤ |B| - 1`.  
+  Again, this condition is only violated by **invalid inputs**, and the code handles such cases correctly.
+
+---
+
+### **3. Conformance with the Problem Statement**
+
+- **No Modification of Original `B`**:
+  The code clones the `B` array before processing, ensuring that the **original input** is not modified. This is consistent with the problem's expectations.
+
+- **Output Format**:
+  The code returns a string where each character is `'0'` or `'1'`, representing whether the count in `A` is **less than or equal to** the corresponding value in `B`. This matches the required output format.
+
+---
+
+### **4. Performance and Efficiency**
+
+- **Time Complexity**:  
+  The code processes each element in `A` once, and then iterates over `B` once. This gives a time complexity of **O(n + m)**, which is **optimal** for the problem.
+
+- **Space Complexity**:  
+  The code uses an additional array of size `m` (the clone of `B`), resulting in a space complexity of **O(m)**, which is acceptable given the problem's constraints.
+
+---
+
+### **Conclusion**
+
+The student's code is **correct**, **efficient**, and **meets all the requirements** of the problem. The logic is sound, edge cases are handled appropriately, and the output is correct for all **valid inputs**.
+
+---
+
+### ✅ **Final Answer:**
+The code is **correct** and passes all the criteria for the problem. **Full marks** should be awarded for the **overall correctness** rubric point.

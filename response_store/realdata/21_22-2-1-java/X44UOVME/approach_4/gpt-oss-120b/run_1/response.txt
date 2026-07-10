@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which is sized at least `max(A)+1` (since `max(A) ≤ B.length‑1`) and Java initializes the array to zero, satisfying the counting array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates over array A with `for(int a: A)` and updates `C[a]` via `C[a] += 1`, correctly counting each category’s occurrences.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for (int n = 0; n < B.length; n++)`, iterating from 0 up to B.length‑1 and appending one character per iteration, yielding a binary string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if (C[n] <= B[n])` to append '1' and otherwise appends '0', correctly reflecting whether each category fits within its capacity.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences, compares each count to B[i], builds the binary string in O(n+m) time, and avoids any forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `int C[] = new int[B.length];`, which provides an array of size |B| ≥ max(A)+1 and initializes it to zero, satisfying the required counting array size.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) { C[A[i]] = C[A[i]] + 1; }` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for (int i = 0; i < B.length; i++)` iterates from 0 to |B|‑1, producing a string of exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the code uses `if (C[i] <= B[i]) ret.append("1"); else ret.append("0");`, which matches the required comparison and output characters.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The early check `if (A.length > B.length) return "0";` returns a single‑character string for valid inputs where n > m, violating correctness for those cases, though the rest of the algorithm runs in O(n+m) and contains no forbidden substrings.

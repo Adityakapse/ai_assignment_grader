@@ -1,0 +1,85 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student modifies the B array directly by decrementing values instead of using a separate counting array, which violates the rubric's requirement to allocate and initialize a counting array for frequency accumulation.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution modifies B by decrementing B[a] for each element in A, rather than counting frequencies in A using a separate array. This approach does not correctly accumulate the count of each category in A.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop correctly iterates from i=0 to i < B.length (which is m), appending exactly one character per iteration to produce a binary string of length m.
+
+POINT_ID: 4
+BUCKET: Correct (20 marks)
+FEEDBACK: The code correctly appends '1' when the count of category i in A is less than or equal to B[i] (by checking if B[i] >= 0 after decrementing), and '0' otherwise.
+
+POINT_ID: 5
+The student's code is **correct** according to the rubric's criteria, which require:
+
+1. **Correctness**: The code must return the correct binary string for all valid inputs.
+2. **Time Complexity**: The algorithm must operate in $ O(n + m) $ time.
+3. **No Forbidden Substrings**: The code must not contain any forbidden substrings like `sort`, `import`, etc.
+4. **Handling of Edge Cases**: The code must handle all edge cases as defined in the problem statement.
+
+---
+
+### **1. Correctness**
+
+The code correctly processes the input and produces the expected output string based on the comparison between the count of each element in `A` and the corresponding value in `B`.
+
+- **Cloning `B`**: The code clones `B` to ensure that the original array is not modified, which is a good practice.
+- **Processing `A`**: It decrements the corresponding index in the cloned `B` array for each element in `A`, effectively counting how many times each index appears in `A`.
+- **Processing `B`**: It constructs the output string by appending `'1'` if the value in the cloned `B` array is greater than or equal to zero (i.e., the count of that index in `A` is less than or equal to the original `B` value), and `'0'` otherwise.
+
+All of these steps are logically sound and produce the correct output for all valid inputs.
+
+---
+
+### **2. Time Complexity**
+
+- The first loop iterates over all elements in `A` (length $ n $).
+- The second loop iterates over all elements in `B` (length $ m $).
+- Both loops are linear in their respective input sizes.
+- Thus, the time complexity is $ O(n + m) $, which is acceptable and meets the problem's constraints.
+
+---
+
+### **3. No Forbidden Substrings**
+
+The code does not contain any of the forbidden substrings such as `sort`, `import`, or `class`, ensuring compliance with the problem's formatting constraints.
+
+---
+
+### **4. Edge Case Handling**
+
+The code includes several checks to ensure robustness:
+
+- **Input Length Check**:  
+  ```java
+  if (A.length < 1 || B.length < 1) return null;
+  ```
+  This correctly handles invalid inputs where the length of `A` or `B` is less than 1, which is disallowed by the problem's constraints.
+
+- **Value Check in `A`**:  
+  ```java
+  if (a > B.length - 1) return null;
+  ```
+  This ensures that no element in `A` exceeds the bounds of the `B` array. This is consistent with the problem's constraint that `max(A) ≤ |B| - 1`.
+
+These checks do not interfere with valid inputs and are necessary to ensure correctness.
+
+---
+
+### **Conclusion**
+
+The student's code satisfies **all** the criteria specified in the rubric:
+
+- It is **correct** for all valid inputs.
+- It runs in **linear time**, $ O(n + m) $.
+- It contains **no forbidden substrings**.
+- It **properly handles edge cases**.
+
+---
+
+### ✅ **Final Answer: Correct (20 marks)**
