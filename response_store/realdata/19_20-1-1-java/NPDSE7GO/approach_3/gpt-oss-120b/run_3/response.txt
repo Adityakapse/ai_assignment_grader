@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with the proper two‑parameter signature and includes an iterative loop, satisfying the structural requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop terminates when `(a % b) > 0` becomes false, i.e., when the remainder is zero, and then returns `b`, which correctly implements the Euclidean termination condition for typical inputs.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Inside the loop the code computes `r = a % b; a = b; b = r;`, correctly performing the modulo reduction and swapping to progress toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is present, takes two `int` parameters, and returns `(a * b) / gcd(a,b)`, which matches the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd implementation works for most positive inputs but will crash or give undefined behavior when the second argument `b` is zero, so it is not correct for all non‑negative integer cases.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Given a correct gcd for positive arguments, the `lcm` function computes the proper least common multiple for all valid positive integer inputs.

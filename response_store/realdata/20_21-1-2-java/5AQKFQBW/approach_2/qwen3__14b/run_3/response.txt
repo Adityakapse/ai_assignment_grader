@@ -1,0 +1,129 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student implemented a correct merge sort algorithm with proper divide-and-conquer structure, recursively splitting the array and merging sorted subarrays, achieving the required O(n log n) time complexity.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The code correctly checks if the array length is 1 or less in the base case, ensuring recursion terminates when subarrays are trivially sorted.
+
+POINT_ID: 3
+MARKS: 25
+FEEDBACK: The student implemented a correct merge sort algorithm with proper splitting, recursive sorting, and merging of subarrays, ensuring the core sorting operation is correctly established.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: The student implemented merge sort, which has a guaranteed worst-case time complexity of O(n log n), satisfying the rubric point without requiring randomization.
+
+POINT_ID: 5
+The provided code correctly implements the **Merge Sort** algorithm. Here's a breakdown of why the code works as intended:
+
+---
+
+### **Overview of Merge Sort**
+Merge Sort is a **divide-and-conquer** algorithm that:
+1. **Divides** an array into two halves.
+2. **Recursively sorts** each half.
+3. **Merges** the sorted halves back into a single sorted array.
+
+---
+
+### **Key Components in the Code**
+
+#### **1. `mergeSort` Function**
+```java
+private static int[] mergeSort(int[] arr, int n) {
+    if (n <= 1) return arr; // Base case: array of size 0 or 1 is already sorted
+
+    int mid = n / 2;
+    int[] left = Arrays.copyOfRange(arr, 0, mid);
+    int[] right = Arrays.copyOfRange(arr, mid, n);
+
+    mergeSort(left, mid);   // Recursively sort the left half
+    mergeSort(right, n - mid); // Recursively sort the right half
+
+    return merge(arr, left, right, mid, n - mid);
+}
+```
+- **Splitting the Array**: The array is split into `left` and `right` subarrays using `Arrays.copyOfRange`.
+- **Recursive Sorting**: Each subarray is sorted recursively.
+- **Merging**: The sorted subarrays are merged into the original array `arr`.
+
+---
+
+#### **2. `merge` Function**
+```java
+private static int[] merge(int[] arr, int[] left, int[] right, int lSize, int rSize) {
+    int i = 0, j = 0, k = 0;
+
+    while (i < lSize && j < rSize) {
+        if (left[i] <= right[j]) {
+            arr[k++] = left[i++]; // Place smaller element in `arr`
+        } else {
+            arr[k++] = right[j++];
+        }
+    }
+
+    while (i < lSize) {
+        arr[k++] = left[i++];
+    }
+
+    while (j < rSize) {
+        arr[k++] = right[j++];
+    }
+
+    return arr;
+}
+```
+- **Merging Logic**: The `merge` function merges the sorted `left` and `right` arrays into the original `arr`.
+- **In-place Modification**: The original array `arr` is modified directly during the merge process.
+
+---
+
+### **Why the Code Works Correctly**
+
+1. **Correct Array Splitting**:
+   - The `left` and `right` arrays are created as copies of the original array's segments.
+   - They are passed recursively into `mergeSort`, ensuring each subarray is sorted independently.
+
+2. **Recursive Sorting**:
+   - The recursive calls to `mergeSort` on the `left` and `right` arrays ensure that the entire array is eventually broken down into base cases (arrays of size 0 or 1), which are trivially sorted.
+
+3. **Correct Merging**:
+   - The `merge` function takes the sorted `left` and `right` arrays and merges them into the original `arr` in the correct order.
+   - The `arr` is modified in-place, and the merged result is returned.
+
+4. **Final Assignment**:
+   - The initial call to `mergeSort` is:
+     ```java
+     arr = mergeSort(arr, arr.length);
+     ```
+   - This ensures that the original array is updated with the sorted result.
+
+---
+
+### **Example Execution**
+
+Let’s walk through an example with the input array `[5, 3, 1]`:
+
+1. **Initial Call**: `mergeSort([5, 3, 1], 3)`
+   - `mid = 1`, `left = [5]`, `right = [3, 1]`
+
+2. **Recursive Calls**:
+   - `mergeSort([5], 1)` → returns `[5]`
+   - `mergeSort([3, 1], 2)`:
+     - `mid = 1`, `left = [3]`, `right = [1]`
+     - Recursively sort both → `[3]` and `[1]`
+     - Merge → `[1, 3]`
+
+3. **Merge**: `merge([5, 3, 1], [5], [1, 3], 1, 2)`
+   - Merged result: `[1, 3, 5]`
+
+4. **Final Result**: `arr = [1, 3, 5]`
+
+---
+
+### **Conclusion**
+
+The code is **correctly implemented**, and it performs **Merge Sort** on the input array, sorting it in **O(n log n)** time complexity. The array is sorted **in-place** using the `merge` function, and the final sorted array is assigned to the original reference.
+
+✅ **No bugs or errors** are present in the logic.

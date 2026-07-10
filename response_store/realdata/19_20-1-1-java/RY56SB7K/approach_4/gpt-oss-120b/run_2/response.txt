@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code defines a two‑parameter function `ggt` that returns an int and uses a recursive Euclidean step, matching the required gcd structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function ggt correctly computes the remainder r = x % y and returns y when r == 0, providing a proper base case that terminates the recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function computes `r = x % y` and recurses with `ggt(y, r)`, which correctly follows the reduction step `gcd(b, a%b)`.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function computes `int mul = x * y;` and returns `mul / ggt;`, correctly implementing the (a * b) / gcd(a,b) formula using the defined ggt function.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The ggt function correctly computes the GCD for most positive pairs, but it fails for inputs where the second argument is zero (e.g., ggt(n, 0) causes a division‑by‑zero), so edge cases are not handled.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The lcm function correctly computes (x*y)/ggt(x,y) and the ggt implementation properly returns the greatest common divisor for all positive inputs.

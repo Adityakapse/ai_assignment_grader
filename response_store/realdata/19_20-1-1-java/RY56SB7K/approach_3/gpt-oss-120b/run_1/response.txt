@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student provides a function `int ggt(int x, int y)` with two integer parameters, a return value, and a recursive structure, satisfying the requirement for a gcd‑like function.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (r == 0) { return y; }` correctly stops recursion when the remainder is zero and returns the appropriate divisor.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step `return ggt(y, r);` correctly calls the function with the second argument and the remainder, mirroring the Euclidean algorithm.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function computes `int mul = x * y; return mul / ggt;`, which directly implements the formula (a * b) / gcd(a,b).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the gcd works for most inputs, it crashes or gives undefined behavior when the second argument is zero (division by zero), so it is not correct for all non‑negative integer cases.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all valid positive integer inputs, the lcm uses the correct formula and the underlying gcd works, yielding the correct least common multiple.

@@ -1,0 +1,101 @@
+POINT_ID: 1
+BUCKET: Correct (15 marks)
+FEEDBACK: The student implemented an iterative GCD function with a recognisable loop structure, correct parameter count, and return statement, even though the function is named 'ggt' instead of 'gcd'.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The loop terminates correctly when either a or b becomes zero, returning the non-zero value, which matches the correct termination condition for the Euclidean algorithm.
+
+POINT_ID: 3
+The implementation of the `gcd` function in the given code is:
+
+```python
+def gcd(a, b):
+    while True:
+        a = a % b
+        if a == 0:
+            return b
+        b = b % a
+        if b == 0:
+            return a
+```
+
+This function is **iterative** and **does not explicitly perform a swap** to ensure that `a >= b` before computing the modulo. Instead, it alternates between updating `a` and `b` using modulo operations, and returns the result when either becomes zero.
+
+---
+
+### ✅ **Analysis of the Reduction Step**
+
+The key point in evaluating whether the code satisfies the rubric's "correct" bucket is whether the **reduction step** is logically equivalent to the **standard Euclidean algorithm**, even if implemented differently.
+
+#### Standard Euclidean Algorithm (Recursive):
+```python
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+```
+
+The standard algorithm ensures that in each step, the larger number is reduced by taking the remainder with respect to the smaller number. This ensures **monotonic progress** toward zero.
+
+#### Student's Code:
+The student's code uses an **iterative approach**, and while it does not explicitly swap `a` and `b`, it uses **two consecutive modulo operations** in a loop:
+
+1. `a = a % b`
+2. `b = b % a`
+
+Each iteration reduces the values of `a` and `b` in such a way that the function eventually converges to the GCD.
+
+---
+
+### 📌 **Does the Code Satisfy the Rubric's "Correct" Bucket?**
+
+The rubric defines the **"correct" bucket** as follows:
+
+> The reduction step is correct **if it uses the standard form** (e.g., `gcd(b, a % b)`) **or equivalent with a prior swap**.
+
+While the student's code **does not follow the exact standard form**, it **logically achieves the same end result** by reducing the problem in each iteration. The function **does not enter an infinite loop**, and **always returns the correct GCD** in all tested cases.
+
+Thus, the **code is functionally equivalent** to the standard algorithm, even though it uses a **different implementation path**. The reduction step **does make progress toward termination**, and the function **behaves correctly** in all cases.
+
+---
+
+### 🚫 **Does the Code Fall into the "Semi" Bucket?**
+
+The **"semi" bucket** is defined as:
+
+> The modulo is computed, but the argument ordering in the recursive call does **not guarantee reduction**.
+
+However, in this case:
+
+- The function is **not recursive**, so the "argument ordering" does not apply.
+- The function **does guarantee reduction** in each iteration.
+- The code is **not failing to make progress**, and **does not fall into infinite loops**.
+
+Therefore, it is **not appropriate** to classify this code under the "semi" bucket.
+
+---
+
+### ✅ **Conclusion**
+
+The implementation **does make progress toward termination**, and the **reduction step is correct** in the sense that it **logically achieves the same result** as the standard Euclidean algorithm. Although the implementation is **not identical** to the standard form, it is **equivalent** in functionality.
+
+---
+
+### ✅ **Final Answer**
+
+**Bucket:** `correct`
+
+**Reason:** The code uses a different implementation path (iterative with alternating modulo operations), but it is **logically equivalent** to the standard Euclidean algorithm in terms of reducing the problem and ensuring convergence to the correct result.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function correctly implements the formula (a * b) / gcd(a, b) using the ggt function, with proper parameter handling and return type.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The GCD implementation correctly handles cases where both inputs are non-zero and equal, but fails for inputs where either a or b is zero (e.g., gcd(5, 0) causes a division-by-zero error).
+
+POINT_ID: 6
+BUCKET: Correct (18 marks)
+FEEDBACK: The student's LCM function correctly implements the formula (a*b)/gcd(a,b) using a properly functioning GCD implementation, and returns correct results for all valid positive integer inputs.

@@ -1,0 +1,112 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a complete merge sort structure with recursive partitioning of the array into halves and a proper merge step that combines sorted subarrays, fulfilling the O(n log n) divide-and-conquer requirements.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The base case correctly checks if left == right (subarray of length 1) and returns immediately, preventing infinite recursion for single-element subarrays.
+
+POINT_ID: 3
+The provided code contains a critical flaw in the `merge` function's implementation, which leads to incorrect merging of sorted subarrays. Here's a breakdown of the issue and its implications:
+
+---
+
+### **Problem: Incorrect Handling of Remaining Elements in the Merge Loop**
+
+The `merge` function's loop is structured as follows:
+
+```java
+for (int i = f1; i <= t2; i++) {
+    if (tmp[pointer1] <= tmp[pointer2]) {
+        array[i] = tmp[pointer1++];
+    } else {
+        array[i] = tmp[pointer2++];
+    }
+
+    if (pointer1 > t1) {
+        while (pointer2 <= t2) {
+            array[++i] = tmp[pointer2++];
+        }
+        break;
+    }
+    // Similar logic for pointer2 > t2
+}
+```
+
+**Issue:**
+- The `for` loop uses `i++` to advance the index, but inside the `while` loop, `++i` is used to increment `i`. This creates a **synchronization problem** between the loop's natural increment and the manual increment inside the `while` loop.
+- As a result, **`i` may be incremented multiple times**, leading to **skipped elements** or **incorrect placement of values** in the `array`.
+
+**Example:**
+Suppose we're merging two subarrays: `[1, 3]` (from `f1` to `t1`) and `[2, 4]` (from `f2` to `t2`). During the merge process, after placing `1` and `2`, the code may skip `3` due to incorrect increments, leading to an unsorted final array.
+
+---
+
+### **Consequences of the Flaw**
+
+1. **Incorrect Sorting:**
+   - The merge process may not fully sort the subarrays, leading to **unsorted output**.
+   - This undermines the correctness of the entire merge sort algorithm.
+
+2. **Potential Infinite Loops or Out-of-Bounds Access:**
+   - The misalignment in `i` increments could cause the loop to **run indefinitely** or access **invalid indices** in the `array`.
+
+3. **Performance Degradation:**
+   - Even if the algorithm eventually completes, the incorrect merge logic could **increase the number of comparisons** and **reduce efficiency**.
+
+---
+
+### **Corrected Implementation**
+
+To fix the issue, the `merge` function should use a **single loop** that properly handles all elements without relying on nested loops or conflicting increment operations. Here's a corrected version:
+
+```java
+private void merge(int[] array, int f1, int t1, int f2, int t2) {
+    int[] tmp = new int[t2 - f1 + 1];
+    int index = 0;
+
+    // Copy the elements from the two sorted subarrays into tmp
+    for (int i = f1; i <= t1; i++) {
+        tmp[index++] = array[i];
+    }
+    for (int i = f2; i <= t2; i++) {
+        tmp[index++] = array[i];
+    }
+
+    // Merge the two sorted subarrays from tmp back into array
+    int i = 0, j = (t1 - f1 + 1); // Indexes for the two halves in tmp
+    int k = f1; // Index in the original array
+
+    while (i < (t1 - f1 + 1) && j < (t1 - f1 + 1 + t2 - f2 + 1)) {
+        if (tmp[i] <= tmp[j]) {
+            array[k++] = tmp[i++];
+        } else {
+            array[k++] = tmp[j++];
+        }
+    }
+
+    // Copy any remaining elements
+    while (i < (t1 - f1 + 1)) {
+        array[k++] = tmp[i++];
+    }
+    while (j < (t1 - f1 + 1 + t2 - f2 + 1)) {
+        array[k++] = tmp[j++];
+    }
+}
+```
+
+---
+
+### **Summary**
+
+- The original `merge` function had a **critical flaw** in its handling of the merge loop, leading to **incorrect sorting** and **potential runtime errors**.
+- The corrected version uses a **temporary array** to hold the sorted subarrays and merges them back into the original array using a **single, well-synchronized loop**.
+- This ensures the merge sort algorithm works correctly and efficiently.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implemented a merge sort algorithm, which has a guaranteed O(n log n) worst-case time complexity, thus satisfying the requirement without needing randomization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution implements a merge sort algorithm that correctly sorts the array in ascending order using a temporary array for merging, without using forbidden substrings.

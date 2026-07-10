@@ -1,0 +1,85 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student implemented GCD logic inline within the LCM function instead of defining a separate gcd function as required by the rubric criterion.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The loop correctly terminates when the remainder becomes zero, which is the proper condition for the iterative GCD algorithm, and the final GCD value is correctly stored in variable y.
+
+POINT_ID: 3
+The provided code attempts to compute the least common multiple (LCM) of two integers using the formula $ \text{LCM}(a, b) = \frac{a \times b}{\text{GCD}(a, b)} $. However, the implementation of the GCD computation is flawed, leading to incorrect results in some cases.
+
+---
+
+### **Flaw in the GCD Computation**
+
+The code uses the following logic to compute the GCD:
+
+```c
+int x = a;
+int y = b;
+int r = x % y;
+while (r > 0) {
+    y = r;
+    r = x % y;
+}
+```
+
+This loop is not equivalent to the Euclidean algorithm. The Euclidean algorithm repeatedly updates both values by setting `a = b` and `b = a % b`, ensuring the values converge to the GCD. However, in the provided code:
+
+- The variable `x` remains fixed as the original value of `a`.
+- The variable `y` is updated to `r` (i.e., `x % y`), and then `r` is recomputed as `x % y` again.
+
+This results in a **loop that does not correctly implement the Euclidean algorithm**, especially in cases where the GCD is not a divisor of `x`.
+
+---
+
+### **Example of Failure**
+
+Consider the inputs $ a = 100 $, $ b = 37 $. The correct GCD is **1**, but the code returns **4**, as shown in the analysis.
+
+---
+
+### **Conclusion**
+
+The loop in the code is not a correct implementation of the Euclidean algorithm. It fails to reduce the problem in a way that guarantees convergence to the GCD in all cases. This results in **incorrect GCD and LCM values**, which violates the expected behavior.
+
+---
+
+### **Corrected Implementation (Euclidean Algorithm)**
+
+To fix the issue, the GCD should be computed using the standard Euclidean algorithm:
+
+```c
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+```
+
+Then, use it to compute the LCM:
+
+```c
+int lcm(int a, int b) {
+    if (a == 0 || b == 0) return 0;
+    return (a * b) / gcd(a, b);
+}
+```
+
+This approach ensures correctness and adheres to the canonical Euclidean algorithm.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the LCM formula (a*b)/gcd(a,b) by calculating the GCD via the Euclidean algorithm inline and returning (a*b)/y, where y holds the computed GCD.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The student's solution does not implement a separate gcd function, which is required by the rubric point. Instead, the LCM function contains an inline GCD algorithm, but the absence of a named gcd function results in zero marks for this criterion.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The student's code correctly implements the Euclidean algorithm for GCD within the LCM function and applies the formula (a*b)/gcd(a,b) accurately, producing the correct LCM for all valid positive integer inputs.

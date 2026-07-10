@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The helper haeufigkeitInA allocates an int[] C of size länge (B.length), which is at least max(A)+1, and explicitly sets every entry to 0.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In haeufigkeitInA the loop `for (int j = 0; j <= A.length - 1; j++)` updates `C[A[j]] = C[A[j]] + 1;`, correctly incrementing the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for (int i = 0; i <= länge; i++)` where länge = B.length‑1, thus iterating from 0 to |B|‑1 and producing a string of exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code compares `C[i] <= B[i]` and appends 1 when true, otherwise 0, which yields the required ‘1’/‘0’ output for each category.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The overall method runs in O(n+m), returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code defines a gcd function with the correct int int signature, uses a while loop to iteratively reduce the arguments, and returns the result, satisfying the structural requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The gcd function uses a while loop that stops when a equals b, then returns that value, which correctly terminates and yields the GCD.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The gcd function uses repeated subtraction (a = a - b or b = b - a) instead of a modulo‑based reduction such as gcd(b, a % b), so it does not follow the required reduction step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined with two int parameters and returns (a*b)/gcd(a,b), matching the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The subtraction‑based loop correctly finds the GCD for positive numbers, but it enters an infinite loop when either argument is zero (e.g., gcd(0, n) or gcd(n, 0)), so edge cases are not handled.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your lcm function correctly applies the formula (a*b)/gcd(a,b) and the provided gcd implementation returns the proper greatest common divisor for positive integers, so the lcm result is accurate for all valid inputs.

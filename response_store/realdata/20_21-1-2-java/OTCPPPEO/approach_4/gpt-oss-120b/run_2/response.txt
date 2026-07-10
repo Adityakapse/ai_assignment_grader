@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a full quicksort with a partition function and recursive calls on both left and right subarrays, providing a recognizable O(n log n) divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The quickSort function includes `if (end <= begin) return;`, which correctly halts recursion when the subarray has zero or one element, avoiding unnecessary or infinite calls.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The partition method correctly selects the last element as pivot, swaps smaller elements to the left, places the pivot at its final index, and returns that index, establishing proper ordering for quicksort.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution shuffles the whole array using RandomizeArray before quickSort, but quickSort always picks the last element as pivot and does not choose a random pivot for each partition, so the required per‑partition randomisation is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code contains the prohibited substring “sort” (e.g., in the method name quickSort), violating the requirement that ‘sort’ not appear, so it fails the correctness criterion.

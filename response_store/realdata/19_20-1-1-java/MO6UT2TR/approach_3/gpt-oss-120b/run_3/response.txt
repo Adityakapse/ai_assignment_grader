@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with two parameters, a return statement, and a recursive call, matching the required signature and structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function computes `r = a % b` and correctly returns `b` when `r == 0`, providing a proper termination condition.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After ensuring `a >= b`, the code calls `gcd(r, b)`, where `r = a % b`, which correctly reduces the problem size toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined as `return (a*b)/gcd(a,b);`, exactly matching the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation crashes for inputs where `b` is zero (e.g., `gcd(5,0)`) because it attempts `a % b`, so it fails on edge cases involving zero.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, the `lcm` function produces the correct least common multiple, assuming the gcd works for those inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a counting array sized at least `max(A)+1` and relies on Java’s default zero‑initialization, allowing direct indexing of frequencies.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over A and increments C[A[i]] by 1, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `i` from 0 up to `C.length‑1`, and since `C` was created with size `B.length`, it correctly produces a string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop correctly checks `if (C[i] <= B[i])` and appends `1` for true and `0` for false, matching the required output logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences, compares each count to B[i], builds the binary string in O(n+m) time, and avoids any forbidden substrings.

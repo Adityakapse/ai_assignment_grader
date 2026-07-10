@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a method `ggt(int a, int b)` with two int parameters and returns an int, providing an iterative Euclidean algorithm.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop terminates when `a == 0` or `b == 0`, but the code does not guard against an initial `b` equal to zero, which can cause a division‑by‑zero error.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Inside the while loop the statements `a = a % b;` and `b = b % a;` correctly reduce the arguments toward the base case, implementing a valid Euclidean reduction.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` method returns `(a*b)/ggt(a,b)`, which matches the required formula, although it adds a special case for zero inputs.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The `ggt` function yields correct GCDs for typical positive inputs but fails when the second argument is zero, so it is not correct for all non‑negative inputs.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The `lcm` function computes the correct LCM for positive numbers, but returns 1 for inputs where either argument is zero, which is incorrect for those edge cases.

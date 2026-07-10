@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] temp = new int[B.length];`, which provides a counting array of size |B| (≥ max(A)+1) and relies on Java’s default zero‑initialisation, allowing frequencies to be tallied correctly.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over each element i in A and does temp[i]++ , properly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for (int i = 0; i < B.length; i++)`, iterating from 0 to B.length‑1 and thus produces a string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution checks `if(temp[i] <= B[i])` and appends `1` (else `0`), correctly matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code counts occurrences of each category in `temp`, compares them to `B[i]` in a single pass, and builds the binary string in O(n+m) without using any forbidden substrings.

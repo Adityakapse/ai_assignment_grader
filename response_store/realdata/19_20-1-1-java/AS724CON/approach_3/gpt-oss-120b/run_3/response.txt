@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with two parameters, a return statement, and a recognizable recursive structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (r == 0) { return b; }` correctly terminates recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After swapping to ensure `a >= b`, the code computes `r = a % b` and recurses with `gcd(r, b)`, which properly reduces the problem size.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function returns `a*b / gcd(a,b)`, matching the required formula and using the defined `gcd`.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the algorithm works for typical inputs, it crashes for cases like `gcd(0, n)` because the modulo operation is performed with `b` possibly zero.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The `lcm` implementation is mathematically correct but inherits the gcd’s zero‑argument failure, so it does not produce correct results for inputs where either argument is zero.

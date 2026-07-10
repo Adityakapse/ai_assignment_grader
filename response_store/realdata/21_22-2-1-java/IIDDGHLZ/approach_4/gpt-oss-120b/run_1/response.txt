@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int C[] = new int[B.length];`, which allocates a counting array of size |B| (at least max(A)+1) and Java initializes it to 0, satisfying the requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop iterates over A and updates C[A[i]] with `C[A[i]] = C[A[i]] + 1;`, correctly accumulating the frequency for each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code iterates `j` from 0 while `j < B.length`, correctly covering indices 0 to |B|‑1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop correctly checks `if (C[j] <= B[j])` and appends `1` (or `0` otherwise), matching the required logic for each category.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a count array C sized to B, tallies occurrences from A, and appends ‘1’ or ‘0’ based on C[j] ≤ B[j] in a single pass, achieving O(n+m) without any forbidden substrings.

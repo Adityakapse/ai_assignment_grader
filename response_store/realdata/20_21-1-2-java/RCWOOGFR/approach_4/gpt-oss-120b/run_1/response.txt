@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements a recognizable quicksort, selecting a random pivot and recursively calling quicksort on both the left (start to pivot‑1) and right (pivot+1 to end) sub‑arrays, fulfilling the required divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code recurses only if `pivot-start > 1` or `end-pivot > 1`, so subarrays of length 0 or 1 never trigger further calls, correctly providing a termination condition.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The quicksort implementation tries to partition by swapping the pivot with elements at the “vergleich” index, but it only moves the pivot itself and does not correctly ensure that all smaller elements end up left of the pivot and all larger elements right, so the partition step is only partially implemented.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The quicksort implementation selects a random pivot with `Math.random()` before partitioning and swaps it to the start, providing the required randomisation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution defines a method named quicksort, which contains the prohibited substring “sort”, violating the requirement that “sort” must not appear in the code.

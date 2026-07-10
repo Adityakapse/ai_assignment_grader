@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The gcd function has the correct signature (two int parameters, returns int) and uses a recursive structure with proper parameter swapping and modulo operations.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly checks if the remainder is zero and returns the divisor (b), which is the correct termination condition for the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The recursive call uses gcd(r, b) after swapping a and b to ensure a ≥ b, which correctly reduces the problem toward the base case by passing the remainder and the previous divisor.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is properly defined with the correct formula (a * b) / gcd(a, b), even though it redundantly calls gcd twice, which does not affect correctness.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function fails for edge cases like gcd(0, n) or gcd(n, n) because it does not handle division by zero when inputs include zero, leading to incorrect or undefined behavior.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The lcm function correctly computes the LCM for all valid positive integer inputs using the formula (a * b) / gcd(a, b), assuming gcd works correctly for positive inputs.

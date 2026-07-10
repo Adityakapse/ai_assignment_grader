@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int n, int m)` with two integer parameters, returns an int, and includes a recursive call, satisfying the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The termination condition `return r > 0 ? gcd(m, r) : m;` correctly returns `m` when the remainder `r` is zero, providing a proper base case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step computes `int r = n % m;` and recurses with `gcd(m, r)`, which correctly reduces the problem toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined with two `int` parameters and returns `a*b/gcd(a,b)`, matching the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the implementation works for positive second arguments, the `assert m > 0` prevents correct handling of cases where the second argument is zero, so it is not fully correct for all non‑negative inputs.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The LCM formula is correct for positive inputs, but because `gcd` asserts a positive second argument, `lcm` fails when either argument (specifically `b`) is zero, limiting overall correctness.

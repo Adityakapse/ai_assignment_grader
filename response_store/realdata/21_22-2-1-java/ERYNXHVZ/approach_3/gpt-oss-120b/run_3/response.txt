@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `int[] C = new int[B.length];`, which provides a counting array of size at least |B| (and thus ≥ max(A)+1) and relies on Java’s default zero‑initialisation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the first loop the code executes `C[A[i]] += 1;` for each element of A, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `for(int i=0; i < B.length; i++)`, covering exactly indices 0 through |B|‑1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the condition `if (C[i] <= B[i])` leads to `s.append(1);` else `s.append(0);`, correctly mapping the comparison to ‘1’ and ‘0’.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs two linear passes (O(n+m)), avoids forbidden substrings, and returns the correctly built binary string for all inputs within the given constraints.

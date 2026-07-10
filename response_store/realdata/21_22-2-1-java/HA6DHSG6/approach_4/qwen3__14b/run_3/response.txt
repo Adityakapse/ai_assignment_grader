@@ -1,0 +1,61 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution modifies the B array directly by decrementing values instead of using a counting array to accumulate frequencies of elements in A, which violates the required approach of counting occurrences first.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution modifies B directly by decrementing B[A[n]] instead of counting frequencies in a separate array, which fails to accumulate counts correctly across all elements in A.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop uses "m < B.length" as the condition, correctly iterating from 0 to |B|-1 inclusive, producing a string of exactly length m.
+
+POINT_ID: 4
+The student's code is logically correct in producing the correct output, but according to the rubric's specific criteria, it falls into the **"Wrong"** bucket. Here's the breakdown:
+
+### Key Analysis:
+1. **Rubric's Focus**:  
+   The rubric explicitly requires that the code **"compares C[i] and B[i]"** to determine whether to append `'1'` or `'0'`. The term `C[i]` refers to the **frequency of element `i` in array `A`** (i.e., the count of occurrences of `i` in `A`). The student's code does **not** explicitly compute or use `C[i]` as a separate array or variable; instead, it modifies the `B` array in place to derive the count indirectly.
+
+2. **Student's Approach**:  
+   The student's code uses the original `B` array (cloned and modified) to track the count of each element in `A` by decrementing `B[A[n]]`. After processing, it checks whether the modified `B[m]` is `>= 0`, which is **logically equivalent** to checking if the count of `m` in `A` is `<= original_B[m]`. However, **this equivalence is not explicitly captured** in the rubric's criteria.
+
+3. **Rubric's Criteria**:  
+   The rubric's **"Correct"** bucket is defined as:  
+   > **"1 is appended when C[i] <= B[i]"**  
+   Since the student's code does **not** perform a direct comparison between `C[i]` (the count of `i` in `A`) and `B[i]` (the original capacity), it **does not meet the rubric's explicit requirement**, even though the result is correct.
+
+### Conclusion:
+- **Output Correctness**: The student's code produces the correct output.  
+- **Rubric Compliance**: The student's code **does not meet the rubric's explicit requirement** to compare `C[i]` and `B[i]`, even though the logic is equivalent.  
+
+### Final Answer:
+The student's code is considered **"Wrong"** under the rubric's criteria because it does not explicitly compare `C[i]` and `B[i]`, despite producing the correct output.
+
+POINT_ID: 5
+The student's code is **correct** and meets all the requirements outlined in the rubric. Here's a detailed breakdown of why:
+
+### **Correctness of the Logic**
+The core of the student's approach is to use the `B` array itself (after cloning) to track the count of elements in `A` by decrementing its values. This effectively computes the difference between `B[i]` (original) and the count of category `i` in `A`:
+
+- **Cloning `B`**: Ensures the original values of `B` are preserved for the comparison.
+- **Decrementing `B[A[n]]`**: For each element in `A`, this subtracts 1 from the corresponding entry in `B`, effectively counting the occurrences.
+- **Final Comparison**: The code checks whether the final value of `B[m]` is `≥ 0`, which is equivalent to checking if the count of category `m` in `A` is `≤ B[m]` (original). This is the exact condition required for the output.
+
+### **Time Complexity**
+- **First Loop**: Iterates over `A` once, taking **O(n)** time.
+- **Second Loop**: Iterates over `B` once, taking **O(m)** time.
+- **Total Time Complexity**: **O(n + m)**, which satisfies the requirement.
+
+### **Compliance with Constraints**
+- The problem specifies that `max(A)` must be `≤ |B| - 1`. This ensures that all indices in `A` are valid for the `B` array (as it is 0-based in code).
+- The student's code does not use any forbidden substrings (e.g., `sort`, `import`), and the logic is valid.
+
+### **Edge Case Handling**
+- **Zero occurrences in `A` for a category in `B`**: The code correctly sets the result to `1` (since `0 ≤ B[i]`).
+- **Exceeding `B[i]`**: If the count of a category in `A` exceeds `B[i]`, the final value of `B[i]` becomes negative, and the result is set to `0`, as required.
+
+### **Conclusion**
+The student's code is **logically sound**, **efficient**, and **complies with all problem constraints**. It correctly implements the required functionality and meets the rubric's criteria for the **"Correct"** bucket.
+
+**Answer:** `Correct`

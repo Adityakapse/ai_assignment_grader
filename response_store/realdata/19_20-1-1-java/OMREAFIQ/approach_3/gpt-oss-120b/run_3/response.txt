@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int n, int m)` with a return statement and a recursive call, matching the required signature and structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case is implemented as `return r > 0 ? gcd(m, r) : m;`, correctly returning `m` when the remainder `r` is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step uses `int r = n % m;` followed by the recursive call `gcd(m, r)`, which properly reduces the problem size each recursion.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function returns `a*b/gcd(a,b);`, which follows the standard LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the gcd works for most inputs, it asserts `m > 0`, causing a failure when the second argument is zero (e.g., `gcd(5,0)`), so edge cases are not handled correctly.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, `lcm` correctly computes the least common multiple using the proper formula and the (mostly correct) gcd implementation.

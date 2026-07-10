@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code never defines a separate `gcd` function; it computes the GCD inline within `lcm` instead of providing a distinct, correctly‑signatured gcd routine.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The for‑loop uses `i <= n1 && i <= n2` as its condition, guaranteeing it terminates after checking all possible divisors and correctly computes the GCD, so the termination is proper.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The code finds the GCD by iterating from 1 to the smaller number and checking divisibility, without using a modulo‑based reduction step like r = a % b and updating the variables, so it does not meet the required reduction pattern.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The function defines lcm, computes a gcd via a loop, and returns (n1 * n2) / gcd, which correctly implements the (a * b) / gcd(a,b) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Your code computes the GCD by iterating up to the smaller number, which works for typical positive inputs, but it initializes gcd to 1 and never updates it when one argument is zero, so cases like gcd(0, n) give incorrect results.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your function correctly finds the greatest common divisor with the loop and then computes lcm as (n1 * n2) / gcd, yielding the proper result for all positive integer inputs.

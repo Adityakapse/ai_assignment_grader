@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates int[] C = new int[B.length]; which is size |B|, satisfying the requirement of at least max(A)+1 and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i=0; i < A.length; i++) { C[A[i]] += 1; }` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for(int i=0; i < B.length; i++)`, iterating exactly from 0 to |B|-1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the code appends "1" when `C[i] <= B[i]` and "0" otherwise, matching the specified comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, avoids forbidden substrings, and returns the correct binary string for all inputs within the given constraints.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code allocates `newB` by cloning `B`, giving an array of the correct size but it is initialized with the capacity values instead of zeros, so the counting array is not properly zero‑initialized.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: In the loop over `A` the statement `newB[kategorie]--` decrements the cloned capacity array rather than incrementing a separate count array, so category frequencies are not accumulated as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `i` from 0 to `newB.length-1` (the length of `B`), producing a binary string of exactly `m` characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if(newB[i] < 0)` appends `0` when the count exceeds capacity and `1` otherwise, correctly reflecting `C[i] <= B[i]`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.

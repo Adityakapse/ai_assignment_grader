@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You implemented a GCD‑like routine named `ggt` with two int parameters and a return value, but the function name does not match the required `gcd` signature, so the structure is recognized but the signature is incorrect.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The loop stops when a % b or b % a yields zero and returns the other value, which is correct, but the function does not handle the case where b is zero initially (a % b would cause an error).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop repeatedly applies modulo (a = a % b and then b = b % a) and returns when one becomes zero, ensuring each iteration reduces the arguments toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm method is defined, takes two ints, and returns (a*b)/ggt(a,b), matching the required formula (aside from an extra zero‑check).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The ggt method works for typical cases but will throw an error when the second argument is zero (e.g., ggt(5, 0)), so it fails for that edge case.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your lcm method correctly computes (a*b)/ggt(a,b) and the ggt function implements Euclid’s algorithm, so for all positive integer inputs it returns the proper least common multiple.

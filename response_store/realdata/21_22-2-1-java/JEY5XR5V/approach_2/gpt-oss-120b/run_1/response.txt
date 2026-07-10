@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 5
+FEEDBACK: The code creates a new array (newB) of size B.length, but it clones B instead of allocating a zero‑filled counting array, so the required zero initialization is missing.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code iterates over A but subtracts from a cloned B array instead of incrementing a separate count array, so it does not perform the required frequency counting of each category.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The second loop uses `for(int i = 0; i < newB.length; i++)`, and since `newB` is a clone of `B`, its length is |B|, so the loop iterates from 0 to |B|‑1 and produces a string of exactly m characters.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Your code correctly computes B[i]‑C[i] and appends ‘0’ when the result is negative (C[i] > B[i]) and ‘1’ otherwise, matching the required comparison logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your solution correctly clones B, decrements counts for each category in A, and then outputs ‘0’ when the remaining capacity is negative and ‘1’ otherwise, matching the required logic in O(n + m) time.

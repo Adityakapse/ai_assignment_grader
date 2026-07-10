@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code defines `int gcd(int a, int b)` with the correct two‑parameter signature, returns a value, and includes a recognizable recursive call (`return gcd(b,r);`), meeting the structural requirements.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The gcd function correctly checks `if (r == 0) return b;` as the base case and recurses with `gcd(b, r)`, ensuring proper termination.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The gcd function swaps when a < b, computes r = a % b, and recurses with gcd(b, r), correctly reducing the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function computes `int top = a*b; int bot = gcd(a,b); return top/bot;`, correctly implementing the (a * b) / gcd(a,b) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function works for typical positive inputs but crashes on cases like gcd(0, n) because it swaps and then attempts a modulo by zero.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The lcm function correctly computes (a*b)/gcd(a,b) using the provided gcd, and the gcd implementation works for positive integers, so the lcm returns the correct result for all valid inputs.

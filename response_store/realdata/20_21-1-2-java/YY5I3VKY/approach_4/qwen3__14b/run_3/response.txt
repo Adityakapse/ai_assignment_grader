@@ -1,0 +1,164 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a complete merge sort structure with proper recursive calls on both subarrays and a merge function that correctly integrates the sorted halves back into the original array.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The mergeSort function correctly uses the condition "if (l < r)" to terminate recursion when the subarray has 1 element (length 0 or 1), preventing infinite recursion.
+
+POINT_ID: 3
+The provided merge step in the merge sort algorithm has several **critical issues** that prevent it from correctly merging two sorted subarrays. Here's a detailed breakdown of the problems and their implications:
+
+---
+
+### **1. Incorrect Array Sizes for `L` and `R`**
+- **Problem**:  
+  The code initializes `L` and `R` with sizes that are **one element larger** than necessary:
+  ```java
+  int[] L = new int[p - l + 2]; // Should be p - l + 1
+  int[] R = new int[r - p + 1]; // Should be r - p
+  ```
+  This creates extra space for sentinels (`Integer.MAX_VALUE`), but the merge loop does not account for this correctly.
+
+- **Impact**:  
+  The `L` and `R` arrays contain **sentinels** at the end. While this is a common practice in merge sort to simplify the merge logic (avoiding boundary checks), the code **fails to correctly use these sentinels** during the merge.
+
+---
+
+### **2. Incorrect Copying of Elements into `L` and `R`**
+- **Problem**:  
+  The elements from the original array are copied into `L` and `R` with an **off-by-one error**:
+  ```java
+  for (int i = 0; i < p - l + 1; i++) {
+      L[i] = A[l + i];
+  }
+  ```
+  This correctly copies the `p - l + 1` elements from the left subarray into `L`, but the `L` array has size `p - l + 2`, leaving the last element as `Integer.MAX_VALUE`.
+
+- **Impact**:  
+  The `L` and `R` arrays contain **sentinels** at the end, which are not properly handled during the merge. This could lead to **incorrect comparisons** if the code mistakenly includes these sentinels in the merge process.
+
+---
+
+### **3. Incorrect Merge Loop Logic**
+- **Problem**:  
+  The merge loop is **not correctly handling the indices** for `L` and `R`:
+  ```java
+  int i = 0;
+  int j = 0;
+  for (int k = l; k < r + 1; k++) {
+      if (L[i] <= R[j]) {
+          A[k] = L[i];
+          i++;
+      } else {
+          A[k] = R[j];
+          j++;
+      }
+  }
+  ```
+  This loop assumes that `i` and `j` start at 0, which is **not valid** for the current subarray. The indices `i` and `j` should correspond to the positions within the current subarray, not the entire array.
+
+- **Impact**:  
+  This logic is **incorrect** and will **fail to merge** the subarrays properly. The indices `i` and `j` should be relative to the current subarray, not the entire array.
+
+---
+
+### **4. Missing Boundary Checks**
+- **Problem**:  
+  The merge loop does **not check if `i` or `j` has reached the end of `L` or `R`**. This is a critical part of the merge step in merge sort:
+  ```java
+  if (i < L.length && L[i] <= R[j]) {
+      A[k] = L[i];
+      i++;
+  } else if (j < R.length) {
+      A[k] = R[j];
+      j++;
+  }
+  ```
+  Without these checks, the code may **access out-of-bounds indices** or **incorrectly copy sentinels** into the main array.
+
+- **Impact**:  
+  This will result in **incorrect merged arrays**, potentially leading to **segmentation faults** or **incorrect sorting**.
+
+---
+
+### **5. Sentinels Are Not Properly Utilized**
+- **Problem**:  
+  The sentinels (`Integer.MAX_VALUE`) are added to the end of `L` and `R`, but the merge loop does **not use them** to avoid explicit boundary checks. Instead, the loop relies on `i` and `j` to stop at the correct indices.
+
+- **Impact**:  
+  The sentinels are **not serving their purpose**, and the code is **not simplified** as intended. This leads to **inefficiency** and **potential bugs**.
+
+---
+
+### **Summary of Issues**
+| Issue | Description | Impact |
+|------|-------------|--------|
+| **Incorrect Array Sizes** | `L` and `R` are too large | Extra sentinels not handled |
+| **Incorrect Copying** | Off-by-one in copying elements | Sentinels may be incorrectly used |
+| **Incorrect Merge Logic** | Indices `i` and `j` are not relative to subarrays | Merging fails |
+| **Missing Boundary Checks** | No checks for `i` or `j` reaching end | Risk of out-of-bounds errors |
+| **Sentinels Not Used Properly** | Sentinels not leveraged for simplicity | Inefficient and error-prone |
+
+---
+
+### **Corrected Merge Logic**
+Here's a corrected version of the merge step:
+
+```java
+void merge(int[] A, int l, int m, int r) {
+    int nL = m - l + 1;
+    int nR = r - m;
+
+    int[] L = new int[nL];
+    int[] R = new int[nR];
+
+    // Copy data to L and R
+    for (int i = 0; i < nL; i++) {
+        L[i] = A[l + i];
+    }
+    for (int j = 0; j < nR; j++) {
+        R[j] = A[m + 1 + j];
+    }
+
+    // Merge back into A
+    int i = 0, j = 0, k = l;
+    while (i < nL && j < nR) {
+        if (L[i] <= R[j]) {
+            A[k] = L[i];
+            i++;
+        } else {
+            A[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy remaining elements of L
+    while (i < nL) {
+        A[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy remaining elements of R
+    while (j < nR) {
+        A[k] = R[j];
+        j++;
+        k++;
+    }
+}
+```
+
+---
+
+### **Conclusion**
+The original merge step contains **multiple critical errors** that prevent it from functioning correctly. The key issues are **incorrect array sizes**, **improper use of sentinels**, and **flawed merge logic**. A corrected implementation, as shown above, ensures that the merge step properly combines two sorted subarrays into a single sorted array.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implemented merge sort, which guarantees O(n log n) worst-case runtime without requiring randomization, satisfying the rubric's criteria for a correct solution.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's implementation uses a merge sort algorithm that correctly sorts the array in ascending order without using forbidden substrings. The merge function properly handles element copying and merging with sentinel values, ensuring correct sorting behavior.

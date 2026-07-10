@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Counting array allocation
+BUCKET: Correct
+FEEDBACK: The student allocates `int C[] = new int[B.length];`, which is sized at least |B| and thus at least max(A)+1, and Java initializes it to 0.
+
+POINT_ID: Point 2 — Frequency counting over A
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) { C[A[i]] = C[A[i]] + 1; }` correctly increments the count for each element of A.
+
+POINT_ID: Point 3 — Output loop bounds
+BUCKET: Correct
+FEEDBACK: The second loop runs `for (int j = 0; j < B.length; j++)`, iterating exactly from 0 to |B|-1 and producing a string of length m.
+
+POINT_ID: Point 4 — Comparison and output character
+BUCKET: Correct
+FEEDBACK: Inside the output loop the code checks `if (C[j] <= B[j])` and appends `1` otherwise `0`, matching the required logic.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m), uses only allowed constructs, avoids forbidden substrings, and returns the correct binary string for all valid inputs.

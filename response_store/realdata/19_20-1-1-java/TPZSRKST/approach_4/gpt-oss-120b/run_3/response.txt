@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution defines a private int ggt(int a, int b) method with two parameters and uses a while‑true loop and modulo reductions to compute the GCD, meeting the required signature and iterative structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop repeatedly computes remainders and returns b when a becomes 0 or a when b becomes 0, so it always exits exactly when a remainder is zero, providing a proper termination condition.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The ggt method uses a = a % b and then b = b % a inside a loop, guaranteeing that the arguments strictly decrease and terminating when one reaches zero, which correctly implements the Euclidean reduction step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm method returns (a*b)/ggt(a,b), correctly applying the LCM formula (the extra zero‑check returning 1 is unnecessary but does not affect the formula structure).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The ggt method correctly computes the GCD for typical positive inputs, but it does not handle cases where the second argument is zero (e.g., ggt(5, 0) causes a division‑by‑zero error).
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your lcm method correctly computes (a*b)/ggt(a,b) using a proper Euclidean gcd implementation, so it returns the correct LCM for all positive integer inputs.

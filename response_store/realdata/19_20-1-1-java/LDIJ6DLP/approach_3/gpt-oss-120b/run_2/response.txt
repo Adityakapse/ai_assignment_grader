@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with the proper signature and includes a recursive call, matching the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function checks `if (r == 0) return b;` after computing `r = a % b;`, providing a correct termination condition for the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After swapping to ensure `a >= b`, the code computes `r = a % b` and recurses with `gcd(r, b)`, which correctly reduces the problem toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined as `return (a*b)/gcd(a,b);`, exactly implementing the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The implementation does not handle cases where `b` (or `a`) is zero, leading to a division‑by‑zero error, so it fails for edge cases like `gcd(0, n)`.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Assuming valid positive inputs, the `lcm` function produces the correct least common multiple because it relies on the correctly working Euclidean step for those cases.

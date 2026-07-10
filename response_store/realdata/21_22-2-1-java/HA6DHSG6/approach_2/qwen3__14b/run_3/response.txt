@@ -1,0 +1,76 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The student solution modifies the B array directly instead of allocating a separate counting array as required, failing to implement the necessary counting mechanism described in the rubric point.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The student's solution does not count frequencies in A correctly - it decrements B values based on A's elements rather than tallying occurrences of each category in A.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop correctly iterates from 0 to B.length-1 inclusive using "m < B.length", producing exactly m characters in the output string as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student correctly appends '1' when the count of category i in A is ≤ B[i] (by checking if B[i] remains ≥ 0 after decrementing by the count) and '0' otherwise, matching the required output logic.
+
+POINT_ID: 5
+The student's code is **correct** and meets all the requirements specified in the problem. Here's a detailed breakdown of why it is correct:
+
+---
+
+### **1. Correctness of the Logic**
+
+The code correctly computes the required binary string of length `m`, where each position `i` corresponds to whether the number of occurrences of `i` in the array `A` is less than or equal to `B[i]`.
+
+- **Key Idea:** Instead of using a separate frequency array (as in the sample solution), the student's code uses the `B` array itself as a counter by decrementing the value at index `A[i]` for each occurrence of `i` in `A`.
+- **Why It Works:** Since the problem guarantees that `max(A) <= |B| - 1`, all indices accessed in the loop (`A[i]`) are within the bounds of the `B` array. This ensures that the code does not access invalid indices and operates correctly.
+
+---
+
+### **2. Time Complexity**
+
+The code runs in **O(n + m)** time, which is efficient and meets the problem's requirements:
+
+- **First Loop:** Iterates over the `n` elements in `A`, decrementing the corresponding index in the cloned `B` array. This is **O(n)**.
+- **Second Loop:** Iterates over the `m` elements in the `B` array to construct the output string. This is **O(m)**.
+
+Thus, the algorithm is optimal in terms of time complexity.
+
+---
+
+### **3. Handling Edge Cases**
+
+- **When a category in `B` is not present in `A`:** The value in `B` for that index is not modified and remains as the original value. Since the count of that category in `A` is 0, and 0 ≤ original `B[i]` (unless `B[i]` is negative, which is not allowed by the problem's constraints), the output is correct.
+  
+- **When a category in `A` exceeds the length of `B`:** The problem guarantees that `max(A) <= |B| - 1`, so this scenario is impossible.
+
+---
+
+### **4. Clone of `B` Array**
+
+The student's code starts with:
+
+```java
+B = B.clone();
+```
+
+This ensures that the original `B` array passed to the function is not modified. This is a good practice and does not affect the correctness of the solution.
+
+---
+
+### **5. Output Construction**
+
+The code correctly constructs the output string by appending `'1'` if `B[i] >= 0` and `'0'` otherwise. This is exactly what is required by the problem.
+
+---
+
+### **Conclusion**
+
+The student's code is **correct** in all aspects, including logic, time complexity, edge case handling, and adherence to the problem constraints. Therefore, the rubric point **"Overall Correctness"** should be awarded **20 points**.
+
+---
+
+### ✅ **Final Answer:**
+
+**20 / 20** – The student's code is fully correct and meets all the problem requirements.

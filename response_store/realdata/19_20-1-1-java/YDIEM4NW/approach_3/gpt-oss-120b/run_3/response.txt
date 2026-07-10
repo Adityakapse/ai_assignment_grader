@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with a proper return type and includes a loop body, satisfying the required signature and structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The `while(a % b > 0)` loop exits when the remainder becomes zero and then returns `b`, providing a correct termination condition.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Inside the loop the code computes `r = a % b; a = b; b = r;`, which correctly reduces the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is present, calls `gcd(a,b)`, and returns `(a*b)/gcd`, matching the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the iterative Euclidean algorithm works for most inputs, it does not handle the case `b == 0` (division‑by‑zero in `a % b`), so the gcd fails for that edge case.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all valid positive integer inputs, the `lcm` implementation produces the correct result, assuming the gcd works for those inputs.

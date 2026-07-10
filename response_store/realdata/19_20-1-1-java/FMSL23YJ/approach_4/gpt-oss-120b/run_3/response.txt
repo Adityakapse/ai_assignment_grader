@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code includes an `int gcd(int a, int b)` function with the proper two‑parameter signature and an iterative do‑while loop that reduces the arguments, satisfying the structural requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The do‑while loop exits when b equals 0 and returns a, correctly implementing the Euclidean algorithm’s termination condition.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop computes `rem = a % b; a = b; b = rem;` and repeats until `b` is zero, correctly reducing the problem each iteration.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined with two int parameters and correctly returns (a * b) / gcd(a, b), including a zero‑check.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function works for typical cases but will crash when the second argument is zero (e.g., gcd(5,0) or gcd(0,0)) because it performs a % b without checking for b = 0.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your lcm function correctly handles the zero case and uses the formula (a * b) / gcd(a, b) with a proper Euclidean gcd implementation, yielding the correct LCM for all positive inputs.

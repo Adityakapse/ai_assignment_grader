@@ -1,0 +1,27 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student implemented the gcd function correctly using the Euclidean algorithm, even though it lacks the initial swap for a < b. The recursive structure and logic are valid and functionally equivalent to the sample solution.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student's GCD function correctly returns b when the remainder is zero, which is the correct termination condition for the recursive Euclidean algorithm.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's gcd function correctly reduces the problem size by recursively calling gcd(b, r) where r = a % b, ensuring progress toward termination without requiring an explicit swap.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's solution correctly implements the LCM formula using (a*b)/gcd(a,b) and defines the required function signature. The gcd implementation, while lacking an explicit swap, correctly computes the GCD through recursive calls regardless of parameter order.
+
+POINT_ID: 5
+The student's code for the `gcd` function is incorrect in certain edge cases. Specifically, when the second argument `b` is zero and the first argument `a` is non-zero, the function would crash due to division by zero (since `a % 0` is undefined in most programming languages). This is a critical failure in the function's robustness.
+
+While the code works correctly for all cases where both `a` and `b` are non-zero, or when `a` is zero and `b` is non-zero, it fails to handle the scenario where `b = 0` and `a ≠ 0`. The absence of a check to swap `a` and `b` when `b` is zero (as in the sample solution) leads to this failure. Since the function is required to return the correct GCD for **all valid non-negative integer inputs**, this omission makes the code incomplete and incorrect in some cases.
+
+**Final Answer:**  
+The student's code is incorrect in some edge cases, and thus the score for the rubric point "overall correctness of gcd" is **0**.
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: The student's solution correctly implements the LCM function using the formula (a*b)/gcd(a,b), and the GCD function properly computes the greatest common divisor through recursive modulo operations without requiring explicit swapping of parameters.

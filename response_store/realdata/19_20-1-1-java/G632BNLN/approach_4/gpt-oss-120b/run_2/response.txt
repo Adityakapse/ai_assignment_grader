@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The submission does not define a separate `gcd` function; it embeds GCD-like logic inside `lcm` instead of providing a correctly structured `gcd(int a, int b)` function.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The while loop uses `while (r > 0)` and updates `y` and `r` until the remainder becomes zero, correctly terminating the GCD computation before returning `(a*b)/y`.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code computes `r = x % y` and updates `y = r`, but it never updates `x` (the former `a`), so the reduction step does not follow the standard `a = b; b = r` pattern, though it does use modulo to decrease the second argument.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function computes the GCD internally (using the Euclidean loop) and returns (a*b)/y, which correctly implements the LCM formula without calling a separate gcd function.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code lacks a separate gcd function and the loop inside lcm never updates the dividend, so it gives incorrect GCD values for many inputs (e.g., it returns 12 for gcd(48, 18) instead of 6).
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The implementation computes the GCD incorrectly by never updating the dividend (x) inside the loop, leading to wrong results for many inputs (e.g., lcm(12,5) is incorrect).

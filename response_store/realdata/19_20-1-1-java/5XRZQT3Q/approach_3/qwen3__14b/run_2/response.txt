@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The gcd function has the correct signature (two int parameters, returns int) and uses a recursive structure with a swap to ensure a >= b before calculating the remainder.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case correctly returns b when the remainder r is zero, which aligns with the Euclidean algorithm's termination condition.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The recursive step calls gcd(r, b) after computing the remainder, which matches the canonical Euclidean algorithm structure with proper argument ordering.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function uses the mathematically equivalent formula a / gcd(a,b) * b, which is structurally identical to (a * b) / gcd(a,b) and has the correct parameter signature.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function fails for edge cases like gcd(0, 0) due to division-by-zero in the remainder calculation, and returns 0 for inputs like gcd(0, 5) instead of the correct value 5.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The lcm function produces correct results for all valid positive integer inputs, assuming the gcd implementation is correct and avoiding overflow scenarios.

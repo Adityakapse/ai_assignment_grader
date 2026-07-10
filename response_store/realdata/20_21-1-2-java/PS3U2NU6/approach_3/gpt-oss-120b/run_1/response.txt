@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements quicksort with recursive calls on both sub‑arrays (`quick` calls itself on `l,p-1` and `p+1,r`), providing a recognizable O(n log n) divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when `l < r` is false, i.e., for sub‑arrays of length 0 or 1, preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The `partition` method correctly places the pivot at its final position and ensures all elements ≤ pivot are left of it and all greater elements are right, establishing proper ordering.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Although a `randPartition` method is present, it merely swaps the element at `r‑1` with the last element instead of selecting a random index using the random library, so no true randomisation is applied.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The `solution` function returns the array after quicksort, which yields an ascending sorted array for all valid inputs, and the code does not contain the prohibited substrings “sort” or “numpy”.

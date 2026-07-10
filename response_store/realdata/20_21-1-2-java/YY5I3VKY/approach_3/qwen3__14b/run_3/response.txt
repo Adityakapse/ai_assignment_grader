@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a complete merge sort structure with recursive calls on both subarrays and a merge step, fulfilling the requirements for an O(n log n) divide-and-conquer algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The mergeSort function correctly terminates when l < r is false, preventing infinite recursion on single-element subarrays.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The merge function has incorrect array bounds in the loops copying elements to L and R (e.g., for R, the loop runs only up to r-p instead of r-p+1), and the merge loop uses k from l to r+1 which may exceed array bounds, leading to potential incorrect sorting.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The implementation uses merge sort, which guarantees O(n log n) worst-case runtime without requiring randomization, satisfying the rubric's requirements.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The code contains off-by-one errors in the merge step (e.g., the loop for copying R elements and the final merge loop), which would likely cause incorrect sorting for some inputs, though it avoids using 'sort' or 'numpy'.

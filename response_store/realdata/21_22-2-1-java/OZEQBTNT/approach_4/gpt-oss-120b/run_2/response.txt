@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length+1];`, which is sized at least `max(A)+1` (since max(A) ≤ B.length‑1) and Java initializes the array to zero, satisfying the counting array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i=0; i<A.length; i++) C[A[i]]++;` correctly iterates over array A and increments `C` at the index of each element, properly accumulating the frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The student’s output loop uses `for(int i=0; i < B.length; i++)`, correctly iterating from 0 to |B|‑1 and generating a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly checks `if(C[i] > B[i])` and appends `'0'` otherwise `'1'`, matching the required comparison logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation mirrors the reference solution, uses only O(n + m) time, avoids forbidden substrings, and correctly handles all edge cases such as zero counts and B[i] = 0.

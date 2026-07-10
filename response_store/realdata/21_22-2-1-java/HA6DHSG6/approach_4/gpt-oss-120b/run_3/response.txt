@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution does not allocate a dedicated zero‑initialized counting array; it reuses a cloned B array and decrements its values, so no proper counting array of size at least max(A)+1 is created.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code iterates over A but subtracts from B instead of incrementing a separate count array, so it never correctly accumulates the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop uses `for (int m = 0; m < B.length; m++)`, iterating from 0 to B.length‑1 and thus produces a binary string of exactly length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements B by the occurrences and then appends '1' when B[m] ≥ 0 (meaning count ≤ capacity) and '0' otherwise, correctly implementing the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly decrements B by the counts from A and outputs 1 when the remaining value is non‑negative, handling all cases in O(n + m) without using any forbidden substrings.

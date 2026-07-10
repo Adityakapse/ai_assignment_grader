@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code reuses a clone of B as the counting array and never initializes a separate array to zero, so while the size is correct, the counting array is not properly zero‑initialized.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The solution iterates over A but decrements values in a cloned B array rather than incrementing a frequency counter (C[a]++), so it does not correctly accumulate category frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates from 0 to newB.length‑1 (where newB has the same length as B), correctly producing a binary string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements a copy of B by the counts in A and then appends ‘0’ when newB[i] < 0 (i.e., count > capacity) and ‘1’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly decrements a copy of B for each occurrence in A and outputs ‘1’ when the remaining count is non‑negative, yielding the proper binary string in O(n+m) without forbidden substrings.

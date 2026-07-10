@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements a quicksort with a random pivot, partitions the array, and makes recursive calls on both the left and right sub‑ranges (pivot‑1 and pivot+1), satisfying a complete divide‑and‑conquer O(n log n) structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursive calls are guarded by `if (pivot-start > 1)` and `if (end-pivot > 1)`, ensuring the function stops when subarrays have size 0 or 1, thus preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code includes a pivot selection and a loop that swaps the pivot with elements at the “vergleich” index, but it never moves the other elements into the correct side of the pivot, so the partition does not reliably place all smaller values left and larger values right.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The quicksort implementation selects a pivot with `int pivot = (int)(Math.random()*(double)(end - start+1))+start;` and swaps it to the start before partitioning, providing proper randomisation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution’s method name and helper function are called “quicksort”, which contains the prohibited substring “sort”, violating the requirement.

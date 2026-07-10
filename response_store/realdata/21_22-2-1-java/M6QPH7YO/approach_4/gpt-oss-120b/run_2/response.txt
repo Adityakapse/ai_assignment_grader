@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length];` (size |B|) and explicitly sets each entry to 0 before counting, satisfying the required counting array allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over A and uses `C[A[i]] += 1;` to increment the count for each category, correctly accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates `j` from 0 up to `C.length‑1`, and since `C` was sized to `B.length`, it produces exactly `m` characters, matching the required output length.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if(C[j] > B[j])` to append "0" and otherwise appends "1", correctly outputting '1' when `C[i] <= B[i]` and '0' when `C[i] > B[i]`.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a count array C of size B.length, tallies occurrences from A, then appends '1' or '0' for each index in O(n + m) time, and contains no forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution clones B into d and uses it as the counting array, giving the correct size, but it is initialized with the original B values rather than zeros, so frequencies are not counted from a zeroed array.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over A (c) but updates the B‑derived array d with `d[e] = d[e] - 1` instead of incrementing a separate count array, so frequencies are not correctly accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `for (int i = 0; i < d.length; i++)`, where `d` is a clone of `B`, so it correctly runs from 0 to |B|‑1 and produces a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements d[e] for each occurrence and then appends '0' when d[i] < 0 (count exceeds B[i]) and '1' otherwise, correctly reflecting the required C[i] ≤ B[i] comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly decrements B counts for each occurrence in A and outputs ‘0’ when a count exceeds capacity and ‘1’ otherwise, running two linear passes without forbidden substrings.

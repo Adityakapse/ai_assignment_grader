@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements merge sort with recursive calls on both halves (mergeSortAlg) and a merge step, which is a recognizable O(n log n) divide‑and‑conquer algorithm.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The recursion stops when l < r, so subarrays of length 0 or 1 are not further divided, providing a proper termination condition.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The merge function copies the left half correctly but omits the last element of the right half (it copies only up to r‑1), causing missing elements and potentially incorrect ordering.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Merge sort has a guaranteed O(n log n) worst‑case runtime, so no randomisation is required and the implementation meets this criterion.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The output array is not correctly sorted because the merge step drops the last element of the right subarray, and the code also contains the substring “sort” in the method name, violating the restriction.

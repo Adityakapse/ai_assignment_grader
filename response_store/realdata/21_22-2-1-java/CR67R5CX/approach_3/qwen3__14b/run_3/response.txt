@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student clones array A into `c` and B into `d`, but does not allocate a separate counting array to track frequencies. Instead, they modify the B array directly, which violates the requirement to use a dedicated counting array.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student decrements `d[e]` for each element `e` in `c` (a clone of A), which does not correctly accumulate frequencies. This approach modifies B's values rather than counting occurrences of each category in A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates from `0` to `d.length - 1` (i.e., `0` to `B.length - 1`), producing a binary string of exactly length `m` as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student appends `'0'` when `d[i] < 0` (indicating the count of category `i` in A exceeds `B[i]`) and `'1'` otherwise, which correctly implements the required comparison logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code returns the correct binary string for all valid inputs in O(n + m) time and avoids forbidden substrings. The logic, though unconventional, correctly computes the required result.

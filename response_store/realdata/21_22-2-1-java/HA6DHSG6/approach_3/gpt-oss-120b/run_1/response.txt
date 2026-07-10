@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a separate counting array; it reuses the cloned B array, which is initialized with capacities rather than zeros.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop over A performs `B[A[n]] = B[A[n]]-1;` which decrements B instead of incrementing a dedicated count array C[a]++.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `for (int m = 0; m < B.length; m++)`, correctly covering indices 0 to |B|-1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code appends `1` when `B[m] >= 0` (capacity not exceeded) and `0` otherwise, matching the required comparison C[i] ≤ B[i].
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, returns the correct binary string for all inputs, and contains no forbidden substrings.

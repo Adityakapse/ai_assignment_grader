@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length+1];`, which provides a counting array of size at least |B|+1 (and thus ≥ max(A)+1) and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i =0;i<A.length;i++) { C[A[i]]++; }` iterates over every element of A and increments the corresponding entry in C, correctly accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for(int i = 0; i < B.length;i++)` iterates from 0 to B.length‑1, producing exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the condition `if(C[i] <= B[i])` appends `'1'` otherwise `'0'`, matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, avoids forbidden substrings, and returns the correct binary string for all valid inputs.

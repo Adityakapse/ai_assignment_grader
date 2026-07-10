@@ -1,0 +1,58 @@
+POINT_ID: 1
+The student's code correctly initializes a counting array with a size sufficient to meet the requirements of the problem. Here's a detailed breakdown of the reasoning:
+
+---
+
+### **Problem Constraints and Requirements**
+The problem specifies that:
+- **`max(A) ≤ |B| - 1`**, where `A` is the list of gift categories, and `B` is the list of values (with length `m`).
+- This implies that the **maximum value in `A` is less than or equal to `m - 1`**.
+- Therefore, the **size of the counting array must be at least `max(A) + 1`**, or equivalently, **at least `m`** (since `max(A) + 1 ≤ m` due to the constraint).
+
+---
+
+### **Student's Code Analysis**
+The student's code initializes the counting array as:
+```java
+int[] noetigeKapazitaet = new int[Math.max(A.length, B.length)];
+```
+- **`Math.max(A.length, B.length)`** ensures that the array size is at least as large as the length of `B` (i.e., `m`), which is sufficient to cover all possible values in `A` (since all values in `A` are ≤ `m - 1`).
+- This satisfies the requirement that the array must be of size **at least `max(A) + 1`** (or `m`), as `Math.max(A.length, B.length)` ≥ `m` due to the constraint.
+
+---
+
+### **Initialization**
+The student's code also includes a loop that initializes all elements of the array to zero:
+```java
+for (int k = 0; k < noetigeKapazitaet.length; k++) {
+    noetigeKapazitaet[k] = 0;
+}
+```
+- This ensures that **every element** in the array is initialized to zero, even if the array size is larger than strictly necessary.
+- This is a safe and correct approach, as it avoids any potential issues with uninitialized elements.
+
+---
+
+### **Conclusion**
+The student's code:
+- **Correctly sizes the array** to be at least `m` (which is sufficient for the problem's constraints).
+- **Properly initializes all elements** to zero.
+- **Meets all the requirements** specified by the rubric and the problem constraints.
+
+**Answer:** The student's code is **correct** in terms of array size and initialization.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The student correctly iterates through array A and increments the count for each element's value in noetigeKapazitaet[geschenk], properly accumulating frequencies for each category.
+
+POINT_ID: 3
+BUCKET: Correct (15 marks)
+FEEDBACK: The output loop correctly iterates from i=0 to B.length-1, appending exactly m characters to produce a binary string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly compares noetigeKapazitaet[i] (the count of category i in A) with B[i], appending '1' when the count is ≤ B[i] and '0' otherwise, matching the required condition.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly counts occurrences of each category in A, compares them to B's values, and constructs the output string with O(n + m) time complexity, avoiding forbidden substrings.

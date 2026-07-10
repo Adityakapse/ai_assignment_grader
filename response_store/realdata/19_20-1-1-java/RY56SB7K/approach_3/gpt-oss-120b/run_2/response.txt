@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student provides a function `int ggt(int x, int y)` with two integer parameters and a recursive structure, satisfying the required signature and recognisable gcd implementation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (r == 0) { return y; }` correctly terminates recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step `return ggt(y, r);` correctly calls the function with the second argument and the remainder, implementing the Euclidean reduction.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function computes `int mul = x * y; return mul / ggt;`, which follows the (a * b) / gcd(a,b) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function does not handle the case where the second argument is zero (division by zero occurs), so it fails for that edge case.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs the lcm uses the correct formula and, given the working gcd for those cases, returns the correct least common multiple.

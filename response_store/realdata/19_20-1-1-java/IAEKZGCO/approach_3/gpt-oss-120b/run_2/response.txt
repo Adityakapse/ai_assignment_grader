@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution defines a function named `ggt` instead of a function called `gcd`, so a correctly named gcd function is not present.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (r == 0) { return b; }` correctly stops recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The recursive call `return ggt(r, b);` (with the initial swap) ensures the arguments decrease and the Euclidean reduction is performed.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function computes `(a*b)/t` where `t` is the result of `ggt(a,b)`, matching the required LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd implementation works for typical positive inputs but crashes on inputs where either argument is zero because it performs `a % b` without handling `b == 0`.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, the `lcm` function returns the correct least common multiple using the proper formula.

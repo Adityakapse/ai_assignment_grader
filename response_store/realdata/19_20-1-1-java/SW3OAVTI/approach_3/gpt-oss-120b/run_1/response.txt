@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a function `ggt(int a, int b)` with two int parameters, returns an int, and includes a recursive call, satisfying the structural requirements for a GCD function.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case checks `if (r == 0) return b;` where `r` is `a % b`, correctly terminating recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After ensuring `a >= b`, the code computes `r = a % b` and recurses with `ggt(r, b)`, which properly reduces the problem toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined as `return a*b/ggt(a,b);`, using the standard LCM formula and referencing the GCD function.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The GCD implementation does not handle cases where `b` (or after swapping, `a`) is zero, leading to a division‑by‑zero error for inputs like `gcd(0, n)`.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, the `lcm` function returns the correct least common multiple because it relies on the correctly working GCD logic for those cases.

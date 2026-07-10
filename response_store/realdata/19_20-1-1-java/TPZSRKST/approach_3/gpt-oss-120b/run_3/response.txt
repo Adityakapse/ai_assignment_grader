@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a function `ggt(int a, int b)` with two int parameters and an int return type, and implements an iterative Euclidean algorithm inside a loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop terminates by returning `b` when `a == 0` and returning `a` when `b == 0`, which correctly captures the base case of the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Each iteration updates `a` with `a % b` and then `b` with `b % a`, ensuring the values strictly decrease toward the termination condition.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` method returns `(a*b)/ggt(a,b)` for non‑zero inputs, matching the standard LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the algorithm works for most positive inputs, it crashes when the second argument `b` is zero (division by zero in `a % b`), so it does not handle all non‑negative cases correctly.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The `lcm` function returns `1` when either argument is zero, which is incorrect for LCM of zero, causing wrong results on those edge cases.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a separate counting array initialized to zero; it only clones B into d and modifies it, so there is no proper C array of size ≥ max(A)+1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Frequencies are not accumulated with C[a]++; instead the code decrements d[e] for each element e, so it does not perform the required counting of occurrences in a dedicated array.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `for (int i = 0; i < d.length; i++)`, which runs exactly over the length of B, producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code appends 0 when `d[i] < 0` (i.e., count > capacity) and 1 otherwise, matching the required condition C[i] ≤ B[i].
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs two linear passes (O(n + m)), avoids forbidden substrings, and returns the correct binary string for all valid inputs.

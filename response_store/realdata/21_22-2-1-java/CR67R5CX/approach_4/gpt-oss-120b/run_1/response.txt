@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code reuses a clone of B as the counting array (int[] d) instead of allocating a fresh zero‑initialized array, so the frequencies are not correctly accumulated from a clean zeroed array.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code iterates over array A (c) but updates the cloned B array (d) with `d[e] = d[e] - 1` instead of incrementing a separate count array, so frequencies of categories are not correctly accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `i` from 0 up to `d.length‑1` (where `d` is a clone of `B`), so it produces a binary string of exactly length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements d[e] for each occurrence, then appends '1' when d[i] ≥ 0 (meaning C[i] ≤ B[i]) and '0' when d[i] < 0, correctly reflecting the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly decrements the cloned capacity array for each category occurrence and then outputs '1' or '0' based on whether any entry became negative, achieving O(n + m) time without using forbidden substrings.

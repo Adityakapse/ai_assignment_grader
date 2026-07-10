@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student allocates `int C[] = new int[B.length];`, which is sized to |B| and therefore at least max(A)+1 given the problem constraint, and Java initializes the array to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int k = 0; k <= A.length - 1; k++) { C[A[k]] = C[A[k]] + 1; }` iterates over every element of A and increments the corresponding entry in C, correctly accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for(int l = 0; l<= B.length - 1; l++)` runs from 0 through B.length‑1 inclusive, producing exactly |B| characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the code appends `'1'` when `C[l] <= B[l]` and `'0'` otherwise, matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in linear time O(n+m), avoids the forbidden substrings, and returns the correct binary string for all inputs that satisfy the given constraints.

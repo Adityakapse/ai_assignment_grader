@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which provides an array of size |B| (≥ max(A)+1) and is automatically zero‑initialized, satisfying the counting array allocation requirement.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The code iterates over A and increments C[A[i]] for each element, correctly counting frequencies as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop runs `for (int i = 0; i < C.length; i++)` and since `C` was created with length `B.length`, it iterates from 0 to B.length‑1, yielding a binary string of exactly |B| characters.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly appends '1' when C[i] ≤ B[i] and '0' when C[i] > B[i] for each position.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly counts occurrences in C, compares each count to B[i], and builds the binary string in O(n+m) without using any forbidden substrings.

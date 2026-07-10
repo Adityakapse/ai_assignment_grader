@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int countA[] = new int[B.length];`, which is sized at least `max(A)+1` and Java initializes it to zero, enabling direct frequency counting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates through A and increments countA[A[i]] for each element, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code iterates `for (int i = 0; i < B.length; i++)`, covering indices 0 through |B|‑1 and appends one character per iteration, yielding a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if(countA[i] <= B[i])` and appends `"1"` otherwise `"0"`, correctly matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code counts occurrences with a single pass over A and then builds the binary string in a second linear pass, matching the required O(n + m) complexity and avoiding forbidden substrings.

@@ -1,0 +1,69 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a complete merge sort algorithm with proper divide-and-conquer structure, recursively splitting the array and merging sorted subarrays, which matches the required O(n log n) runtime.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The function mergeZort correctly terminates when n < 2, handling subarrays of length 0 or 1 without further recursion, which properly prevents infinite recursion in the merge sort implementation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The merge function correctly interleaves two sorted subarrays (l and r) into the original array a by comparing elements and placing them in order, ensuring the merged result is sorted.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implemented a merge sort algorithm, which has a guaranteed O(n log n) worst-case runtime, thus satisfying the rubric criterion without requiring randomisation.
+
+POINT_ID: 5
+The provided code implements a **merge sort algorithm**, which is a well-known and correct sorting method. Let's break down the key components and confirm the **correctness** of the code in terms of the specified requirements.
+
+---
+
+### **1. No Use of Forbidden Keywords**
+
+- The code does **not** use the string `'sort'` or `'numpy'` anywhere. This is crucial, as the problem explicitly disallows the use of these terms.
+- ✅ **Passes the first check** for forbidden keywords.
+
+---
+
+### **2. Correct Implementation of Merge Sort**
+
+- The **`mergeZort`** function correctly follows the merge sort algorithm:
+  - **Base Case:** If the subarray length is less than 2, it returns the array as is.
+  - **Recursive Step:** It splits the array into two halves (`l` and `r`), recursively sorts them, and then merges the two sorted halves into a single sorted array using the **`merge`** function.
+- The **`merge`** function is also correctly implemented:
+  - It merges two sorted arrays (`l` and `r`) into a single sorted array (`a`).
+  - It uses two pointers to iterate through the two halves and places the smaller element into the result array (`a`).
+  - It handles the case where one of the halves is exhausted by appending the remaining elements from the other half.
+
+---
+
+### **3. Correctness of the Merge Process**
+
+- The merge function correctly combines two sorted subarrays into one.
+- The algorithm ensures that the final array `a` is sorted in ascending order after the recursive calls return.
+- ✅ **The logic and implementation are correct**.
+
+---
+
+### **4. Potential Edge Cases**
+
+- **Empty array or single-element array:** Handled correctly by the base case.
+- **Already sorted array:** The algorithm still works, as merge sort is stable and efficient on any input.
+- **Reverse-sorted array:** The algorithm correctly sorts it in logarithmic time with respect to the input size.
+
+---
+
+### **5. Conclusion**
+
+The code is a **correct and valid implementation of merge sort**. It:
+- Does **not** use any forbidden keywords.
+- Correctly implements the merge sort algorithm.
+- Handles all edge cases.
+- Ensures the final array is sorted.
+
+---
+
+### ✅ **Final Answer**
+
+The code is **correct** and **does not violate any of the specified constraints**. It is a valid implementation of merge sort and should be placed in the **"correct"** bucket.

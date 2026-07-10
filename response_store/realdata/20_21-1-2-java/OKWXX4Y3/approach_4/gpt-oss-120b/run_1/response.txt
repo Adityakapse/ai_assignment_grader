@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a quicksort‑style divide‑and‑conquer algorithm, selecting a pivot, partitioning the array, and recursively calling `sortPartition` on both left and right sub‑ranges, which satisfies the required recursive O(n log n) structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function `sortPartition` only recurses when `end-beg > 1`; otherwise it falls into the `else` block (handling subarrays of length 0 or 1), ensuring the recursion terminates properly.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The sortPartition function implements a quick‑sort partition: it selects a pivot, distributes elements greater than the pivot to the right side (using iu) and the rest to the left side (using il), then places the pivot at sort[il] before recursing, correctly establishing the order around the pivot.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a fixed middle index as the pivot (`int pivot = (beg+end) / 2;`) and never imports or calls the random library, so there is no randomisation to avoid worst‑case quicksort behavior.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The solution’s code contains the substring “sort” in method names and variable names (e.g., sortPartition, sort), violating the requirement to avoid “sort” as a substring.

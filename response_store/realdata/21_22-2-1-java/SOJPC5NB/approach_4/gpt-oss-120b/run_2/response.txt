@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a zero‑initialized counting array of size at least |B| (and thus ≥ max(A)+1), allowing direct indexing of frequencies.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops through A and correctly increments C[A[i]] by 1 for each element, properly accumulating the frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for(int i=0; i < B.length; i++)`, iterating from 0 up to B.length‑1, so it outputs exactly |B| characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if (C[i] <= B[i]) sb.append("1"); else sb.append("0");`, correctly appending '1' when the count fits and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code builds a count array C, iterates A and B each once (O(n+m)), appends ‘1’ or ‘0’ for every index, respects the input limits and contains no forbidden substrings, thus producing the correct binary string for all valid cases.

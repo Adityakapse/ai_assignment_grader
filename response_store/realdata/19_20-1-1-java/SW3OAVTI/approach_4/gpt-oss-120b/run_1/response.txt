@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int ggt(int a, int b)` with two parameters, returns an int, and includes a recursive call `return ggt(r, b);`, matching the required gcd structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function computes r = a % b and correctly returns b when r == 0, providing a proper base case that stops the recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function swaps to ensure a ≥ b, computes r = a % b, and recurses with ggt(r, b), correctly reducing the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined with two int parameters and returns a*b divided by the gcd function (named ggt), matching the required (a * b) / gcd(a, b) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function works for typical positive inputs, but it crashes when either argument is zero (e.g., gcd(0, n) causes a division‑by‑zero), so edge cases are not handled correctly.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The student’s `lcm` function correctly computes `a*b/ggt(a,b)` and the `ggt` implementation matches the Euclidean algorithm, yielding correct LCMs for all positive integer inputs.

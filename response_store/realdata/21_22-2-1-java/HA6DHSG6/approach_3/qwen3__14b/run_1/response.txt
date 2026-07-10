@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: No counting array is allocated; instead, the code directly modifies the B array by decrementing values, which fails to track frequencies correctly.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code decrements B[A[n]] instead of incrementing a counting array's value for each element in A, leading to incorrect frequency accumulation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates from 0 to B.length-1, appending exactly m characters to the StringBuilder, producing a string of the correct length.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The code checks if B[m] >= 0 after decrementing, which incorrectly assumes the capacity is related to the modified B values, not the original counts of A[i].
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm produces incorrect results due to flawed logic (modifying B instead of counting frequencies) and fails to meet the problem's requirements despite having O(n + m) time complexity.

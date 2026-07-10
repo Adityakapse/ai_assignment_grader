@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements a recursive merge sort, splitting the array with Arrays.copyOfRange and merging the two sorted halves, which follows a complete O(n log n) divide‑and‑conquer structure.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The termination condition only checks for arr.length == 1; when a subarray of length 0 is created (e.g., from an odd‑sized array) the recursion continues indefinitely, causing a potential infinite recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The merge function correctly combines two sorted arrays by comparing elements with indices i and j and placing the smaller into the result, preserving ascending order.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Merge sort has a guaranteed worst‑case O(n log n) runtime, so no random pivot is required; the implementation meets the guarantee without using randomisation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Due to the missing base case for length 0, the algorithm can fail (or cause a stack overflow) on certain inputs, so it does not reliably return a sorted array for all valid cases.

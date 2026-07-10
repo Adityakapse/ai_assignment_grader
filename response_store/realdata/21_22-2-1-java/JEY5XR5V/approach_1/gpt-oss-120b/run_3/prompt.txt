@@ -1,0 +1,97 @@
+QUESTION:
+It's Christmas and Santa Claus has little time left: he must
+to come up with a system to deliver all the presents on time.
+To do this, he uses the following system: first, all the cuddly
+toys are delivered, then all the books, and so on. The category of the
+$i-$th gift is $A[i]$. Unfortunately the sleigh of
+Santa Claus does not have an infinitely large capacity: For objects of the
+category $i$, Santa's sleigh has a maximum capacity of $B[ i]$.
+Now he would like to know if it is possible to deliver all the
+objects of a category in one run. For this he wants
+you to generate a string with the following properties:
+the $i$-th digit is a one, if it is possible to deliver
+all objects of the category $i$ in one pass and $0$,
+if this is not possible. As a reminder, Santa Claus can
+deliver all objects of category $i$ in one pass,
+if $|A|_i \leq B[i]$ holds. Since Santa does not have much time left
+your algorithm must have a runtime of $O(n + m)$.
+
+Input: Two arrays $A = [a_1, a_2,...,a_n], B = [b_1, b_2, ..., b_m]$
+with $1 \leq m, n \leq 2.85 \cdot 10^7$
+and $\forall 1\leq i \leq n: 0 \leq a_i,b_i \leq 2,85 \cdot 10^7$.
+Moreover, $\max(A) \leq |B| - 1$
+
+Output:  A binary string $s$ of length $m$ , where the $i$-th digit is
+is defined as follows:
+
+$s[i] = \begin{cases} 1, &\text{when } |A|_i \leq B[i] \ 0, &\text{when } |A|_i > B[i] \end{cases}$
+
+where $|A|_i$ describes how many times the number $i$ occurs in the array $A$.
+
+Timelimit: 1 CPU seconds
+
+Hint:
+
+(1) The substring "sort", "reflect", "sol_calc", or "import" must 
+not occur in your solution. 
+
+(2) Unlike defined in Cormen, arrays and strings of length
+$n$ start at 0 and end at $n-1$. 
+
+(3) Use the "StringBuilder" class to generate your solution.
+Do not use the Java "String" class if you are building your solution
+incrementally, because the strings have to be newly generated with each call.
+
+SAMPLE SOLUTION:
+String calc(int A[], int B[]){
+    int []C = new int[B.length+1];
+    for(int i=0;i<A.length;i++)
+        C[A[i]]++;
+    StringBuilder sol = new StringBuilder();
+    for(int i=0;i<B.length;i++)
+    {
+        if(C[i] > B[i])
+            sol.append('0');
+        else
+            sol.append('1');
+    }
+    return sol.toString();
+}
+
+STUDENT SOLUTION:
+String calc(int A[], int B[]){
+    StringBuilder erg = new StringBuilder();
+    int[] newB = B.clone();
+
+    for(int i = 0; i < A.length; i++) {
+        int kategorie = A[i];
+        newB[kategorie]--;
+      }
+
+    for(int i = 0; i < newB.length; i++) {
+     if(newB[i] < 0) {
+         erg.append(0);
+     } else {
+         erg.append(1);
+     }
+     }
+
+
+      return erg.toString();
+}
+
+RUBRIC:
+Point 1 — Counting array allocation (valid range: 0–20)
+  A counting array C of size at least max(A)+1 (equivalently |B| or 10^6+1) is allocated and initialised to 0.
+
+Point 2 — Frequency counting over A (valid range: 0–25)
+  For each element a in A, C[a] is incremented by 1, accumulating the count of each category.
+
+Point 3 — Output loop bounds (valid range: 0–15)
+  The output loop iterates i from 0 to |B|-1 inclusive, producing a binary string of exactly length |B| = m.
+
+Point 4 — Comparison and output character (valid range: 0–20)
+  For each position i, '1' is appended when C[i] <= B[i] (category fits in one pass), and '0' when C[i] > B[i].
+
+Point 5 — Overall correctness (valid range: 0–20)
+  The method returns the correct binary string of length m for all valid inputs in O(n + m) time, without forbidden substrings.

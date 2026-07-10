@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which provides a counting array of size at least max(A)+1 and Java initializes it to zero, satisfying the allocation requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates through array A, using C[A[i]]++ (with the first element initialized to 1), so each category’s count is correctly accumulated.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop runs `for(int i = 0; i < C.length; i++)` where `C.length` equals `B.length`, iterating from 0 to m‑1 and appending one character per index, thus producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if(C[i] <= B[i])` and appends `1` for true and `0` for false, matching the required comparison and output.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences in C, compares each count to B[i] with a single pass over A and B, and builds the binary string in O(n+m) without using any forbidden substrings.

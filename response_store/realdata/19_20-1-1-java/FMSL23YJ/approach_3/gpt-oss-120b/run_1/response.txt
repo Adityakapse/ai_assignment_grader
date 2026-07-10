@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with two parameters and returns an int, providing an iterative Euclidean loop.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop terminates with `while (b != 0);`, correctly stopping when the remainder becomes zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: Inside the loop the code computes `rem = a % b; a = b; b = rem;`, which properly reduces the problem each iteration.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function returns `(a * b) / gcd(a, b)` (after handling zero inputs), matching the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The `gcd` implementation crashes when the second argument `b` is zero because it performs `a % b`, so it fails for inputs like `gcd(5,0)`.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive inputs the `lcm` function uses the correct formula and relies on a working gcd for those cases, yielding correct LCM results.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never creates a separate counting array initialized to zero; it reuses a cloned B and decrements its entries, so no zero‑initialized frequency array of size max(A)+1 is allocated.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The code loops over A, but it decrements B[A[n]] instead of incrementing a separate count array (e.g., C[A[n]]++), so it does not correctly accumulate frequencies as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop uses `for (int m = 0; m < B.length; m++)`, iterating from 0 to `B.length‑1` and appending one character per index, yielding a binary string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution subtracts the occurrence count from B and then appends '1' when the resulting value is ≥ 0 (meaning C[i] ≤ B[i]) and '0' otherwise, correctly reflecting the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly decrements B for each occurrence in A and then maps non‑negative values to ‘1’ and negatives to ‘0’, producing the right binary string in O(n+m) without using any forbidden substrings.

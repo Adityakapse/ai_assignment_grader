@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a recognizable quicksort algorithm, selecting a pivot and making recursive calls on the left and right sub‑arrays.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Recursion is only performed when the sub‑array length is greater than one (pivot‑start > 1 or end‑pivot > 1), so the algorithm stops for size 0 or 1 sub‑arrays.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition loop moves the pivot around but does not reliably place all smaller elements to its left and larger ones to its right, so the partition may be incorrect for some inputs.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: A random index is chosen with Math.random() and swapped to the start before partitioning, providing the required randomisation.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code contains the prohibited substring “sort” in the method name “quicksort”, and because the partition step is flawed the array is not guaranteed to be sorted for all valid inputs.

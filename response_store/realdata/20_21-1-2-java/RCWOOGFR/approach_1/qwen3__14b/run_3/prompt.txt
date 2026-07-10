@@ -1,0 +1,102 @@
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+public int [] solution(int arr[]) {
+        return quicksort(arr, 0, arr.length-1);
+    }
+    
+    private int [] quicksort(int[] arr, int start, int end) {
+        int pivot = (int)(Math.random()*(double)(end - start+1))+start;
+        pivot = tausche(arr, pivot, start);
+        
+        int vergleich = end;
+        
+        while (pivot != vergleich)
+        {
+            if (pivot < vergleich)
+            {
+                if (arr[pivot] <= arr[vergleich]) {
+                    vergleich--;
+                }
+                else {
+                    int index = pivot;
+                    pivot = tausche(arr, pivot, vergleich);
+                    vergleich = index;
+                    vergleich++;
+                }
+                   
+            }
+            else {
+
+                if (arr[pivot] > arr[vergleich]) {
+                    vergleich++;
+                }
+                else {
+                    int index = pivot;
+                    pivot = tausche(arr, pivot, vergleich);
+                    vergleich = index;
+                    vergleich--;
+                }
+                
+            }
+            
+        }
+       if (pivot-start > 1){
+           quicksort(arr, start, pivot-1);
+       }
+       if (end-pivot > 1) {
+           quicksort(arr, pivot+1, end);
+       }
+        
+                
+        return arr;
+    }
+
+    private int tausche(int[] arr, int pivot, int index)
+    {
+        int tausch = arr[pivot];
+        arr[pivot] = arr[index];
+        arr[index] = tausch;
+        return index;
+    }
+
+RUBRIC:
+Point 1 — Algorithm structure (valid range: 0–20)
+  A recognisable O(n log n) sorting algorithm is implemented with the correct recursive or iterative structure: divide-and-conquer (merge sort, quicksort) or heap-based.
+
+Point 2 — Base / termination case (valid range: 0–15)
+  The algorithm correctly stops when the subarray has length 0 or 1 (already sorted), preventing infinite recursion.
+
+Point 3 — Core sorting operation (valid range: 0–25)
+  The central operation that establishes order is correctly implemented: partition for quicksort (pivot placed correctly, smaller elements left, larger right), or merge for merge sort (two sorted halves merged in order).
+
+Point 4 — Randomisation or worst-case O(n log n) guarantee (valid range: 0–15)
+  If using quicksort, a random pivot is selected using the random library before each partition. Not required for merge sort or heap sort.
+
+Point 5 — Overall correctness (valid range: 0–25)
+  The method returns the array sorted in ascending order for all valid inputs, without using 'sort' or 'numpy' as substrings.

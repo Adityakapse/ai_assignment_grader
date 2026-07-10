@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution creates `newB` by cloning `B` and decrements it, but it never allocates a zero‑initialized counting array of size ≥ max(A)+1, so the counting array is incorrectly initialized with B’s capacities.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: Although the code loops over A, it decrements the cloned B array (newB[kategorie]--) instead of incrementing a separate count array C[a]++, so it does not correctly accumulate frequencies of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates `i` from 0 up to `newB.length‑1` (where `newB` is a clone of `B`), thus producing a binary string of exactly length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements a copy of B for each occurrence in A and then appends '1' when the resulting value is non‑negative (i.e., count ≤ capacity) and '0' when it is negative, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution clones B, decrements counts for each category in A, and then outputs 0 when the resulting value is negative, correctly implementing the required check in O(n + m) without forbidden substrings.

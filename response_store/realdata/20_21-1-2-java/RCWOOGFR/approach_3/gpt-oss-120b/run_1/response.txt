@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a recognisable quicksort with recursive calls on both left and right sub‑arrays, matching the divide‑and‑conquer pattern expected for O(n log n) sorting.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The recursion stops only when the sub‑array size is greater than 1 (using `pivot‑start > 1` and `end‑pivot > 1`), which skips the case of two‑element sub‑arrays and may leave them unsorted.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The partition loop attempts to move the pivot and swap elements, but the logic does not guarantee that all elements smaller than the pivot end up left of it and larger ones right, leading to potential incorrect ordering.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: A random pivot index is chosen with `Math.random()` and swapped to the start before partitioning, satisfying the randomisation requirement for quicksort.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Because the partition step is flawed and two‑element sub‑arrays are not handled, the method may return an unsorted array for many inputs, although it avoids using the prohibited substrings.

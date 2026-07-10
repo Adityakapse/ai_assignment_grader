@@ -1,0 +1,97 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a complete merge sort structure with recursive division into left and right subarrays, followed by a proper merge step that combines sorted subarrays, matching the required O(n log n) divide-and-conquer pattern.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The function 'mergeZort' correctly terminates when the subarray length is less than 2 (n < 2), ensuring no further recursion occurs for 0- or 1-element subarrays, which are trivially sorted.
+
+POINT_ID: 3
+The student's implementation of merge sort is **correct** and satisfies the rubric point regarding the core sorting operation. Here's a structured breakdown of the analysis:
+
+---
+
+### **1. Understanding the Rubric Point**
+The rubric specifies that, for merge sort, the **merge** operation must correctly **interleave two sorted subarrays into one sorted array**. This is the **core sorting operation** that ensures the algorithm's correctness and efficiency (O(n log n)).
+
+---
+
+### **2. Merge Function Analysis**
+The merge function in the student's code is:
+
+```java
+void merge(int[] a, int[] l, int[] r, int left, int right) {
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        } else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}
+```
+
+#### **Key Observations:**
+- **Parameters:**
+  - `a`: the original array to be modified.
+  - `l` and `r`: the two sorted subarrays to be merged.
+  - `left`: the length of `l`.
+  - `right`: the length of `r`.
+
+- **Indices:**
+  - `i` and `j` are initialized to 0, iterating through `l` and `r` respectively.
+  - `k` is the index in the original array `a` where the merged elements are placed.
+
+- **Loop Logic:**
+  - The `while` loop merges elements from `l` and `r` into `a` in sorted order.
+  - After exhausting one subarray, the remaining elements from the other are added directly.
+
+#### **Correctness:**
+- The function correctly merges two sorted arrays (`l` and `r`) into a single sorted array (`a`).
+- This is the **essential operation** of merge sort and is executed correctly.
+
+---
+
+### **3. Recursion and Array Splitting**
+In the `mergeZort` function, the original array is split into two halves (`l` and `r`) and recursively sorted. After sorting, the `merge` function is called to combine the sorted halves back into the original array `a`.
+
+#### **Example:**
+- Input: `[5, 4, 3, 2, 1]`
+- Split into `l = [5, 4]`, `r = [3, 2, 1]`
+- Recursively sort `l` and `r` → `l = [4, 5]`, `r = [1, 2, 3]`
+- Merge to get `[1, 2, 3, 4, 5]`
+
+This process is executed correctly and efficiently.
+
+---
+
+### **4. Efficiency and Correctness**
+- **Time Complexity:** The merge operation is O(n), and the recursive splitting results in O(n log n) overall.
+- **Space Complexity:** The algorithm uses O(n) additional space for temporary arrays, which is standard for merge sort.
+
+---
+
+### **5. Conclusion**
+The student's code **correctly implements the merge operation**, which is the **core sorting operation** for merge sort. The merge function is **logically and structurally sound**, ensuring that the algorithm behaves as intended.
+
+**Therefore, the code meets the rubric point regarding the core sorting operation.** ✅
+
+---
+
+### **Final Answer**
+The code **correctly implements the merge operation**, which is the **core sorting operation** for merge sort, and thus satisfies the rubric point.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implemented merge sort, which has a guaranteed O(n log n) worst-case runtime, thus meeting the requirement without needing randomization.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's code implements a merge sort algorithm that correctly sorts the array in ascending order without using 'sort' or 'numpy', meeting all requirements for correctness and runtime efficiency.

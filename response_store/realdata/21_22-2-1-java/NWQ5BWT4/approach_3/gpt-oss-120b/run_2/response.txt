@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length];`, giving a counting array sized to B.length (which is at least max(A)+1) and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: In the first loop it executes `C[A[i]] += 1;` for each element of A (after range check), correctly counting the occurrences of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates `for(int i=0; i < B.length; i++)`, covering indices 0 through B.length‑1 and thus producing a string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the code appends `"1"` when `C[i] <= B[i]` and `"0"` otherwise, matching the required comparison logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs two linear passes (O(n+m)), contains no forbidden substrings, and returns the correctly built binary string for all inputs within the given constraints.

@@ -1,0 +1,98 @@
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+int [] solution(int arr[]) {
+    if (arr.length == 1)
+            return arr;
+
+    int half = arr.length / 2;
+    int[] firstArr = new int[half];
+    int [] secondArr = new int[arr.length - half];
+
+    for (int i = 0; i < half; i++) firstArr[i] = arr[i];
+    for (int i = 0; i < arr.length - half; i++) secondArr[i] = arr[half + i];
+
+    firstArr = solution(firstArr);
+    secondArr = solution(secondArr);
+
+    return merge(firstArr, secondArr);
+}
+
+int[] merge(int[] firstArr, int[] secondArr) {
+    int[] result = new int[firstArr.length + secondArr.length];
+
+    int i = 0, j = 0;
+
+    for (int k = 0; k < result.length; k++) {
+        if (j + 1 > secondArr.length || (i < firstArr.length && firstArr[i] <= secondArr[j])) {
+            result[k] = firstArr[i];
+            i++;
+        } else {
+            result[k] = secondArr[j];
+            j++;
+        }
+    }
+
+    return result;
+}
+
+RUBRIC:
+Point 1 — Algorithm structure
+  A recognisable O(n log n) sorting algorithm is implemented with the correct recursive or iterative structure: divide-and-conquer (merge sort, quicksort) or heap-based.
+  Buckets:
+    - Wrong (0 marks): No recognisable sorting algorithm structure is present; the method returns the input unchanged or implements an O(n^2) algorithm (e.g., bubble sort, insertion sort) without any divide-and-conquer structure.
+    - Semi (10 marks): A divide-and-conquer structure is recognisable but incomplete: for example, recursive calls are present but do not cover the full array, or the algorithm only has one level of recursion.
+    - Correct (20 marks): A complete recursive or iterative O(n log n) structure is present: for quicksort/merge sort, recursive calls are made on both subproblems; for heap sort, the correct heapify and extraction loop is present.
+
+Point 2 — Base / termination case
+  The algorithm correctly stops when the subarray has length 0 or 1 (already sorted), preventing infinite recursion.
+  Buckets:
+    - Wrong (0 marks): No termination condition; the algorithm recurses or loops indefinitely regardless of array size.
+    - Semi (8 marks): A termination condition is present but uses an incorrect bound (e.g., l < r is written as l <= r, causing an extra level of recursion on single-element subarrays).
+    - Correct (15 marks): The algorithm stops when the subarray has 0 or 1 elements (e.g., l < r for quicksort/merge sort, or length <= 1 for recursive merge sort), preventing unnecessary or infinite recursion.
+
+Point 3 — Core sorting operation
+  The central operation that establishes order is correctly implemented: partition for quicksort (pivot placed correctly, smaller elements left, larger right), or merge for merge sort (two sorted halves merged in order).
+  Buckets:
+    - Wrong (0 marks): The core operation is absent or does not rearrange elements: for quicksort, no partition is performed; for merge sort, no merge step combines the sorted halves.
+    - Semi (12 marks): The core operation is present but partially incorrect: for quicksort, the pivot is placed but not all elements are correctly partitioned around it; for merge sort, the merge runs but produces an incorrect order or misses some elements.
+    - Correct (25 marks): The core operation correctly establishes order: quicksort partition places the pivot at its final position with all smaller elements to the left and all larger to the right; merge sort merge correctly interleaves two sorted subarrays into one sorted array.
+
+Point 4 — Randomisation or worst-case O(n log n) guarantee
+  If using quicksort, a random pivot is selected using the random library before each partition. Not required for merge sort or heap sort.
+  Buckets:
+    - Wrong (0 marks): Student uses quicksort (average-case O(n log n)) but selects a fixed pivot (e.g., always last element) without any randomisation, giving no guarantee against worst-case O(n^2) inputs.
+    - Semi (8 marks): The random library is imported but pivot selection is not randomised (e.g., random is imported but unused), or randomisation is applied after partitioning rather than before.
+    - Correct (15 marks): A random index within the subarray is selected using the random library and swapped to the pivot position before partitioning; or the algorithm is merge sort or heap sort with guaranteed O(n log n) worst-case (randomisation not required).
+
+Point 5 — Overall correctness
+  The method returns the array sorted in ascending order for all valid inputs, without using 'sort' or 'numpy' as substrings.
+  Buckets:
+    - Wrong (0 marks): Array is not sorted for most inputs, or the submission contains 'sort' or 'numpy' as substrings.
+    - Semi (12 marks): Array is sorted correctly for small or already-partially-ordered inputs but fails on larger random inputs, or sorts in descending instead of ascending order.
+    - Correct (25 marks): Array is returned sorted in ascending order for all valid inputs; 'sort' and 'numpy' do not appear as substrings.

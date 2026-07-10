@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a counting array sized at least max(A)+1 and Java initializes it to zero, satisfying the requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over A and uses `C[A[i]] = C[A[i]] + 1;` (equivalent to `C[A[i]]++`), correctly accumulating the count for each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code’s output loop uses `for (int j = 0; j < B.length; j++)`, correctly iterating from 0 to |B|‑1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution checks `if (C[j] <= B[j])` and appends `1` when true and `0` when false, correctly reflecting whether each category fits within its capacity.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution counts occurrences in a single pass, compares each count to B in another linear pass, appends ‘1’ or ‘0’ correctly, runs in O(n+m) and contains no forbidden substrings.

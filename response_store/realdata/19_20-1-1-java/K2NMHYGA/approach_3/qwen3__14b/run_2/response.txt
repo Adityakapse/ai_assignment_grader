@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The gcd function has the correct signature (two int parameters, returns an int) and uses an iterative loop structure with a clear reduction step.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop terminates correctly when a and b become equal, at which point the shared value is the GCD.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The reduction step uses repeated subtraction instead of modulo, which is not equivalent to the canonical Euclidean algorithm but still achieves the correct result through a different mechanism.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function uses the correct formula (a*b)/gcd(a,b) with the proper parameter structure and return type.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function fails for inputs with zero (e.g., gcd(0, 5) enters an infinite loop), but works correctly for other positive integers.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The lcm function is structurally correct, but will fail for inputs where the gcd function encounters zero due to the infinite loop in the student's gcd implementation.

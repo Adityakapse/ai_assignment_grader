@@ -1,0 +1,86 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student implemented the gcd function using a loop that correctly computes the GCD via the Euclidean algorithm, which is structurally valid even though it differs from the sample's recursive approach.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The GCD function correctly terminates when the remainder becomes zero, as the loop exits when b is zero, which aligns with the Euclidean algorithm's termination condition.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's iterative GCD implementation correctly updates a and b with the remainder in each loop iteration, ensuring progressive reduction toward termination as required.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's lcm function correctly implements the formula (a * b) / gcd(a, b) with proper parameter handling and return type, matching the required structure and mathematical definition.
+
+POINT_ID: 5
+The student's implementation of the `gcd` function is **partially correct**, but it contains **critical errors** that prevent it from being fully correct for all valid non-negative integer inputs, as required by the rubric point. Here's a detailed breakdown of the evaluation:
+
+---
+
+### ✅ **Correct Cases**
+
+The student's code correctly computes the GCD for inputs where **both numbers are positive** and **not zero**. For example:
+- `gcd(4, 6)` → 2
+- `gcd(12, 18)` → 6
+- `gcd(7, 14)` → 7
+
+These cases are handled correctly by the loop logic, which mirrors the Euclidean algorithm.
+
+---
+
+### ❌ **Incorrect Cases**
+
+1. **Case: One input is zero**  
+   - If the function is called as `gcd(0, 5)` → returns **5** (correct).
+   - If the function is called as `gcd(5, 0)` → the loop computes `5 % 0`, which is **undefined** and causes the program to crash.
+
+   **Issue**: This is a **major flaw**, as the function is not robust to such inputs. While the `lcm` function may prevent this case from being triggered in practice, the rubric point explicitly requires the `gcd` function to be correct for **all valid non-negative inputs**, including when one of the inputs is zero.
+
+2. **Case: Both inputs are zero**  
+   - `gcd(0, 0)` → The loop computes `0 % 0`, which is **undefined** and causes a crash.
+
+   **Issue**: This is another **critical failure**, as the function is not defined for this case, and the student's code does not handle it gracefully.
+
+---
+
+### 🧠 **Why This Matters**
+
+- The **rubric** explicitly states that the `gcd` function must return the correct value for **all valid non-negative integer inputs**.
+- The student's code fails to handle:
+  - `gcd(5, 0)` → crash
+  - `gcd(0, 5)` → correct
+  - `gcd(0, 0)` → crash
+
+- These are **not edge cases** but **required behaviors** for the function to be considered fully correct.
+
+---
+
+### 📊 **Scoring Justification**
+
+- **Maximum Points for Rubric Point**: 17
+- **Points Deducted for Failures**:
+  - **1 point** for `gcd(5, 0)` → crash
+  - **1 point** for `gcd(0, 0)` → crash
+
+- **Final Score**: **15/17**
+
+---
+
+### ✅ **Recommendation for Improvement**
+
+To fully satisfy the rubric point, the student should:
+1. Add **input validation** in the `gcd` function to handle cases where one or both inputs are zero.
+2. Return `0` for `gcd(0, 0)` (or raise an exception, depending on the intended behavior).
+3. Ensure that the function **does not crash** for any valid non-negative inputs.
+
+---
+
+### 📌 **Conclusion**
+
+The student's code is **mostly correct** and implements a solid algorithm for computing the GCD. However, it **fails to handle edge cases** where one or both inputs are zero, which are required by the rubric. A **score of 15/17** is appropriate for this implementation.
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: The student's solution correctly implements both GCD and LCM functions, with the LCM function properly handling positive integer inputs using the formula (a*b)/gcd(a,b), and the GCD function correctly implementing the Euclidean algorithm iteratively.

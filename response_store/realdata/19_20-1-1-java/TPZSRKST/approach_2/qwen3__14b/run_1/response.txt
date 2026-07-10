@@ -1,0 +1,46 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student implemented a correct GCD function named 'ggt' using an iterative approach with modulo operations, which structurally aligns with the Euclidean algorithm even though the implementation differs from the sample's recursive style.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The student's iterative GCD function correctly terminates when either a or b becomes zero, which aligns with the rubric's requirement for proper loop termination.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The student's iterative gcd implementation correctly reduces the problem size in each iteration by alternating modulo operations, ensuring progress toward termination similar to the standard Euclidean algorithm.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The student's LCM function correctly implements the formula (a*b)/ggt(a,b) with appropriate parameter types and return type, matching the required structure and formula as specified in the rubric.
+
+POINT_ID: 5
+The student's implementation of the `ggt` function (which is a variant of the Euclidean algorithm) is **correct for non-zero positive integers**. However, there are **edge cases**—specifically, when one or both inputs are `0`—that the function does **not handle properly**:
+
+### 1. **Case: One input is 0**
+- If `a = 0` and `b = 5`, the function correctly returns `5` (since GCD(0, 5) = 5).
+- If `a = 5` and `b = 0`, the function will compute `5 % 0`, which is **undefined** (and may cause a runtime error or crash).
+
+### 2. **Case: Both inputs are 0**
+- The function would enter an infinite loop, as `0 % 0` is undefined and would not trigger any of the `if` statements.
+
+---
+
+### **Why the Mark Should Be Less Than 17**
+The rubric point explicitly states that the function should be correct **"for all valid non-negative integer inputs"**. Since the function **fails to handle the case where one or both inputs are zero**, it is **not fully correct** across all valid inputs.
+
+However, the sample code provided in the problem also has the **same issue** when inputs are zero. This suggests that the **problem may implicitly assume that inputs are positive integers**, and the student's function is correct for those cases.
+
+---
+
+### **Final Evaluation**
+- **Correct for all positive integers:** ✅
+- **Correct for zero inputs:** ❌ (fails in cases where one or both inputs are zero)
+- **Edge cases (0, 0):** ❌ (infinite loop)
+
+### **Score: 14/17**
+The student's function is **mostly correct** for the intended use case (positive integers), but it **fails to handle critical edge cases** involving zero, which reduces the score slightly.
+
+POINT_ID: 6
+MARKS: 18
+FEEDBACK: The student's solution correctly implements the LCM using the formula (a*b)/gcd(a,b) and handles edge cases like zero inputs by returning 1, though the GCD function uses a different name (ggt) and slightly different logic than the sample solution.

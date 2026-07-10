@@ -1,0 +1,25 @@
+POINT_ID: 1
+MARKS: 15
+FEEDBACK: The student provides a `gcd` function with the swap for a<b, remainder calculation, and a recursive return, matching the required structure.
+
+POINT_ID: 2
+MARKS: 15
+FEEDBACK: The base case `if (r == 0) return b;` correctly terminates the recursion when the remainder is zero.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The recursive call `return gcd(r, b);` reduces the problem size (remainder is smaller than b) and thus makes progress toward termination.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The `lcm` function is defined, takes two `int` parameters, and returns `(a * b) / gcd(a, b)`, exactly the required formula.
+
+POINT_ID: 5
+MARKS: 8
+FEEDBACK: While the `gcd` implementation works for positive integers, it crashes for inputs where either argument is zero (division by zero in `a % b` after swapping), so it is not correct for all non‑negative integers.
+
+POINT_ID: 6
+MARKS: 12
+FEEDBACK: The `lcm` function yields correct results for positive inputs, but because it relies on the faulty `gcd`, it fails (or causes division by zero) when either argument is zero, so it is not fully correct for all valid inputs.
+
+TOTAL: 85

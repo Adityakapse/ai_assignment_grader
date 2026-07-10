@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which provides a counting array of size |B| (≥ max(A)+1) and Java initializes it to zero, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The loop iterates over every element of A and correctly increments C[A[i]] (after confirming the index is within bounds), thus accurately counting frequencies.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your output loop uses `for(int i = 0; i < B.length; ++i)`, iterating from 0 to B.length‑1 and appending one character each time, thus producing a binary string of exactly length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The loop correctly checks `C[i] <= B[i]` and appends a 1 (as “1”) when true and a 0 otherwise, matching the required output logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly counts occurrences, compares them to B[i] using a StringBuilder, runs in O(n+m), and avoids the forbidden substrings, producing the required binary string for all valid inputs.

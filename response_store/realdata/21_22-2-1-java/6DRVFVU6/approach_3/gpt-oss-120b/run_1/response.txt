@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length];`, which is sized to at least |B| and thus covers all possible values of A, and Java initializes the array to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for(int i=0; i < A.length; i++) { C[A[i]] += 1; }` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for(int i=0; i < B.length; i++)`, iterating exactly over indices 0 to |B|-1 and building a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the output loop the condition `if (C[i] <= B[i]) sb.append("1"); else sb.append("0");` correctly appends '1' when the count fits and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs two linear passes (O(n+m)), respects all constraints, contains no forbidden substrings, and returns the correct binary string for valid inputs.

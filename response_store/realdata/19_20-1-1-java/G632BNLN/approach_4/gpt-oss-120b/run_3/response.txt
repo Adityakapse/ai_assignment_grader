@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The submission only defines an lcm function and embeds GCD-like logic inside it, but does not provide a separate gcd function with the required two‑parameter signature.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop uses `while (r > 0)` and stops when the remainder becomes zero, providing a proper termination condition for the iterative GCD computation.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop computes `r = x % y` and then sets `y = r`, repeatedly reducing `y` via the modulo operation, so each iteration makes progress toward the base case and correctly yields the GCD.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The function returns (a*b)/y, where y is computed via an Euclidean‑style loop to obtain the GCD, thus using the correct LCM formula structure.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code never defines a separate gcd function and its internal GCD logic crashes on inputs like (0, n) due to a division‑by‑zero, so it does not correctly compute gcd for all valid inputs.
+
+POINT_ID: 6
+BUCKET: Wrong
+FEEDBACK: The Euclidean loop never updates the dividend (x), so the computed gcd is incorrect for many pairs (e.g., lcm(14, 9) yields the wrong result), leading to incorrect LCM outputs.

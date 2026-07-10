@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a quicksort‑like divide‑and‑conquer algorithm with recursive calls on both the left and right sub‑arrays (sortPartition on beg…il‑1 and il…end).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function stops recursion when the subarray length is 0 or 1 (the `else` block handles `end‑beg <= 1` and the `isSorted` check returns immediately for already sorted ranges).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The partition loop distributes elements smaller than the pivot to the left side and larger ones to the right, then places the pivot at index il, correctly establishing the ordering for each recursive step.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: Although quicksort is used, the pivot is always chosen as the middle index and no random library is employed, so the required randomisation for worst‑case O(n log n) guarantee is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The source code contains the substring “sort” in method and variable names (e.g., `sortPartition`, `sort` array), violating the rule that the solution must not include “sort” or “numpy”.

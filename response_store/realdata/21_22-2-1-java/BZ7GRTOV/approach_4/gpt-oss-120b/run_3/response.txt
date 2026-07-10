@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The solution allocates `noetigeKapazitaet` using `Math.max(A.length, B.length)` and initializes it to zero, but the size is based on array lengths instead of the maximum category value, which can cause out‑of‑bounds errors for valid inputs.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates over A using `for(int geschenk : A)` and increments `noetigeKapazitaet[geschenk]` with `+= 1`, properly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop `for(int i = 0; i < B.length; i++)` correctly iterates from 0 up to `B.length‑1`, generating a binary string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop checks `if(noetigeKapazitaet[i] <= B[i])` and appends "1" for true and "0" for false, correctly reflecting whether each category fits within its capacity.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly counts occurrences in `noetigeKapazitaet` and builds the binary string in linear passes over A and B, without using any forbidden substrings.

@@ -1,0 +1,114 @@
+POINT_ID: 1
+The provided code contains a critical flaw in its implementation of the merge step of the merge sort algorithm. Specifically, the **merge function is incorrectly merging the sorted subarrays into the original array**, **starting at index 0**, rather than at the correct offset within the original array. This results in an incorrect and potentially unsorted output array.
+
+---
+
+### ✅ **Correct Merge Step Overview**
+
+In the merge sort algorithm, the merge step works as follows:
+
+1. **Split the array** into two halves (left and right).
+2. **Recursively sort** each half.
+3. **Merge** the two sorted halves into a single sorted array.
+
+The **merge step** must **place the elements from the sorted left and right subarrays into the correct positions** in the original array, **not overwrite the entire array** from index 0.
+
+---
+
+### ❌ **Flaw in the Current Code**
+
+The current merge function is written as:
+
+```python
+def merge(a, l, r):
+    k = 0
+    for i in range(len(l)):
+        a[k] = l[i]
+        k += 1
+    for j in range(len(r)):
+        a[k] = r[j]
+        k += 1
+```
+
+This code assumes the entire original array `a` is being overwritten, starting from index `0`, which **ignores the original positions** of the left and right subarrays. As a result, the merge operation is **not aligning the sorted subarrays into their correct positions** in the original array.
+
+---
+
+### ✅ **Corrected Merge Function**
+
+To fix this, the merge function must know the **starting index** of the left and right subarrays in the original array. Here's a corrected version:
+
+```python
+def merge(a, left, right, start_left, start_right):
+    i = 0  # Index for left subarray
+    j = 0  # Index for right subarray
+    k = start_left  # Index in the original array where merging starts
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            a[k] = left[i]
+            i += 1
+        else:
+            a[k] = right[j]
+            j += 1
+        k += 1
+
+    # Copy remaining elements from left
+    while i < len(left):
+        a[k] = left[i]
+        i += 1
+        k += 1
+
+    # Copy remaining elements from right
+    while j < len(right):
+        a[k] = right[j]
+        j += 1
+        k += 1
+```
+
+> **Usage**: This function should be called with the original array and the starting indices of the left and right subarrays.
+
+---
+
+### ✅ **Example of Correct Usage**
+
+```python
+def merge_sort(a, start, end):
+    if start < end:
+        mid = (start + end) // 2
+        merge_sort(a, start, mid)
+        merge_sort(a, mid + 1, end)
+        left = a[start:mid + 1]
+        right = a[mid + 1:end + 1]
+        merge(a, left, right, start, mid + 1)
+```
+
+---
+
+### 📌 **Summary of Fixes and Key Points**
+
+- **Problem**: The merge function was incorrectly overwriting the entire array from index 0.
+- **Fix**: The merge function should **know the correct starting index** of the left and right subarrays in the original array.
+- **Impact**: Without this fix, the merge sort algorithm would not correctly sort the array.
+
+---
+
+### ✅ **Final Note**
+
+This is a common pitfall when implementing merge sort manually. Always ensure that the **merge step respects the original positions** of the subarrays in the main array. This ensures the algorithm behaves as expected and completes in **O(n log n)** time complexity.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The base case correctly checks if the subarray length is less than 2 (n < 2), ensuring recursion terminates for 0- or 1-element subarrays which are already sorted.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The merge function correctly interleaves two sorted subarrays into one sorted array by comparing elements from l and r and placing them in order into the original array a.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student implemented a merge sort algorithm, which has a guaranteed O(n log n) worst-case runtime, fulfilling the rubric's requirement without needing randomisation.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student implemented a merge sort algorithm that correctly sorts the array in ascending order without using 'sort' or 'numpy', meeting all requirements for correctness.

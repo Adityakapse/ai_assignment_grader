@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int n, int m)` with two parameters, returns an int, and includes a recursive call, satisfying the required signature and structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function returns `m` when `r` (the remainder) is zero (`r > 0 ? … : m`), providing the proper termination condition for the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step computes `int r = n % m;` and recurses with `gcd(m, r)`, correctly reducing the problem toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined with two int parameters and returns `(a*b)/gcd(a,b)`, matching the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: Although the algorithm is correct for typical inputs, the `assert m > 0` prevents calls like `gcd(a,0)`, so it does not handle all valid non‑negative cases.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For positive integer inputs, `lcm` uses the correct formula and relies on the (mostly correct) `gcd`, yielding the proper least common multiple.

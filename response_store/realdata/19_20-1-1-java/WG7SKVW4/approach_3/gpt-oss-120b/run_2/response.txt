@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with the proper signature and includes a recursive call, matching the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function terminates when `r == 0` and returns `b`, which is a valid base case for the Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After computing `r = a % b`, the recursive call `gcd(r, b)` (preceded by a swap to ensure `a >= b`) correctly reduces the problem size.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined with two `int` parameters and returns `(a * b) / gcd(a, b)`, exactly the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the implementation works for most positive inputs, it crashes when either argument is zero (e.g., `gcd(0, n)` causes a division‑by‑zero), so it is not correct for all non‑negative cases.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, `lcm` uses the correct formula and, given the working gcd for those inputs, returns the proper least common multiple.

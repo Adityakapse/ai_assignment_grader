@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code defines `int ggt(int a, int b)` with two int parameters, returns an int, and implements a recursive Euclidean algorithm, matching the required gcd structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The ggt function computes the remainder and returns b when r == 0, correctly providing a terminating base case for the recursive Euclidean algorithm.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The function swaps to ensure a ≥ b, computes r = a % b, and recursively calls ggt(r, b), which strictly reduces the arguments toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined, takes two ints, calls ggt (the gcd) and returns (a*b)/t, which matches the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function correctly computes the GCD for typical positive numbers, but it does not handle cases where either argument is zero (it performs a % 0), causing a runtime error for inputs like gcd(0, n).
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your lcm function correctly computes (a*b)/t using the ggt function, which implements the Euclidean algorithm properly, so it returns the correct LCM for all positive inputs.

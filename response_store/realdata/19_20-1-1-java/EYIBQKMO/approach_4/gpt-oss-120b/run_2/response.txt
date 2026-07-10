@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The code only contains an lcm function and computes the GCD inline with a loop; it does not define a separate gcd function as required.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The for‑loop runs while i ≤ n1 && i ≤ n2, guaranteeing it stops after checking all possible divisors and correctly yields the GCD, so the termination condition is complete.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The solution finds the GCD by iterating over all i up to the smaller number and checking divisibility, without using a modulo‑based reduction step like gcd(b, a % b).
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The function defines lcm(int a, int b), computes gcd via a loop, and returns (n1 * n2) / gcd, which follows the required (a * b) / gcd(a, b) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The loop correctly finds the greatest common divisor for positive numbers, but when either argument is zero the loop never runs and gcd stays 1, so edge cases like gcd(0, n) are handled incorrectly.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The function computes the greatest common divisor by iterating up to the smaller number and then returns (n1 * n2)/gcd, which yields the correct LCM for all positive integer inputs.

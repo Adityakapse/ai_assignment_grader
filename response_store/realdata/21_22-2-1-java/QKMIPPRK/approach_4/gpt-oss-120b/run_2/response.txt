@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] Ai = new int[B.length];`, which provides a zero‑initialized counting array sized at least |B| ≥ max(A)+1, satisfying the requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over each element k in A and does Ai[k] += 1, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for(int j=0; j<B.length; j++)` which iterates from 0 to |B|‑1, generating a binary string of length m as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if(Ai[j] > B[j])` and appends `0` otherwise `1`, correctly outputting ‘1’ when the count is ≤ capacity and ‘0’ when it exceeds it.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The implementation correctly computes the binary string in O(n+m), but it contains the forbidden substring “sort” in the comment, which breaches the problem constraints.

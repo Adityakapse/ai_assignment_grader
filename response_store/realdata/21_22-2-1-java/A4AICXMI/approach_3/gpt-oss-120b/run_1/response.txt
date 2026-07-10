@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length];`, which provides a counting array of size |B| (≥ max(A)+1) and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: Inside the loop over `A`, the statement `++C[A[i]];` correctly increments the count for each category value.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for(int i = 0; i < B.length; ++i)`, iterating exactly from 0 to |B|-1 and producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if (C[i] <= B[i] ...)` appends `1` (via `str.append(1)`) when the count fits and `0` otherwise, matching the required logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: For all valid inputs the method returns the correct binary string in O(n+m) time and contains no forbidden substrings.

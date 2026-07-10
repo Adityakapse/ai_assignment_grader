@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length];`, which provides a counting array of size at least |B| (≥ max(A)+1) and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It sets `C[A[0]] = 1` and then iterates `for (int i = 1; i < A.length; i++) C[A[i]]++;`, correctly incrementing the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop `for (int i = 0; i < C.length; i++)` iterates from 0 to |B|‑1 (since `C.length == B.length`), producing a string of exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if (C[i] <= B[i]) result.append(1); else result.append(0);` appends ‘1’ when the count fits and ‘0’ otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs two linear passes (O(n + m)), contains no forbidden substrings, and returns the correct binary string for all valid inputs.

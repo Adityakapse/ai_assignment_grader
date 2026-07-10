@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] c = new int[B.length];`, which provides a counting array of size at least max(A)+1 and is automatically zero‑initialized, satisfying the requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates over array A (`for(int a : A)`) and increments `c[a]++` for each element, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop iterates `i` from 0 up to `c.length` (which equals `B.length`), so it runs from 0 to |B|-1 and generates a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop correctly checks `if(c[i] <= B[i])` and appends `'1'` for fits and `'0'` otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code counts occurrences in an O(n) loop, builds the result in a single O(m) pass, avoids forbidden substrings, and correctly returns the binary string (e.g., using builder.substring(0) to produce the final output).

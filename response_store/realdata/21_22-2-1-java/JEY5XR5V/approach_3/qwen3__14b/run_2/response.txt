@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: No counting array is allocated; instead, the code clones B and decrements values in-place, which does not accumulate frequencies correctly.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code iterates over A but decrements newB[kategorie]-- instead of incrementing a counting array's elements, which fails to accumulate frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates from 0 to newB.length-1, producing a string of length m as required.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The code appends '0' when newB[i] < 0 (i.e., count > B[i]) but should append '1' when count <= B[i], which is the reverse of the correct condition.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The algorithm fails to count frequencies correctly and produces incorrect output for all inputs due to logical errors, despite having O(n + m) time complexity.

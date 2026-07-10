@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length];`, which is sized at least |B| and thus sufficient for all categories given max(A) ≤ |B|-1, and Java initializes it to zeros.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution sets `C[A[0]] = 1` and then loops `for (int i = 1; i < A.length; i++) C[A[i]]++;`, correctly incrementing the count for every element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for (int i = 0; i < C.length; i++)`, where `C.length` equals `B.length`, producing exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the loop it checks `if (C[i] <= B[i]) result.append(1); else result.append(0);`, appending “1” when the count fits and “0” otherwise, matching the required logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n+m) time, returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.

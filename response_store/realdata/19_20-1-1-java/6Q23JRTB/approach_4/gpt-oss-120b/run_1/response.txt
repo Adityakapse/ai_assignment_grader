@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a `gcd(int a, int b)` function with the proper two‑parameter signature and includes a recursive structure (base case `r == 0` and recursive call `gcd(r, b)`).
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The gcd function correctly computes the remainder r and returns b when r == 0, providing a proper base case that terminates the recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The gcd function swaps to ensure a ≥ b, computes r = a % b, and recursively calls gcd(r, b), which correctly reduces the arguments toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function computes mul = a * b (making it positive if needed) and returns mul / gcd(a, b), which correctly implements the (a * b) / gcd(a, b) formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function works for typical positive inputs but fails for edge cases like gcd(0, n) (it swaps and then attempts a modulo by zero), so it does not handle zero arguments correctly.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The lcm function computes the product (making it positive) and divides by the correctly implemented gcd, yielding the proper LCM for all positive integer inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates int[] C = new int[B.length]; which matches the required size (at least max(A)+1) and explicitly sets each entry to 0, satisfying the counting‑array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: It iterates over A with for(int i = 0; i < A.length; i++) and increments C[A[i]] via C[A[i]] += 1, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs for(int j = 0; j < C.length; j++) (C.length equals B.length), thus iterating from 0 to |B|‑1 and producing a string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The comparison if(C[j] > B[j]) appends "0" else "1", which correctly outputs '1' when C[j] ≤ B[j] and '0' otherwise.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation uses only linear passes, contains no forbidden substrings, and returns the correct binary string for all valid inputs.

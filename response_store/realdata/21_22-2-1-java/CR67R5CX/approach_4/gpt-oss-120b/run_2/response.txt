@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code reuses a clone of B as the counting array (d) instead of allocating a fresh zero‑initialized array, so while the size may be sufficient, it is not initialized to 0 as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop over A modifies the cloned B array (d) by decrementing entries instead of incrementing a separate count array, so it does not accumulate frequencies of categories at all.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates i from 0 to d.length‑1 (d is a clone of B), thus generating a binary string of exactly length m as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution decrements d[e] for each occurrence and then appends '1' when d[i] ≥ 0 (meaning C[i] ≤ B[i]) and '0' when d[i] < 0, correctly reflecting the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: Your code correctly decrements a copy of B by the occurrences in A and then outputs ‘1’ when the remaining value is non‑negative and ‘0’ otherwise, achieving O(n + m) without using any forbidden substrings.

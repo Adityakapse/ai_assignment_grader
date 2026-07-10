@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] tmp = new int[B.length];`, which has size at least |B| and is zero‑initialized, satisfying the required counting array size.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) { tmp[A[i]]++; }` correctly increments the count for each value in A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for (int i = 0; i < B.length; i++)`, iterating from 0 to |B|‑1 and producing exactly m characters.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The condition `if (tmp[i] <= B[i])` appends `"1"` otherwise `"0"`, matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs in O(n + m) time, returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.

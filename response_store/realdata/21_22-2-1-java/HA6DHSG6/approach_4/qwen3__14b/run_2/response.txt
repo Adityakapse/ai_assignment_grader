@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The student solution does not allocate a counting array; instead, it modifies the B array directly by decrementing values, which does not correctly track the frequency counts of categories in A.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The student's solution modifies B directly by decrementing B[A[n]] instead of counting frequencies in A. This approach does not accumulate the count of each category in A as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses "m < B.length" which correctly iterates from 0 to |B|-1 inclusive, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student correctly appends '1' when the count of category i in A is less than or equal to B[i], by decrementing B[i] for each occurrence in A and checking if the result is non-negative.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student's code correctly computes the count of each category in A by decrementing B's values, then checks if the adjusted B[i] is non-negative, which is equivalent to |A|_i ≤ B[i], and constructs the output string in O(n + m) time without forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which (given the constraint max(A) ≤ |B|‑1) provides a counting array of size at least max(A)+1 and Java initializes it to zero, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The code iterates over A with `for(int a: A) { C[a]++; }`, correctly incrementing C[a] for each element to count frequencies.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The for‑loop runs `i = 0; i < B.length; i++`, correctly iterating from 0 to |B|‑1 and appending one digit each time, producing a binary string of length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly appends "1" when B[i] ≥ C[i] (i.e., C[i] ≤ B[i]) and "0" otherwise, matching the required comparison and output characters.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly counts occurrences, compares them to B, builds the binary string in O(n+m) time, and avoids the forbidden substrings.

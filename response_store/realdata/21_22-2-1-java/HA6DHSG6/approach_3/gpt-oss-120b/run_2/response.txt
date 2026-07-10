@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution never allocates a separate counting array C; it reuses the cloned B array instead of creating a zero‑initialized array of size ≥ max(A)+1.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The loop over A modifies B by subtracting 1 (B[A[n]] = B[A[n]]‑1) rather than incrementing a counting array, so frequencies are not accumulated as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The second loop iterates `m` from 0 to `B.length‑1`, correctly producing a string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if (B[m] >= 0)` and appends 1 or 0 accordingly, which matches the intended rule `C[i] ≤ B[i]` → ‘1’, otherwise ‘0’.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method runs two linear passes (O(n+m)), returns the correct binary string for all valid inputs, and contains none of the forbidden substrings.

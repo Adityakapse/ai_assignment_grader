@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `int[] C = new int[B.length];` which, given the constraint max(A) ≤ B.length‑1, provides a counting array of size at least max(A)+1 and Java initializes it to zero.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The code loops through A and does `C[A[i]] += 1` (after a bounds check), correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop correctly uses `for (int i = 0; i < B.length; i++)`, iterating from 0 to |B|‑1 and thus matches the required bounds for producing a string of length m.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly checks `if (C[i] <= B[i])` and appends “1” otherwise “0”, matching the required comparison and output for each position.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly counts occurrences in C, compares each count to B[i], builds a length‑m binary string, runs in O(n+m), and avoids the forbidden substrings.

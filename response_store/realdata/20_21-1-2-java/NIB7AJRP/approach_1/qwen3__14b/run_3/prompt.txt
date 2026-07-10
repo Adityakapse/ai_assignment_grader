@@ -1,0 +1,91 @@
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+int [] solution(int arr[]) {
+    return mergesort(arr);
+}
+
+int[] mergesort(int[] array) {
+        if (array.length <= 1) {
+            return array;
+        }
+        else {
+            int p = (int) array.length / 2;
+            int[] left = Arrays.copyOfRange(array, 0, p );
+            int[] right = Arrays.copyOfRange(array, p, array.length);
+            left = mergesort(left);
+            right = mergesort(right);
+            return merge(left, right);
+        }
+    }
+
+ int[] merge(int[] left ,int[] right) {
+        int[] array = new int[left.length + right.length];
+        int counter = 0;
+        while (left.length > 0 && right.length > 0) {
+            if (left[0] <= right[0]) {
+                array[counter] = left[0];
+                counter++;
+                left = Arrays.copyOfRange(left, 1, left.length);
+            }
+            else {
+                array[counter] = right[0];
+                counter++;
+                right = Arrays.copyOfRange(right, 1, right.length);
+            }
+        } // while end
+        
+        while (left.length > 0) {
+            array[counter] = left[0];
+            counter++;
+            left = Arrays.copyOfRange(left, 1, left.length);    
+        } // while end
+        
+        while(right.length > 0) {
+            array[counter] = right[0];
+                counter++;
+                right = Arrays.copyOfRange(right, 1, right.length);    
+        }
+        return array;
+    }
+
+RUBRIC:
+Point 1 — Algorithm structure (valid range: 0–20)
+  A recognisable O(n log n) sorting algorithm is implemented with the correct recursive or iterative structure: divide-and-conquer (merge sort, quicksort) or heap-based.
+
+Point 2 — Base / termination case (valid range: 0–15)
+  The algorithm correctly stops when the subarray has length 0 or 1 (already sorted), preventing infinite recursion.
+
+Point 3 — Core sorting operation (valid range: 0–25)
+  The central operation that establishes order is correctly implemented: partition for quicksort (pivot placed correctly, smaller elements left, larger right), or merge for merge sort (two sorted halves merged in order).
+
+Point 4 — Randomisation or worst-case O(n log n) guarantee (valid range: 0–15)
+  If using quicksort, a random pivot is selected using the random library before each partition. Not required for merge sort or heap sort.
+
+Point 5 — Overall correctness (valid range: 0–25)
+  The method returns the array sorted in ascending order for all valid inputs, without using 'sort' or 'numpy' as substrings.

@@ -1,0 +1,19 @@
+POINT ID: 1
+BUCKET: Wrong
+FEEDBACK: The solution uses two nested for‑loops with element swaps, which is a quadratic (O(n²)) selection sort, not a recognizable O(n log n) divide‑and‑conquer or heap algorithm.
+
+POINT ID: 2
+BUCKET: Wrong
+FEEDBACK: The code contains no recursive calls or explicit base‑case check for subarrays of length 0 or 1; it only relies on loop bounds, so the required termination condition for a recursive O(n log n) algorithm is absent.
+
+POINT ID: 3
+BUCKET: Wrong
+FEEDBACK: The core operation simply swaps any out‑of‑order pair during the double loop; there is no partition step (quicksort) or merge step (merge sort) that correctly combines sorted subproblems.
+
+POINT ID: 4
+BUCKET: Wrong
+FEEDBACK: The implementation does not import or use the random library, nor does it employ a guaranteed‑worst‑case O(n log n) algorithm such as merge sort or heap sort, so the randomisation requirement is unmet.
+
+POINT ID: 5
+BUCKET: Correct
+FEEDBACK: Despite being O(n²), the double‑loop swap correctly orders the array in ascending order for all valid inputs, and the code does not contain the prohibited substrings “sort” or “numpy”.

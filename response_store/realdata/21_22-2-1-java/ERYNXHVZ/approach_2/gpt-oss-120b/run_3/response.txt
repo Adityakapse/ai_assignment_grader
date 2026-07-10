@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which provides a counting array of size at least max(A)+1 and Java initializes it to zero, satisfying the allocation requirement.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The code iterates over A and increments C[A[i]] (with appropriate range checks), correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+MARKS: 8
+FEEDBACK: The loop iterates i from 0 to B.length‑1 as required, but the extra `if (B[i]>=0 && B[i]<=28500000)` may prevent an append, so the output string is not guaranteed to have length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly checks `if (C[i] <= B[i])` and appends a 1 (or 0 otherwise), producing the required binary output for each position.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The implementation correctly counts occurrences, compares them to B, builds the binary string in O(n+m), respects the input limits and avoids forbidden substrings, thus returning the correct result for all valid inputs.

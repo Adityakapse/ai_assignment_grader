@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] temp = new int[B.length];` which provides a counting array of size |B| (≥ max(A)+1) and relies on Java’s default zero‑initialisation before counting frequencies from A.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates over each element `i` in `A` and does `temp[i]++`, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for (int i = 0; i < B.length; i++)`, correctly iterating from 0 to |B|‑1 and generating a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly compares `temp[i]` (the count) to `B[i]` and appends `1` when `temp[i] <= B[i]` and `0` otherwise, matching the required logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code counts occurrences with a single pass over A, then builds the result in a second linear pass, uses only allowed constructs, and correctly handles edge cases such as zero counts or B[i] = 0.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] tmp = new int[B.length];`, which is sized at least `max(A)+1` and Java initializes it to zero, enabling correct frequency counting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution iterates over A with `for(int i = 0; i < A.length; i++)` and correctly increments `tmp[A[i]]++` for each element, properly accumulating frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop uses `for(int i = 0; i < B.length; i++)`, iterating from 0 to B.length‑1 and appends one character per iteration, yielding a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code checks `if(tmp[i] <= B[i])` and appends "1" otherwise "0", which matches the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution builds a count array sized to B.length, tallies occurrences from A, then correctly appends '1' or '0' for each category in O(n+m) time without using any forbidden substrings.

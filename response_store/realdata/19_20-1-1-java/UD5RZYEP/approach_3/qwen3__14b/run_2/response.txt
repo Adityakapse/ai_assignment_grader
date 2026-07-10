@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The gcd function is defined with the correct signature (two int parameters) and uses a recursive structure with a return statement.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The termination condition checks if the remainder is zero and returns b, but fails to handle cases where b is zero (e.g., gcd(0, 5) would return 5, but gcd(5, 0) would crash due to division by zero).
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The recursive call to gcd(b, r) correctly reduces the problem toward the base case by passing the remainder as the new first argument.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function uses the correct formula (a * b) / gcd(a, b) with the appropriate parameters and return type.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd function fails for edge cases like gcd(0, 0) (returns 0) or when the second parameter is zero (e.g., gcd(5, 0) would crash due to division by zero in the modulo operation).
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: The lcm function would produce incorrect or undefined results for inputs where either a or b is zero, as the gcd function does not handle these cases properly.

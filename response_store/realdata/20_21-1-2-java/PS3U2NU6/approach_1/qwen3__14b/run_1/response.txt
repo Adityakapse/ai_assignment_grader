@@ -1,0 +1,72 @@
+### **Analysis of the Code's Correctness and Compliance with Problem Requirements**
+
+---
+
+### **1. Partitioning Logic (Correctness of Sorting)**
+
+The **partitioning function** in the code is **logically sound** and **correct**:
+
+- It selects the **last element** as the **pivot**.
+- It uses a **two-pointer approach** (`i` and `j`) to **partition the array** into two halves: elements **less than or equal to the pivot** on the left, and **greater than the pivot** on the right.
+- The final swap ensures the **pivot is placed in its correct position**.
+
+This is a standard implementation of the **Hoare partition scheme**, and **does correctly sort the array** in most cases.
+
+✅ **Conclusion**: The **sorting logic** is **correct**.
+
+---
+
+### **2. Runtime Performance (Worst-case Time Complexity)**
+
+The code is implementing **Quicksort**, but with a **non-randomized pivot selection** (i.e., always choosing the last element as the pivot). This leads to the following:
+
+- **Best-case**: $O(n \log n)$
+- **Average-case**: $O(n \log n)$
+- **Worst-case**: $O(n^2)$, which occurs when the input is **already sorted** (e.g., [1, 2, 3, 4, 5]) or **reverse-sorted** (e.g., [5, 4, 3, 2, 1]).
+
+The **problem explicitly requires** that the algorithm must have **either**:
+- A **worst-case time complexity of $O(n \log n)$**, **or**
+- An **average-case time complexity of $O(n \log n)$ with randomized pivot selection** (as in **Randomized Quicksort**).
+
+The **current implementation** uses a **fixed pivot selection**, which **violates the worst-case runtime guarantee** and **does not qualify as randomized Quicksort**.
+
+❌ **Conclusion**: The **runtime performance** is **not acceptable** and **violates the problem's requirements**.
+
+---
+
+### **3. Compliance with Problem Constraints**
+
+The problem **explicitly forbids** the use of the words **"sort"** or **"numpy"** in the code. The provided code **does not contain** these words, so this constraint is **satisfied**.
+
+✅ **Conclusion**: The code **complies with this constraint**.
+
+---
+
+### **4. Overall Correctness and Runtime Guarantee**
+
+Despite the **correctness of the sorting logic**, the **runtime guarantees are not met**:
+
+- The code **does not guarantee** a **worst-case $O(n \log n)$** runtime.
+- It **does not use a randomized pivot**, so the **average-case $O(n \log n)$** runtime is **not assured**.
+- Therefore, the code **does not satisfy the problem's runtime requirements**, even though it may sort the array correctly in many cases.
+
+❌ **Conclusion**: The code **does not meet the problem's requirements** and is **not considered correct**.
+
+---
+
+### **5. Final Evaluation of Code Against Rubric**
+
+| Rubric Point | Evaluation | Reason |
+|-------------|------------|--------|
+| **Partitioning logic** | ✅ Correct | The partitioning is logically correct and sorts the array properly. |
+| **Runtime guarantee** | ❌ Not met | The code uses a fixed pivot, leading to $O(n^2)$ worst-case time complexity, which is not acceptable. |
+| **Compliance with problem constraints** | ✅ Compliant | The code does not use the forbidden words. |
+| **Overall correctness** | ❌ Incorrect | The code fails to meet the runtime guarantees and is therefore not acceptable. |
+
+---
+
+### ✅ **Final Answer:**
+
+The code **does not meet the problem's runtime guarantees**, even though the **sorting logic is correct**. As a result, the **code is not considered correct** in the context of the problem's requirements. 
+
+**Final Score: 0/5**.

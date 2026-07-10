@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int n, int m)` with two parameters, returns an int, and uses a recursive call (`gcd(m, r)`) within a ternary expression, satisfying the required signature and recognizable recursive structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The gcd function uses `int r = n % m; return r > 0 ? gcd(m, r) : m;`, correctly terminating recursion when the remainder is zero and returning the divisor.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The gcd function computes `r = n % m` and recursively calls `gcd(m, r)`, correctly reducing the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined, takes two ints, and returns a*b/gcd(a,b), which correctly implements the LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd implementation correctly computes the GCD for positive second arguments, but it asserts m > 0, causing it to fail on valid edge cases such as gcd(a, 0).
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Your lcm function correctly returns a*b/gcd(a,b) and the provided gcd implementation works for positive integers, so the LCM is computed correctly for all valid inputs.

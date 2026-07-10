@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a quicksort‑style divide‑and‑conquer algorithm, selecting a pivot, partitioning into two subarrays, and recursively calling sortPartition on both left and right segments.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function sortPartition uses if(end-beg > 1) to recurse and otherwise handles the subarray directly (including the length‑0/1 case in the else block), so it properly terminates on subarrays of size 0 or 1.
+
+POINT_ID: 3
+BUCKET: Semi
+FEEDBACK: The code attempts a quick‑sort partition by copying elements into a new array, but after placing the pivot at index il it recurses on the range [il, end] (including the pivot) instead of excluding it, so the pivot is not fixed and the partition is not correctly performed.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution uses a fixed middle pivot (pivot = (beg+end)/2) and never imports or applies the random library, so it lacks randomised pivot selection and does not guarantee worst‑case O(n log n) performance.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code contains multiple occurrences of the substring “sort” (e.g., function name sortPartition, variable sort, method isSorted), violating the requirement to avoid that substring.

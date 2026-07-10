@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution does not allocate a separate zero‑initialized counting array; it clones B and modifies it, so there is no new array of size max(A)+1 initialized to 0 as required.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code iterates over A but subtracts from B instead of incrementing a separate count array, so it does not correctly accumulate the frequency of each category as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: Your output loop uses `for (int m = 0; m < B.length; m++)` and appends a character each iteration, correctly iterating from 0 to |B|‑1 and producing a string of length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code decrements B by the count of each category and then appends '1' when the resulting value is non‑negative (i.e., C[i] ≤ B[i]) and '0' otherwise, correctly implementing the required comparison and output.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly decrements a copy of B by the frequencies in A and then outputs ‘1’ when the remaining value is non‑negative, producing the right binary string in O(n+m) without using any forbidden substrings.

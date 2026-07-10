@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with two parameters, a return value, and a recursive structure that includes a swap, remainder calculation, and a recursive call.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The function stops when `r == 0` and returns `b`, which is a proper termination for typical cases, but it does not handle the situation where `b` (or the original second argument) is zero, leading to potential division‑by‑zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After ensuring `a >= b`, the code computes `r = a % b` and recurses with `gcd(r, b)`, which correctly reduces the problem size toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is present, takes two `int` parameters, and returns `(a*b) / gcd(a, b)`, matching the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the implementation works for most positive inputs, it fails for edge cases such as `gcd(0, n)` or `gcd(n, 0)` because it does not guard against a zero divisor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: Assuming the `gcd` works for positive arguments (which it does), the `lcm` formula yields the correct least common multiple for all valid positive integer inputs.

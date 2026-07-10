@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int ggt(int a, int b)` with two int parameters, returns an int, and implements the Euclidean algorithm recursively, satisfying the required gcd function structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function `ggt` computes `r = a % b` and correctly returns `b` when `r == 0`, providing a proper termination condition for the Euclidean recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After swapping to ensure a ≥ b, the function computes r = a % b and recursively calls ggt(r, b), which correctly reduces the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function returns `a*b/ggt(a,b)`, correctly applying the (a * b) / gcd(a,b) formula with the defined gcd (named ggt).
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The function correctly computes the GCD for typical positive pairs, but it crashes on edge cases like gcd(0, n) or gcd(n, 0) because it doesn’t handle a zero divisor.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The student’s lcm function returns a*b divided by the correctly implemented ggt (gcd), so it yields the proper least common multiple for all positive integer inputs.

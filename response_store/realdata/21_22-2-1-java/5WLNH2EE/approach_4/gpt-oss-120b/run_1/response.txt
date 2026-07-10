@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int C[] = new int[B.length];`, which provides a counting array sized at least `max(A)+1` (since `max(A) ≤ B.length‑1`) and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over A and increments C[A[i]] for each element, properly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for(int x=0;x<B.length;x++)` which iterates from 0 up to B.length‑1, generating a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly checks `if(C[x] <= B[x])` and appends "1" in that case, otherwise appending "0", which aligns with the specified output rule.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution allocates a count array of size B.length, tallies occurrences of each category, and appends ‘1’ when C[x] ≤ B[x] (and ‘0’ otherwise) using a StringBuilder, achieving O(n + m) time without any forbidden substrings.

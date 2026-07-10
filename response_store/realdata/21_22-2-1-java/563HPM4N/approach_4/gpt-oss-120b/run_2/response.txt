@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] ASum = new int[B.length];`, which is sized at least `max(A)+1` (since `max(A) ≤ B.length‑1`) and Java initializes it to zero, satisfying the counting array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over A and increments ASum[A[i]] for each element, correctly accumulating the frequency of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code uses `for (int i = 0; i < B.length; i++)`, iterating from 0 up to B.length‑1, thus generating a binary string of length m as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code correctly checks `if (ASum[i] <= B[i])` and appends `1` for true and `0` for false, matching the required comparison logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly counts occurrences, compares them to B[i] using ≤, builds the binary string in O(n+m) time, and avoids any forbidden substrings.

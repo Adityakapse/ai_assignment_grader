@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a counting array sized at least `max(A)+1` and Java initializes it to zero, satisfying the requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over A and uses `C[A[i]] += 1;` to accumulate the count for each category, correctly implementing frequency counting.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code iterates with `for(int i=0; i < B.length; i++)`, covering indices 0 through B.length‑1 and appends one character per iteration, yielding a string of length |B|.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop compares `C[i] <= B[i]` and appends `"1"` when true and `"0"` otherwise, matching the required output logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The implementation builds the frequency array C, compares each count to B[i] in a single pass, and appends ‘1’ or ‘0’ accordingly, meeting the O(n+m) requirement and avoiding forbidden substrings.

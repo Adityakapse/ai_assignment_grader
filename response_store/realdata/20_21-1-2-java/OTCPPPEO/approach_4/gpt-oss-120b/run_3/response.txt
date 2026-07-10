@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements a full quicksort with a partition function and recursive calls on both left and right sub‑arrays, providing a complete divide‑and‑conquer O(n log n) structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The quickSort function uses `if (end <= begin) return;` to halt recursion when the subarray has zero or one element, correctly providing a base case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The partition method uses the Lomuto scheme, swapping elements less than the pivot to the left and finally placing the pivot at its correct index, correctly separating smaller and larger values.
+
+POINT_ID: 4
+BUCKET: Semi
+FEEDBACK: The solution shuffles the whole array once before calling quickSort, but it never selects a random pivot within each recursive partition, so the required per‑partition randomisation for quicksort is missing.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: Although the quicksort implementation would correctly sort the array, the code contains the substring “sort” in the method name `quickSort`, violating the requirement to avoid the word “sort”.

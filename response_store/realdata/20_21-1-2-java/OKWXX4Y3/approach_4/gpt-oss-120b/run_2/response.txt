@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution implements a quicksort‑like divide‑and‑conquer approach with recursive calls on both the left (beg to il‑1) and right (il to end) partitions, satisfying the required O(n log n) structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function stops recursing when `end - beg <= 1` (the else branch handles single‑element subarrays) and also returns early if the subarray is already sorted, preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The sortPartition method chooses a pivot, places all elements ≤ pivot on the left and > pivot on the right using il/iu indices, then recursively sorts the two halves, correctly performing the quicksort partition operation.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The solution always selects the pivot as (beg+end)/2 and never imports or uses the random library, so it does not provide a randomised pivot or a guaranteed O(n log n) worst‑case.
+
+POINT_ID: 5
+BUCKET: Wrong
+FEEDBACK: The code uses identifiers like sortPartition and a variable named sort, which contain the prohibited substring “sort”, violating the requirement.

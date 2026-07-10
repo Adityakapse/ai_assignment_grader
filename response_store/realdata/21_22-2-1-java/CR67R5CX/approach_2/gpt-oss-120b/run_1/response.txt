@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution clones B and modifies it instead of allocating a new zero‑initialized counting array of size at least max(A)+1, so it does not meet the counting‑array allocation requirement.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code never increments a count array for elements of A; it incorrectly decrements the cloned B array (d[e] = d[e] - 1) instead of building a frequency table as required.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The second loop correctly iterates from 0 to d.length‑1 (the length of B) and appends a character each iteration, yielding a binary string of exactly length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly determines whether each category count exceeds its capacity by decrementing B and then appends '0' when the resulting value is negative and '1' otherwise, matching the required comparison logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly counts occurrences by decrementing a copy of B and then builds the binary string in O(n + m) time, producing the right result for all valid inputs.

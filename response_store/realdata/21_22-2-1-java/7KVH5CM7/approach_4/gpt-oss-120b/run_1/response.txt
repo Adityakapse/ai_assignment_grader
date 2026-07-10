@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int ergebnis[] = new int[B.length];`, which provides a counting array sized to |B| (at least max(A)+1) and Java initializes it to zero, satisfying the counting array requirement.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code loops over A and increments ergebnis[A[i]] ++, properly accumulating the frequency of each category as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The code’s output loop uses `for(int i=0; i < B.length; i++)`, iterating from 0 to B.length‑1 and appending one character per iteration, yielding a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if(ergebnis[i] <= B[i])` and appends "1" for that case and "0" otherwise, correctly matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences using an array sized to B.length, compares each count to the corresponding capacity, builds the binary string in O(n+m), and contains no forbidden substrings.

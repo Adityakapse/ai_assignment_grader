@@ -1,0 +1,19 @@
+POINT_ID: Point 1 — Algorithm structure
+BUCKET: Correct
+FEEDBACK: The solution implements a quicksort‑like divide‑and‑conquer recursion with a pivot, recursive calls on both left and right sub‑arrays, satisfying the O(n log n) structure.
+
+POINT_ID: Point 2 — Base / termination case
+BUCKET: Correct
+FEEDBACK: The function stops recursion when the subarray length is 0 or 1 (the `else` block handles `end‑beg <= 1`), preventing infinite recursion.
+
+POINT_ID: Point 3 — Core sorting operation
+BUCKET: Correct
+FEEDBACK: The partition step creates a new array, places elements greater than the pivot at the high end and the rest at the low end, and then recursively sorts the two partitions, correctly establishing order.
+
+POINT_ID: Point 4 — Randomisation or worst‑case O(n log n) guarantee
+BUCKET: Wrong
+FEEDBACK: Although quicksort is used, the pivot is always the middle index and no random library is imported or employed, so the required randomisation is missing.
+
+POINT_ID: Point 5 — Overall correctness
+BUCKET: Wrong
+FEEDBACK: The code contains the substring “sort” in method and variable names, violating the rule that the solution must not include “sort”; therefore it is marked incorrect despite its sorting logic.

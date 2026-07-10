@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The solution clones B into d rather than allocating a new counting array initialized to zero, so it does not create a fresh zero‑filled array of size at least max(A)+1.
+
+POINT_ID: 2
+MARKS: 0
+FEEDBACK: The code iterates over A but subtracts from the cloned B array (d[e]--) instead of incrementing a separate count array, so it does not perform the required frequency counting of A’s elements.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The second loop iterates `i` from 0 up to `d.length‑1` (where `d` is a clone of `B`), appending one character per iteration, thus producing a binary string of exactly length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly appends '0' when the decremented capacity d[i] becomes negative (i.e., count > B[i]) and '1' otherwise, matching the required comparison logic.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your implementation correctly counts occurrences by decrementing a copy of B and then outputs ‘1’ when the remaining capacity is non‑negative and ‘0’ otherwise, runs in O(n+m), and avoids the forbidden substrings.

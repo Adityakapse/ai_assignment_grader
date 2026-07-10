@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: The code reuses the cloned B array as a counting array but does not allocate a new zero‑initialized array, so the counting structure is not initialized to 0 as required.
+
+POINT_ID: 2
+BUCKET: Wrong
+FEEDBACK: The code iterates over A but decrements entries in B (B[A[n]] = B[A[n]]-1) instead of incrementing a separate count array, so it does not correctly accumulate frequencies of each category.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop uses `for (int m = 0; m < B.length; m++)`, iterating from 0 up to `B.length‑1` and appends one character per index, producing a string of length |B| as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code decrements B[A[n]] for each occurrence, then outputs '1' when the resulting B[m] ≥ 0 (i.e., count ≤ capacity) and '0' otherwise, matching the required comparison.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution correctly decrements a cloned B array by the counts from A and then outputs 1 when the resulting value is non‑negative, yielding the proper binary string in O(n + m) without using any forbidden substrings.

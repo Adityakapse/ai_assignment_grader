@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The submission defines `int gcd(int a, int b)` with a proper return type, two parameters, and a recursive Euclidean structure using `r = a % b` and a base case returning `b`.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The gcd function computes r = a % b and returns b when r == 0, providing the proper termination condition for the Euclidean recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The gcd function computes `r = a % b` and recursively calls `gcd(b, r)`, which correctly reduces the problem toward termination.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined with two int parameters and correctly returns (a * b) / gcd(a, b), exactly matching the required formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: The gcd implementation handles most cases correctly, but it does not handle inputs where the second argument is zero (e.g., gcd(5,0)) and will cause a division‑by‑zero error.
+
+POINT_ID: 6
+BUCKET: Semi
+FEEDBACK: Your lcm uses the correct formula, but the gcd function crashes when the first argument is smaller than the second (e.g., gcd(3,5) leads to a division‑by‑zero), so lcm fails for such inputs.

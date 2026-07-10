@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Semi
+FEEDBACK: You defined a GCD-like function named `ggt` with two parameters and an iterative loop, but the required function name `gcd` is missing, so the signature does not match the rubric’s expectation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The function returns b when a is 0 and then loops while b != 0, reducing the larger number until b reaches 0, after which it returns a; this correctly terminates and yields the GCD.
+
+POINT_ID: 3
+BUCKET: Wrong
+FEEDBACK: The ggt function uses repeated subtraction (if a > b … a = a‑b) instead of a modulo‑based reduction like a % b, so it lacks the required reduction step.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The lcm function is defined with two int parameters and returns (a*b)/ggt(a,b), correctly applying the LCM formula using the gcd implementation (named ggt).
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The student’s ggt function correctly implements the subtraction‑based Euclidean algorithm, handling cases like gcd(a,0) and gcd(0,b) and returning the proper GCD for all non‑negative inputs.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: The lcm function correctly returns (a*b)/ggt(a,b) and the provided ggt implementation computes the GCD for positive integers, so lcm yields the proper least common multiple for all valid inputs.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code implements quicksort, defining a partition function and recursively calling quick on both left and right sub‑arrays (quick(A,l,p‑1) and quick(A,p+1,r)), which constitutes a complete divide‑and‑conquer O(n log n) structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The quicksort implementation uses `if(l<r)` to stop recursion, correctly handling subarrays of length 0 or 1 and avoiding infinite recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The partition routine correctly moves the pivot to its final spot and rearranges elements so that those ≤ pivot end up left of it and the rest right, fulfilling the core quicksort operation.
+
+POINT_ID: 4
+BUCKET: Wrong
+FEEDBACK: The `randPartition` function merely swaps the element at `r-1` with the last element and never uses the random library, so the pivot is fixed and not randomized, providing no guarantee against worst‑case O(n²) behavior.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution implements a quicksort (using randPartition and partition) that returns the input array sorted in ascending order and does not contain the prohibited substrings.

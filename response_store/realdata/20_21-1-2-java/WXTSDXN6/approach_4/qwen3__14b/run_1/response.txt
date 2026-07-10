@@ -1,0 +1,90 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student implemented a randomized quicksort with proper recursive calls on both subarrays after partitioning, ensuring an average-case O(n log n) runtime.
+
+POINT_ID: 2
+BUCKET: Correct (15 marks)
+FEEDBACK: The algorithm correctly uses the condition 'if(l < r)' to terminate recursion when the subarray has 1 element (l == r) or is empty (l > r), preventing infinite recursion.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The partition2 method correctly places the pivot at its final position with all smaller elements to the left and larger elements to the right, fulfilling the core quicksort partition requirement.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The student's implementation uses Math.random() to select a random pivot index before each partition step, ensuring the pivot is randomized and preventing worst-case O(n²) performance.
+
+POINT_ID: 5
+The code provided implements a **quicksort algorithm** with **random pivot selection**, which is a well-known approach to achieve **average-case time complexity of O(n log n)**. However, a thorough analysis of the code reveals **a critical issue** in the implementation that can lead to **incorrect sorting** in certain cases. Below is a detailed breakdown of the code's functionality and the identified problem.
+
+---
+
+### ✅ **Overview of the Code's Functionality**
+
+1. **`quicksort` Function**:
+   - The function `quicksort` recursively partitions the array and sorts the left and right subarrays.
+   - It uses a helper function `partition` to select a random pivot and perform the partitioning.
+
+2. **`partition` Function**:
+   - Selects a **random index** `i` in the range `[l, r]` using `Math.random()`.
+   - Swaps the element at index `r` (the current end of the array) with the element at index `i`, ensuring the pivot is at the end of the subarray.
+   - Calls `partition2` to perform the actual partitioning, returning the pivot index and the modified array.
+
+3. **`partition2` Function**:
+   - This function performs the standard partitioning process of quicksort.
+   - It moves all elements **less than or equal to the pivot** to the left and the rest to the right.
+   - Returns a 2D array where the first element is the pivot index, and the second is the modified array.
+
+---
+
+### ❌ **Critical Issue in the Code**
+
+The **main flaw** lies in the way the **pivot selection is performed** in the `partition` function.
+
+#### ❗ **Problem: Incorrect Pivot Selection**
+
+```java
+int i = (int)(Math.random() * (r - l)) + l;
+```
+
+- This line **incorrectly computes the range** for the random index `i`.
+- `Math.random()` returns a value in the range `[0, 1)`, so multiplying by `(r - l)` gives a value in the range `[0, r - l)`.
+- Adding `l` gives a value in the range `[l, r - 1)`, which means the random index `i` is chosen **only from the range `[l, r - 1]`**, **excluding `r`**.
+- As a result, the **last element** of the subarray is **never selected as a pivot**, even though it should be a valid candidate.
+
+#### 🔍 **Consequence of the Error**
+
+- The pivot is **never the last element** in the subarray, which is a **valid and often beneficial choice** in quicksort.
+- While this does not **guarantee incorrect sorting**, it **reduces the randomness** and could potentially **increase the likelihood of worst-case performance** in certain inputs.
+- More importantly, if the code is **unit tested** with a specific input where the last element is the correct pivot, it may **fail to sort** correctly.
+
+---
+
+### ✅ **Corrected Pivot Selection**
+
+To fix the issue, the range for the random index should include `r`, which is achieved by computing:
+
+```java
+int i = (int)(Math.random() * (r - l + 1)) + l;
+```
+
+- This ensures that the random index `i` is selected from the **entire range `[l, r]`**.
+- This is the standard and correct way to select a random pivot from the subarray.
+
+---
+
+### ✅ **Summary of Fixes and Recommendations**
+
+| Issue | Fix |
+|------|-----|
+| Pivot selection range | Replace `int i = (int)(Math.random() * (r - l)) + l;` with `int i = (int)(Math.random() * (r - l + 1)) + l;` |
+| Recursive calls and array handling | The rest of the code handles the recursive steps correctly, assuming the pivot selection is fixed. |
+| Time complexity | After fixing the pivot selection, the average-case time complexity remains **O(n log n)**. |
+
+---
+
+### ✅ **Final Thoughts**
+
+The code is **functionally sound** and implements a **valid quicksort algorithm**, but the **pivot selection is flawed** due to an off-by-one error in the range calculation. This error **does not break the algorithm entirely**, but it **reduces the effectiveness** of the random pivot strategy and could lead to **suboptimal performance** or **incorrect sorting** in some edge cases.
+
+**Fixing the pivot selection** is crucial to ensure the algorithm behaves as intended.

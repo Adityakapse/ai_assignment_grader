@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code allocates `int[] C = new int[B.length];`, which is size |B| and thus at least max(A)+1, and Java initializes it to zero.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i<A.length; i++) { C[A[i]]++; }` correctly increments the count for each element of A.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop runs `for (int i = 0; i<C.length; i++)`, and since C.length equals B.length, it iterates from 0 to |B|-1 producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: Inside the loop the condition `if (C[i]<=B[i])` appends `'1'` otherwise `'0'`, matching the required comparison direction.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The method uses two linear passes (O(n+m)), returns the correct binary string, and contains none of the forbidden substrings.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length];`, which provides a zero‑initialized counting array of size |B| (at least max(A)+1), satisfying the required allocation.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The code iterates over array A and increments C[A[i]] for each element, correctly accumulating the frequency counts.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates `i` from 0 to `C.length-1`, and since `C` was created with size `B.length`, it correctly runs from 0 to `|B|-1`, producing a binary string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The solution uses `if (C[i] <= B[i])` to append '1' and otherwise appends '0', which correctly reflects whether the category fits in one pass.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences in C, compares each count to B[i] using a single pass, builds the result with a StringBuilder, and runs in O(n+m) without any forbidden substrings.

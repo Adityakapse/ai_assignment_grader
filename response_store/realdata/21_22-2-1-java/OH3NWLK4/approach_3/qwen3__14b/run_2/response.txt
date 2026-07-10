@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The counting array `c` is allocated with size `B.length` (equal to `m`), which is sufficient since the maximum category in `A` is guaranteed to be ≤ `|B| - 1` (i.e., `m-1`), ensuring no index-out-of-bounds errors.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop correctly iterates through all elements in `A` and increments `c[a]++` for each value `a`, properly accumulating frequencies for all categories in `A`.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop iterates from `0` to `c.length - 1` (i.e., `0` to `m-1`), producing a binary string of exactly length `m` as required.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code appends `'1'` when `c[i] <= B[i]` and `'0'` otherwise, correctly implementing the required condition for each category.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution runs in `O(n + m)` time, avoids forbidden substrings, and produces the correct binary string for all valid inputs.

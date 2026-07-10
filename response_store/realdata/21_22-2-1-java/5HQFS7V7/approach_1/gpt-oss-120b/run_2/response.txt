@@ -1,0 +1,21 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The student allocates `int[] C = new int[B.length];`, which given the constraint max(A) ≤ |B|-1 provides a counting array of size at least max(A)+1 and is zero‑initialised.
+
+POINT_ID: 2
+MARKS: 25
+FEEDBACK: The loop `for (int j = 0; j < A.length; j++) { C[A[j]] = C[A[j]] + 1; }` correctly increments the count for each category in A.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop runs `for (int i = 0; i < B.length; i++)`, iterating exactly |B| times and thus producing a string of length m.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: Inside the loop the code checks `if (C[i] <= B[i])` and appends `1` or `0` with `builder.append(1)` / `builder.append(0)`, yielding the required binary characters.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: The method returns `builder.toString()` which is the correct binary string for all valid inputs, runs in O(n+m), and contains none of the forbidden substrings.
+
+TOTAL: 100

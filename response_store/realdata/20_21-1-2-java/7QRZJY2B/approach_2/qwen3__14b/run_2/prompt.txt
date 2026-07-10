@@ -1,0 +1,582 @@
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+public static int[] solution(int arr[])
+    {
+        if (arr.length <= 1)
+        {
+            return arr;
+        }
+
+        int laenge = arr.length;//14 (0-13)
+        int haelfte = (int) Math.floor(laenge / 2);//7
+
+        int l[] = new int[haelfte];//7 (0-6)
+        int r[] = new int[laenge - haelfte];// 7 (0-6)
+
+        // Teile x in die zwei Hälften l und r ...
+        for (int i = 0; i < haelfte; i++)//0-6
+        {
+            l[i] = arr[i];//0-6 und 0-6
+        }
+
+        for (int i = haelfte; i < laenge; i++)// 7 - 13
+        {
+            r[i - haelfte] = arr[i];//0-6 und 7-13
+        }
+
+        /*System.out.println("left:");
+        for (int j = 0; j < l.length; j++)
+        {
+            System.out.println(l[j]);
+        }
+        
+        System.out.println("right:");
+        for (int j = 0; j < r.length; j++)
+        {
+            System.out.println(r[j]);
+        }*/
+
+        l = solution(l);
+        r = solution(r);
+        // Verschmelze die sortierten Hälften.
+        return merge(l, r);
+
+    }
+
+    public static int[] merge(int[] l, int[] r)
+    {
+        int laenge = l.length + r.length;
+        int[] merged = new int[laenge];
+        int li = 0;
+        int ri = 0;
+
+        for (int i = 0; i < laenge; i++)
+        {
+            if (li >= l.length)
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else if (ri >= r.length)
+            {
+                merged[i] = l[li];
+                li++;
+            }
+            else if (l[li] > r[ri])
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else
+            {
+                merged[i] = l[li];
+                li++;
+            }
+        }
+
+        /*System.out.println("merged:");
+        for (int j = 0; j < merged.length; j++)
+        {
+            System.out.println(merged[j]);
+        }*/
+
+        return merged;
+    }
+
+RUBRIC POINT:
+Point 1 — Algorithm structure (valid range: 0–20)
+  A recognisable O(n log n) sorting algorithm is implemented with the correct recursive or iterative structure: divide-and-conquer (merge sort, quicksort) or heap-based.
+
+========================================
+
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+public static int[] solution(int arr[])
+    {
+        if (arr.length <= 1)
+        {
+            return arr;
+        }
+
+        int laenge = arr.length;//14 (0-13)
+        int haelfte = (int) Math.floor(laenge / 2);//7
+
+        int l[] = new int[haelfte];//7 (0-6)
+        int r[] = new int[laenge - haelfte];// 7 (0-6)
+
+        // Teile x in die zwei Hälften l und r ...
+        for (int i = 0; i < haelfte; i++)//0-6
+        {
+            l[i] = arr[i];//0-6 und 0-6
+        }
+
+        for (int i = haelfte; i < laenge; i++)// 7 - 13
+        {
+            r[i - haelfte] = arr[i];//0-6 und 7-13
+        }
+
+        /*System.out.println("left:");
+        for (int j = 0; j < l.length; j++)
+        {
+            System.out.println(l[j]);
+        }
+        
+        System.out.println("right:");
+        for (int j = 0; j < r.length; j++)
+        {
+            System.out.println(r[j]);
+        }*/
+
+        l = solution(l);
+        r = solution(r);
+        // Verschmelze die sortierten Hälften.
+        return merge(l, r);
+
+    }
+
+    public static int[] merge(int[] l, int[] r)
+    {
+        int laenge = l.length + r.length;
+        int[] merged = new int[laenge];
+        int li = 0;
+        int ri = 0;
+
+        for (int i = 0; i < laenge; i++)
+        {
+            if (li >= l.length)
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else if (ri >= r.length)
+            {
+                merged[i] = l[li];
+                li++;
+            }
+            else if (l[li] > r[ri])
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else
+            {
+                merged[i] = l[li];
+                li++;
+            }
+        }
+
+        /*System.out.println("merged:");
+        for (int j = 0; j < merged.length; j++)
+        {
+            System.out.println(merged[j]);
+        }*/
+
+        return merged;
+    }
+
+RUBRIC POINT:
+Point 2 — Base / termination case (valid range: 0–15)
+  The algorithm correctly stops when the subarray has length 0 or 1 (already sorted), preventing infinite recursion.
+
+========================================
+
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+public static int[] solution(int arr[])
+    {
+        if (arr.length <= 1)
+        {
+            return arr;
+        }
+
+        int laenge = arr.length;//14 (0-13)
+        int haelfte = (int) Math.floor(laenge / 2);//7
+
+        int l[] = new int[haelfte];//7 (0-6)
+        int r[] = new int[laenge - haelfte];// 7 (0-6)
+
+        // Teile x in die zwei Hälften l und r ...
+        for (int i = 0; i < haelfte; i++)//0-6
+        {
+            l[i] = arr[i];//0-6 und 0-6
+        }
+
+        for (int i = haelfte; i < laenge; i++)// 7 - 13
+        {
+            r[i - haelfte] = arr[i];//0-6 und 7-13
+        }
+
+        /*System.out.println("left:");
+        for (int j = 0; j < l.length; j++)
+        {
+            System.out.println(l[j]);
+        }
+        
+        System.out.println("right:");
+        for (int j = 0; j < r.length; j++)
+        {
+            System.out.println(r[j]);
+        }*/
+
+        l = solution(l);
+        r = solution(r);
+        // Verschmelze die sortierten Hälften.
+        return merge(l, r);
+
+    }
+
+    public static int[] merge(int[] l, int[] r)
+    {
+        int laenge = l.length + r.length;
+        int[] merged = new int[laenge];
+        int li = 0;
+        int ri = 0;
+
+        for (int i = 0; i < laenge; i++)
+        {
+            if (li >= l.length)
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else if (ri >= r.length)
+            {
+                merged[i] = l[li];
+                li++;
+            }
+            else if (l[li] > r[ri])
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else
+            {
+                merged[i] = l[li];
+                li++;
+            }
+        }
+
+        /*System.out.println("merged:");
+        for (int j = 0; j < merged.length; j++)
+        {
+            System.out.println(merged[j]);
+        }*/
+
+        return merged;
+    }
+
+RUBRIC POINT:
+Point 3 — Core sorting operation (valid range: 0–25)
+  The central operation that establishes order is correctly implemented: partition for quicksort (pivot placed correctly, smaller elements left, larger right), or merge for merge sort (two sorted halves merged in order).
+
+========================================
+
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+public static int[] solution(int arr[])
+    {
+        if (arr.length <= 1)
+        {
+            return arr;
+        }
+
+        int laenge = arr.length;//14 (0-13)
+        int haelfte = (int) Math.floor(laenge / 2);//7
+
+        int l[] = new int[haelfte];//7 (0-6)
+        int r[] = new int[laenge - haelfte];// 7 (0-6)
+
+        // Teile x in die zwei Hälften l und r ...
+        for (int i = 0; i < haelfte; i++)//0-6
+        {
+            l[i] = arr[i];//0-6 und 0-6
+        }
+
+        for (int i = haelfte; i < laenge; i++)// 7 - 13
+        {
+            r[i - haelfte] = arr[i];//0-6 und 7-13
+        }
+
+        /*System.out.println("left:");
+        for (int j = 0; j < l.length; j++)
+        {
+            System.out.println(l[j]);
+        }
+        
+        System.out.println("right:");
+        for (int j = 0; j < r.length; j++)
+        {
+            System.out.println(r[j]);
+        }*/
+
+        l = solution(l);
+        r = solution(r);
+        // Verschmelze die sortierten Hälften.
+        return merge(l, r);
+
+    }
+
+    public static int[] merge(int[] l, int[] r)
+    {
+        int laenge = l.length + r.length;
+        int[] merged = new int[laenge];
+        int li = 0;
+        int ri = 0;
+
+        for (int i = 0; i < laenge; i++)
+        {
+            if (li >= l.length)
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else if (ri >= r.length)
+            {
+                merged[i] = l[li];
+                li++;
+            }
+            else if (l[li] > r[ri])
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else
+            {
+                merged[i] = l[li];
+                li++;
+            }
+        }
+
+        /*System.out.println("merged:");
+        for (int j = 0; j < merged.length; j++)
+        {
+            System.out.println(merged[j]);
+        }*/
+
+        return merged;
+    }
+
+RUBRIC POINT:
+Point 4 — Randomisation or worst-case O(n log n) guarantee (valid range: 0–15)
+  If using quicksort, a random pivot is selected using the random library before each partition. Not required for merge sort or heap sort.
+
+========================================
+
+QUESTION:
+Input: An array $A = [a_1, a_2,...,a_n]$ with $2 \leq n \leq 10^6$
+and $\forall 1\leq i \leq n: -10^6 \leq a_i \leq 10^6$
+
+Output:  Array A sorted in ascending order: $A = [a_1, a_2,...,a_n]$,
+where $\forall 1 \leq i \leq j \leq n: \; a[i] \leq a[j]$
+
+Implement a sorting procedure in the function "solution", which takes
+as argument an array "A".  Your procedure should
+either have a worst-case run time of $O(n \; log \; n)$ or an
+average-case run time of $O(n \; log \; n)$ (this should be guaranteed by
+randomization). Your solution must not contain the string
+"sort" and "numpy" as substring. Importing the random
+library is explicitly allowed!
+
+Hint:
+
+Make absolutely sure that you randomize your algorithm using the
+Java Random Library. You can ignore this hint
+if your implementation has a worst-case runtime of $O(n \; log \; n)$.
+
+SAMPLE SOLUTION:
+int [] solution(int arr[]){
+    Arrays.sort(arr);
+    return arr;
+}
+
+STUDENT SOLUTION:
+public static int[] solution(int arr[])
+    {
+        if (arr.length <= 1)
+        {
+            return arr;
+        }
+
+        int laenge = arr.length;//14 (0-13)
+        int haelfte = (int) Math.floor(laenge / 2);//7
+
+        int l[] = new int[haelfte];//7 (0-6)
+        int r[] = new int[laenge - haelfte];// 7 (0-6)
+
+        // Teile x in die zwei Hälften l und r ...
+        for (int i = 0; i < haelfte; i++)//0-6
+        {
+            l[i] = arr[i];//0-6 und 0-6
+        }
+
+        for (int i = haelfte; i < laenge; i++)// 7 - 13
+        {
+            r[i - haelfte] = arr[i];//0-6 und 7-13
+        }
+
+        /*System.out.println("left:");
+        for (int j = 0; j < l.length; j++)
+        {
+            System.out.println(l[j]);
+        }
+        
+        System.out.println("right:");
+        for (int j = 0; j < r.length; j++)
+        {
+            System.out.println(r[j]);
+        }*/
+
+        l = solution(l);
+        r = solution(r);
+        // Verschmelze die sortierten Hälften.
+        return merge(l, r);
+
+    }
+
+    public static int[] merge(int[] l, int[] r)
+    {
+        int laenge = l.length + r.length;
+        int[] merged = new int[laenge];
+        int li = 0;
+        int ri = 0;
+
+        for (int i = 0; i < laenge; i++)
+        {
+            if (li >= l.length)
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else if (ri >= r.length)
+            {
+                merged[i] = l[li];
+                li++;
+            }
+            else if (l[li] > r[ri])
+            {
+                merged[i] = r[ri];
+                ri++;
+            }
+            else
+            {
+                merged[i] = l[li];
+                li++;
+            }
+        }
+
+        /*System.out.println("merged:");
+        for (int j = 0; j < merged.length; j++)
+        {
+            System.out.println(merged[j]);
+        }*/
+
+        return merged;
+    }
+
+RUBRIC POINT:
+Point 5 — Overall correctness (valid range: 0–25)
+  The method returns the array sorted in ascending order for all valid inputs, without using 'sort' or 'numpy' as substrings.

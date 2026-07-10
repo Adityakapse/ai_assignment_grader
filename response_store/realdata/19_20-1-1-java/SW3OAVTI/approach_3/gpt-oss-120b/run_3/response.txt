@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines a function `ggt(int a, int b)` with two integer parameters and a return statement, and it contains a recursive call, satisfying the required gcd signature and structure.
+
+POINT_ID: 2
+BUCKET: Semi
+FEEDBACK: The base case checks `if (r == 0) return b;`, which correctly terminates when the remainder is zero, but it does not handle the case where `b` is zero (e.g., `ggt(0, n)`), leaving the termination incomplete for that edge case.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: After swapping to ensure `a >= b`, the code computes `r = a % b;` and recurses with `ggt(r, b);`, which properly reduces the problem size toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is defined as `return a*b/ggt(a,b);`, using the correct formula and referencing the gcd‑like function.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While `ggt` works for typical positive inputs, it fails for inputs where either argument is zero (e.g., `ggt(0,5)` causes a division‑by‑zero), so it is not correct for all valid non‑negative integers.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For positive integer arguments, `lcm` correctly computes `(a*b)/ggt(a,b)`, and because `ggt` works for those cases, the LCM result is accurate.

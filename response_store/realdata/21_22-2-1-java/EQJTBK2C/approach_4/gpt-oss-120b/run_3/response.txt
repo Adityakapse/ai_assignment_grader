@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The code creates `int[] C = new int[B.length];` which is sized to at least `max(A)+1` (since max(A) ≤ B.length‑1) and Java initializes it to zero, enabling correct frequency counting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The solution loops over all indices of A and uses `C[A[i]]++` to increment the count for each category, correctly accumulating the frequencies.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i <= B.length - 1; i++)` iterates from 0 to B.length‑1 inclusive, appending one digit each time, so the output string has exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop correctly checks `if (C[i] <= B[i])` and appends `1` for true and `0` for false, matching the required output logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code correctly counts occurrences in C, compares each count to B[i] in linear passes, and appends ‘1’ or ‘0’ using StringBuilder without any forbidden substrings.

@@ -1,0 +1,23 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The student defines `int gcd(int a, int b)` with a proper two‑parameter signature and a recursive body, matching the required structure.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The base case `if (r == 0) { return b; }` correctly stops recursion when the remainder is zero.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The reduction step computes `r = a % b;` and recurses with `gcd(r, b)`, and the initial swap ensures the arguments decrease toward the base case.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The `lcm` function is implemented as `return (a*b)/(gcd(a,b));`, which follows the exact LCM formula.
+
+POINT_ID: 5
+BUCKET: Semi
+FEEDBACK: While the gcd works for typical positive inputs, it does not handle zero arguments (e.g., `gcd(0, n)` causes division by zero), so edge cases fail.
+
+POINT_ID: 6
+BUCKET: Correct
+FEEDBACK: For all positive integer inputs, the lcm uses the correct formula and, given the working gcd for those cases, returns the correct least common multiple.

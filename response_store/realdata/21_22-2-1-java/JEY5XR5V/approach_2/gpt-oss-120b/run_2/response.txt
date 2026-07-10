@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 0
+FEEDBACK: The code clones B into newB instead of creating a fresh zero‑initialized counting array of size ≥ max(A)+1, so it does not allocate and initialise the required counting array.
+
+POINT_ID: 2
+MARKS: 2
+FEEDBACK: The code iterates over A but decrements the cloned B array instead of incrementing a separate count array C, so it does not correctly perform the required frequency counting.
+
+POINT_ID: 3
+MARKS: 15
+FEEDBACK: The output loop uses `i < newB.length`, iterating from 0 to m‑1 and appends a digit for each index, correctly producing a binary string of length |B|.
+
+POINT_ID: 4
+MARKS: 20
+FEEDBACK: The code correctly decrements B by the occurrence count and appends '0' when the resulting value is negative (i.e., count > B[i]) and '1' otherwise, matching the required comparison.
+
+POINT_ID: 5
+MARKS: 20
+FEEDBACK: Your solution correctly clones B, decrements counts for each category in A, and appends '0' when the count exceeds capacity and '1' otherwise, producing a binary string of length m in O(n+m) time without using any forbidden substrings.

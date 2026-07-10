@@ -1,0 +1,19 @@
+POINT_ID: 1
+MARKS: 20
+FEEDBACK: The solution implements a recognizable quicksort algorithm with a random pivot, recursive calls on sub‑arrays, and appropriate partitioning, satisfying the required divide‑and‑conquer structure.
+
+POINT_ID: 2
+MARKS: 13
+FEEDBACK: The quicksort method only recurses when the sub‑array size is greater than two, so for size 1 (and size 0, which is never called) it stops, avoiding infinite recursion, though the base case isn’t expressed explicitly.
+
+POINT_ID: 3
+MARKS: 5
+FEEDBACK: The quicksort implementation attempts a custom partition loop, but the pivot handling and element swaps are convoluted and do not reliably ensure that all smaller elements end up left of the pivot and larger ones right, so the core partition operation is not correctly implemented.
+
+POINT_ID: 4
+MARKS: 15
+FEEDBACK: Your quicksort picks a pivot with `Math.random()` at the start of each recursive call, providing the required randomisation before each partition.
+
+POINT_ID: 5
+MARKS: 10
+FEEDBACK: The quicksort implementation attempts a custom partition but the recursion stops when the sub‑array size is two (pivot‑start > 1), so some two‑element sections are never sorted, and the partition logic does not guarantee all elements are correctly placed, leading to incorrect results on certain inputs.

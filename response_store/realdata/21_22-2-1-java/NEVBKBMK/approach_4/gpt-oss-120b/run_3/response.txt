@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a counting array sized to |B| (at least max(A)+1) and Java initializes it to zero, enabling direct frequency counting.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i = 0; i < A.length; i++) { C[A[i]] = C[A[i]] + 1; }` iterates over A and correctly increments `C[a]` for each element `a`, accumulating the frequencies as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The final loop iterates `i` from 0 up to `C.length` (which equals `B.length`), correctly producing a string of length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The loop correctly checks `if (C[i] <= B[i])` and appends `'1'` otherwise `'0'`, matching the required comparison logic.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The solution allocates a count array of size m, correctly tallies occurrences from A, compares each count to B[i] in a single pass, and builds the binary string without any forbidden substrings, achieving O(n + m) time.

@@ -1,0 +1,19 @@
+POINT_ID: 1
+BUCKET: Correct
+FEEDBACK: The solution allocates `int[] C = new int[B.length];`, which provides a counting array of size at least max(A)+1 and is automatically zero‑initialized in Java.
+
+POINT_ID: 2
+BUCKET: Correct
+FEEDBACK: The loop `for (int i=0; i<=A.length-1; i++) { C[A[i]]++; }` correctly iterates over array A and increments the count for each category, accumulating frequencies as required.
+
+POINT_ID: 3
+BUCKET: Correct
+FEEDBACK: The output loop is written as `for (int i = 0; i <= B.length - 1; i++)`, iterating from 0 to B.length‑1 inclusive and appending one digit each time, producing a binary string of exactly length m.
+
+POINT_ID: 4
+BUCKET: Correct
+FEEDBACK: The code uses `if (C[i] <= B[i])` and appends `1` for true and `0` for false, matching the required logic for each position.
+
+POINT_ID: 5
+BUCKET: Correct
+FEEDBACK: The code counts occurrences in C, compares each count to B[i] in two linear passes, appends ‘1’ or ‘0’ correctly, and contains no forbidden substrings, meeting the O(n + m) requirement.
