@@ -1,6 +1,7 @@
 import csv
 import json
 import os
+import re
 import statistics
 import warnings
 
@@ -142,9 +143,11 @@ def add_run_stats(rows, student_groups):
 
 
 def _contains_any(text, keywords):
-    # Returns True if any keyword appears in the lowercased text.
+    # Returns True if any keyword appears as a WHOLE WORD (word-boundary match, not substring).
+    # Substring matching wrongly fired "correct" inside "incorrect", "valid" inside "invalid",
+    # and "not"/"no" inside "notation"/"cannot"/"note", inflating the feedback-contradiction rate.
     lowered = text.lower()
-    return any(kw in lowered for kw in keywords)
+    return any(re.search(rf"\b{re.escape(kw)}\b", lowered) for kw in keywords)
 
 
 def _is_contradiction(row):
@@ -202,6 +205,20 @@ def compute_spearman_rho(llm, human):
     return float(rho)
 
 
+def compute_spearman_by_model_approach(student_groups, gt_totals):
+    # Pooled Spearman per (model, approach) across ALL questions. Rank correlation is only
+    # meaningful over many submissions, so it must NOT be computed per single question — with
+    # n=3 variants (correct/semi/wrong) it saturates at ~1.0 and carries no signal.
+    pooled = {}
+    for (qid, sid, model, approach), group in student_groups.items():
+        if (qid, sid) not in gt_totals:
+            continue
+        pooled.setdefault((model, approach), ([], []))
+        pooled[(model, approach)][0].append(statistics.median([r["total"] for r in group]))
+        pooled[(model, approach)][1].append(gt_totals[(qid, sid)])
+    return {ma: compute_spearman_rho(llm, human) for ma, (llm, human) in pooled.items()}
+
+
 def _flatten_label_pairs(combo_rows, gt_buckets, question_id, datastore_dir):
     # Produces parallel LLM and human label lists across all points and students in a combo.
     llm_list = []
@@ -238,18 +255,34 @@ def compute_cohen_kappa(combo_rows, gt_buckets, datastore_dir, question_id):
         return ""
 
 
-def compute_combo_metrics(combo_rows, student_groups, gt_totals, gt_buckets, combo, datastore_dir):
-    # Computes all five aggregate metrics for one (question_id, model, approach) combo.
+def _median_run_rows(combo_rows):
+    # Reduces a combo's rows to one representative run per submission: the run whose total is
+    # closest to that submission's median total. Keeps kappa and FCR on the same per-submission
+    # (median) basis as MAE/leniency/rho, rather than counting all three runs separately.
+    groups = {}
+    for row in combo_rows:
+        groups.setdefault((row["question_id"], row["student_id"]), []).append(row)
+    representatives = []
+    for group in groups.values():
+        median = statistics.median([r["total"] for r in group])
+        representatives.append(min(group, key=lambda r: abs(r["total"] - median)))
+    return representatives
+
+
+def compute_combo_metrics(combo_rows, student_groups, gt_totals, gt_buckets, combo, datastore_dir, spearman_by_ma):
+    # Computes all aggregate metrics for one (question_id, model, approach) combo.
     question_id, model, approach = combo
     llm, human = _get_paired_totals(student_groups, gt_totals, question_id, model, approach)
     if llm:
         mae = compute_mae(llm, human)
         leniency = compute_leniency(llm, human)
-        rho = compute_spearman_rho(llm, human)
     else:
-        mae = leniency = rho = ""
-    kappa = compute_cohen_kappa(combo_rows, gt_buckets, datastore_dir, question_id)
-    fcr = compute_feedback_contradiction_rate(combo_rows)
+        mae = leniency = ""
+    # Spearman is pooled across all questions per (model, approach), not computed here per-question.
+    rho = spearman_by_ma.get((model, approach), "")
+    median_rows = _median_run_rows(combo_rows)
+    kappa = compute_cohen_kappa(median_rows, gt_buckets, datastore_dir, question_id)
+    fcr = compute_feedback_contradiction_rate(median_rows)
     return {
         "mae": mae,
         "spearman_rho": rho,
@@ -261,9 +294,10 @@ def compute_combo_metrics(combo_rows, student_groups, gt_totals, gt_buckets, com
 
 def add_combo_metrics(rows, combo_groups, student_groups, gt_totals, gt_buckets, datastore_dir):
     # Writes combo-level metrics onto every row belonging to that combo in-place.
+    spearman_by_ma = compute_spearman_by_model_approach(student_groups, gt_totals)
     for combo, combo_rows in combo_groups.items():
         metrics = compute_combo_metrics(
-            combo_rows, student_groups, gt_totals, gt_buckets, combo, datastore_dir
+            combo_rows, student_groups, gt_totals, gt_buckets, combo, datastore_dir, spearman_by_ma
         )
         for row in combo_rows:
             row.update(metrics)

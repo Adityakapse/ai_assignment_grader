@@ -833,6 +833,54 @@ def plot_rq4_length_bias(df, datastore_dir, output_dir, model=None):
     _plot_rq4_length_bias_figure(df, solutions, model, output_dir, "length_bias.png")
 
 
+# ---------------------------------------------------------------------------
+# Phase 3 — Real-data grade distribution (only when real student submissions exist)
+# ---------------------------------------------------------------------------
+
+REALDATA_QUESTIONS = ["19_20-1-1-java", "20_21-1-2-java", "21_22-2-1-java"]
+REALDATA_MIN_STUDENTS = 10
+
+
+def _real_student_grades(df, question_id, model, approach):
+    # Median grade per real (non-mutation) student for one question, model, and approach.
+    sub = df[(df["question_id"] == question_id)
+             & (df["model"] == model)
+             & (df["approach"] == approach)]
+    sub = sub[~sub["student_id"].astype(str).str.startswith("mut_")]
+    return _deduplicated_per_student(sub)["median"].dropna().values
+
+
+def plot_realdata_distribution(df, output_dir, models=None, approach="approach_4"):
+    # Grade-distribution histogram per real-data question, both models overlaid (0-100 marks).
+    # Produces nothing unless the real-data questions carry real (non-mutation) submissions.
+    models = models or sorted(df["model"].dropna().unique().tolist())
+    questions = [
+        q for q in REALDATA_QUESTIONS
+        if any(len(_real_student_grades(df, q, m, approach)) >= REALDATA_MIN_STUDENTS for m in models)
+    ]
+    if not questions:
+        print("Skip realdata_grade_distribution.png: no real-data submissions present")
+        return
+
+    colours = _model_colour_map(models)
+    bins = np.arange(0, 101, 10)
+    fig, axes = plt.subplots(1, len(questions), figsize=(6 * len(questions), 5), squeeze=False)
+    for ax, question_id in zip(axes[0], questions):
+        series = [_real_student_grades(df, question_id, m, approach) for m in models]
+        ax.hist(series, bins=bins, color=[colours[m] for m in models], label=models)
+        ax.set_xlim(0, 100)
+        ax.set_xlabel("Total marks")
+        ax.set_ylabel("Number of students")
+        ax.set_title(f"{question_id}  (n={max(len(s) for s in series)})", fontsize=10)
+        ax.legend(fontsize=8)
+    fig.suptitle(
+        f"Real-data grade distribution by model  |  {approach.replace('approach_', 'Approach ')}",
+        fontsize=12,
+    )
+    plt.tight_layout()
+    _save(fig, output_dir, f"realdata_grade_distribution_{approach}.png")
+
+
 IMPL_QUESTION  = "19_20-1-1-java"
 ASYM_QUESTION  = "asym-1-java"
 IMPL_PREFIX    = "19_20-"
@@ -868,6 +916,9 @@ def main(result_store_dir, datastore_dir, output_dir="graph_store",
     rq_set = set(rq) if rq else {"rq1", "rq2", "rq3", "rq4", "rq5", "rq6"}
     models = models or sorted(df["model"].dropna().unique().tolist())
     print(f"Loaded {len(df)} result rows. RQs to plot: {sorted(rq_set)}")
+
+    for approach in APPROACHES:
+        plot_realdata_distribution(df, output_dir, models=models, approach=approach)
 
     subsets = [
         ("overall",        df,                                                        gt_df, IMPL_QUESTION, ASYM_QUESTION),
