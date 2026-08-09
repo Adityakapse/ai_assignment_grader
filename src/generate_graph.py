@@ -217,7 +217,7 @@ def _plot_rq1_kde_figure(df, gt_df, model, output_dir, filename):
         valid_qids = set(deduped["question_id"].dropna().unique())
         human_vals = gt_df[gt_df["question_id"].isin(valid_qids)]["human_total"].dropna().values
         if len(human_vals) >= 2:
-            sns.kdeplot(human_vals, ax=ax, label="Human", color="black",
+            sns.kdeplot(human_vals, ax=ax, label="Ground truth", color="black",
                         linewidth=2, linestyle="--", clip=(0, 100))
 
     ax.set_xlim(0, 100)
@@ -225,7 +225,7 @@ def _plot_rq1_kde_figure(df, gt_df, model, output_dir, filename):
     ax.set_ylabel("Density")
     ax.legend(fontsize=9)
     ax.set_title(
-        f"Score distribution by approach vs human  |  model: {model}",
+        f"Score distribution by approach vs ground truth  |  model: {model}",
         fontsize=11,
     )
     plt.tight_layout()
@@ -276,7 +276,7 @@ def _plot_rq4_leniency_figure(df, gt_df, model, output_dir, filename):
 
     ax.set_xticks(x)
     ax.set_xticklabels([a.replace("approach_", "Approach ") for a in approaches], fontsize=10)
-    ax.set_ylabel("Mean (LLM − Human) marks", fontsize=10)
+    ax.set_ylabel("Mean (LLM − Ground truth) marks", fontsize=10)
     ax.set_title(
         f"Leniency by approach  |  model: {model}",
         fontsize=11,
@@ -334,7 +334,7 @@ def _plot_rq4_leniency_scatter_figure(df, gt_df, model, output_dir, filename):
     ax.legend(handles=handles, title="Student", fontsize=8, loc="upper right")
     ax.set_xticks(x_positions)
     ax.set_xticklabels([a.replace("approach_", "Approach ") for a in approaches], fontsize=10)
-    ax.set_ylabel("LLM − Human (marks)", fontsize=10)
+    ax.set_ylabel("LLM − Ground truth (marks)", fontsize=10)
     ax.set_title(
         f"Leniency per submission  |  model: {model}",
         fontsize=11,
@@ -727,7 +727,7 @@ def _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output
     human_counts = _collect_human_bucket_counts(gt_df, valid_question_ids)
 
     categories = ["Wrong", "Semi", "Correct"]
-    groups = ["Human"] + [a.replace("approach_", "AP") for a in APPROACHES]
+    groups = ["Ground truth"] + [a.replace("approach_", "AP") for a in APPROACHES]
     all_counts = [human_counts] + [approach_counts[a] for a in APPROACHES]
 
     def to_pct(cnt):
@@ -756,7 +756,7 @@ def _plot_rq4_bucket_distribution_figure(df, gt_df, datastore_dir, model, output
     ax.set_xticklabels(categories, fontsize=11)
     ax.set_ylabel("% of rubric point classifications", fontsize=10)
     ax.set_ylim(0, 100)
-    ax.set_title(f"Bucket pickup % by approach vs human  |  model: {model}", fontsize=11)
+    ax.set_title(f"Bucket pickup % by approach vs ground truth  |  model: {model}", fontsize=11)
     ax.legend(title="Grader", fontsize=8, loc="upper right")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
