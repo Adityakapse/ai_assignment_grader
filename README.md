@@ -67,7 +67,7 @@ specify the models for the run with `--nim_models`, `--ollama_models`, or `--oth
                         subset of approaches to run                  (default: all four)
 
 --ollama_models       : list of local Ollama models to grade with
-                        e.g. --ollama_models qwen3:14b devstral-small-2
+                        e.g. --ollama_models Qwen3:14b devstral-small-2
 
 --nim_models          : list of NVIDIA NIM models to grade with
                         e.g. --nim_models openai/gpt-oss-120b
@@ -99,15 +99,15 @@ python3 main.py --nim_models openai/gpt-oss-120b
 
 Run everything with one local Ollama model:
 
-python3 main.py --ollama_models qwen3:14b
+python3 main.py --ollama_models Qwen3:14b
 
 Run with several models at once (local and cloud together):
 
-python3 main.py --ollama_models qwen3:14b devstral-small-2 --nim_models openai/gpt-oss-120b
+python3 main.py --ollama_models Qwen3:14b --nim_models openai/gpt-oss-120b
 
 Run with a generic OpenAI-compatible provider (Gemini, Claude, Groq):
 
-python3 main.py --other_models gemini-2.0-flash \
+python3 main.py --other_models gemini-2.5-flash \
     --base_url https://generativelanguage.googleapis.com/v1beta/openai/ \
     --api_key_env GEMINI_API_KEY
 
@@ -138,7 +138,7 @@ Reuse the existing datastore, skip preprocessing:
 
 python3 main.py --nim_models openai/gpt-oss-120b --skip_preprocessing
 
-Recompute results and graphs from responses already on disk (no LLM calls):
+Recompute results and graphs from responses already on store:
 
 python3 main.py --skip_preprocessing --skip_grading
 
@@ -152,7 +152,7 @@ python3 main.py --nim_models openai/gpt-oss-120b \
     --skip_preprocessing --skip_processing --skip_graphs
 
 
-# Example of Grading a Separate Assignment
+#  Grading a New Assignment
 
 `--assignment` redirects every store to a named subfolder, so a new dataset can be
 graded. It expects the cleaned data to already exist at `datastore/<name>/`:
@@ -168,7 +168,7 @@ This reads `datastore/assignment1/` and writes to `response_store/assignment1/`,
 # Grading
 
 python3 src/grade.py --datastore_dir datastore --response_store_dir response_store \
-    --approach approach_4 --model openai/gpt-oss-120b --backend nim --api_key $NIM_API_KEY
+    --approach approach_4 --model openai/gpt-oss-120b --backend nim --api_key NIM_API_KEY
 
 --datastore_dir       : cleaned dataset folder                       (required)
 --response_store_dir  : where responses are written                  (required)
@@ -183,7 +183,7 @@ python3 src/grade.py --datastore_dir datastore --response_store_dir response_sto
 Local Ollama example:
 
 python3 src/grade.py --datastore_dir datastore --response_store_dir response_store \
-    --approach approach_1 --model qwen3:14b --backend ollama --question_id 21_22-3-1-java
+    --approach approach_1 --model Qwen3:14b --backend ollama --question_id 21_22-3-1-java
 
 # Processing
 
@@ -219,12 +219,6 @@ python3 src/preprocessing_realData.py --raw_data_dir raw_data/AD2022dataset \
 --full_qids     : question IDs to keep ALL submissions for, instead of --per_question
 
 
-
 # Human Review Tool
 streamlit run src/explorer/overview.py
 
-
-# To Generate Graphs
-
-python3 src/generate_graph.py --result-store result_store --datastore datastore \
-    --output-dir graph_store --ground-truth datastore/ground_truth.csv
