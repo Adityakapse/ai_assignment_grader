@@ -33,20 +33,18 @@ PLOTS = [
 
 @st.cache_data(show_spinner="Loading data…")
 def scoped_inputs(assignment, scope):
-    # Loads the raw result and ground-truth frames, restricted to the two models and the scope.
     result_store = os.path.dirname(da.paths(assignment)["result_csv"])
     df = gg.load_results(result_store)
-    df = ui.scope_filter(df[df["model"].isin(da.PRODUCTION_MODELS)], scope)
+    df = ui.scope_filter(df, scope)
     gt = gg.load_ground_truth(da.paths(assignment)["ground_truth_csv"])
     gt = ui.scope_filter(gt, scope) if gt is not None else None
     return df, gt
 
 
 def _call_args(spec, df, gt, model, out, assignment):
-    # Maps a plot function's argument spec to concrete values for the current selection.
     values = {
         "df": df, "gt": gt, "out": out, "model": model,
-        "models": list(da.PRODUCTION_MODELS.keys()),
+        "models": da.available_models(df),
         "datastore": da.paths(assignment)["datastore"],
         "impl_q": gg.IMPL_QUESTION, "asym_q": gg.ASYM_QUESTION,
     }
@@ -55,7 +53,6 @@ def _call_args(spec, df, gt, model, out, assignment):
 
 @st.cache_data(show_spinner="Generating graphs…")
 def build_images(assignment, scope, model):
-    # Runs every plot function and returns the rendered PNGs as (clean_title, bytes) pairs.
     df, gt = scoped_inputs(assignment, scope)
     out = tempfile.mkdtemp()
     for func_name, spec in PLOTS:
@@ -67,13 +64,11 @@ def build_images(assignment, scope, model):
 
 
 def _clean_title(filename):
-    # Strips the leading rq-number prefix and turns the filename into a readable title.
     name = re.sub(r"^rq\d+_", "", filename.replace(".png", ""))
     return name.replace("_", " ").strip().capitalize()
 
 
 def _read_pngs(directory):
-    # Collects (clean_title, bytes) for every PNG the plot functions wrote to a directory.
     images = []
     for name in sorted(os.listdir(directory)):
         if name.endswith(".png"):
@@ -83,7 +78,6 @@ def _read_pngs(directory):
 
 
 def _point_max(point):
-    # The maximum marks for a rubric point: its max_marks, else the Correct bucket value.
     if point.get("max_marks") is not None:
         return float(point["max_marks"])
     for bucket in point["buckets"]:
@@ -93,7 +87,6 @@ def _point_max(point):
 
 
 def point_difficulty(question_cells, rubric):
-    # Average % of each rubric point's max marks earned across the question's submissions.
     stats = {str(p["id"]): {"name": p["name"], "max": _point_max(p), "pcts": []}
              for p in rubric["rubric_points"]}
     for _, row in question_cells.iterrows():
@@ -108,20 +101,22 @@ def point_difficulty(question_cells, rubric):
 
 
 def _difficulty_cells(assignment, model, approach):
-    # Median-collapsed rows for one model and approach — the basis for per-point difficulty.
     collapsed = da.collapse_to_median(da.load_results(assignment))
     return collapsed[(collapsed["model"] == model) & (collapsed["approach"] == approach)]
 
 
 def render_point_difficulty(assignment, model, approach):
-    # Bar chart of average % earned per rubric point for a chosen question (lowest bar = hardest).
     st.subheader("Rubric point difficulty")
     cells = _difficulty_cells(assignment, model, approach)
     questions = sorted(cells["question_id"].unique())
     if not questions:
         st.info("No graded submissions for this selection.")
         return
-    qid = st.selectbox("Question", questions, key="difficulty_q")
+    saved = st.session_state.get("selected_question")
+    qid = st.selectbox("Question", questions,
+                       index=questions.index(saved) if saved in questions else 0,
+                       key="difficulty_q")
+    st.session_state["selected_question"] = qid
     rubric = da.load_rubric(assignment, qid)
     if rubric is None:
         st.info("No rubric found for this question.")
@@ -148,7 +143,7 @@ def main():
     st.title("Graphs")
     render_point_difficulty(assignment, model, approach)
     st.divider()
-    st.caption(f"Model **{model}** · scope **{scope}** (multi-model charts use both production models)")
+    st.caption(f"Model **{model}** · scope **{scope}** (multi-model charts use all graded models)")
     images = build_images(assignment, scope, model)
     if not images:
         st.info("No graphs available for this selection.")

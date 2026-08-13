@@ -14,7 +14,6 @@ BIN_SIZES = [5, 10, 20, 25, 50]
 
 
 def submission_grades(assignment):
-    # Per (question_id, student_id): the human final grade if finalized, else the LLM median.
     collapsed = da.collapse_to_median(da.load_results(assignment))
     llm = collapsed.groupby(["question_id", "student_id"])["score"].mean()
     grades = pd.DataFrame({"grade": llm, "finalized": False})
@@ -27,7 +26,6 @@ def submission_grades(assignment):
 
 
 def assignment_summary(assignment, boundary):
-    # Cohort statistics for one assignment, computed over per-student assignment grades.
     subs = submission_grades(assignment)
     students = subs.groupby(level="student_id")["grade"].mean()
     return {
@@ -42,18 +40,15 @@ def assignment_summary(assignment, boundary):
 
 
 def summary_table(assignments, boundary):
-    # One row per assignment (in timeline order) of cohort statistics.
     rows = [assignment_summary(a, boundary) for a in assignments]
     return pd.DataFrame(rows)
 
 
 def _fmt(value):
-    # Formats a statistic to one decimal, an em dash when undefined.
     return "—" if pd.isna(value) else f"{value:.1f}"
 
 
 def render_summary(table):
-    # Renders the cohort comparison as a readable table with friendly labels.
     display = pd.DataFrame({
         "Assignment": table["assignment"],
         "Students": table["students"],
@@ -67,7 +62,6 @@ def render_summary(table):
 
 
 def _grades_long(assignments):
-    # Long frame of one row per (assignment, per-student grade) for the density overlay.
     frames = []
     for a in assignments:
         students = submission_grades(a).groupby(level="student_id")["grade"].mean()
@@ -78,7 +72,6 @@ def _grades_long(assignments):
 
 
 def _bin_counts(long, bin_size):
-    # Student counts per (assignment, mark-range bin) across the 0-100 range.
     edges = list(range(0, 100, bin_size)) + [100]
     labels = [f"{edges[i]}-{edges[i + 1]}" for i in range(len(edges) - 1)]
     idx = (long["grade"] // bin_size).clip(0, len(labels) - 1).astype(int)
@@ -88,7 +81,6 @@ def _bin_counts(long, bin_size):
 
 
 def render_histogram(assignments):
-    # Grouped, multi-colour marks histogram: one bar per assignment within each mark range.
     st.subheader("Marks distribution")
     long = _grades_long(assignments)
     if long.empty:
@@ -112,7 +104,6 @@ def render_histogram(assignments):
 
 
 def _selectable_assignments():
-    # Real assignments only (drops the None dissertation root), sorted to form the timeline.
     return sorted(a for a in da.list_assignments() if a is not None)
 
 

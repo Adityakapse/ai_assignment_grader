@@ -32,7 +32,6 @@ RESULT_COLUMNS = [
 
 
 def parse_args():
-    # Parses CLI args; approach, model, and question_id filters are optional for partial re-runs.
     parser = argparse.ArgumentParser()
     parser.add_argument("--response_store_dir", required=True)
     parser.add_argument("--result_store_dir", required=True)
@@ -46,18 +45,15 @@ def parse_args():
 
 
 def _task_id_from_question_id(question_id):
-    # Strips the language suffix to get the task_id (e.g. 19_20-2-1-java → 19_20-2-1).
     return question_id.rsplit("-", 1)[0]
 
 
 def _load_single_rubric(path):
-    # Reads and returns a single rubric.json file.
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
 def _build_point_lookup(rubric):
-    # Builds a {point_id: {label: marks}} dict from a rubric for fast bucket-to-marks conversion.
     lookup = {}
     for point in rubric["rubric_points"]:
         pid = int(point["id"])
@@ -66,7 +62,6 @@ def _build_point_lookup(rubric):
 
 
 def load_rubric_lookup(datastore_dir):
-    # Loads all rubrics from the datastore into a single nested lookup dict keyed by task_id.
     rubrics_dir = os.path.join(datastore_dir, "rubrics")
     lookup = {}
     for task_id in os.listdir(rubrics_dir):
@@ -79,7 +74,6 @@ def load_rubric_lookup(datastore_dir):
 
 
 def get_expected_point_ids(datastore_dir, question_id):
-    # Returns the sorted list of rubric point IDs for a question, used to validate format_ok.
     task_id = _task_id_from_question_id(question_id)
     rubric_path = os.path.join(datastore_dir, "rubrics", task_id, "rubric.json")
     rubric = _load_single_rubric(rubric_path)
@@ -87,13 +81,6 @@ def get_expected_point_ids(datastore_dir, question_id):
 
 
 def _split_into_point_blocks(text):
-    # Splits an LLM response into (point_id, block_text) pairs.
-    # Handles header forms emitted by different models:
-    #   "POINT_ID: 1"           (standard)
-    #   "POINT_ID: Point 1"     (gemma4)
-    #   "POINT_1:"              (Qwen3 variant)
-    #   "POINT ID: Point 1"     (gpt-oss: space instead of underscore)
-    #   "POINT 1 — title"       (gpt-oss: no ID keyword, optional em-dash title)
     pattern = re.compile(
         r"(?:^\s*POINT_ID:\s*(?:Point\s+)?(\d+)(?:[^\S\n]*[—\-][^\n]*)?"
         r"|^\s*POINT\s+ID:\s*(?:Point\s+)?(\d+)(?:[^\S\n]*[—\-][^\n]*)?"
@@ -112,14 +99,11 @@ def _split_into_point_blocks(text):
 
 
 def _extract_marks(block_text):
-    # Extracts the mark after MARKS: from a point block; accepts decimals (e.g. 4.0, 7.5) and rounds to int.
     m = re.search(r"MARKS:\s*(\d+(?:\.\d+)?)", block_text)
     return round(float(m.group(1))) if m else None
 
 
 def _extract_bucket(block_text):
-    # Extracts the label after BUCKET: from a point block; returns None if absent.
-    # Strips parenthetical mark hints some models append, e.g. "Correct (15 marks)" → "Correct".
     m = re.search(r"BUCKET:\s*(.+)", block_text)
     if not m:
         return None
@@ -128,13 +112,11 @@ def _extract_bucket(block_text):
 
 
 def _extract_feedback(block_text):
-    # Extracts everything after FEEDBACK: including multi-line text; returns empty string if absent.
     m = re.search(r"FEEDBACK:\s*(.+)", block_text, re.DOTALL)
     return m.group(1).strip() if m else ""
 
 
 def parse_free_marks_response(text, expected_point_ids):
-    # Parses approach_1/2 responses: extracts MARKS per point, sums total, sets format_ok.
     blocks = _split_into_point_blocks(text)
     scores = {}
     feedback = {}
@@ -149,14 +131,12 @@ def parse_free_marks_response(text, expected_point_ids):
 
 
 def _lookup_bucket_marks(pid, label, task_rubric):
-    # Looks up marks for a (point_id, label) pair within a single task's rubric.
     if pid in task_rubric and label in task_rubric[pid]:
         return task_rubric[pid][label]
     return None
 
 
 def parse_bucket_response(text, expected_point_ids, task_rubric):
-    # Parses approach_3/4 responses: extracts BUCKET labels, converts to marks via this task's rubric.
     blocks = _split_into_point_blocks(text)
     buckets = {}
     feedback = {}
@@ -181,7 +161,6 @@ def parse_bucket_response(text, expected_point_ids, task_rubric):
 
 
 def _empty_parse_result():
-    # Returns a zeroed-out result dict used when parsing fails entirely.
     return {
         "total": 0,
         "scores": {},
@@ -192,7 +171,6 @@ def _empty_parse_result():
 
 
 def parse_response(text, approach, expected_point_ids, task_rubric):
-    # Dispatches to free-marks or bucket parser based on approach; returns empty result on any exception.
     try:
         if APPROACH_CONFIG[approach]["free_marks"]:
             result = parse_free_marks_response(text, expected_point_ids)
@@ -204,7 +182,6 @@ def parse_response(text, approach, expected_point_ids, task_rubric):
 
 
 def discover_runs(response_store_dir, question_id, student_id, approach, model, response_file):
-    # Returns a sorted list of (run_folder, response_path) pairs for a given student/approach/model.
     base = os.path.join(response_store_dir, question_id, student_id, approach, _to_fs_name(model))
     if not os.path.isdir(base):
         return []
@@ -217,7 +194,6 @@ def discover_runs(response_store_dir, question_id, student_id, approach, model, 
 
 
 def build_row(question_id, student_id, model, approach, run_n, parsed):
-    # Constructs a result CSV row from parsed data; metric columns left empty for metrics.py to fill.
     return {
         "question_id": question_id,
         "student_id": student_id,
@@ -241,14 +217,12 @@ def build_row(question_id, student_id, model, approach, run_n, parsed):
 
 
 def _read_response_text(path):
-    # Reads the raw LLM response text from a response.txt file.
     with open(path, encoding="utf-8") as f:
         return f.read()
 
 
 def process_combo(response_store_dir, datastore_dir, rubric_lookup, question_id,
                   student_id, approach, model, response_file):
-    # Processes all runs for one (question, student, approach, model) combo and returns result rows.
     runs = discover_runs(response_store_dir, question_id, student_id, approach, model, response_file)
     expected_point_ids = get_expected_point_ids(datastore_dir, question_id)
     task_id = _task_id_from_question_id(question_id)
@@ -263,7 +237,6 @@ def process_combo(response_store_dir, datastore_dir, rubric_lookup, question_id,
 
 
 def _read_time(run_dir):
-    # Reads time.txt (seconds elapsed for this grading run) if present, else returns "".
     path = os.path.join(run_dir, "time.txt")
     if not os.path.isfile(path):
         return ""
@@ -275,7 +248,6 @@ def _read_time(run_dir):
 
 
 def _load_existing_results(out_path):
-    # Reads any existing result.csv so partial re-runs can preserve untouched rows.
     if not os.path.isfile(out_path):
         return []
     with open(out_path, newline="", encoding="utf-8") as f:
@@ -283,8 +255,6 @@ def _load_existing_results(out_path):
 
 
 def save_results(result_store_dir, rows, result_file, filter_question_id=None):
-    # Writes result.csv. If filter_question_id is set, only those questions' rows are replaced;
-    # otherwise the file is fully overwritten so re-runs never produce duplicates.
     os.makedirs(result_store_dir, exist_ok=True)
     out_path = os.path.join(result_store_dir, result_file)
 
@@ -300,14 +270,21 @@ def save_results(result_store_dir, rows, result_file, filter_question_id=None):
         writer.writerows(preserved + rows)
 
 
-def discover_combos(response_store_dir, filter_question_id, filter_approach, filter_model):
-    # Walks the response_store directory tree and returns all (question, student, approach, model) combos.
-    # filter_question_id may be a comma-separated string; None means no filter.
+def _valid_question_ids(datastore_dir):
+    path = os.path.join(datastore_dir, "questions", "question.csv")
+    with open(path, newline="", encoding="utf-8") as f:
+        return {row["question_id"] for row in csv.DictReader(f)}
+
+
+def discover_combos(response_store_dir, datastore_dir, filter_question_id, filter_approach, filter_model):
     allowed = {q.strip() for q in filter_question_id.split(",")} if filter_question_id else None
+    valid_question_ids = _valid_question_ids(datastore_dir)
     combos = []
     if not os.path.isdir(response_store_dir):
         return combos
     for question_id in os.listdir(response_store_dir):
+        if question_id not in valid_question_ids:
+            continue
         if allowed is not None and question_id not in allowed:
             continue
         q_path = os.path.join(response_store_dir, question_id)
@@ -318,7 +295,6 @@ def discover_combos(response_store_dir, filter_question_id, filter_approach, fil
 
 
 def _discover_combos_for_question(q_path, question_id, filter_approach, filter_model):
-    # Collects combos for all students under a single question directory.
     combos = []
     for student_id in os.listdir(q_path):
         s_path = os.path.join(q_path, student_id)
@@ -329,7 +305,6 @@ def _discover_combos_for_question(q_path, question_id, filter_approach, filter_m
 
 
 def _discover_combos_for_student(s_path, question_id, student_id, filter_approach, filter_model):
-    # Collects combos for all approach/model pairs under a single student directory.
     combos = []
     for approach in os.listdir(s_path):
         if filter_approach and approach != filter_approach:
@@ -352,6 +327,7 @@ def main():
     rubric_lookup = load_rubric_lookup(args.datastore_dir)
     combos = discover_combos(
         args.response_store_dir,
+        args.datastore_dir,
         args.question_id,
         args.approach,
         args.model,

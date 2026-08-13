@@ -4,7 +4,6 @@ import sys
 
 
 def load_question_ids(datastore_dir):
-    # Reads all question_ids from question.csv; exits if the file is missing or empty.
     path = os.path.join(datastore_dir, "questions", "question.csv")
     if not os.path.exists(path):
         print(f"[ERROR] question.csv not found: {path}")
@@ -19,13 +18,11 @@ def load_question_ids(datastore_dir):
 
 
 def _task_id_from_question_id(question_id):
-    # Strips the language suffix to get the task_id (e.g. 19_20-2-1-java → 19_20-2-1).
     parts = question_id.split("-")
     return "-".join(parts[:-1])
 
 
 def check_rubrics(question_ids, datastore_dir):
-    # Checks that rubric.json exists for every unique task_id; deduplicates across language variants.
     errors = []
     seen_task_ids = set()
     for qid in question_ids:
@@ -40,7 +37,6 @@ def check_rubrics(question_ids, datastore_dir):
 
 
 def check_solutions(question_ids, datastore_dir):
-    # Checks that at least one solution exists in solutions.csv for every question_id.
     solutions_path = os.path.join(datastore_dir, "solutions", "solutions.csv")
     with open(solutions_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -53,14 +49,12 @@ def check_solutions(question_ids, datastore_dir):
 
 
 def _question_types(datastore_dir):
-    # Returns the set of question_types declared in question.csv.
     path = os.path.join(datastore_dir, "questions", "question.csv")
     with open(path, newline="", encoding="utf-8") as f:
         return {row.get("question_type", "implementation") for row in csv.DictReader(f)}
 
 
 def check_system_prompts(datastore_dir):
-    # Checks that approach_1..4 are present, plus analysis_approach_1..4 if any analysis questions exist.
     errors = []
     for n in range(1, 5):
         prompt_path = os.path.join(datastore_dir, "system_prompt", f"approach_{n}.txt")

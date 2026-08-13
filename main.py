@@ -21,8 +21,6 @@ APPROACHES = ["approach_1", "approach_2", "approach_3", "approach_4"]
 # OLLAMA_MODELS = ["Qwen3:14b"]
 OLLAMA_MODELS = []
 # NIM_MODELS    = ["nvidia/nemotron-3-super-120b-a12b","openai/gpt-oss-120b"]
-# Default empty: pass --nim_models / --other_models per run. For the dissertation run use
-#   python main.py --nim_models openai/gpt-oss-120b
 NIM_MODELS    = []
 
 # ALL_MODELS    = NIM_MODELS
@@ -37,9 +35,8 @@ NIM_API_KEY = os.environ.get("NIM_API_KEY", "")
 
 
 def parse_args():
-    # Defines all pipeline paths and flags; skip_* flags allow resuming from any step.
     parser = argparse.ArgumentParser(description="Run the complete grading pipeline end to end.")
-    parser.add_argument("--raw_data_dir",        default="raw_data")
+    parser.add_argument("--raw_data_dir",        default="raw_data/AD2022dataset")
     parser.add_argument("--datastore_dir",        default="datastore")
     parser.add_argument("--response_store_dir",   default="response_store")
     parser.add_argument("--result_store_dir",     default="result_store")
@@ -71,7 +68,6 @@ def parse_args():
 
 
 def resolve_paths(args):
-    # Redirects every store to a per-assignment subfolder; the default run (no --assignment) is unchanged.
     if args.assignment:
         args.datastore_dir       = os.path.join(args.datastore_dir, args.assignment)
         args.response_store_dir  = os.path.join(args.response_store_dir, args.assignment)
@@ -82,7 +78,6 @@ def resolve_paths(args):
 
 
 def resolve_models(args):
-    # Picks the approaches and model lists for this run, falling back to the module defaults.
     approaches    = args.approaches if args.approaches else APPROACHES
     ollama_models = args.ollama_models if args.ollama_models is not None else OLLAMA_MODELS
     nim_models    = args.nim_models if args.nim_models is not None else NIM_MODELS
@@ -91,7 +86,6 @@ def resolve_models(args):
 
 
 def _run(label, cmd):
-    # Runs a subprocess step, prints a header, and halts the pipeline on non-zero exit.
     print(f"\n{'=' * 60}")
     print(f"  {label}")
     print(f"{'=' * 60}")
@@ -102,13 +96,11 @@ def _run(label, cmd):
 
 
 def step_preprocessing(args):
-    # Step 1: loads raw CSVs and writes the datastore.
     print(f"\n{'=' * 60}\n  Step 1 — Preprocessing\n{'=' * 60}")
     preprocessing.main(args.raw_data_dir, args.datastore_dir)
 
 
 def step_validation(args):
-    # Step 2: checks datastore integrity; exits the pipeline if any check fails.
     print(f"\n{'=' * 60}\n  Step 2 — Validation\n{'=' * 60}")
     validation.main(args.datastore_dir)
 
@@ -137,7 +129,6 @@ def _grade_model_list(args, models, backend, api_key, n_start, total, approaches
 
 
 def step_grading(args, approaches, ollama_models, nim_models, other_models):
-    # Step 3: runs grade.py for every approach × model combination via subprocess.
     total = len(approaches) * len(ollama_models + nim_models + other_models)
     n = _grade_model_list(args, ollama_models, "ollama", "",          0,     total, approaches)
     n = _grade_model_list(args, nim_models,    "nim",    NIM_API_KEY,  n,     total, approaches)
@@ -147,7 +138,6 @@ def step_grading(args, approaches, ollama_models, nim_models, other_models):
 
 
 def step_processing(args):
-    # Step 4: runs process.py via subprocess to parse all LLM responses into result.csv.
     cmd = [
         sys.executable, os.path.join("src", "process.py"),
         "--response_store_dir", args.response_store_dir,
@@ -160,13 +150,11 @@ def step_processing(args):
 
 
 def step_metrics(args):
-    # Step 5: computes all statistical metrics and writes them back into result.csv.
     print(f"\n{'=' * 60}\n  Step 5 — Metrics\n{'=' * 60}")
     metrics.main(args.result_store_dir, args.datastore_dir, ground_truth=args.ground_truth)
 
 
 def step_graphs(args, all_models):
-    # Step 6: generates all RQ graphs and saves them to graph_store_dir.
     print(f"\n{'=' * 60}\n  Step 6 — Graphs\n{'=' * 60}")
     generate_graph.main(
         args.result_store_dir,

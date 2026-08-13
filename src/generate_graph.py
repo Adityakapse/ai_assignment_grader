@@ -70,9 +70,6 @@ def _deduplicated_per_student(df):
     return df.drop_duplicates(subset=["question_id", "student_id", "model", "approach"])
 
 
-# ---------------------------------------------------------------------------
-# RQ1
-# ---------------------------------------------------------------------------
 
 def _draw_delta_bracket(ax, x_center, heights, width_span, margin=4):
     delta = max(heights) - min(heights)
@@ -237,9 +234,6 @@ def plot_rq1_score_distribution(df, gt_df, output_dir, model=None):
     _plot_rq1_kde_figure(df, gt_df, model, output_dir, "score_distribution.png")
 
 
-# ---------------------------------------------------------------------------
-# RQ4
-# ---------------------------------------------------------------------------
 
 def _plot_rq4_leniency_figure(df, gt_df, model, output_dir, filename):
     if gt_df is None or "human_total" not in gt_df.columns:
@@ -353,9 +347,6 @@ def plot_rq4_leniency_scatter(df, gt_df, output_dir, model=None):
                                       "leniency_scatter.png")
 
 
-# ---------------------------------------------------------------------------
-# RQ2
-# ---------------------------------------------------------------------------
 
 def _plot_rq2_mae_figure(df, gt_df, models, output_dir, filename):
     if gt_df is None or "human_total" not in gt_df.columns:
@@ -553,9 +544,6 @@ def plot_rq2_time(df, output_dir, models=None):
     _plot_rq2_time_figure(df, models, output_dir, "time_by_approach.png")
 
 
-# ---------------------------------------------------------------------------
-# RQ3
-# ---------------------------------------------------------------------------
 
 def _plot_rq3_stability_figure(df, models, output_dir, filename):
     df_filtered = df[df["model"].isin(models)]
@@ -643,9 +631,6 @@ def plot_rq3_format_failures(df, output_dir, models=None):
     _plot_rq3_format_failures_figure(df, models, output_dir, "format_failures.png")
 
 
-# ---------------------------------------------------------------------------
-# RQ4
-# ---------------------------------------------------------------------------
 
 def _parse_json_col(val):
     if pd.isna(val) or str(val).strip() in ("", "{}", "nan"):
@@ -833,16 +818,12 @@ def plot_rq4_length_bias(df, datastore_dir, output_dir, model=None):
     _plot_rq4_length_bias_figure(df, solutions, model, output_dir, "length_bias.png")
 
 
-# ---------------------------------------------------------------------------
-# Phase 3 — Real-data grade distribution (only when real student submissions exist)
-# ---------------------------------------------------------------------------
 
 REALDATA_QUESTIONS = ["19_20-1-1-java", "20_21-1-2-java", "21_22-2-1-java"]
 REALDATA_MIN_STUDENTS = 10
 
 
 def _real_student_grades(df, question_id, model, approach):
-    # Median grade per real (non-mutation) student for one question, model, and approach.
     sub = df[(df["question_id"] == question_id)
              & (df["model"] == model)
              & (df["approach"] == approach)]
@@ -851,8 +832,6 @@ def _real_student_grades(df, question_id, model, approach):
 
 
 def plot_realdata_distribution(df, output_dir, models=None, approach="approach_4"):
-    # Grade-distribution histogram per real-data question, both models overlaid (0-100 marks).
-    # Produces nothing unless the real-data questions carry real (non-mutation) submissions.
     models = models or sorted(df["model"].dropna().unique().tolist())
     questions = [
         q for q in REALDATA_QUESTIONS
@@ -887,26 +866,33 @@ IMPL_PREFIX    = "19_20-"
 ASYM_PREFIX    = "asym-"
 
 
+def _safe_plot(func, *args, **kwargs):
+    try:
+        func(*args, **kwargs)
+    except Exception as e:
+        print(f"Skip {func.__name__}: {type(e).__name__}: {e}")
+
+
 def _plot_all_rqs(df, gt_df, datastore_dir, output_dir, rq_set, models,
                   rq1_impl_question, rq1_asym_question):
     if "rq1" in rq_set:
-        plot_rq1_run_consistency(df, output_dir,
-                                 impl_question=rq1_impl_question,
-                                 asym_question=rq1_asym_question)
-        plot_rq1_deviation(df, output_dir)
-        plot_rq1_score_distribution(df, gt_df, output_dir)
+        _safe_plot(plot_rq1_run_consistency, df, output_dir,
+                   impl_question=rq1_impl_question,
+                   asym_question=rq1_asym_question)
+        _safe_plot(plot_rq1_deviation, df, output_dir)
+        _safe_plot(plot_rq1_score_distribution, df, gt_df, output_dir)
     if "rq2" in rq_set:
-        plot_rq2_mae(df, gt_df, output_dir, models=models)
-        plot_rq2_spearman(df, gt_df, output_dir)
-        plot_rq2_time(df, output_dir, models=models)
+        _safe_plot(plot_rq2_mae, df, gt_df, output_dir, models=models)
+        _safe_plot(plot_rq2_spearman, df, gt_df, output_dir)
+        _safe_plot(plot_rq2_time, df, output_dir, models=models)
     if "rq3" in rq_set:
-        plot_rq3_stability(df, output_dir, models=models)
-        plot_rq3_format_failures(df, output_dir, models=models)
+        _safe_plot(plot_rq3_stability, df, output_dir, models=models)
+        _safe_plot(plot_rq3_format_failures, df, output_dir, models=models)
     if "rq4" in rq_set:
-        plot_rq4_leniency(df, gt_df, output_dir)
-        plot_rq4_leniency_scatter(df, gt_df, output_dir)
-        plot_rq4_bucket_distribution(df, gt_df, datastore_dir, output_dir)
-        plot_rq4_length_bias(df, datastore_dir, output_dir)
+        _safe_plot(plot_rq4_leniency, df, gt_df, output_dir)
+        _safe_plot(plot_rq4_leniency_scatter, df, gt_df, output_dir)
+        _safe_plot(plot_rq4_bucket_distribution, df, gt_df, datastore_dir, output_dir)
+        _safe_plot(plot_rq4_length_bias, df, datastore_dir, output_dir)
 
 
 def main(result_store_dir, datastore_dir, output_dir="graph_store",

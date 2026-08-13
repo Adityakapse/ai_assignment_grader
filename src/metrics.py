@@ -30,14 +30,12 @@ _NEGATIVE_KEYWORDS = [
 
 
 def _parse_bool(value):
-    # Normalises CSV string values like "True"/"1"/"yes" to a Python bool.
     if isinstance(value, bool):
         return value
     return str(value).strip().lower() in ("true", "1", "yes")
 
 
 def load_results(path):
-    # Reads result.csv and coerces total to float and format_ok to bool for downstream calculations.
     rows = []
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -49,7 +47,6 @@ def load_results(path):
 
 
 def load_ground_truth(path):
-    # Loads human-graded totals and optional bucket labels; returns empty dicts if no file is given.
     if path is None or not os.path.isfile(path):
         return {}, {}
     gt_totals = {}
@@ -68,7 +65,6 @@ def load_ground_truth(path):
 
 
 def load_rubric_buckets(datastore_dir, question_id):
-    # Loads bucket definitions for a question's rubric, used to convert free marks to bucket labels.
     task_id = question_id.rsplit("-", 1)[0]
     path = os.path.join(datastore_dir, "rubrics", task_id, "rubric.json")
     if not os.path.isfile(path):
@@ -83,12 +79,10 @@ def load_rubric_buckets(datastore_dir, question_id):
 
 
 def marks_to_bucket(mark, bucket_list):
-    # Maps a numeric mark to the nearest bucket label by absolute distance.
     return min(bucket_list, key=lambda b: abs(b["marks"] - mark))["label"]
 
 
 def get_llm_bucket_labels(row, datastore_dir):
-    # Returns per-point bucket labels for a row: uses stored buckets_per_point or converts free marks via marks_to_bucket.
     raw_buckets = row.get("buckets_per_point", "")
     if raw_buckets:
         try:
@@ -114,7 +108,6 @@ def get_llm_bucket_labels(row, datastore_dir):
 
 
 def group_by_student(rows):
-    # Groups rows by (question_id, student_id, model, approach) to collect all runs per student.
     groups = {}
     for row in rows:
         key = (row["question_id"], row["student_id"], row["model"], row["approach"])
@@ -123,7 +116,6 @@ def group_by_student(rows):
 
 
 def group_by_combo(rows):
-    # Groups rows by (question_id, model, approach) to collect all students per combo for aggregate metrics.
     groups = {}
     for row in rows:
         key = (row["question_id"], row["model"], row["approach"])
@@ -132,7 +124,6 @@ def group_by_combo(rows):
 
 
 def add_run_stats(rows, student_groups):
-    # Fills median and run_std on every row using all runs for that student/model/approach.
     for row in rows:
         key = (row["question_id"], row["student_id"], row["model"], row["approach"])
         group = student_groups[key]
@@ -143,15 +134,11 @@ def add_run_stats(rows, student_groups):
 
 
 def _contains_any(text, keywords):
-    # Returns True if any keyword appears as a WHOLE WORD (word-boundary match, not substring).
-    # Substring matching wrongly fired "correct" inside "incorrect", "valid" inside "invalid",
-    # and "not"/"no" inside "notation"/"cannot"/"note", inflating the feedback-contradiction rate.
     lowered = text.lower()
     return any(re.search(rf"\b{re.escape(kw)}\b", lowered) for kw in keywords)
 
 
 def _is_contradiction(row):
-    # Flags a row where high score has negative feedback language, or low score has positive language.
     score = row["total"]
     feedback = str(row.get("feedback_per_point", ""))
     if score > 70 and _contains_any(feedback, _NEGATIVE_KEYWORDS):
@@ -162,14 +149,12 @@ def _is_contradiction(row):
 
 
 def compute_feedback_contradiction_rate(rows):
-    # Proportion of rows where score and feedback sentiment contradict each other.
     if not rows:
         return 0.0
     return sum(_is_contradiction(r) for r in rows) / len(rows)
 
 
 def _get_paired_totals(student_groups, gt_totals, question_id, model, approach):
-    # Builds parallel LLM-median and human-total lists for students that have ground truth entries.
     llm_medians = []
     human_totals = []
     for (qid, sid, mdl, app), group in student_groups.items():
@@ -185,18 +170,14 @@ def _get_paired_totals(student_groups, gt_totals, question_id, model, approach):
 
 
 def compute_mae(llm, human):
-    # Mean absolute error between LLM medians and human totals.
     return sum(abs(l - h) for l, h in zip(llm, human)) / len(llm)
 
 
 def compute_leniency(llm, human):
-    # Mean signed difference (LLM − human); positive = LLM is generous, negative = LLM is strict.
     return sum(l - h for l, h in zip(llm, human)) / len(llm)
 
 
 def compute_spearman_rho(llm, human):
-    # Spearman rank correlation coefficient between LLM and human totals.
-    # Returns "" if fewer than 3 paired samples or either array is constant (correlation undefined).
     if len(llm) < 3:
         return ""
     if len(set(llm)) == 1 or len(set(human)) == 1:
@@ -206,9 +187,6 @@ def compute_spearman_rho(llm, human):
 
 
 def compute_spearman_by_model_approach(student_groups, gt_totals):
-    # Pooled Spearman per (model, approach) across ALL questions. Rank correlation is only
-    # meaningful over many submissions, so it must NOT be computed per single question — with
-    # n=3 variants (correct/semi/wrong) it saturates at ~1.0 and carries no signal.
     pooled = {}
     for (qid, sid, model, approach), group in student_groups.items():
         if (qid, sid) not in gt_totals:
@@ -220,7 +198,6 @@ def compute_spearman_by_model_approach(student_groups, gt_totals):
 
 
 def _flatten_label_pairs(combo_rows, gt_buckets, question_id, datastore_dir):
-    # Produces parallel LLM and human label lists across all points and students in a combo.
     llm_list = []
     human_list = []
     for row in combo_rows:
@@ -240,8 +217,6 @@ def _flatten_label_pairs(combo_rows, gt_buckets, question_id, datastore_dir):
 
 
 def compute_cohen_kappa(combo_rows, gt_buckets, datastore_dir, question_id):
-    # Cohen's kappa between LLM and human bucket labels; returns "" if no ground truth, too few samples,
-    # or all labels are identical (degenerate case where kappa is undefined).
     if not gt_buckets:
         return ""
     llm_list, human_list = _flatten_label_pairs(combo_rows, gt_buckets, question_id, datastore_dir)
@@ -256,9 +231,6 @@ def compute_cohen_kappa(combo_rows, gt_buckets, datastore_dir, question_id):
 
 
 def _median_run_rows(combo_rows):
-    # Reduces a combo's rows to one representative run per submission: the run whose total is
-    # closest to that submission's median total. Keeps kappa and FCR on the same per-submission
-    # (median) basis as MAE/leniency/rho, rather than counting all three runs separately.
     groups = {}
     for row in combo_rows:
         groups.setdefault((row["question_id"], row["student_id"]), []).append(row)
@@ -270,7 +242,6 @@ def _median_run_rows(combo_rows):
 
 
 def compute_combo_metrics(combo_rows, student_groups, gt_totals, gt_buckets, combo, datastore_dir, spearman_by_ma):
-    # Computes all aggregate metrics for one (question_id, model, approach) combo.
     question_id, model, approach = combo
     llm, human = _get_paired_totals(student_groups, gt_totals, question_id, model, approach)
     if llm:
@@ -278,7 +249,6 @@ def compute_combo_metrics(combo_rows, student_groups, gt_totals, gt_buckets, com
         leniency = compute_leniency(llm, human)
     else:
         mae = leniency = ""
-    # Spearman is pooled across all questions per (model, approach), not computed here per-question.
     rho = spearman_by_ma.get((model, approach), "")
     median_rows = _median_run_rows(combo_rows)
     kappa = compute_cohen_kappa(median_rows, gt_buckets, datastore_dir, question_id)
@@ -293,7 +263,6 @@ def compute_combo_metrics(combo_rows, student_groups, gt_totals, gt_buckets, com
 
 
 def add_combo_metrics(rows, combo_groups, student_groups, gt_totals, gt_buckets, datastore_dir):
-    # Writes combo-level metrics onto every row belonging to that combo in-place.
     spearman_by_ma = compute_spearman_by_model_approach(student_groups, gt_totals)
     for combo, combo_rows in combo_groups.items():
         metrics = compute_combo_metrics(
@@ -305,7 +274,6 @@ def add_combo_metrics(rows, combo_groups, student_groups, gt_totals, gt_buckets,
 
 
 def save_results(rows, path, columns):
-    # Overwrites the result CSV with the fully annotated rows, ignoring any extra fields.
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")

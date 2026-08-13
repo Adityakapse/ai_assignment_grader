@@ -26,7 +26,6 @@ def _to_fs_name(model):
 
 
 def parse_args():
-    # Parses and validates CLI args; exits if datastore_dir does not exist.
     parser = argparse.ArgumentParser()
     parser.add_argument("--datastore_dir", required=True)
     parser.add_argument("--response_store_dir", required=True)
@@ -47,7 +46,6 @@ def parse_args():
 
 
 def load_question_map(datastore_dir):
-    # Loads all questions into a dict keyed by question_id for quick lookup during grading.
     path = os.path.join(datastore_dir, "questions", "question.csv")
     question_map = {}
     with open(path, newline="", encoding="utf-8") as f:
@@ -62,7 +60,6 @@ def load_question_map(datastore_dir):
 
 
 def load_solutions(datastore_dir, question_id):
-    # Returns all student solutions for a specific question_id.
     csv.field_size_limit(10**7)
     path = os.path.join(datastore_dir, "solutions", "solutions.csv")
     solutions = []
@@ -78,7 +75,6 @@ def load_solutions(datastore_dir, question_id):
 
 
 def load_rubric(datastore_dir, question_id):
-    # Derives task_id from question_id and loads its rubric.json.
     parts = question_id.rsplit("-", 1)
     task_id = parts[0]
     path = os.path.join(datastore_dir, "rubrics", task_id, "rubric.json")
@@ -87,7 +83,6 @@ def load_rubric(datastore_dir, question_id):
 
 
 def load_system_prompt(datastore_dir, approach, question_type="implementation"):
-    # Selects analysis_approach_n.txt for analysis questions, approach_n.txt for all others.
     prefix = "analysis_" if question_type == "analysis" else ""
     path = os.path.join(datastore_dir, "system_prompt", f"{prefix}{approach}.txt")
     with open(path, encoding="utf-8") as f:
@@ -95,7 +90,6 @@ def load_system_prompt(datastore_dir, approach, question_type="implementation"):
 
 
 def _format_point_free_marks(point):
-    # Formats a rubric point for free-mark approaches — shows valid mark range, no buckets.
     return (
         f"Point {point['id']} — {point['name']} (valid range: 0–{point['max_marks']})\n"
         f"  {point.get('target', point.get('description', ''))}"
@@ -103,7 +97,6 @@ def _format_point_free_marks(point):
 
 
 def _format_point_buckets(point):
-    # Formats a rubric point for bucket approaches — lists each bucket label, marks, and description.
     bucket_lines = "\n".join(
         f"    - {b['label']} ({b['marks']} marks): {b['description']}"
         for b in point["buckets"]
@@ -117,14 +110,12 @@ def _format_point_buckets(point):
 
 
 def _format_point(point, free_marks):
-    # Dispatches to the correct point formatter based on whether the approach uses free marks or buckets.
     if free_marks:
         return _format_point_free_marks(point)
     return _format_point_buckets(point)
 
 
 def _build_prompt_header(question, solution):
-    # Builds the shared QUESTION / SAMPLE SOLUTION / STUDENT SOLUTION header used by all prompt types.
     return (
         f"QUESTION:\n{question['question_desc']}\n\n"
         f"SAMPLE SOLUTION:\n{question['sample_solution']}\n\n"
@@ -133,7 +124,6 @@ def _build_prompt_header(question, solution):
 
 
 def build_prompt_whole(question, solution, rubric, free_marks):
-    # Builds a single prompt containing all rubric points (approach_1 and approach_3).
     header = _build_prompt_header(question, solution)
     points_text = "\n\n".join(
         _format_point(p, free_marks) for p in rubric["rubric_points"]
@@ -142,15 +132,12 @@ def build_prompt_whole(question, solution, rubric, free_marks):
 
 
 def build_prompt_point(question, solution, point, free_marks):
-    # Builds a prompt for a single rubric point (approach_2 and approach_4).
     header = _build_prompt_header(question, solution)
     point_text = _format_point(point, free_marks)
     return header + f"RUBRIC POINT:\n{point_text}"
 
 
 def call_ollama(prompt, model, system_prompt, retries=3, timeout=300):
-    # Sends a prompt to the local Ollama API and returns the model's response text.
-    # Retries up to `retries` times on timeout or empty response before giving up.
     if model == "deepseek-coder:6.7b":
         options = {
             "temperature": 0.0,
@@ -184,7 +171,6 @@ def call_ollama(prompt, model, system_prompt, retries=3, timeout=300):
 
 
 def call_nim(prompt, model, system_prompt, api_key, retries=3, timeout=300):
-    # Uses openai-compatible NIM endpoint.
     client = OpenAI(base_url=NIM_BASE_URL, api_key=api_key)
     for attempt in range(1, retries + 1):
         try:
@@ -213,7 +199,6 @@ def call_nim(prompt, model, system_prompt, api_key, retries=3, timeout=300):
 
 
 def call_openai_compatible(prompt, model, system_prompt, api_key, base_url, retries=3, timeout=300):
-    # Generic OpenAI-compatible caller for any provider (Gemini, Claude, Groq, ...) via its openai endpoint.
     client = OpenAI(base_url=base_url, api_key=api_key)
     for attempt in range(1, retries + 1):
         try:
@@ -247,7 +232,6 @@ def call_model(prompt, model, system_prompt, backend, api_key="", base_url=""):
 
 
 def assemble_per_point_response(point_results):
-    # Joins individual per-point LLM responses into one block prefixed with POINT_ID: for process.py to parse.
     blocks = [
         f"POINT_ID: {item['point_id']}\n{item['response']}"
         for item in point_results
@@ -256,8 +240,6 @@ def assemble_per_point_response(point_results):
 
 
 def response_exists(response_store_dir, question_id, student_id, approach, model, run_n, response_file):
-    # Checks if a non-empty response file already exists so completed runs are not re-graded.
-    # Empty files (from a previous failed attempt) are treated as not done and will be retried.
     path = os.path.join(
         response_store_dir, question_id, student_id, approach, _to_fs_name(model), run_n, response_file
     )
@@ -266,7 +248,6 @@ def response_exists(response_store_dir, question_id, student_id, approach, model
 
 def save_run(response_store_dir, question_id, student_id, approach, model, run_n,
              response, prompt_text, elapsed_seconds, response_file, prompt_file):
-    # Writes response.txt, prompt.txt, and time.txt to the response_store path for this run.
     directory = os.path.join(
         response_store_dir, question_id, student_id, approach, _to_fs_name(model), run_n
     )
@@ -280,14 +261,12 @@ def save_run(response_store_dir, question_id, student_id, approach, model, run_n
 
 
 def _grade_whole_rubric(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url):
-    # Grades by sending all rubric points in one prompt; returns (response, prompt).
     prompt = build_prompt_whole(question, solution_text, rubric, free_marks)
     response = call_model(prompt, model, system_prompt, backend, api_key, base_url)
     return response, prompt
 
 
 def _grade_per_point(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url):
-    # Grades by calling the LLM once per rubric point and assembling the responses.
     point_results = []
     prompts = []
     for point in rubric["rubric_points"]:
@@ -301,7 +280,6 @@ def _grade_per_point(question, solution_text, rubric, system_prompt, model, free
 
 
 def grade_one_run(question, solution_text, rubric, system_prompt, model, whole_rubric, free_marks, backend, api_key, base_url):
-    # Dispatches to whole-rubric or per-point grading; also measures total wall-clock seconds.
     start = time.perf_counter()
     if whole_rubric:
         response, prompt = _grade_whole_rubric(question, solution_text, rubric, system_prompt, model, free_marks, backend, api_key, base_url)
@@ -314,7 +292,6 @@ def grade_one_run(question, solution_text, rubric, system_prompt, model, whole_r
 def grade_question(question_id, question, solutions, rubric, system_prompt,
                    model, approach, whole_rubric, free_marks, runs,
                    response_store_dir, response_file, prompt_file, backend, api_key, base_url):
-    # Iterates over all students and runs, skipping any run that already has a saved response.
     for sol in solutions:
         student_id = sol["student_id"]
         solution_text = sol["solution"]

@@ -7,6 +7,13 @@ import streamlit as st
 
 PRODUCTION_MODELS = {"Qwen3:14b": "local", "gpt-oss-120b": "cloud"}
 
+
+def available_models(df):
+    present = list(dict.fromkeys(df["model"].dropna()))
+    known = [m for m in PRODUCTION_MODELS if m in present]
+    extra = sorted(m for m in present if m not in PRODUCTION_MODELS)
+    return known + extra
+
 FINAL_GRADE_COLUMNS = [
     "question_id", "student_id", "final_total",
     "final_scores_per_point", "final_buckets_per_point", "final_feedback_per_point",
@@ -15,7 +22,6 @@ FINAL_GRADE_COLUMNS = [
 
 
 def project_root():
-    # Resolves the project root from this file's location (src/explorer/ -> ../../), overridable via env.
     env_root = os.environ.get("PROJECT_ROOT")
     if env_root:
         return env_root
@@ -23,7 +29,6 @@ def project_root():
 
 
 def paths(assignment=None):
-    # Returns the absolute store paths for the dissertation root (assignment=None) or an assignment subfolder.
     root = project_root()
     if assignment:
         datastore = os.path.join(root, "datastore", assignment)
@@ -44,7 +49,6 @@ def paths(assignment=None):
 
 
 def list_assignments():
-    # Lists selectable datasets: the dissertation root (None) first, then each result_store subfolder with results.
     result_store = os.path.join(project_root(), "result_store")
     assignments = []
     if os.path.isfile(os.path.join(result_store, "result.csv")):
@@ -57,12 +61,10 @@ def list_assignments():
 
 
 def task_id_from_question_id(question_id):
-    # Strips the language suffix to get the task_id (e.g. 19_20-2-1-java -> 19_20-2-1).
     return question_id.rsplit("-", 1)[0]
 
 
 def parse_json_col(value):
-    # Safely parses a JSON-string CSV cell into a dict, returning {} on any failure.
     if value is None or (isinstance(value, float) and pd.isna(value)):
         return {}
     text = str(value).strip()
@@ -76,16 +78,13 @@ def parse_json_col(value):
 
 @st.cache_data
 def load_results(assignment=None):
-    # Reads result.csv and keeps only the two fully-covered production models.
-    df = pd.read_csv(paths(assignment)["result_csv"])
-    df = df[df["model"].isin(PRODUCTION_MODELS)].copy()
+    df = pd.read_csv(paths(assignment)["result_csv"]).copy()
     df["total"] = df["total"].astype(float)
     df["median"] = df["median"].astype(float)
     return df
 
 
 def _representative_run(group):
-    # Picks the run whose total is closest to the median, sourcing its per-point detail for display.
     median = group["median"].iloc[0]
     idx = (group["total"] - median).abs().idxmin()
     return group.loc[idx]
@@ -93,7 +92,6 @@ def _representative_run(group):
 
 @st.cache_data
 def collapse_to_median(df):
-    # Reduces the 3 runs of every (question, student, model, approach) cell to one representative row.
     keys = ["question_id", "student_id", "model", "approach"]
     rows = [_representative_run(g) for _, g in df.groupby(keys)]
     collapsed = pd.DataFrame(rows).reset_index(drop=True)
@@ -103,7 +101,6 @@ def collapse_to_median(df):
 
 @st.cache_data
 def load_ground_truth(assignment=None):
-    # Loads the human reference grades keyed by (question_id, student_id); empty frame if absent.
     path = paths(assignment)["ground_truth_csv"]
     if not os.path.isfile(path):
         return pd.DataFrame(columns=["question_id", "student_id", "human_total", "buckets_per_point"])
@@ -112,20 +109,17 @@ def load_ground_truth(assignment=None):
 
 @st.cache_data
 def load_questions(assignment=None):
-    # Loads question metadata indexed by question_id for fast title/description/solution lookup.
     return pd.read_csv(paths(assignment)["questions_csv"]).set_index("question_id")
 
 
 @st.cache_data
 def load_solutions(assignment=None):
-    # Loads student submissions indexed by (student_id, question_id).
     df = pd.read_csv(paths(assignment)["solutions_csv"])
     return df.set_index(["student_id", "question_id"])
 
 
 @st.cache_data
 def load_rubric(assignment, question_id):
-    # Reads the rubric.json for a question's task, returning None when no rubric exists.
     task_id = task_id_from_question_id(question_id)
     path = os.path.join(paths(assignment)["rubrics_dir"], task_id, "rubric.json")
     if not os.path.isfile(path):
@@ -135,7 +129,6 @@ def load_rubric(assignment, question_id):
 
 
 def bucket_marks(rubric, point_id, label):
-    # Returns the marks awarded for a given bucket label on a rubric point, or 0 if not found.
     for point in rubric["rubric_points"]:
         if int(point["id"]) == int(point_id):
             for b in point["buckets"]:
@@ -145,7 +138,6 @@ def bucket_marks(rubric, point_id, label):
 
 
 def load_final_grades(assignment=None):
-    # Reads final_grades.csv into a DataFrame, returning an empty typed frame before the first save.
     path = paths(assignment)["final_grades_csv"]
     if not os.path.isfile(path):
         return pd.DataFrame(columns=FINAL_GRADE_COLUMNS)
@@ -153,7 +145,6 @@ def load_final_grades(assignment=None):
 
 
 def get_final_grade(assignment, question_id, student_id):
-    # Returns the saved final grade for one submission as a dict, or None if not yet finalized.
     df = load_final_grades(assignment)
     match = df[(df["question_id"] == question_id) & (df["student_id"] == student_id)]
     if match.empty:
@@ -162,12 +153,10 @@ def get_final_grade(assignment, question_id, student_id):
 
 
 def upsert_final_grade(assignment, record):
-    # Inserts or replaces the single final-grade row for a (question_id, student_id) pair.
     bulk_upsert_final_grades(assignment, [record])
 
 
 def finalized_keys(assignment=None):
-    # Returns the set of (question_id, student_id) pairs that already have a saved final grade.
     df = load_final_grades(assignment)
     if df.empty:
         return set()
@@ -175,7 +164,6 @@ def finalized_keys(assignment=None):
 
 
 def bulk_upsert_final_grades(assignment, records):
-    # Inserts or replaces many final-grade rows in a single read/write, returning the count written.
     if not records:
         return 0
     path = paths(assignment)["final_grades_csv"]

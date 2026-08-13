@@ -1,13 +1,3 @@
-# Plan:
-# 1. Discover cohort files by scanning raw_data_dir for *_task_descriptions.csv.
-# 2. Load and merge task descriptions from all cohorts; map to the target schema.
-# 3. Drop question rows missing title, description, or sample solution.
-# 4. Load and merge solutions from all cohorts.
-# 5. Drop solution rows where solution is empty.
-# 6. Save merged questions to datastore/questions/question.csv.
-# 7. Save merged solutions to datastore/solutions/solutions.csv (preserving any mut_* rows).
-# 8. Print EDA summary stats to stdout.
-
 import csv
 import os
 
@@ -15,7 +5,6 @@ csv.field_size_limit(10**7)
 
 
 def discover_cohort_prefixes(raw_data_dir):
-    # Finds cohort identifiers (e.g. "19_20") by scanning for *_task_descriptions.csv files.
     prefixes = []
     for name in sorted(os.listdir(raw_data_dir)):
         if name.endswith("_task_descriptions.csv"):
@@ -25,18 +14,15 @@ def discover_cohort_prefixes(raw_data_dir):
 
 
 def load_csv_rows(path):
-    # Reads a CSV file and returns all rows as a list of dicts.
     with open(path, newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
 
 
 def strip_row_strings(row):
-    # Strips leading/trailing whitespace from every string value in a row dict.
     return {k: (v.strip() if isinstance(v, str) else v) for k, v in row.items()}
 
 
 def load_questions(raw_data_dir, prefixes):
-    # Loads and merges task descriptions from all cohorts, mapping raw column names to the target schema.
     rows = []
     for prefix in prefixes:
         path = os.path.join(raw_data_dir, f"{prefix}_task_descriptions.csv")
@@ -53,7 +39,6 @@ def load_questions(raw_data_dir, prefixes):
 
 
 def drop_incomplete_questions(rows):
-    # Removes questions missing a title, description, or sample solution; returns (kept, dropped).
     kept, dropped = [], []
     for r in rows:
         if r["question_title"] and r["question_desc"] and r["sample_solution"]:
@@ -64,7 +49,6 @@ def drop_incomplete_questions(rows):
 
 
 def load_solutions(raw_data_dir, prefixes):
-    # Loads and merges student solutions from all cohorts into a unified list.
     rows = []
     for prefix in prefixes:
         path = os.path.join(raw_data_dir, f"{prefix}_solutions.csv")
@@ -79,14 +63,12 @@ def load_solutions(raw_data_dir, prefixes):
 
 
 def drop_empty_solutions(rows):
-    # Removes rows where the solution field is blank; returns (kept, dropped).
     kept = [r for r in rows if r["solution"]]
     dropped = [r for r in rows if not r["solution"]]
     return kept, dropped
 
 
 def save_csv(path, fieldnames, rows):
-    # Writes rows to a CSV at the given path, creating parent directories if needed.
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
@@ -94,31 +76,36 @@ def save_csv(path, fieldnames, rows):
         writer.writerows(rows)
 
 
+def load_preserved_questions(path, generated_ids):
+    if not os.path.isfile(path):
+        return []
+    with open(path, newline="", encoding="utf-8") as fh:
+        return [r for r in csv.DictReader(fh) if r["question_id"] not in generated_ids]
+
+
 def save_questions(datastore_dir, rows):
-    # Saves the merged questions to datastore/questions/question.csv.
     path = os.path.join(datastore_dir, "questions", "question.csv")
-    save_csv(path, ["question_id", "question_title", "question_desc", "sample_solution", "question_type"], rows)
+    generated_ids = {r["question_id"] for r in rows}
+    preserved_rows = load_preserved_questions(path, generated_ids)
+    save_csv(path, ["question_id", "question_title", "question_desc", "sample_solution", "question_type"], rows + preserved_rows)
     return path
 
 
 def load_mutation_rows(path):
-    # Returns any existing rows whose student_id starts with "mut_", so they survive a re-run.
     if not os.path.isfile(path):
         return []
     with open(path, newline="", encoding="utf-8") as fh:
         return [r for r in csv.DictReader(fh) if r.get("student_id", "").startswith("mut_")]
 
 
-def save_solutions(datastore_dir, rows):
-    # Saves merged solutions to solutions.csv, preserving any existing mutation rows.
+def save_solutions(datastore_dir):
     path = os.path.join(datastore_dir, "solutions", "solutions.csv")
     mutation_rows = load_mutation_rows(path)
-    save_csv(path, ["student_id", "question_id", "solution"], rows + mutation_rows)
+    save_csv(path, ["student_id", "question_id", "solution"], mutation_rows)
     return path
 
 
 def print_eda(questions, dropped_questions, solutions, dropped_solutions):
-    # Prints a summary of loaded, dropped, and saved counts to stdout.
     print("=== EDA Summary ===")
     print(f"Questions loaded:  {len(questions) + len(dropped_questions)}")
     print(f"Questions kept:    {len(questions)}")
@@ -152,6 +139,6 @@ def main(raw_data_dir, datastore_dir):
     solutions, dropped_solutions = drop_empty_solutions(raw_solutions)
 
     save_questions(datastore_dir, questions)
-    save_solutions(datastore_dir, solutions)
+    save_solutions(datastore_dir)
 
     print_eda(questions, dropped_questions, solutions, dropped_solutions)
